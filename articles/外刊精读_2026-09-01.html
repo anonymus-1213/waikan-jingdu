@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 让思绪漫游、别退休、停止焦虑：拯救大脑</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 34px;}
+figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇表 */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
+th{background:var(--paper);font-weight:600;}
+td.en,th.en{font-family:var(--serif);}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap" data-od-id="article">
+  <div class="eyebrow">Psychology · 心理 / 生活方式 / 大脑老化</div>
+  <h1>让思绪漫游、别退休、停止焦虑：拯救大脑免受"认知悬崖"的意外方法</h1>
+  <div class="deck">Let your mind wander, don't retire and stop worrying: surprising ways to help save your brain from the cognitive cliff</div>
+  <div class="byline"><span><b>来源</b> The Guardian 卫报</span><span><b>作者</b> Dr Norman Swan（受访）</span><span><b>日期</b> 2026-09-07</span><span><b>难度</b> 中等</span></div>
+
+  <figure class="hero" data-od-id="hero-figure">
+    <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="大脑老化与认知悬崖保护策略示意图">
+      <rect width="800" height="360" fill="#fdfcf8"/>
+      <text x="400" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#1c1a17">远离"认知悬崖"：大脑如何搭建脚手架</text>
+      <!-- 四要素 -->
+      <rect x="50" y="72" width="160" height="84" rx="12" fill="#eef5ee" stroke="#2f5d3a" stroke-width="2"/>
+      <text x="130" y="106" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="15" fill="#2f5d3a">运动 + 抗炎饮食</text>
+      <text x="130" y="128" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#6d685e">增强可塑性·促脚手架</text>
+
+      <rect x="240" y="72" width="160" height="84" rx="12" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+      <text x="320" y="106" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="15" fill="#1f3a5f">思绪漫游 · 心智旅行</text>
+      <text x="320" y="128" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#6d685e">默认模式网络被激活</text>
+
+      <rect x="430" y="72" width="160" height="84" rx="12" fill="#fdeee8" stroke="#c25a2b" stroke-width="2"/>
+      <text x="510" y="106" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="15" fill="#c25a2b">反刍思维 · 焦虑</text>
+      <text x="510" y="128" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#6d685e">占据前额叶·拖近悬崖</text>
+
+      <rect x="620" y="72" width="140" height="84" rx="12" fill="#f3e4dc" stroke="#9c2f16" stroke-width="2"/>
+      <text x="690" y="106" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="15" fill="#9c2f16">别退休 · 持续工作</text>
+      <text x="690" y="128" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#6d685e">退休加速认知衰退</text>
+
+      <!-- 汇合箭头到前额叶 -->
+      <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+      <line x1="130" y1="156" x2="400" y2="222" stroke="#2f5d3a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="320" y1="156" x2="400" y2="222" stroke="#1f3a5f" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="510" y1="156" x2="400" y2="222" stroke="#c25a2b" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="690" y1="156" x2="400" y2="222" stroke="#9c2f16" stroke-width="2" marker-end="url(#ar)"/>
+
+      <circle cx="400" cy="246" r="52" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+      <text x="400" y="239" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="14" fill="#1f3a5f">前额叶皮层</text>
+      <text x="400" y="258" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#6d685e">判断·决策·情绪控制</text>
+
+      <!-- 底部数据 -->
+      <line x1="60" y1="320" x2="740" y2="320" stroke="#e2ddd2" stroke-width="1"/>
+      <text x="90" y="346" font-family="Georgia,serif" font-size="20" fill="#9c2f16">7</text>
+      <text x="90" y="362" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#6d685e">受访"认知超级老人"人数</text>
+      <text x="330" y="346" font-family="Georgia,serif" font-size="20" fill="#9c2f16">40s–50s</text>
+      <text x="330" y="362" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#6d685e">帮助大脑适应的黄金中年期</text>
+      <text x="580" y="346" font-family="Georgia,serif" font-size="20" fill="#9c2f16">20s</text>
+      <text x="580" y="362" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#6d685e">流体智力（速度·解题）达峰年龄</text>
+    </svg>
+    <figcaption>配图说明：依据本篇访谈整理的"保护大脑脚手架、推迟认知悬崖"策略示意图（运动饮食 / 思绪漫游 / 避免反刍 / 别退休）。数据均来自访谈原文，原文照片因版权限制未直接引用。</figcaption>
+  </figure>
+
+  <h2>一、原文精读</h2>
+  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+  <div class="para"><span class="idx">1</span><span class="en">There are three things you need to know which are not widely known. Think <span class="kw" data-tip="adj. 认知的">cognitive</span> change not cognitive decline: one way people think about our cognitive function is by comparing it to what it was like when we were in our 20s and it's not a valid comparison. It leads to an <span class="kw" data-tip="n. 假设；臆断">assumption</span> that we've declined into <span class="kw" data-tip="n. 缺陷；不足">deficit</span>.</span></div>
+  <div class="para"><span class="idx">2</span><span class="en">Sure, our <span class="kw" data-tip="n. 流体智力">fluid intelligence</span> – which is about speed and problem-solving – peaks in our 20s, but unless you're a maths whiz or a gun lab researcher, that is less important than what's called your <span class="kw" data-tip="n. 晶体智力">crystallised intelligence</span>, which can actually <span class="kw" data-tip="v. 改善；提升">improve</span> with age. It's the wisdom of knowledge and experience.</span></div>
+  <div class="para"><span class="idx">3</span><span class="en">This is about a <span class="kw" data-tip="n. 现象">phenomenon</span> in the brain called <span class="kw" data-tip="n. 脚手架；支架">scaffolding</span>. To protect our cognitive abilities and perhaps even enhance them as the years pass, our brains build out networks of nerves which act pretty much like the scaffolding inside a skyscraper.</span></div>
+  <div class="para"><span class="idx">4</span><span class="en">For The Brain Cliff I interviewed seven cognitive super-agers, who are as different as you could imagine – from the <span class="kw" data-tip="adj. 不识字的">illiterate</span> 95-year-old shoemaker to the woman who taught Mick Jagger statistics and the 94-year-old woman who still works in McDonald's in Kyushu, Japan.</span></div>
+  <div class="para"><span class="idx">5</span><span class="en">One example is how they respond to stress. They get over it. They problem-solve. They don't <span class="kw" data-tip="v. 反复思考；反刍">ruminate</span>. And where do you think we ruminate? Yes, in our <span class="kw" data-tip="n. 前额叶皮层">prefrontal cortex</span>. So you're occupying valuable brain space for cognitive function with <span class="kw" data-tip="adj. 徒劳的；无用的">unproductive</span> circular thoughts.</span></div>
+  <div class="para"><span class="idx">6</span><span class="en">Exercise enhances our brain <span class="kw" data-tip="n. 可塑性">plasticity</span>, which in turn encourages brain scaffolding. An <span class="kw" data-tip="adj. 抗炎的">anti-inflammatory</span> diet – with low amounts of red meat, high diversity of vegetables including leafy greens, fermented foods such as yoghurt and fruits such as berries – can change the <span class="kw" data-tip="n. 微生物组">microbiome</span> and aid direct absorption of bioactive compounds, both of which support brain scaffolding.</span></div>
+  <div class="para"><span class="idx">7</span><span class="en">When the <span class="kw" data-tip="n. 默认模式网络">default mode network</span> fires up, parts of the brain that don't normally talk to each other make connections. How do you know if your default network is at work? Your mind <span class="kw" data-tip="v. 漫游；走神">wanders</span>. Mind wandering looks as though it's good for your brain.</span></div>
+  <div class="para"><span class="idx">8</span><span class="en">One of the important findings from research has been that <span class="kw" data-tip="n. 基因">genes</span> don't play a large role in whether we're on a journey to the brain cliff or when we might reach it. That means the <span class="kw" data-tip="n. 环境">environment</span> and how we live matter hugely. Work is mostly good for our brains. The evidence is strong that cognitive decline <span class="kw" data-tip="v. 加速">speeds up</span> after retirement.</span></div>
+
+  <p class="muted">原文出处：The Guardian（访谈，2026-09-07）。受访者为澳大利亚广播员、作家 Dr Norman Swan，谈其新书《The Brain Cliff》中关于大脑老化与认知衰退的科学研究与应对策略。</p>
+
+  <h2>二、重点词汇</h2>
+  <table>
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
+    <tr><td class="en">cognitive</td><td>/ˈkɒɡnətɪv/</td><td>adj.</td><td>认知的</td><td>cognitive decline / function</td></tr>
+    <tr><td class="en">assumption</td><td>/əˈsʌmpʃn/</td><td>n.</td><td>假设；臆断</td><td>lead to an assumption that …</td></tr>
+    <tr><td class="en">deficit</td><td>/ˈdefɪsɪt/</td><td>n.</td><td>缺陷；不足</td><td>decline into deficit</td></tr>
+    <tr><td class="en">fluid intelligence</td><td>/ˈfluːɪd ɪnˈtelɪdʒəns/</td><td>n.</td><td>流体智力</td><td>fluid intelligence peaks in our 20s</td></tr>
+    <tr><td class="en">crystallised intelligence</td><td>/ˈkrɪstəlaɪzd/</td><td>n.</td><td>晶体智力</td><td>improve with age</td></tr>
+    <tr><td class="en">phenomenon</td><td>/fəˈnɒmɪnən/</td><td>n.</td><td>现象</td><td>a phenomenon called scaffolding</td></tr>
+    <tr><td class="en">scaffolding</td><td>/ˈskæfəldɪŋ/</td><td>n.</td><td>脚手架；支架</td><td>encourage brain scaffolding</td></tr>
+    <tr><td class="en">super-ager</td><td>/ˈsuːpə ˌeɪdʒə(r)/</td><td>n.</td><td>认知超级老人</td><td>cognitive super-agers</td></tr>
+    <tr><td class="en">ruminate</td><td>/ˈruːmɪneɪt/</td><td>v.</td><td>反复思考；反刍</td><td>they don't ruminate</td></tr>
+    <tr><td class="en">prefrontal cortex</td><td>/ˌpriːˈfrʌntl ˈkɔːteks/</td><td>n.</td><td>前额叶皮层</td><td>in our prefrontal cortex</td></tr>
+    <tr><td class="en">plasticity</td><td>/plæˈstɪsəti/</td><td>n.</td><td>可塑性</td><td>enhance brain plasticity</td></tr>
+    <tr><td class="en">microbiome</td><td>/ˌmaɪkrəʊˈbaɪəʊm/</td><td>n.</td><td>微生物组</td><td>change the microbiome</td></tr>
+    <tr><td class="en">default mode network</td><td>/dɪˈfɔːlt məʊd ˈnetwɜːk/</td><td>n.</td><td>默认模式网络</td><td>the default mode network fires up</td></tr>
+    <tr><td class="en">speed up</td><td>/spiːd ʌp/</td><td>v.</td><td>加速</td><td>cognitive decline speeds up</td></tr>
+    <tr><td class="en">retirement</td><td>/rɪˈtaɪəmənt/</td><td>n.</td><td>退休</td><td>bad for your brain</td></tr>
+  </table>
+
+  <h2>三、长难句分析（三步拆解法）</h2>
+
+  <div class="sent">
+    <div class="orig">Sure, our fluid intelligence – which is about speed and problem-solving – peaks in our 20s, but unless you're a maths whiz or a gun lab researcher, that is less important than what's called your crystallised intelligence, which can actually improve with age.</div>
+    <div class="row"><b>并列主句：</b>our fluid intelligence peaks in our 20s, but … that is less important than … crystallised intelligence</div>
+    <div class="row"><b>插入定语从句：</b>which is about speed and problem-solving —— 破折号内，修饰 fluid intelligence</div>
+    <div class="row"><b>条件状语从句：</b>unless you're a maths whiz or a gun lab researcher —— unless 引导</div>
+    <div class="row"><b>比较结构：</b>less important than what's called your crystallised intelligence —— what 引导的名词性从句作 than 的宾语</div>
+    <div class="row"><b>定语从句：</b>which can actually improve with age —— 修饰 crystallised intelligence</div>
+    <div class="row tr"><b>译文：</b>诚然，我们的流体智力——关乎速度和解决问题——在 20 多岁时达到顶峰，但除非你是数学奇才或顶尖实验室研究员，否则它还不如所谓的"晶体智力"重要，而后者其实会随年龄增长而提升。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">To protect our cognitive abilities and perhaps even enhance them as the years pass, our brains build out networks of nerves which act pretty much like the scaffolding inside a skyscraper.</div>
+    <div class="row"><b>目的状语：</b>To protect our cognitive abilities and perhaps even enhance them —— 不定式短语</div>
+    <div class="row"><b>时间状语从句：</b>as the years pass —— 表"随着岁月流逝"</div>
+    <div class="row"><b>主干：</b>our brains build out networks of nerves</div>
+    <div class="row"><b>定语从句：</b>which act pretty much like the scaffolding inside a skyscraper —— 修饰 networks，内含 like 介词短语</div>
+    <div class="row tr"><b>译文：</b>为了保护、甚至随着岁月流逝而增强认知能力，我们的大脑会搭建起神经网络，其作用很像摩天大楼内部的脚手架。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">An anti-inflammatory diet – with low amounts of red meat, high diversity of vegetables including leafy greens, fermented foods such as yoghurt and fruits such as berries – can change the microbiome and aid direct absorption of bioactive compounds, both of which support brain scaffolding.</div>
+    <div class="row"><b>主干：</b>An anti-inflammatory diet can change the microbiome and aid direct absorption of bioactive compounds（并列谓语 change + aid）</div>
+    <div class="row"><b>插入成分：</b>with low amounts of red meat, high diversity of vegetables … —— 破折号内，介词短语列举饮食构成</div>
+    <div class="row"><b>非限定定语从句：</b>both of which support brain scaffolding —— which 指代 microbiome 和 absorption 两者</div>
+    <div class="row tr"><b>译文：</b>抗炎饮食——少吃红肉，多吃各类蔬菜（包括绿叶菜）、酸奶等发酵食品以及浆果类水果——能够改变肠道微生物组，并促进生物活性化合物的直接吸收，这两者都有助于大脑搭建脚手架。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">One of the important findings from research has been that genes don't play a large role in whether we're on a journey to the brain cliff or when we might reach it.</div>
+    <div class="row"><b>主干：</b>One of the important findings … has been that …（that 引导表语从句）</div>
+    <div class="row"><b>表语从句主干：</b>genes don't play a large role（in whether … or when …）</div>
+    <div class="row"><b>介词宾语从句：</b>in whether we're on a journey to the brain cliff or when we might reach it —— whether 与 when 两个从句并列作 in 的宾语</div>
+    <div class="row tr"><b>译文：</b>研究得出的重要发现之一是：基因在我们是否会走向"认知悬崖"、以及何时会到达悬崖这件事上，并不起多大作用。</div>
+  </div>
+
+  <h2>四、全文大意</h2>
+  <p class="zh-sum">澳大利亚广播员兼作家 Norman Swan 博士在新书《The Brain Cliff》中提出，与其恐惧"认知衰退"，不如把它看作"认知改变"：流体智力虽在 20 多岁达峰，但关乎知识与经验的晶体智力可随年龄增长。大脑会像摩天大楼搭脚手架一样构建神经网络来保护认知功能，前额叶皮层在判断、决策与情绪控制中愈发关键。他访谈了七位"认知超级老人"，发现基因影响甚微，关键在生活方式：运动与抗炎饮食促进可塑性、思绪漫游激活默认模式网络、避免反刍焦虑、并且不要退休——因为退休会加速认知衰退。核心策略是"多做鼓励脚手架的事，少做妨碍它的事"。</p>
+
+  <h2>五、思考与仿写</h2>
+  <div class="q"><b>思考题：</b>Swan 博士说"退休对大脑有害"（Retirement is bad for your brain）。结合第 8 段，谈谈你如何看待"工作有益大脑"这一观点，它对体力劳动者与脑力劳动者是否同样适用？</div>
+  <div class="q"><b>仿写题：</b>仿照第 7 段的句式 <span style="font-family:Georgia,serif;font-style:italic">"When the … fires up, parts of … that don't normally … make connections."</span>，围绕「灵感」或「学习」写一个句子。</div>
+
+  <footer>
+    素材来源：The Guardian（原文链接见下，2026-09-07）｜ 仅供个人学习使用<br>
+    <a href="https://www.theguardian.com/lifeandstyle/2026/sep/07/dr-norman-swan-new-book-science-of-ageing-cognitive-decline">原文链接</a> · <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>

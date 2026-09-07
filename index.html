@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 每日一篇英文外刊学习</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+/* ===== Masthead ===== */
+.masthead{border-bottom:3px double var(--ink);padding:44px 24px 20px;text-align:center;background:var(--paper);}
+.masthead .rule-top{font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;}
+.masthead h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,7vw,64px);letter-spacing:-.02em;line-height:1.05;margin:0 0 10px;}
+.masthead .sub{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);}
+.masthead .dateline{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:16px;}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 80px;}
+
+/* ===== Search ===== */
+.search{margin:34px 0 6px;}
+.search input{width:100%;padding:12px 18px;font-size:15px;font-family:var(--sans);background:var(--paper);border:1px solid var(--line);border-radius:3px;color:var(--ink);outline:none;}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+.search .hint{font-size:12px;color:var(--muted);margin-top:8px;}
+
+/* ===== Latest hero ===== */
+.hero{margin:30px 0 40px;padding:30px 32px;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);}
+.hero .eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.hero h2{font-family:var(--serif);font-weight:400;font-size:clamp(24px,4vw,32px);letter-spacing:-.01em;line-height:1.25;margin-bottom:8px;}
+.hero .en{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--muted);margin-bottom:14px;}
+.hero .desc{font-size:15px;color:var(--ink);margin-bottom:18px;}
+.hero .meta{font-size:13px;color:var(--muted);margin-bottom:18px;}
+.hero .cta{display:inline-block;font-size:14px;letter-spacing:.02em;color:var(--paper);background:var(--accent);padding:9px 20px;border-radius:3px;}
+.hero .cta:hover{background:#7d2410;}
+
+/* ===== List ===== */
+.list-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;margin:44px 0 4px;}
+.list-head h3{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:-.01em;}
+.list-head .count{font-size:12px;color:var(--muted);letter-spacing:.08em;}
+
+.article{border-bottom:1px solid var(--line);padding:24px 2px;display:grid;grid-template-columns:78px 1fr;gap:20px;}
+.article .date{font-family:var(--serif);font-size:15px;color:var(--muted);text-align:right;padding-top:3px;}
+.article .date .d{font-size:26px;line-height:1;color:var(--ink);display:block;font-weight:400;}
+.article .date .m{font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
+.article .body h4{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:-.01em;line-height:1.3;margin-bottom:4px;}
+.article .body h4 a:hover{color:var(--accent);}
+.article .body .en{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--muted);margin-bottom:8px;display:block;}
+.article .body .desc{font-size:14px;color:var(--ink);margin-bottom:10px;line-height:1.6;}
+.article .tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{font-size:11px;letter-spacing:.04em;color:var(--accent);border:1px solid var(--accent);border-radius:2px;padding:2px 9px;}
+.tag.src{color:var(--muted);border-color:var(--line);}
+
+.empty{display:none;padding:40px 0;text-align:center;color:var(--muted);font-size:14px;}
+
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+
+@media (max-width:560px){
+  .masthead h1{font-size:38px;}
+  .article{grid-template-columns:1fr;gap:6px;}
+  .article .date{text-align:left;display:flex;gap:8px;align-items:baseline;}
+  .article .date .d{font-size:18px;}
+  .hero{padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="rule-top">每日一篇 · 英文外刊精读</div>
+  <h1>外刊精读</h1>
+  <div class="sub">Daily Foreign Journal · 词汇 × 长难句 × 全文精读</div>
+  <div class="dateline" id="today">—</div>
+</header>
+
+<div class="wrap">
+
+  <div class="search">
+    <input type="search" id="q" placeholder="搜索标题 / 话题 / 来源…（如：气候、经济学人、环境）" aria-label="搜索文章">
+    <div class="hint">输入关键词即时过滤下方文章列表。</div>
+  </div>
+
+  <!-- 最新文章 hero（定时任务每次更新第一篇文章） -->
+  <section class="hero" id="hero">
+    <div class="eyebrow">最新一期 · Latest</div>
+    <h2>野火与热浪正破坏全球空气质量改善</h2>
+    <div class="en">Wildfires, heat waves threaten to undermine air quality, UN weather agency says</div>
+    <p class="desc">世界气象组织（WMO）年度《空气质量与气候公报》警告：日益猛烈的野火和热浪带来的污染，正破坏全球改善空气质量的努力；极端野火烟雾事件自 1990 年代以来已增至三倍。</p>
+    <div class="meta">来源：Reuters 路透社 · 2026-09-07 · 话题：环境 / 气候 / 健康 · 难度：中等</div>
+    <a class="cta" href="articles/外刊精读_2026-09-07.html">开始精读 →</a>
+  </section>
+
+  <div class="list-head">
+    <h3>往期归档</h3>
+    <span class="count" id="cnt"></span>
+  </div>
+
+  <div id="list">
+    <article class="article" data-search="野火 热浪 空气质量 环境 气候 健康 Reuters 路透社 wildfires heat waves air quality">
+      <div class="date"><span class="d">07</span><span class="m">2026 · Sep</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-09-07.html">野火与热浪正破坏全球空气质量改善</a></h4>
+        <span class="en">Wildfires, heat waves threaten to undermine air quality, UN weather agency says</span>
+        <p class="desc">联合国气象机构警告：极端野火与热浪使实现空气质量目标愈发困难，细颗粒物 PM2.5 与近地面臭氧同呼吸道、心血管疾病密切相关。</p>
+        <div class="tags"><span class="tag">环境</span><span class="tag">气候</span><span class="tag">健康</span><span class="tag src">Reuters 路透社</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="德国 极右翼 选择党 AfD 选举 欧洲 政治 卫报 Guardian Germany far-right election">
+      <div class="date"><span class="d">06</span><span class="m">2026 · Sep</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-09-06.html">德国极右翼选择党赢得关键州选，距绝对多数一步之遥</a></h4>
+        <span class="en">Far-right AfD wins key German state election but falls just short of majority</span>
+        <p class="desc">极右翼选择党（AfD）在萨克森-安哈尔特州选举中以 43.8% 得票率大胜，距绝对多数仅差三席，或组建二战以来德国首个极右翼州政府。</p>
+        <div class="tags"><span class="tag">全球时事</span><span class="tag">欧洲政治</span><span class="tag src">The Guardian 卫报</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="罗伯莱纳 艾美奖 文化 影视 综艺 Variety Emmy Reiner Bear">
+      <div class="date"><span class="d">05</span><span class="m">2026 · Sep</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-09-05.html">罗伯·莱纳逝世九个月后，追授艾美奖最佳客串男演员</a></h4>
+        <span class="en">Rob Reiner Wins Posthumous Emmy for 'The Bear'</span>
+        <p class="desc">罗伯·莱纳逝世九个月后，凭《熊家餐馆》获追授艾美奖最佳客串男演员，打破其父保持的 48 年再获奖纪录。</p>
+        <div class="tags"><span class="tag">文化</span><span class="tag">影视</span><span class="tag">艾美奖</span><span class="tag src">Variety 综艺</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="阿尔卡拉斯 网球 美网 体育 雅虎 Yahoo Alcaraz tennis US Open">
+      <div class="date"><span class="d">04</span><span class="m">2026 · Sep</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-09-04.html">阿尔卡拉斯横扫保罗，直落三盘晋级美网八强</a></h4>
+        <span class="en">US Open: Carlos Alcaraz breezes past Tommy Paul in straight sets to advance to quarterfinal</span>
+        <p class="desc">阿尔卡拉斯以 6-4、6-3、6-4 直落三盘击败保罗，晋级美网八强，继续向卫冕之路迈进。</p>
+        <div class="tags"><span class="tag">体育</span><span class="tag">网球</span><span class="tag src">Yahoo Sports 雅虎体育</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="英国 特殊教育 教育 卫报 Guardian England Send EHCP">
+      <div class="date"><span class="d">03</span><span class="m">2026 · Sep</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-09-03.html">英国特殊教育需求计划申请激增，占比或将翻倍至十分之一</a></h4>
+        <span class="en">Pupils with Send plans in England likely to double to one in 10 in rush for support</span>
+        <p class="desc">英格兰特殊教育需求计划（EHCP）申请激增，占比或从二十分之一翻倍至十分之一，地方政府预算持续承压。</p>
+        <div class="tags"><span class="tag">教育</span><span class="tag">特殊教育</span><span class="tag src">The Guardian 卫报</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="瑞安航空 油价 机票 经济 商业 能源 卫报 Guardian Ryanair oil fares">
+      <div class="date"><span class="d">02</span><span class="m">2026 · Sep</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-09-02.html">瑞安航空警告：油价若居高不下，欧洲机票价格明年将大幅上涨</a></h4>
+        <span class="en">Ryanair warns air fares in Europe will jump next year if oil price stays high</span>
+        <p class="desc">瑞安航空警告：若油价持续高企，欧洲短途机票价格明年将大幅上涨，部分航空公司或难以为继。</p>
+        <div class="tags"><span class="tag">经济</span><span class="tag">商业</span><span class="tag">能源</span><span class="tag src">The Guardian 卫报</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="认知悬崖 大脑 心理 健康 思绪 退休 焦虑 卫报 Guardian brain cognitive mind">
+      <div class="date"><span class="d">01</span><span class="m">2026 · Sep</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-09-01.html">让思绪漫游、别退休、停止焦虑：拯救大脑免受"认知悬崖"的意外方法</a></h4>
+        <span class="en">Let your mind wander, don't retire, stop worrying: unexpected ways to save your brain</span>
+        <p class="desc">别总拿 20 岁的自己比较、别急着退休、停止焦虑——科学家揭示抵御"认知悬崖"的意外方法。</p>
+        <div class="tags"><span class="tag">心理</span><span class="tag">健康</span><span class="tag">大脑</span><span class="tag src">The Guardian 卫报</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="阿尔茨海默 痴呆 药物 健康 医学 预防 卫报 Guardian Alzheimer dementia drug">
+      <div class="date"><span class="d">31</span><span class="m">2026 · Aug</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-08-31.html">阿尔茨海默病预防试验：给无症状者提前用药，能否阻止痴呆</a></h4>
+        <span class="en">Alzheimer's drug trials expand to people without symptoms to stop dementia</span>
+        <p class="desc">一项试验性阿尔茨海默病药物将面向无症状者提前用药，尝试在痴呆症状出现前阻止疾病发展。</p>
+        <div class="tags"><span class="tag">健康</span><span class="tag">医学</span><span class="tag">阿尔茨海默</span><span class="tag src">The Guardian 卫报</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="NASA 罗曼 望远镜 太空 航天 科学 Scientific American Roman telescope space">
+      <div class="date"><span class="d">30</span><span class="m">2026 · Aug</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-08-30.html">NASA 罗曼太空望远镜升空，开启宇宙深空巡天</a></h4>
+        <span class="en">NASA's Nancy Grace Roman Space Telescope launches to deep space</span>
+        <p class="desc">NASA 新一代旗舰望远镜——南希·格雷丝·罗曼太空望远镜，搭载猎鹰重型火箭升空，开启深空巡天。</p>
+        <div class="tags"><span class="tag">科学</span><span class="tag">太空</span><span class="tag">航天</span><span class="tag src">Scientific American</span></div>
+      </div>
+    </article>
+
+    <article class="article" data-search="OpenAI Cursor SpaceX 收购 科技 人工智能 TNW AI models">
+      <div class="date"><span class="d">29</span><span class="m">2026 · Aug</span></div>
+      <div class="body">
+        <h4><a href="articles/外刊精读_2026-08-29.html">OpenAI 因 SpaceX 收购终止向 Cursor 供应模型</a></h4>
+        <span class="en">OpenAI ends its contract to supply models to Cursor</span>
+        <p class="desc">OpenAI 宣布 11 月 12 日终止向 AI 编程工具 Cursor 供应模型，起因与其被 SpaceX 收购有关。</p>
+        <div class="tags"><span class="tag">科技</span><span class="tag">人工智能</span><span class="tag src">The Next Web</span></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="empty" id="empty">没有匹配的文章，换个关键词试试。</div>
+
+  <footer>
+    外刊精读 · 每日自动更新<br>
+    本网站为本地静态站，双击 index.html 即可打开；新文章每天 7:00 自动收录。<br>
+    素材来源为公开外刊报道，仅供个人学习使用。
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var d=new Date();
+  var week=['日','一','二','三','四','五','六'];
+  document.getElementById('today').textContent=
+    d.getFullYear()+' 年 '+(d.getMonth()+1)+' 月 '+d.getDate()+' 日 · 星期'+week[d.getDay()];
+  var arts=[].slice.call(document.querySelectorAll('#list .article'));
+  document.getElementById('cnt').textContent='共 '+arts.length+' 篇';
+  var q=document.getElementById('q');
+  q.addEventListener('input',function(){
+    var kw=q.value.trim().toLowerCase();
+    var shown=0;
+    arts.forEach(function(a){
+      var hit=!kw || a.getAttribute('data-search').toLowerCase().indexOf(kw)>-1;
+      a.style.display=hit?'':'none';
+      if(hit) shown++;
+    });
+    document.getElementById('empty').style.display=shown?'none':'block';
+  });
+})();
+</script>
+</body>
+</html>
