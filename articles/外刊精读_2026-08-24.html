@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · OpenAI 因 SpaceX 收购终止向 Cursor 供应模型</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 34px;}
+figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇表 */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
+th{background:var(--paper);font-weight:600;}
+td.en,th.en{font-family:var(--serif);}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap" data-od-id="article">
+  <div class="eyebrow">Technology · 科技 / 人工智能</div>
+  <h1>OpenAI 因 SpaceX 收购终止向 Cursor 供应模型</h1>
+  <div class="deck">OpenAI to stop supplying models to Cursor after SpaceX acquisition</div>
+  <div class="byline"><span><b>来源</b> The Next Web (TNW)</span><span><b>作者</b> 未署名</span><span><b>日期</b> 2026-08-24</span><span><b>难度</b> 中等</span></div>
+
+  <figure class="hero" data-od-id="hero-figure">
+    <img src="../assets/images/外刊精读_2026-08-24.jpg" alt="人工智能（配图）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;">
+    <figcaption>配图：人工智能（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <h2>一、原文精读</h2>
+  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+  <div class="para"><span class="idx">1</span><span class="en">OpenAI is ending its contract to <span class="kw" data-tip="v. 供应；提供">supply</span> models to Cursor. The <span class="kw" data-tip="n. 关停；切断">shutoff</span> date is 12 November, the company said on Saturday.</span></div>
+  <div class="para"><span class="idx">2</span><span class="en">The reason given is unusually direct. OpenAI said it cannot be confident SpaceX will use its technology within its <span class="kw" data-tip="n. 服务条款">terms of service</span>, "based on our experience with Elon Musk's companies <span class="kw" data-tip="v. 违反；违背">violating</span> contracts".</span></div>
+  <div class="para"><span class="idx">3</span><span class="en">Bloomberg reported it first. OpenAI published the same notice on X and on its own website.</span></div>
+  <div class="para"><span class="idx">4</span><span class="en">Two grounds are named, both about earlier conduct. SpaceX's acquisition of Twitter <span class="kw" data-tip="v. 违反；破坏（合同、条款）">breached</span> OpenAI's terms, the company said, and xAI violated them in a way Musk admitted <span class="kw" data-tip="adv. 宣誓作证（之下）">under oath</span> this year.</span></div>
+  <div class="para"><span class="idx">5</span><span class="en">The buyer completed its purchase this month. SpaceX closed the $60B <span class="kw" data-tip="adj. 全股票的">all-stock</span> acquisition of Cursor after agreeing it in June.</span></div>
+  <div class="para"><span class="idx">6</span><span class="en">OpenAI says it gave the maximum <span class="kw" data-tip="n. 预先通知；告知">notice</span> its contract allows, about two and a half months. Astra, its next model, will not be supplied to Cursor at all. It added that it is ready to <span class="kw" data-tip="习语 竭尽全力；超出预期">go above and beyond</span> to support developers moving off.</span></div>
+  <div class="para"><span class="idx">7</span><span class="en">The <span class="kw" data-tip="n. 筹码；影响力">leverage</span> in that is thinner than it looks. Cursor and SpaceXAI shipped Grok 4.5 together in July, a model Musk called Opus-class, available in Cursor on every plan.</span></div>
+  <div class="para"><span class="idx">8</span><span class="en">What it costs developers is real. Europe wrote rules for exactly this <span class="kw" data-tip="n. 依赖（关系）">dependency</span>, and since September 2025 cloud customers have been able to switch on two months' notice and <span class="kw" data-tip="v. 迁移；移植（数据、资产）">port</span> their assets within 30 days. From January 2027 the provider cannot charge for any of it.</span></div>
+  <div class="para"><span class="idx">9</span><span class="en">There is a further gap in them. The switching rules protect a customer who wants to leave a provider, not a customer whose provider decides to leave. Nobody drafted for a supplier <span class="kw" data-tip="n. 退出；撤离（walking out）">walking out</span>.</span></div>
+
+  <p class="muted">原文出处：The Next Web（TNW），2026-08-29。Bloomberg 率先报道，OpenAI 同日于 X 及官网发布相同公告。</p>
+
+  <h2>二、重点词汇</h2>
+  <table>
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
+    <tr><td class="en">supply</td><td>/səˈplaɪ/</td><td>v.</td><td>供应；提供</td><td>supply models to Cursor</td></tr>
+    <tr><td class="en">shutoff</td><td>/ˈʃʌtɒf/</td><td>n.</td><td>关停；切断</td><td>the shutoff date 关停日期</td></tr>
+    <tr><td class="en">terms of service</td><td>/tɜːmz əv ˈsɜːvɪs/</td><td>n.</td><td>服务条款</td><td>within its terms of service</td></tr>
+    <tr><td class="en">violate</td><td>/ˈvaɪəleɪt/</td><td>v.</td><td>违反；违背</td><td>violate contracts</td></tr>
+    <tr><td class="en">breach</td><td>/briːtʃ/</td><td>v.</td><td>违反；破坏（合同/条款）</td><td>breach OpenAI's terms</td></tr>
+    <tr><td class="en">under oath</td><td>/ˈʌndə(r) əʊθ/</td><td>adv.</td><td>宣誓作证（之下）</td><td>admit under oath</td></tr>
+    <tr><td class="en">all-stock</td><td>/ˌɔːlˈstɒk/</td><td>adj.</td><td>全股票的</td><td>an all-stock acquisition 全股票收购</td></tr>
+    <tr><td class="en">notice</td><td>/ˈnəʊtɪs/</td><td>n.</td><td>预先通知；告知</td><td>give notice / on two months' notice</td></tr>
+    <tr><td class="en">go above and beyond</td><td>/ɡəʊ əˈbʌv ænd bɪˈjɒnd/</td><td>习语</td><td>竭尽全力；超出预期</td><td>go above and beyond to support</td></tr>
+    <tr><td class="en">leverage</td><td>/ˈliːvərɪdʒ/</td><td>n.</td><td>筹码；影响力</td><td>the leverage is thinner than it looks</td></tr>
+    <tr><td class="en">dependency</td><td>/dɪˈpendənsi/</td><td>n.</td><td>依赖（关系）</td><td>rules for exactly this dependency</td></tr>
+    <tr><td class="en">port</td><td>/pɔːt/</td><td>v.</td><td>迁移；移植（数据/资产）</td><td>port their assets</td></tr>
+    <tr><td class="en">wind down</td><td>/waɪnd daʊn/</td><td>习语</td><td>逐步终止；收尾</td><td>wind down the contract</td></tr>
+    <tr><td class="en">walking out</td><td>/ˈwɔːkɪŋ aʊt/</td><td>n.</td><td>退出；撤离</td><td>a supplier walking out</td></tr>
+  </table>
+
+  <h2>三、长难句分析（三步拆解法）</h2>
+
+  <div class="sent">
+    <div class="orig">OpenAI said it cannot be confident SpaceX will use its technology within its terms of service, "based on our experience with Elon Musk's companies violating contracts".</div>
+    <div class="row"><b>主干：</b>OpenAI said …</div>
+    <div class="row"><b>宾语从句①：</b>it cannot be confident …（said 的宾语，省略 that）</div>
+    <div class="row"><b>宾语从句②：</b>SpaceX will use its technology within its terms of service —— 作 confident 的补充说明（形容词后的从句）</div>
+    <div class="row"><b>原因状语：</b>based on our experience … —— 过去分词短语；with Elon Musk's companies violating contracts 为"with + 名词 + 现在分词"复合结构</div>
+    <div class="row tr"><b>译文：</b>OpenAI 表示，鉴于"与马斯克旗下公司违反合同的过往经历"，它无法确信 SpaceX 会在其服务条款范围内使用这项技术。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">Two grounds are named, both about earlier conduct. SpaceX's acquisition of Twitter breached OpenAI's terms, the company said, and xAI violated them in a way Musk admitted under oath this year.</div>
+    <div class="row"><b>主干①：</b>Two grounds are named（两个理由被列出）</div>
+    <div class="row"><b>同位语：</b>both about earlier conduct —— 补充说明"两项理由均涉及此前的行为"</div>
+    <div class="row"><b>主干②：</b>SpaceX's acquisition of Twitter breached OpenAI's terms, and xAI violated them —— 并列句</div>
+    <div class="row"><b>插入语：</b>the company said —— 报道句式</div>
+    <div class="row"><b>定语从句：</b>in a way (that) Musk admitted under oath this year —— 修饰 way，省略关系词 that</div>
+    <div class="row tr"><b>译文：</b>公告列出了两条理由，均与此前的行为有关：SpaceX 收购 Twitter 违反了 OpenAI 的条款；而 xAI 的违规方式，马斯克今年已在宣誓作证时承认。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">OpenAI says it gave the maximum notice its contract allows, about two and a half months.</div>
+    <div class="row"><b>主干：</b>OpenAI says …</div>
+    <div class="row"><b>宾语从句：</b>it gave the maximum notice（省略 that）</div>
+    <div class="row"><b>定语从句：</b>(that) its contract allows —— 修饰 the maximum notice，省略关系词 that</div>
+    <div class="row"><b>同位语：</b>about two and a half months —— 对"最长通知期"作进一步说明</div>
+    <div class="row tr"><b>译文：</b>OpenAI 表示，它已给出合同所允许的最长通知期——约两个半月。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">Europe wrote rules for exactly this dependency, and since September 2025 cloud customers have been able to switch on two months' notice and port their assets within 30 days.</div>
+    <div class="row"><b>并列句：</b>Europe wrote rules …, and … cloud customers have been able to switch … and port …</div>
+    <div class="row"><b>主干②谓语：</b>have been able to switch … and (to) port their assets —— 并列的不定式</div>
+    <div class="row"><b>时间状语：</b>since September 2025 —— 与完成时搭配</div>
+    <div class="row"><b>方式状语：</b>on two months' notice（提前两个月通知）/ within 30 days（30 天内）</div>
+    <div class="row tr"><b>译文：</b>欧洲正是针对这种依赖关系制定了规则：自 2025 年 9 月起，云客户可在提前两个月通知的情况下切换供应商，并在 30 天内迁移其资产。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">The switching rules protect a customer who wants to leave a provider, not a customer whose provider decides to leave.</div>
+    <div class="row"><b>主干：</b>The switching rules protect a customer …, not a customer …</div>
+    <div class="row"><b>对比结构：</b>protect A, not B —— 强调规则保护的是前者而非后者</div>
+    <div class="row"><b>定语从句①：</b>who wants to leave a provider —— 修饰第一个 customer（主动离开的客户）</div>
+    <div class="row"><b>定语从句②：</b>whose provider decides to leave —— 修饰第二个 customer（供应商决定离开的客户）</div>
+    <div class="row tr"><b>译文：</b>这些切换规则保护的是"想离开供应商"的客户，而不是"供应商决定离开"的客户。</div>
+  </div>
+
+  <h2>四、全文大意</h2>
+  <p class="zh-sum">OpenAI 因 SpaceX 以 600 亿美元全股票收购 AI 编程助手 Cursor，决定终止向 Cursor 供应其模型，定于 11 月 12 日关停，并拒绝提供下一代 Astra 模型。OpenAI 给出的理由异常直接：基于"与马斯克旗下公司违反合同的过往经历"，无法确信 SpaceX 会在服务条款范围内使用其技术。公告列出两条先例——SpaceX 收购 Twitter 曾违反 OpenAI 条款，xAI 的违规行为马斯克今年已宣誓承认。OpenAI 称已按合同给予最长约两个半月的通知。不过报道指出，Cursor 已于 7 月与 SpaceXAI 合作推出 Grok 4.5，削弱了 OpenAI 此举的筹码；真正的代价落在开发者身上，而欧盟现有的云切换规则也未必能覆盖"供应商主动退出"的情形。</p>
+
+  <h2>五、思考与仿写</h2>
+  <div class="q"><b>思考题：</b>报道称 OpenAI 终止合作的理由是"无法确信 SpaceX 会在条款范围内使用技术"。请结合第 2、4 段，谈谈"信任"在科技商业合作中的角色，以及平台依赖（dependency）给开发者带来的风险。</div>
+  <div class="q"><b>仿写题：</b>仿照第 9 段的对比结构 <span style="font-family:Georgia,serif;font-style:italic">"… protect a customer who …, not a customer whose …"</span>，用 who / whose 两个定语从句，围绕「规则覆盖范围」或「选择权」写一个句子。</div>
+
+  <h2>六、文章结构图解</h2>
+  <figure class="hero" data-od-id="structure-figure">
+    <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+      <rect width="720" height="540" fill="#fffcf5"/>
+      <text x="360" y="24" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#9c2f16">文章段落结构（共 9 段）</text>
+      <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#9c2f16"/></marker></defs>
+
+      <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. OpenAI 宣布终止供应</text>
+      <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+
+      <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2. 理由：不信任 SpaceX</text>
+      <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+
+      <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3. Bloomberg 率先报道</text>
+      <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+
+      <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4. 列举两条违约先例</text>
+      <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+
+      <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5. SpaceX 完成 600 亿收购</text>
+      <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+
+      <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6. 给予最长通知期</text>
+      <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+
+      <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7. 筹码有限：已有 Grok 4.5</text>
+      <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+
+      <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8. 欧洲已立切换规则</text>
+      <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+
+      <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9. 规则未覆盖供应商退出</text>
+    </svg>
+    <figcaption>段落逻辑：先交代断供事实与理由，再补收购背景与通知期限，最后落点在开发者的真实代价与规则的覆盖漏洞。</figcaption>
+  </figure>
+
+  <footer>
+    素材来源：The Next Web（TNW，2026-08-29）｜ 原文链接：<a href="https://thenextweb.com/news/openai-ends-cursor-contract-spacex-acquisition-eu-switching-rules">thenextweb.com</a> ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>

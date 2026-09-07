@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 瑞安航空警告油价高企将推高欧洲机票价格</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 34px;}
+figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇表 */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
+th{background:var(--paper);font-weight:600;}
+td.en,th.en{font-family:var(--serif);}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap" data-od-id="article">
+  <div class="eyebrow">Business · 经济 / 商业 / 能源</div>
+  <h1>瑞安航空警告：油价若居高不下，欧洲机票价格明年将大幅上涨</h1>
+  <div class="deck">Ryanair warns air fares in Europe will jump next year if oil price stays high</div>
+  <div class="byline"><span><b>来源</b> The Guardian 卫报</span><span><b>作者</b> 卫报商务版</span><span><b>日期</b> 2026-08-28</span><span><b>难度</b> 中等</span></div>
+
+  <figure class="hero" data-od-id="hero-figure">
+    <img src="../assets/images/外刊精读_2026-08-28.jpg" alt="航空出行（配图）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;">
+    <figcaption>配图：航空出行（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <h2>一、原文精读</h2>
+  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+  <div class="para"><span class="idx">1</span><span class="en">Ryanair has warned that air fares in Europe will jump next year if the oil price remains high and that some airlines could <span class="kw" data-tip="v. 破产；倒闭">go bust</span>.</span></div>
+  <div class="para"><span class="idx">2</span><span class="en">The Irish <span class="kw" data-tip="n. 廉价航空公司">budget carrier</span> has cut its passenger target for the year to 31 March, down from 216 million customers to 214 million, to help reduce its <span class="kw" data-tip="n. 风险敞口；暴露">exposure</span> to "unhedged winter oil" during the unprofitable <span class="kw" data-tip="n. 淡季">off season</span>, with <span class="kw" data-tip="n. 航空燃油">jet fuel</span> currently trading at $140 (£104) a barrel.</span></div>
+  <div class="para"><span class="idx">3</span><span class="en">The company said: "If high oil prices continue through to summer 2027, Ryanair believes <span class="kw" data-tip="adj. 短途的">short-haul</span> air fares in Europe will increase materially to reflect higher oil prices, as some less well-<span class="kw" data-tip="adj. 未对冲的；无套期保值的">hedged</span> competitors will struggle to maintain <span class="kw" data-tip="n. 运力；产能">capacity</span> or even survive this coming winter season."</span></div>
+  <div class="para"><span class="idx">4</span><span class="en"><span class="kw" data-tip="n. 基准；基准价">Brent crude</span>, the global oil <span class="kw" data-tip="n. 基准；参照标准">benchmark</span>, touched $97.04 a barrel on Wednesday, the highest since late July, after renewed clashes between the US and Iran <span class="kw" data-tip="v. 加剧；助长">fuelled</span> concerns over supply. It later <span class="kw" data-tip="v. 回落；缓解">eased back</span> to just below $95.</span></div>
+  <div class="para"><span class="idx">5</span><span class="en">Ryanair expects the cut to its winter schedule to reduce its winter losses by €70m (£60m) to €100m. But, because it has <span class="kw" data-tip="v. 对冲；套期保值">hedged</span> 80% of its jet fuel at $67 a barrel, it expects to record another <span class="kw" data-tip="adj. 盈利的">profitable</span> year, <span class="kw" data-tip="conj. 尽管；虽然">albeit</span> below last year's record profit after tax.</span></div>
+  <div class="para"><span class="idx">6</span><span class="en">The airline said it was <span class="kw" data-tip="adj. 按计划进行；进展顺利">on track</span> to increase summer passenger numbers – between April and October – by more than 5% from 138 million to 145 million.</span></div>
+  <div class="para"><span class="idx">7</span><span class="en">The rival budget airline Wizz Air reported on Wednesday that its passenger numbers had grown by 25.9% last month compared with a year earlier, driven by a jump in <span class="kw" data-tip="n. 航班运力；载客量">flight capacity</span>.</span></div>
+
+  <p class="muted">原文出处：The Guardian（卫报商务版，2026-09-02）。报道对象为瑞安航空（Ryanair）因高油价下调乘客目标、预警欧洲机票价格上涨。</p>
+
+  <h2>二、重点词汇</h2>
+  <table>
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
+    <tr><td class="en">go bust</td><td>/ɡəʊ bʌst/</td><td>v.</td><td>破产；倒闭</td><td>some airlines could go bust</td></tr>
+    <tr><td class="en">budget carrier</td><td>/ˈbʌdʒɪt ˈkæriə(r)/</td><td>n.</td><td>廉价航空公司</td><td>the Irish budget carrier</td></tr>
+    <tr><td class="en">exposure</td><td>/ɪkˈspəʊʒə(r)/</td><td>n.</td><td>风险敞口；暴露</td><td>reduce its exposure to …</td></tr>
+    <tr><td class="en">off season</td><td>/ˈɒf siːzn/</td><td>n.</td><td>淡季</td><td>the unprofitable off season</td></tr>
+    <tr><td class="en">jet fuel</td><td>/ˈdʒet fjuːəl/</td><td>n.</td><td>航空燃油</td><td>jet fuel currently trading at …</td></tr>
+    <tr><td class="en">short-haul</td><td>/ˌʃɔːt ˈhɔːl/</td><td>adj.</td><td>短途的</td><td>short-haul air fares</td></tr>
+    <tr><td class="en">hedge</td><td>/hedʒ/</td><td>v.</td><td>对冲；套期保值</td><td>hedge 80% of its jet fuel</td></tr>
+    <tr><td class="en">capacity</td><td>/kəˈpæsəti/</td><td>n.</td><td>运力；产能</td><td>maintain capacity</td></tr>
+    <tr><td class="en">benchmark</td><td>/ˈbentʃmɑːk/</td><td>n.</td><td>基准；参照标准</td><td>the global oil benchmark</td></tr>
+    <tr><td class="en">Brent crude</td><td>/brent kruːd/</td><td>n.</td><td>布伦特原油</td><td>Brent crude touched $97.04</td></tr>
+    <tr><td class="en">fuel</td><td>/ˈfjuːəl/</td><td>v.</td><td>加剧；助长</td><td>fuelled concerns over supply</td></tr>
+    <tr><td class="en">ease back</td><td>/iːz bæk/</td><td>v.</td><td>回落；缓解</td><td>later eased back to just below $95</td></tr>
+    <tr><td class="en">profitable</td><td>/ˈprɒfɪtəbl/</td><td>adj.</td><td>盈利的</td><td>record another profitable year</td></tr>
+    <tr><td class="en">albeit</td><td>/ˌɔːlˈbiːɪt/</td><td>conj.</td><td>尽管；虽然</td><td>albeit below last year's record</td></tr>
+    <tr><td class="en">on track</td><td>/ɒn træk/</td><td>adj.</td><td>按计划进行</td><td>on track to increase …</td></tr>
+  </table>
+
+  <h2>三、长难句分析（三步拆解法）</h2>
+
+  <div class="sent">
+    <div class="orig">"If high oil prices continue through to summer 2027, Ryanair believes short-haul air fares in Europe will increase materially to reflect higher oil prices, as some less well-hedged competitors will struggle to maintain capacity or even survive this coming winter season."</div>
+    <div class="row"><b>条件状语从句：</b>If high oil prices continue through to summer 2027（如果高油价持续到 2027 年夏季）</div>
+    <div class="row"><b>主干：</b>Ryanair believes（主句，后面为宾语从句）</div>
+    <div class="row"><b>宾语从句：</b>short-haul air fares in Europe will increase materially（欧洲短途票价将大幅上涨）</div>
+    <div class="row"><b>目的状语：</b>to reflect higher oil prices（以反映更高的油价）</div>
+    <div class="row"><b>原因状语从句：</b>as some less well-hedged competitors will struggle to maintain capacity or even survive（因为一些对冲不足的竞争对手将难以维持运力，甚至难以撑过这个冬天）</div>
+    <div class="row tr"><b>译文：</b>瑞安航空表示："如果高油价持续到 2027 年夏季，瑞安认为欧洲的短途机票价格将大幅上涨以反映更高的油价，因为一些对冲不足的竞争对手将难以维持运力，甚至难以撑过这个冬季航季。"</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">The Irish budget carrier has cut its passenger target for the year to 31 March, down from 216 million customers to 214 million, to help reduce its exposure to "unhedged winter oil" during the unprofitable off season, with jet fuel currently trading at $140 (£104) a barrel.</div>
+    <div class="row"><b>主干：</b>The Irish budget carrier has cut its passenger target（这家爱尔兰廉价航空已下调其乘客目标）</div>
+    <div class="row"><b>插入语：</b>down from 216 million customers to 214 million（从 2.16 亿降至 2.14 亿）</div>
+    <div class="row"><b>目的状语：</b>to help reduce its exposure to "unhedged winter oil"（以降低其对"未对冲冬季燃油"的风险敞口）</div>
+    <div class="row"><b>时间状语：</b>during the unprofitable off season（在无利可图的淡季）</div>
+    <div class="row"><b>独立主格结构：</b>with jet fuel currently trading at $140 (£104) a barrel（with + 名词 + 现在分词，表伴随，航空燃油现价每桶 140 美元）</div>
+    <div class="row tr"><b>译文：</b>这家爱尔兰廉价航空已将其截至 3 月 31 日年度的乘客目标从 2.16 亿人次下调至 2.14 亿人次，以降低其在无利可图的淡季对"未对冲冬季燃油"的风险敞口——目前航空燃油交易价为每桶 140 美元（104 英镑）。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">But, because it has hedged 80% of its jet fuel at $67 a barrel, it expects to record another profitable year, albeit below last year's record profit after tax.</div>
+    <div class="row"><b>主干：</b>it expects to record another profitable year（它预计将再度录得盈利年度）</div>
+    <div class="row"><b>原因状语从句：</b>because it has hedged 80% of its jet fuel at $67 a barrel（因为它已以每桶 67 美元对冲了 80% 的航空燃油）</div>
+    <div class="row"><b>让步状语（省略）：</b>albeit below last year's record profit after tax（尽管低于去年创纪录的税后利润）</div>
+    <div class="row tr"><b>译文：</b>但由于它已按每桶 67 美元对冲了 80% 的航空燃油，它预计将再度录得一个盈利年度，尽管将低于去年创纪录的税后利润。</div>
+  </div>
+
+  <div class="sent">
+    <div class="orig">Brent crude, the global oil benchmark, touched $97.04 a barrel on Wednesday, the highest since late July, after renewed clashes between the US and Iran fuelled concerns over supply.</div>
+    <div class="row"><b>主干：</b>Brent crude touched $97.04 a barrel on Wednesday（布伦特原油周三触及每桶 97.04 美元）</div>
+    <div class="row"><b>同位语：</b>the global oil benchmark（全球石油基准）</div>
+    <div class="row"><b>同位语（补充）：</b>the highest since late July（自 7 月下旬以来的最高水平）</div>
+    <div class="row"><b>原因状语从句：</b>after renewed clashes between the US and Iran fuelled concerns over supply（在美伊冲突再起加剧供应担忧之后）</div>
+    <div class="row tr"><b>译文：</b>全球石油基准布伦特原油周三触及每桶 97.04 美元，为 7 月下旬以来最高水平，此前美伊冲突再起加剧了市场对供应的担忧。</div>
+  </div>
+
+  <h2>四、全文大意</h2>
+  <p class="zh-sum">爱尔兰廉价航空瑞安航空警告，若油价持续高企，欧洲机票价格明年将大幅上涨，部分对冲不足的航空公司甚至可能破产。为此，瑞安将截至 3 月 31 日年度的乘客目标从 2.16 亿下调至 2.14 亿，以减少对"未对冲冬季燃油"的风险敞口，预计冬季亏损可削减 7000 万至 1 亿欧元。目前航空燃油交易价约为每桶 140 美元，布伦特原油周三触及 97.04 美元这一 7 月以来高位。不过，由于瑞安已按每桶 67 美元对冲了 80% 的燃油，公司预计仍能保持盈利，只是低于去年的纪录水平。与此同时，竞争对手 Wizz Air 上月客运量同比增长 25.9%，显示欧洲短途航空市场仍在扩张。</p>
+
+  <h2>五、思考与仿写</h2>
+  <div class="q"><b>思考题：</b>为什么瑞安航空在油价高企时仍能保持盈利？结合第 5 段，谈谈"燃油对冲（fuel hedging）"对企业应对能源价格波动的意义，并思考高油价对消费者与航空业整体会带来哪些连锁影响。</div>
+  <div class="q"><b>仿写题：</b>仿照第 3 段的句式 <span style="font-family:Georgia,serif;font-style:italic">"If … continue, … believes … will … , as … will struggle to …"</span>，围绕「原材料价格上涨」或「房租上涨」写一个句子。</div>
+
+  <h2>六、文章结构图解</h2>
+  <figure class="hero" data-od-id="structure-figure">
+    <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
+      <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+      <text x="360" y="28" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" fill="#1c1a17">文章段落结构（共 7 段）</text>
+      <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 瑞安警告票价将涨、航司或破产</text>
+      <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" marker-end="url(#sarr)"/>
+      <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 下调乘客目标、降油价敞口</text>
+      <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" marker-end="url(#sarr)"/>
+      <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 高油价或致短途票价大涨</text>
+      <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" marker-end="url(#sarr)"/>
+      <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 布伦特原油触及近期高位</text>
+      <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" marker-end="url(#sarr)"/>
+      <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 削减冬季亏损、对冲保盈利</text>
+      <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" marker-end="url(#sarr)"/>
+      <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 夏季客运量预计增超 5%</text>
+      <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" marker-end="url(#sarr)"/>
+      <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+      <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 威兹航空客运量同比大增</text>
+    </svg>
+    <figcaption>结构逻辑：全文 7 段沿「核心预警 → 应对举措 → 传导逻辑 → 油价背景 → 财务影响 → 夏季展望 → 同业对比」层层推进。</figcaption>
+  </figure>
+
+  <footer>
+    素材来源：The Guardian（2026-09-02）｜ 原文链接：<a href="https://www.theguardian.com/business/2026/sep/02/ryanair-warns-air-fares-europe-jump-next-year-oil-price-stays-high">Ryanair warns air fares in Europe will jump next year if oil price stays high</a>｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
