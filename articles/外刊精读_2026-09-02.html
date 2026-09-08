@@ -8,48 +8,54 @@
 :root{
   --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
   --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
-  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
   --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
   --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
-/* 顶部导航 */
-nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
-.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
-/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
-.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
-/* Hero 配图 */
-figure.hero{margin:0 0 34px;}
-figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
-h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
-/* 原文段落 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
 .para{margin-bottom:16px;}
-.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
-/* 悬停查词 */
-.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
   content:attr(data-tip);
   position:absolute;left:50%;bottom:calc(100% + 8px);
   transform:translateX(-50%);
-  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
   font-size:12px;font-weight:500;font-family:var(--sans);
   white-space:nowrap;opacity:0;visibility:hidden;
   transition:opacity .15s;z-index:50;pointer-events:none;
@@ -57,18 +63,36 @@ h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em
 }
 .kw::before{
   content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
-  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
   opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
-/* 词汇表 */
-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
-th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
-th{background:var(--paper);font-weight:600;}
-td.en,th.en{font-family:var(--serif);}
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
-/* 长难句 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -83,6 +107,14 @@ td.en,th.en{font-family:var(--serif);}
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+}
+
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
 </style>
 </head>
@@ -90,157 +122,312 @@ footer a{color:var(--muted);text-decoration:underline;}
 
 <nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
 
-<article class="wrap" data-od-id="article">
+<article class="wrap">
   <div class="eyebrow">Environment · 环境 / 气候 / 健康</div>
   <h1>野火与热浪正破坏全球空气质量改善</h1>
   <div class="deck">Wildfires, heat waves threaten to undermine air quality, UN weather agency says</div>
   <div class="byline"><span><b>来源</b> Reuters 路透社</span><span><b>作者</b> Olivia Le Poidevin</span><span><b>日期</b> 2026-09-02</span><span><b>难度</b> 中等</span></div>
 
-  <figure class="hero" data-od-id="hero-figure">
-    <img src="../assets/images/外刊精读_2026-09-02.jpg" alt="野火与空气污染（配图）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;">
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-02.jpg" alt="野火与空气污染（配图）">
     <figcaption>配图：野火与空气污染（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
   </figure>
 
-  <h2>一、原文精读</h2>
-  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
-
-  <div class="para"><span class="idx">1</span><span class="en">Pollution from increasingly intense <span class="kw" data-tip="n. 野火；山火">wildfires</span> and <span class="kw" data-tip="n. 热浪">heat waves</span> could <span class="kw" data-tip="v. 削弱；暗中破坏">undermine</span> global efforts to improve air quality and protect human health, the United Nations' weather agency said on Monday, warning that climate change is making it harder to meet international air quality goals.</span></div>
-  <div class="para"><span class="idx">2</span><span class="en">In its annual report on air quality and the climate, the World Meteorological Organization said air pollution and climate change are closely linked and should be <span class="kw" data-tip="v. 应对；处理">tackled</span> through coordinated policies rather than <span class="kw" data-tip="adv. 孤立地；单独地">in isolation</span>. It warned that meeting the World Health Organization's air quality <span class="kw" data-tip="n. 指导方针；准则">guidelines</span> will become more difficult because extreme wildfires are more likely to occur in the future.</span></div>
-  <div class="para"><span class="idx">3</span><span class="en">Wildfires are becoming a growing source of harmful air pollution even as regulations have reduced <span class="kw" data-tip="n. 排放（物）">emissions</span> from industry and transport in many developed countries, the WMO said in its report.</span></div>
-  <div class="para"><span class="idx">4</span><span class="en">"No matter how clean your city or your region is … if you have a lot of pollution brought about by wildfires, that has the potential to negatively impact air quality in those regions as well," Lorenzo Labrador, scientific officer at the WMO, told Reuters.</span></div>
-  <div class="para"><span class="idx">5</span><span class="en">The report highlights the growing impact of fine <span class="kw" data-tip="n. 颗粒物；粉尘（PM2.5）">particulate matter</span>, known as PM2.5, and <span class="kw" data-tip="n. 近地面臭氧">ground-level ozone</span>, pollutants linked to <span class="kw" data-tip="adj. 呼吸的">respiratory</span> and <span class="kw" data-tip="adj. 心血管的">cardiovascular</span> disease. It also calls for improved monitoring of pollutants and <span class="kw" data-tip="n. 气溶胶">aerosols</span> including <span class="kw" data-tip="n. 黑碳">black carbon</span> and <span class="kw" data-tip="n. 微塑料">microplastics</span>, which it said remain poorly tracked despite their widespread presence in the atmosphere.</span></div>
-  <div class="para"><span class="idx">6</span><span class="en">This year has been marked by extreme heat and destructive wildfires across parts of Europe, including Spain, France and Greece. The WMO has said extreme heat is becoming more frequent, intense and longer-lasting as the planet warms.</span></div>
-  <div class="para"><span class="idx">7</span><span class="en">The new report said PM2.5 <span class="kw" data-tip="n. 浓度">concentrations</span> in 2025 were above long-term averages in northern Canada, parts of Russia and western-central Africa due to heightened fire activity, while northwestern Spain was a hot spot following exceptional late-summer fires.</span></div>
-  <div class="para"><span class="idx">8</span><span class="en">A study cited in the report found extreme fire-smoke events have <span class="kw" data-tip="v. 增至三倍">tripled</span> globally since the 1990s and may have contributed to nearly 100,000 additional deaths annually between 2010 and 2018.</span></div>
-  <div class="para"><span class="idx">9</span><span class="en">Particulate matter from wildfires is particularly harmful because it comes with a host of toxic chemicals, Labrador said, adding that inhalation causes body-wide <span class="kw" data-tip="n. 炎症">inflammation</span> that can lead to <span class="kw" data-tip="adj. 肺的；肺部的">pulmonary</span> disease.</span></div>
-
-  <p class="muted">原文出处：路透社日内瓦报道（Reuters, Geneva, Sept 7, 2026）。报道对象为世界气象组织（WMO）2026 年度《空气质量与气候公报》。</p>
-
-  <h2>二、重点词汇</h2>
-  <table>
-    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
-    <tr><td class="en">undermine</td><td>/ˌʌndəˈmaɪn/</td><td>v.</td><td>削弱；暗中破坏</td><td>undermine efforts to do sth</td></tr>
-    <tr><td class="en">wildfire</td><td>/ˈwaɪldfaɪə(r)/</td><td>n.</td><td>野火；山火</td><td>destructive wildfires</td></tr>
-    <tr><td class="en">heat wave</td><td>/ˈhiːt weɪv/</td><td>n.</td><td>热浪</td><td>increasingly intense heat waves</td></tr>
-    <tr><td class="en">particulate matter</td><td>/pɑːˈtɪkjələt ˈmætə(r)/</td><td>n.</td><td>颗粒物（粉尘）</td><td>fine particulate matter (PM2.5)</td></tr>
-    <tr><td class="en">ground-level ozone</td><td>/ˈəʊzəʊn/</td><td>n.</td><td>近地面臭氧</td><td>ground-level ozone pollution</td></tr>
-    <tr><td class="en">respiratory</td><td>/rəˈspɪrətri/</td><td>adj.</td><td>呼吸的</td><td>respiratory disease 呼吸道疾病</td></tr>
-    <tr><td class="en">cardiovascular</td><td>/ˌkɑːdiəʊˈvæskjələ(r)/</td><td>adj.</td><td>心血管的</td><td>cardiovascular disease</td></tr>
-    <tr><td class="en">aerosol</td><td>/ˈeərəsɒl/</td><td>n.</td><td>气溶胶</td><td>atmospheric aerosols</td></tr>
-    <tr><td class="en">black carbon</td><td>/ˈblæk ˈkɑːbən/</td><td>n.</td><td>黑碳</td><td>black carbon emissions</td></tr>
-    <tr><td class="en">microplastics</td><td>/ˌmaɪkrəʊˈplæstɪks/</td><td>n.</td><td>微塑料</td><td>atmospheric microplastics</td></tr>
-    <tr><td class="en">tackle</td><td>/ˈtækl/</td><td>v.</td><td>应对，处理</td><td>be tackled through coordinated policies</td></tr>
-    <tr><td class="en">in isolation</td><td>/ˌaɪsəˈleɪʃn/</td><td>adv.</td><td>孤立地，单独地</td><td>rather than in isolation</td></tr>
-    <tr><td class="en">emission</td><td>/ɪˈmɪʃn/</td><td>n.</td><td>排放（物）</td><td>reduce emissions</td></tr>
-    <tr><td class="en">guideline</td><td>/ˈɡaɪdlaɪn/</td><td>n.</td><td>指导方针，准则</td><td>WHO air quality guidelines</td></tr>
-    <tr><td class="en">triple</td><td>/ˈtrɪpl/</td><td>v.</td><td>增至三倍</td><td>have tripled since the 1990s</td></tr>
-    <tr><td class="en">inflammation</td><td>/ˌɪnfləˈmeɪʃn/</td><td>n.</td><td>炎症</td><td>body-wide inflammation</td></tr>
-  </table>
-
-  <h2>三、长难句分析（三步拆解法）</h2>
-
-  <div class="sent">
-    <div class="orig">Pollution from increasingly intense wildfires and heat waves could undermine global efforts to improve air quality and protect human health, the United Nations' weather agency said on Monday, warning that climate change is making it harder to meet international air quality goals.</div>
-    <div class="row"><b>主干：</b>the United Nations' weather agency said（真正的主句，宾语被前置）</div>
-    <div class="row"><b>宾语从句：</b>Pollution … could undermine global efforts（said 的宾语）</div>
-    <div class="row"><b>修饰①：</b>from increasingly intense wildfires and heat waves —— 介词短语修饰 Pollution</div>
-    <div class="row"><b>修饰②：</b>to improve air quality and protect human health —— 不定式修饰 efforts</div>
-    <div class="row"><b>伴随状语：</b>warning that climate change is making it harder to meet … —— 现在分词，内含 that 宾语从句 + it 形式宾语 + to meet 真正宾语</div>
-    <div class="row tr"><b>译文：</b>联合国气象机构周一表示，日益猛烈的野火和热浪带来的污染可能破坏全球改善空气质量和保护人类健康的努力，并警告称气候变化正使实现国际空气质量目标变得更加困难。</div>
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>联合国气象机构发出警告：日益猛烈的野火和热浪带来的污染，可能破坏全球改善空气质量、保护人类健康的努力。世界气象组织（WMO）在年度报告中指出，尽管许多发达国家已降低工业和交通排放，野火正成为日益增长的有害空气污染源，让实现世卫组织空气质量标准变得更加困难。报告还揭示，极端野火烟雾事件自 1990 年代以来已增至三倍，每年可能造成近 10 万人额外死亡。本文梳理了野火细颗粒物与近地面臭氧的健康危害，以及 WMO 呼吁的协同治理方向。</p>
   </div>
 
-  <div class="sent">
-    <div class="orig">In its annual report on air quality and the climate, the World Meteorological Organization said air pollution and climate change are closely linked and should be tackled through coordinated policies rather than in isolation.</div>
-    <div class="row"><b>主干：</b>the World Meteorological Organization said</div>
-    <div class="row"><b>状语：</b>In its annual report on air quality and the climate —— 介词短语</div>
-    <div class="row"><b>宾语从句：</b>air pollution and climate change are closely linked and should be tackled …（并列谓语：are linked + should be tackled）</div>
-    <div class="row"><b>对比结构：</b>through coordinated policies rather than in isolation —— 并列对比，注意 rather than 连接两个介词短语</div>
-    <div class="row tr"><b>译文：</b>世界气象组织在其关于空气质量和气候的年度报告中表示，空气污染与气候变化密切相关，应通过协调政策而非孤立地加以应对。</div>
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Pollution from increasingly intense <span class="kw" data-tip="n. 野火；山火">wildfires</span> and <span class="kw" data-tip="n. 热浪">heat waves</span> could <span class="kw" data-tip="v. 削弱；暗中破坏">undermine</span> global efforts to improve air quality and protect human health, the United Nations' weather agency said on Monday, warning that climate change is making it harder to meet international air quality goals.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">In its annual report on air quality and the climate, the World Meteorological Organization said air pollution and climate change are closely linked and should be <span class="kw" data-tip="v. 应对；处理">tackled</span> through coordinated policies rather than <span class="kw" data-tip="adv. 孤立地；单独地">in isolation</span>. It warned that meeting the World Health Organization's air quality <span class="kw" data-tip="n. 指导方针；准则">guidelines</span> will become more difficult because extreme wildfires are more likely to occur in the future.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">Wildfires are becoming a growing source of harmful air pollution even as regulations have reduced <span class="kw" data-tip="n. 排放（物）">emissions</span> from industry and transport in many developed countries, the WMO said in its report.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">"No matter how clean your city or your region is … if you have a lot of pollution brought about by wildfires, that has the potential to negatively impact air quality in those regions as well," Lorenzo Labrador, scientific officer at the WMO, told Reuters.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The report highlights the growing impact of fine <span class="kw" data-tip="n. 颗粒物；粉尘（PM2.5）">particulate matter</span>, known as PM2.5, and <span class="kw" data-tip="n. 近地面臭氧">ground-level ozone</span>, pollutants linked to <span class="kw" data-tip="adj. 呼吸的">respiratory</span> and <span class="kw" data-tip="adj. 心血管的">cardiovascular</span> disease. It also calls for improved monitoring of pollutants and <span class="kw" data-tip="n. 气溶胶">aerosols</span> including <span class="kw" data-tip="n. 黑碳">black carbon</span> and <span class="kw" data-tip="n. 微塑料">microplastics</span>, which it said remain poorly tracked despite their widespread presence in the atmosphere.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">This year has been marked by extreme heat and destructive wildfires across parts of Europe, including Spain, France and Greece. The WMO has said extreme heat is becoming more frequent, intense and longer-lasting as the planet warms.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">The new report said PM2.5 <span class="kw" data-tip="n. 浓度">concentrations</span> in 2025 were above long-term averages in northern Canada, parts of Russia and western-central Africa due to heightened fire activity, while northwestern Spain was a hot spot following exceptional late-summer fires.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">A study cited in the report found extreme fire-smoke events have <span class="kw" data-tip="v. 增至三倍">tripled</span> globally since the 1990s and may have contributed to nearly 100,000 additional deaths annually between 2010 and 2018.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">Particulate matter from wildfires is particularly harmful because it comes with a host of toxic chemicals, Labrador said, adding that inhalation causes body-wide <span class="kw" data-tip="n. 炎症">inflammation</span> that can lead to <span class="kw" data-tip="adj. 肺的；肺部的">pulmonary</span> disease.</span></div>
+
+      <p class="muted">原文出处：路透社日内瓦报道（Reuters, Geneva, Sept 7, 2026）。报道对象为世界气象组织（WMO）2026 年度《空气质量与气候公报》。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">undermine</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˌʌndəˈmaɪn/</div>
+          <div class="wc-pos"><b>v.</b> 削弱；暗中破坏（搭配：undermine efforts to do sth）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The scandal <b>undermined</b> public trust in the government.</div>
+          <div class="wc-tr">这桩丑闻削弱了公众对政府的信任。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">wildfire</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈwaɪldfaɪə(r)/</div>
+          <div class="wc-pos"><b>n.</b> 野火；山火（搭配：destructive wildfires）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Wildfires</b> destroyed thousands of hectares of forest.</div>
+          <div class="wc-tr">野火烧毁了数千公顷森林。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">heat wave</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈhiːt weɪv/</div>
+          <div class="wc-pos"><b>n.</b> 热浪（搭配：increasingly intense heat waves）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>heat wave</b> hit the city last week.</div>
+          <div class="wc-tr">上周一股热浪袭击了这座城市。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">particulate matter</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /pɑːˈtɪkjələt ˈmætə(r)/</div>
+          <div class="wc-pos"><b>n.</b> 颗粒物（粉尘）（搭配：fine particulate matter (PM2.5)）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Particulate matter</b> can enter the lungs.</div>
+          <div class="wc-tr">颗粒物会进入肺部。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ground-level ozone</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈəʊzəʊn/</div>
+          <div class="wc-pos"><b>n.</b> 近地面臭氧（搭配：ground-level ozone pollution）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Ground-level ozone</b> forms from pollutants.</div>
+          <div class="wc-tr">近地面臭氧由污染物形成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">respiratory</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /rəˈspɪrətri/</div>
+          <div class="wc-pos"><b>adj.</b> 呼吸的（搭配：respiratory disease 呼吸道疾病）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Smoking causes <b>respiratory</b> disease.</div>
+          <div class="wc-tr">吸烟会引发呼吸道疾病。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cardiovascular</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌkɑːdiəʊˈvæskjələ(r)/</div>
+          <div class="wc-pos"><b>adj.</b> 心血管的（搭配：cardiovascular disease）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Exercise lowers the risk of <b>cardiovascular</b> disease.</div>
+          <div class="wc-tr">运动降低心血管疾病的风险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">aerosol</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈeərəsɒl/</div>
+          <div class="wc-pos"><b>n.</b> 气溶胶（搭配：atmospheric aerosols）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Aerosols</b> can affect the climate.</div>
+          <div class="wc-tr">气溶胶会影响气候。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">black carbon</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈblæk ˈkɑːbən/</div>
+          <div class="wc-pos"><b>n.</b> 黑碳（搭配：black carbon emissions）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Black carbon</b> comes from incomplete burning.</div>
+          <div class="wc-tr">黑碳来自不完全燃烧。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">microplastics</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌmaɪkrəʊˈplæstɪks/</div>
+          <div class="wc-pos"><b>n.</b> 微塑料（搭配：atmospheric microplastics）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Microplastics</b> have been found in the ocean.</div>
+          <div class="wc-tr">海洋中已发现微塑料。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tackle</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /ˈtækl/</div>
+          <div class="wc-pos"><b>v.</b> 应对；处理（搭配：be tackled through coordinated policies）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The government must <b>tackle</b> air pollution.</div>
+          <div class="wc-tr">政府必须治理空气污染。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">in isolation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌaɪsəˈleɪʃn/</div>
+          <div class="wc-pos"><b>adv.</b> 孤立地；单独地（搭配：rather than in isolation）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Problems should not be solved <b>in isolation</b>.</div>
+          <div class="wc-tr">问题不应孤立地解决。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">emission</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ɪˈmɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 排放（物）（搭配：reduce emissions）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The factory reduced its carbon <b>emissions</b>.</div>
+          <div class="wc-tr">工厂减少了碳排放。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">guideline</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˈɡaɪdlaɪn/</div>
+          <div class="wc-pos"><b>n.</b> 指导方针；准则（搭配：WHO air quality guidelines）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Follow the safety <b>guidelines</b>.</div>
+          <div class="wc-tr">遵守安全准则。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">triple</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /ˈtrɪpl/</div>
+          <div class="wc-pos"><b>v.</b> 增至三倍（搭配：have tripled since the 1990s）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sales <b>tripled</b> in three years.</div>
+          <div class="wc-tr">三年内销售额增至三倍。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inflammation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˌɪnfləˈmeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 炎症（搭配：body-wide inflammation）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The injury caused <b>inflammation</b>.</div>
+          <div class="wc-tr">受伤引起了炎症。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">air quality</span><span class="zh">空气质量</span></li>
+          <li><span class="en">undermine efforts to do sth</span><span class="zh">破坏……的努力</span></li>
+          <li><span class="en">particulate matter (PM2.5)</span><span class="zh">细颗粒物</span></li>
+          <li><span class="en">ground-level ozone</span><span class="zh">近地面臭氧</span></li>
+          <li><span class="en">respiratory disease</span><span class="zh">呼吸道疾病</span></li>
+          <li><span class="en">cardiovascular disease</span><span class="zh">心血管疾病</span></li>
+          <li><span class="en">rather than in isolation</span><span class="zh">而非孤立地</span></li>
+          <li><span class="en">coordinated policies</span><span class="zh">协调一致的政策</span></li>
+          <li><span class="en">black carbon</span><span class="zh">黑碳</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>野火与热浪污染可能破坏空气质量改善努力。</li>
+          <li>空气污染与气候变化应协同治理，达标更难。</li>
+          <li>野火成为日益增长的有害污染源。</li>
+          <li>野火污染会波及原本清洁的地区。</li>
+          <li>细颗粒物与臭氧危害呼吸、心血管健康。</li>
+          <li>欧洲多地今夏高温、野火频发。</li>
+          <li>多地 PM2.5 浓度高于长期均值。</li>
+          <li>极端烟雾事件增至三倍，致额外死亡。</li>
+          <li>野火颗粒物毒性更高，引发炎症与肺病。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Pollution from increasingly intense wildfires and heat waves could undermine global efforts to improve air quality and protect human health, the United Nations' weather agency said on Monday, warning that climate change is making it harder to meet international air quality goals.</div>
+        <div class="row"><b>主干：</b>the United Nations' weather agency said（真正的主句，宾语被前置）</div>
+        <div class="row"><b>宾语从句：</b>Pollution … could undermine global efforts（said 的宾语）</div>
+        <div class="row"><b>修饰①：</b>from increasingly intense wildfires and heat waves —— 介词短语修饰 Pollution</div>
+        <div class="row"><b>修饰②：</b>to improve air quality and protect human health —— 不定式修饰 efforts</div>
+        <div class="row"><b>伴随状语：</b>warning that climate change is making it harder to meet … —— 现在分词，内含 that 宾语从句 + it 形式宾语 + to meet 真正宾语</div>
+        <div class="row tr"><b>译文：</b>联合国气象机构周一表示，日益猛烈的野火和热浪带来的污染可能破坏全球改善空气质量和保护人类健康的努力，并警告称气候变化正使实现国际空气质量目标变得更加困难。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">In its annual report on air quality and the climate, the World Meteorological Organization said air pollution and climate change are closely linked and should be tackled through coordinated policies rather than in isolation.</div>
+        <div class="row"><b>主干：</b>the World Meteorological Organization said</div>
+        <div class="row"><b>状语：</b>In its annual report on air quality and the climate —— 介词短语</div>
+        <div class="row"><b>宾语从句：</b>air pollution and climate change are closely linked and should be tackled …（并列谓语：are linked + should be tackled）</div>
+        <div class="row"><b>对比结构：</b>through coordinated policies rather than in isolation —— 并列对比，注意 rather than 连接两个介词短语</div>
+        <div class="row tr"><b>译文：</b>世界气象组织在其关于空气质量和气候的年度报告中表示，空气污染与气候变化密切相关，应通过协调政策而非孤立地加以应对。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">"No matter how clean your city or your region is … if you have a lot of pollution brought about by wildfires, that has the potential to negatively impact air quality in those regions as well," Lorenzo Labrador, scientific officer at the WMO, told Reuters.</div>
+        <div class="row"><b>让步状语从句：</b>No matter how clean your city or your region is（无论…多么干净）</div>
+        <div class="row"><b>条件状语从句：</b>if you have a lot of pollution brought about by wildfires（brought about by wildfires 过去分词短语修饰 pollution）</div>
+        <div class="row"><b>主干：</b>that has the potential to negatively impact air quality in those regions as well</div>
+        <div class="row"><b>插入：</b>Lorenzo Labrador, scientific officer at the WMO, told Reuters（主句，同位语 scientific officer at the WMO 说明身份）</div>
+        <div class="row tr"><b>译文：</b>世界气象组织科学官员洛伦佐·拉布拉多告诉路透社："无论你的城市或地区多么干净……如果你有大量野火带来的污染，那也有可能对这些地区的空气质量产生负面影响。"</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">It also calls for improved monitoring of pollutants and aerosols including black carbon and microplastics, which it said remain poorly tracked despite their widespread presence in the atmosphere.</div>
+        <div class="row"><b>主干：</b>It also calls for improved monitoring（of pollutants and aerosols）</div>
+        <div class="row"><b>修饰：</b>including black carbon and microplastics —— 现在分词短语举例</div>
+        <div class="row"><b>定语从句：</b>which it said remain poorly tracked —— 修饰 pollutants and aerosols，其中 it said 为插入语</div>
+        <div class="row"><b>让步状语：</b>despite their widespread presence in the atmosphere —— 介词短语表让步</div>
+        <div class="row tr"><b>译文：</b>报告还呼吁加强对污染物和气溶胶（包括黑碳和微塑料）的监测，据称尽管它们在大气中广泛存在，却仍缺乏追踪。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Particulate matter from wildfires is particularly harmful because it comes with a host of toxic chemicals, Labrador said, adding that inhalation causes body-wide inflammation that can lead to pulmonary disease.</div>
+        <div class="row"><b>主干：</b>Particulate matter is particularly harmful</div>
+        <div class="row"><b>修饰：</b>from wildfires —— 介词短语</div>
+        <div class="row"><b>原因状语从句：</b>because it comes with a host of toxic chemicals</div>
+        <div class="row"><b>伴随状语：</b>adding that … —— 现在分词；内含宾语从句 inhalation causes body-wide inflammation</div>
+        <div class="row"><b>定语从句：</b>that can lead to pulmonary disease —— 修饰 inflammation</div>
+        <div class="row tr"><b>译文：</b>拉布拉多表示，野火产生的颗粒物尤其有害，因为它带有大量有毒化学物质，并补充说吸入这些物质会导致全身性炎症，进而引发肺部疾病。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">世界气象组织（WMO）在其年度《空气质量与气候公报》中警告：日益猛烈的野火和热浪带来的污染，正破坏全球改善空气质量、保护人类健康的努力，使实现世界卫生组织空气质量标准变得愈发困难。报告指出，尽管许多发达国家已通过监管降低工业和交通排放，野火正成为日益增长的有害空气污染源。细颗粒物 PM2.5 与近地面臭氧同呼吸道、心血管疾病密切相关；全球极端野火烟雾事件自 1990 年代以来已增至三倍，2010–2018 年间每年可能造成近 10 万人额外死亡。WMO 呼吁以协调政策统筹治理空气污染与气候变化，并加强对黑碳、微塑料等污染物的监测。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>报道称野火产生的颗粒物比常规排放"毒性更高"（higher toxicity）。请结合第 9 段，说明野火 PM2.5 为何危害更大，并谈谈这对"城市空气质量治理"意味着什么？</div>
+      <div class="q"><b>仿写题：</b>仿照第 4 段的让步 + 条件句式 <span style="font-family:Georgia,serif;font-style:italic">"No matter how … is, if you …, that has the potential to …"</span>，围绕「学习习惯」或「时间管理」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+          <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 野火热浪削弱空气质量</text>
+          <line x1="360" y1="82" x2="360" y2="92" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 呼吁协同治理更困难</text>
+          <line x1="360" y1="134" x2="360" y2="144" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 野火成为新污染源</text>
+          <line x1="360" y1="186" x2="360" y2="196" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 野火污染波及清洁地区</text>
+          <line x1="360" y1="238" x2="360" y2="248" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 颗粒物臭氧危害健康</text>
+          <line x1="360" y1="290" x2="360" y2="300" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 欧洲今夏野火高温</text>
+          <line x1="360" y1="342" x2="360" y2="352" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 多地PM2.5高于均值</text>
+          <line x1="360" y1="394" x2="360" y2="404" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 烟雾事件增至三倍</text>
+          <line x1="360" y1="446" x2="360" y2="456" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 野火颗粒物毒性更高</text>
+        </svg>
+        <figcaption>段落逻辑：先抛结论 → 呼吁协同治理 → 野火成新污染源 → 说明具体危害 → 案例与数据 → 毒性机制，层层递进。</figcaption>
+      </figure>
+
+      <footer>
+        素材来源：Reuters（经公开转载页获取，2026-09-07）｜ 仅供个人学习使用<br>
+        <a href="../index.html">返回外刊精读首页</a>
+      </footer>
+    </section>
+
   </div>
-
-  <div class="sent">
-    <div class="orig">"No matter how clean your city or your region is … if you have a lot of pollution brought about by wildfires, that has the potential to negatively impact air quality in those regions as well," Lorenzo Labrador, scientific officer at the WMO, told Reuters.</div>
-    <div class="row"><b>让步状语从句：</b>No matter how clean your city or your region is（无论…多么干净）</div>
-    <div class="row"><b>条件状语从句：</b>if you have a lot of pollution brought about by wildfires（brought about by wildfires 过去分词短语修饰 pollution）</div>
-    <div class="row"><b>主干：</b>that has the potential to negatively impact air quality in those regions as well</div>
-    <div class="row"><b>插入：</b>Lorenzo Labrador, scientific officer at the WMO, told Reuters（主句，同位语 scientific officer at the WMO 说明身份）</div>
-    <div class="row tr"><b>译文：</b>世界气象组织科学官员洛伦佐·拉布拉多告诉路透社："无论你的城市或地区多么干净……如果你有大量野火带来的污染，那也有可能对这些地区的空气质量产生负面影响。"</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">It also calls for improved monitoring of pollutants and aerosols including black carbon and microplastics, which it said remain poorly tracked despite their widespread presence in the atmosphere.</div>
-    <div class="row"><b>主干：</b>It also calls for improved monitoring（of pollutants and aerosols）</div>
-    <div class="row"><b>修饰：</b>including black carbon and microplastics —— 现在分词短语举例</div>
-    <div class="row"><b>定语从句：</b>which it said remain poorly tracked —— 修饰 pollutants and aerosols，其中 it said 为插入语</div>
-    <div class="row"><b>让步状语：</b>despite their widespread presence in the atmosphere —— 介词短语表让步</div>
-    <div class="row tr"><b>译文：</b>报告还呼吁加强对污染物和气溶胶（包括黑碳和微塑料）的监测，据称尽管它们在大气中广泛存在，却仍缺乏追踪。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">Particulate matter from wildfires is particularly harmful because it comes with a host of toxic chemicals, Labrador said, adding that inhalation causes body-wide inflammation that can lead to pulmonary disease.</div>
-    <div class="row"><b>主干：</b>Particulate matter is particularly harmful</div>
-    <div class="row"><b>修饰：</b>from wildfires —— 介词短语</div>
-    <div class="row"><b>原因状语从句：</b>because it comes with a host of toxic chemicals</div>
-    <div class="row"><b>伴随状语：</b>adding that … —— 现在分词；内含宾语从句 inhalation causes body-wide inflammation</div>
-    <div class="row"><b>定语从句：</b>that can lead to pulmonary disease —— 修饰 inflammation</div>
-    <div class="row tr"><b>译文：</b>拉布拉多表示，野火产生的颗粒物尤其有害，因为它带有大量有毒化学物质，并补充说吸入这些物质会导致全身性炎症，进而引发肺部疾病。</div>
-  </div>
-
-  <h2>四、全文大意</h2>
-  <p class="zh-sum">世界气象组织（WMO）在其年度《空气质量与气候公报》中警告：日益猛烈的野火和热浪带来的污染，正破坏全球改善空气质量、保护人类健康的努力，使实现世界卫生组织空气质量标准变得愈发困难。报告指出，尽管许多发达国家已通过监管降低工业和交通排放，野火正成为日益增长的有害空气污染源。细颗粒物 PM2.5 与近地面臭氧同呼吸道、心血管疾病密切相关；全球极端野火烟雾事件自 1990 年代以来已增至三倍，2010–2018 年间每年可能造成近 10 万人额外死亡。WMO 呼吁以协调政策统筹治理空气污染与气候变化，并加强对黑碳、微塑料等污染物的监测。</p>
-
-  <h2>五、思考与仿写</h2>
-  <div class="q"><b>思考题：</b>报道称野火产生的颗粒物比常规排放"毒性更高"（higher toxicity）。请结合第 9 段，说明野火 PM2.5 为何危害更大，并谈谈这对"城市空气质量治理"意味着什么？</div>
-  <div class="q"><b>仿写题：</b>仿照第 4 段的让步 + 条件句式 <span style="font-family:Georgia,serif;font-style:italic">"No matter how … is, if you …, that has the potential to …"</span>，围绕「学习习惯」或「时间管理」写一个句子。</div>
-
-  <h2>六、文章结构图解</h2>
-  <figure style="margin:0 0 20px;">
-    <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
-      <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
-      <text x="360" y="28" text-anchor="middle" font-family="Georgia,'Songti SC',serif" font-size="16" fill="#1c1a17">文章段落结构（共 9 段）</text>
-
-      <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 野火热浪削弱空气质量</text>
-      <line x1="360" y1="82" x2="360" y2="92" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 呼吁协同治理更困难</text>
-      <line x1="360" y1="134" x2="360" y2="144" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 野火成为新污染源</text>
-      <line x1="360" y1="186" x2="360" y2="196" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 野火污染波及清洁地区</text>
-      <line x1="360" y1="238" x2="360" y2="248" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 颗粒物臭氧危害健康</text>
-      <line x1="360" y1="290" x2="360" y2="300" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 欧洲今夏野火高温</text>
-      <line x1="360" y1="342" x2="360" y2="352" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 多地PM2.5高于均值</text>
-      <line x1="360" y1="394" x2="360" y2="404" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 烟雾事件增至三倍</text>
-      <line x1="360" y1="446" x2="360" y2="456" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 野火颗粒物毒性更高</text>
-    </svg>
-    <figcaption>段落逻辑：先抛结论 → 呼吁协同治理 → 野火成新污染源 → 说明具体危害 → 案例与数据 → 毒性机制，层层递进。</figcaption>
-  </figure>
-
-  <footer>
-    素材来源：Reuters（经公开转载页获取，2026-09-07）｜ 仅供个人学习使用<br>
-    <a href="../index.html">返回外刊精读首页</a>
-  </footer>
 </article>
 
 </body>

@@ -8,48 +8,54 @@
 :root{
   --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
   --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
-  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
   --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
   --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
-/* 顶部导航 */
-nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
-.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
-/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
-.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
-/* Hero 配图 */
-figure.hero{margin:0 0 34px;}
-figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
-h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
-/* 原文段落 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
 .para{margin-bottom:16px;}
-.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
-/* 悬停查词 */
-.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
   content:attr(data-tip);
   position:absolute;left:50%;bottom:calc(100% + 8px);
   transform:translateX(-50%);
-  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
   font-size:12px;font-weight:500;font-family:var(--sans);
   white-space:nowrap;opacity:0;visibility:hidden;
   transition:opacity .15s;z-index:50;pointer-events:none;
@@ -57,18 +63,36 @@ h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em
 }
 .kw::before{
   content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
-  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
   opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
-/* 词汇表 */
-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
-th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
-th{background:var(--paper);font-weight:600;}
-td.en,th.en{font-family:var(--serif);}
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
-/* 长难句 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -83,6 +107,14 @@ td.en,th.en{font-family:var(--serif);}
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+}
+
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
 </style>
 </head>
@@ -90,141 +122,288 @@ footer a{color:var(--muted);text-decoration:underline;}
 
 <nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
 
-<article class="wrap" data-od-id="article">
+<article class="wrap">
   <div class="eyebrow">Education · 教育 / 特殊教育 / 政策</div>
   <h1>英国特殊教育需求计划申请激增，占比或将翻倍至十分之一</h1>
   <div class="deck">Pupils with Send plans in England likely to double to one in 10 in rush for support</div>
   <div class="byline"><span><b>来源</b> The Guardian 卫报</span><span><b>作者</b> 卫报教育版</span><span><b>日期</b> 2026-08-29</span><span><b>难度</b> 中等</span></div>
 
-  <figure class="hero" data-od-id="hero-figure">
-    <img src="../assets/images/外刊精读_2026-08-29.jpg" alt="校园教育（配图）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;">
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-08-29.jpg" alt="校园教育（配图）">
     <figcaption>配图：校园与教育（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
   </figure>
 
-  <h2>一、原文精读</h2>
-  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
-
-  <div class="para"><span class="idx">1</span><span class="en">Schools and councils across England are expecting the <span class="kw" data-tip="n. 比例；占比">proportion</span> of children with special needs plans to double to one in 10, with families rushing to secure support before ministers bring in changes.</span></div>
-  <div class="para"><span class="idx">2</span><span class="en">Headteachers have reported an "unreal" <span class="kw" data-tip="n. 激增；猛增">surge</span> in applications for education, health and care plans (EHCPs) <span class="kw" data-tip="v. 强制规定；授权">mandating</span> support for needs or disabilities such as speech and learning difficulties, <span class="kw" data-tip="n. 自闭症">autism</span> or ADHD. In 2025, just one in 20 school-age children had EHCPs.</span></div>
-  <div class="para"><span class="idx">3</span><span class="en">The number of pupils with EHCPs has risen by more than 11% in each of the past two years, and <span class="kw" data-tip="n. 预测；预估">projections</span> by local authorities seen by the Guardian are anticipating similar double-digit annual increases over the next three years.</span></div>
-  <div class="para"><span class="idx">4</span><span class="en">Such a rapid increase would <span class="kw" data-tip="v. 超过；超越">outstrip</span> the government's own forecasts and <span class="kw" data-tip="v. 蚕食；侵占">eat into</span> funding for improving specialist support in mainstream schools, undermining its plans for immediate reform while <span class="kw" data-tip="v. 使紧张；加重负担">straining</span> school and council budgets.</span></div>
-  <div class="para"><span class="idx">5</span><span class="en">EHCPs are legal documents agreed between local authorities and families in England detailing the support required for children and young people up to the age of 25, allowing access to extra funding or places in special schools. While more than 530,000 school-age children have EHCPs, an additional 1.3 million have identified special needs, according to official data.</span></div>
-  <div class="para"><span class="idx">6</span><span class="en">The costs are met out of local authority high needs budgets but the massive growth in EHCPs has led to councils amassing sustained <span class="kw" data-tip="n. 赤字；缺口">deficits</span>, and require a <span class="kw" data-tip="adj. 法定的">statutory</span> <span class="kw" data-tip="n. 豁免；推翻">override</span> granted by central government to avoid many local authorities becoming technically bankrupt.</span></div>
-  <div class="para"><span class="idx">7</span><span class="en">Paul Whiteman, the general secretary of the National Association of Head Teachers, said: "While it is hard to give a definitive reason for why this is happening, it appears likely that the government's plans to restrict future EHCPs to children with the most complex needs may have led to more families and schools applying before these changes <span class="kw" data-tip="v. 生效；开始实施">kick in</span>."</span></div>
-  <div class="para"><span class="idx">8</span><span class="en">The surge in applications has led some local authorities to dramatically raise their own <span class="kw" data-tip="n. 预测；预期">forecasts</span>. A report by Hampshire council in July showed applications so far this year were at record levels and forecasted a 58% increase in EHCPs between 2026 and 2030. Manchester council is also anticipating a 40% increase in school-age children with EHCPs by 2029.</span></div>
-
-  <p class="muted">原文出处：The Guardian（卫报教育版，2026-09-06）。报道对象为英格兰特殊教育需求（Send）EHCP 申请激增及其对地方财政的影响。</p>
-
-  <h2>二、重点词汇</h2>
-  <table>
-    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
-    <tr><td class="en">proportion</td><td>/prəˈpɔːʃn/</td><td>n.</td><td>比例；占比</td><td>the proportion of children</td></tr>
-    <tr><td class="en">surge</td><td>/sɜːdʒ/</td><td>n.</td><td>激增；猛增</td><td>an "unreal" surge in applications</td></tr>
-    <tr><td class="en">mandate</td><td>/ˈmændeɪt/</td><td>v.</td><td>强制规定；授权</td><td>plans mandating support for …</td></tr>
-    <tr><td class="en">autism</td><td>/ˈɔːtɪzəm/</td><td>n.</td><td>自闭症</td><td>autism or ADHD</td></tr>
-    <tr><td class="en">ADHD</td><td>/ˌeɪ diː eɪtʃ ˈdiː/</td><td>n.</td><td>注意缺陷多动障碍</td><td>speech and learning difficulties, autism or ADHD</td></tr>
-    <tr><td class="en">projection</td><td>/prəˈdʒekʃn/</td><td>n.</td><td>预测；预估</td><td>projections by local authorities</td></tr>
-    <tr><td class="en">outstrip</td><td>/ˌaʊtˈstrɪp/</td><td>v.</td><td>超过；超越</td><td>outstrip the government's forecasts</td></tr>
-    <tr><td class="en">eat into</td><td>/iːt ˈɪntə/</td><td>v.</td><td>蚕食；侵占</td><td>eat into funding</td></tr>
-    <tr><td class="en">strain</td><td>/streɪn/</td><td>v.</td><td>使紧张；加重负担</td><td>straining school and council budgets</td></tr>
-    <tr><td class="en">mainstream school</td><td>/ˈmeɪnstriːm skuːl/</td><td>n.</td><td>主流学校；普通学校</td><td>specialist support in mainstream schools</td></tr>
-    <tr><td class="en">deficit</td><td>/ˈdefɪsɪt/</td><td>n.</td><td>赤字；缺口</td><td>amassing sustained deficits</td></tr>
-    <tr><td class="en">statutory</td><td>/ˈstætʃətri/</td><td>adj.</td><td>法定的</td><td>a statutory override</td></tr>
-    <tr><td class="en">override</td><td>/ˌəʊvəˈraɪd/</td><td>n.</td><td>豁免；推翻</td><td>require a statutory override</td></tr>
-    <tr><td class="en">kick in</td><td>/kɪk ɪn/</td><td>v.</td><td>生效；开始实施</td><td>before these changes kick in</td></tr>
-    <tr><td class="en">forecast</td><td>/ˈfɔːkɑːst/</td><td>n.</td><td>预测；预期</td><td>raise their own forecasts</td></tr>
-  </table>
-
-  <h2>三、长难句分析（三步拆解法）</h2>
-
-  <div class="sent">
-    <div class="orig">Schools and councils across England are expecting the proportion of children with special needs plans to double to one in 10, with families rushing to secure support before ministers bring in changes.</div>
-    <div class="row"><b>主干：</b>Schools and councils across England are expecting（英格兰各地的学校和议会预计）</div>
-    <div class="row"><b>宾语：</b>the proportion of children with special needs plans to double to one in 10（有特殊需求计划的儿童比例将翻倍至十分之一；with special needs plans 修饰 children）</div>
-    <div class="row"><b>独立主格结构：</b>with families rushing to secure support（with + 名词 + 现在分词，表伴随，各家庭争相获得支持）</div>
-    <div class="row"><b>时间状语从句：</b>before ministers bring in changes（在部长们推行改革之前）</div>
-    <div class="row tr"><b>译文：</b>英格兰各地的学校和议会预计，拥有特殊需求计划的儿童比例将翻倍至十分之一，因为各家庭纷纷在部长们推行改革之前争相为孩子争取支持。</div>
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>英格兰的特殊教育正面临一场"申请潮"。随着政府宣布改革特殊教育体系，各地学校和议会预计，持有教育、健康与照护计划（EHCP）的儿童比例将从 2025 年的二十分之一翻倍至十分之一。过去两年 EHCP 申请每年增幅都超过 11%，校长们用"不真实"来形容这股激增。本文解释了 EHCP 是什么、为什么改革预告反而刺激了家庭抢申，以及这场申请潮给地方政府财政带来的沉重压力。</p>
   </div>
 
-  <div class="sent">
-    <div class="orig">Such a rapid increase would outstrip the government's own forecasts and eat into funding for improving specialist support in mainstream schools, undermining its plans for immediate reform while straining school and council budgets.</div>
-    <div class="row"><b>主干：</b>Such a rapid increase would outstrip the government's own forecasts and eat into funding（如此快速的增长将超过政府自身的预测，并蚕食资金）</div>
-    <div class="row"><b>目的/用途修饰：</b>for improving specialist support in mainstream schools（用于改善主流学校的专业支持）</div>
-    <div class="row"><b>结果状语（分词）：</b>undermining its plans for immediate reform（削弱其立即改革的计划）</div>
-    <div class="row"><b>并列伴随：</b>while straining school and council budgets（同时使学校和议会的预算承压）</div>
-    <div class="row tr"><b>译文：</b>如此快速的增长将超出政府自身的预测，并蚕食用于改善主流学校专业支持的资金，削弱其立即改革的计划，同时给学校和议会的预算带来压力。</div>
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Schools and councils across England are expecting the <span class="kw" data-tip="n. 比例；占比">proportion</span> of children with special needs plans to double to one in 10, with families rushing to secure support before ministers bring in changes.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">Headteachers have reported an "unreal" <span class="kw" data-tip="n. 激增；猛增">surge</span> in applications for education, health and care plans (EHCPs) <span class="kw" data-tip="v. 强制规定；授权">mandating</span> support for needs or disabilities such as speech and learning difficulties, <span class="kw" data-tip="n. 自闭症">autism</span> or ADHD. In 2025, just one in 20 school-age children had EHCPs.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The number of pupils with EHCPs has risen by more than 11% in each of the past two years, and <span class="kw" data-tip="n. 预测；预估">projections</span> by local authorities seen by the Guardian are anticipating similar double-digit annual increases over the next three years.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">Such a rapid increase would <span class="kw" data-tip="v. 超过；超越">outstrip</span> the government's own forecasts and <span class="kw" data-tip="v. 蚕食；侵占">eat into</span> funding for improving specialist support in mainstream schools, undermining its plans for immediate reform while <span class="kw" data-tip="v. 使紧张；加重负担">straining</span> school and council budgets.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">EHCPs are legal documents agreed between local authorities and families in England detailing the support required for children and young people up to the age of 25, allowing access to extra funding or places in special schools. While more than 530,000 school-age children have EHCPs, an additional 1.3 million have identified special needs, according to official data.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The costs are met out of local authority high needs budgets but the massive growth in EHCPs has led to councils amassing sustained <span class="kw" data-tip="n. 赤字；缺口">deficits</span>, and require a <span class="kw" data-tip="adj. 法定的">statutory</span> <span class="kw" data-tip="n. 豁免；推翻">override</span> granted by central government to avoid many local authorities becoming technically bankrupt.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">Paul Whiteman, the general secretary of the National Association of Head Teachers, said: "While it is hard to give a definitive reason for why this is happening, it appears likely that the government's plans to restrict future EHCPs to children with the most complex needs may have led to more families and schools applying before these changes <span class="kw" data-tip="v. 生效；开始实施">kick in</span>."</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The surge in applications has led some local authorities to dramatically raise their own <span class="kw" data-tip="n. 预测；预期">forecasts</span>. A report by Hampshire council in July showed applications so far this year were at record levels and forecasted a 58% increase in EHCPs between 2026 and 2030. Manchester council is also anticipating a 40% increase in school-age children with EHCPs by 2029.</span></div>
+
+      <p class="muted">原文出处：The Guardian（卫报教育版，2026-09-06）。报道对象为英格兰特殊教育需求（Send）EHCP 申请激增及其对地方财政的影响。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">proportion</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /prəˈpɔːʃn/</div>
+          <div class="wc-pos"><b>n.</b> 比例；占比（搭配：the proportion of children）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A large <b>proportion</b> of students walk to school.</div>
+          <div class="wc-tr">很大一部分学生步行上学。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">surge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /sɜːdʒ/</div>
+          <div class="wc-pos"><b>n.</b> 激增；猛增（搭配：an "unreal" surge in applications）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There was a <b>surge</b> in online shopping.</div>
+          <div class="wc-tr">网购出现激增。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mandate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˈmændeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 强制规定；授权（搭配：plans mandating support for …）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The new law <b>mandates</b> seat belts for all passengers.</div>
+          <div class="wc-tr">新法强制所有乘客系安全带。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">autism</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈɔːtɪzəm/</div>
+          <div class="wc-pos"><b>n.</b> 自闭症（搭配：autism or ADHD）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He was diagnosed with <b>autism</b> as a child.</div>
+          <div class="wc-tr">他小时候被诊断出自闭症。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ADHD</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌeɪ diː eɪtʃ ˈdiː/</div>
+          <div class="wc-pos"><b>n.</b> 注意缺陷多动障碍（搭配：autism or ADHD）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Children with <b>ADHD</b> may find it hard to focus.</div>
+          <div class="wc-tr">患有多动症的儿童可能难以集中注意力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">projection</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /prəˈdʒekʃn/</div>
+          <div class="wc-pos"><b>n.</b> 预测；预估（搭配：projections by local authorities）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>projections</b> show sales will double.</div>
+          <div class="wc-tr">预测显示销售额将翻倍。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outstrip</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌaʊtˈstrɪp/</div>
+          <div class="wc-pos"><b>v.</b> 超过；超越（搭配：outstrip the government's forecasts）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Demand has <b>outstripped</b> supply.</div>
+          <div class="wc-tr">需求已超过供应。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">eat into</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /iːt ˈɪntə/</div>
+          <div class="wc-pos"><b>v.</b> 蚕食；侵占（搭配：eat into funding）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Rising costs are <b>eating into</b> our savings.</div>
+          <div class="wc-tr">上涨的成本正在蚕食我们的积蓄。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">strain</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /streɪn/</div>
+          <div class="wc-pos"><b>v.</b> 使紧张；加重负担（搭配：straining school and council budgets）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The extra work <b>strained</b> his health.</div>
+          <div class="wc-tr">额外的工作损害了他的健康。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mainstream school</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈmeɪnstriːm skuːl/</div>
+          <div class="wc-pos"><b>n.</b> 主流学校；普通学校（搭配：specialist support in mainstream schools）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She attends a <b>mainstream school</b>.</div>
+          <div class="wc-tr">她就读于一所普通学校。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">deficit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˈdefɪsɪt/</div>
+          <div class="wc-pos"><b>n.</b> 赤字；缺口（搭配：amassing sustained deficits）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The country has a large trade <b>deficit</b>.</div>
+          <div class="wc-tr">这个国家有很大的贸易逆差。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">statutory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈstætʃətri/</div>
+          <div class="wc-pos"><b>adj.</b> 法定的（搭配：a statutory override）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is a <b>statutory</b> duty to report the accident.</div>
+          <div class="wc-tr">报告事故是一项法定义务。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">override</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌəʊvəˈraɪd/</div>
+          <div class="wc-pos"><b>n.</b> 豁免；推翻（搭配：require a statutory override）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The president can <b>override</b> the decision.</div>
+          <div class="wc-tr">总统可以推翻这一决定。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">kick in</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /kɪk ɪn/</div>
+          <div class="wc-pos"><b>v.</b> 生效；开始实施（搭配：before these changes kick in）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The painkiller started to <b>kick in</b> after ten minutes.</div>
+          <div class="wc-tr">止痛药十分钟后开始起效。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">forecast</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /ˈfɔːkɑːst/</div>
+          <div class="wc-pos"><b>n.</b> 预测；预期（搭配：raise their own forecasts）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The weather <b>forecast</b> says it will rain tomorrow.</div>
+          <div class="wc-tr">天气预报说明天会下雨。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">special needs plans</span><span class="zh">特殊需求计划</span></li>
+          <li><span class="en">the proportion of</span><span class="zh">……的比例</span></li>
+          <li><span class="en">a surge in applications</span><span class="zh">申请激增</span></li>
+          <li><span class="en">outstrip forecasts</span><span class="zh">超出预测</span></li>
+          <li><span class="en">eat into funding</span><span class="zh">蚕食资金</span></li>
+          <li><span class="en">strain budgets</span><span class="zh">加重预算负担</span></li>
+          <li><span class="en">mainstream schools</span><span class="zh">主流学校</span></li>
+          <li><span class="en">kick in</span><span class="zh">生效；开始实施</span></li>
+          <li><span class="en">local authorities</span><span class="zh">地方政府</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>特殊需求计划儿童占比或将翻倍至十分之一。</li>
+          <li>校长报告 EHCP 申请量激增。</li>
+          <li>过去两年年增幅超 11%，未来仍将两位数增长。</li>
+          <li>激增超出政府预测，蚕食资金、加重负担。</li>
+          <li>EHCP 是 25 岁以下支持文件，逾 53 万儿童持有。</li>
+          <li>高额预算导致议会持续赤字，需中央豁免。</li>
+          <li>改革预告刺激家庭抢申。</li>
+          <li>各地大幅上调 EHCP 预测。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Schools and councils across England are expecting the proportion of children with special needs plans to double to one in 10, with families rushing to secure support before ministers bring in changes.</div>
+        <div class="row"><b>主干：</b>Schools and councils across England are expecting（英格兰各地的学校和议会预计）</div>
+        <div class="row"><b>宾语：</b>the proportion of children with special needs plans to double to one in 10（有特殊需求计划的儿童比例将翻倍至十分之一；with special needs plans 修饰 children）</div>
+        <div class="row"><b>独立主格结构：</b>with families rushing to secure support（with + 名词 + 现在分词，表伴随，各家庭争相获得支持）</div>
+        <div class="row"><b>时间状语从句：</b>before ministers bring in changes（在部长们推行改革之前）</div>
+        <div class="row tr"><b>译文：</b>英格兰各地的学校和议会预计，拥有特殊需求计划的儿童比例将翻倍至十分之一，因为各家庭纷纷在部长们推行改革之前争相为孩子争取支持。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Such a rapid increase would outstrip the government's own forecasts and eat into funding for improving specialist support in mainstream schools, undermining its plans for immediate reform while straining school and council budgets.</div>
+        <div class="row"><b>主干：</b>Such a rapid increase would outstrip the government's own forecasts and eat into funding（如此快速的增长将超过政府自身的预测，并蚕食资金）</div>
+        <div class="row"><b>目的/用途修饰：</b>for improving specialist support in mainstream schools（用于改善主流学校的专业支持）</div>
+        <div class="row"><b>结果状语（分词）：</b>undermining its plans for immediate reform（削弱其立即改革的计划）</div>
+        <div class="row"><b>并列伴随：</b>while straining school and council budgets（同时使学校和议会的预算承压）</div>
+        <div class="row tr"><b>译文：</b>如此快速的增长将超出政府自身的预测，并蚕食用于改善主流学校专业支持的资金，削弱其立即改革的计划，同时给学校和议会的预算带来压力。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">EHCPs are legal documents agreed between local authorities and families in England detailing the support required for children and young people up to the age of 25, allowing access to extra funding or places in special schools.</div>
+        <div class="row"><b>主干：</b>EHCPs are legal documents（EHCP 是法定文件）</div>
+        <div class="row"><b>过去分词定语：</b>agreed between local authorities and families in England（由英格兰地方政府与家庭双方商定）</div>
+        <div class="row"><b>现在分词定语：</b>detailing the support required（详述所需支持）</div>
+        <div class="row"><b>结果状语（分词）：</b>allowing access to extra funding or places in special schools（从而可获得额外资金或特殊学校名额）</div>
+        <div class="row tr"><b>译文：</b>EHCP 是由英格兰地方政府与家庭双方商定的法定文件，详述了 25 岁以下儿童和青少年所需的支持，使其能够获得额外资金或特殊学校名额。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">"While it is hard to give a definitive reason for why this is happening, it appears likely that the government's plans to restrict future EHCPs to children with the most complex needs may have led to more families and schools applying before these changes kick in."</div>
+        <div class="row"><b>让步状语从句：</b>While it is hard to give a definitive reason for why this is happening（尽管很难为这种情况给出确切原因）</div>
+        <div class="row"><b>主干：</b>it appears likely（it 为形式主语，似乎很可能）</div>
+        <div class="row"><b>主语从句：</b>that the government's plans … may have led to more families and schools applying（政府的计划……可能导致更多家庭和学校提出申请）</div>
+        <div class="row"><b>后置定语：</b>to restrict future EHCPs to children with the most complex needs（将未来 EHCP 限定于需求最复杂的儿童）</div>
+        <div class="row"><b>时间状语从句：</b>before these changes kick in（在这些改革生效之前）</div>
+        <div class="row tr"><b>译文：</b>"尽管很难为这一现象给出确切原因，但很可能是因为政府计划将未来的 EHCP 限定给需求最复杂的儿童，导致更多家庭和学校在这些改革生效之前抢先提出申请。"</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">英格兰各地的学校和议会预计，拥有教育、健康和照护计划（EHCP）的儿童比例将翻倍，从 2025 年的二十分之一升至十分之一。由于政府宣布改革特殊教育体系，各家庭纷纷在改革落地前为孩子抢申 EHCP，申请量出现"不真实"的激增，过去两年每年增幅都超过 11%。这一激增将超出政府预测，蚕食改善主流学校支持的资金，并给学校和议会带来沉重财政压力。目前全英已有超过 53 万学龄儿童持有 EHCP，另有 130 万儿童被认定有特殊需求。汉普郡议会预测 2026 至 2030 年 EHCP 将增长 58%，曼彻斯特议会则预计到 2029 年学龄 EHCP 儿童将增加 40%。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>为什么政府宣布改革反而会引发 EHCP 申请潮？结合第 7 段，谈谈政策"预告效应"如何影响家庭行为，并思考特殊教育资金压力与"让每个孩子不掉队"的理想之间如何平衡。</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段的结构 <span style="font-family:Georgia,serif;font-style:italic">"The surge … has led some … to dramatically … A report by … showed … and forecasted …"</span>，围绕「图书馆借阅量上升」或「健身房办卡人数增加」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+          <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">① 特殊需求计划占比将翻倍</text>
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">② 校长报告申请量激增</text>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">③ 过去两年年增幅超11%</text>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">④ 激增超出预测蚕食资金</text>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">⑤ EHCP为25岁以下支持文件</text>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">⑥ 高额预算致议会持续赤字</text>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">⑦ 改革预告促家庭抢申</text>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">⑧ 各地大幅上调EHCP预测</text>
+        </svg>
+        <figcaption>段落逻辑：从「占比将翻倍」的现象起笔，经申请激增与数据、EHCP 定义与财政赤字，再到改革预告引发的抢申与各地上调预测，层层推进至政策与财政的深层压力。</figcaption>
+      </figure>
+
+      <footer>
+        素材来源：The Guardian（2026-09-06）｜ 原文链接：<a href="https://www.theguardian.com/education/2026/sep/06/schools-england-report-surge-send-applications">Pupils with Send plans in England likely to double to one in 10 in rush for support</a>｜ 仅供个人学习使用<br>
+        <a href="../index.html">返回外刊精读首页</a>
+      </footer>
+    </section>
+
   </div>
-
-  <div class="sent">
-    <div class="orig">EHCPs are legal documents agreed between local authorities and families in England detailing the support required for children and young people up to the age of 25, allowing access to extra funding or places in special schools.</div>
-    <div class="row"><b>主干：</b>EHCPs are legal documents（EHCP 是法定文件）</div>
-    <div class="row"><b>过去分词定语：</b>agreed between local authorities and families in England（由英格兰地方政府与家庭双方商定）</div>
-    <div class="row"><b>现在分词定语：</b>detailing the support required（详述所需支持）</div>
-    <div class="row"><b>结果状语（分词）：</b>allowing access to extra funding or places in special schools（从而可获得额外资金或特殊学校名额）</div>
-    <div class="row tr"><b>译文：</b>EHCP 是由英格兰地方政府与家庭双方商定的法定文件，详述了 25 岁以下儿童和青少年所需的支持，使其能够获得额外资金或特殊学校名额。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">"While it is hard to give a definitive reason for why this is happening, it appears likely that the government's plans to restrict future EHCPs to children with the most complex needs may have led to more families and schools applying before these changes kick in."</div>
-    <div class="row"><b>让步状语从句：</b>While it is hard to give a definitive reason for why this is happening（尽管很难为这种情况给出确切原因）</div>
-    <div class="row"><b>主干：</b>it appears likely（it 为形式主语，似乎很可能）</div>
-    <div class="row"><b>主语从句：</b>that the government's plans … may have led to more families and schools applying（政府的计划……可能导致更多家庭和学校提出申请）</div>
-    <div class="row"><b>后置定语：</b>to restrict future EHCPs to children with the most complex needs（将未来 EHCP 限定于需求最复杂的儿童）</div>
-    <div class="row"><b>时间状语从句：</b>before these changes kick in（在这些改革生效之前）</div>
-    <div class="row tr"><b>译文：</b>"尽管很难为这一现象给出确切原因，但很可能是因为政府计划将未来的 EHCP 限定给需求最复杂的儿童，导致更多家庭和学校在这些改革生效之前抢先提出申请。"</div>
-  </div>
-
-  <h2>四、全文大意</h2>
-  <p class="zh-sum">英格兰各地的学校和议会预计，拥有教育、健康和照护计划（EHCP）的儿童比例将翻倍，从 2025 年的二十分之一升至十分之一。由于政府宣布从 2 月起改革特殊教育体系，各家庭纷纷在改革落地前为孩子抢申 EHCP，申请量出现"不真实"的激增，过去两年每年增幅都超过 11%。这一激增将超出政府预测，蚕食改善主流学校支持的资金，并给学校和议会带来沉重财政压力。目前全英已有超过 53 万学龄儿童持有 EHCP，另有 130 万儿童被认定有特殊需求；地方议会预测到 2028-29 年 EHCP 数量将达 84 万。教育大臣 Georgia Gould 承诺建立更包容的体系，让家长"不必再为支持而抗争"。</p>
-
-  <h2>五、思考与仿写</h2>
-  <div class="q"><b>思考题：</b>为什么政府宣布改革反而会引发 EHCP 申请潮？结合第 7 段，谈谈政策"预告效应"如何影响家庭行为，并思考特殊教育资金压力与"让每个孩子不掉队"的理想之间如何平衡。</div>
-  <div class="q"><b>仿写题：</b>仿照第 8 段的结构 <span style="font-family:Georgia,serif;font-style:italic">"The surge … has led some … to dramatically … A report by … showed … and forecasted …"</span>，围绕「图书馆借阅量上升」或「健身房办卡人数增加」写一个句子。</div>
-
-  <h2>六、文章结构图解</h2>
-  <figure class="hero">
-    <svg viewBox="0 0 580 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
-      <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
-      <text x="290" y="28" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="15" fill="#9c2f16">文章段落结构（共 8 段）</text>
-
-      <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">① 特殊需求计划占比将翻倍</text>
-      <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">② 校长报告申请量激增</text>
-      <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">③ 过去两年年增幅超11%</text>
-      <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">④ 激增超出预测蚕食资金</text>
-      <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">⑤ EHCP为25岁以下支持文件</text>
-      <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">⑥ 高额预算致议会持续赤字</text>
-      <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">⑦ 改革预告促家庭抢申</text>
-      <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">⑧ 各地大幅上调EHCP预测</text>
-    </svg>
-    <figcaption>段落逻辑：从「占比将翻倍」的现象起笔，经申请激增与数据、EHCP 定义与财政赤字，再到改革预告引发的抢申与各地上调预测，层层推进至政策与财政的深层压力。</figcaption>
-  </figure>
-
-  <footer>
-    素材来源：The Guardian（2026-09-06）｜ 原文链接：<a href="https://www.theguardian.com/education/2026/sep/06/schools-england-report-surge-send-applications">Pupils with Send plans in England likely to double to one in 10 in rush for support</a>｜ 仅供个人学习使用<br>
-    <a href="../index.html">返回外刊精读首页</a>
-  </footer>
 </article>
 
 </body>

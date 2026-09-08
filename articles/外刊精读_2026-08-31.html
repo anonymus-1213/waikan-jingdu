@@ -8,48 +8,54 @@
 :root{
   --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
   --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
-  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
   --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
   --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
-/* 顶部导航 */
-nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
-.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
-/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
-.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
-/* Hero 配图 */
-figure.hero{margin:0 0 34px;}
-figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
-h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
-/* 原文段落 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
 .para{margin-bottom:16px;}
-.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
-/* 悬停查词 */
-.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
   content:attr(data-tip);
   position:absolute;left:50%;bottom:calc(100% + 8px);
   transform:translateX(-50%);
-  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
   font-size:12px;font-weight:500;font-family:var(--sans);
   white-space:nowrap;opacity:0;visibility:hidden;
   transition:opacity .15s;z-index:50;pointer-events:none;
@@ -57,18 +63,36 @@ h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em
 }
 .kw::before{
   content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
-  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
   opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
-/* 词汇表 */
-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
-th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
-th{background:var(--paper);font-weight:600;}
-td.en,th.en{font-family:var(--serif);}
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
-/* 长难句 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -83,6 +107,14 @@ td.en,th.en{font-family:var(--serif);}
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+}
+
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
 </style>
 </head>
@@ -90,121 +122,243 @@ footer a{color:var(--muted);text-decoration:underline;}
 
 <nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
 
-<article class="wrap" data-od-id="article">
+<article class="wrap">
   <div class="eyebrow">Culture · 文化 / 影视 / 艾美奖</div>
   <h1>罗伯·莱纳逝世九个月后，追授艾美奖最佳客串男演员</h1>
   <div class="deck">Rob Reiner Wins Posthumous Emmy for 'The Bear'</div>
   <div class="byline"><span><b>来源</b> Variety 综艺（美）</span><span><b>作者</b> Clayton Davis（首席颁奖编辑）</span><span><b>日期</b> 2026-08-31</span><span><b>难度</b> 中等</span></div>
 
-  <figure class="hero" data-od-id="hero-figure">
-    <img src="../assets/images/外刊精读_2026-08-31.jpg" alt="影视奖项（配图）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;">
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-08-31.jpg" alt="影视奖项（配图）">
     <figcaption>配图：影视与奖项（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
   </figure>
 
-  <h2>一、原文精读</h2>
-  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
-
-  <div class="para"><span class="idx">1</span><span class="en">The late and great Rob Reiner has won an Emmy, nine months after his death.</span></div>
-  <div class="para"><span class="idx">2</span><span class="en">Reiner won the <span class="kw" data-tip="n. 最佳客串男演员">outstanding guest actor</span> in a comedy series for "The Bear" at the Emmy Awards Night 2, <span class="kw" data-tip="v. 胜过；击败（对手）">prevailing over</span> Michael J. Fox and Brett Goldstein ("Shrinking"), Hamish Linklater ("Widow's Bay"), Christopher McDonald ("Hacks") and Connor Storrie ("Saturday Night Live"). It is a <span class="kw" data-tip="adj. 死后的；追授的">posthumous</span> honor for the director and actor who was killed alongside his wife, Michele Singer Reiner, in December — and the first posthumous Emmy for an on-camera performance since Raúl Julia won for "The Burning Season" in 1995.</span></div>
-  <div class="para"><span class="idx">3</span><span class="en">Presenter Wendi McLendon-Covey accepted the Emmy on Reiner's behalf to a minute-long <span class="kw" data-tip="n. 起立鼓掌">standing ovation</span> from the audience.</span></div>
-  <div class="para"><span class="idx">4</span><span class="en">The win also sets a record and rewrites one that his own father, Carl Reiner, set. Rob Reiner had not won an Emmy since 1978, when he took his second <span class="kw" data-tip="adj. 连续的">consecutive</span> supporting actor <span class="kw" data-tip="n. 奖杯">trophy</span> for the classic comedy "All in the Family." The 48-year gap between that win and this newest one <span class="kw" data-tip="v. 打破（纪录）">shatters the mark</span> for the longest <span class="kw" data-tip="n. 跨度；间隔">span</span> between acting Emmy wins — 37 years — held by Carl Reiner, who went from his 1958 win for "Caesar's Hour" to a 1995 guest comedy Emmy for "Mad About You." The elder Reiner set the record in guest comedy and his son now breaks it in the same category.</span></div>
-  <div class="para"><span class="idx">5</span><span class="en">Reiner, who died at 78, has been remembered across the industry as the filmmaker behind classics such as "This Is Spinal Tap," "The Princess Bride," "When Harry Met Sally" and "A Few Good Men," and was honored in the <span class="kw" data-tip="n. 追思环节（纪念逝者）">In Memoriam</span> segment at the 2026 Oscars. His guest turn on FX's "The Bear" stands as one of his final screen performances.</span></div>
-  <div class="para"><span class="idx">6</span><span class="en">This year's Emmy <span class="kw" data-tip="n. 提名">nominations</span> were led by "The Pitt" with 25 nominations, followed by "Hacks," "Widow's Bay" and "Beef." An edited version of the first two nights of the Emmys will air on FXX on Saturday, Sept. 12, at 8 p.m. ET, while the live 78th Emmys <span class="kw" data-tip="n. 直播；转播">broadcast</span> on NBC takes place on Monday, Sept. 14, at 8 p.m. ET.</span></div>
-
-  <p class="muted">原文出处：Variety（美国），2026-09-06 报道，作者 Clayton Davis（首席颁奖编辑）。报道对象为 2026 年创意艺术艾美奖（Emmy Awards Night 2）。</p>
-
-  <h2>二、重点词汇</h2>
-  <table>
-    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
-    <tr><td class="en">posthumous</td><td>/ˈpɒstjʊməs/</td><td>adj.</td><td>死后的；追授的</td><td>a posthumous honor / Emmy</td></tr>
-    <tr><td class="en">outstanding</td><td>/aʊtˈstændɪŋ/</td><td>adj.</td><td>杰出的；出色的</td><td>outstanding guest actor</td></tr>
-    <tr><td class="en">prevail</td><td>/prɪˈveɪl/</td><td>v.</td><td>胜过；占上风</td><td>prevailing over sb</td></tr>
-    <tr><td class="en">ovation</td><td>/əʊˈveɪʃn/</td><td>n.</td><td>热烈鼓掌；欢呼</td><td>a standing ovation 起立鼓掌</td></tr>
-    <tr><td class="en">trophy</td><td>/ˈtrəʊfi/</td><td>n.</td><td>奖杯</td><td>supporting actor trophy</td></tr>
-    <tr><td class="en">consecutive</td><td>/kənˈsekjətɪv/</td><td>adj.</td><td>连续的</td><td>his second consecutive trophy</td></tr>
-    <tr><td class="en">shatter</td><td>/ˈʃætə(r)/</td><td>v.</td><td>打破（纪录）；粉碎</td><td>shatters the mark</td></tr>
-    <tr><td class="en">span</td><td>/spæn/</td><td>n.</td><td>跨度；间隔</td><td>the longest span between wins</td></tr>
-    <tr><td class="en">memoriam</td><td>/məˈmɔːriəm/</td><td>n.</td><td>追思；纪念</td><td>the In Memoriam segment</td></tr>
-    <tr><td class="en">nomination</td><td>/ˌnɒmɪˈneɪʃn/</td><td>n.</td><td>提名</td><td>led by … with 25 nominations</td></tr>
-    <tr><td class="en">broadcast</td><td>/ˈbrɔːdkɑːst/</td><td>n.</td><td>直播；转播</td><td>the live 78th Emmys broadcast</td></tr>
-    <tr><td class="en">guest turn</td><td>/ˈɡest tɜːn/</td><td>n.</td><td>客串出演</td><td>his guest turn on FX's "The Bear"</td></tr>
-  </table>
-
-  <h2>三、长难句分析（三步拆解法）</h2>
-
-  <div class="sent">
-    <div class="orig">Reiner won the outstanding guest actor in a comedy series for "The Bear" at the Emmy Awards Night 2, prevailing over Michael J. Fox and Brett Goldstein ("Shrinking"), Hamish Linklater ("Widow's Bay"), Christopher McDonald ("Hacks") and Connor Storrie ("Saturday Night Live").</div>
-    <div class="row"><b>主干：</b>Reiner won the outstanding guest actor in a comedy series</div>
-    <div class="row"><b>状语①：</b>for "The Bear" —— 说明获奖作品</div>
-    <div class="row"><b>状语②：</b>at the Emmy Awards Night 2 —— 地点/场合</div>
-    <div class="row"><b>伴随状语：</b>prevailing over Michael J. Fox and Brett Goldstein …, Hamish Linklater …, Christopher McDonald … and Connor Storrie … —— 现在分词短语列举全部被击败的对手</div>
-    <div class="row tr"><b>译文：</b>莱纳凭借《熊家餐馆》在艾美奖颁奖礼第二晚荣获喜剧类最佳客串男演员，击败了迈克尔·J·福克斯和布雷特·戈德斯坦（《诊疗中》）、哈米什·林克莱特（《寡妇湾》）、克里斯托弗·麦克唐纳（《绝望写手》）以及康纳·斯托里（《周六夜现场》）。</div>
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>美国著名导演、演员罗伯·莱纳在逝世九个月后，凭借《熊家餐馆》荣获艾美奖喜剧类最佳客串男演员。这是对去年 12 月与妻子一同遇难的他的追授荣誉，也是自 1995 年以来首个追授给银幕表演的艾美奖。颁奖人代为领奖时，全场起立鼓掌长达一分钟。此次获奖还打破了其父卡尔·莱纳保持的演艺类艾美奖最长获奖间隔纪录：罗伯·莱纳距 1978 年上次获奖相隔 48 年，超过父亲此前保持的 37 年。</p>
   </div>
 
-  <div class="sent">
-    <div class="orig">It is a posthumous honor for the director and actor who was killed alongside his wife, Michele Singer Reiner, in December — and the first posthumous Emmy for an on-camera performance since Raúl Julia won for "The Burning Season" in 1995.</div>
-    <div class="row"><b>主干：</b>It is a posthumous honor … — and the first posthumous Emmy for an on-camera performance（并列系表结构）</div>
-    <div class="row"><b>定语从句：</b>who was killed alongside his wife, Michele Singer Reiner, in December —— 修饰 the director and actor</div>
-    <div class="row"><b>时间状语从句：</b>since Raúl Julia won for "The Burning Season" in 1995 —— 限定"first"的时间范围</div>
-    <div class="row tr"><b>译文：</b>这是对这位导演兼演员的追授荣誉——他于去年 12 月与妻子米歇尔·辛格·莱纳一同遇难；这也是自 1995 年劳尔·胡利亚凭《燃烧的季节》获奖以来，首个追授给银幕表演的艾美奖。</div>
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">The late and great Rob Reiner has won an Emmy, nine months after his death.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">Reiner won the <span class="kw" data-tip="n. 最佳客串男演员">outstanding guest actor</span> in a comedy series for "The Bear" at the Emmy Awards Night 2, <span class="kw" data-tip="v. 胜过；击败（对手）">prevailing over</span> Michael J. Fox and Brett Goldstein ("Shrinking"), Hamish Linklater ("Widow's Bay"), Christopher McDonald ("Hacks") and Connor Storrie ("Saturday Night Live"). It is a <span class="kw" data-tip="adj. 死后的；追授的">posthumous</span> honor for the director and actor who was killed alongside his wife, Michele Singer Reiner, in December — and the first posthumous Emmy for an on-camera performance since Raúl Julia won for "The Burning Season" in 1995.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">Presenter Wendi McLendon-Covey accepted the Emmy on Reiner's behalf to a minute-long <span class="kw" data-tip="n. 起立鼓掌">standing ovation</span> from the audience.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The win also sets a record and rewrites one that his own father, Carl Reiner, set. Rob Reiner had not won an Emmy since 1978, when he took his second <span class="kw" data-tip="adj. 连续的">consecutive</span> supporting actor <span class="kw" data-tip="n. 奖杯">trophy</span> for the classic comedy "All in the Family." The 48-year gap between that win and this newest one <span class="kw" data-tip="v. 打破（纪录）">shatters the mark</span> for the longest <span class="kw" data-tip="n. 跨度；间隔">span</span> between acting Emmy wins — 37 years — held by Carl Reiner, who went from his 1958 win for "Caesar's Hour" to a 1995 guest comedy Emmy for "Mad About You." The elder Reiner set the record in guest comedy and his son now breaks it in the same category.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Reiner, who died at 78, has been remembered across the industry as the filmmaker behind classics such as "This Is Spinal Tap," "The Princess Bride," "When Harry Met Sally" and "A Few Good Men," and was honored in the <span class="kw" data-tip="n. 追思环节（纪念逝者）">In Memoriam</span> segment at the 2026 Oscars. His guest turn on FX's "The Bear" stands as one of his final screen performances.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">This year's Emmy <span class="kw" data-tip="n. 提名">nominations</span> were led by "The Pitt" with 25 nominations, followed by "Hacks," "Widow's Bay" and "Beef." An edited version of the first two nights of the Emmys will air on FXX on Saturday, Sept. 12, at 8 p.m. ET, while the live 78th Emmys <span class="kw" data-tip="n. 直播；转播">broadcast</span> on NBC takes place on Monday, Sept. 14, at 8 p.m. ET.</span></div>
+
+      <p class="muted">原文出处：Variety（美国），2026-09-06 报道，作者 Clayton Davis（首席颁奖编辑）。报道对象为 2026 年创意艺术艾美奖（Emmy Awards Night 2）。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">posthumous</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈpɒstjʊməs/</div>
+          <div class="wc-pos"><b>adj.</b> 死后的；追授的（搭配：a posthumous honor / Emmy）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He received a <b>posthumous</b> award for bravery.</div>
+          <div class="wc-tr">他因英勇行为获追授奖项。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outstanding</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /aʊtˈstændɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 杰出的；出色的（搭配：outstanding guest actor）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She is an <b>outstanding</b> student.</div>
+          <div class="wc-tr">她是一名优秀的学生。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prevail</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /prɪˈveɪl/</div>
+          <div class="wc-pos"><b>v.</b> 胜过；占上风（搭配：prevailing over sb）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Justice will <b>prevail</b> in the end.</div>
+          <div class="wc-tr">正义终将获胜。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ovation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /əʊˈveɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 热烈鼓掌；欢呼（搭配：a standing ovation 起立鼓掌）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The singer received a standing <b>ovation</b>.</div>
+          <div class="wc-tr">这位歌手赢得了全场起立鼓掌。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trophy</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˈtrəʊfi/</div>
+          <div class="wc-pos"><b>n.</b> 奖杯（搭配：supporting actor trophy）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They lifted the <b>trophy</b> together.</div>
+          <div class="wc-tr">他们一起举起了奖杯。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consecutive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /kənˈsekjətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 连续的（搭配：his second consecutive trophy）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It rained for five <b>consecutive</b> days.</div>
+          <div class="wc-tr">连续下了五天雨。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shatter</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˈʃætə(r)/</div>
+          <div class="wc-pos"><b>v.</b> 打破（纪录）；粉碎（搭配：shatters the mark）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The news <b>shattered</b> her hopes.</div>
+          <div class="wc-tr">这个消息粉碎了她的希望。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">span</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /spæn/</div>
+          <div class="wc-pos"><b>n.</b> 跨度；间隔（搭配：the longest span between wins）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Over a <b>span</b> of ten years, the city changed a lot.</div>
+          <div class="wc-tr">在十年跨度里，这座城市变化很大。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">memoriam</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /məˈmɔːriəm/</div>
+          <div class="wc-pos"><b>n.</b> 追思；纪念（搭配：the In Memoriam segment）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The film ended with an In <b>Memoriam</b> tribute.</div>
+          <div class="wc-tr">影片以追思致敬收尾。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nomination</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˌnɒmɪˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 提名（搭配：led by … with 25 nominations）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The film received five Oscar <b>nominations</b>.</div>
+          <div class="wc-tr">这部电影获得五项奥斯卡提名。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">broadcast</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /ˈbrɔːdkɑːst/</div>
+          <div class="wc-pos"><b>n.</b> 直播；转播（搭配：the live 78th Emmys broadcast）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The match will be <b>broadcast</b> live tonight.</div>
+          <div class="wc-tr">比赛今晚将现场直播。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">guest turn</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈɡest tɜːn/</div>
+          <div class="wc-pos"><b>n.</b> 客串出演（搭配：his guest turn on FX's "The Bear"）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>His <b>guest turn</b> on the show was memorable.</div>
+          <div class="wc-tr">他在该剧中的客串令人难忘。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">a posthumous honor</span><span class="zh">追授荣誉</span></li>
+          <li><span class="en">prevailing over</span><span class="zh">击败（对手）</span></li>
+          <li><span class="en">a standing ovation</span><span class="zh">起立鼓掌</span></li>
+          <li><span class="en">shatter the mark</span><span class="zh">打破纪录</span></li>
+          <li><span class="en">the longest span</span><span class="zh">最长间隔</span></li>
+          <li><span class="en">the In Memoriam segment</span><span class="zh">追思环节</span></li>
+          <li><span class="en">guest turn</span><span class="zh">客串出演</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>逝世九个月后获艾美奖。</li>
+          <li>获最佳客串奖并创追授纪录。</li>
+          <li>颁奖人代领，全场起立鼓掌。</li>
+          <li>打破父亲保持的获奖间隔纪录。</li>
+          <li>业界缅怀其经典之作。</li>
+          <li>本届提名情况与播出安排。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Reiner won the outstanding guest actor in a comedy series for "The Bear" at the Emmy Awards Night 2, prevailing over Michael J. Fox and Brett Goldstein ("Shrinking"), Hamish Linklater ("Widow's Bay"), Christopher McDonald ("Hacks") and Connor Storrie ("Saturday Night Live").</div>
+        <div class="row"><b>主干：</b>Reiner won the outstanding guest actor in a comedy series</div>
+        <div class="row"><b>状语①：</b>for "The Bear" —— 说明获奖作品</div>
+        <div class="row"><b>状语②：</b>at the Emmy Awards Night 2 —— 地点/场合</div>
+        <div class="row"><b>伴随状语：</b>prevailing over Michael J. Fox and Brett Goldstein …, Hamish Linklater …, Christopher McDonald … and Connor Storrie … —— 现在分词短语列举全部被击败的对手</div>
+        <div class="row tr"><b>译文：</b>莱纳凭借《熊家餐馆》在艾美奖颁奖礼第二晚荣获喜剧类最佳客串男演员，击败了迈克尔·J·福克斯和布雷特·戈德斯坦（《诊疗中》）、哈米什·林克莱特（《寡妇湾》）、克里斯托弗·麦克唐纳（《绝望写手》）以及康纳·斯托里（《周六夜现场》）。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">It is a posthumous honor for the director and actor who was killed alongside his wife, Michele Singer Reiner, in December — and the first posthumous Emmy for an on-camera performance since Raúl Julia won for "The Burning Season" in 1995.</div>
+        <div class="row"><b>主干：</b>It is a posthumous honor … — and the first posthumous Emmy for an on-camera performance（并列系表结构）</div>
+        <div class="row"><b>定语从句：</b>who was killed alongside his wife, Michele Singer Reiner, in December —— 修饰 the director and actor</div>
+        <div class="row"><b>时间状语从句：</b>since Raúl Julia won for "The Burning Season" in 1995 —— 限定"first"的时间范围</div>
+        <div class="row tr"><b>译文：</b>这是对这位导演兼演员的追授荣誉——他于去年 12 月与妻子米歇尔·辛格·莱纳一同遇难；这也是自 1995 年劳尔·胡利亚凭《燃烧的季节》获奖以来，首个追授给银幕表演的艾美奖。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The 48-year gap between that win and this newest one shatters the mark for the longest span between acting Emmy wins — 37 years — held by Carl Reiner, who went from his 1958 win for "Caesar's Hour" to a 1995 guest comedy Emmy for "Mad About You."</div>
+        <div class="row"><b>主干：</b>The 48-year gap … shatters the mark</div>
+        <div class="row"><b>后置定语：</b>between that win and this newest one —— 修饰 gap</div>
+        <div class="row"><b>插入语：</b>— 37 years — 补充说明原纪录的时长</div>
+        <div class="row"><b>后置定语：</b>held by Carl Reiner —— 修饰 the mark（原纪录由 Carl Reiner 保持）</div>
+        <div class="row"><b>定语从句：</b>who went from his 1958 win for "Caesar's Hour" to a 1995 guest comedy Emmy for "Mad About You." —— 修饰 Carl Reiner</div>
+        <div class="row tr"><b>译文：</b>上次获奖与这次获奖之间相隔 48 年，打破了此前由卡尔·莱纳保持的、演艺类艾美奖最长获奖间隔纪录——37 年；卡尔·莱纳曾在 1958 年凭《凯撒时刻》获奖，又在 1995 年凭《为你疯狂》摘得喜剧类客串演员艾美奖。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Reiner, who died at 78, has been remembered across the industry as the filmmaker behind classics such as "This Is Spinal Tap," "The Princess Bride," "When Harry Met Sally" and "A Few Good Men," and was honored in the In Memoriam segment at the 2026 Oscars.</div>
+        <div class="row"><b>主干：</b>Reiner … has been remembered across the industry … and was honored in the In Memoriam segment（并列谓语：has been remembered + was honored）</div>
+        <div class="row"><b>定语从句：</b>who died at 78 —— 修饰 Reiner</div>
+        <div class="row"><b>方式状语：</b>as the filmmaker behind classics such as … —— 介词短语说明其身份</div>
+        <div class="row"><b>状语：</b>at the 2026 Oscars —— 时间/场合</div>
+        <div class="row tr"><b>译文：</b>莱纳享年 78 岁，业界铭记他是《摇滚万万岁》《公主新娘》《当哈利遇到莎莉》《好人寥寥》等经典之作的导演，他还在 2026 年奥斯卡颁奖礼的"追思环节"中获得致敬。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">美国著名导演、演员罗伯·莱纳在逝世九个月后，凭借《熊家餐馆》荣获艾美奖喜剧类最佳客串男演员，这是对去年 12 月与妻子一同遇难的他的追授荣誉，也是自 1995 年以来首个追授给银幕表演的艾美奖。颁奖人代为领奖时，全场起立鼓掌长达一分钟。此次获奖还打破了其父卡尔·莱纳保持的演艺类艾美奖最长获奖间隔纪录：罗伯·莱纳距 1978 年上次获奖相隔 48 年，超过父亲此前保持的 37 年。作为《摇滚万万岁》《公主新娘》等经典的缔造者，莱纳在 2026 年奥斯卡追思环节亦获致敬，其《熊家餐馆》客串成为他最后的银幕演出之一。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>报道称这次追授"sets a record and rewrites one that his own father, Carl Reiner, set"（创造一项纪录，同时改写其父创下的另一项）。请结合第 4 段，谈谈"家族传承"如何通过一项奖项纪录得以体现，以及"追授荣誉"对行业与观众的意义。</div>
+      <div class="q"><b>仿写题：</b>仿照第 4 段的破折号插入语结构 <span style="font-family:Georgia,serif;font-style:italic">"the longest span … — 37 years — held by …"</span>，用「— 具体数字 —」插入语补充说明的方式，围绕「历史纪录」或「个人成绩」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 384" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+          <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">莱纳逝世九个月后获艾美奖</text>
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">获最佳客串奖并创追授纪录</text>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">颁奖人代领全场起立鼓掌</text>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">打破父亲保持的获奖间隔纪录</text>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">业界缅怀其经典之作</text>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">本届提名情况与播出安排</text>
+        </svg>
+        <figcaption>段落逻辑：先点明获奖事件，再交代获奖详情与现场反应，继而阐释破纪录意义，最后补叙人物成就与本届背景。</figcaption>
+      </figure>
+
+      <footer>
+        素材来源：Variety（美国，2026-09-06）｜ 原文链接：https://variety.com/2026/tv/awards/rob-reiner-wins-posthumous-emmy-the-bear-1236849972 ｜ 仅供个人学习使用<br>
+        <a href="../index.html">返回外刊精读首页</a>
+      </footer>
+    </section>
+
   </div>
-
-  <div class="sent">
-    <div class="orig">The 48-year gap between that win and this newest one shatters the mark for the longest span between acting Emmy wins — 37 years — held by Carl Reiner, who went from his 1958 win for "Caesar's Hour" to a 1995 guest comedy Emmy for "Mad About You."</div>
-    <div class="row"><b>主干：</b>The 48-year gap … shatters the mark</div>
-    <div class="row"><b>后置定语：</b>between that win and this newest one —— 修饰 gap</div>
-    <div class="row"><b>插入语：</b>— 37 years — 补充说明原纪录的时长</div>
-    <div class="row"><b>后置定语：</b>held by Carl Reiner —— 修饰 the mark（原纪录由 Carl Reiner 保持）</div>
-    <div class="row"><b>定语从句：</b>who went from his 1958 win for "Caesar's Hour" to a 1995 guest comedy Emmy for "Mad About You." —— 修饰 Carl Reiner</div>
-    <div class="row tr"><b>译文：</b>上次获奖与这次获奖之间相隔 48 年，打破了此前由卡尔·莱纳保持的、演艺类艾美奖最长获奖间隔纪录——37 年；卡尔·莱纳曾在 1958 年凭《凯撒时刻》获奖，又在 1995 年凭《为你疯狂》摘得喜剧类客串演员艾美奖。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">Reiner, who died at 78, has been remembered across the industry as the filmmaker behind classics such as "This Is Spinal Tap," "The Princess Bride," "When Harry Met Sally" and "A Few Good Men," and was honored in the In Memoriam segment at the 2026 Oscars.</div>
-    <div class="row"><b>主干：</b>Reiner … has been remembered across the industry … and was honored in the In Memoriam segment（并列谓语：has been remembered + was honored）</div>
-    <div class="row"><b>定语从句：</b>who died at 78 —— 修饰 Reiner</div>
-    <div class="row"><b>方式状语：</b>as the filmmaker behind classics such as … —— 介词短语说明其身份</div>
-    <div class="row"><b>状语：</b>at the 2026 Oscars —— 时间/场合</div>
-    <div class="row tr"><b>译文：</b>莱纳享年 78 岁，业界铭记他是《摇滚万万岁》《公主新娘》《当哈利遇到莎莉》《好人寥寥》等经典之作的导演，他还在 2026 年奥斯卡颁奖礼的"追思环节"中获得致敬。</div>
-  </div>
-
-  <h2>四、全文大意</h2>
-  <p class="zh-sum">美国著名导演、演员罗伯·莱纳在逝世九个月后，凭借《熊家餐馆》荣获艾美奖喜剧类最佳客串男演员，这是对去年 12 月与妻子一同遇难的他的追授荣誉，也是自 1995 年以来首个追授给银幕表演的艾美奖。颁奖人代为领奖时，全场起立鼓掌长达一分钟。此次获奖还打破了其父卡尔·莱纳保持的演艺类艾美奖最长获奖间隔纪录：罗伯·莱纳距 1978 年上次获奖相隔 48 年，超过父亲此前保持的 37 年。作为《摇滚万万岁》《公主新娘》等经典的缔造者，莱纳在 2026 年奥斯卡追思环节亦获致敬，其《熊家餐馆》客串成为他最后的银幕演出之一。</p>
-
-  <h2>五、思考与仿写</h2>
-  <div class="q"><b>思考题：</b>报道称这次追授"sets a record and rewrites one that his own father, Carl Reiner, set"（创造一项纪录，同时改写其父创下的另一项）。请结合第 4 段，谈谈"家族传承"如何通过一项奖项纪录得以体现，以及"追授荣誉"对行业与观众的意义。</div>
-  <div class="q"><b>仿写题：</b>仿照第 4 段的破折号插入语结构 <span style="font-family:Georgia,serif;font-style:italic">"the longest span … — 37 years — held by …"</span>，用「— 具体数字 —」插入语补充说明的方式，围绕「历史纪录」或「个人成绩」写一个句子。</div>
-
-  <h2>六、文章结构图解</h2>
-  <figure style="margin:0 0 10px;">
-    <svg viewBox="0 0 720 384" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共6段）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
-      <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
-      <text x="360" y="24" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="15" fill="#9c2f16">文章段落结构（共 6 段）</text>
-      <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">莱纳逝世九个月后获艾美奖</text>
-      <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">获最佳客串奖并创追授纪录</text>
-      <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">颁奖人代领全场起立鼓掌</text>
-      <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">打破父亲保持的获奖间隔纪录</text>
-      <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">业界缅怀其经典之作</text>
-      <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">本届提名情况与播出安排</text>
-    </svg>
-    <figcaption>段落逻辑：先点明获奖事件，再交代获奖详情与现场反应，继而阐释破纪录意义，最后补叙人物成就与本届背景。</figcaption>
-  </figure>
-
-  <footer>
-    素材来源：Variety（美国，2026-09-06）｜ 原文链接：https://variety.com/2026/tv/awards/rob-reiner-wins-posthumous-emmy-the-bear-1236849972 ｜ 仅供个人学习使用<br>
-    <a href="../index.html">返回外刊精读首页</a>
-  </footer>
 </article>
 
 </body>

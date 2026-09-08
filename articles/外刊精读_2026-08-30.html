@@ -8,48 +8,54 @@
 :root{
   --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
   --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
-  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
   --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
   --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
-/* 顶部导航 */
-nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
-.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
-/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
-.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
-/* Hero 配图 */
-figure.hero{margin:0 0 34px;}
-figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
-h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
-/* 原文段落 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
 .para{margin-bottom:16px;}
-.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
-/* 悬停查词 */
-.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
   content:attr(data-tip);
   position:absolute;left:50%;bottom:calc(100% + 8px);
   transform:translateX(-50%);
-  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
   font-size:12px;font-weight:500;font-family:var(--sans);
   white-space:nowrap;opacity:0;visibility:hidden;
   transition:opacity .15s;z-index:50;pointer-events:none;
@@ -57,18 +63,36 @@ h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em
 }
 .kw::before{
   content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
-  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
   opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
-/* 词汇表 */
-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
-th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
-th{background:var(--paper);font-weight:600;}
-td.en,th.en{font-family:var(--serif);}
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
-/* 长难句 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -83,6 +107,14 @@ td.en,th.en{font-family:var(--serif);}
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+}
+
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
 </style>
 </head>
@@ -90,138 +122,278 @@ footer a{color:var(--muted);text-decoration:underline;}
 
 <nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
 
-<article class="wrap" data-od-id="article">
+<article class="wrap">
   <div class="eyebrow">Sport · 体育 / 网球</div>
   <h1>阿尔卡拉斯横扫保罗，直落三盘晋级美网八强</h1>
   <div class="deck">US Open: Carlos Alcaraz breezes past Tommy Paul in straight sets to advance to quarterfinal</div>
   <div class="byline"><span><b>来源</b> Yahoo Sports 雅虎体育（美）</span><span><b>作者</b> 未署名</span><span><b>日期</b> 2026-08-30</span><span><b>难度</b> 中等</span></div>
 
-  <figure class="hero" data-od-id="hero-figure">
-    <img src="../assets/images/外刊精读_2026-08-30.jpg" alt="网球运动（配图）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;">
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-08-30.jpg" alt="网球运动（配图）">
     <figcaption>配图：网球运动（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
   </figure>
 
-  <h2>一、原文精读</h2>
-  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
-
-  <div class="para"><span class="idx">1</span><span class="en">Carlos Alcaraz is moving on in the 2026 US Open after a <span class="kw" data-tip="adj. 决定性的；彻底的">definitive</span> win over Tommy Paul, with the No. 2 ranked player beating the American in <span class="kw" data-tip="n. 直落三盘（一局未失）">straight sets</span>, 6-4, 6-3, 6-4.</span></div>
-  <div class="para"><span class="idx">2</span><span class="en">In a <span class="kw" data-tip="adj. 令人费解的">baffling</span> stat, Sunday's three-set victory marks the 14th straight sets that Alcaraz has won against the American. Paul has not <span class="kw" data-tip="v. 拿下一盘">taken a set</span> over Alcaraz since Wimbledon in 2024, even though the pair have faced off four times since then.</span></div>
-  <div class="para"><span class="idx">3</span><span class="en">Though Paul was unable to break through again this time, he did put up a fight in the first set: Alcaraz and Paul <span class="kw" data-tip="v. 交替拿分；互有胜负">traded games</span> until the young Spaniard finally <span class="kw" data-tip="v. 破发">broke the American's serve</span> to eventually win 6-4.</span></div>
-  <div class="para"><span class="idx">4</span><span class="en">Alcaraz has barely missed a step since returning from a wrist injury that <span class="kw" data-tip="v. 使…缺阵">sidelined</span> him for 4 ½ months. The Spaniard kicked things off with a strong showing, beating Roman Safiullin in straight sets; though he <span class="kw" data-tip="v. 丢掉第一盘">dropped the first set</span> to Jaime Faria in the second round, he pulled back for another win, and then beat Wu Yibing in straight sets as well.</span></div>
-  <div class="para"><span class="idx">5</span><span class="en">Initially, Alcaraz's return, paired with World No. 1 Jannik Sinner pulling out of the tournament with a knee injury, left the impression of a <span class="kw" data-tip="n. 开放签表（人人有机会）">wide-open bracket</span> in men's singles. But even after a long <span class="kw" data-tip="n. 缺阵期；休战">layoff</span>, Alcaraz is continuing his <span class="kw" data-tip="n. 统治力">dominance</span>: He is now 63-0 in major tournaments after winning the first two sets.</span></div>
-  <div class="para"><span class="idx">6</span><span class="en">Alcaraz will now continue his journey toward trying to <span class="kw" data-tip="v. 卫冕（冠军）">defend</span> his 2025 US Open title in the <span class="kw" data-tip="n. 四分之一决赛">quarterfinal</span>, facing No. 8 Ben Shelton, who beat Stefanos Tsitsipas in straight sets later Sunday.</span></div>
-  <div class="para"><span class="idx">7</span><span class="en">"I didn't see the <span class="kw" data-tip="n. 签表；抽签结果">draw</span> … oh my god," Alcaraz said, after revealing that he had thought he would be facing the winner of Frances Tiafoe-Daniil Medvedev. (Tiafoe beat Medvedev in straight sets shortly after Alcaraz's win.)</span></div>
-  <div class="para"><span class="idx">8</span><span class="en">Paul, meanwhile, will fall out of a <span class="kw" data-tip="n. 大满贯（赛事）">Grand Slam</span> before the quarterfinal for the sixth <span class="kw" data-tip="adj. 连续的">consecutive</span> tournament, with his last quarterfinal appearance coming at Roland-Garros in 2025.</span></div>
-
-  <p class="muted">原文出处：Yahoo Sports（美国），2026-09-06 报道，标题为「US Open: Carlos Alcaraz breezes past Tommy Paul in straight sets to advance to quarterfinal」。赛事为 2026 年美国网球公开赛男单第四轮。</p>
-
-  <h2>二、重点词汇</h2>
-  <table>
-    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
-    <tr><td class="en">straight sets</td><td>/ˌstreɪt ˈsets/</td><td>n.</td><td>直落三盘（一局未失）</td><td>win in straight sets</td></tr>
-    <tr><td class="en">definitive</td><td>/dɪˈfɪnətɪv/</td><td>adj.</td><td>决定性的；明确的</td><td>a definitive win</td></tr>
-    <tr><td class="en">baffling</td><td>/ˈbæflɪŋ/</td><td>adj.</td><td>令人费解的</td><td>a baffling stat</td></tr>
-    <tr><td class="en">trade</td><td>/treɪd/</td><td>v.</td><td>交替；互换</td><td>trade games 交替拿分</td></tr>
-    <tr><td class="en">serve</td><td>/sɜːv/</td><td>n.</td><td>发球（局）</td><td>break sb's serve 破发</td></tr>
-    <tr><td class="en">sideline</td><td>/ˈsaɪdlaɪn/</td><td>v.</td><td>使…缺阵</td><td>be sidelined for 4 ½ months</td></tr>
-    <tr><td class="en">bracket</td><td>/ˈbrækɪt/</td><td>n.</td><td>签表；对阵表</td><td>a wide-open bracket</td></tr>
-    <tr><td class="en">layoff</td><td>/ˈleɪɒf/</td><td>n.</td><td>缺阵期；休战</td><td>after a long layoff</td></tr>
-    <tr><td class="en">dominance</td><td>/ˈdɒmɪnəns/</td><td>n.</td><td>统治力</td><td>continue his dominance</td></tr>
-    <tr><td class="en">defend</td><td>/dɪˈfend/</td><td>v.</td><td>卫冕（冠军）</td><td>defend his 2025 US Open title</td></tr>
-    <tr><td class="en">quarterfinal</td><td>/ˌkwɔːtəˈfaɪnl/</td><td>n.</td><td>四分之一决赛</td><td>reach the quarterfinal</td></tr>
-    <tr><td class="en">draw</td><td>/drɔː/</td><td>n.</td><td>签表；抽签结果</td><td>I didn't see the draw</td></tr>
-    <tr><td class="en">Grand Slam</td><td>/ˌɡrænd ˈslæm/</td><td>n.</td><td>大满贯（赛事）</td><td>fall out of a Grand Slam</td></tr>
-    <tr><td class="en">consecutive</td><td>/kənˈsekjətɪv/</td><td>adj.</td><td>连续的</td><td>the sixth consecutive tournament</td></tr>
-  </table>
-
-  <h2>三、长难句分析（三步拆解法）</h2>
-
-  <div class="sent">
-    <div class="orig">In a baffling stat, Sunday's three-set victory marks the 14th straight sets that Alcaraz has won against the American. Paul has not taken a set over Alcaraz since Wimbledon in 2024, even though the pair have faced off four times since then.</div>
-    <div class="row"><b>状语：</b>In a baffling stat —— 介词短语，点明"这一数据令人费解"</div>
-    <div class="row"><b>主干①：</b>Sunday's three-set victory marks the 14th straight sets</div>
-    <div class="row"><b>定语从句：</b>that Alcaraz has won against the American —— 修饰 the 14th straight sets</div>
-    <div class="row"><b>主干②：</b>Paul has not taken a set over Alcaraz</div>
-    <div class="row"><b>让步状语从句：</b>even though the pair have faced off four times since then —— 与主干②构成对比</div>
-    <div class="row tr"><b>译文：</b>这一数据令人费解：周日的三盘胜利标志着阿尔卡拉斯已连续赢下对这位美国选手的第 14 盘。自 2024 年温网以来，保罗再未从阿尔卡拉斯手中拿下一盘，尽管此后两人已交手四次。</div>
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>在 2026 年美网男单第四轮中，2 号种子、西班牙名将卡洛斯·阿尔卡拉斯直落三盘横扫美国选手汤米·保罗，强势晋级八强。这已是阿尔卡拉斯连续第 14 盘战胜保罗——后者自 2024 年温网以来再未从其手中拿下一盘。经历腕伤缺阵四个半月后，阿尔卡拉斯状态不减，在赢下前两盘的大满贯比赛中保持 63 胜 0 负的惊人战绩。本文记录了这场胜利，并展望了他冲击卫冕的八强之路。</p>
   </div>
 
-  <div class="sent">
-    <div class="orig">Initially, Alcaraz's return, paired with World No. 1 Jannik Sinner pulling out of the tournament with a knee injury, left the impression of a wide-open bracket in men's singles.</div>
-    <div class="row"><b>主干：</b>Alcaraz's return left the impression of a wide-open bracket in men's singles</div>
-    <div class="row"><b>状语：</b>Initially —— 副词</div>
-    <div class="row"><b>后置定语：</b>paired with World No. 1 Jannik Sinner pulling out of the tournament with a knee injury —— 过去分词短语修饰 return，内含现在分词 pulling out 作 Sinner 的定语</div>
-    <div class="row tr"><b>译文：</b>起初，阿尔卡拉斯复出，加之世界第一扬尼克·辛纳因膝伤退出本届赛事，让人感觉男单签表全面放开、人人都有机会。</div>
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Carlos Alcaraz is moving on in the 2026 US Open after a <span class="kw" data-tip="adj. 决定性的；彻底的">definitive</span> win over Tommy Paul, with the No. 2 ranked player beating the American in <span class="kw" data-tip="n. 直落三盘（一局未失）">straight sets</span>, 6-4, 6-3, 6-4.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">In a <span class="kw" data-tip="adj. 令人费解的">baffling</span> stat, Sunday's three-set victory marks the 14th straight sets that Alcaraz has won against the American. Paul has not <span class="kw" data-tip="v. 拿下一盘">taken a set</span> over Alcaraz since Wimbledon in 2024, even though the pair have faced off four times since then.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">Though Paul was unable to break through again this time, he did put up a fight in the first set: Alcaraz and Paul <span class="kw" data-tip="v. 交替拿分；互有胜负">traded games</span> until the young Spaniard finally <span class="kw" data-tip="v. 破发">broke the American's serve</span> to eventually win 6-4.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">Alcaraz has barely missed a step since returning from a wrist injury that <span class="kw" data-tip="v. 使…缺阵">sidelined</span> him for 4 ½ months. The Spaniard kicked things off with a strong showing, beating Roman Safiullin in straight sets; though he <span class="kw" data-tip="v. 丢掉第一盘">dropped the first set</span> to Jaime Faria in the second round, he pulled back for another win, and then beat Wu Yibing in straight sets as well.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Initially, Alcaraz's return, paired with World No. 1 Jannik Sinner pulling out of the tournament with a knee injury, left the impression of a <span class="kw" data-tip="n. 开放签表（人人有机会）">wide-open bracket</span> in men's singles. But even after a long <span class="kw" data-tip="n. 缺阵期；休战">layoff</span>, Alcaraz is continuing his <span class="kw" data-tip="n. 统治力">dominance</span>: He is now 63-0 in major tournaments after winning the first two sets.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Alcaraz will now continue his journey toward trying to <span class="kw" data-tip="v. 卫冕（冠军）">defend</span> his 2025 US Open title in the <span class="kw" data-tip="n. 四分之一决赛">quarterfinal</span>, facing No. 8 Ben Shelton, who beat Stefanos Tsitsipas in straight sets later Sunday.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">"I didn't see the <span class="kw" data-tip="n. 签表；抽签结果">draw</span> … oh my god," Alcaraz said, after revealing that he had thought he would be facing the winner of Frances Tiafoe-Daniil Medvedev. (Tiafoe beat Medvedev in straight sets shortly after Alcaraz's win.)</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Paul, meanwhile, will fall out of a <span class="kw" data-tip="n. 大满贯（赛事）">Grand Slam</span> before the quarterfinal for the sixth <span class="kw" data-tip="adj. 连续的">consecutive</span> tournament, with his last quarterfinal appearance coming at Roland-Garros in 2025.</span></div>
+
+      <p class="muted">原文出处：Yahoo Sports（美国），2026-09-06 报道，标题为「US Open: Carlos Alcaraz breezes past Tommy Paul in straight sets to advance to quarterfinal」。赛事为 2026 年美国网球公开赛男单第四轮。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">straight sets</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌstreɪt ˈsets/</div>
+          <div class="wc-pos"><b>n.</b> 直落三盘（一局未失）（搭配：win in straight sets）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She won the match in <b>straight sets</b>.</div>
+          <div class="wc-tr">她直落两盘赢得了比赛。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">definitive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /dɪˈfɪnətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 决定性的；明确的（搭配：a definitive win）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>This is the <b>definitive</b> answer to the question.</div>
+          <div class="wc-tr">这是这个问题的确切答案。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">baffling</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈbæflɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 令人费解的（搭配：a baffling stat）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The mystery remains <b>baffling</b> to scientists.</div>
+          <div class="wc-tr">这个谜团仍让科学家困惑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trade</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /treɪd/</div>
+          <div class="wc-pos"><b>v.</b> 交替；互换（搭配：trade games 交替拿分）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The two teams <b>traded</b> goals in the second half.</div>
+          <div class="wc-tr">两队在下半场交替进球。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">serve</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /sɜːv/</div>
+          <div class="wc-pos"><b>n.</b> 发球（局）（搭配：break sb's serve 破发）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Her <b>serve</b> was too fast to return.</div>
+          <div class="wc-tr">她的发球太快，接不住。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sideline</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈsaɪdlaɪn/</div>
+          <div class="wc-pos"><b>v.</b> 使…缺阵（搭配：be sidelined for 4 ½ months）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He was <b>sidelined</b> by a knee injury.</div>
+          <div class="wc-tr">他因膝伤缺阵。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bracket</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈbrækɪt/</div>
+          <div class="wc-pos"><b>n.</b> 签表；对阵表（搭配：a wide-open bracket）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He was placed in a tough <b>bracket</b>.</div>
+          <div class="wc-tr">他被分在一个实力强劲的签区。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">layoff</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈleɪɒf/</div>
+          <div class="wc-pos"><b>n.</b> 缺阵期；休战（搭配：after a long layoff）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He returned to training after a long <b>layoff</b>.</div>
+          <div class="wc-tr">长期缺阵后他恢复了训练。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dominance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˈdɒmɪnəns/</div>
+          <div class="wc-pos"><b>n.</b> 统治力（搭配：continue his dominance）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team showed total <b>dominance</b> in the game.</div>
+          <div class="wc-tr">这支队伍在比赛中展现了绝对统治力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">defend</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /dɪˈfend/</div>
+          <div class="wc-pos"><b>v.</b> 卫冕（冠军）（搭配：defend his 2025 US Open title）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She will <b>defend</b> her title next year.</div>
+          <div class="wc-tr">她明年将卫冕。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">quarterfinal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌkwɔːtəˈfaɪnl/</div>
+          <div class="wc-pos"><b>n.</b> 四分之一决赛（搭配：reach the quarterfinal）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He reached the <b>quarterfinal</b> for the first time.</div>
+          <div class="wc-tr">他首次闯入八强。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">draw</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /drɔː/</div>
+          <div class="wc-pos"><b>n.</b> 签表；抽签结果（搭配：I didn't see the draw）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>draw</b> for the tournament was announced today.</div>
+          <div class="wc-tr">赛事签表今天公布。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">Grand Slam</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌɡrænd ˈslæm/</div>
+          <div class="wc-pos"><b>n.</b> 大满贯（赛事）（搭配：fall out of a Grand Slam）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Winning a <b>Grand Slam</b> is every player's dream.</div>
+          <div class="wc-tr">赢得大满贯是每个球员的梦想。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consecutive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /kənˈsekjətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 连续的（搭配：the sixth consecutive tournament）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He won three <b>consecutive</b> matches.</div>
+          <div class="wc-tr">他连赢了三场比赛。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">in straight sets</span><span class="zh">直落三盘</span></li>
+          <li><span class="en">a definitive win</span><span class="zh">决定性胜利</span></li>
+          <li><span class="en">take a set</span><span class="zh">拿下一盘</span></li>
+          <li><span class="en">break sb's serve</span><span class="zh">破发</span></li>
+          <li><span class="en">be sidelined for …</span><span class="zh">缺阵……</span></li>
+          <li><span class="en">a wide-open bracket</span><span class="zh">开放签表</span></li>
+          <li><span class="en">after a long layoff</span><span class="zh">长期缺阵后</span></li>
+          <li><span class="en">defend one's title</span><span class="zh">卫冕</span></li>
+          <li><span class="en">reach the quarterfinal</span><span class="zh">晋级八强</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>直落三盘横扫保罗，晋级八强。</li>
+          <li>连续第 14 盘战胜保罗。</li>
+          <li>首盘鏖战，破发取胜。</li>
+          <li>腕伤复出后连克强敌。</li>
+          <li>63-0 延续统治力。</li>
+          <li>八强对阵谢尔顿，力争卫冕。</li>
+          <li>没看签表，惊讶对手。</li>
+          <li>保罗第六次止步八强前。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">In a baffling stat, Sunday's three-set victory marks the 14th straight sets that Alcaraz has won against the American. Paul has not taken a set over Alcaraz since Wimbledon in 2024, even though the pair have faced off four times since then.</div>
+        <div class="row"><b>状语：</b>In a baffling stat —— 介词短语，点明"这一数据令人费解"</div>
+        <div class="row"><b>主干①：</b>Sunday's three-set victory marks the 14th straight sets</div>
+        <div class="row"><b>定语从句：</b>that Alcaraz has won against the American —— 修饰 the 14th straight sets</div>
+        <div class="row"><b>主干②：</b>Paul has not taken a set over Alcaraz</div>
+        <div class="row"><b>让步状语从句：</b>even though the pair have faced off four times since then —— 与主干②构成对比</div>
+        <div class="row tr"><b>译文：</b>这一数据令人费解：周日的三盘胜利标志着阿尔卡拉斯已连续赢下对这位美国选手的第 14 盘。自 2024 年温网以来，保罗再未从阿尔卡拉斯手中拿下一盘，尽管此后两人已交手四次。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Initially, Alcaraz's return, paired with World No. 1 Jannik Sinner pulling out of the tournament with a knee injury, left the impression of a wide-open bracket in men's singles.</div>
+        <div class="row"><b>主干：</b>Alcaraz's return left the impression of a wide-open bracket in men's singles</div>
+        <div class="row"><b>状语：</b>Initially —— 副词</div>
+        <div class="row"><b>后置定语：</b>paired with World No. 1 Jannik Sinner pulling out of the tournament with a knee injury —— 过去分词短语修饰 return，内含现在分词 pulling out 作 Sinner 的定语</div>
+        <div class="row tr"><b>译文：</b>起初，阿尔卡拉斯复出，加之世界第一扬尼克·辛纳因膝伤退出本届赛事，让人感觉男单签表全面放开、人人都有机会。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">But even after a long layoff, Alcaraz is continuing his dominance: He is now 63-0 in major tournaments after winning the first two sets.</div>
+        <div class="row"><b>主干：</b>Alcaraz is continuing his dominance</div>
+        <div class="row"><b>让步状语：</b>even after a long layoff —— 强调"即便长期缺阵"</div>
+        <div class="row"><b>解释说明：</b>He is now 63-0 in major tournaments after winning the first two sets —— 冒号后对 dominance 作具体说明</div>
+        <div class="row tr"><b>译文：</b>但即便长期缺阵，阿尔卡拉斯仍在延续他的统治力：如今他在大满贯赛事中赢下前两盘后，战绩已达 63 胜 0 负。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Alcaraz will now continue his journey toward trying to defend his 2025 US Open title in the quarterfinal, facing No. 8 Ben Shelton, who beat Stefanos Tsitsipas in straight sets later Sunday.</div>
+        <div class="row"><b>主干：</b>Alcaraz will now continue his journey</div>
+        <div class="row"><b>目的状语：</b>toward trying to defend his 2025 US Open title in the quarterfinal —— 介词短语表目的</div>
+        <div class="row"><b>伴随状语：</b>facing No. 8 Ben Shelton —— 现在分词短语</div>
+        <div class="row"><b>定语从句：</b>who beat Stefanos Tsitsipas in straight sets later Sunday —— 修饰 Ben Shelton</div>
+        <div class="row tr"><b>译文：</b>阿尔卡拉斯将继续他的卫冕征程，在四分之一决赛中对阵 8 号种子本·谢尔顿，后者在周日稍晚直落三盘击败了斯特凡诺斯·西西帕斯。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">在 2026 年美网男单第四轮中，2 号种子、西班牙名将卡洛斯·阿尔卡拉斯直落三盘（6-4、6-3、6-4）横扫美国选手汤米·保罗，晋级八强。这已是阿尔卡拉斯连续第 14 盘战胜保罗，后者自 2024 年温网以来再未从其手中拿下一盘。经历腕伤缺阵四个半月后，阿尔卡拉斯状态未减，复出以来连克强敌，如今在赢下前两盘的大满贯比赛中保持 63 胜 0 负的惊人战绩。世界第一辛纳因伤退赛一度令男单签表显得开放，但阿尔卡拉斯依旧展现出统治力。他将在四分之一决赛对阵 8 号种子本·谢尔顿，力争卫冕去年美网冠军；而保罗则连续第六次在大满贯中止步八强之前。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>报道用「63-0 after winning the first two sets」这一数据凸显阿尔卡拉斯的统治力。请结合第 2、5 段，谈谈「长期伤病复出」为何反而更能衬托一名运动员的竞技实力，以及"稳定开局"在高水平对抗中的价值。</div>
+      <div class="q"><b>仿写题：</b>仿照第 5 段的让步结构 <span style="font-family:Georgia,serif;font-style:italic">"even after a long layoff, … is continuing his dominance"</span>，用「即便……仍然……」（even after…, … is still…）围绕「备考」或「坚持锻炼」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+          <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="160" y="67" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. 直落三盘横扫保罗</text>
+          <line x1="360" y1="82" x2="360" y2="92" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="160" y="119" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2. 连续第14盘胜保罗</text>
+          <line x1="360" y1="134" x2="360" y2="144" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="160" y="171" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3. 首盘鏖战破发取胜</text>
+          <line x1="360" y1="186" x2="360" y2="196" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="160" y="223" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4. 腕伤复出连克强敌</text>
+          <line x1="360" y1="238" x2="360" y2="248" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="160" y="275" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5. 63-0延续统治力</text>
+          <line x1="360" y1="290" x2="360" y2="300" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="160" y="327" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6. 八强对阵谢尔顿卫冕</text>
+          <line x1="360" y1="342" x2="360" y2="352" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="160" y="379" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7. 没看签表惊讶对手</text>
+          <line x1="360" y1="394" x2="360" y2="404" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="160" y="431" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8. 保罗第六次止步八强</text>
+        </svg>
+        <figcaption>段落逻辑：先亮出阿尔卡拉斯的战果，再用数据、过程与伤病背景层层补足，最后落到八强展望与保罗的遗憾收尾。</figcaption>
+      </figure>
+
+      <footer>
+        素材来源：Yahoo Sports（美国，2026-09-06）｜ 原文链接：https://sports.yahoo.com/tennis/article/us-open-carlos-alcaraz-breezes-past-tommy-paul-in-straight-sets-to-advance-to-quarterfinal-204220466.html ｜ 仅供个人学习使用<br>
+        <a href="../index.html">返回外刊精读首页</a>
+      </footer>
+    </section>
+
   </div>
-
-  <div class="sent">
-    <div class="orig">But even after a long layoff, Alcaraz is continuing his dominance: He is now 63-0 in major tournaments after winning the first two sets.</div>
-    <div class="row"><b>主干：</b>Alcaraz is continuing his dominance</div>
-    <div class="row"><b>让步状语：</b>even after a long layoff —— 强调"即便长期缺阵"</div>
-    <div class="row"><b>解释说明：</b>He is now 63-0 in major tournaments after winning the first two sets —— 冒号后对 dominance 作具体说明</div>
-    <div class="row tr"><b>译文：</b>但即便长期缺阵，阿尔卡拉斯仍在延续他的统治力：如今他在大满贯赛事中赢下前两盘后，战绩已达 63 胜 0 负。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">Alcaraz will now continue his journey toward trying to defend his 2025 US Open title in the quarterfinal, facing No. 8 Ben Shelton, who beat Stefanos Tsitsipas in straight sets later Sunday.</div>
-    <div class="row"><b>主干：</b>Alcaraz will now continue his journey</div>
-    <div class="row"><b>目的状语：</b>toward trying to defend his 2025 US Open title in the quarterfinal —— 介词短语表目的</div>
-    <div class="row"><b>伴随状语：</b>facing No. 8 Ben Shelton —— 现在分词短语</div>
-    <div class="row"><b>定语从句：</b>who beat Stefanos Tsitsipas in straight sets later Sunday —— 修饰 Ben Shelton</div>
-    <div class="row tr"><b>译文：</b>阿尔卡拉斯将继续他的卫冕征程，在四分之一决赛中对阵 8 号种子本·谢尔顿，后者在周日稍晚直落三盘击败了斯特凡诺斯·西西帕斯。</div>
-  </div>
-
-  <h2>四、全文大意</h2>
-  <p class="zh-sum">在 2026 年美网男单第四轮中，2 号种子、西班牙名将卡洛斯·阿尔卡拉斯直落三盘（6-4、6-3、6-4）横扫美国选手汤米·保罗，晋级八强。这已是阿尔卡拉斯连续第 14 盘战胜保罗，后者自 2024 年温网以来再未从其手中拿下一盘。经历腕伤缺阵四个半月后，阿尔卡拉斯状态未减，复出以来连克强敌，如今在赢下前两盘的大满贯比赛中保持 63 胜 0 负的惊人战绩。世界第一辛纳因伤退赛一度令男单签表显得开放，但阿尔卡拉斯依旧展现出统治力。他将在四分之一决赛对阵 8 号种子本·谢尔顿，力争卫冕去年美网冠军；而保罗则连续第六次在大满贯中止步八强之前。</p>
-
-  <h2>五、思考与仿写</h2>
-  <div class="q"><b>思考题：</b>报道用「63-0 after winning the first two sets」这一数据凸显阿尔卡拉斯的统治力。请结合第 2、5 段，谈谈「长期伤病复出」为何反而更能衬托一名运动员的竞技实力，以及"稳定开局"在高水平对抗中的价值。</div>
-  <div class="q"><b>仿写题：</b>仿照第 5 段的让步结构 <span style="font-family:Georgia,serif;font-style:italic">"even after a long layoff, … is continuing his dominance"</span>，用「即便……仍然……」（even after…, … is still…）围绕「备考」或「坚持锻炼」写一个句子。</div>
-
-  <h2>六、文章结构图解</h2>
-  <figure data-od-id="structure-figure" style="margin:0 0 34px;">
-    <svg viewBox="0 0 700 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共8段）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
-      <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
-      <text x="350" y="28" text-anchor="middle" font-family="Georgia,'Songti SC','Noto Serif SC',serif" font-size="17" fill="#1c1a17">文章段落结构（共 8 段）</text>
-
-      <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="160" y="67" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. 直落三盘横扫保罗</text>
-      <line x1="360" y1="82" x2="360" y2="92" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="160" y="119" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2. 连续第14盘胜保罗</text>
-      <line x1="360" y1="134" x2="360" y2="144" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="160" y="171" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3. 首盘鏖战破发取胜</text>
-      <line x1="360" y1="186" x2="360" y2="196" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="160" y="223" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4. 腕伤复出连克强敌</text>
-      <line x1="360" y1="238" x2="360" y2="248" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="160" y="275" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5. 63-0延续统治力</text>
-      <line x1="360" y1="290" x2="360" y2="300" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="160" y="327" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6. 八强对阵谢尔顿卫冕</text>
-      <line x1="360" y1="342" x2="360" y2="352" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="160" y="379" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7. 没看签表惊讶对手</text>
-      <line x1="360" y1="394" x2="360" y2="404" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-
-      <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="160" y="431" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8. 保罗第六次止步八强</text>
-    </svg>
-    <figcaption>段落逻辑：先亮出阿尔卡拉斯的战果，再用数据、过程与伤病背景层层补足，最后落到八强展望与保罗的遗憾收尾。</figcaption>
-  </figure>
-
-  <footer>
-    素材来源：Yahoo Sports（美国，2026-09-06）｜ 原文链接：https://sports.yahoo.com/tennis/article/us-open-carlos-alcaraz-breezes-past-tommy-paul-in-straight-sets-to-advance-to-quarterfinal-204220466.html ｜ 仅供个人学习使用<br>
-    <a href="../index.html">返回外刊精读首页</a>
-  </footer>
 </article>
 
 </body>

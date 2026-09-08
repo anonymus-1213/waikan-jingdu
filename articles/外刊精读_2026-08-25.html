@@ -8,48 +8,54 @@
 :root{
   --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
   --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
-  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
   --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
   --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
-/* 顶部导航 */
-nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
-.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
-/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
-.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
-/* Hero 配图 */
-figure.hero{margin:0 0 34px;}
-figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
-h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
-/* 原文段落 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
 .para{margin-bottom:16px;}
-.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
-/* 悬停查词 */
-.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
   content:attr(data-tip);
   position:absolute;left:50%;bottom:calc(100% + 8px);
   transform:translateX(-50%);
-  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
   font-size:12px;font-weight:500;font-family:var(--sans);
   white-space:nowrap;opacity:0;visibility:hidden;
   transition:opacity .15s;z-index:50;pointer-events:none;
@@ -57,18 +63,36 @@ h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em
 }
 .kw::before{
   content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
-  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
   opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
-/* 词汇表 */
-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
-th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
-th{background:var(--paper);font-weight:600;}
-td.en,th.en{font-family:var(--serif);}
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
-/* 长难句 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -83,6 +107,14 @@ td.en,th.en{font-family:var(--serif);}
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+}
+
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
 </style>
 </head>
@@ -90,148 +122,305 @@ footer a{color:var(--muted);text-decoration:underline;}
 
 <nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
 
-<article class="wrap" data-od-id="article">
+<article class="wrap">
   <div class="eyebrow">Science · 太空 / 科学</div>
   <h1>NASA 罗曼太空望远镜升空，开启宇宙深空巡天</h1>
   <div class="deck">NASA's Roman Telescope lifts off, starting a mission to explore the universe's biggest mysteries</div>
   <div class="byline"><span><b>来源</b> Scientific American</span><span><b>作者</b> Claire Cameron</span><span><b>日期</b> 2026-08-25</span><span><b>难度</b> 中等</span></div>
 
-  <figure class="hero" data-od-id="hero-figure">
-    <img src="../assets/images/外刊精读_2026-08-25.jpg" alt="太空望远镜（配图）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;">
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-08-25.jpg" alt="太空望远镜（配图）">
     <figcaption>配图：太空望远镜与深空（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
   </figure>
 
-  <h2>一、原文精读</h2>
-  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
-
-  <div class="para"><span class="idx">1</span><span class="en">NASA's newest telescope is officially on its way to deep space after more than a decade of development and high <span class="kw" data-tip="n. 期待；预期">anticipation</span>. Onboard a SpaceX Falcon Heavy rocket, the Nancy Grace Roman Space Telescope <span class="kw" data-tip="v. 升空；发射">lifted off</span> from Launch Complex 39A at the Kennedy Space Center in Florida at 7:26 A.M. EDT on August 30.</span></div>
-  <div class="para"><span class="idx">2</span><span class="en">The telescope is set to <span class="kw" data-tip="v. 改变；变革">transform</span> our understanding of the <span class="kw" data-tip="n. 宇宙">cosmos</span>—from the furthest reaches and most mysterious forces to the planets and stars that make up our own galaxy and even objects in our solar system.</span></div>
-  <div class="para"><span class="idx">3</span><span class="en">NASA administrator Jared Isaacman said at a postlaunch press conference that all systems appear <span class="kw" data-tip="adj. 正常的；名义上的">nominal</span> after launch. In the next weeks, the telescope's instruments will be <span class="kw" data-tip="v. 校准">calibrated</span> and turned on as it travels to its point in space.</span></div>
-  <div class="para"><span class="idx">4</span><span class="en">The Roman Telescope will conduct its science observations from a <span class="kw" data-tip="n. 高处的位置；栖息处">perch</span> at the second sun-Earth <span class="kw" data-tip="n. 拉格朗日点">Lagrange point</span>, or L2, a location some million miles "behind" our planet where the sun's and Earth's <span class="kw" data-tip="adj. 引力的">gravitational</span> pulls balance each other out.</span></div>
-  <div class="para"><span class="idx">5</span><span class="en">"Roman is <span class="kw" data-tip="adj. 蓄势待发的；准备就绪的">poised</span> to conduct extraordinary <span class="kw" data-tip="n. 巡天；观测普查">surveys</span> that will impact every area of astronomy," said Julie McEnery, Roman's senior project scientist, at a press conference ahead of the launch on Saturday.</span></div>
-  <div class="para"><span class="idx">6</span><span class="en">"We'll perform a revolutionary <span class="kw" data-tip="n. 普查；统计">census</span> of planets around other stars and may confirm that our standard model of the universe is incorrect and put us on the path to figuring out what is right," she added.</span></div>
-  <div class="para"><span class="idx">7</span><span class="en">With an initial science mission lasting five years, Roman will join NASA's Hubble Space Telescope and James Webb Space Telescope in revealing the universe in ways we have never seen before. Among the secrets Roman will <span class="kw" data-tip="v. 探测；探究">probe</span> is the nature of dark energy and dark matter.</span></div>
-  <div class="para"><span class="idx">8</span><span class="en">Roman is also <span class="kw" data-tip="v. 配备；装备">outfitted</span> with a special instrument called a <span class="kw" data-tip="n. 日冕仪">coronagraph</span>, which will enable the telescope to observe <span class="kw" data-tip="n. 系外行星">exoplanets</span> with <span class="kw" data-tip="adj. 前所未有的">unprecedented</span> sensitivity. "We think that we will be capable of detecting exoplanets that are about 100 million times <span class="kw" data-tip="adj. 微弱的；暗淡的">fainter</span> than their stars," says Vanessa Bailey, Roman coronagraph instrument scientist at NASA's Jet Propulsion Laboratory.</span></div>
-  <div class="para"><span class="idx">9</span><span class="en">At the postlaunch press conference, Nicky Fox, associate administrator of NASA's Science Mission Directorate, said Roman could increase the number of known exoplanets from some 6,000 to 100,000.</span></div>
-
-  <p class="muted">原文出处：Scientific American，Claire Cameron，2026-08-30（发射后持续更新中）。</p>
-
-  <h2>二、重点词汇</h2>
-  <table>
-    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
-    <tr><td class="en">anticipation</td><td>/ænˌtɪsɪˈpeɪʃn/</td><td>n.</td><td>期待；预期</td><td>high anticipation 高度期待</td></tr>
-    <tr><td class="en">lift off</td><td>/ˌlɪft ˈɒf/</td><td>v.</td><td>升空；发射</td><td>lifted off from Launch Complex 39A</td></tr>
-    <tr><td class="en">transform</td><td>/trænsˈfɔːm/</td><td>v.</td><td>改变；变革</td><td>transform our understanding</td></tr>
-    <tr><td class="en">cosmos</td><td>/ˈkɒzmɒs/</td><td>n.</td><td>宇宙</td><td>the furthest reaches of the cosmos</td></tr>
-    <tr><td class="en">nominal</td><td>/ˈnɒmɪnl/</td><td>adj.</td><td>正常的；名义上的</td><td>all systems appear nominal</td></tr>
-    <tr><td class="en">calibrate</td><td>/ˈkælɪbreɪt/</td><td>v.</td><td>校准</td><td>instruments will be calibrated</td></tr>
-    <tr><td class="en">perch</td><td>/pɜːtʃ/</td><td>n.</td><td>高处的位置；栖息处</td><td>from a perch at the Lagrange point</td></tr>
-    <tr><td class="en">Lagrange point</td><td>/ləˈɡrɒnʒ pɔɪnt/</td><td>n.</td><td>拉格朗日点</td><td>the second sun-Earth Lagrange point (L2)</td></tr>
-    <tr><td class="en">gravitational</td><td>/ˌɡrævɪˈteɪʃənl/</td><td>adj.</td><td>引力的</td><td>gravitational pulls balance each other out</td></tr>
-    <tr><td class="en">poised</td><td>/pɔɪzd/</td><td>adj.</td><td>蓄势待发的；准备就绪的</td><td>is poised to conduct</td></tr>
-    <tr><td class="en">survey</td><td>/ˈsɜːveɪ/</td><td>n.</td><td>巡天；观测普查</td><td>extraordinary surveys</td></tr>
-    <tr><td class="en">census</td><td>/ˈsensəs/</td><td>n.</td><td>普查；统计</td><td>a revolutionary census of planets</td></tr>
-    <tr><td class="en">probe</td><td>/prəʊb/</td><td>v.</td><td>探测；探究</td><td>probe the nature of dark energy</td></tr>
-    <tr><td class="en">coronagraph</td><td>/kəˈrəʊnəɡrɑːf/</td><td>n.</td><td>日冕仪</td><td>a special instrument called a coronagraph</td></tr>
-    <tr><td class="en">exoplanet</td><td>/ˈeksəʊplænɪt/</td><td>n.</td><td>系外行星</td><td>observe exoplanets</td></tr>
-    <tr><td class="en">unprecedented</td><td>/ʌnˈpresɪdentɪd/</td><td>adj.</td><td>前所未有的</td><td>with unprecedented sensitivity</td></tr>
-  </table>
-
-  <h2>三、长难句分析（三步拆解法）</h2>
-
-  <div class="sent">
-    <div class="orig">Onboard a SpaceX Falcon Heavy rocket, the Nancy Grace Roman Space Telescope lifted off from Launch Complex 39A at the Kennedy Space Center in Florida at 7:26 A.M. EDT on August 30.</div>
-    <div class="row"><b>主干：</b>the Nancy Grace Roman Space Telescope lifted off</div>
-    <div class="row"><b>状语①（方式）：</b>Onboard a SpaceX Falcon Heavy rocket —— 介词短语，表搭载方式</div>
-    <div class="row"><b>状语②（地点）：</b>from Launch Complex 39A at the Kennedy Space Center in Florida —— 层层修饰</div>
-    <div class="row"><b>状语③（时间）：</b>at 7:26 A.M. EDT on August 30</div>
-    <div class="row tr"><b>译文：</b>搭载着 SpaceX 猎鹰重型火箭，南希·格雷丝·罗曼太空望远镜于 8 月 30 日美东时间上午 7 时 26 分，从佛罗里达州肯尼迪航天中心 39A 发射台升空。</div>
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>历经十余年研制、承载高度期待的 NASA 新一代望远镜"南希·格雷丝·罗曼"近日由 SpaceX 猎鹰重型火箭发射升空，前往距地球约一百万英里的第二拉格朗日点（L2）。它将开展为期五年的科学任务，与哈勃、韦布并肩，重点探测暗能量与暗物质，并对太阳系外行星做"革命性普查"。本文梳理了发射经过、驻留轨道与科学目标，并介绍日冕仪如何以空前灵敏度观测比恒星暗约一亿倍的系外行星——NASA 预计它有望把已知系外行星数量从约 6000 颗提升到 10 万颗。</p>
   </div>
 
-  <div class="sent">
-    <div class="orig">The Roman Telescope will conduct its science observations from a perch at the second sun-Earth Lagrange point, or L2, a location some million miles "behind" our planet where the sun's and Earth's gravitational pulls balance each other out.</div>
-    <div class="row"><b>主干：</b>The Roman Telescope will conduct its science observations</div>
-    <div class="row"><b>状语：</b>from a perch at the second sun-Earth Lagrange point, or L2</div>
-    <div class="row"><b>同位语：</b>a location some million miles "behind" our planet —— 补充说明 L2 的位置</div>
-    <div class="row"><b>定语从句：</b>where the sun's and Earth's gravitational pulls balance each other out —— 修饰 location</div>
-    <div class="row tr"><b>译文：</b>罗曼望远镜将在第二日地拉格朗日点（L2）开展科学观测——那是地球"背后"约一百万英里处的一个位置，太阳与地球的引力在此相互抵消。</div>
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">NASA's newest telescope is officially on its way to deep space after more than a decade of development and high <span class="kw" data-tip="n. 期待；预期">anticipation</span>. Onboard a SpaceX Falcon Heavy rocket, the Nancy Grace Roman Space Telescope <span class="kw" data-tip="v. 升空；发射">lifted off</span> from Launch Complex 39A at the Kennedy Space Center in Florida at 7:26 A.M. EDT on August 30.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The telescope is set to <span class="kw" data-tip="v. 改变；变革">transform</span> our understanding of the <span class="kw" data-tip="n. 宇宙">cosmos</span>—from the furthest reaches and most mysterious forces to the planets and stars that make up our own galaxy and even objects in our solar system.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">NASA administrator Jared Isaacman said at a postlaunch press conference that all systems appear <span class="kw" data-tip="adj. 正常的；名义上的">nominal</span> after launch. In the next weeks, the telescope's instruments will be <span class="kw" data-tip="v. 校准">calibrated</span> and turned on as it travels to its point in space.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The Roman Telescope will conduct its science observations from a <span class="kw" data-tip="n. 高处的位置；栖息处">perch</span> at the second sun-Earth <span class="kw" data-tip="n. 拉格朗日点">Lagrange point</span>, or L2, a location some million miles "behind" our planet where the sun's and Earth's <span class="kw" data-tip="adj. 引力的">gravitational</span> pulls balance each other out.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">"Roman is <span class="kw" data-tip="adj. 蓄势待发的；准备就绪的">poised</span> to conduct extraordinary <span class="kw" data-tip="n. 巡天；观测普查">surveys</span> that will impact every area of astronomy," said Julie McEnery, Roman's senior project scientist, at a press conference ahead of the launch on Saturday.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">"We'll perform a revolutionary <span class="kw" data-tip="n. 普查；统计">census</span> of planets around other stars and may confirm that our standard model of the universe is incorrect and put us on the path to figuring out what is right," she added.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">With an initial science mission lasting five years, Roman will join NASA's Hubble Space Telescope and James Webb Space Telescope in revealing the universe in ways we have never seen before. Among the secrets Roman will <span class="kw" data-tip="v. 探测；探究">probe</span> is the nature of dark energy and dark matter.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Roman is also <span class="kw" data-tip="v. 配备；装备">outfitted</span> with a special instrument called a <span class="kw" data-tip="n. 日冕仪">coronagraph</span>, which will enable the telescope to observe <span class="kw" data-tip="n. 系外行星">exoplanets</span> with <span class="kw" data-tip="adj. 前所未有的">unprecedented</span> sensitivity. "We think that we will be capable of detecting exoplanets that are about 100 million times <span class="kw" data-tip="adj. 微弱的；暗淡的">fainter</span> than their stars," says Vanessa Bailey, Roman coronagraph instrument scientist at NASA's Jet Propulsion Laboratory.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">At the postlaunch press conference, Nicky Fox, associate administrator of NASA's Science Mission Directorate, said Roman could increase the number of known exoplanets from some 6,000 to 100,000.</span></div>
+
+      <p class="muted">原文出处：Scientific American，Claire Cameron，2026-08-30（发射后持续更新中）。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">anticipation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ænˌtɪsɪˈpeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 期待；预期（搭配：high anticipation）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The children waited with great <b>anticipation</b> for the summer holiday.</div>
+          <div class="wc-tr">孩子们怀着极大的期待等待暑假。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lift off</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˌlɪft ˈɒf/</div>
+          <div class="wc-pos"><b>v.</b> 升空；发射（搭配：lift off from Launch Complex 39A）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The rocket <b>lifted off</b> successfully on Tuesday morning.</div>
+          <div class="wc-tr">火箭于周二早上成功升空。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">transform</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /trænsˈfɔːm/</div>
+          <div class="wc-pos"><b>v.</b> 改变；变革（搭配：transform our understanding）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The internet has <b>transformed</b> the way we live and work.</div>
+          <div class="wc-tr">互联网改变了我们生活和工作的方式。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cosmos</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˈkɒzmɒs/</div>
+          <div class="wc-pos"><b>n.</b> 宇宙（搭配：the furthest reaches of the cosmos）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Astronomers study the <b>cosmos</b> to understand its origin.</div>
+          <div class="wc-tr">天文学家研究宇宙以了解它的起源。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nominal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈnɒmɪnl/</div>
+          <div class="wc-pos"><b>adj.</b> 正常的；名义上的（搭配：all systems appear nominal）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>After the repair, all systems are back to <b>nominal</b> operation.</div>
+          <div class="wc-tr">维修后所有系统恢复正常运行。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">calibrate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈkælɪbreɪt/</div>
+          <div class="wc-pos"><b>v.</b> 校准（搭配：instruments will be calibrated）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The technician <b>calibrated</b> the instrument before the test.</div>
+          <div class="wc-tr">技术员在测试前校准了仪器。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">perch</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /pɜːtʃ/</div>
+          <div class="wc-pos"><b>n.</b> 高处的位置；栖息处（搭配：from a perch at the Lagrange point）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The bird watched us from its <b>perch</b> on the branch.</div>
+          <div class="wc-tr">鸟儿从树枝上的栖息处看着我们。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">Lagrange point</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ləˈɡrɒnʒ pɔɪnt/</div>
+          <div class="wc-pos"><b>n.</b> 拉格朗日点（搭配：the second sun-Earth Lagrange point L2）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The telescope will stay at the second sun-Earth <b>Lagrange point</b>.</div>
+          <div class="wc-tr">望远镜将驻留在第二日地拉格朗日点。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gravitational</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˌɡrævɪˈteɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 引力的（搭配：gravitational pulls）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The moon's <b>gravitational</b> pull causes the tides.</div>
+          <div class="wc-tr">月球的引力引起潮汐。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">poised</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /pɔɪzd/</div>
+          <div class="wc-pos"><b>adj.</b> 蓄势待发的；准备就绪的（搭配：be poised to conduct）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team is <b>poised</b> to win the championship.</div>
+          <div class="wc-tr">这支队伍蓄势待发，准备赢得冠军。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">survey</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英/美 /ˈsɜːveɪ/</div>
+          <div class="wc-pos"><b>n.</b> 巡天；观测普查（搭配：extraordinary surveys）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A recent <b>survey</b> shows that most students enjoy reading.</div>
+          <div class="wc-tr">最近一项调查显示大多数学生喜欢阅读。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">census</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ˈsensəs/</div>
+          <div class="wc-pos"><b>n.</b> 普查；统计（搭配：a revolutionary census of planets）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The national <b>census</b> takes place every ten years.</div>
+          <div class="wc-tr">全国人口普查每十年进行一次。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">probe</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /prəʊb/</div>
+          <div class="wc-pos"><b>v.</b> 探测；探究（搭配：probe the nature of dark energy）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists use satellites to <b>probe</b> the mysteries of space.</div>
+          <div class="wc-tr">科学家用卫星探测太空的奥秘。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">coronagraph</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /kəˈrəʊnəɡrɑːf/</div>
+          <div class="wc-pos"><b>n.</b> 日冕仪（搭配：a special instrument called a coronagraph）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>coronagraph</b> blocks starlight so planets can be seen.</div>
+          <div class="wc-tr">日冕仪遮挡星光，以便看到行星。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">exoplanet</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英/美 /ˈeksəʊplænɪt/</div>
+          <div class="wc-pos"><b>n.</b> 系外行星（搭配：observe exoplanets）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Thousands of <b>exoplanets</b> have been discovered beyond our solar system.</div>
+          <div class="wc-tr">太阳系之外已发现数千颗系外行星。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">unprecedented</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英/美 /ʌnˈpresɪdentɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 前所未有的（搭配：with unprecedented sensitivity）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The flood caused <b>unprecedented</b> damage to the city.</div>
+          <div class="wc-tr">洪水给这座城市造成了前所未有的损失。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">lift off</span><span class="zh">升空；发射</span></li>
+          <li><span class="en">high anticipation</span><span class="zh">高度期待</span></li>
+          <li><span class="en">transform our understanding</span><span class="zh">改变我们的理解</span></li>
+          <li><span class="en">the furthest reaches of the cosmos</span><span class="zh">宇宙最深处</span></li>
+          <li><span class="en">be poised to do sth</span><span class="zh">蓄势待发；准备做某事</span></li>
+          <li><span class="en">conduct surveys / observations</span><span class="zh">开展巡天/观测</span></li>
+          <li><span class="en">probe the nature of …</span><span class="zh">探究……的本质</span></li>
+          <li><span class="en">be outfitted with …</span><span class="zh">配备……</span></li>
+          <li><span class="en">with unprecedented sensitivity</span><span class="zh">以前所未有的灵敏度</span></li>
+          <li><span class="en">balance each other out</span><span class="zh">相互抵消</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>罗曼望远镜历经十余年研制，由猎鹰重型火箭发射升空。</li>
+          <li>它将变革人类对宇宙的理解。</li>
+          <li>发射后系统运行正常，接下来几周将校准并开启仪器。</li>
+          <li>望远镜将在第二拉格朗日点（L2）开展观测。</li>
+          <li>罗曼蓄势待发，将开展影响各天文学领域的巡天。</li>
+          <li>它将对行星做革命性普查，或证伪现有宇宙模型。</li>
+          <li>五年任务与哈勃、韦布并肩，探测暗能量与暗物质。</li>
+          <li>配备日冕仪，能以空前灵敏度观测暗弱系外行星。</li>
+          <li>NASA 预计系外行星数量可从 6000 跃升至 10 万。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Onboard a SpaceX Falcon Heavy rocket, the Nancy Grace Roman Space Telescope lifted off from Launch Complex 39A at the Kennedy Space Center in Florida at 7:26 A.M. EDT on August 30.</div>
+        <div class="row"><b>主干：</b>the Nancy Grace Roman Space Telescope lifted off</div>
+        <div class="row"><b>状语①（方式）：</b>Onboard a SpaceX Falcon Heavy rocket —— 介词短语，表搭载方式</div>
+        <div class="row"><b>状语②（地点）：</b>from Launch Complex 39A at the Kennedy Space Center in Florida —— 层层修饰</div>
+        <div class="row"><b>状语③（时间）：</b>at 7:26 A.M. EDT on August 30</div>
+        <div class="row tr"><b>译文：</b>搭载着 SpaceX 猎鹰重型火箭，南希·格雷丝·罗曼太空望远镜于 8 月 30 日美东时间上午 7 时 26 分，从佛罗里达州肯尼迪航天中心 39A 发射台升空。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The Roman Telescope will conduct its science observations from a perch at the second sun-Earth Lagrange point, or L2, a location some million miles "behind" our planet where the sun's and Earth's gravitational pulls balance each other out.</div>
+        <div class="row"><b>主干：</b>The Roman Telescope will conduct its science observations</div>
+        <div class="row"><b>状语：</b>from a perch at the second sun-Earth Lagrange point, or L2</div>
+        <div class="row"><b>同位语：</b>a location some million miles "behind" our planet —— 补充说明 L2 的位置</div>
+        <div class="row"><b>定语从句：</b>where the sun's and Earth's gravitational pulls balance each other out —— 修饰 location</div>
+        <div class="row tr"><b>译文：</b>罗曼望远镜将在第二日地拉格朗日点（L2）开展科学观测——那是地球"背后"约一百万英里处的一个位置，太阳与地球的引力在此相互抵消。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">"We'll perform a revolutionary census of planets around other stars and may confirm that our standard model of the universe is incorrect and put us on the path to figuring out what is right," she added.</div>
+        <div class="row"><b>主干：</b>We'll perform a revolutionary census … and may confirm …（并列谓语）</div>
+        <div class="row"><b>宾语从句：</b>that our standard model of the universe is incorrect and put us on the path …（confirm 的宾语，内含并列结构）</div>
+        <div class="row"><b>修饰：</b>of planets around other stars —— 介词短语修饰 census</div>
+        <div class="row"><b>动名词短语：</b>to figuring out what is right —— what is right 为 figuring out 的宾语从句</div>
+        <div class="row tr"><b>译文：</b>"我们将对围绕其他恒星的行星开展一次革命性的普查，并且可能证实我们的宇宙标准模型有误，从而把我们引上探寻真相的道路。"她补充道。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Roman is also outfitted with a special instrument called a coronagraph, which will enable the telescope to observe exoplanets with unprecedented sensitivity.</div>
+        <div class="row"><b>主干：</b>Roman is also outfitted with a special instrument</div>
+        <div class="row"><b>修饰：</b>called a coronagraph —— 过去分词短语修饰 instrument</div>
+        <div class="row"><b>定语从句：</b>which will enable the telescope to observe exoplanets … —— 修饰 coronagraph</div>
+        <div class="row"><b>状语：</b>with unprecedented sensitivity —— 介词短语表程度/方式</div>
+        <div class="row tr"><b>译文：</b>罗曼还配备了一种名为日冕仪的特殊仪器，它将使望远镜能够以前所未有的灵敏度观测系外行星。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">At the postlaunch press conference, Nicky Fox, associate administrator of NASA's Science Mission Directorate, said Roman could increase the number of known exoplanets from some 6,000 to 100,000.</div>
+        <div class="row"><b>主干：</b>Nicky Fox said …</div>
+        <div class="row"><b>同位语：</b>associate administrator of NASA's Science Mission Directorate —— 说明 Nicky Fox 的身份</div>
+        <div class="row"><b>状语：</b>At the postlaunch press conference</div>
+        <div class="row"><b>宾语从句：</b>Roman could increase the number of known exoplanets from some 6,000 to 100,000（省略 that）</div>
+        <div class="row tr"><b>译文：</b>在发射后的新闻发布会上，NASA 科学任务理事会副局长尼基·福克斯表示，罗曼有望将已知系外行星的数量从约 6000 颗提升到 10 万颗。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">NASA 新一代太空望远镜"南希·格雷丝·罗曼"于 8 月 30 日由 SpaceX 猎鹰重型火箭从肯尼迪航天中心发射升空，前往距地球约一百万英里的第二拉格朗日点（L2）。这架历经十余年研制的望远镜将开展为期五年的科学任务，与哈勃、韦布望远镜并肩，重点探测暗能量与暗物质的本质，并对太阳系外行星进行"革命性普查"。其巡天图像规模惊人——单张图像相当于 50 多万台 4K 电视；搭载的日冕仪能以空前的灵敏度观测比恒星暗约一亿倍的系外行星。NASA 预计罗曼望远镜有望将已知系外行星数量从约 6000 颗提升至 10 万颗，首张图像预计明年初公布。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>报道提到罗曼望远镜可能"证实宇宙标准模型有误"。请结合第 6、7 段，谈谈为何"证伪现有理论"同样是科学仪器的一大价值，以及暗能量"是否恒定"这一问题为何如此关键。</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段的 <span style="font-family:Georgia,serif;font-style:italic">"… outfitted with a special instrument called a coronagraph, which will enable the telescope to observe … with unprecedented sensitivity."</span>，用 "called … which will enable … to …" 结构描述一件工具或技术的功能。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#1c1a17">文章段落结构（共 9 段）</text>
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. 罗曼望远镜发射升空</text>
+          <line x1="360" y1="82" x2="360" y2="90" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2. 将变革对宇宙的理解</text>
+          <line x1="360" y1="134" x2="360" y2="142" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3. 发射后系统正常待校准</text>
+          <line x1="360" y1="186" x2="360" y2="194" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4. 驻留 L2 拉格朗日点观测</text>
+          <line x1="360" y1="238" x2="360" y2="246" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5. 巡天影响各天文学领域</text>
+          <line x1="360" y1="290" x2="360" y2="298" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6. 行星普查或证伪宇宙模型</text>
+          <line x1="360" y1="342" x2="360" y2="350" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7. 五年任务探暗能量暗物质</text>
+          <line x1="360" y1="394" x2="360" y2="402" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8. 日冕仪观测暗弱系外行星</text>
+          <line x1="360" y1="446" x2="360" y2="454" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9. 系外行星数量跃升至十万</text>
+        </svg>
+        <figcaption>段落逻辑：从发射升空、使命定位、驻留轨道，到科学目标（暗物质暗能量 / 系外行星普查），层层递进、逐步展开。</figcaption>
+      </figure>
+
+      <footer>
+        素材来源：Scientific American（Claire Cameron，2026-08-30）｜ 原文链接：<a href="https://www.scientificamerican.com/article/nasas-nancy-grace-roman-telescope-launches-to-space">scientificamerican.com</a> ｜ 仅供个人学习使用<br>
+        <a href="../index.html">返回外刊精读首页</a>
+      </footer>
+    </section>
+
   </div>
-
-  <div class="sent">
-    <div class="orig">"We'll perform a revolutionary census of planets around other stars and may confirm that our standard model of the universe is incorrect and put us on the path to figuring out what is right," she added.</div>
-    <div class="row"><b>主干：</b>We'll perform a revolutionary census … and may confirm …（并列谓语）</div>
-    <div class="row"><b>宾语从句：</b>that our standard model of the universe is incorrect and put us on the path …（confirm 的宾语，内含并列结构）</div>
-    <div class="row"><b>修饰：</b>of planets around other stars —— 介词短语修饰 census</div>
-    <div class="row"><b>动名词短语：</b>to figuring out what is right —— what is right 为 figuring out 的宾语从句</div>
-    <div class="row tr"><b>译文：</b>"我们将对围绕其他恒星的行星开展一次革命性的普查，并且可能证实我们的宇宙标准模型有误，从而把我们引上探寻真相的道路。"她补充道。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">Roman is also outfitted with a special instrument called a coronagraph, which will enable the telescope to observe exoplanets with unprecedented sensitivity.</div>
-    <div class="row"><b>主干：</b>Roman is also outfitted with a special instrument</div>
-    <div class="row"><b>修饰：</b>called a coronagraph —— 过去分词短语修饰 instrument</div>
-    <div class="row"><b>定语从句：</b>which will enable the telescope to observe exoplanets … —— 修饰 coronagraph</div>
-    <div class="row"><b>状语：</b>with unprecedented sensitivity —— 介词短语表程度/方式</div>
-    <div class="row tr"><b>译文：</b>罗曼还配备了一种名为日冕仪的特殊仪器，它将使望远镜能够以前所未有的灵敏度观测系外行星。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">At the postlaunch press conference, Nicky Fox, associate administrator of NASA's Science Mission Directorate, said Roman could increase the number of known exoplanets from some 6,000 to 100,000.</div>
-    <div class="row"><b>主干：</b>Nicky Fox said …</div>
-    <div class="row"><b>同位语：</b>associate administrator of NASA's Science Mission Directorate —— 说明 Nicky Fox 的身份</div>
-    <div class="row"><b>状语：</b>At the postlaunch press conference</div>
-    <div class="row"><b>宾语从句：</b>Roman could increase the number of known exoplanets from some 6,000 to 100,000（省略 that）</div>
-    <div class="row tr"><b>译文：</b>在发射后的新闻发布会上，NASA 科学任务理事会副局长尼基·福克斯表示，罗曼有望将已知系外行星的数量从约 6000 颗提升到 10 万颗。</div>
-  </div>
-
-  <h2>四、全文大意</h2>
-  <p class="zh-sum">NASA 新一代太空望远镜"南希·格雷丝·罗曼"于 8 月 30 日由 SpaceX 猎鹰重型火箭从肯尼迪航天中心发射升空，前往距地球约一百万英里的第二拉格朗日点（L2）。这架历经十余年研制的望远镜将开展为期五年的科学任务，与哈勃、韦布望远镜并肩，重点探测暗能量与暗物质的本质，并对太阳系外行星进行"革命性普查"。其巡天图像规模惊人——单张图像相当于 50 多万台 4K 电视；搭载的日冕仪能以空前的灵敏度观测比恒星暗约一亿倍的系外行星。NASA 预计罗曼望远镜有望将已知系外行星数量从约 6000 颗提升至 10 万颗，首张图像预计明年初公布。</p>
-
-  <h2>五、思考与仿写</h2>
-  <div class="q"><b>思考题：</b>报道提到罗曼望远镜可能"证实宇宙标准模型有误"。请结合第 6、7 段，谈谈为何"证伪现有理论"同样是科学仪器的一大价值，以及暗能量"是否恒定"这一问题为何如此关键。</div>
-  <div class="q"><b>仿写题：</b>仿照第 8 段的 <span style="font-family:Georgia,serif;font-style:italic">"… outfitted with a special instrument called a coronagraph, which will enable the telescope to observe … with unprecedented sensitivity."</span>，用 "called … which will enable … to …" 结构描述一件工具或技术的功能。</div>
-
-  <h2>六、文章结构图解</h2>
-  <figure class="hero" data-od-id="structure-figure" style="margin-top:16px">
-    <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
-      <defs>
-        <marker id="sarr" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#9c2f16"/></marker>
-      </defs>
-      <text x="360" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#1c1a17">文章段落结构（共 9 段）</text>
-      <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. 罗曼望远镜发射升空</text>
-      <line x1="360" y1="82" x2="360" y2="90" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
-      <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2. 将变革对宇宙的理解</text>
-      <line x1="360" y1="134" x2="360" y2="142" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
-      <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3. 发射后系统正常待校准</text>
-      <line x1="360" y1="186" x2="360" y2="194" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
-      <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4. 驻留 L2 拉格朗日点观测</text>
-      <line x1="360" y1="238" x2="360" y2="246" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
-      <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5. 巡天影响各天文学领域</text>
-      <line x1="360" y1="290" x2="360" y2="298" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
-      <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6. 行星普查或证伪宇宙模型</text>
-      <line x1="360" y1="342" x2="360" y2="350" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
-      <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7. 五年任务探暗能量暗物质</text>
-      <line x1="360" y1="394" x2="360" y2="402" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
-      <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8. 日冕仪观测暗弱系外行星</text>
-      <line x1="360" y1="446" x2="360" y2="454" stroke="#9c2f16" stroke-width="1.5" marker-end="url(#sarr)"/>
-      <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9. 系外行星数量跃升至十万</text>
-    </svg>
-    <figcaption>段落逻辑：从发射升空、使命定位、驻留轨道，到科学目标（暗物质暗能量 / 系外行星普查），层层递进、逐步展开。</figcaption>
-  </figure>
-
-  <footer>
-    素材来源：Scientific American（Claire Cameron，2026-08-30）｜ 原文链接：<a href="https://www.scientificamerican.com/article/nasas-nancy-grace-roman-telescope-launches-to-space">scientificamerican.com</a> ｜ 仅供个人学习使用<br>
-    <a href="../index.html">返回外刊精读首页</a>
-  </footer>
 </article>
 
 </body>
