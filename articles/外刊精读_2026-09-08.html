@@ -8,48 +8,61 @@
 :root{
   --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
   --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
-  --blue:#1f3a5f; --blue-soft:#eef3f8; --green:#2f5d3a;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
   --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
   --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
 /* 顶部导航 */
-nav.top{padding:22px 26px 0;max-width:760px;margin:0 auto;font-size:13px;}
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
-.wrap{max-width:700px;margin:0 auto;padding:8px 26px 90px;}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
 /* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5vw,38px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
-.byline{font-size:13px;color:var(--muted);margin-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
 /* Hero 配图 */
-figure.hero{margin:0 0 34px;}
-figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
-h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--line);}
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
 /* 原文段落 */
 .para{margin-bottom:16px;}
-.para .idx{display:inline-block;font-family:var(--serif);color:var(--accent);font-size:13px;margin-right:8px;vertical-align:top;line-height:1.9;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
 /* 悬停查词 */
-.kw{position:relative;color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;cursor:help;transition:background .15s;}
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
   content:attr(data-tip);
   position:absolute;left:50%;bottom:calc(100% + 8px);
   transform:translateX(-50%);
-  background:#1f3a5f;color:#fff;padding:5px 12px;border-radius:4px;
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
   font-size:12px;font-weight:500;font-family:var(--sans);
   white-space:nowrap;opacity:0;visibility:hidden;
   transition:opacity .15s;z-index:50;pointer-events:none;
@@ -57,16 +70,38 @@ h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em
 }
 .kw::before{
   content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
-  transform:translateX(-50%);border:6px solid transparent;border-top-color:#1f3a5f;
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
   opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
-/* 词汇表 */
-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 4px;}
-th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
-th{background:var(--paper);font-weight:600;}
-td.en,th.en{font-family:var(--serif);}
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
 /* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
@@ -83,6 +118,16 @@ td.en,th.en{font-family:var(--serif);}
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
 </style>
 </head>
@@ -90,149 +135,315 @@ footer a{color:var(--muted);text-decoration:underline;}
 
 <nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
 
-<article class="wrap" data-od-id="article">
+<article class="wrap">
   <div class="eyebrow">Nature · 人与自然 / 生态 / 科普</div>
   <h1>人类"在场"如何悄悄改变野生动物的一举一动</h1>
   <div class="deck">A huge GPS study shows that simply being near wild animals can reshape how they move — even without roads or buildings</div>
   <div class="byline"><span><b>来源</b> Science / Yale University / ScienceDaily（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-08</span><span><b>难度</b> 中等</span></div>
 
-  <figure class="hero" data-od-id="hero-figure">
-  <img src="../assets/images/外刊精读_2026-09-08.jpg" alt="野生动物（配图）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;">
-  <figcaption>配图：森林中的野生鹿（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
-</figure>
-
-  <h2>一、原文精读</h2>
-  <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
-
-  <div class="para"><span class="idx">1</span><span class="en">When we think of how humans affect <span class="kw" data-tip="n. 野生动物（总称）">wildlife</span>, we often picture roads, cities and cleared forests. But a large new study suggests that simply being present — even for a short visit — can change the way animals move and live.</span></div>
-  <div class="para"><span class="idx">2</span><span class="en">The research, led by scientists at Yale University and published in the journal <em>Science</em>, combined GPS <span class="kw" data-tip="v. 追踪；跟踪">tracking</span> data from 37 <span class="kw" data-tip="n. 物种（单复数同形）">species</span> — 22 kinds of birds and 15 <span class="kw" data-tip="n. 哺乳动物">mammals</span> — across the United States with mobile phone location data showing where people go.</span></div>
-  <div class="para"><span class="idx">3</span><span class="en">In total, the team recorded about 11.8 million location points from more than 4,500 animals. By <span class="kw" data-tip="v. 比较；对比">comparing</span> animal movements with human activity, they could <span class="kw" data-tip="v. 区分；使分离">separate</span> the effect of human <span class="kw" data-tip="n. 在场；存在">presence</span> from the effect of <span class="kw" data-tip="n. 地貌；景观">landscape</span> changes such as roads and buildings.</span></div>
-  <div class="para"><span class="idx">4</span><span class="en">The results were <span class="kw" data-tip="adj. 显著的；惊人的">striking</span>. Human presence alone was enough to <span class="kw" data-tip="v. 重塑；改变">reshape</span> wildlife movement. Around 57 percent of the species studied were affected by both human presence and changes to the landscape.</span></div>
-  <div class="para"><span class="idx">5</span><span class="en">The study also found that 67 percent of mammals and 68 percent of birds <span class="kw" data-tip="v. 改变；变更">altered</span> the size of their <span class="kw" data-tip="n. 家域；活动范围">home range</span> — the area where they feed, rest and raise their young. Some animals <span class="kw" data-tip="v. 转移；转变">shifted</span> to nighttime activity, while others abandoned areas they had used for years.</span></div>
-  <div class="para"><span class="idx">6</span><span class="en">These changes matter. When animals are pushed out of good <span class="kw" data-tip="n. 栖息地">habitat</span>, they may spend less time <span class="kw" data-tip="v. 觅食">foraging</span> and feeding their young, which can lower their chances of <span class="kw" data-tip="n. 生存">survival</span>.</span></div>
-  <div class="para"><span class="idx">7</span><span class="en">The researchers say the findings have important lessons for <span class="kw" data-tip="n. （对自然资源的）保护">conservation</span>. Parks, trails and <span class="kw" data-tip="n. 保护区">protected areas</span> can reduce the stress on wildlife if they are carefully designed, for example by limiting how close visitors can get.</span></div>
-  <div class="para"><span class="idx">8</span><span class="en">For ordinary people, the message is simple: when we step into nature, we are not <span class="kw" data-tip="adj. 看不见的；隐形的">invisible</span>. Giving wild animals space is one of the easiest ways to protect them.</span></div>
-
-  <p class="muted">原文出处：本文根据《科学》（Science，2026 年 5 月）刊发、由耶鲁大学主导的动物追踪研究，及 ScienceDaily 相关报道（2026-08-28）整理编写，供学习使用。</p>
-
-  <h2>二、重点词汇</h2>
-  <table>
-    <tr><th>单词</th><th>音标</th><th>词性</th><th>释义</th><th>词块 / 搭配</th></tr>
-    <tr><td class="en">wildlife</td><td>/ˈwaɪldlaɪf/</td><td>n.</td><td>野生动物（总称）</td><td>protect wildlife 保护野生动物</td></tr>
-    <tr><td class="en">track</td><td>/træk/</td><td>v.</td><td>追踪；跟踪</td><td>GPS tracking；track animals</td></tr>
-    <tr><td class="en">species</td><td>/ˈspiːʃiːz/</td><td>n.</td><td>物种（单复数同形）</td><td>endangered species 濒危物种</td></tr>
-    <tr><td class="en">mammal</td><td>/ˈmæml/</td><td>n.</td><td>哺乳动物</td><td>mammals and birds</td></tr>
-    <tr><td class="en">compare</td><td>/kəmˈpeə(r)/</td><td>v.</td><td>比较；对比</td><td>compare A with B 把 A 与 B 比较</td></tr>
-    <tr><td class="en">presence</td><td>/ˈprezns/</td><td>n.</td><td>在场；存在</td><td>human presence 人类在场</td></tr>
-    <tr><td class="en">landscape</td><td>/ˈlændskeɪp/</td><td>n.</td><td>地貌；景观</td><td>landscape changes 景观变化</td></tr>
-    <tr><td class="en">striking</td><td>/ˈstraɪkɪŋ/</td><td>adj.</td><td>显著的；惊人的</td><td>a striking finding 惊人的发现</td></tr>
-    <tr><td class="en">reshape</td><td>/ˌriːˈʃeɪp/</td><td>v.</td><td>重塑；改变</td><td>reshape wildlife movement</td></tr>
-    <tr><td class="en">alter</td><td>/ˈɔːltə(r)/</td><td>v.</td><td>改变；变更</td><td>alter the size of 改变…的大小</td></tr>
-    <tr><td class="en">home range</td><td>/ˈhəʊm reɪndʒ/</td><td>n.</td><td>家域；活动范围</td><td>expand one's home range</td></tr>
-    <tr><td class="en">shift</td><td>/ʃɪft/</td><td>v.</td><td>转移；转变</td><td>shift to nighttime activity</td></tr>
-    <tr><td class="en">habitat</td><td>/ˈhæbɪtæt/</td><td>n.</td><td>栖息地</td><td>natural habitat 自然栖息地</td></tr>
-    <tr><td class="en">forage</td><td>/ˈfɒrɪdʒ/</td><td>v.</td><td>觅食</td><td>forage for food 觅食</td></tr>
-    <tr><td class="en">survival</td><td>/səˈvaɪvl/</td><td>n.</td><td>生存</td><td>chances of survival 生存机会</td></tr>
-    <tr><td class="en">conservation</td><td>/ˌkɒnsəˈveɪʃn/</td><td>n.</td><td>（对自然资源的）保护</td><td>wildlife conservation 野生动物保护</td></tr>
-    <tr><td class="en">protected area</td><td>/prəˈtektɪd ˈeəriə/</td><td>n.</td><td>保护区</td><td>establish protected areas</td></tr>
-  </table>
-
-  <h2>三、长难句分析（三步拆解法）</h2>
-
-  <div class="sent">
-    <div class="orig">The research, led by scientists at Yale University and published in the journal Science, combined GPS tracking data from 37 species across the United States with mobile phone location data showing where people go.</div>
-    <div class="row"><b>主干：</b>The research combined GPS tracking data … with mobile phone location data（主语 + combined A with B）</div>
-    <div class="row"><b>后置定语（过去分词短语并列）：</b>led by scientists at Yale University and published in the journal Science（修饰 The research）</div>
-    <div class="row"><b>后置定语（现在分词短语）：</b>showing where people go（修饰 location data，内含 where 引导的宾语从句）</div>
-    <div class="row"><b>考点：</b>过去分词 / 现在分词作后置定语（语法填空常考 doing/done 的选择）；combine A with B 搭配</div>
-    <div class="row tr"><b>译文：</b>这项由耶鲁大学科学家领导并发表于《科学》杂志的研究，将美国境内 37 个物种的 GPS 追踪数据与显示人们去向的手机定位数据结合起来。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">By comparing animal movements with human activity, they could separate the effect of human presence from the effect of landscape changes such as roads and buildings.</div>
-    <div class="row"><b>主干：</b>they could separate the effect … from the effect …（主语 + separate A from B）</div>
-    <div class="row"><b>方式状语：</b>By comparing animal movements with human activity（"通过…"）</div>
-    <div class="row"><b>后置定语：</b>of human presence 修饰 effect；of landscape changes 修饰 effect；such as roads and buildings 举例说明 changes</div>
-    <div class="row"><b>考点：</b>介词短语 By doing 作方式状语；separate … from … 固定搭配</div>
-    <div class="row tr"><b>译文：</b>通过将动物活动与人类活动进行比较，研究人员得以把"人类在场"的影响与道路、建筑等"景观变化"的影响区分开来。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">The study also found that 67 percent of mammals and 68 percent of birds altered the size of their home range — the area where they feed, rest and raise their young.</div>
-    <div class="row"><b>主干：</b>The study also found that …（主语 + found + that 宾语从句）</div>
-    <div class="row"><b>宾语从句：</b>67 percent of mammals and 68 percent of birds altered the size of their home range</div>
-    <div class="row"><b>同位语 + 定语从句：</b>the area where they feed, rest and raise their young（解释 home range，where 引导定语从句修饰 area）</div>
-    <div class="row"><b>考点：</b>that 引导宾语从句；where 引导定语从句（先行词为地点名词时用 where）</div>
-    <div class="row tr"><b>译文：</b>研究还发现，67% 的哺乳动物和 68% 的鸟类改变了自己的"家域"大小——即它们觅食、休息和抚育后代的活动区域。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">When animals are pushed out of good habitat, they may spend less time foraging and feeding their young, which can lower their chances of survival.</div>
-    <div class="row"><b>主干：</b>they may spend less time foraging and feeding their young（spend time (in) doing sth 结构）</div>
-    <div class="row"><b>时间状语从句：</b>When animals are pushed out of good habitat（被动语态 be pushed out of）</div>
-    <div class="row"><b>非限制性定语从句：</b>which can lower their chances of survival（which 指代前面整个主句内容）</div>
-    <div class="row"><b>考点：</b>which 引导非限制性定语从句指代整个主句；spend time doing sth；被动语态</div>
-    <div class="row tr"><b>译文：</b>当动物被挤出优质的栖息地时，它们可能花更少的时间觅食和喂养幼崽，这会降低它们的生存几率。</div>
-  </div>
-
-  <div class="sent">
-    <div class="orig">Giving wild animals space is one of the easiest ways to protect them.</div>
-    <div class="row"><b>主语（动名词短语）：</b>Giving wild animals space（动名词短语作主语，谓语用单数 is）</div>
-    <div class="row"><b>表语：</b>one of the easiest ways（one of + 形容词最高级 + 名词复数）</div>
-    <div class="row"><b>后置定语：</b>to protect them（不定式短语修饰 ways）</div>
-    <div class="row"><b>考点：</b>动名词短语作主语时谓语用单数；one of the + 最高级 + 复数名词</div>
-    <div class="row tr"><b>译文：</b>给野生动物留出空间，是保护它们最简便的方法之一。</div>
-  </div>
-
-  <h2>四、全文大意</h2>
-  <p class="zh-sum">人们谈起人类对野生动物的影响，往往想到道路、城市和砍伐森林，但耶鲁大学科学家发表于《科学》的一项大规模研究指出：仅仅"人在场"本身，就能改变动物的活动方式。研究将美国 37 个物种（22 种鸟类、15 种哺乳动物）超过 4500 只动物的约 1180 万个 GPS 定位点，与手机定位数据相结合，从而把"人类在场"与道路、建筑等"景观变化"两类影响区分开来。结果令人惊讶：仅人类在场就足以重塑动物活动，约 57% 的物种同时受到这两类影响；67% 的哺乳动物和 68% 的鸟类改变了家域大小，有的转向夜间活动，有的放弃了多年使用的区域。被挤出优质栖息地的动物觅食、育幼时间减少，生存机会随之降低。研究为保护区设计提供了启示——限制游客接近距离能减轻对野生动物的压力；对普通人而言，走进自然时保持距离、给动物留出空间，就是最简便的保护。</p>
-
-  <h2>五、思考与仿写</h2>
-  <div class="q"><b>思考题：</b>结合第 3、4 段，说说研究人员是如何把"人类在场"和"景观变化"两类影响区分开来的？这体现了科学研究的什么方法？</div>
-  <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"Giving wild animals space is one of the easiest ways to protect them."</span>（动名词短语作主语 + one of the + 最高级）的句式，围绕「低碳出行」「保护环境」写一个句子。</div>
-
-  <h2>六、文章结构图解</h2>
-  <figure class="hero" data-od-id="structure-figure">
-    <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 8 段）">
-      <defs>
-        <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
-      </defs>
-      <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 8 段）</text>
-
-      <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 人类"在场"本身就能改变动物</text>
-
-      <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 耶鲁团队用 GPS + 手机定位数据</text>
-
-      <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 区分"在场"与"景观变化"</text>
-
-      <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 仅"在场"就足以重塑动物活动</text>
-
-      <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 多数动物改变家域与作息</text>
-
-      <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 被挤离栖息地降低生存几率</text>
-
-      <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 对保护区设计的启示</text>
-
-      <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
-      <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 给动物留出空间，人人可为</text>
-
-      <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-      <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
-    </svg>
-    <figcaption>全文共 8 段，按「现象引入 → 研究方法 → 研究设计 → 核心发现 → 具体表现 → 危害影响 → 保护启示 → 个人行动」的递进逻辑层层展开。</figcaption>
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-08.jpg" alt="野生动物（配图）">
+    <figcaption>配图：森林中的野生鹿（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
   </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>人们谈人类对野生动物的影响，往往想到道路、城市与砍伐森林。但耶鲁大学科学家发表在《科学》杂志的一项研究指出：即便只是"人在场"——没有道路、没有建筑——也足以改变野生动物的活动方式与家域大小。本文通过一项追踪 4500 多只动物、约 1180 万个定位点的大规模研究，揭示"人类在场"这一常被忽略的因素如何悄悄重塑动物行为，并为保护区设计与个人日常行动带来启示。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">When we think of how humans affect <span class="kw" data-tip="n. 野生动物（总称）">wildlife</span>, we often picture roads, cities and cleared forests. But a large new study suggests that simply being present — even for a short visit — can change the way animals move and live.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The research, led by scientists at Yale University and published in the journal <em>Science</em>, combined GPS <span class="kw" data-tip="v. 追踪；跟踪">tracking</span> data from 37 <span class="kw" data-tip="n. 物种（单复数同形）">species</span> — 22 kinds of birds and 15 <span class="kw" data-tip="n. 哺乳动物">mammals</span> — across the United States with mobile phone location data showing where people go.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">In total, the team recorded about 11.8 million location points from more than 4,500 animals. By <span class="kw" data-tip="v. 比较；对比">comparing</span> animal movements with human activity, they could <span class="kw" data-tip="v. 区分；使分离">separate</span> the effect of human <span class="kw" data-tip="n. 在场；存在">presence</span> from the effect of <span class="kw" data-tip="n. 地貌；景观">landscape</span> changes such as roads and buildings.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The results were <span class="kw" data-tip="adj. 显著的；惊人的">striking</span>. Human presence alone was enough to <span class="kw" data-tip="v. 重塑；改变">reshape</span> wildlife movement. Around 57 percent of the species studied were affected by both human presence and changes to the landscape.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The study also found that 67 percent of mammals and 68 percent of birds <span class="kw" data-tip="v. 改变；变更">altered</span> the size of their <span class="kw" data-tip="n. 家域；活动范围">home range</span> — the area where they feed, rest and raise their young. Some animals <span class="kw" data-tip="v. 转移；转变">shifted</span> to nighttime activity, while others abandoned areas they had used for years.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">These changes matter. When animals are pushed out of good <span class="kw" data-tip="n. 栖息地">habitat</span>, they may spend less time <span class="kw" data-tip="v. 觅食">foraging</span> and feeding their young, which can lower their chances of <span class="kw" data-tip="n. 生存">survival</span>.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">The researchers say the findings have important lessons for <span class="kw" data-tip="n. （对自然资源的）保护">conservation</span>. Parks, trails and <span class="kw" data-tip="n. 保护区">protected areas</span> can reduce the stress on wildlife if they are carefully designed, for example by limiting how close visitors can get.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">For ordinary people, the message is simple: when we step into nature, we are not <span class="kw" data-tip="adj. 看不见的；隐形的">invisible</span>. Giving wild animals space is one of the easiest ways to protect them.</span></div>
+
+      <p class="muted">原文出处：本文根据《科学》（Science，2026 年 5 月）刊发、由耶鲁大学主导的动物追踪研究，及 ScienceDaily 相关报道（2026-08-28）整理编写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">wildlife</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈwaɪldlaɪf/ · 美 /ˈwaɪldlaɪf/</div>
+          <div class="wc-pos"><b>n.</b> 野生动物（总称）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The national park is home to rich <b>wildlife</b>.</div>
+          <div class="wc-tr">这座国家公园栖息着丰富的野生动物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">track</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /træk/ · 美 /træk/</div>
+          <div class="wc-pos"><b>v.</b> 追踪；跟踪</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists <b>track</b> the birds with GPS devices.</div>
+          <div class="wc-tr">科学家用 GPS 设备追踪这些鸟类。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">species</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈspiːʃiːz/ · 美 /ˈspiːʃiːz/</div>
+          <div class="wc-pos"><b>n.</b> 物种（单复数同形）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many <b>species</b> are at risk of extinction.</div>
+          <div class="wc-tr">许多物种正面临灭绝的危险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mammal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmæml/ · 美 /ˈmæml/</div>
+          <div class="wc-pos"><b>n.</b> 哺乳动物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Whales are <b>mammals</b> that live in the sea.</div>
+          <div class="wc-tr">鲸是生活在海洋里的哺乳动物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">compare</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kəmˈpeə(r)/ · 美 /kəmˈper/</div>
+          <div class="wc-pos"><b>v.</b> 比较；对比</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Compare</b> your answer with mine before handing it in.</div>
+          <div class="wc-tr">交卷前把你的答案和我的比较一下。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">presence</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈprezns/ · 美 /ˈprezns/</div>
+          <div class="wc-pos"><b>n.</b> 在场；存在</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The dog sensed the <b>presence</b> of a stranger.</div>
+          <div class="wc-tr">狗察觉到了陌生人的存在。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">landscape</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈlændskeɪp/ · 美 /ˈlændskeɪp/</div>
+          <div class="wc-pos"><b>n.</b> 地貌；景观</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>landscape</b> here changes with the seasons.</div>
+          <div class="wc-tr">这里的景色随季节而变化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">striking</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈstraɪkɪŋ/ · 美 /ˈstraɪkɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 显著的；惊人的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is a <b>striking</b> contrast between the two results.</div>
+          <div class="wc-tr">两个结果之间形成了鲜明对比。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reshape</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌriːˈʃeɪp/ · 美 /ˌriːˈʃeɪp/</div>
+          <div class="wc-pos"><b>v.</b> 重塑；改变</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The internet has <b>reshaped</b> the way we communicate.</div>
+          <div class="wc-tr">互联网重塑了我们交流的方式。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">alter</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɔːltə(r)/ · 美 /ˈɔːltər/</div>
+          <div class="wc-pos"><b>v.</b> 改变；变更</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nothing can <b>alter</b> the fact that we lost the game.</div>
+          <div class="wc-tr">什么也改变不了我们输掉比赛这一事实。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">home range</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌhəʊm ˈreɪndʒ/ · 美 /ˌhoʊm ˈreɪndʒ/</div>
+          <div class="wc-pos"><b>n.</b> 家域；活动范围</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A tiger's <b>home range</b> can cover hundreds of square kilometres.</div>
+          <div class="wc-tr">一只老虎的家域可达数百平方公里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shift</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ʃɪft/ · 美 /ʃɪft/</div>
+          <div class="wc-pos"><b>v.</b> 转移；转变</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The wind <b>shifted</b> from north to south.</div>
+          <div class="wc-tr">风从北转向了南。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">habitat</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈhæbɪtæt/ · 美 /ˈhæbɪtæt/</div>
+          <div class="wc-pos"><b>n.</b> 栖息地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Forests provide <b>habitat</b> for countless animals.</div>
+          <div class="wc-tr">森林为无数动物提供了栖息地。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">forage</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈfɒrɪdʒ/ · 美 /ˈfɔːrɪdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 觅食</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bears <b>forage</b> for berries in autumn.</div>
+          <div class="wc-tr">熊在秋天觅食浆果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">survival</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səˈvaɪvl/ · 美 /sərˈvaɪvl/</div>
+          <div class="wc-pos"><b>n.</b> 生存</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Food and water are essential for <b>survival</b>.</div>
+          <div class="wc-tr">食物和水对生存至关重要。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conservation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkɒnsəˈveɪʃn/ · 美 /ˌkɑːnsərˈveɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> （对自然资源的）保护</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Wildlife <b>conservation</b> needs everyone's effort.</div>
+          <div class="wc-tr">野生动物保护需要每个人的努力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">protected area</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /prəˈtektɪd ˈeəriə/ · 美 /prəˈtektɪd ˈeriə/</div>
+          <div class="wc-pos"><b>n.</b> 保护区</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The reserve was set up as a <b>protected area</b> in 2001.</div>
+          <div class="wc-tr">该保护区于 2001 年设立。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">human presence</span><span class="zh">人类在场</span></li>
+          <li><span class="en">home range</span><span class="zh">家域；活动范围</span></li>
+          <li><span class="en">be pushed out of …</span><span class="zh">被挤出……</span></li>
+          <li><span class="en">shift to nighttime activity</span><span class="zh">转向夜间活动</span></li>
+          <li><span class="en">separate A from B</span><span class="zh">把 A 与 B 区分开</span></li>
+          <li><span class="en">compare A with B</span><span class="zh">把 A 与 B 比较</span></li>
+          <li><span class="en">reduce the risk of …</span><span class="zh">降低……的风险</span></li>
+          <li><span class="en">spend time (in) doing sth</span><span class="zh">花时间做某事</span></li>
+          <li><span class="en">one of the + 最高级</span><span class="zh">最……之一</span></li>
+          <li><span class="en">give sb space</span><span class="zh">给……留出空间</span></li>
+          <li><span class="en">protect sb/sth from …</span><span class="zh">保护……免受……</span></li>
+          <li><span class="en">have lessons for …</span><span class="zh">对……有启示</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>人们常聚焦道路、城市等"硬"影响，但"在场"本身就能改变动物。</li>
+          <li>耶鲁团队把 37 个物种的 GPS 数据与手机定位数据结合。</li>
+          <li>研究把"人类在场"与"景观变化"两类影响区分开来。</li>
+          <li>核心发现：仅"人类在场"就足以重塑动物活动，约 57% 物种受影响。</li>
+          <li>67% 哺乳动物、68% 鸟类改变家域，有的转向夜间或放弃旧领地。</li>
+          <li>被挤出栖息地的动物觅食、育幼减少，生存几率下降。</li>
+          <li>启示：精心设计保护区、限制游客接近可减轻压力。</li>
+          <li>个人层面：给动物留出空间，是最简便的保护。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The research, led by scientists at Yale University and published in the journal Science, combined GPS tracking data from 37 species across the United States with mobile phone location data showing where people go.</div>
+        <div class="row"><b>主干：</b>The research combined GPS tracking data … with mobile phone location data（主语 + combined A with B）</div>
+        <div class="row"><b>后置定语（过去分词短语并列）：</b>led by scientists at Yale University and published in the journal Science（修饰 The research）</div>
+        <div class="row"><b>后置定语（现在分词短语）：</b>showing where people go（修饰 location data，内含 where 引导的宾语从句）</div>
+        <div class="row"><b>考点：</b>过去分词 / 现在分词作后置定语（语法填空常考 doing/done 的选择）；combine A with B 搭配</div>
+        <div class="row tr"><b>译文：</b>这项由耶鲁大学科学家领导并发表于《科学》杂志的研究，将美国境内 37 个物种的 GPS 追踪数据与显示人们去向的手机定位数据结合起来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">By comparing animal movements with human activity, they could separate the effect of human presence from the effect of landscape changes such as roads and buildings.</div>
+        <div class="row"><b>主干：</b>they could separate the effect … from the effect …（主语 + separate A from B）</div>
+        <div class="row"><b>方式状语：</b>By comparing animal movements with human activity（"通过…"）</div>
+        <div class="row"><b>后置定语：</b>of human presence 修饰 effect；of landscape changes 修饰 effect；such as roads and buildings 举例说明 changes</div>
+        <div class="row"><b>考点：</b>介词短语 By doing 作方式状语；separate … from … 固定搭配</div>
+        <div class="row tr"><b>译文：</b>通过将动物活动与人类活动进行比较，研究人员得以把"人类在场"的影响与道路、建筑等"景观变化"的影响区分开来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The study also found that 67 percent of mammals and 68 percent of birds altered the size of their home range — the area where they feed, rest and raise their young.</div>
+        <div class="row"><b>主干：</b>The study also found that …（主语 + found + that 宾语从句）</div>
+        <div class="row"><b>宾语从句：</b>67 percent of mammals and 68 percent of birds altered the size of their home range</div>
+        <div class="row"><b>同位语 + 定语从句：</b>the area where they feed, rest and raise their young（解释 home range，where 引导定语从句修饰 area）</div>
+        <div class="row"><b>考点：</b>that 引导宾语从句；where 引导定语从句（先行词为地点名词时用 where）</div>
+        <div class="row tr"><b>译文：</b>研究还发现，67% 的哺乳动物和 68% 的鸟类改变了自己的"家域"大小——即它们觅食、休息和抚育后代的活动区域。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">When animals are pushed out of good habitat, they may spend less time foraging and feeding their young, which can lower their chances of survival.</div>
+        <div class="row"><b>主干：</b>they may spend less time foraging and feeding their young（spend time (in) doing sth 结构）</div>
+        <div class="row"><b>时间状语从句：</b>When animals are pushed out of good habitat（被动语态 be pushed out of）</div>
+        <div class="row"><b>非限制性定语从句：</b>which can lower their chances of survival（which 指代前面整个主句内容）</div>
+        <div class="row"><b>考点：</b>which 引导非限制性定语从句指代整个主句；spend time doing sth；被动语态</div>
+        <div class="row tr"><b>译文：</b>当动物被挤出优质的栖息地时，它们可能花更少的时间觅食和喂养幼崽，这会降低它们的生存几率。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Giving wild animals space is one of the easiest ways to protect them.</div>
+        <div class="row"><b>主语（动名词短语）：</b>Giving wild animals space（动名词短语作主语，谓语用单数 is）</div>
+        <div class="row"><b>表语：</b>one of the easiest ways（one of + 形容词最高级 + 名词复数）</div>
+        <div class="row"><b>后置定语：</b>to protect them（不定式短语修饰 ways）</div>
+        <div class="row"><b>考点：</b>动名词短语作主语时谓语用单数；one of the + 最高级 + 复数名词</div>
+        <div class="row tr"><b>译文：</b>给野生动物留出空间，是保护它们最简便的方法之一。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">人们谈起人类对野生动物的影响，往往想到道路、城市和砍伐森林，但耶鲁大学科学家发表于《科学》的一项大规模研究指出：仅仅"人在场"本身，就能改变动物的活动方式。研究将美国 37 个物种（22 种鸟类、15 种哺乳动物）超过 4500 只动物的约 1180 万个 GPS 定位点，与手机定位数据相结合，从而把"人类在场"与道路、建筑等"景观变化"两类影响区分开来。结果令人惊讶：仅人类在场就足以重塑动物活动，约 57% 的物种同时受到这两类影响；67% 的哺乳动物和 68% 的鸟类改变了家域大小，有的转向夜间活动，有的放弃了多年使用的区域。被挤出优质栖息地的动物觅食、育幼时间减少，生存机会随之降低。研究为保护区设计提供了启示——限制游客接近距离能减轻对野生动物的压力；对普通人而言，走进自然时保持距离、给动物留出空间，就是最简便的保护。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 3、4 段，说说研究人员是如何把"人类在场"和"景观变化"两类影响区分开来的？这体现了科学研究的什么方法？</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"Giving wild animals space is one of the easiest ways to protect them."</span>（动名词短语作主语 + one of the + 最高级）的句式，围绕「低碳出行」「保护环境」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 8 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 8 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 人类"在场"本身就能改变动物</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 耶鲁团队用 GPS + 手机定位数据</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 区分"在场"与"景观变化"</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 仅"在场"就足以重塑动物活动</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 多数动物改变家域与作息</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 被挤离栖息地降低生存几率</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 对保护区设计的启示</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 给动物留出空间，人人可为</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 8 段，按「现象引入 → 研究方法 → 研究设计 → 核心发现 → 具体表现 → 危害影响 → 保护启示 → 个人行动」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
 
   <footer>
     素材来源：Science / Yale University / ScienceDaily 公开资料（2026-09-08 整理）｜ 仅供个人学习使用<br>
