@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>在 2026 年美网男单第四轮中，2 号种子、西班牙名将卡洛斯·阿尔卡拉斯直落三盘横扫美国选手汤米·保罗，强势晋级八强。这已是阿尔卡拉斯连续第 14 盘战胜保罗——后者自 2024 年温网以来再未从其手中拿下一盘。经历腕伤缺阵四个半月后，阿尔卡拉斯状态不减，在赢下前两盘的大满贯比赛中保持 63 胜 0 负的惊人战绩。本文记录了这场胜利，并展望了他冲击卫冕的八强之路。</p>
+    <p>在 2026 年美网男单第四轮中，2 号种子、西班牙名将阿尔卡拉斯直落三盘（6-4、6-3、6-4）横扫美国选手保罗，晋级八强。这已是他连续第 14 盘战胜对手，后者自 2024 年温网以来再未从他手中拿下一盘。经历腕伤缺阵四个半月后，阿尔卡拉斯状态未减，如今在赢下前两盘的大满贯比赛中保持 63 胜 0 负的惊人战绩。世界第一辛纳因伤退赛一度令男单签表显得开放，但阿尔卡拉斯依旧展现出统治力，将在八强对阵本·谢尔顿，力争卫冕。</p>
   </div>
 
   <div class="layout">
@@ -164,141 +177,144 @@ footer a{color:var(--muted);text-decoration:underline;}
           <div class="wc-top"><span class="wc-word">straight sets</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˌstreɪt ˈsets/</div>
           <div class="wc-pos"><b>n.</b> 直落三盘（一局未失）（搭配：win in straight sets）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She won the match in <b>straight sets</b>.</div>
-          <div class="wc-tr">她直落两盘赢得了比赛。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She won the final in <b>straight sets</b>.</div>
+          <div class="wc-tr">她直落三盘赢得决赛。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">definitive</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /dɪˈfɪnətɪv/</div>
           <div class="wc-pos"><b>adj.</b> 决定性的；明确的（搭配：a definitive win）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>This is the <b>definitive</b> answer to the question.</div>
-          <div class="wc-tr">这是这个问题的确切答案。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It was a <b>definitive</b> win for our team.</div>
+          <div class="wc-tr">这是我们队一场决定性的胜利。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">baffling</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">baffling</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈbæflɪŋ/</div>
           <div class="wc-pos"><b>adj.</b> 令人费解的（搭配：a baffling stat）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The mystery remains <b>baffling</b> to scientists.</div>
-          <div class="wc-tr">这个谜团仍让科学家困惑。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The result of the match was <b>baffling</b> to everyone.</div>
+          <div class="wc-tr">比赛的结果让所有人都感到费解。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">trade</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /treɪd/</div>
           <div class="wc-pos"><b>v.</b> 交替；互换（搭配：trade games 交替拿分）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The two teams <b>traded</b> goals in the second half.</div>
-          <div class="wc-tr">两队在下半场交替进球。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The two players <b>traded</b> games in the last set.</div>
+          <div class="wc-tr">两位选手在最后一盘交替拿分。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">serve</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /sɜːv/</div>
           <div class="wc-pos"><b>n.</b> 发球（局）（搭配：break sb's serve 破发）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Her <b>serve</b> was too fast to return.</div>
-          <div class="wc-tr">她的发球太快，接不住。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The player broke his opponent's <b>serve</b> twice.</div>
+          <div class="wc-tr">这名选手两次破掉了对手的发球局。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">sideline</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">sideline</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈsaɪdlaɪn/</div>
           <div class="wc-pos"><b>v.</b> 使…缺阵（搭配：be sidelined for 4 ½ months）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He was <b>sidelined</b> by a knee injury.</div>
-          <div class="wc-tr">他因膝伤缺阵。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He was <b>sidelined</b> for three months by a knee injury.</div>
+          <div class="wc-tr">他因膝伤缺阵了三个月。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">bracket</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">bracket</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈbrækɪt/</div>
           <div class="wc-pos"><b>n.</b> 签表；对阵表（搭配：a wide-open bracket）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He was placed in a tough <b>bracket</b>.</div>
-          <div class="wc-tr">他被分在一个实力强劲的签区。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>With the top seed out, it became a <b>wide-open bracket</b>.</div>
+          <div class="wc-tr">头号种子出局后，签表变得全面开放。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">layoff</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">layoff</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈleɪɒf/</div>
           <div class="wc-pos"><b>n.</b> 缺阵期；休战（搭配：after a long layoff）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He returned to training after a long <b>layoff</b>.</div>
-          <div class="wc-tr">长期缺阵后他恢复了训练。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>After a long <b>layoff</b>, she returned to the court in great form.</div>
+          <div class="wc-tr">长期休战后，她以极佳状态重返赛场。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">dominance</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈdɒmɪnəns/</div>
           <div class="wc-pos"><b>n.</b> 统治力（搭配：continue his dominance）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The team showed total <b>dominance</b> in the game.</div>
-          <div class="wc-tr">这支队伍在比赛中展现了绝对统治力。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team continues its <b>dominance</b> in the league.</div>
+          <div class="wc-tr">这支球队延续着在联赛中的统治力。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">defend</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /dɪˈfend/</div>
           <div class="wc-pos"><b>v.</b> 卫冕（冠军）（搭配：defend his 2025 US Open title）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She will <b>defend</b> her title next year.</div>
-          <div class="wc-tr">她明年将卫冕。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He will <b>defend</b> his title at next year's event.</div>
+          <div class="wc-tr">他将在明年的赛事中卫冕冠军。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">quarterfinal</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˌkwɔːtəˈfaɪnl/</div>
           <div class="wc-pos"><b>n.</b> 四分之一决赛（搭配：reach the quarterfinal）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He reached the <b>quarterfinal</b> for the first time.</div>
-          <div class="wc-tr">他首次闯入八强。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She reached the <b>quarterfinal</b> of the tournament.</div>
+          <div class="wc-tr">她打进了这项赛事的四分之一决赛。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">draw</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /drɔː/</div>
           <div class="wc-pos"><b>n.</b> 签表；抽签结果（搭配：I didn't see the draw）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The <b>draw</b> for the tournament was announced today.</div>
-          <div class="wc-tr">赛事签表今天公布。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>I didn't see the <b>draw</b>, so I don't know my opponent.</div>
+          <div class="wc-tr">我没看签表，所以不知道我的对手是谁。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">Grand Slam</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˌɡrænd ˈslæm/</div>
           <div class="wc-pos"><b>n.</b> 大满贯（赛事）（搭配：fall out of a Grand Slam）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Winning a <b>Grand Slam</b> is every player's dream.</div>
-          <div class="wc-tr">赢得大满贯是每个球员的梦想。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Winning a <b>Grand Slam</b> is every tennis player's dream.</div>
+          <div class="wc-tr">赢得大满贯是每个网球选手的梦想。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">consecutive</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /kənˈsekjətɪv/</div>
           <div class="wc-pos"><b>adj.</b> 连续的（搭配：the sixth consecutive tournament）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He won three <b>consecutive</b> matches.</div>
-          <div class="wc-tr">他连赢了三场比赛。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team won three <b>consecutive</b> games.</div>
+          <div class="wc-tr">这支队伍连赢了三场比赛。</div>
         </div>
       </div>
 
       <div class="side-box">
         <h3>短语积累</h3>
         <ul class="phrases">
-          <li><span class="en">in straight sets</span><span class="zh">直落三盘</span></li>
-          <li><span class="en">a definitive win</span><span class="zh">决定性胜利</span></li>
-          <li><span class="en">take a set</span><span class="zh">拿下一盘</span></li>
+          <li><span class="en">win in straight sets</span><span class="zh">直落三盘取胜</span></li>
+          <li><span class="en">trade games</span><span class="zh">交替拿分；互有胜负</span></li>
           <li><span class="en">break sb's serve</span><span class="zh">破发</span></li>
-          <li><span class="en">be sidelined for …</span><span class="zh">缺阵……</span></li>
-          <li><span class="en">a wide-open bracket</span><span class="zh">开放签表</span></li>
-          <li><span class="en">after a long layoff</span><span class="zh">长期缺阵后</span></li>
-          <li><span class="en">defend one's title</span><span class="zh">卫冕</span></li>
+          <li><span class="en">put up a fight</span><span class="zh">奋力抵抗</span></li>
+          <li><span class="en">be sidelined for …</span><span class="zh">因伤缺阵……</span></li>
+          <li><span class="en">pull out of the tournament</span><span class="zh">退出赛事</span></li>
+          <li><span class="en">a wide-open bracket</span><span class="zh">开放签表（人人有机会）</span></li>
+          <li><span class="en">after a long layoff</span><span class="zh">长期休战后</span></li>
+          <li><span class="en">continue one's dominance</span><span class="zh">延续统治力</span></li>
+          <li><span class="en">defend one's title</span><span class="zh">卫冕冠军</span></li>
           <li><span class="en">reach the quarterfinal</span><span class="zh">晋级八强</span></li>
+          <li><span class="en">fall out of a Grand Slam</span><span class="zh">止步大满贯</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>直落三盘横扫保罗，晋级八强。</li>
-          <li>连续第 14 盘战胜保罗。</li>
-          <li>首盘鏖战，破发取胜。</li>
-          <li>腕伤复出后连克强敌。</li>
-          <li>63-0 延续统治力。</li>
-          <li>八强对阵谢尔顿，力争卫冕。</li>
-          <li>没看签表，惊讶对手。</li>
-          <li>保罗第六次止步八强前。</li>
+          <li>阿尔卡拉斯直落三盘横扫保罗，晋级美网八强。</li>
+          <li>连续第 14 盘战胜保罗，后者自 2024 温网后再未拿下一盘。</li>
+          <li>首盘鏖战，最终破发取胜。</li>
+          <li>腕伤复出后状态不减，连克强敌。</li>
+          <li>辛纳退赛令签表开放，但阿尔卡拉斯延续统治力（63-0）。</li>
+          <li>八强将对阵本·谢尔顿，力争卫冕。</li>
+          <li>没看签表，对下轮对手感到惊讶。</li>
+          <li>保罗连续第六次止步大满贯八强前。</li>
         </ol>
       </div>
     </aside>
@@ -350,8 +366,9 @@ footer a{color:var(--muted);text-decoration:underline;}
 
       <h2>六、文章结构图解</h2>
       <figure class="hero">
-        <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+        <svg viewBox="0 0 700 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共8段）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
           <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+          <text x="350" y="28" text-anchor="middle" font-family="Georgia,'Songti SC','Noto Serif SC',serif" font-size="17" fill="#1c1a17">文章段落结构（共 8 段）</text>
 
           <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="160" y="67" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. 直落三盘横扫保罗</text>
@@ -387,13 +404,14 @@ footer a{color:var(--muted);text-decoration:underline;}
         <figcaption>段落逻辑：先亮出阿尔卡拉斯的战果，再用数据、过程与伤病背景层层补足，最后落到八强展望与保罗的遗憾收尾。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：Yahoo Sports（美国，2026-09-06）｜ 原文链接：https://sports.yahoo.com/tennis/article/us-open-carlos-alcaraz-breezes-past-tommy-paul-in-straight-sets-to-advance-to-quarterfinal-204220466.html ｜ 仅供个人学习使用<br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：Yahoo Sports（美国，2026-09-06）｜ 原文链接：https://sports.yahoo.com/tennis/article/us-open-carlos-alcaraz-breezes-past-tommy-paul-in-straight-sets-to-advance-to-quarterfinal-204220466.html ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

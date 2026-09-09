@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 珊瑚礁的"避风港"：哪些礁石能在变暖中活下来</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 生态 / 气候</div>
+  <h1>珊瑚礁的"避风港"：科学家找到能在变暖中活下来的礁石</h1>
+  <div class="deck">A new study maps 166,000 square kilometres of coral reef that could survive — and even recover from — climate change</div>
+  <div class="byline"><span><b>来源</b> Reuters / The Independent（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-09</span><span><b>难度</b> 中等</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-09.jpg" alt="珊瑚礁（配图）">
+    <figcaption>配图：充满生机的珊瑚礁生态系统（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>珊瑚礁被称为"海洋中的热带雨林"——它们只覆盖了不到 1% 的海底，却养育着约四分之一的海洋物种。随着海水变暖，大片珊瑚正在白化、死亡。但一项新研究带来了难得的好消息：科学家利用卫星数据与计算机模型，在全球找出约 16.6 万平方公里的珊瑚礁，它们因位于罕见的"凉爽地带"或进化出耐热能力，有望在气候变化中存活甚至恢复。这份"幸存地图"将帮助各国锁定保护重点，也提醒我们：珊瑚礁的未来，并非一片黑暗。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Coral <span class="kw" data-tip="n. 礁；礁石">reefs</span> are often called the "rainforests of the sea". They cover less than one percent of the ocean floor, yet they are home to about a quarter of all <span class="kw" data-tip="adj. 海洋的">marine</span> <span class="kw" data-tip="n. 物种（单复数同形）">species</span>.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">But these colourful underwater cities are in trouble. As the ocean grows warmer, many corals turn white and die in a process called <span class="kw" data-tip="n. 白化">bleaching</span>. Scientists have long feared that most reefs might disappear within a few decades.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">Now, a new study offers a rare piece of good news. An international team of researchers has <span class="kw" data-tip="v. 识别；确认">identified</span> about 166,000 square kilometres of coral reef — an area larger than many countries — that could <span class="kw" data-tip="v. 存活；幸存">survive</span> and even <span class="kw" data-tip="v. 恢复；复原">recover</span> from climate change.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The team used <span class="kw" data-tip="n. 卫星">satellite</span> data and computer models to find reefs that are likely to <span class="kw" data-tip="v. 承受；抵挡">withstand</span> rising temperatures. Some of these "bright spots" sit in rare cool places, where deep, cool water rises to protect the corals from heat.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Others have survived because their corals have <span class="kw" data-tip="v. 进化；演变">evolved</span> to <span class="kw" data-tip="v. 忍受；耐受">tolerate</span> warm water. "These reefs are not <span class="kw" data-tip="adj. 注定要灭亡的">doomed</span>," said the lead researcher. "Many of them can <span class="kw" data-tip="phr. 恢复；反弹">bounce back</span> if we give them a chance."</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The findings matter greatly, because coral reefs are not just beautiful. They protect <span class="kw" data-tip="n. 海岸线">coastlines</span> from storms and provide food and jobs for hundreds of millions of people around the world.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">Researchers say the new map will help governments and <span class="kw" data-tip="n. （对自然资源的）保护">conservation</span> groups decide where to focus their efforts. Protecting these <span class="kw" data-tip="adj. 有复原力的">resilient</span> reefs should now be a top <span class="kw" data-tip="n. 优先事项">priority</span>.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The study also carries a clear message: the future of coral reefs is not all dark. With careful protection, at least some of these underwater treasures can be saved for future <span class="kw" data-tip="n. 一代人">generations</span>.</span></div>
+
+      <p class="muted">原文出处：本文根据路透社（Reuters）2026 年 6 月关于"科学家识别出可抵御气候变化的珊瑚礁"的报道，及《独立报》（The Independent，2026-06-16）相关内容整理编写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reef</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /riːf/ · 美 /riːf/</div>
+          <div class="wc-pos"><b>n.</b> 礁；礁石</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The ship was wrecked on a hidden <b>reef</b>.</div>
+          <div class="wc-tr">船在暗礁上触礁失事了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">marine</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /məˈriːn/ · 美 /məˈriːn/</div>
+          <div class="wc-pos"><b>adj.</b> 海洋的；海产的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Oil spills are a serious threat to <b>marine</b> life.</div>
+          <div class="wc-tr">石油泄漏对海洋生物是严重威胁。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">species</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈspiːʃiːz/ · 美 /ˈspiːʃiːz/</div>
+          <div class="wc-pos"><b>n.</b> 物种（单复数同形）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many <b>species</b> are at risk of extinction.</div>
+          <div class="wc-tr">许多物种正面临灭绝的危险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bleaching</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbliːtʃɪŋ/ · 美 /ˈbliːtʃɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> （珊瑚）白化</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Warmer seas have caused widespread coral <b>bleaching</b>.</div>
+          <div class="wc-tr">海水变暖已造成大范围珊瑚白化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">identify</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /aɪˈdentɪfaɪ/ · 美 /aɪˈdentɪfaɪ/</div>
+          <div class="wc-pos"><b>v.</b> 识别；确认</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists <b>identified</b> the cause of the disease.</div>
+          <div class="wc-tr">科学家确认了这种疾病的成因。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">survive</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səˈvaɪv/ · 美 /sərˈvaɪv/</div>
+          <div class="wc-pos"><b>v.</b> 存活；幸存</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Few plants can <b>survive</b> in such a dry place.</div>
+          <div class="wc-tr">很少有植物能在如此干旱的地方存活。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recover</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈkʌvə(r)/ · 美 /rɪˈkʌvər/</div>
+          <div class="wc-pos"><b>v.</b> 恢复；复原</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The economy is slowly <b>recovering</b> from the crisis.</div>
+          <div class="wc-tr">经济正从危机中缓慢复苏。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">satellite</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈsætəlaɪt/ · 美 /ˈsætəlaɪt/</div>
+          <div class="wc-pos"><b>n.</b> 卫星</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The pictures were taken by <b>satellite</b>.</div>
+          <div class="wc-tr">这些照片是由卫星拍摄的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">withstand</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /wɪðˈstænd/ · 美 /wɪðˈstænd/</div>
+          <div class="wc-pos"><b>v.</b> 承受；抵挡</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The bridge is built to <b>withstand</b> strong winds.</div>
+          <div class="wc-tr">这座桥的建造能抵御强风。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">evolve</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈvɒlv/ · 美 /ɪˈvɑːlv/</div>
+          <div class="wc-pos"><b>v.</b> 进化；演变</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Birds are thought to have <b>evolved</b> from dinosaurs.</div>
+          <div class="wc-tr">鸟类被认为是由恐龙进化而来的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tolerate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtɒləreɪt/ · 美 /ˈtɑːləreɪt/</div>
+          <div class="wc-pos"><b>v.</b> 忍受；耐受</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These plants can <b>tolerate</b> dry weather.</div>
+          <div class="wc-tr">这些植物能耐受干旱的天气。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">doomed</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /duːmd/ · 美 /duːmd/</div>
+          <div class="wc-pos"><b>adj.</b> 注定要灭亡（失败）的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Without help, the plan was <b>doomed</b> to fail.</div>
+          <div class="wc-tr">没有帮助，这个计划注定要失败。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">coastline</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈkəʊstlaɪn/ · 美 /ˈkoʊstlaɪn/</div>
+          <div class="wc-pos"><b>n.</b> 海岸线</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>coastline</b> of this island is very beautiful.</div>
+          <div class="wc-tr">这个岛的海岸线非常美丽。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conservation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkɒnsəˈveɪʃn/ · 美 /ˌkɑːnsərˈveɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> （对自然资源的）保护</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Wildlife <b>conservation</b> needs everyone's effort.</div>
+          <div class="wc-tr">野生动物保护需要每个人的努力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">priority</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /praɪˈɒrəti/ · 美 /praɪˈɔːrəti/</div>
+          <div class="wc-pos"><b>n.</b> 优先事项；优先权</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Safety must be our top <b>priority</b>.</div>
+          <div class="wc-tr">安全必须是我们最优先考虑的事。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">resilient</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈzɪliənt/ · 美 /rɪˈzɪliənt/</div>
+          <div class="wc-pos"><b>adj.</b> 有复原力的；坚韧的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Children are often more <b>resilient</b> than adults.</div>
+          <div class="wc-tr">孩子们往往比成年人更能从挫折中恢复。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">generation</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌdʒenəˈreɪʃn/ · 美 /ˌdʒenəˈreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 一代人；一代</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We should protect the environment for future <b>generations</b>.</div>
+          <div class="wc-tr">我们应该为子孙后代保护环境。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">be home to …</span><span class="zh">是……的家园</span></li>
+          <li><span class="en">a quarter of …</span><span class="zh">四分之一……</span></li>
+          <li><span class="en">be in trouble</span><span class="zh">陷入困境</span></li>
+          <li><span class="en">within a few decades</span><span class="zh">在几十年内</span></li>
+          <li><span class="en">a piece of good news</span><span class="zh">一个好消息</span></li>
+          <li><span class="en">bounce back</span><span class="zh">恢复；反弹</span></li>
+          <li><span class="en">protect … from …</span><span class="zh">保护……免受……</span></li>
+          <li><span class="en">hundreds of millions of</span><span class="zh">数以亿计的</span></li>
+          <li><span class="en">focus one's efforts on …</span><span class="zh">把努力集中在……上</span></li>
+          <li><span class="en">a top priority</span><span class="zh">头等大事；首要任务</span></li>
+          <li><span class="en">for future generations</span><span class="zh">为了子孙后代</span></li>
+          <li><span class="en">be likely to do</span><span class="zh">很可能做……</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>珊瑚礁虽小，却是四分之一海洋物种的家园。</li>
+          <li>海水变暖引发珊瑚白化，人们曾担心礁石会消失。</li>
+          <li>新研究找出约 16.6 万平方公里可存活的珊瑚礁。</li>
+          <li>利用卫星数据与模型，锁定耐热的"亮点"地带。</li>
+          <li>有的珊瑚已进化出耐热能力，仍有机会恢复。</li>
+          <li>珊瑚礁不仅美，还护岸、供粮、养民。</li>
+          <li>新地图帮助各国把保护这些礁石列为重点。</li>
+          <li>珊瑚礁未来并非全暗，精心保护可留给后代。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">An international team of researchers has identified about 166,000 square kilometres of coral reef — an area larger than many countries — that could survive and even recover from climate change.</div>
+        <div class="row"><b>主干：</b>An international team of researchers has identified about 166,000 square kilometres of coral reef（主语 + has identified + 宾语）</div>
+        <div class="row"><b>插入语（同位语）：</b>an area larger than many countries（对前面面积的补充说明）</div>
+        <div class="row"><b>定语从句：</b>that could survive and even recover from climate change（修饰 coral reef）</div>
+        <div class="row"><b>考点：</b>现在完成时 has identified；that 引导限制性定语从句；同位语作插入补充</div>
+        <div class="row tr"><b>译文：</b>一个国际研究团队识别出约 16.6 万平方公里的珊瑚礁——这个面积比许多国家还要大——它们能够在气候变化中存活甚至恢复。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Some of these "bright spots" sit in rare cool places, where deep, cool water rises to protect the corals from heat.</div>
+        <div class="row"><b>主干：</b>Some of these "bright spots" sit in rare cool places（主语 + sit + 地点状语）</div>
+        <div class="row"><b>非限制性定语从句：</b>where deep, cool water rises to protect the corals from heat（where 引导，修饰 places）</div>
+        <div class="row"><b>不定式短语：</b>to protect the corals from heat（作目的状语）</div>
+        <div class="row"><b>考点：</b>where 引导非限制性定语从句；protect … from … 固定搭配；不定式作目的状语</div>
+        <div class="row tr"><b>译文：</b>这些"亮点"中，有一部分位于罕见的凉爽地带，那里深层凉爽的海水上升，使珊瑚免受高温侵害。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Others have survived because their corals have evolved to tolerate warm water.</div>
+        <div class="row"><b>主干：</b>Others have survived（主语 + 现在完成时谓语）</div>
+        <div class="row"><b>原因状语从句：</b>because their corals have evolved to tolerate warm water</div>
+        <div class="row"><b>不定式短语：</b>to tolerate warm water（作 evolved 的目的/结果状语）</div>
+        <div class="row"><b>考点：</b>because 引导原因状语从句；现在完成时 have evolved；不定式 to tolerate</div>
+        <div class="row tr"><b>译文：</b>另一些珊瑚礁之所以存活下来，是因为其中的珊瑚已经进化出了耐受温暖海水的能力。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">They protect coastlines from storms and provide food and jobs for hundreds of millions of people around the world.</div>
+        <div class="row"><b>主干：</b>They protect coastlines from storms and provide food and jobs（并列谓语 protect … and provide …）</div>
+        <div class="row"><b>谓语 1：</b>protect coastlines from storms（protect A from B）</div>
+        <div class="row"><b>谓语 2：</b>provide food and jobs for hundreds of millions of people（provide sth for sb）</div>
+        <div class="row"><b>考点：</b>and 连接并列谓语；protect … from …；provide sth for sb</div>
+        <div class="row tr"><b>译文：</b>它们保护海岸线免受风暴侵袭，并为全世界数以亿计的人们提供食物和就业机会。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">With careful protection, at least some of these underwater treasures can be saved for future generations.</div>
+        <div class="row"><b>主干：</b>at least some of these underwater treasures can be saved（主语 + 情态动词被动语态）</div>
+        <div class="row"><b>方式状语：</b>With careful protection（with + 名词，作伴随/方式状语）</div>
+        <div class="row"><b>时间/对象状语：</b>for future generations（为了后代）</div>
+        <div class="row"><b>考点：</b>情态动词 can 的被动语态 can be saved；with 引导方式状语</div>
+        <div class="row tr"><b>译文：</b>在精心的保护之下，这些海底宝藏中至少有一部分能够为子孙后代留存下来。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">珊瑚礁被誉为"海洋中的热带雨林"，虽然只覆盖不到 1% 的海底，却养育着约四分之一的海洋物种。然而，随着海水变暖，珊瑚白化现象加剧，科学家一度担心多数礁石会在几十年内消失。一项新研究带来了转机：一个国际团队利用卫星数据和计算机模型，在全球识别出约 16.6 万平方公里的珊瑚礁，它们有望在气候变化中存活甚至恢复——有的位于罕见的"凉爽地带"，深层凉水上升保护珊瑚免受高温；有的则因珊瑚已进化出耐热能力而幸存。研究意义重大：珊瑚礁不仅美观，还能护岸防浪、为全球数亿人提供食物与生计。这份"幸存地图"将帮助各国政府和环保组织锁定保护重点，把保护这些"有复原力"的礁石列为优先事项。研究也传递出一个清晰信号：珊瑚礁的未来并非一片黑暗，只要精心保护，这些海底宝藏至少有一部分能留给后代。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 4、5 段，说说这些"能存活"的珊瑚礁分别依靠哪两类原因？这给我们应对气候变化的行动带来什么启示？</div>
+      <div class="q"><b>仿写题：</b>仿照第 7 段 <span style="font-family:Georgia,serif;font-style:italic">"Protecting these resilient reefs should now be a top priority."</span>（动名词短语作主语 + should be 表语）的句式，围绕「节约用水」「低碳生活」等环保话题写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 8 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 8 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 珊瑚礁：海洋物种的大家园</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 变暖引发白化，礁石陷入危机</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 新研究找到大面积可存活礁石</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 原因一：位于"凉爽地带"</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 原因二：珊瑚进化出耐热能力</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 珊瑚礁的巨大生态与经济价值</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 地图指引：保护礁石列为重点</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 精心保护，把宝藏留给后代</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 8 段，按「价值引入 → 危机现状 → 研究转折 → 原因一 → 原因二 → 价值重申 → 保护指引 → 未来展望」的逻辑层层推进。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Reuters / The Independent 公开资料（2026-09-09 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
