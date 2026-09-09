@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>高油价正在传导到机票价格。爱尔兰廉价航空瑞安航空警告：若油价持续高企，明年欧洲短途机票将大幅上涨，部分对冲不足的同行甚至可能破产。为应对风险，瑞安下调了乘客目标、减少淡季对"未对冲冬季燃油"的敞口，但依靠以每桶 67 美元锁定 80% 燃油的对冲策略，公司仍预计保持盈利。本文梳理了高油价的背景、企业的应对逻辑，以及对消费者和竞争对手的影响。</p>
+    <p>瑞安航空警告，若油价持续高企，欧洲机票价格明年将大幅上涨，部分对冲不足的航空公司甚至可能破产。为应对风险，瑞安下调了本年度乘客目标，并削减冬季运力以减少对未对冲燃油的风险敞口。目前航空燃油每桶约 140 美元，布伦特原油一度触及近期高位。不过，由于瑞安已按低价对冲了八成燃油，公司预计仍能保持盈利。本文梳理这一警告背后的油价背景、传导逻辑与财务影响。</p>
   </div>
 
   <div class="layout">
@@ -160,39 +173,39 @@ footer a{color:var(--muted);text-decoration:underline;}
         <h3>二、重点词汇</h3>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">go bust</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">go bust</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ɡəʊ bʌst/</div>
           <div class="wc-pos"><b>v.</b> 破产；倒闭（搭配：some airlines could go bust）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Many small shops <b>went bust</b> during the economic crisis.</div>
-          <div class="wc-tr">经济危机期间许多小商店倒闭了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many small shops <b>went bust</b> during the crisis.</div>
+          <div class="wc-tr">危机期间许多小店破产倒闭了。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">budget carrier</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">budget carrier</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈbʌdʒɪt ˈkæriə(r)/</div>
           <div class="wc-pos"><b>n.</b> 廉价航空公司（搭配：the Irish budget carrier）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Budget carriers</b> attract travellers with low fares.</div>
-          <div class="wc-tr">廉价航空公司以低票价吸引旅客。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Ryanair is a well-known Irish <b>budget carrier</b>.</div>
+          <div class="wc-tr">瑞安航空是知名的爱尔兰廉价航空公司。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">exposure</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ɪkˈspəʊʒə(r)/</div>
           <div class="wc-pos"><b>n.</b> 风险敞口；暴露（搭配：reduce its exposure to …）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The bank reduced its <b>exposure</b> to risky loans.</div>
-          <div class="wc-tr">银行降低了对高风险贷款的风险敞口。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The company reduced its <b>exposure</b> to risky investments.</div>
+          <div class="wc-tr">公司降低了对高风险投资的风险敞口。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">off season</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">off season</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈɒf siːzn/</div>
           <div class="wc-pos"><b>n.</b> 淡季（搭配：the unprofitable off season）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Hotel prices drop in the <b>off season</b>.</div>
-          <div class="wc-tr">淡季酒店价格会下降。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Hotel prices are much lower in the <b>off season</b>.</div>
+          <div class="wc-tr">淡季时酒店价格要低得多。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">jet fuel</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">jet fuel</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈdʒet fjuːəl/</div>
           <div class="wc-pos"><b>n.</b> 航空燃油（搭配：jet fuel currently trading at …）</div>
           <div class="wc-ex"><span class="ex-tag">例</span>The price of <b>jet fuel</b> has risen sharply this year.</div>
@@ -200,111 +213,113 @@ footer a{color:var(--muted);text-decoration:underline;}
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">short-haul</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">short-haul</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˌʃɔːt ˈhɔːl/</div>
           <div class="wc-pos"><b>adj.</b> 短途的（搭配：short-haul air fares）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Short-haul</b> flights take less than three hours.</div>
-          <div class="wc-tr">短途航班的飞行时间不到三小时。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We took a <b>short-haul</b> flight to Paris.</div>
+          <div class="wc-tr">我们坐短途航班去了巴黎。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">hedge</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">hedge</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /hedʒ/</div>
           <div class="wc-pos"><b>v.</b> 对冲；套期保值（搭配：hedge 80% of its jet fuel）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The company <b>hedged</b> against the rise in oil prices.</div>
-          <div class="wc-tr">公司对冲了油价上涨的风险。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The airline <b>hedged</b> most of its fuel to avoid risk.</div>
+          <div class="wc-tr">该航空公司对冲了大部分燃油以规避风险。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">capacity</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /kəˈpæsəti/</div>
           <div class="wc-pos"><b>n.</b> 运力；产能（搭配：maintain capacity）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The stadium has a seating <b>capacity</b> of 50,000.</div>
-          <div class="wc-tr">这座体育场可容纳 5 万人。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The airline cut <b>capacity</b> during the winter.</div>
+          <div class="wc-tr">该航空公司在冬季削减了运力。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">benchmark</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈbentʃmɑːk/</div>
           <div class="wc-pos"><b>n.</b> 基准；参照标准（搭配：the global oil benchmark）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>This test is the <b>benchmark</b> for measuring progress.</div>
-          <div class="wc-tr">这项测试是衡量进步的基准。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Brent crude is the global oil <b>benchmark</b>.</div>
+          <div class="wc-tr">布伦特原油是全球石油基准。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">Brent crude</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /brent kruːd/</div>
           <div class="wc-pos"><b>n.</b> 布伦特原油（搭配：Brent crude touched $97.04）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Brent crude</b> is an important global oil benchmark.</div>
-          <div class="wc-tr">布伦特原油是重要的全球石油基准。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Brent crude</b> touched a new high on Wednesday.</div>
+          <div class="wc-tr">布伦特原油周三触及新高。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">fuel</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈfjuːəl/</div>
           <div class="wc-pos"><b>v.</b> 加剧；助长（搭配：fuelled concerns over supply）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The news <b>fuelled</b> fears of a shortage.</div>
-          <div class="wc-tr">这条消息加剧了人们对短缺的担忧。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The news <b>fuelled</b> concerns over food safety.</div>
+          <div class="wc-tr">这则消息加剧了人们对食品安全的担忧。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">ease back</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">ease back</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /iːz bæk/</div>
           <div class="wc-pos"><b>v.</b> 回落；缓解（搭配：later eased back to just below $95）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The pain <b>eased back</b> after he took the medicine.</div>
-          <div class="wc-tr">服药后疼痛缓解了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The pain <b>eased back</b> after taking the medicine.</div>
+          <div class="wc-tr">服药后疼痛有所缓解。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">profitable</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈprɒfɪtəbl/</div>
           <div class="wc-pos"><b>adj.</b> 盈利的（搭配：record another profitable year）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The small business became <b>profitable</b> last year.</div>
-          <div class="wc-tr">这家小企业去年开始盈利。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The company had its most <b>profitable</b> year ever.</div>
+          <div class="wc-tr">公司度过了有史以来最盈利的一年。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">albeit</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˌɔːlˈbiːɪt/</div>
           <div class="wc-pos"><b>conj.</b> 尽管；虽然（搭配：albeit below last year's record）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He kept working, <b>albeit</b> at a slower pace.</div>
-          <div class="wc-tr">他继续工作，尽管节奏慢了些。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He finally agreed, <b>albeit</b> with some hesitation.</div>
+          <div class="wc-tr">他最终同意了，尽管有些犹豫。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">on track</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">on track</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ɒn træk/</div>
-          <div class="wc-pos"><b>adj.</b> 按计划进行（搭配：on track to increase …）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The project is <b>on track</b> to finish before the deadline.</div>
-          <div class="wc-tr">项目正按计划在截止日期前完成。</div>
+          <div class="wc-pos"><b>adj.</b> 按计划进行；进展顺利（搭配：on track to increase …）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The project is <b>on track</b> to finish on time.</div>
+          <div class="wc-tr">该项目有望按时完成。</div>
         </div>
       </div>
 
       <div class="side-box">
         <h3>短语积累</h3>
         <ul class="phrases">
-          <li><span class="en">go bust</span><span class="zh">破产；倒闭</span></li>
           <li><span class="en">air fares</span><span class="zh">机票价格</span></li>
-          <li><span class="en">remain high</span><span class="zh">保持高位</span></li>
-          <li><span class="en">reduce exposure to …</span><span class="zh">降低对……的敞口</span></li>
+          <li><span class="en">go bust</span><span class="zh">破产；倒闭</span></li>
+          <li><span class="en">budget carrier</span><span class="zh">廉价航空公司</span></li>
           <li><span class="en">off season</span><span class="zh">淡季</span></li>
-          <li><span class="en">short-haul flights</span><span class="zh">短途航班</span></li>
-          <li><span class="en">hedge jet fuel</span><span class="zh">对冲航空燃油</span></li>
-          <li><span class="en">maintain capacity</span><span class="zh">维持运力</span></li>
-          <li><span class="en">on track to …</span><span class="zh">按计划……</span></li>
-          <li><span class="en">compared with a year earlier</span><span class="zh">与去年同期相比</span></li>
+          <li><span class="en">jet fuel</span><span class="zh">航空燃油</span></li>
+          <li><span class="en">short-haul</span><span class="zh">短途的</span></li>
+          <li><span class="en">Brent crude</span><span class="zh">布伦特原油</span></li>
+          <li><span class="en">ease back</span><span class="zh">回落；缓解</span></li>
+          <li><span class="en">on track</span><span class="zh">按计划进行</span></li>
+          <li><span class="en">record a profitable year</span><span class="zh">录得盈利年度</span></li>
+          <li><span class="en">hedge 80% of …</span><span class="zh">对冲 80% 的……</span></li>
+          <li><span class="en">cut … target</span><span class="zh">下调……目标</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>瑞安警告明年欧洲机票将大涨，部分航司或破产。</li>
-          <li>下调乘客目标，降低淡季"未对冲冬季燃油"敞口。</li>
-          <li>若高油价持续，短途票价将大涨，弱者难以维继。</li>
-          <li>布伦特原油触及 7 月以来高位。</li>
-          <li>削减冬季运力降亏损，对冲 80% 燃油保盈利。</li>
-          <li>夏季客运量预计增超 5%。</li>
+          <li>瑞安警告油价高企将推高机票价，部分航司或破产。</li>
+          <li>瑞安下调乘客目标，以降低淡季未对冲燃油的风险敞口。</li>
+          <li>高油价持续将致欧洲短途票价大幅上涨。</li>
+          <li>布伦特原油周三触及近期高位，美伊冲突加剧供应担忧。</li>
+          <li>削减冬季亏损，但依靠对冲仍有望盈利。</li>
+          <li>夏季客运量预计增长超 5%。</li>
           <li>竞争对手威兹航空客运量同比大增 25.9%。</li>
         </ol>
       </div>
@@ -359,39 +374,41 @@ footer a{color:var(--muted);text-decoration:underline;}
 
       <h2>六、文章结构图解</h2>
       <figure class="hero">
-        <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+        <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
           <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+          <text x="360" y="28" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" fill="#1c1a17">文章段落结构（共 7 段）</text>
           <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 瑞安警告票价将涨、航司或破产</text>
-          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 下调乘客目标、降油价敞口</text>
-          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 高油价或致短途票价大涨</text>
-          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 布伦特原油触及近期高位</text>
-          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 削减冬季亏损、对冲保盈利</text>
-          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 夏季客运量预计增超 5%</text>
-          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 威兹航空客运量同比大增</text>
         </svg>
         <figcaption>结构逻辑：全文 7 段沿「核心预警 → 应对举措 → 传导逻辑 → 油价背景 → 财务影响 → 夏季展望 → 同业对比」层层推进。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：The Guardian（2026-09-02）｜ 原文链接：<a href="https://www.theguardian.com/business/2026/sep/02/ryanair-warns-air-fares-europe-jump-next-year-oil-price-stays-high">Ryanair warns air fares in Europe will jump next year if oil price stays high</a>｜ 仅供个人学习使用<br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：The Guardian（2026-09-02）｜ 原文链接：<a href="https://www.theguardian.com/business/2026/sep/02/ryanair-warns-air-fares-europe-jump-next-year-oil-price-stays-high">Ryanair warns air fares in Europe will jump next year if oil price stays high</a>｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

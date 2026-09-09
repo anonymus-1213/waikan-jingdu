@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>每年约有 1100 万吨塑料垃圾流入海洋，照此趋势，到 2050 年海洋中的塑料（按重量）可能超过鱼类。这些塑料大多来自陆地上的瓶子、袋子、吸管等一次性用品，经风与河流进入大海后，在阳光和海浪作用下碎成微塑料，被海洋生物误食；废弃渔网等大块塑料还会缠绕鲸、海龟等动物。污染不仅危害野生动物，还威胁渔民生计、旅游业与纳税人。专家强调问题可以解决——减少一次性塑料、加强回收、改用可重复使用的产品，个人选择同样至关重要。</p>
+    <p>每年约有 1100 万吨塑料垃圾流入海洋，照此趋势，到 2050 年海洋中的塑料（按重量计）可能超过鱼类。这些塑料大多来自瓶子、袋子、吸管等一次性用品，经风与河流进入大海后，在阳光和海浪作用下碎裂成微塑料，被海洋生物误食，导致受伤、饥饿甚至死亡；废弃渔网、绳索等大块塑料则会缠绕鲸、海龟等动物。污染不仅危害野生动物，还威胁渔民生计、旅游业和纳税人。据世界经济论坛 2026 年报告，塑料污染威胁高达 2.5 万亿美元的生态系统服务，每年健康相关损失超 1.5 万亿美元。专家强调问题可以解决——减少一次性塑料、加强回收、改用可重复使用产品，个人选择同样至关重要。</p>
   </div>
 
   <div class="layout">
@@ -161,131 +174,131 @@ footer a{color:var(--muted);text-decoration:underline;}
         <h3>二、重点词汇</h3>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">marine</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">marine</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /məˈriːn/</div>
           <div class="wc-pos"><b>adj.</b> 海洋的（搭配：marine life 海洋生物）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Marine</b> life is rich in this area.</div>
-          <div class="wc-tr">这个地区海洋生物丰富。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Plastic waste harms <b>marine</b> life in many ways.</div>
+          <div class="wc-tr">塑料垃圾在许多方面危害海洋生物。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">food chain</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">food chain</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈfuːd tʃeɪn/</div>
           <div class="wc-pos"><b>n.</b> 食物链（搭配：work its way up the food chain）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Plankton is at the bottom of the <b>food chain</b>.</div>
-          <div class="wc-tr">浮游生物处于食物链底端。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Microplastics move up the <b>food chain</b>.</div>
+          <div class="wc-tr">微塑料沿食物链向上传递。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">discard</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">discard</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /dɪsˈkɑːd/</div>
           <div class="wc-pos"><b>v.</b> 丢弃（搭配：discard single-use items）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Please <b>discard</b> the used tissues.</div>
-          <div class="wc-tr">请丢弃用过的纸巾。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Please don't <b>discard</b> plastic bottles on the beach.</div>
+          <div class="wc-tr">请不要在海滩上丢弃塑料瓶。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">fragment</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈfræɡmənt/</div>
           <div class="wc-pos"><b>n.</b> 碎片（搭配：break into tiny fragments）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The vase broke into small <b>fragments</b>.</div>
-          <div class="wc-tr">花瓶碎成了小碎片。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The plastic broke into tiny <b>fragments</b>.</div>
+          <div class="wc-tr">塑料碎成了细小的碎片。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">microplastics</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˌmaɪkrəʊˈplæstɪks/</div>
           <div class="wc-pos"><b>n.</b> 微塑料（搭配：microplastic pollution）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Microplastics</b> have been found in drinking water.</div>
-          <div class="wc-tr">饮用水中已发现微塑料。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Microplastics</b> have been found in fish and seabirds.</div>
+          <div class="wc-tr">在鱼类和海鸟体内已发现微塑料。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">swallow</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈswɒləʊ/</div>
           <div class="wc-pos"><b>v.</b> 吞下；咽下（搭配：be swallowed by mistake）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He <b>swallowed</b> the pill with water.</div>
-          <div class="wc-tr">他用水吞下了药片。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Fish may <b>swallow</b> microplastics by mistake.</div>
+          <div class="wc-tr">鱼类可能会误吞微塑料。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">starvation</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /stɑːˈveɪʃn/</div>
           <div class="wc-pos"><b>n.</b> 饥饿（搭配：die of starvation）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Thousands face <b>starvation</b> in the region.</div>
-          <div class="wc-tr">该地区数千人面临饥饿。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many seabirds die of <b>starvation</b> because of plastic.</div>
+          <div class="wc-tr">许多海鸟因塑料而饿死。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">entangle</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">entangle</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ɪnˈtæŋɡl/</div>
           <div class="wc-pos"><b>v.</b> 缠住；使卷入（搭配：entangle whales and turtles）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The bird was <b>entangled</b> in the net.</div>
-          <div class="wc-tr">这只鸟被网缠住了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Abandoned nets <b>entangle</b> whales and seals.</div>
+          <div class="wc-tr">废弃渔网会缠住鲸和海豹。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">jellyfish</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">jellyfish</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈdʒelifɪʃ/</div>
           <div class="wc-pos"><b>n.</b> 水母（搭配：be confused with jellyfish）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Jellyfish</b> float near the shore in summer.</div>
-          <div class="wc-tr">夏天水母漂浮在岸边。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sea turtles often mistake plastic bags for <b>jellyfish</b>.</div>
+          <div class="wc-tr">海龟常把塑料袋误认成水母。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">livelihood</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈlaɪvlihʊd/</div>
-          <div class="wc-pos"><b>n.</b> 生计；谋生手段（搭配：fishing livelihoods）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Fishing is the main <b>livelihood</b> here.</div>
-          <div class="wc-tr">捕鱼是这里的主要生计。</div>
+          <div class="wc-pos"><b>n.</b> 生计；谋生手段（搭配：earn a livelihood）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Fishing is the main <b>livelihood</b> of many coastal villages.</div>
+          <div class="wc-tr">捕鱼是许多沿海村庄的主要生计。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">ecosystem</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">ecosystem</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈiːkəʊsɪstəm/</div>
           <div class="wc-pos"><b>n.</b> 生态系统（搭配：ecosystem services 生态系统服务）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Forests are important <b>ecosystems</b>.</div>
-          <div class="wc-tr">森林是重要的生态系统。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Plastic pollution damages the whole marine <b>ecosystem</b>.</div>
+          <div class="wc-tr">塑料污染破坏整个海洋生态系统。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">litter</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈlɪtə(r)/</div>
           <div class="wc-pos"><b>v./n.</b> 乱扔垃圾；（乱扔的）垃圾（搭配：littered beaches）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Don't <b>litter</b> in the park.</div>
-          <div class="wc-tr">不要在公园乱扔垃圾。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Please don't <b>litter</b> in the park.</div>
+          <div class="wc-tr">请不要在公园里乱扔垃圾。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">taxpayer</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈtækspeɪə(r)/</div>
           <div class="wc-pos"><b>n.</b> 纳税人（搭配：taxpayers pay the cost）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The project is funded by <b>taxpayers</b>.</div>
-          <div class="wc-tr">这个项目由纳税人出资。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Taxpayers</b> pay for cleaning up the beaches.</div>
+          <div class="wc-tr">清理海滩的费用由纳税人承担。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">reusable</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">reusable</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˌriːˈjuːzəbl/</div>
           <div class="wc-pos"><b>adj.</b> 可重复使用的（搭配：reusable bottles and bags）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Bring a <b>reusable</b> bag when shopping.</div>
-          <div class="wc-tr">购物时带上可重复使用的袋子。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bring a <b>reusable</b> bottle instead of buying plastic ones.</div>
+          <div class="wc-tr">带上可重复使用的水瓶，而不是买塑料瓶。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">refuse</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /rɪˈfjuːz/</div>
           <div class="wc-pos"><b>v.</b> 拒绝（搭配：refuse unnecessary packaging）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She <b>refused</b> to answer the question.</div>
-          <div class="wc-tr">她拒绝回答这个问题。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We should <b>refuse</b> unnecessary packaging.</div>
+          <div class="wc-tr">我们应该拒绝不必要的包装。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">packaging</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈpækɪdʒɪŋ/</div>
           <div class="wc-pos"><b>n.</b> 包装（材料）（搭配：unnecessary packaging）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The <b>packaging</b> can be recycled.</div>
-          <div class="wc-tr">这些包装可以回收。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Too much <b>packaging</b> creates plastic waste.</div>
+          <div class="wc-tr">过多的包装会产生塑料垃圾。</div>
         </div>
       </div>
 
@@ -297,24 +310,27 @@ footer a{color:var(--muted);text-decoration:underline;}
           <li><span class="en">single-use items</span><span class="zh">一次性用品</span></li>
           <li><span class="en">break into fragments</span><span class="zh">碎成碎片</span></li>
           <li><span class="en">be mistaken for</span><span class="zh">被误认为</span></li>
-          <li><span class="en">die of starvation</span><span class="zh">饥饿而死</span></li>
           <li><span class="en">be confused with</span><span class="zh">被混淆为</span></li>
+          <li><span class="en">die of starvation</span><span class="zh">饿死</span></li>
+          <li><span class="en">be limited to</span><span class="zh">局限于</span></li>
+          <li><span class="en">earn a livelihood</span><span class="zh">谋生</span></li>
           <li><span class="en">ecosystem services</span><span class="zh">生态系统服务</span></li>
-          <li><span class="en">reusable bottles</span><span class="zh">可重复使用的水瓶</span></li>
+          <li><span class="en">waste management</span><span class="zh">垃圾管理；废物管理</span></li>
+          <li><span class="en">individual choices</span><span class="zh">个人选择</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>每年 1100 万吨塑料入海。</li>
-          <li>塑料源自陆地一次性用品。</li>
-          <li>微塑料遍布并被误食。</li>
-          <li>大块塑料缠绕海洋动物。</li>
-          <li>污染威胁人类生计经济。</li>
-          <li>经济损失达万亿美元。</li>
-          <li>专家称问题可以解决。</li>
-          <li>个人选择同样重要。</li>
+          <li>每年约 1100 万吨塑料垃圾入海，威胁海洋生物，2050 年可能超过鱼类。</li>
+          <li>污染多源于陆地一次性用品，经风与河流入海后碎成碎片。</li>
+          <li>微塑料无处不在，被误食后导致受伤、饥饿和死亡。</li>
+          <li>大块塑料缠住鲸、海龟等动物，漂浮袋常被误认为水母。</li>
+          <li>污染还威胁渔民生计、旅游业和纳税人。</li>
+          <li>据 WEF 报告，经济损失高达数万亿美元。</li>
+          <li>专家称问题可解决，可从减少生产、加强回收与重新设计入手。</li>
+          <li>个人选择同样重要，减少一次性塑料、拒绝过度包装能帮助保护海洋。</li>
         </ol>
       </div>
     </aside>
@@ -369,52 +385,55 @@ footer a{color:var(--muted);text-decoration:underline;}
 
       <h2>六、文章结构图解</h2>
       <figure class="hero">
-        <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+        <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 8 段）">
           <defs>
             <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
           </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 8 段）</text>
 
           <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 每年1100万吨塑料入海</text>
-          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
 
           <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 塑料源自陆地一次性用品</text>
-          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
 
           <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 微塑料遍布并被误食</text>
-          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
 
           <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 大块塑料缠绕海洋动物</text>
-          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
 
           <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 污染威胁人类生计经济</text>
-          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
 
           <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 经济损失达万亿美元</text>
-          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
 
           <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 专家称问题可以解决</text>
-          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
 
           <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 个人选择同样重要</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
         </svg>
         <figcaption>全文共 8 段，按「现状 → 来源 → 微塑料 → 大块塑料 → 人类生计 → 经济损失 → 解决方案 → 个人行动」的递进逻辑层层展开。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：WEF / UNEP / WWF 公开资料（2026-09-07 整理）｜ 仅供个人学习使用<br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：WEF / UNEP / WWF 公开资料（2026-09-07 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

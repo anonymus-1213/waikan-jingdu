@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>美国著名导演、演员罗伯·莱纳在逝世九个月后，凭借《熊家餐馆》荣获艾美奖喜剧类最佳客串男演员。这是对去年 12 月与妻子一同遇难的他的追授荣誉，也是自 1995 年以来首个追授给银幕表演的艾美奖。颁奖人代为领奖时，全场起立鼓掌长达一分钟。此次获奖还打破了其父卡尔·莱纳保持的演艺类艾美奖最长获奖间隔纪录：罗伯·莱纳距 1978 年上次获奖相隔 48 年，超过父亲此前保持的 37 年。</p>
+    <p>美国著名导演、演员罗伯·莱纳在逝世九个月后，凭借《熊家餐馆》荣获艾美奖喜剧类最佳客串男演员。这是对去年 12 月与妻子一同遇难的他的追授荣誉，也是自 1995 年以来首个追授给银幕表演的艾美奖。此次获奖还打破了其父卡尔·莱纳保持的演艺类艾美奖最长获奖间隔纪录——48 年对 37 年。作为《摇滚万万岁》《公主新娘》等经典的缔造者，莱纳的这次客串成为他最后的银幕演出之一。</p>
   </div>
 
   <div class="layout">
@@ -162,96 +175,96 @@ footer a{color:var(--muted);text-decoration:underline;}
           <div class="wc-top"><span class="wc-word">posthumous</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˈpɒstjʊməs/</div>
           <div class="wc-pos"><b>adj.</b> 死后的；追授的（搭配：a posthumous honor / Emmy）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He received a <b>posthumous</b> award for bravery.</div>
-          <div class="wc-tr">他因英勇行为获追授奖项。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The soldier received a <b>posthumous</b> medal for his bravery.</div>
+          <div class="wc-tr">这名士兵因英勇被追授勋章。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">outstanding</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /aʊtˈstændɪŋ/</div>
           <div class="wc-pos"><b>adj.</b> 杰出的；出色的（搭配：outstanding guest actor）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She is an <b>outstanding</b> student.</div>
-          <div class="wc-tr">她是一名优秀的学生。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She gave an <b>outstanding</b> performance in the play.</div>
+          <div class="wc-tr">她在这部剧中表现出色。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">prevail</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /prɪˈveɪl/</div>
           <div class="wc-pos"><b>v.</b> 胜过；占上风（搭配：prevailing over sb）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Justice will <b>prevail</b> in the end.</div>
-          <div class="wc-tr">正义终将获胜。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Justice will <b>prevail</b> over evil in the end.</div>
+          <div class="wc-tr">正义终将战胜邪恶。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">ovation</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">ovation</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /əʊˈveɪʃn/</div>
           <div class="wc-pos"><b>n.</b> 热烈鼓掌；欢呼（搭配：a standing ovation 起立鼓掌）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The singer received a standing <b>ovation</b>.</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The singer received a standing <b>ovation</b> from the audience.</div>
           <div class="wc-tr">这位歌手赢得了全场起立鼓掌。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">trophy</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">trophy</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈtrəʊfi/</div>
           <div class="wc-pos"><b>n.</b> 奖杯（搭配：supporting actor trophy）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>They lifted the <b>trophy</b> together.</div>
-          <div class="wc-tr">他们一起举起了奖杯。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team lifted the champion's <b>trophy</b>.</div>
+          <div class="wc-tr">球队举起了冠军奖杯。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">consecutive</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /kənˈsekjətɪv/</div>
           <div class="wc-pos"><b>adj.</b> 连续的（搭配：his second consecutive trophy）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>It rained for five <b>consecutive</b> days.</div>
-          <div class="wc-tr">连续下了五天雨。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He won three <b>consecutive</b> matches.</div>
+          <div class="wc-tr">他连赢了三场比赛。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">shatter</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈʃætə(r)/</div>
           <div class="wc-pos"><b>v.</b> 打破（纪录）；粉碎（搭配：shatters the mark）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The news <b>shattered</b> her hopes.</div>
-          <div class="wc-tr">这个消息粉碎了她的希望。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She <b>shattered</b> the school record in the 100 meters.</div>
+          <div class="wc-tr">她打破了学校的百米纪录。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">span</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /spæn/</div>
           <div class="wc-pos"><b>n.</b> 跨度；间隔（搭配：the longest span between wins）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Over a <b>span</b> of ten years, the city changed a lot.</div>
-          <div class="wc-tr">在十年跨度里，这座城市变化很大。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>span</b> between his two wins was 48 years.</div>
+          <div class="wc-tr">他两次夺冠之间相隔 48 年。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">memoriam</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /məˈmɔːriəm/</div>
           <div class="wc-pos"><b>n.</b> 追思；纪念（搭配：the In Memoriam segment）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The film ended with an In <b>Memoriam</b> tribute.</div>
-          <div class="wc-tr">影片以追思致敬收尾。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He was honored in the In <b>Memoriam</b> segment at the awards.</div>
+          <div class="wc-tr">他在颁奖礼的追思环节中受到致敬。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">nomination</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˌnɒmɪˈneɪʃn/</div>
           <div class="wc-pos"><b>n.</b> 提名（搭配：led by … with 25 nominations）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The film received five Oscar <b>nominations</b>.</div>
-          <div class="wc-tr">这部电影获得五项奥斯卡提名。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The film received three Oscar <b>nominations</b>.</div>
+          <div class="wc-tr">这部电影获得了三项奥斯卡提名。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">broadcast</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈbrɔːdkɑːst/</div>
           <div class="wc-pos"><b>n.</b> 直播；转播（搭配：the live 78th Emmys broadcast）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The match will be <b>broadcast</b> live tonight.</div>
-          <div class="wc-tr">比赛今晚将现场直播。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The live <b>broadcast</b> begins at 8 p.m.</div>
+          <div class="wc-tr">现场直播于晚上八点开始。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">guest turn</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˈɡest tɜːn/</div>
           <div class="wc-pos"><b>n.</b> 客串出演（搭配：his guest turn on FX's "The Bear"）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>His <b>guest turn</b> on the show was memorable.</div>
-          <div class="wc-tr">他在该剧中的客串令人难忘。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>His <b>guest turn</b> on the show was very popular.</div>
+          <div class="wc-tr">他在该剧中的客串出演非常受欢迎。</div>
         </div>
       </div>
 
@@ -259,23 +272,28 @@ footer a{color:var(--muted);text-decoration:underline;}
         <h3>短语积累</h3>
         <ul class="phrases">
           <li><span class="en">a posthumous honor</span><span class="zh">追授荣誉</span></li>
-          <li><span class="en">prevailing over</span><span class="zh">击败（对手）</span></li>
+          <li><span class="en">outstanding guest actor</span><span class="zh">最佳客串男演员</span></li>
+          <li><span class="en">prevail over sb</span><span class="zh">胜过 / 击败某人</span></li>
           <li><span class="en">a standing ovation</span><span class="zh">起立鼓掌</span></li>
+          <li><span class="en">on sb's behalf</span><span class="zh">代表某人</span></li>
+          <li><span class="en">consecutive trophy</span><span class="zh">连续（获得的）奖杯</span></li>
           <li><span class="en">shatter the mark</span><span class="zh">打破纪录</span></li>
-          <li><span class="en">the longest span</span><span class="zh">最长间隔</span></li>
+          <li><span class="en">the longest span between …</span><span class="zh">……之间最长间隔</span></li>
           <li><span class="en">the In Memoriam segment</span><span class="zh">追思环节</span></li>
-          <li><span class="en">guest turn</span><span class="zh">客串出演</span></li>
+          <li><span class="en">be led by …</span><span class="zh">由……领衔（提名最多）</span></li>
+          <li><span class="en">the live broadcast</span><span class="zh">现场直播</span></li>
+          <li><span class="en">guest turn on …</span><span class="zh">客串出演……</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>逝世九个月后获艾美奖。</li>
-          <li>获最佳客串奖并创追授纪录。</li>
-          <li>颁奖人代领，全场起立鼓掌。</li>
-          <li>打破父亲保持的获奖间隔纪录。</li>
-          <li>业界缅怀其经典之作。</li>
+          <li>莱纳在逝世九个月后获得艾美奖。</li>
+          <li>凭《熊家餐馆》获喜剧类最佳客串男演员，创追授纪录。</li>
+          <li>颁奖人代领，全场起立鼓掌长达一分钟。</li>
+          <li>打破其父保持的演艺类艾美奖最长获奖间隔纪录。</li>
+          <li>业界缅怀其经典之作，奥斯卡亦有致敬。</li>
           <li>本届提名情况与播出安排。</li>
         </ol>
       </div>
@@ -329,8 +347,9 @@ footer a{color:var(--muted);text-decoration:underline;}
 
       <h2>六、文章结构图解</h2>
       <figure class="hero">
-        <svg viewBox="0 0 720 384" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+        <svg viewBox="0 0 720 384" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共6段）" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
           <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+          <text x="360" y="24" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="15" fill="#9c2f16">文章段落结构（共 6 段）</text>
           <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">莱纳逝世九个月后获艾美奖</text>
           <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
@@ -352,13 +371,14 @@ footer a{color:var(--muted);text-decoration:underline;}
         <figcaption>段落逻辑：先点明获奖事件，再交代获奖详情与现场反应，继而阐释破纪录意义，最后补叙人物成就与本届背景。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：Variety（美国，2026-09-06）｜ 原文链接：https://variety.com/2026/tv/awards/rob-reiner-wins-posthumous-emmy-the-bear-1236849972 ｜ 仅供个人学习使用<br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：Variety（美国，2026-09-06）｜ 原文链接：https://variety.com/2026/tv/awards/rob-reiner-wins-posthumous-emmy-the-bear-1236849972 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>对高中生来说，没有什么比"睡个好觉"更简单、也更重要了。加州大学戴维斯分校的一项研究追踪青春期早期群体发现：在连接心理健康问题与成绩下降的各种生活方式因素中，睡眠质量作用最强，约能解释抑郁与低分之间 18.5% 的关联，超过了屏幕使用时间和体育锻炼。另一项研究还发现，周末补觉能让 16 至 24 岁年轻人抑郁风险降低 41%。本文用数据说明睡眠如何巩固记忆、调节情绪，并提醒经常熬夜写作业的高中生：保护睡眠，是对成绩和心理健康的双重投资。</p>
+    <p>加州大学戴维斯分校的一项研究发现，睡个好觉可能是青少年在学业和友谊中表现更好的最简单方法之一。研究追踪青春期早期的年轻人，考察睡眠、屏幕时间、运动等生活方式因素如何将抑郁、焦虑等心理问题与学业、社交表现联系起来。结果发现，睡眠质量的作用最强，约能解释抑郁与成绩下降之间 18.5% 的关联，超过屏幕时间和体育锻炼；减少屏幕时间是第二重要因素。另一项研究还显示，周末补觉的年轻人抑郁风险降低 41%。对经常熬夜写作业的高中生而言，保护睡眠不是浪费时间，而是对成绩与心理健康的长远投资。</p>
   </div>
 
   <div class="layout">
@@ -160,159 +173,162 @@ footer a{color:var(--muted);text-decoration:underline;}
         <h3>二、重点词汇</h3>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">thrive</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">thrive</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /θraɪv/</div>
-          <div class="wc-pos"><b>v.</b> 茁壮成长；蓬勃发展（搭配：thrive at school / thrive in study）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Plants <b>thrive</b> in warm, sunny weather.</div>
-          <div class="wc-tr">植物在温暖晴朗的天气里茁壮成长。</div>
+          <div class="wc-pos"><b>v.</b> 茁壮成长；蓬勃发展（搭配：thrive at school）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Children <b>thrive</b> when they get enough sleep and love.</div>
+          <div class="wc-tr">当孩子们得到充足的睡眠和关爱时，他们就能茁壮成长。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">quality</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈkwɒləti/</div>
           <div class="wc-pos"><b>n.</b> 质量；品质（搭配：sleep quality 睡眠质量）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Good sleep <b>quality</b> improves your mood.</div>
-          <div class="wc-tr">良好的睡眠质量能改善情绪。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Good sleep <b>quality</b> is important for teenagers.</div>
+          <div class="wc-tr">良好的睡眠质量对青少年很重要。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">factor</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈfæktə(r)/</div>
           <div class="wc-pos"><b>n.</b> 因素；要素（搭配：a key factor in …）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Exercise is an important <b>factor</b> in health.</div>
-          <div class="wc-tr">锻炼是健康的重要因素。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep is a key <b>factor</b> in staying healthy.</div>
+          <div class="wc-tr">睡眠是保持健康的一个关键因素。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">symptom</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">symptom</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈsɪmptəm/</div>
           <div class="wc-pos"><b>n.</b> 症状（搭配：symptoms of depression）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Fever is a common <b>symptom</b> of the flu.</div>
-          <div class="wc-tr">发烧是流感的常见症状。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He showed <b>symptoms</b> of depression and anxiety.</div>
+          <div class="wc-tr">他表现出抑郁和焦虑的症状。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">adolescence</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">adolescence</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˌædəˈlesns/</div>
           <div class="wc-pos"><b>n.</b> 青春期（搭配：in early adolescence）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Adolescence</b> is a time of rapid change.</div>
-          <div class="wc-tr">青春期是快速变化的时期。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brain changes greatly during <b>adolescence</b>.</div>
+          <div class="wc-tr">在青春期，大脑会发生很大的变化。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">depression</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /dɪˈpreʃn/</div>
           <div class="wc-pos"><b>n.</b> 抑郁；沮丧（搭配：suffer from depression）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Regular exercise can help reduce <b>depression</b>.</div>
-          <div class="wc-tr">规律运动有助于减轻抑郁。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many young people suffer from <b>depression</b>.</div>
+          <div class="wc-tr">许多年轻人患有抑郁症。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">anxiety</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /æŋˈzaɪəti/</div>
           <div class="wc-pos"><b>n.</b> 焦虑（搭配：reduce anxiety 缓解焦虑）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He felt <b>anxiety</b> before the exam.</div>
-          <div class="wc-tr">考试前他感到焦虑。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Exercise can help reduce <b>anxiety</b>.</div>
+          <div class="wc-tr">运动有助于缓解焦虑。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">academic</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˌækəˈdemɪk/</div>
           <div class="wc-pos"><b>adj.</b> 学业的；学术的（搭配：academic performance 学业表现）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Her <b>academic</b> performance has improved a lot.</div>
-          <div class="wc-tr">她的学业表现进步很大。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Good sleep improves students' <b>academic</b> performance.</div>
+          <div class="wc-tr">良好的睡眠能提高学生的学业表现。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">functioning</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">functioning</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈfʌŋkʃənɪŋ/</div>
           <div class="wc-pos"><b>n.</b> 功能；机能（搭配：social functioning 社会功能）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Sleep affects the brain's daily <b>functioning</b>.</div>
-          <div class="wc-tr">睡眠影响大脑的日常功能。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep affects both academic and social <b>functioning</b>.</div>
+          <div class="wc-tr">睡眠会影响学业和社会两方面的功能。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">account for</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /əˈkaʊnt fɔː(r)/</div>
           <div class="wc-pos"><b>v.</b> 占（比例）；解释（搭配：account for 18.5% of …）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Students <b>account for</b> half of the visitors.</div>
-          <div class="wc-tr">学生占参观者的一半。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep quality <b>accounted for</b> about 18.5% of the link.</div>
+          <div class="wc-tr">睡眠质量约占这一关联的 18.5%。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">pathway</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">pathway</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈpɑːθweɪ/</div>
           <div class="wc-pos"><b>n.</b> 途径；路径（搭配：a pathway to success）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Reading opens a <b>pathway</b> to new worlds.</div>
-          <div class="wc-tr">阅读打开了通往新世界的大门。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Hard work is a <b>pathway</b> to success.</div>
+          <div class="wc-tr">努力是通往成功的一条途径。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">cut back on</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">cut back on</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /kʌt bæk ɒn/</div>
           <div class="wc-pos"><b>v.</b> 减少；削减（搭配：cut back on screen time）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He decided to <b>cut back on</b> sweets.</div>
-          <div class="wc-tr">他决定少吃甜食。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>You should <b>cut back on</b> phone use before bed.</div>
+          <div class="wc-tr">你应该减少睡前使用手机。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">catch up on</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">catch up on</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /kætʃ ʌp ɒn/</div>
           <div class="wc-pos"><b>v.</b> 补上；追赶（搭配：catch up on sleep 补觉）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>I need to <b>catch up on</b> my reading.</div>
-          <div class="wc-tr">我需要补上我的阅读。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many students <b>catch up on</b> sleep at weekends.</div>
+          <div class="wc-tr">许多学生利用周末补觉。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">consolidate</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /kənˈsɒlɪdeɪt/</div>
           <div class="wc-pos"><b>v.</b> 巩固；强化（搭配：consolidate memories）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Sleep helps <b>consolidate</b> what you learned.</div>
-          <div class="wc-tr">睡眠有助于巩固所学内容。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep helps the brain <b>consolidate</b> memories.</div>
+          <div class="wc-tr">睡眠帮助大脑巩固记忆。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">concentrate</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈkɒnsntreɪt/</div>
           <div class="wc-pos"><b>v.</b> 集中注意力（搭配：concentrate on study）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>It's hard to <b>concentrate</b> in a noisy room.</div>
-          <div class="wc-tr">在嘈杂的房间里很难集中注意力。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>I can't <b>concentrate</b> when I'm sleepy.</div>
+          <div class="wc-tr">我困的时候无法集中注意力。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">investment</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ɪnˈvestmənt/</div>
           <div class="wc-pos"><b>n.</b> 投资；投入（搭配：an investment in health）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Education is a wise <b>investment</b>.</div>
-          <div class="wc-tr">教育是一项明智的投资。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Protecting sleep is an <b>investment</b> in your health.</div>
+          <div class="wc-tr">保护睡眠是对健康的一种投资。</div>
         </div>
       </div>
 
       <div class="side-box">
         <h3>短语积累</h3>
         <ul class="phrases">
-          <li><span class="en">a good night's sleep</span><span class="zh">一夜好眠</span></li>
+          <li><span class="en">get a good night's sleep</span><span class="zh">睡个好觉</span></li>
+          <li><span class="en">get along well with sb</span><span class="zh">与某人相处融洽</span></li>
           <li><span class="en">sleep quality</span><span class="zh">睡眠质量</span></li>
-          <li><span class="en">mental health</span><span class="zh">心理健康</span></li>
-          <li><span class="en">screen time</span><span class="zh">屏幕使用时间</span></li>
-          <li><span class="en">account for</span><span class="zh">占（比例）</span></li>
+          <li><span class="en">account for</span><span class="zh">占（比例）；解释</span></li>
+          <li><span class="en">in other words</span><span class="zh">换句话说</span></li>
           <li><span class="en">cut back on</span><span class="zh">减少</span></li>
           <li><span class="en">catch up on sleep</span><span class="zh">补觉</span></li>
-          <li><span class="en">consolidate memories</span><span class="zh">巩固记忆</span></li>
-          <li><span class="en">concentrate on</span><span class="zh">集中注意力</span></li>
+          <li><span class="en">clear out</span><span class="zh">清理；清除</span></li>
+          <li><span class="en">stay up late</span><span class="zh">熬夜</span></li>
+          <li><span class="en">concentrate on</span><span class="zh">集中注意力于</span></li>
+          <li><span class="en">a waste of time</span><span class="zh">浪费时间</span></li>
+          <li><span class="en">an investment in …</span><span class="zh">对……的投资</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>好睡眠助学业与交友。</li>
-          <li>研究追踪青春期人群。</li>
-          <li>睡眠质量作用最强（18.5%）。</li>
-          <li>减少屏幕时间是次因。</li>
-          <li>周末补觉降低抑郁风险。</li>
-          <li>睡眠助记忆与情绪调控。</li>
-          <li>保护睡眠是长远投资。</li>
+          <li>研究指出，优质睡眠是青少年在学业与交友中表现得更好的最简单方法之一。</li>
+          <li>研究追踪青春期早期群体，考察生活方式因素如何连接心理健康与学业社会功能。</li>
+          <li>睡眠质量作用最强，约占抑郁与低分关联的 18.5%。</li>
+          <li>减少屏幕时间是第二重要因素，尤其睡前少用手机。</li>
+          <li>另一研究显示，周末补觉的年轻人抑郁风险降低 41%。</li>
+          <li>睡眠帮助大脑巩固记忆、清理废物，睡眠不足影响注意力和情绪。</li>
+          <li>对高中生而言，保护睡眠是对成绩与心理健康的投资。</li>
         </ol>
       </div>
     </aside>
@@ -370,39 +386,41 @@ footer a{color:var(--muted);text-decoration:underline;}
 
       <h2>六、文章结构图解</h2>
       <figure class="hero">
-        <svg viewBox="0 0 760 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+        <svg viewBox="0 0 760 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图" style="width:100%;height:auto;display:block;">
           <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+          <text x="380" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 7 段）</text>
           <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. 好睡眠助学业与交友</text>
-          <line x1="360" y1="82" x2="360" y2="91" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
           <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2. 研究追踪青春期人群</text>
-          <line x1="360" y1="134" x2="360" y2="143" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
           <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3. 睡眠质量作用最强（18.5%）</text>
-          <line x1="360" y1="186" x2="360" y2="195" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
           <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4. 减少屏幕时间是次因</text>
-          <line x1="360" y1="238" x2="360" y2="247" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
           <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5. 周末补觉降低抑郁风险</text>
-          <line x1="360" y1="290" x2="360" y2="299" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
           <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6. 睡眠助记忆与情绪调控</text>
-          <line x1="360" y1="342" x2="360" y2="351" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
           <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7. 保护睡眠是长远投资</text>
+          <line x1="360" y1="82" x2="360" y2="91" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="143" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="195" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="247" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="299" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="351" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
         </svg>
         <figcaption>图解：全文七段由「提出观点 → 研究数据 → 补充研究 → 机理解释 → 结论建议」层层递进：第 1–2 段引出睡眠的益处，第 3–4 段用数据论证睡眠质量与屏幕时间的影响，第 5 段补充周末补觉研究，第 6 段解释睡眠机理，第 7 段落点于保护睡眠的建议。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：UC Davis Health / Medical Xpress（2026-08 与 2026-01 相关报道）｜ 仅供个人学习使用<br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：UC Davis Health / Medical Xpress（2026-08 与 2026-01 相关报道）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

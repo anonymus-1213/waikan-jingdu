@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>这是一个关于"停下与归来"的励志故事。美国花样滑冰选手阿莉莎·刘 13 岁便成为史上最年轻的全国冠军，却在 16 岁因成名带来的压力与疲惫宣布退役，回归普通学生生活。一次滑雪旅行中，朋友一句"你还热爱滑冰吗"唤醒了她对冰面的眷恋。2024 年她复出，2025 年夺得世锦赛冠军，2026 年在米兰冬奥会以近乎完美的自由滑摘得金牌。她的故事提醒我们：有时最勇敢的选择，是暂停、倾听内心、再重新出发。</p>
+    <p>阿莉莎·刘（Alysa Liu）是美国花样滑冰天才少女，13 岁便成为史上最年轻的美国全国冠军，还创造了美国女子选手在比赛中完成阿克塞尔三周跳和四周跳的历史。然而成名带来巨大压力，16 岁的她宣布退役，回归普通学生的生活。一次滑雪旅行中，朋友的一句"你还热爱滑冰吗"唤醒了她的热爱；2024 年她复出，2025 年夺得世锦赛冠军，2026 年 2 月 19 日在米兰冬奥会以近乎完美的自由滑摘金，成为 24 年来首位夺得女子单人滑奥运金牌的美国选手。她的故事告诉我们：适时暂停、倾听内心、重新出发，同样是一种了不起的力量。</p>
   </div>
 
   <div class="layout">
@@ -163,128 +176,128 @@ footer a{color:var(--muted);text-decoration:underline;}
           <div class="wc-top"><span class="wc-word">retirement</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /rɪˈtaɪəmənt/</div>
           <div class="wc-pos"><b>n.</b> 退役；退休（搭配：announce one's retirement）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He announced his <b>retirement</b> from football.</div>
-          <div class="wc-tr">他宣布退出足坛。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>After thirty years of work, my father finally announced his <b>retirement</b>.</div>
+          <div class="wc-tr">工作三十年后，我父亲终于宣布退休。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">competitive</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /kəmˈpetətɪv/</div>
-          <div class="wc-pos"><b>adj.</b> 竞技的；竞争的（搭配：competitive figure skating）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She is very <b>competitive</b> and hates losing.</div>
-          <div class="wc-tr">她好胜心很强，讨厌输。</div>
+          <div class="wc-pos"><b>adj.</b> 竞技的；竞争的（搭配：competitive sports / figure skating）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Figure skating is a highly <b>competitive</b> sport.</div>
+          <div class="wc-tr">花样滑冰是一项竞争激烈的运动。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">champion</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈtʃæmpiən/</div>
           <div class="wc-pos"><b>n.</b> 冠军；拥护者（搭配：national / world champion）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She became the world <b>champion</b> at 18.</div>
-          <div class="wc-tr">她 18 岁成为世界冠军。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She became the youngest national <b>champion</b> in history.</div>
+          <div class="wc-tr">她成为史上最年轻的全国冠军。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">defend</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /dɪˈfend/</div>
           <div class="wc-pos"><b>v.</b> 捍卫；卫冕（搭配：defend the title 卫冕）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The team will <b>defend</b> its title next year.</div>
-          <div class="wc-tr">这支队伍明年将卫冕。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He will try to <b>defend</b> his title at next year's championship.</div>
+          <div class="wc-tr">他将在明年的锦标赛上力争卫冕。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">pressure</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈpreʃə(r)/</div>
           <div class="wc-pos"><b>n.</b> 压力（搭配：under pressure; face great pressure）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He works well under <b>pressure</b>.</div>
-          <div class="wc-tr">他在压力下表现出色。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many students feel great <b>pressure</b> before exams.</div>
+          <div class="wc-tr">许多学生在考试前感到巨大压力。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">ordinary</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈɔːdnri/</div>
           <div class="wc-pos"><b>adj.</b> 普通的；平凡的（搭配：an ordinary life; ordinary people）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He lives an <b>ordinary</b> life in a small town.</div>
-          <div class="wc-tr">他在小镇过着平凡的生活。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She chose to live an <b>ordinary</b> life away from the spotlight.</div>
+          <div class="wc-tr">她选择远离聚光灯，过普通的生活。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">step away</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">step away</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /step əˈweɪ/</div>
           <div class="wc-pos"><b>v.</b> 离开；暂时退出（搭配：step away from the sport）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She <b>stepped away</b> from work to travel.</div>
-          <div class="wc-tr">她暂别工作去旅行。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sometimes we need to <b>step away</b> from work to relax.</div>
+          <div class="wc-tr">有时我们需要暂时放下工作，放松一下。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">glide</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ɡlaɪd/</div>
           <div class="wc-pos"><b>v.</b> 滑行；滑翔（搭配：glide across the ice）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The swan <b>glided</b> across the lake.</div>
-          <div class="wc-tr">天鹅滑过湖面。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The skater <b>glided</b> gracefully across the ice.</div>
+          <div class="wc-tr">滑冰者在冰面上优雅地滑行。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">realize</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈrɪəlaɪz/</div>
           <div class="wc-pos"><b>v.</b> 意识到；实现（搭配：realize one's dream 实现梦想）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>I <b>realized</b> my mistake too late.</div>
-          <div class="wc-tr">我意识到错误时已经太晚了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She finally <b>realized</b> how much she missed skating.</div>
+          <div class="wc-tr">她终于意识到自己是多么想念滑冰。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">beyond</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /bɪˈjɒnd/</div>
           <div class="wc-pos"><b>adv.</b> 非常；超出（搭配：beyond excited; beyond one's imagination）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The view was <b>beyond</b> beautiful.</div>
-          <div class="wc-tr">这景色美得无法形容。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She was <b>beyond</b> excited to be back on the ice.</div>
+          <div class="wc-tr">她重新回到冰场，兴奋不已。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">joy</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /dʒɔɪ/</div>
           <div class="wc-pos"><b>n.</b> 快乐；乐趣（搭配：with joy; bring sb joy）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Her face lit up with <b>joy</b>.</div>
-          <div class="wc-tr">她脸上洋溢着喜悦。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Skating brought her great <b>joy</b> again.</div>
+          <div class="wc-tr">滑冰再次给她带来了巨大的快乐。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">pay off</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /peɪ ɒf/</div>
           <div class="wc-pos"><b>v.</b> 取得成功；得到回报（搭配：one's hard work pays off）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>All his hard work finally <b>paid off</b>.</div>
-          <div class="wc-tr">他的努力终于得到了回报。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>All her hard training finally <b>paid off</b>.</div>
+          <div class="wc-tr">她所有的刻苦训练最终得到了回报。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">flawless</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">flawless</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈflɔːləs/</div>
           <div class="wc-pos"><b>adj.</b> 完美的；无瑕疵的（搭配：a flawless performance）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She gave a <b>flawless</b> performance.</div>
-          <div class="wc-tr">她的表演完美无瑕。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She delivered a <b>flawless</b> performance in the final.</div>
+          <div class="wc-tr">她在决赛中呈现了完美的表现。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">individual</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˌɪndɪˈvɪdʒuəl/</div>
           <div class="wc-pos"><b>adj.</b> 个人的；单独的（搭配：individual gold medal）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Each <b>individual</b> has different needs.</div>
-          <div class="wc-tr">每个人都有不同的需求。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She won her first <b>individual</b> gold medal.</div>
+          <div class="wc-tr">她赢得了自己的第一枚个人金牌。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">proud</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /praʊd/</div>
           <div class="wc-pos"><b>adj.</b> 自豪的；骄傲的（搭配：be proud of; take pride in）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>I'm <b>proud</b> of my students.</div>
-          <div class="wc-tr">我为我的学生感到骄傲。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Her parents were very <b>proud</b> of her achievements.</div>
+          <div class="wc-tr">她的父母为她的成就感到非常自豪。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">pause</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /pɔːz/</div>
           <div class="wc-pos"><b>v.</b> 暂停；停顿（搭配：pause to think; without pause）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He <b>paused</b> for a moment before answering.</div>
-          <div class="wc-tr">他停了一下才回答。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She <b>paused</b> for a moment before answering.</div>
+          <div class="wc-tr">她停顿了片刻才回答。</div>
         </div>
       </div>
 
@@ -294,25 +307,28 @@ footer a{color:var(--muted);text-decoration:underline;}
           <li><span class="en">announce one's retirement</span><span class="zh">宣布退役</span></li>
           <li><span class="en">competitive figure skating</span><span class="zh">竞技花样滑冰</span></li>
           <li><span class="en">defend the title</span><span class="zh">卫冕</span></li>
-          <li><span class="en">under pressure</span><span class="zh">承受压力</span></li>
-          <li><span class="en">step away from</span><span class="zh">暂时离开</span></li>
-          <li><span class="en">glide across the ice</span><span class="zh">在冰上滑行</span></li>
+          <li><span class="en">under pressure</span><span class="zh">在压力之下</span></li>
+          <li><span class="en">step away from …</span><span class="zh">暂时离开……</span></li>
+          <li><span class="en">glide across the ice</span><span class="zh">在冰面上滑行</span></li>
+          <li><span class="en">realize one's dream</span><span class="zh">实现梦想</span></li>
+          <li><span class="en">beyond excited</span><span class="zh">兴奋不已</span></li>
+          <li><span class="en">with joy</span><span class="zh">高兴地</span></li>
           <li><span class="en">pay off</span><span class="zh">得到回报</span></li>
-          <li><span class="en">be proud of</span><span class="zh">为……自豪</span></li>
-          <li><span class="en">listen to your heart</span><span class="zh">倾听内心</span></li>
+          <li><span class="en">be proud of</span><span class="zh">为……感到自豪</span></li>
+          <li><span class="en">pause to think</span><span class="zh">停下来思考</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>16 岁因失去热爱宣布退役。</li>
-          <li>少年成名，13 岁夺冠并创纪录。</li>
-          <li>成名带来压力与疲惫。</li>
-          <li>朋友一问唤醒热爱。</li>
-          <li>2024 年宣布复出。</li>
-          <li>世锦赛与奥运夺金。</li>
-          <li>勇敢暂停，重新出发。</li>
+          <li>刘在 16 岁时因失去对滑冰的热爱而宣布退役。</li>
+          <li>她少年成名：13 岁成为史上最年轻的美国全国冠军，并成功卫冕。</li>
+          <li>成名带来压力与疲惫，她在冬奥和世锦赛后选择回归普通生活。</li>
+          <li>朋友一句"你还热爱滑冰吗"让她意识到自己怀念冰上滑行的感觉。</li>
+          <li>2024 年她宣布复出，带着重新找回的快乐投入训练。</li>
+          <li>努力得到回报：2025 年世锦赛夺冠，2026 年米兰冬奥夺金。</li>
+          <li>她为自己的成长自豪，故事启示我们勇敢暂停、倾听内心、重新出发。</li>
         </ol>
       </div>
     </aside>
@@ -375,12 +391,14 @@ footer a{color:var(--muted);text-decoration:underline;}
 
       <h2>六、文章结构图解</h2>
       <figure class="hero">
-        <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+        <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
           <defs>
             <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
               <path d="M0,0 L0,6 L9,3 z" fill="#9c2f16"/>
             </marker>
           </defs>
+          <rect width="720" height="436" fill="#fdfcf8"/>
+          <text x="360" y="28" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" fill="#1c1a17">文章段落结构（共 7 段）</text>
 
           <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. 16岁因失去热爱退役</text>
@@ -409,16 +427,17 @@ footer a{color:var(--muted);text-decoration:underline;}
           <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7. 勇敢暂停，重新出发</text>
         </svg>
-        <figcaption>文章按"退役→成名→压力→觉醒→复出→夺冠→感悟"的时间与情感脉络推进：前两段交代天才少女的崛起与退场，中间三段写迷茫、觉醒与回归，末两段写夺冠与人生感悟。</figcaption>
+        <figcaption>文章按“退役→成名→压力→觉醒→复出→夺冠→感悟”的时间与情感脉络推进：前两段交代天才少女的崛起与退场，中间三段写迷茫、觉醒与回归，末两段写夺冠与人生感悟。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：NBC Olympics / Olympics.com / U.S. Figure Skating / Team USA（经公开页面获取，2026-02）｜ 仅供个人学习使用<br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：NBC Olympics / Olympics.com / U.S. Figure Skating / Team USA（经公开页面获取，2026-02）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

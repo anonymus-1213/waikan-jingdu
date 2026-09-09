@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>英格兰的特殊教育正面临一场"申请潮"。随着政府宣布改革特殊教育体系，各地学校和议会预计，持有教育、健康与照护计划（EHCP）的儿童比例将从 2025 年的二十分之一翻倍至十分之一。过去两年 EHCP 申请每年增幅都超过 11%，校长们用"不真实"来形容这股激增。本文解释了 EHCP 是什么、为什么改革预告反而刺激了家庭抢申，以及这场申请潮给地方政府财政带来的沉重压力。</p>
+    <p>英格兰各地学校和议会预计，持有教育、健康和照护计划（EHCP）的儿童比例将翻倍，从二十分之一升至十分之一。由于政府宣布改革特殊教育体系，各家庭纷纷在改革落地前为孩子抢申 EHCP，申请量出现激增，过去两年每年增幅都超过 11%。这一激增将超出政府预测，蚕食改善主流学校支持的资金，并给学校和议会带来沉重财政压力。本文解读申请潮的成因、EHCP 的含义及其对地方财政的深层影响。</p>
   </div>
 
   <div class="layout">
@@ -165,37 +178,37 @@ footer a{color:var(--muted);text-decoration:underline;}
           <div class="wc-ph">英/美 /prəˈpɔːʃn/</div>
           <div class="wc-pos"><b>n.</b> 比例；占比（搭配：the proportion of children）</div>
           <div class="wc-ex"><span class="ex-tag">例</span>A large <b>proportion</b> of students walk to school.</div>
-          <div class="wc-tr">很大一部分学生步行上学。</div>
+          <div class="wc-tr">很大比例的学生步行上学。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">surge</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /sɜːdʒ/</div>
           <div class="wc-pos"><b>n.</b> 激增；猛增（搭配：an "unreal" surge in applications）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>There was a <b>surge</b> in online shopping.</div>
-          <div class="wc-tr">网购出现激增。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There has been a <b>surge</b> in online shopping.</div>
+          <div class="wc-tr">网上购物出现了激增。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">mandate</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈmændeɪt/</div>
           <div class="wc-pos"><b>v.</b> 强制规定；授权（搭配：plans mandating support for …）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The new law <b>mandates</b> seat belts for all passengers.</div>
-          <div class="wc-tr">新法强制所有乘客系安全带。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The law <b>mandates</b> that all children attend school.</div>
+          <div class="wc-tr">法律规定所有儿童必须上学。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">autism</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">autism</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈɔːtɪzəm/</div>
           <div class="wc-pos"><b>n.</b> 自闭症（搭配：autism or ADHD）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He was diagnosed with <b>autism</b> as a child.</div>
-          <div class="wc-tr">他小时候被诊断出自闭症。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The boy with <b>autism</b> needs special support at school.</div>
+          <div class="wc-tr">这个患有自闭症的男孩在学校需要特别支持。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">ADHD</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˌeɪ diː eɪtʃ ˈdiː/</div>
-          <div class="wc-pos"><b>n.</b> 注意缺陷多动障碍（搭配：autism or ADHD）</div>
+          <div class="wc-pos"><b>n.</b> 注意缺陷多动障碍（搭配：speech and learning difficulties, autism or ADHD）</div>
           <div class="wc-ex"><span class="ex-tag">例</span>Children with <b>ADHD</b> may find it hard to focus.</div>
           <div class="wc-tr">患有多动症的儿童可能难以集中注意力。</div>
         </div>
@@ -204,108 +217,111 @@ footer a{color:var(--muted);text-decoration:underline;}
           <div class="wc-top"><span class="wc-word">projection</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /prəˈdʒekʃn/</div>
           <div class="wc-pos"><b>n.</b> 预测；预估（搭配：projections by local authorities）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The <b>projections</b> show sales will double.</div>
-          <div class="wc-tr">预测显示销售额将翻倍。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>projection</b> shows a rise in demand.</div>
+          <div class="wc-tr">预测显示需求将上升。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">outstrip</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">outstrip</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˌaʊtˈstrɪp/</div>
           <div class="wc-pos"><b>v.</b> 超过；超越（搭配：outstrip the government's forecasts）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Demand has <b>outstripped</b> supply.</div>
-          <div class="wc-tr">需求已超过供应。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Demand has <b>outstripped</b> supply this year.</div>
+          <div class="wc-tr">今年需求已超过供给。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">eat into</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">eat into</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /iːt ˈɪntə/</div>
           <div class="wc-pos"><b>v.</b> 蚕食；侵占（搭配：eat into funding）</div>
           <div class="wc-ex"><span class="ex-tag">例</span>Rising costs are <b>eating into</b> our savings.</div>
-          <div class="wc-tr">上涨的成本正在蚕食我们的积蓄。</div>
+          <div class="wc-tr">不断上涨的开支正在蚕食我们的积蓄。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">strain</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">strain</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /streɪn/</div>
           <div class="wc-pos"><b>v.</b> 使紧张；加重负担（搭配：straining school and council budgets）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The extra work <b>strained</b> his health.</div>
-          <div class="wc-tr">额外的工作损害了他的健康。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The extra work <b>strained</b> the school budget.</div>
+          <div class="wc-tr">额外的工作给学校预算带来了压力。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">mainstream school</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">mainstream school</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈmeɪnstriːm skuːl/</div>
           <div class="wc-pos"><b>n.</b> 主流学校；普通学校（搭配：specialist support in mainstream schools）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>She attends a <b>mainstream school</b>.</div>
-          <div class="wc-tr">她就读于一所普通学校。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Most children with special needs study in <b>mainstream schools</b>.</div>
+          <div class="wc-tr">大多数有特殊需求的儿童在普通学校就读。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">deficit</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈdefɪsɪt/</div>
           <div class="wc-pos"><b>n.</b> 赤字；缺口（搭配：amassing sustained deficits）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The country has a large trade <b>deficit</b>.</div>
-          <div class="wc-tr">这个国家有很大的贸易逆差。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The council is struggling with a large <b>deficit</b>.</div>
+          <div class="wc-tr">该议会正艰难应对巨额赤字。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">statutory</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">statutory</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈstætʃətri/</div>
           <div class="wc-pos"><b>adj.</b> 法定的（搭配：a statutory override）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>There is a <b>statutory</b> duty to report the accident.</div>
-          <div class="wc-tr">报告事故是一项法定义务。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Education is a <b>statutory</b> requirement for children.</div>
+          <div class="wc-tr">接受教育是对儿童的法定要求。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">override</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">override</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˌəʊvəˈraɪd/</div>
           <div class="wc-pos"><b>n.</b> 豁免；推翻（搭配：require a statutory override）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The president can <b>override</b> the decision.</div>
-          <div class="wc-tr">总统可以推翻这一决定。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The council needed an <b>override</b> to balance its budget.</div>
+          <div class="wc-tr">该议会需要一项豁免来平衡预算。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">kick in</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">kick in</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /kɪk ɪn/</div>
           <div class="wc-pos"><b>v.</b> 生效；开始实施（搭配：before these changes kick in）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The painkiller started to <b>kick in</b> after ten minutes.</div>
-          <div class="wc-tr">止痛药十分钟后开始起效。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The new rules will <b>kick in</b> next month.</div>
+          <div class="wc-tr">新规定将于下月生效。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">forecast</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈfɔːkɑːst/</div>
           <div class="wc-pos"><b>n.</b> 预测；预期（搭配：raise their own forecasts）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The weather <b>forecast</b> says it will rain tomorrow.</div>
-          <div class="wc-tr">天气预报说明天会下雨。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>forecast</b> predicts more rain tomorrow.</div>
+          <div class="wc-tr">预报预测明天有更多降雨。</div>
         </div>
       </div>
 
       <div class="side-box">
         <h3>短语积累</h3>
         <ul class="phrases">
-          <li><span class="en">special needs plans</span><span class="zh">特殊需求计划</span></li>
-          <li><span class="en">the proportion of</span><span class="zh">……的比例</span></li>
-          <li><span class="en">a surge in applications</span><span class="zh">申请激增</span></li>
-          <li><span class="en">outstrip forecasts</span><span class="zh">超出预测</span></li>
+          <li><span class="en">special needs</span><span class="zh">特殊需求</span></li>
+          <li><span class="en">the proportion of …</span><span class="zh">……的比例</span></li>
+          <li><span class="en">surge in applications</span><span class="zh">申请激增</span></li>
+          <li><span class="en">mainstream school</span><span class="zh">主流学校；普通学校</span></li>
           <li><span class="en">eat into funding</span><span class="zh">蚕食资金</span></li>
-          <li><span class="en">strain budgets</span><span class="zh">加重预算负担</span></li>
-          <li><span class="en">mainstream schools</span><span class="zh">主流学校</span></li>
+          <li><span class="en">strain budgets</span><span class="zh">使预算承压</span></li>
+          <li><span class="en">high needs budget</span><span class="zh">高需求预算</span></li>
+          <li><span class="en">local authority</span><span class="zh">地方政府；议会</span></li>
           <li><span class="en">kick in</span><span class="zh">生效；开始实施</span></li>
-          <li><span class="en">local authorities</span><span class="zh">地方政府</span></li>
+          <li><span class="en">rush to secure support</span><span class="zh">争相获得支持</span></li>
+          <li><span class="en">double to one in 10</span><span class="zh">翻倍至十分之一</span></li>
+          <li><span class="en">apply before …</span><span class="zh">在……之前申请</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>特殊需求计划儿童占比或将翻倍至十分之一。</li>
-          <li>校长报告 EHCP 申请量激增。</li>
-          <li>过去两年年增幅超 11%，未来仍将两位数增长。</li>
-          <li>激增超出政府预测，蚕食资金、加重负担。</li>
-          <li>EHCP 是 25 岁以下支持文件，逾 53 万儿童持有。</li>
-          <li>高额预算导致议会持续赤字，需中央豁免。</li>
-          <li>改革预告刺激家庭抢申。</li>
+          <li>各地学校议会预计特殊需求计划儿童比例将翻倍至十分之一。</li>
+          <li>校长报告 EHCP 申请出现"不真实"的激增。</li>
+          <li>过去两年 EHCP 年增幅均超 11%，未来三年预计仍两位数增长。</li>
+          <li>快速增长将超出政府预测、蚕食资金并加重预算负担。</li>
+          <li>EHCP 是 25 岁以下儿童青少年的法定支持文件。</li>
+          <li>巨额增长致议会持续赤字，需中央政府法定豁免。</li>
+          <li>校长联合会秘书长指出改革预告促使家庭抢申。</li>
           <li>各地大幅上调 EHCP 预测。</li>
         </ol>
       </div>
@@ -352,7 +368,7 @@ footer a{color:var(--muted);text-decoration:underline;}
       </div>
 
       <h2>四、全文大意</h2>
-      <p class="zh-sum">英格兰各地的学校和议会预计，拥有教育、健康和照护计划（EHCP）的儿童比例将翻倍，从 2025 年的二十分之一升至十分之一。由于政府宣布改革特殊教育体系，各家庭纷纷在改革落地前为孩子抢申 EHCP，申请量出现"不真实"的激增，过去两年每年增幅都超过 11%。这一激增将超出政府预测，蚕食改善主流学校支持的资金，并给学校和议会带来沉重财政压力。目前全英已有超过 53 万学龄儿童持有 EHCP，另有 130 万儿童被认定有特殊需求。汉普郡议会预测 2026 至 2030 年 EHCP 将增长 58%，曼彻斯特议会则预计到 2029 年学龄 EHCP 儿童将增加 40%。</p>
+      <p class="zh-sum">英格兰各地的学校和议会预计，拥有教育、健康和照护计划（EHCP）的儿童比例将翻倍，从 2025 年的二十分之一升至十分之一。由于政府宣布从 2 月起改革特殊教育体系，各家庭纷纷在改革落地前为孩子抢申 EHCP，申请量出现"不真实"的激增，过去两年每年增幅都超过 11%。这一激增将超出政府预测，蚕食改善主流学校支持的资金，并给学校和议会带来沉重财政压力。目前全英已有超过 53 万学龄儿童持有 EHCP，另有 130 万儿童被认定有特殊需求；地方议会预测到 2028-29 年 EHCP 数量将达 84 万。教育大臣 Georgia Gould 承诺建立更包容的体系，让家长"不必再为支持而抗争"。</p>
 
       <h2>五、思考与仿写</h2>
       <div class="q"><b>思考题：</b>为什么政府宣布改革反而会引发 EHCP 申请潮？结合第 7 段，谈谈政策"预告效应"如何影响家庭行为，并思考特殊教育资金压力与"让每个孩子不掉队"的理想之间如何平衡。</div>
@@ -360,8 +376,9 @@ footer a{color:var(--muted);text-decoration:underline;}
 
       <h2>六、文章结构图解</h2>
       <figure class="hero">
-        <svg viewBox="0 0 720 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+        <svg viewBox="0 0 580 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
           <defs><marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker></defs>
+          <text x="290" y="28" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="15" fill="#9c2f16">文章段落结构（共 8 段）</text>
 
           <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">① 特殊需求计划占比将翻倍</text>
@@ -397,13 +414,14 @@ footer a{color:var(--muted);text-decoration:underline;}
         <figcaption>段落逻辑：从「占比将翻倍」的现象起笔，经申请激增与数据、EHCP 定义与财政赤字，再到改革预告引发的抢申与各地上调预测，层层推进至政策与财政的深层压力。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：The Guardian（2026-09-06）｜ 原文链接：<a href="https://www.theguardian.com/education/2026/sep/06/schools-england-report-surge-send-applications">Pupils with Send plans in England likely to double to one in 10 in rush for support</a>｜ 仅供个人学习使用<br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：The Guardian（2026-09-06）｜ 原文链接：<a href="https://www.theguardian.com/education/2026/sep/06/schools-england-report-surge-send-applications">Pupils with Send plans in England likely to double to one in 10 in rush for support</a>｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

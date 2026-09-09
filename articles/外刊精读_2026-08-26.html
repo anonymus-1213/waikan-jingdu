@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>传统上，阿尔茨海默病研究聚焦于"症状出现后再治疗"；而英国 NHS 牵头的一项 III 期试验 PrevenTRON 则换个角度：给那些尚未出现记忆问题、但血液中 p-tau217 标志物升高的人提前用药，看能否从一开始就阻止痴呆发生。本文介绍这项全球约 1600 人的试验如何通过血液检测筛查高风险者，并介绍罗氏新药 trontinemab 清除淀粉样斑块的原理。若成功，它或将把阿尔茨海默病的防治从"治疗"推向"预防"。</p>
+    <p>英国 NHS 信托牵头的一项 III 期临床试验（PrevenTRON），将为全球约 1600 名无记忆问题、但被评估为高风险的健康中老年人，提前使用罗氏研发的 trontinemab，以检验能否在症状出现之前阻止痴呆。参与者先接受 p-tau217 血液检测——该标志物识别阿尔茨海默病的准确率高达 95%，最高风险人群 10 年内出现认知障碍的概率约 78%。研究表明该药能在 28 周内清除九成患者脑内的淀粉样斑块。本文介绍了这一试验的设计，并聚焦其标志性意义：研究重心正从"治疗"转向"预防"。</p>
   </div>
 
   <div class="layout">
@@ -161,123 +174,123 @@ footer a{color:var(--muted);text-decoration:underline;}
         <h3>二、重点词汇</h3>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">experimental</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">experimental</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ɪkˌsperɪˈmentl/</div>
           <div class="wc-pos"><b>adj.</b> 实验性的（搭配：an experimental drug）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The <b>experimental</b> treatment is still being tested.</div>
-          <div class="wc-tr">这种实验性疗法仍在测试中。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Doctors are testing an <b>experimental</b> treatment on volunteers.</div>
+          <div class="wc-tr">医生们正在志愿者身上测试一种实验性疗法。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">dementia</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /dɪˈmenʃə/</div>
           <div class="wc-pos"><b>n.</b> 痴呆（症）（搭配：prevent dementia）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Dementia</b> mainly affects older people's memory and thinking.</div>
-          <div class="wc-tr">痴呆主要影响老年人的记忆和思维。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists are looking for ways to prevent <b>dementia</b>.</div>
+          <div class="wc-tr">科学家们正在寻找预防痴呆症的方法。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">emerge</span><span class="lvl">CET4</span></div>
+          <div class="wc-top"><span class="wc-word">emerge</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ɪˈmɜːdʒ/</div>
           <div class="wc-pos"><b>v.</b> 出现；显现（搭配：symptoms emerge）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>New problems <b>emerged</b> as the project went on.</div>
-          <div class="wc-tr">随着项目推进，新的问题出现了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>New problems may <b>emerge</b> as the project goes on.</div>
+          <div class="wc-tr">随着项目推进，新的问题可能会出现。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">deem</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /diːm/</div>
           <div class="wc-pos"><b>v.</b> 认为；视为（搭配：be deemed to have …）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The task was <b>deemed</b> too difficult for beginners.</div>
-          <div class="wc-tr">这项任务被认为对初学者太难。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The plan was <b>deemed</b> too risky.</div>
+          <div class="wc-tr">这个计划被认为风险太大。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">eligible</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈelɪdʒəbl/</div>
           <div class="wc-pos"><b>adj.</b> 有资格的；符合条件的（搭配：be eligible to participate）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Only students over 18 are <b>eligible</b> to apply.</div>
-          <div class="wc-tr">只有年满 18 岁的学生才有资格申请。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Students over 18 are <b>eligible</b> to vote.</div>
+          <div class="wc-tr">年满 18 岁的学生有资格投票。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">recruit</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /rɪˈkruːt/</div>
           <div class="wc-pos"><b>v.</b> 招募（搭配：recruit about 1,600 people）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The company is <b>recruiting</b> new staff for the coming year.</div>
-          <div class="wc-tr">公司正在为来年招募新员工。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study will <b>recruit</b> 1,000 volunteers.</div>
+          <div class="wc-tr">这项研究将招募 1000 名志愿者。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">screen</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /skriːn/</div>
           <div class="wc-pos"><b>v.</b> 筛查；筛选（搭配：be screened for the trial）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Patients were <b>screened</b> for signs of the disease.</div>
-          <div class="wc-tr">病人接受了疾病迹象筛查。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Patients are <b>screened</b> for the disease each year.</div>
+          <div class="wc-tr">患者每年都要接受该病的筛查。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">biomarker</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˈbaɪəʊˌmɑːkə(r)/</div>
           <div class="wc-pos"><b>n.</b> 生物标志物（搭配：a biomarker that can predict …）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Doctors use a blood <b>biomarker</b> to detect the illness early.</div>
-          <div class="wc-tr">医生用血液生物标志物来早期发现疾病。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>This protein is a useful <b>biomarker</b> for the disease.</div>
+          <div class="wc-tr">这种蛋白质是该病有用的生物标志物。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">cognitive</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈkɒɡnətɪv/</div>
           <div class="wc-pos"><b>adj.</b> 认知的（搭配：cognitive decline / impairment）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Reading helps children develop <b>cognitive</b> skills.</div>
-          <div class="wc-tr">阅读帮助儿童发展认知能力。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading can help slow <b>cognitive</b> decline.</div>
+          <div class="wc-tr">阅读有助于减缓认知衰退。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">impairment</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ɪmˈpeəmənt/</div>
           <div class="wc-pos"><b>n.</b> 损伤；损害（搭配：cognitive impairment）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Hearing <b>impairment</b> can affect a child's learning.</div>
-          <div class="wc-tr">听力损伤会影响孩子的学习。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Hearing <b>impairment</b> is common among older people.</div>
+          <div class="wc-tr">听力损伤在老年人中很常见。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">elevated</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈelɪveɪtɪd/</div>
           <div class="wc-pos"><b>adj.</b> 升高的；偏高的（搭配：elevated levels of p-tau217）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The test showed <b>elevated</b> levels of sugar in his blood.</div>
-          <div class="wc-tr">检测显示他血糖水平偏高。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The test showed <b>elevated</b> blood pressure.</div>
+          <div class="wc-tr">检查显示血压偏高。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">prescribe</span><span class="lvl">CET4</span></div>
+          <div class="wc-top"><span class="wc-word">prescribe</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /prɪˈskraɪb/</div>
           <div class="wc-pos"><b>v.</b> 开（处方）；开（药）（搭配：prescribe a new drug）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The doctor <b>prescribed</b> some medicine for my cough.</div>
-          <div class="wc-tr">医生给我开了些治咳嗽的药。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The doctor <b>prescribed</b> some medicine for my cold.</div>
+          <div class="wc-tr">医生给我的感冒开了些药。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">amyloid plaque</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˈæmɪlɔɪd plæk/</div>
           <div class="wc-pos"><b>n.</b> 淀粉样斑块（搭配：clear amyloid plaques）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Amyloid plaques</b> build up in the brains of Alzheimer's patients.</div>
-          <div class="wc-tr">淀粉样斑块在阿尔茨海默病患者大脑中堆积。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The drug helps clear <b>amyloid plaques</b> in the brain.</div>
+          <div class="wc-tr">这种药物有助于清除大脑中的淀粉样斑块。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">groundbreaking</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈɡraʊndbreɪkɪŋ/</div>
           <div class="wc-pos"><b>adj.</b> 开创性的（搭配：a groundbreaking drug）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The team made a <b>groundbreaking</b> discovery in physics.</div>
-          <div class="wc-tr">团队在物理学上取得了开创性发现。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Her <b>groundbreaking</b> research changed the field.</div>
+          <div class="wc-tr">她开创性的研究改变了这一领域。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">placebo</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /pləˈsiːbəʊ/</div>
           <div class="wc-pos"><b>n.</b> 安慰剂（搭配：receive either … or a placebo）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Half the patients received the real drug, the other half a <b>placebo</b>.</div>
-          <div class="wc-tr">一半病人服用真药，另一半服用安慰剂。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Half the group took the drug, the rest took a <b>placebo</b>.</div>
+          <div class="wc-tr">组里一半人服药，其余人服用安慰剂。</div>
         </div>
       </div>
 
@@ -285,29 +298,31 @@ footer a{color:var(--muted);text-decoration:underline;}
         <h3>短语积累</h3>
         <ul class="phrases">
           <li><span class="en">memory loss</span><span class="zh">记忆丧失</span></li>
-          <li><span class="en">dementia symptoms</span><span class="zh">痴呆症状</span></li>
-          <li><span class="en">be deemed to …</span><span class="zh">被认为……</span></li>
-          <li><span class="en">be eligible to participate</span><span class="zh">有资格参加</span></li>
-          <li><span class="en">screen for …</span><span class="zh">筛查……</span></li>
-          <li><span class="en">cognitive decline / impairment</span><span class="zh">认知衰退/损伤</span></li>
-          <li><span class="en">prescribe a drug</span><span class="zh">开药</span></li>
-          <li><span class="en">be hailed as …</span><span class="zh">被誉为……</span></li>
-          <li><span class="en">be randomly assigned to …</span><span class="zh">被随机分配到……</span></li>
-          <li><span class="en">in the first place</span><span class="zh">从一开始</span></li>
+          <li><span class="en">be deemed to have …</span><span class="zh">被认为具有……</span></li>
+          <li><span class="en">be eligible to do sth</span><span class="zh">有资格做某事</span></li>
+          <li><span class="en">a clinical trial</span><span class="zh">临床试验</span></li>
+          <li><span class="en">cognitive decline</span><span class="zh">认知衰退</span></li>
+          <li><span class="en">cognitive impairment</span><span class="zh">认知损伤</span></li>
+          <li><span class="en">blood test</span><span class="zh">血液检测</span></li>
+          <li><span class="en">in the first place</span><span class="zh">首先；从一开始</span></li>
+          <li><span class="en">be randomly assigned to …</span><span class="zh">被随机分配至……</span></li>
+          <li><span class="en">build up</span><span class="zh">积聚；堆积</span></li>
+          <li><span class="en">early-stage</span><span class="zh">早期</span></li>
+          <li><span class="en">slow down</span><span class="zh">减缓</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>无记忆问题者将试用可阻止痴呆的实验性药物。</li>
-          <li>高风险健康中年人有资格参加预防试验。</li>
-          <li>周一启动欧洲首批筛查，全球招募约 1600 人。</li>
-          <li>先测记忆，再验血查 p-tau217 标志物。</li>
-          <li>高 p-tau217 者十年内患病率约 78%，血检准确率达 95%。</li>
-          <li>III 期 PrevenTRON 试验验证 trontinemab 能否提前阻断痴呆。</li>
-          <li>罗氏药物 trontinemab 清除淀粉样斑块。</li>
-          <li>专家主张在症状出现前干预，试验将持续 4-6 年。</li>
+          <li>无记忆问题的人将试用一种可阻止痴呆发生的实验性药物。</li>
+          <li>被认为患病风险较高的健康中年人可参与这项预防试验。</li>
+          <li>欧洲首批约 1600 名 55–80 岁参与者将于周一接受筛查。</li>
+          <li>参与者先做血液检测，评估 p-tau217 这一可预测认知衰退的标志物。</li>
+          <li>p-tau217 最高者 10 年内出现认知障碍的概率约 78%，检测准确率高达 95%。</li>
+          <li>PrevenTRON III 期试验将验证给 p-tau217 升高者用药能否预防痴呆。</li>
+          <li>罗氏的 trontinemab 可清除脑内淀粉样斑块，早期研究清除率达九成。</li>
+          <li>专家称研究重心正从"治疗"转向"预防"，试验将持续四到六年。</li>
         </ol>
       </div>
     </aside>
@@ -335,11 +350,12 @@ footer a{color:var(--muted);text-decoration:underline;}
       </div>
 
       <div class="sent">
-        <div class="orig">It has been hailed as a groundbreaking drug after early research found that it cleared amyloid plaques in nine out of 10 people with early-stage Alzheimer's or mild cognitive development within 28 weeks.</div>
+        <div class="orig">It has been hailed as a groundbreaking drug after early research found that it cleared amyloid plaques in nine out of 10 people with early-stage Alzheimer's or mild cognitive development within 28 weeks, meaning that one of the key characteristics of Alzheimer's was removed.</div>
         <div class="row"><b>主干：</b>It has been hailed as a groundbreaking drug</div>
         <div class="row"><b>时间状语从句：</b>after early research found that … —— 内含 that 宾语从句（found 的宾语）</div>
         <div class="row"><b>宾语从句主干：</b>it cleared amyloid plaques in nine out of 10 people（with early-stage Alzheimer's or mild cognitive development 作定语；within 28 weeks 作时间状语）</div>
-        <div class="row tr"><b>译文：</b>早期研究发现，该药在 28 周内清除了十分之九早期阿尔茨海默病或轻度认知障碍患者体内的淀粉样斑块，因此被誉为开创性药物。</div>
+        <div class="row"><b>结果状语：</b>meaning that one of the key characteristics of Alzheimer's was removed —— 现在分词表结果，内含 that 宾语从句</div>
+        <div class="row tr"><b>译文：</b>早期研究发现，该药在 28 周内清除了十分之九早期阿尔茨海默病或轻度认知障碍患者体内的淀粉样斑块，因此被誉为开创性药物——这意味着阿尔茨海默病的关键特征之一被消除了。</div>
       </div>
 
       <div class="sent">
@@ -390,13 +406,14 @@ footer a{color:var(--muted);text-decoration:underline;}
         <figcaption>结构图解：全篇由「试验背景 → 筛查与检测 → 药物机制 → 专家展望」层层推进，从现象到原理再到结论。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：The Guardian（原文链接见下，2026-09-05）｜ 仅供个人学习使用<br>
-        <a href="https://www.theguardian.com/society/2026/sep/05/alzheimers-trial-drug-dementia">原文链接</a> · <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：The Guardian（原文链接见下，2026-09-05）｜ 仅供个人学习使用<br>
+    <a href="https://www.theguardian.com/society/2026/sep/05/alzheimers-trial-drug-dementia">原文链接</a> · <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

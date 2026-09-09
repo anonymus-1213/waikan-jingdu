@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>德国极右翼、反移民的德国选择党（AfD）在东部萨克森-安哈尔特州议会选举中，以 43.8% 的得票率大胜，较五年前几乎翻倍，但以三席之差未能获得绝对多数，错失组建二战后德国首个极右州政府的机会。总理默茨领导的基民盟惨败，得票率跌至 17.2%。本文记录了这场震动德国政坛的选举：创纪录的 76.5% 投票率、选择党的政策承诺，以及主教与各界对极右执政的警告。</p>
+    <p>德国极右翼、反移民的德国选择党（AfD）在东部萨克森-安哈尔特州议会选举中大胜，得票率 43.8%，较五年前几乎翻倍，但以三席之差（83 席中获 39 席）未能获得绝对多数，错失组建二战后德国首个极右州政府的机会。总理默茨领导的基民盟惨败，得票率跌至 17.2%，失去近半支持。本次投票率达 76.5%，创下历史新高。选择党候选人西格蒙德表示愿与所有寻求政治变革的力量接触；主教则警告要警惕那些"挑拨离间、煽动猜疑与恐惧"的势力，并提醒民主有自我毁灭的可能。</p>
   </div>
 
   <div class="layout">
@@ -160,157 +173,162 @@ footer a{color:var(--muted);text-decoration:underline;}
         <h3>二、重点词汇</h3>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">far-right</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">far-right</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˌfɑː ˈraɪt/</div>
           <div class="wc-pos"><b>adj.</b> 极右翼的（搭配：the far-right party）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The <b>far-right</b> party gained support in the region.</div>
-          <div class="wc-tr">极右政党在该地区获得支持。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>far-right</b> party won many seats in the election.</div>
+          <div class="wc-tr">这个极右翼政党在选举中赢得许多席位。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">surge</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /sɜːdʒ/</div>
           <div class="wc-pos"><b>v.</b> 激增；飙升（搭配：surge to victory）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>House prices <b>surged</b> last year.</div>
-          <div class="wc-tr">去年房价飙升。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Support for the team <b>surged</b> after the victory.</div>
+          <div class="wc-tr">获胜后，这支队伍的支持率飙升。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">resounding</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">resounding</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /rɪˈzaʊndɪŋ/</div>
           <div class="wc-pos"><b>adj.</b> 响亮的；巨大的（搭配：a resounding victory）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The team won a <b>resounding</b> victory.</div>
-          <div class="wc-tr">这支队伍赢得了压倒性胜利。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The plan was a <b>resounding</b> success.</div>
+          <div class="wc-tr">这项计划取得了巨大成功。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">quest</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /kwest/</div>
           <div class="wc-pos"><b>n.</b> 追求；目标（搭配：in its quest to do sth）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He travelled the world in his <b>quest</b> for knowledge.</div>
-          <div class="wc-tr">他周游世界寻求知识。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He never gave up his <b>quest</b> for truth.</div>
+          <div class="wc-tr">他从未放弃对真理的追求。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">chancellor</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">chancellor</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈtʃɑːnsələ(r)/</div>
           <div class="wc-pos"><b>n.</b> （德国）总理（搭配：chancellor Friedrich Merz）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The German <b>chancellor</b> met with the prime minister.</div>
-          <div class="wc-tr">德国总理会见了首相。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>chancellor</b> announced a new policy.</div>
+          <div class="wc-tr">总理宣布了一项新政策。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">slump</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /slʌmp/</div>
           <div class="wc-pos"><b>v.</b> 暴跌；骤降（搭配：slump to a disastrous result）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Sales <b>slumped</b> during the winter.</div>
-          <div class="wc-tr">冬季销量骤降。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The company's profits <b>slumped</b> last year.</div>
+          <div class="wc-tr">公司去年的利润骤降。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">disastrous</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">disastrous</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /dɪˈzɑːstrəs/</div>
           <div class="wc-pos"><b>adj.</b> 灾难性的（搭配：a disastrous result）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The decision had <b>disastrous</b> consequences.</div>
-          <div class="wc-tr">这一决定带来了灾难性后果。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The flood had a <b>disastrous</b> effect on the town.</div>
+          <div class="wc-tr">洪水给这座城镇带来了灾难性的影响。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">fall short (of)</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /fɔːl ʃɔːt/</div>
           <div class="wc-pos"><b>phr.</b> 未达到；不足（搭配：fall three seats short）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The team <b>fell short of</b> its goal.</div>
-          <div class="wc-tr">这支队伍未能达到目标。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team <b>fell just short</b> of winning the title.</div>
+          <div class="wc-tr">这支队伍差一点就赢得冠军。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">lawmaker</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˈlɔːmeɪkə(r)/</div>
           <div class="wc-pos"><b>n.</b> 议员；立法者（搭配：39 lawmakers in parliament）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span><b>Lawmakers</b> debated the new bill.</div>
-          <div class="wc-tr">议员们就新法案进行了辩论。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>lawmakers</b> passed a new law.</div>
+          <div class="wc-tr">议员们通过了一项新法律。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">poll</span><span class="lvl">CET6</span></div>
+          <div class="wc-top"><span class="wc-word">poll</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /pəʊl/</div>
           <div class="wc-pos"><b>v.</b> 获得（选票）（搭配：polled 17.2%）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The party <b>polled</b> 30% of the votes.</div>
-          <div class="wc-tr">该党获得了 30% 的选票。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The ruling party <b>polled</b> only 30 percent.</div>
+          <div class="wc-tr">执政党仅获得 30% 的选票。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">participation</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /pɑːˌtɪsɪˈpeɪʃn/</div>
           <div class="wc-pos"><b>n.</b> 投票率；参与（搭配：at a record high of 76.5%）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Student <b>participation</b> in class is important.</div>
-          <div class="wc-tr">学生课堂参与很重要。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Participation</b> in the activity reached a record high.</div>
+          <div class="wc-tr">这项活动的参与率创下历史新高。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">jubilant</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">jubilant</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈdʒuːbɪlənt/</div>
           <div class="wc-pos"><b>adj.</b> 欢欣鼓舞的（搭配：jubilant supporters）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The fans were <b>jubilant</b> after the win.</div>
-          <div class="wc-tr">获胜后球迷们欢欣鼓舞。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>jubilant</b> crowd celebrated the win.</div>
+          <div class="wc-tr">欢欣鼓舞的人群庆祝胜利。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">remigration</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˌriːmaɪˈɡreɪʃn/</div>
           <div class="wc-pos"><b>n.</b> 反向移民；遣返（搭配：a remigration offensive）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The policy calls for the <b>remigration</b> of certain groups.</div>
-          <div class="wc-tr">该政策主张遣返某些群体。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The party promised a <b>remigration</b> offensive.</div>
+          <div class="wc-tr">该党承诺发起遣返移民行动。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">deportation</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˌdiːpɔːˈteɪʃn/</div>
           <div class="wc-pos"><b>n.</b> 驱逐出境（搭配：deportation offensive）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>He faced <b>deportation</b> after his visa expired.</div>
-          <div class="wc-tr">签证到期后他面临驱逐。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The court ordered his <b>deportation</b>.</div>
+          <div class="wc-tr">法院下令将他驱逐出境。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">halt</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /hɔːlt/</div>
           <div class="wc-pos"><b>v.</b> 停止；中止（搭配：halt the building of windfarms）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The company <b>halted</b> production.</div>
-          <div class="wc-tr">公司停止了生产。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Work on the project was <b>halted</b> by the storm.</div>
+          <div class="wc-tr">工程因暴风雨而停工。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">stoke</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">stoke</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /stəʊk/</div>
           <div class="wc-pos"><b>v.</b> 煽动；激起（搭配：stoke mistrust and fear）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The remarks <b>stoked</b> public anger.</div>
-          <div class="wc-tr">这番言论激起了公众的愤怒。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The speech <b>stoked</b> fear among the people.</div>
+          <div class="wc-tr">这番演讲在民众中激起恐惧。</div>
         </div>
       </div>
 
       <div class="side-box">
         <h3>短语积累</h3>
         <ul class="phrases">
-          <li><span class="en">surge to victory</span><span class="zh">大胜</span></li>
+          <li><span class="en">the far-right party</span><span class="zh">极右翼政党</span></li>
+          <li><span class="en">surge to victory</span><span class="zh">飙升取胜</span></li>
           <li><span class="en">a resounding victory</span><span class="zh">压倒性胜利</span></li>
-          <li><span class="en">fall short of</span><span class="zh">未达到</span></li>
-          <li><span class="en">fall three seats short</span><span class="zh">差三席</span></li>
-          <li><span class="en">at a record high</span><span class="zh">创历史新高</span></li>
-          <li><span class="en">reach out to</span><span class="zh">接触；向……伸出援手</span></li>
-          <li><span class="en">strive for</span><span class="zh">努力争取</span></li>
+          <li><span class="en">in its quest to do sth</span><span class="zh">在追求……的过程中</span></li>
+          <li><span class="en">fall just short of …</span><span class="zh">差一点……</span></li>
+          <li><span class="en">fall three seats short</span><span class="zh">差三个席位</span></li>
+          <li><span class="en">a minority government</span><span class="zh">少数派政府</span></li>
+          <li><span class="en">a record high</span><span class="zh">历史新高</span></li>
+          <li><span class="en">reach out to …</span><span class="zh">向……伸出橄榄枝</span></li>
+          <li><span class="en">form a government</span><span class="zh">组建政府</span></li>
+          <li><span class="en">sow discord</span><span class="zh">播撒不和；挑拨离间</span></li>
+          <li><span class="en">stoke mistrust and fear</span><span class="zh">煽动猜疑与恐惧</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>AfD 大胜仅差三席。</li>
-          <li>基民盟惨败。</li>
-          <li>39 席未过半，组阁艰难。</li>
-          <li>43.8% 翻倍远超 CDU。</li>
-          <li>投票率 76.5% 创新高。</li>
-          <li>承诺遣返移民等政策。</li>
-          <li>主教警告民主自毁。</li>
+          <li>AfD 大胜关键州选，但差三席未获多数。</li>
+          <li>默茨的基民盟惨败。</li>
+          <li>差三席难组阁，四分五裂的对手难以组建稳定政府。</li>
+          <li>得票率 43.8% 翻倍，远超基民盟。</li>
+          <li>投票率 76.5% 创历史新高，西格蒙德表态。</li>
+          <li>若执政将启动遣返移民等政策。</li>
+          <li>主教警告民主可能自我毁灭。</li>
         </ol>
       </div>
     </aside>
@@ -370,51 +388,54 @@ footer a{color:var(--muted);text-decoration:underline;}
 
       <h2>六、文章结构图解</h2>
       <figure class="hero">
-        <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图">
+        <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;">
           <defs>
             <marker id="sarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" fill="#9c2f16"/>
             </marker>
           </defs>
+          <rect width="720" height="436" fill="#fdfcf8"/>
+          <text x="360" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#1c1a17">文章段落结构（共 7 段）</text>
 
           <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1. AfD大胜仅差三席</text>
-          <line x1="360" y1="82" x2="360" y2="93" stroke="#9c2f16" marker-end="url(#sarr)"/>
 
+          <line x1="360" y1="82" x2="360" y2="93" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2. 基民盟惨败</text>
-          <line x1="360" y1="134" x2="360" y2="145" stroke="#9c2f16" marker-end="url(#sarr)"/>
 
+          <line x1="360" y1="134" x2="360" y2="145" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3. 39席未过半难组阁</text>
-          <line x1="360" y1="186" x2="360" y2="197" stroke="#9c2f16" marker-end="url(#sarr)"/>
 
+          <line x1="360" y1="186" x2="360" y2="197" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4. 43.8%翻倍远超CDU</text>
-          <line x1="360" y1="238" x2="360" y2="249" stroke="#9c2f16" marker-end="url(#sarr)"/>
 
+          <line x1="360" y1="238" x2="360" y2="249" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5. 投票率76.5%创新高</text>
-          <line x1="360" y1="290" x2="360" y2="301" stroke="#9c2f16" marker-end="url(#sarr)"/>
 
+          <line x1="360" y1="290" x2="360" y2="301" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6. 承诺遣返移民等政策</text>
-          <line x1="360" y1="342" x2="360" y2="353" stroke="#9c2f16" marker-end="url(#sarr)"/>
 
+          <line x1="360" y1="342" x2="360" y2="353" stroke="#9c2f16" marker-end="url(#sarr)"/>
           <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
           <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7. 主教警告民主自毁</text>
         </svg>
         <figcaption>段落逻辑：导语先交代大胜结果，随后依次展开对手惨败、席位与组阁困境、具体得票数据、投票率与表态、政策承诺，最后以主教警示收束，层层递进。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：The Guardian（卫报）2026-09-06 报道 ｜ 仅供个人学习使用<br>
-        原文链接：<a href="https://www.theguardian.com/world/2026/sep/06/saxony-anhalt-germany-afd-exit-poll-ulrich-siegmund">theguardian.com/world/2026/sep/06/saxony-anhalt-germany-afd-exit-poll-ulrich-siegmund</a><br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：The Guardian（卫报）2026-09-06 报道 ｜ 仅供个人学习使用<br>
+    原文链接：<a href="https://www.theguardian.com/world/2026/sep/06/saxony-anhalt-germany-afd-exit-poll-ulrich-siegmund">theguardian.com/world/2026/sep/06/saxony-anhalt-germany-afd-exit-poll-ulrich-siegmund</a><br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>

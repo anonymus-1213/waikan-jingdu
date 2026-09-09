@@ -17,26 +17,31 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
 a{color:var(--accent);text-decoration:none;}
 
+/* 顶部导航 */
 nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
 nav.top a{color:var(--muted);}
 nav.top a:hover{color:var(--accent);}
 
 .wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
 
+/* 文章头 */
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
 .deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
 .byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
 .byline b{color:var(--ink);font-weight:600;}
 
+/* Hero 配图 */
 figure.hero{margin:0 0 28px;max-width:760px;}
-figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figure.hero img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
 figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
+/* 中文导读 */
 .lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
 .lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
 .lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
 
+/* 布局：左正文 + 右词汇栏 */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
 .main-top{grid-area:mtop;min-width:0;}
 .main-bottom{grid-area:mbot;min-width:0;}
@@ -45,10 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
 .para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
 
+/* 悬停查词 */
 .kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
 .kw:hover{background:var(--blue-soft);}
 .kw::after{
@@ -68,6 +75,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 }
 .kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
 
+/* 词汇卡片 */
 .side-box{margin-bottom:26px;}
 .side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
 .wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
@@ -82,17 +90,20 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .wc .wc-ex b{color:var(--blue);font-weight:600;}
 .wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
 
+/* 短语积累 */
 .phrases{margin:0;padding-left:0;list-style:none;}
 .phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
 .phrases li:last-child{border-bottom:none;}
 .phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
 .phrases .zh{color:var(--muted);font-size:12.5px;}
 
+/* 段落主旨 */
 .gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
 .gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
 .gist li:last-child{border-bottom:none;}
 .gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
 
+/* 长难句 */
 .sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
 .sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
 .sent .row{margin:4px 0;font-size:13.5px;}
@@ -107,12 +118,14 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
   .side{position:static;}
   figure.hero{max-width:none;}
   .lead{max-width:none;}
   .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
@@ -135,7 +148,7 @@ footer a{color:var(--muted);text-decoration:underline;}
 
   <div class="lead">
     <h3>中文导读</h3>
-    <p>历经十余年研制、承载高度期待的 NASA 新一代望远镜"南希·格雷丝·罗曼"近日由 SpaceX 猎鹰重型火箭发射升空，前往距地球约一百万英里的第二拉格朗日点（L2）。它将开展为期五年的科学任务，与哈勃、韦布并肩，重点探测暗能量与暗物质，并对太阳系外行星做"革命性普查"。本文梳理了发射经过、驻留轨道与科学目标，并介绍日冕仪如何以空前灵敏度观测比恒星暗约一亿倍的系外行星——NASA 预计它有望把已知系外行星数量从约 6000 颗提升到 10 万颗。</p>
+    <p>NASA 新一代太空望远镜"南希·格雷丝·罗曼"于 8 月 30 日由 SpaceX 猎鹰重型火箭发射升空，历经十余年研制，前往距地球约一百万英里的第二拉格朗日点（L2）。它将开展为期五年的科学任务，与哈勃、韦布望远镜并肩，重点探测暗能量与暗物质的本质，并对系外行星进行革命性普查。搭载的日冕仪能以空前灵敏度观测比恒星暗约一亿倍的系外行星，NASA 预计其有望将已知系外行星数量从约 6000 颗提升至 10 万颗。本文梳理了这一里程碑式任务的发射过程、驻留轨道与三大科学目标。</p>
   </div>
 
   <div class="layout">
@@ -164,129 +177,129 @@ footer a{color:var(--muted);text-decoration:underline;}
         <div class="wc">
           <div class="wc-top"><span class="wc-word">anticipation</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ænˌtɪsɪˈpeɪʃn/</div>
-          <div class="wc-pos"><b>n.</b> 期待；预期（搭配：high anticipation）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The children waited with great <b>anticipation</b> for the summer holiday.</div>
-          <div class="wc-tr">孩子们怀着极大的期待等待暑假。</div>
+          <div class="wc-pos"><b>n.</b> 期待；预期（搭配：high anticipation 高度期待）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The fans waited in <b>anticipation</b> for the show to begin.</div>
+          <div class="wc-tr">粉丝们满怀期待地等待演出开始。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">lift off</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">lift off</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˌlɪft ˈɒf/</div>
-          <div class="wc-pos"><b>v.</b> 升空；发射（搭配：lift off from Launch Complex 39A）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The rocket <b>lifted off</b> successfully on Tuesday morning.</div>
-          <div class="wc-tr">火箭于周二早上成功升空。</div>
+          <div class="wc-pos"><b>v.</b> 升空；发射（搭配：lifted off from Launch Complex 39A）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The rocket <b>lifted off</b> at noon.</div>
+          <div class="wc-tr">火箭在正午时分升空。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">transform</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /trænsˈfɔːm/</div>
           <div class="wc-pos"><b>v.</b> 改变；变革（搭配：transform our understanding）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The internet has <b>transformed</b> the way we live and work.</div>
-          <div class="wc-tr">互联网改变了我们生活和工作的方式。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The internet has <b>transformed</b> the way we live.</div>
+          <div class="wc-tr">互联网改变了我们的生活方式。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">cosmos</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈkɒzmɒs/</div>
           <div class="wc-pos"><b>n.</b> 宇宙（搭配：the furthest reaches of the cosmos）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Astronomers study the <b>cosmos</b> to understand its origin.</div>
-          <div class="wc-tr">天文学家研究宇宙以了解它的起源。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We are still learning about the <b>cosmos</b>.</div>
+          <div class="wc-tr">我们仍在不断了解宇宙。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">nominal</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">nominal</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈnɒmɪnl/</div>
           <div class="wc-pos"><b>adj.</b> 正常的；名义上的（搭配：all systems appear nominal）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>After the repair, all systems are back to <b>nominal</b> operation.</div>
-          <div class="wc-tr">维修后所有系统恢复正常运行。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>After the check, all systems were <b>nominal</b>.</div>
+          <div class="wc-tr">检查之后，所有系统都运行正常。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">calibrate</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˈkælɪbreɪt/</div>
           <div class="wc-pos"><b>v.</b> 校准（搭配：instruments will be calibrated）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The technician <b>calibrated</b> the instrument before the test.</div>
-          <div class="wc-tr">技术员在测试前校准了仪器。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>You should <b>calibrate</b> the thermometer before use.</div>
+          <div class="wc-tr">使用前你应该校准温度计。</div>
         </div>
 
         <div class="wc">
-          <div class="wc-top"><span class="wc-word">perch</span><span class="lvl">超纲</span></div>
+          <div class="wc-top"><span class="wc-word">perch</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /pɜːtʃ/</div>
           <div class="wc-pos"><b>n.</b> 高处的位置；栖息处（搭配：from a perch at the Lagrange point）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The bird watched us from its <b>perch</b> on the branch.</div>
-          <div class="wc-tr">鸟儿从树枝上的栖息处看着我们。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The bird sat on its <b>perch</b> and sang.</div>
+          <div class="wc-tr">鸟儿停在栖木上歌唱。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">Lagrange point</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ləˈɡrɒnʒ pɔɪnt/</div>
-          <div class="wc-pos"><b>n.</b> 拉格朗日点（搭配：the second sun-Earth Lagrange point L2）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The telescope will stay at the second sun-Earth <b>Lagrange point</b>.</div>
-          <div class="wc-tr">望远镜将驻留在第二日地拉格朗日点。</div>
+          <div class="wc-pos"><b>n.</b> 拉格朗日点（搭配：the second sun-Earth Lagrange point (L2)）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The telescope will orbit at a <b>Lagrange point</b>.</div>
+          <div class="wc-tr">望远镜将在拉格朗日点运行。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">gravitational</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˌɡrævɪˈteɪʃənl/</div>
-          <div class="wc-pos"><b>adj.</b> 引力的（搭配：gravitational pulls）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The moon's <b>gravitational</b> pull causes the tides.</div>
+          <div class="wc-pos"><b>adj.</b> 引力的（搭配：gravitational pulls balance each other out）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The moon's <b>gravitational</b> pull causes tides.</div>
           <div class="wc-tr">月球的引力引起潮汐。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">poised</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /pɔɪzd/</div>
-          <div class="wc-pos"><b>adj.</b> 蓄势待发的；准备就绪的（搭配：be poised to conduct）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The team is <b>poised</b> to win the championship.</div>
-          <div class="wc-tr">这支队伍蓄势待发，准备赢得冠军。</div>
+          <div class="wc-pos"><b>adj.</b> 蓄势待发的；准备就绪的（搭配：is poised to conduct）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team is <b>poised</b> to win the final.</div>
+          <div class="wc-tr">这支队伍蓄势待发，准备赢得决赛。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">survey</span><span class="lvl">CET4</span></div>
           <div class="wc-ph">英/美 /ˈsɜːveɪ/</div>
           <div class="wc-pos"><b>n.</b> 巡天；观测普查（搭配：extraordinary surveys）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>A recent <b>survey</b> shows that most students enjoy reading.</div>
-          <div class="wc-tr">最近一项调查显示大多数学生喜欢阅读。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The telescope will carry out a deep-space <b>survey</b>.</div>
+          <div class="wc-tr">这架望远镜将开展一次深空巡天。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">census</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ˈsensəs/</div>
           <div class="wc-pos"><b>n.</b> 普查；统计（搭配：a revolutionary census of planets）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The national <b>census</b> takes place every ten years.</div>
-          <div class="wc-tr">全国人口普查每十年进行一次。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The country carries out a <b>census</b> every ten years.</div>
+          <div class="wc-tr">这个国家每十年进行一次人口普查。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">probe</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /prəʊb/</div>
           <div class="wc-pos"><b>v.</b> 探测；探究（搭配：probe the nature of dark energy）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Scientists use satellites to <b>probe</b> the mysteries of space.</div>
-          <div class="wc-tr">科学家用卫星探测太空的奥秘。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists <b>probe</b> the secrets of the deep ocean.</div>
+          <div class="wc-tr">科学家们探索深海的奥秘。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">coronagraph</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /kəˈrəʊnəɡrɑːf/</div>
           <div class="wc-pos"><b>n.</b> 日冕仪（搭配：a special instrument called a coronagraph）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>A <b>coronagraph</b> blocks starlight so planets can be seen.</div>
-          <div class="wc-tr">日冕仪遮挡星光，以便看到行星。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>coronagraph</b> blocks starlight to reveal faint planets.</div>
+          <div class="wc-tr">日冕仪遮挡星光以显现暗淡的行星。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">exoplanet</span><span class="lvl">超纲</span></div>
           <div class="wc-ph">英/美 /ˈeksəʊplænɪt/</div>
           <div class="wc-pos"><b>n.</b> 系外行星（搭配：observe exoplanets）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>Thousands of <b>exoplanets</b> have been discovered beyond our solar system.</div>
-          <div class="wc-tr">太阳系之外已发现数千颗系外行星。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Astronomers have discovered thousands of <b>exoplanets</b>.</div>
+          <div class="wc-tr">天文学家已发现数千颗系外行星。</div>
         </div>
 
         <div class="wc">
           <div class="wc-top"><span class="wc-word">unprecedented</span><span class="lvl">CET6</span></div>
           <div class="wc-ph">英/美 /ʌnˈpresɪdentɪd/</div>
           <div class="wc-pos"><b>adj.</b> 前所未有的（搭配：with unprecedented sensitivity）</div>
-          <div class="wc-ex"><span class="ex-tag">例</span>The flood caused <b>unprecedented</b> damage to the city.</div>
-          <div class="wc-tr">洪水给这座城市造成了前所未有的损失。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The city saw <b>unprecedented</b> rainfall last summer.</div>
+          <div class="wc-tr">去年夏天这座城市遭遇了前所未有的降雨。</div>
         </div>
       </div>
 
@@ -294,30 +307,32 @@ footer a{color:var(--muted);text-decoration:underline;}
         <h3>短语积累</h3>
         <ul class="phrases">
           <li><span class="en">lift off</span><span class="zh">升空；发射</span></li>
-          <li><span class="en">high anticipation</span><span class="zh">高度期待</span></li>
-          <li><span class="en">transform our understanding</span><span class="zh">改变我们的理解</span></li>
-          <li><span class="en">the furthest reaches of the cosmos</span><span class="zh">宇宙最深处</span></li>
-          <li><span class="en">be poised to do sth</span><span class="zh">蓄势待发；准备做某事</span></li>
-          <li><span class="en">conduct surveys / observations</span><span class="zh">开展巡天/观测</span></li>
-          <li><span class="en">probe the nature of …</span><span class="zh">探究……的本质</span></li>
-          <li><span class="en">be outfitted with …</span><span class="zh">配备……</span></li>
-          <li><span class="en">with unprecedented sensitivity</span><span class="zh">以前所未有的灵敏度</span></li>
+          <li><span class="en">deep space</span><span class="zh">深空</span></li>
+          <li><span class="en">Lagrange point</span><span class="zh">拉格朗日点</span></li>
+          <li><span class="en">gravitational pull</span><span class="zh">引力</span></li>
           <li><span class="en">balance each other out</span><span class="zh">相互抵消</span></li>
+          <li><span class="en">be poised to do sth</span><span class="zh">蓄势待发；准备就绪</span></li>
+          <li><span class="en">be set to do sth</span><span class="zh">即将；预计将</span></li>
+          <li><span class="en">be outfitted with …</span><span class="zh">配备……</span></li>
+          <li><span class="en">conduct a survey</span><span class="zh">开展巡天普查</span></li>
+          <li><span class="en">dark energy / dark matter</span><span class="zh">暗能量 / 暗物质</span></li>
+          <li><span class="en">the furthest reaches of …</span><span class="zh">……的最远端</span></li>
+          <li><span class="en">with unprecedented sensitivity</span><span class="zh">以前所未有的灵敏度</span></li>
         </ul>
       </div>
 
       <div class="side-box">
         <h3>段落主旨</h3>
         <ol class="gist">
-          <li>罗曼望远镜历经十余年研制，由猎鹰重型火箭发射升空。</li>
-          <li>它将变革人类对宇宙的理解。</li>
-          <li>发射后系统运行正常，接下来几周将校准并开启仪器。</li>
-          <li>望远镜将在第二拉格朗日点（L2）开展观测。</li>
-          <li>罗曼蓄势待发，将开展影响各天文学领域的巡天。</li>
-          <li>它将对行星做革命性普查，或证伪现有宇宙模型。</li>
-          <li>五年任务与哈勃、韦布并肩，探测暗能量与暗物质。</li>
-          <li>配备日冕仪，能以空前灵敏度观测暗弱系外行星。</li>
-          <li>NASA 预计系外行星数量可从 6000 跃升至 10 万。</li>
+          <li>罗曼望远镜历经十余年研制，8 月 30 日由猎鹰重型火箭发射升空。</li>
+          <li>它将变革人类对宇宙的理解，从深空到太阳系。</li>
+          <li>发射后系统正常，未来几周将校准并开启仪器。</li>
+          <li>望远镜将驻留在日地第二拉格朗日点（L2）开展观测。</li>
+          <li>项目科学家称其巡天将影响天文学各个领域。</li>
+          <li>将开展系外行星革命性普查，甚至可能证伪现有宇宙模型。</li>
+          <li>五年任务中，它将与哈勃、韦布并肩，探测暗能量与暗物质。</li>
+          <li>搭载的日冕仪能以空前灵敏度观测极暗的系外行星。</li>
+          <li>NASA 预计罗曼可将已知系外行星数量从约 6000 提升到 10 万。</li>
         </ol>
       </div>
     </aside>
@@ -414,13 +429,14 @@ footer a{color:var(--muted);text-decoration:underline;}
         <figcaption>段落逻辑：从发射升空、使命定位、驻留轨道，到科学目标（暗物质暗能量 / 系外行星普查），层层递进、逐步展开。</figcaption>
       </figure>
 
-      <footer>
-        素材来源：Scientific American（Claire Cameron，2026-08-30）｜ 原文链接：<a href="https://www.scientificamerican.com/article/nasas-nancy-grace-roman-telescope-launches-to-space">scientificamerican.com</a> ｜ 仅供个人学习使用<br>
-        <a href="../index.html">返回外刊精读首页</a>
-      </footer>
     </section>
 
   </div>
+
+  <footer>
+    素材来源：Scientific American（Claire Cameron，2026-08-30）｜ 原文链接：<a href="https://www.scientificamerican.com/article/nasas-nancy-grace-roman-telescope-launches-to-space">scientificamerican.com</a> ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
 </article>
 
 </body>
