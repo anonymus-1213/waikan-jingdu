@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 鸟鸣与森林漫步，何以成为减压良方</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 健康 / 心理 / 科普</div>
+  <h1>鸟鸣与森林漫步，何以成为减压良方</h1>
+  <div class="deck">Birdsong and forest walks are tied to real mental-health benefits — but even light traffic noise can drown out the calm</div>
+  <div class="byline"><span><b>来源</b> NC State University / University of Surrey / Mongabay（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-10</span><span><b>难度</b> 中等</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-10.jpg" alt="鸟鸣（配图）">
+    <figcaption>配图：枝头鸣唱的小鸟（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>当你感到压力时，不妨听听鸟鸣、到林间走走。越来越多的研究发现，自然的声音与景色能带来可衡量的心理健康益处：北卡罗来纳州立大学的研究显示，鸟鸣与森林漫步和心理健康显著改善相关；英国萨里大学的一项研究则提醒，即便只是低强度的交通噪音，也会削弱鸟鸣的减压作用。在"修复过的城市森林"中静坐聆听鸟鸣的实验里，志愿者的压力下降、情绪改善，可一旦混入车流声，这种效果便大打折扣。对生活在噪音持续、绿地有限的城市里的人们——尤其是压力不断上升的年轻人——本文揭示了一条低成本、人人可用的减压之道。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">The sound of birds singing in a forest, a walk among trees, the sight of green leaves — these simple <span class="kw" data-tip="n. 乐趣；乐事">pleasures</span> of nature are now backed by science. A growing body of research shows that the sights and sounds of nature can bring <span class="kw" data-tip="adj. 显著的；重要的">significant</span>, <span class="kw" data-tip="adj. 可测量的；明显的">measurable</span> <span class="kw" data-tip="n. 益处；好处">benefits</span> to our <span class="kw" data-tip="adj. 心理的；精神的">mental</span> health.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">A new study from North Carolina State University found that listening to birdsong and walking in forests were linked to significant improvements in mental health, compared with loud, <span class="kw" data-tip="adj. 城市的；都市的">urban</span> environments. Researchers say nature's gentle sounds can help people feel <span class="kw" data-tip="adj. 平静的；v. 使平静">calmer</span> and more at ease.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">But not every green space works equally well. A separate study from the University of Surrey warns that even low-level traffic noise can <span class="kw" data-tip="v. 削弱；减弱">weaken</span> the power of birdsong to <span class="kw" data-tip="v. 缓解；减轻">relieve</span> stress. When the <span class="kw" data-tip="n. 隆隆声">rumble</span> of cars mixes with birdsong, the calming effect is much reduced.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">In one experiment, <span class="kw" data-tip="n. 志愿者">volunteers</span> who sat in a <span class="kw" data-tip="v. 修复；恢复">restored</span> urban forest while listening to birdsong reported lower stress and a better <span class="kw" data-tip="n. 情绪；心情">mood</span>. The effect disappeared when the same scene was <span class="kw" data-tip="v. 伴随；陪伴">accompanied</span> by the sound of passing traffic.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">This matters because most people now live in cities, where noise is <span class="kw" data-tip="adj. 持续不断的">constant</span> and green spaces are limited. Stress and <span class="kw" data-tip="n. 焦虑；忧虑">anxiety</span> are on the rise, especially among young people, and nature offers a low-cost way to ease them.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The findings point to <span class="kw" data-tip="adj. 实际的；实用的">practical</span> <span class="kw" data-tip="n. 解决方案">solutions</span>. Cities can protect quiet corners in parks, plant more trees along roads, and design spaces where the sounds of nature can still be heard. Such small changes could improve the mental health of millions of people.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">For ordinary people, the message is simple: when you feel stressed, try stepping outside, listening to the birds, and letting nature do its quiet work.</span></div>
+
+      <p class="muted">原文出处：本文根据北卡罗来纳州立大学（NC State，2026-07-21）、英国萨里大学（University of Surrey，2026-08-26）相关研究，及 Mongabay 报道（2026-07-27）综合整理编写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mental</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈmentl/ · 美 /ˈmentl/</div>
+          <div class="wc-pos"><b>adj.</b> 心理的；精神的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading is good for your <b>mental</b> health.</div>
+          <div class="wc-tr">阅读有益于你的心理健康。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">significant</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /sɪɡˈnɪfɪkənt/ · 美 /sɪɡˈnɪfɪkənt/</div>
+          <div class="wc-pos"><b>adj.</b> 显著的；重要的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There has been a <b>significant</b> change in the climate.</div>
+          <div class="wc-tr">气候发生了显著的变化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">measurable</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmeʒərəbl/ · 美 /ˈmeʒərəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 可测量的；明显的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The new policy has brought <b>measurable</b> improvements.</div>
+          <div class="wc-tr">新政策带来了可衡量的改善。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">benefit</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈbenɪfɪt/ · 美 /ˈbenɪfɪt/</div>
+          <div class="wc-pos"><b>n.</b> 益处；好处</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Exercise brings many <b>benefits</b> to our body.</div>
+          <div class="wc-tr">锻炼给我们的身体带来许多益处。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">urban</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɜːbən/ · 美 /ˈɜːrbən/</div>
+          <div class="wc-pos"><b>adj.</b> 城市的；都市的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>More and more people are moving to <b>urban</b> areas.</div>
+          <div class="wc-tr">越来越多的人迁往城市地区。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">calm</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kɑːm/ · 美 /kɑːm/</div>
+          <div class="wc-pos"><b>v.</b> 使平静；<b>adj.</b> 平静的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She took a deep breath to <b>calm</b> herself.</div>
+          <div class="wc-tr">她深吸一口气让自己平静下来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">weaken</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈwiːkən/ · 美 /ˈwiːkən/</div>
+          <div class="wc-pos"><b>v.</b> 削弱；减弱</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Lack of sleep can <b>weaken</b> your immune system.</div>
+          <div class="wc-tr">睡眠不足会削弱你的免疫系统。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">relieve</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈliːv/ · 美 /rɪˈliːv/</div>
+          <div class="wc-pos"><b>v.</b> 缓解；减轻</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A short walk can help <b>relieve</b> stress.</div>
+          <div class="wc-tr">短暂的散步有助于缓解压力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rumble</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrʌmbl/ · 美 /ˈrʌmbl/</div>
+          <div class="wc-pos"><b>n.</b> 隆隆声</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We heard the <b>rumble</b> of thunder in the distance.</div>
+          <div class="wc-tr">我们听到远处雷声隆隆。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">volunteer</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌvɒlənˈtɪə(r)/ · 美 /ˌvɑːlənˈtɪr/</div>
+          <div class="wc-pos"><b>n.</b> 志愿者</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many <b>volunteers</b> helped clean up the beach.</div>
+          <div class="wc-tr">许多志愿者帮忙清理海滩。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mood</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /muːd/ · 美 /muːd/</div>
+          <div class="wc-pos"><b>n.</b> 情绪；心情</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She is in a good <b>mood</b> today.</div>
+          <div class="wc-tr">她今天心情很好。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accompany</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈkʌmpəni/ · 美 /əˈkʌmpəni/</div>
+          <div class="wc-pos"><b>v.</b> 伴随；陪伴</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Thunder often <b>accompanies</b> lightning.</div>
+          <div class="wc-tr">雷声常常伴随着闪电。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">restore</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈstɔː(r)/ · 美 /rɪˈstɔːr/</div>
+          <div class="wc-pos"><b>v.</b> 修复；恢复</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The old building was carefully <b>restored</b>.</div>
+          <div class="wc-tr">这座老建筑被精心修复了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">constant</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈkɒnstənt/ · 美 /ˈkɑːnstənt/</div>
+          <div class="wc-pos"><b>adj.</b> 持续不断的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>constant</b> noise made it hard to sleep.</div>
+          <div class="wc-tr">持续不断的噪音让人难以入睡。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">anxiety</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /æŋˈzaɪəti/ · 美 /æŋˈzaɪəti/</div>
+          <div class="wc-pos"><b>n.</b> 焦虑；忧虑</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Exam <b>anxiety</b> is common among students.</div>
+          <div class="wc-tr">考试焦虑在学生中很常见。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">practical</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈpræktɪkl/ · 美 /ˈpræktɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 实际的；实用的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We need a <b>practical</b> solution to this problem.</div>
+          <div class="wc-tr">我们需要一个解决这个问题的实际办法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">solution</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səˈluːʃn/ · 美 /səˈluːʃn/</div>
+          <div class="wc-pos"><b>n.</b> 解决方案</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is no easy <b>solution</b> to climate change.</div>
+          <div class="wc-tr">气候变化没有简单的解决方案。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">mental health</span><span class="zh">心理健康</span></li>
+          <li><span class="en">be backed by science</span><span class="zh">有科学依据</span></li>
+          <li><span class="en">a growing body of …</span><span class="zh">越来越多的……</span></li>
+          <li><span class="en">be linked to</span><span class="zh">与……相关</span></li>
+          <li><span class="en">feel at ease</span><span class="zh">感到舒适自在</span></li>
+          <li><span class="en">on the rise</span><span class="zh">在上升；不断增长</span></li>
+          <li><span class="en">mix with</span><span class="zh">与……混合</span></li>
+          <li><span class="en">be accompanied by</span><span class="zh">由……伴随</span></li>
+          <li><span class="en">a low-cost way to do sth</span><span class="zh">做某事低成本的方式</span></li>
+          <li><span class="en">step outside</span><span class="zh">走到户外</span></li>
+          <li><span class="en">let nature do its work</span><span class="zh">让大自然发挥作用</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>自然的声音与景色能为心理健康带来显著、可衡量的益处。</li>
+          <li>北卡州立大学研究：鸟鸣与森林漫步和心理健康改善显著相关。</li>
+          <li>萨里大学研究：即便低强度交通噪音也会削弱鸟鸣的减压作用。</li>
+          <li>实验证明：静听鸟鸣能减压，混入车流声后效果消失。</li>
+          <li>城市噪音持续、绿地有限，压力与焦虑上升，自然提供低成本减压。</li>
+          <li>启示：保护安静角落、多种树、设计能听见自然之声的空间。</li>
+          <li>个人层面：压力大时走出户外，聆听鸟鸣，让自然发挥作用。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The sound of birds singing in a forest, a walk among trees, the sight of green leaves — these simple pleasures of nature are now backed by science.</div>
+        <div class="row"><b>主干：</b>these simple pleasures of nature are now backed by science（主语 + 被动语态 be backed by）</div>
+        <div class="row"><b>列举性同位语：</b>The sound of birds singing in a forest, a walk among trees, the sight of green leaves（三个并列名词短语，破折号后总结）</div>
+        <div class="row"><b>后置定语（现在分词短语）：</b>singing in a forest（修饰 birds）</div>
+        <div class="row"><b>考点：</b>现在分词短语作后置定语；be backed by 被动语态；破折号引出总结性主语</div>
+        <div class="row tr"><b>译文：</b>森林里鸟儿的鸣唱、林间的漫步、绿叶的景致——这些简单的大自然乐趣如今都有了科学依据。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A new study from North Carolina State University found that listening to birdsong and walking in forests were linked to significant improvements in mental health, compared with loud, urban environments.</div>
+        <div class="row"><b>主干：</b>A new study found that …（主语 + found + that 宾语从句）</div>
+        <div class="row"><b>宾语从句：</b>listening to birdsong and walking in forests were linked to significant improvements（动名词短语并列作主语，谓语用复数 were）</div>
+        <div class="row"><b>状语：</b>compared with loud, urban environments（过去分词短语作状语，意为"与……相比"）</div>
+        <div class="row"><b>考点：</b>动名词短语并列作主语；be linked to 搭配；compared with 过去分词作状语</div>
+        <div class="row tr"><b>译文：</b>北卡罗来纳州立大学的一项新研究发现，与嘈杂的城市环境相比，聆听鸟鸣和在森林中散步与心理健康的显著改善相关。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">When the rumble of cars mixes with birdsong, the calming effect is much reduced.</div>
+        <div class="row"><b>主干：</b>the calming effect is much reduced（主语 + 被动语态）</div>
+        <div class="row"><b>时间状语从句：</b>When the rumble of cars mixes with birdsong（"当……时"）</div>
+        <div class="row"><b>考点：</b>when 引导时间状语从句；mix with 搭配；被动语态 is reduced</div>
+        <div class="row tr"><b>译文：</b>当汽车的隆隆声与鸟鸣混杂在一起时，这种镇静效果便大打折扣。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">In one experiment, volunteers who sat in a restored urban forest while listening to birdsong reported lower stress and a better mood.</div>
+        <div class="row"><b>主干：</b>volunteers reported lower stress and a better mood（主语 + reported + 并列宾语）</div>
+        <div class="row"><b>定语从句：</b>who sat in a restored urban forest（修饰 volunteers）</div>
+        <div class="row"><b>时间状语（省略结构）：</b>while listening to birdsong（while + 现在分词，省略 they were）</div>
+        <div class="row"><b>考点：</b>who 引导定语从句；while doing 省略主语与 be 动词</div>
+        <div class="row tr"><b>译文：</b>在一项实验中，坐在修复过的城市森林里聆听鸟鸣的志愿者报告了更低的压力和更好的情绪。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">This matters because most people now live in cities, where noise is constant and green spaces are limited.</div>
+        <div class="row"><b>主干：</b>This matters（主系表结构）</div>
+        <div class="row"><b>原因状语从句：</b>because most people now live in cities</div>
+        <div class="row"><b>非限制性定语从句：</b>where noise is constant and green spaces are limited（where 指代 cities）</div>
+        <div class="row"><b>考点：</b>because 引导原因状语从句；where 引导非限制性定语从句（先行词为地点名词）</div>
+        <div class="row tr"><b>译文：</b>这一点很重要，因为如今大多数人生活在城市里，那里噪音持续不断，绿地却十分有限。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">鸟儿的鸣唱、林间的漫步，这些简单的大自然乐趣正获得越来越多科学证据的支持。北卡罗来纳州立大学的研究发现，与嘈杂的城市环境相比，聆听鸟鸣和在森林中散步与心理健康的显著改善相关；英国萨里大学的研究则提醒，即便是低强度的交通噪音，也会削弱鸟鸣缓解压力的作用。在一项实验中，坐在修复过的城市森林里聆听鸟鸣的志愿者报告了更低的压力和更好的情绪，而一旦混入往来车辆的声音，这种效果便几乎消失。这之所以重要，是因为如今大多数人生活在噪音持续、绿地有限的城市里，压力与焦虑——尤其是年轻人的——正不断上升，而亲近自然提供了一种低成本的缓解方式。研究给出了切实可行的方向：保护公园里的安静角落、沿路多种树、设计出能听见自然之声的城市空间，这些小小的改变或许就能改善千百万人的心理健康。对普通人而言，启示很简单：感到压力时，不妨走出户外，聆听鸟鸣，让大自然安静地发挥它的作用。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 3、4 段，说说为什么"同样一片绿色空间"，有没有交通噪音会对减压效果产生如此大的差别？这对城市绿化设计有什么启发？</div>
+      <div class="q"><b>仿写题：</b>仿照第 7 段 <span style="font-family:Georgia,serif;font-style:italic">"when you feel stressed, try stepping outside, listening to the birds, and letting nature do its quiet work"</span>（when 引导时间状语从句 + 并列的动名词短语）的句式，围绕「缓解学习压力」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 7 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 7 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 自然的声与景有益心理健康</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 鸟鸣与森林漫步改善心理健康</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 交通噪音削弱鸟鸣的减压作用</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 实验：混入车流声后效果消失</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 城市噪音持续，压力焦虑上升</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 启示：保护安静角落、多种树</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 走出户外，让自然发挥作用</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 7 段，按「现象引入 → 研究发现 → 转折：噪音削弱效果 → 实验验证 → 现实意义 → 城市启示 → 个人行动」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：NC State University / University of Surrey / Mongabay 公开资料（2026-09-10 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
