@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 为乐趣而读书的孩子，正在越来越少</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Education · 人与社会 / 教育 / 阅读</div>
+  <h1>为乐趣而读书的孩子，正在越来越少</h1>
+  <div class="deck">Fewer and fewer young people now read for pleasure, and experts warn the decline could reshape their empathy, focus and learning</div>
+  <div class="byline"><span><b>来源</b> The Guardian / National Literacy Trust / NAEP（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-11</span><span><b>难度</b> 中等</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-11.jpg" alt="孩子在图书馆阅读（配图）">
+    <figcaption>配图：孩子在图书馆席地而坐、专注阅读（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>"读书能打开世界的大门"——这句长辈常挂在嘴边的话，如今正面临一个令人不安的现实：愿意为乐趣而阅读的孩子越来越少了。美国一项全国性评估显示，2023 年每天为乐趣读书的 13 岁学生比例已从 2012 年的 27% 跌至 14%；英国的调查也显示，每天在空闲时间阅读的儿童比例二十年间几乎腰斩。男孩的退步尤为明显。本文梳理这一趋势背后的数据与影响，并告诉你：这个习惯其实可以重建。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">For generations, parents and teachers have told children that reading opens doors. But a growing body of research now paints a <span class="kw" data-tip="adj. 令人担忧的">worrying</span> picture: fewer and fewer young people are reading for <span class="kw" data-tip="n. 乐趣；愉快">pleasure</span>, and experts warn the <span class="kw" data-tip="n. 趋势；潮流">trend</span> matters far more than most people realize.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The numbers are <span class="kw" data-tip="adj. 显著的；惊人的">striking</span>. In 2023, only 14 percent of 13-year-olds in the United States said they read for fun almost every day, a <span class="kw" data-tip="adj. 急剧的；明显的">sharp</span> drop from 27 percent in 2012. Britain shows a similar picture: a national <span class="kw" data-tip="n. 调查；v. 调查">survey</span> found that just 20 percent of children and young people read daily in their free time, down from 38 percent in 2005.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The <span class="kw" data-tip="n./v. 下降；衰退">decline</span> is <span class="kw" data-tip="adv. 尤其；特别">especially</span> sharp among boys. By the age of 14 to 16, only about one in five boys say they enjoy reading, compared with two in five girls. Many boys give up books as they enter their teens, turning instead to video games, social media and short videos.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">So why does this matter? Reading for pleasure is far more than a <span class="kw" data-tip="n. 消遣；娱乐">pastime</span>. Studies show that children who read for fun tend to do better at school, build a larger <span class="kw" data-tip="n. 词汇（量）">vocabulary</span> and learn to think more deeply.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Reading <span class="kw" data-tip="n. 小说；虚构作品">fiction</span> in particular helps young people understand how others think and feel — a skill researchers call <span class="kw" data-tip="n. 共情；同理心">empathy</span>. When children stop reading, they also lose a rare chance to focus their <span class="kw" data-tip="n. 注意力">attention</span> on one thing for a long time, a habit that short videos rarely <span class="kw" data-tip="v. 奖励；回报">reward</span>.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Fortunately, the habit can be <span class="kw" data-tip="v. 重建；恢复">rebuilt</span>. Experts say children are more likely to pick up a book when they can choose what to read, when their parents read beside them, and when schools protect quiet time for free reading — all small steps that <span class="kw" data-tip="v. 鼓励；激励">encourage</span> a lifelong love of books.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">In an age of endless <span class="kw" data-tip="n. 分心；干扰">distraction</span>, a few quiet minutes with a good story may turn out to be one of the most valuable gifts we can give to the next generation.</span></div>
+
+      <p class="muted">原文出处：本文根据美国国家教育进展评估（NAEP，2023）、英国国家读写信托（National Literacy Trust，2025–2026）等公开报告整理编写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pleasure</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈpleʒə(r)/ · 美 /ˈpleʒər/</div>
+          <div class="wc-pos"><b>n.</b> 乐趣；愉快</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading gives me great <b>pleasure</b>.</div>
+          <div class="wc-tr">阅读带给我极大的乐趣。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">worrying</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈwʌriɪŋ/ · 美 /ˈwɜːriɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 令人担忧的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The air quality is <b>worrying</b> this winter.</div>
+          <div class="wc-tr">今年冬天的空气质量令人担忧。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trend</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /trend/ · 美 /trend/</div>
+          <div class="wc-pos"><b>n.</b> 趋势；潮流</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is a growing <b>trend</b> towards online learning.</div>
+          <div class="wc-tr">在线学习呈日益增长的趋势。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">striking</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈstraɪkɪŋ/ · 美 /ˈstraɪkɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 显著的；惊人的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The two brothers show a <b>striking</b> contrast.</div>
+          <div class="wc-tr">这两兄弟形成了鲜明的对比。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sharp</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ʃɑːp/ · 美 /ʃɑːrp/</div>
+          <div class="wc-pos"><b>adj.</b> 急剧的；明显的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There was a <b>sharp</b> rise in prices last year.</div>
+          <div class="wc-tr">去年物价急剧上涨。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">survey</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈsɜːveɪ/ · 美 /ˈsɜːrveɪ/</div>
+          <div class="wc-pos"><b>n.</b> 调查；<b>v.</b> 调查</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>survey</b> shows that most students lack sleep.</div>
+          <div class="wc-tr">这项调查显示大多数学生睡眠不足。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decline</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈklaɪn/ · 美 /dɪˈklaɪn/</div>
+          <div class="wc-pos"><b>n./v.</b> 下降；衰退</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The number of visitors is in <b>decline</b>.</div>
+          <div class="wc-tr">游客数量正在下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">especially</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪˈspeʃəli/ · 美 /ɪˈspeʃəli/</div>
+          <div class="wc-pos"><b>adv.</b> 尤其；特别</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>I love sports, <b>especially</b> basketball.</div>
+          <div class="wc-tr">我热爱运动，尤其是篮球。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pastime</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈpɑːstaɪm/ · 美 /ˈpæstaɪm/</div>
+          <div class="wc-pos"><b>n.</b> 消遣；娱乐</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading is a popular <b>pastime</b> in my family.</div>
+          <div class="wc-tr">阅读是我们家一项常见的消遣。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">vocabulary</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /vəˈkæbjələri/ · 美 /voʊˈkæbjəleri/</div>
+          <div class="wc-pos"><b>n.</b> 词汇（量）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading helps to enlarge your <b>vocabulary</b>.</div>
+          <div class="wc-tr">阅读有助于扩大你的词汇量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fiction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfɪkʃn/ · 美 /ˈfɪkʃn/</div>
+          <div class="wc-pos"><b>n.</b> 小说；虚构作品</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She prefers science <b>fiction</b> to history.</div>
+          <div class="wc-tr">比起历史，她更喜欢科幻小说。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">empathy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈempəθi/ · 美 /ˈempəθi/</div>
+          <div class="wc-pos"><b>n.</b> 共情；同理心</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading stories helps children develop <b>empathy</b>.</div>
+          <div class="wc-tr">读故事有助于培养孩子的同理心。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attention</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈtenʃn/ · 美 /əˈtenʃn/</div>
+          <div class="wc-pos"><b>n.</b> 注意力</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Please pay <b>attention</b> to the teacher.</div>
+          <div class="wc-tr">请注意听老师讲课。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reward</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈwɔːd/ · 美 /rɪˈwɔːrd/</div>
+          <div class="wc-pos"><b>v.</b> 奖励；回报；<b>n.</b> 回报</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Hard work will be <b>rewarded</b> in the end.</div>
+          <div class="wc-tr">努力终将得到回报。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rebuild</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌriːˈbɪld/ · 美 /ˌriːˈbɪld/</div>
+          <div class="wc-pos"><b>v.</b> 重建；恢复</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They helped to <b>rebuild</b> the village after the flood.</div>
+          <div class="wc-tr">洪水过后，他们帮助重建村庄。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">encourage</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪnˈkʌrɪdʒ/ · 美 /ɪnˈkɜːrɪdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 鼓励；激励</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>My teacher always <b>encourages</b> me to ask questions.</div>
+          <div class="wc-tr">我的老师总是鼓励我提问。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">distraction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈstrækʃn/ · 美 /dɪˈstrækʃn/</div>
+          <div class="wc-pos"><b>n.</b> 分心；干扰</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Turn off your phone to avoid <b>distraction</b>.</div>
+          <div class="wc-tr">关掉手机以免分心。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">read for pleasure</span><span class="zh">为乐趣而阅读</span></li>
+          <li><span class="en">a growing body of research</span><span class="zh">越来越多的研究</span></li>
+          <li><span class="en">a sharp drop</span><span class="zh">急剧下降</span></li>
+          <li><span class="en">in one's free time</span><span class="zh">在空闲时间</span></li>
+          <li><span class="en">one in five / two in five</span><span class="zh">五分之一 / 五分之二</span></li>
+          <li><span class="en">turn to …</span><span class="zh">转向；求助于……</span></li>
+          <li><span class="en">far more than …</span><span class="zh">远不止……</span></li>
+          <li><span class="en">do well at school</span><span class="zh">在学校表现出色</span></li>
+          <li><span class="en">in particular</span><span class="zh">尤其；特别</span></li>
+          <li><span class="en">pay attention to …</span><span class="zh">注意；关注……</span></li>
+          <li><span class="en">be likely to do sth</span><span class="zh">很可能做某事</span></li>
+          <li><span class="en">turn out to be …</span><span class="zh">结果是；原来是……</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>为乐趣而阅读的孩子越来越少，其影响被低估。</li>
+          <li>美英数据：每日为乐趣阅读的比例十余年间大幅下滑。</li>
+          <li>男孩的退步尤为明显，转向游戏与短视频。</li>
+          <li>为何重要：为乐趣阅读能提升成绩、词汇量与思维深度。</li>
+          <li>读小说培养同理心；不阅读会失去长时间专注的机会。</li>
+          <li>好消息：自主选书、家长陪伴、学校留时间能重建习惯。</li>
+          <li>在充满干扰的时代，安静阅读是送给下一代的珍贵礼物。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">In 2023, only 14 percent of 13-year-olds in the United States said they read for fun almost every day, a sharp drop from 27 percent in 2012.</div>
+        <div class="row"><b>主干：</b>only 14 percent of 13-year-olds … said …（主语 + said + 宾语从句）</div>
+        <div class="row"><b>宾语从句（省略 that）：</b>they read for fun almost every day（said 后省略连接词 that）</div>
+        <div class="row"><b>同位语：</b>a sharp drop from 27 percent in 2012（对前句内容的补充说明）</div>
+        <div class="row"><b>考点：</b>that 引导宾语从句时可省略（语法填空常见）；名词短语作同位语</div>
+        <div class="row tr"><b>译文：</b>2023 年，美国只有 14% 的 13 岁学生表示他们几乎每天都为了乐趣而阅读，这一比例较 2012 年的 27% 大幅下降。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Studies show that children who read for fun tend to do better at school, build a larger vocabulary and learn to think more deeply.</div>
+        <div class="row"><b>主干：</b>Studies show that …（主语 + show + that 宾语从句）</div>
+        <div class="row"><b>宾语从句：</b>children … tend to do better …, build a larger vocabulary and learn to think more deeply（三个并列谓语）</div>
+        <div class="row"><b>定语从句：</b>who read for fun（修饰 children）</div>
+        <div class="row"><b>考点：</b>who 引导定语从句；并列谓语动词 do / build / learn；tend to do 搭配</div>
+        <div class="row tr"><b>译文：</b>研究表明，为乐趣而阅读的孩子往往在学校表现更好、词汇量更大，并且学会更深入地思考。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">When children stop reading, they also lose a rare chance to focus their attention on one thing for a long time, a habit that short videos rarely reward.</div>
+        <div class="row"><b>主干：</b>they also lose a rare chance（主语 + lose + 宾语）</div>
+        <div class="row"><b>时间状语从句：</b>When children stop reading（"当……时"）</div>
+        <div class="row"><b>后置定语（不定式）：</b>to focus their attention on one thing for a long time（修饰 chance）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a habit that short videos rarely reward（解释前句内容，that 作主语）</div>
+        <div class="row"><b>考点：</b>when 引导时间状语从句；不定式作后置定语；that 引导定语从句</div>
+        <div class="row tr"><b>译文：</b>当孩子们不再阅读时，他们也就失去了长时间把注意力集中在一件事上的难得机会——而这种习惯是短视频很少能给予回报的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Experts say children are more likely to pick up a book when they can choose what to read, when their parents read beside them, and when schools protect quiet time for free reading.</div>
+        <div class="row"><b>主干：</b>Experts say (that) …（主语 + say + 宾语从句）</div>
+        <div class="row"><b>宾语从句：</b>children are more likely to pick up a book（be likely to do 结构）</div>
+        <div class="row"><b>三个并列的时间状语从句：</b>when they can choose … / when their parents read … / when schools protect …</div>
+        <div class="row"><b>考点：</b>be likely to do sth；并列 when 状语从句；what 引导宾语从句（choose what to read）</div>
+        <div class="row tr"><b>译文：</b>专家表示，当孩子能够自主选择读什么、当父母在身边陪读、当学校为自由阅读留出安静时间时，他们就更可能拿起一本书。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">In an age of endless distraction, a few quiet minutes with a good story may turn out to be one of the most valuable gifts we can give to the next generation.</div>
+        <div class="row"><b>主干：</b>a few quiet minutes … may turn out to be one of the most valuable gifts（turn out to be 结构）</div>
+        <div class="row"><b>定语从句（省略 that/which）：</b>we can give to the next generation（修饰 gifts，关系代词作宾语被省略）</div>
+        <div class="row"><b>介词短语作定语：</b>with a good story（修饰 minutes）</div>
+        <div class="row"><b>考点：</b>turn out to be …；one of the + 形容词最高级 + 复数名词；省略关系代词的定语从句</div>
+        <div class="row tr"><b>译文：</b>在这个充满无尽干扰的时代，与一个好故事共度的几分钟安静时光，或许会证明是我们可以送给下一代的最珍贵的礼物之一。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">长辈常说"读书打开大门"，但越来越多研究描绘出一幅令人担忧的图景：愿意为乐趣而阅读的年轻人正在变少。美国 2023 年的评估显示，每天为乐趣读书的 13 岁学生占比已从 2012 年的 27% 跌至 14%；英国全国调查同样显示，每天在空闲时间阅读的儿童比例从 2005 年的 38% 降到 20%。男孩退步更明显——14 至 16 岁男孩中只有约五分之一喜欢阅读，他们往往在青春期放下书本，转而沉迷电子游戏与短视频。这一趋势为何重要？因为为乐趣而阅读远不只是消遣：它让孩子学业更好、词汇更丰富、思考更深，读小说尤其能培养理解他人感受的同理心；不阅读则让孩子失去长时间专注的宝贵机会。好在习惯可以重建——让孩子自主选书、家长陪读、学校为自由阅读留出安静时间，都是行之有效的小举措。在这个充满干扰的时代，安静的阅读时光或许正是我们能送给下一代最珍贵的礼物。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 2、3 段的数据，为什么说"男孩的退步尤为明显"？结合你身边同学的实际情况，谈谈是什么原因让一些中学生逐渐放下了课外书？</div>
+      <div class="q"><b>仿写题：</b>仿照第 6 段 <span style="font-family:Georgia,serif;font-style:italic">"children are more likely to pick up a book when they can choose what to read…"</span> 中「be likely to do sth + when 引导的状语从句」的句式，围绕「坚持运动 / 培养好习惯」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 7 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 7 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现象引入：为乐趣读书的孩子在变少</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 数据支撑：美英阅读比例大幅下滑</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 重点人群：男孩退步尤为明显</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 价值一：提升成绩、词汇与思维</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 价值二：培养同理心与专注力</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 解决之道：选书、陪伴、留时间</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 升华结尾：阅读是送给下一代的礼物</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 7 段，按「现象引入 → 数据支撑 → 重点人群 → 价值阐述 → 价值阐述 → 解决之道 → 升华结尾」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：The Guardian / National Literacy Trust / NAEP 公开资料（2026-09-11 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
