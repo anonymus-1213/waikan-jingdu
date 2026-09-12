@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 印度洋海底山脉发现 149 个新物种</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 海洋 / 生态 / 科普</div>
+  <h1>印度洋海底山脉发现 149 个新物种，深海生命远超想象</h1>
+  <div class="deck">An expedition to unexplored seamounts near Australia's Christmas and Cocos islands has uncovered 149 species new to science, revealing how little we still know about the deep ocean</div>
+  <div class="byline"><span><b>来源</b> Mongabay / Australian Museum / The Cool Down（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-12</span><span><b>难度</b> 较高</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-12.jpg" alt="深海生物（配图）">
+    <figcaption>配图：深海海底的海洋生物（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>地球上海洋覆盖了超过三分之二的表面，但深海至今仍是人类探索最少的"最后疆域"。一支国际考察队把目标对准了澳大利亚圣诞岛与科科斯（基林）群岛附近、远离任何大陆的一片海底山脉，结果一举带回 149 个科学界从未描述过的新物种——包括一种梦参属海参、一种青眼鱼科的鱼，以及一种寄生于其他深海动物的生物。这些海底山像散布在荒芜深海平原上的"生命孤岛"，在数百万年的隔绝中演化出独一无二的物种，却也因底拖网捕捞与海底采矿而岌岌可危。本文带我们潜入这片未被扰动的水下世界，思考"在消失之前先认识它们"的紧迫与意义。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">The deep ocean, which covers more than two-thirds of our planet, remains one of the least explored <span class="kw" data-tip="n. 前沿；未开拓的领域">frontiers</span> on Earth. A single <span class="kw" data-tip="n. 探险；考察">expedition</span>, conducted near two remote Australian islands, has just shown how much life there is still waiting to be found — 149 <span class="kw" data-tip="n. 物种（单复数同形）">species</span> that science had never described before.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">Led by marine biologists from Australia's leading research institutions, the voyage targeted a chain of <span class="kw" data-tip="n. 海底山；海山">seamounts</span> — ancient underwater volcanoes — rising from the floor of the Indian Ocean near Christmas Island and the Cocos (Keeling) Islands, a <span class="kw" data-tip="n. 领土；领地">territory</span> that lies far from any continent.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">What the team brought back <span class="kw" data-tip="v. 使惊讶；使震惊">astonished</span> even seasoned researchers: among the 149 new species were a sea cucumber belonging to the <span class="kw" data-tip="n. 属（生物分类单位）">genus</span> Oneirophanta, a greeneye fish from the family Chlorophthalmus, and a <span class="kw" data-tip="adj. 寄生的">parasitic</span> creature that attaches itself to other deep-sea animals.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">To reach depths where sunlight never <span class="kw" data-tip="v. 穿透；渗透">penetrates</span>, the scientists relied on remotely operated vehicles and baited cameras, which descended thousands of metres to film and collect <span class="kw" data-tip="n. 标本；样本">specimens</span> from <span class="kw" data-tip="n. 栖息地">habitats</span> that had never before been disturbed by human hands.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Seamounts, the researchers explain, act as islands of life in an otherwise <span class="kw" data-tip="adj. 贫瘠的；荒芜的">barren</span> <span class="kw" data-tip="adj. 深海的；深渊的">abyssal</span> plain. <span class="kw" data-tip="adj. 孤立的；与世隔绝的">Isolated</span> for millions of years, their slopes and summits have allowed countless creatures to <span class="kw" data-tip="v. 进化；演变">evolve</span> in ways found nowhere else on Earth.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Yet the very isolation that made this <span class="kw" data-tip="n. 多样性">diversity</span> possible has also left it dangerously exposed. Deep-sea bottom trawling and seabed <span class="kw" data-tip="n. 采矿；开采">mining</span>, both of which are expanding as resources on land grow scarce, could destroy these <span class="kw" data-tip="adj. 脆弱的；易碎的">fragile</span> ecosystems long before most of their <span class="kw" data-tip="n. 居民；栖息者">inhabitants</span> have even been named.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">"Naming a new species is not a quick process," one researcher noted, adding that many of the 149 creatures may take years of careful study to describe formally. This, the team argues, makes protecting such places urgent rather than optional.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The discovery, published in a series of scientific papers, forms part of a broader global effort to <span class="kw" data-tip="v. 编目；登记 / n. 目录">catalogue</span> the ocean's <span class="kw" data-tip="n. 生物多样性">biodiversity</span> before it disappears. Scientists estimate that as many as two million marine species may exist, the majority of which remain unknown.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For the public, the message is at once humbling and hopeful. The fact that a single voyage can uncover so much suggests that the ocean, though under growing pressure, still holds wonders capable of inspiring the next generation of explorers and <span class="kw" data-tip="n. 自然保护人士">conservationists</span> alike.</span></div>
+
+      <p class="muted">原文出处：本文根据 Mongabay 报道《Scientists discover 149 new deep-sea species at remote Indian Ocean seamounts》（2026-08-26）及澳大利亚博物馆（Australian Museum）相关分类学论文、The Cool Down 转载（2026-09-10）综合整理编写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">frontier</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈfrʌntɪə(r)/ · 美 /frʌnˈtɪr/</div>
+          <div class="wc-pos"><b>n.</b> 前沿；未开拓的领域</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The deep sea is the last great <b>frontier</b> of exploration.</div>
+          <div class="wc-tr">深海是探索的最后一片广阔前沿。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">expedition</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌekspəˈdɪʃn/ · 美 /ˌekspəˈdɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 探险；考察（队）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>expedition</b> set sail for the Indian Ocean in May.</div>
+          <div class="wc-tr">考察队于五月启航前往印度洋。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">species</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈspiːʃiːz/ · 美 /ˈspiːʃiːz/</div>
+          <div class="wc-pos"><b>n.</b> 物种（单复数同形）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many <b>species</b> remain unknown to science.</div>
+          <div class="wc-tr">许多物种至今不为人知。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">seamount</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsiːmaʊnt/ · 美 /ˈsiːmaʊnt/</div>
+          <div class="wc-pos"><b>n.</b> 海底山；海山</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Seamounts</b> rise from the ocean floor like underwater mountains.</div>
+          <div class="wc-tr">海底山像水下山脉一样从洋底升起。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">territory</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈterətri/ · 美 /ˈterətɔːri/</div>
+          <div class="wc-pos"><b>n.</b> 领土；领地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The islands are a remote <b>territory</b> of Australia.</div>
+          <div class="wc-tr">这些岛屿是澳大利亚的一处偏远领地。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">astonish</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈstɒnɪʃ/ · 美 /əˈstɑːnɪʃ/</div>
+          <div class="wc-pos"><b>v.</b> 使惊讶；使震惊</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The result <b>astonished</b> everyone in the lab.</div>
+          <div class="wc-tr">这个结果令实验室里的每个人都震惊不已。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">genus</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdʒiːnəs/ · 美 /ˈdʒiːnəs/</div>
+          <div class="wc-pos"><b>n.</b> 属（生物分类单位）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>This sea cucumber belongs to a new <b>genus</b>.</div>
+          <div class="wc-tr">这种海参属于一个新的属。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">parasitic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌpærəˈsɪtɪk/ · 美 /ˌpærəˈsɪtɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 寄生的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Some <b>parasitic</b> worms live on deep-sea fish.</div>
+          <div class="wc-tr">一些寄生虫生活在深海鱼身上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">penetrate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈpenɪtreɪt/ · 美 /ˈpenɪtreɪt/</div>
+          <div class="wc-pos"><b>v.</b> 穿透；渗透</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sunlight cannot <b>penetrate</b> the deep ocean.</div>
+          <div class="wc-tr">阳光无法穿透深海。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">specimen</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈspesɪmən/ · 美 /ˈspesɪmən/</div>
+          <div class="wc-pos"><b>n.</b> 标本；样本</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team collected hundreds of <b>specimens</b> for study.</div>
+          <div class="wc-tr">考察队采集了数百份标本以供研究。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">habitat</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈhæbɪtæt/ · 美 /ˈhæbɪtæt/</div>
+          <div class="wc-pos"><b>n.</b> 栖息地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Protecting <b>habitats</b> is key to saving species.</div>
+          <div class="wc-tr">保护栖息地是拯救物种的关键。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">barren</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbærən/ · 美 /ˈbærən/</div>
+          <div class="wc-pos"><b>adj.</b> 贫瘠的；荒芜的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Few plants grow on the <b>barren</b> plain.</div>
+          <div class="wc-tr">这片荒芜的平原上几乎不长植物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">abyssal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈbɪsl/ · 美 /əˈbɪsl/</div>
+          <div class="wc-pos"><b>adj.</b> 深海的；深渊的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>abyssal</b> plain is cold and dark.</div>
+          <div class="wc-tr">深海平原既寒冷又黑暗。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">isolated</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈaɪsəleɪtɪd/ · 美 /ˈaɪsəleɪtɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 孤立的；与世隔绝的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The village is <b>isolated</b> from the outside world.</div>
+          <div class="wc-tr">这个村庄与外界隔绝。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">evolve</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪˈvɒlv/ · 美 /ɪˈvɑːlv/</div>
+          <div class="wc-pos"><b>v.</b> 进化；演变</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These creatures <b>evolved</b> in total isolation.</div>
+          <div class="wc-tr">这些生物在完全隔绝的环境中演化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diversity</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /daɪˈvɜːsəti/ · 美 /daɪˈvɜːrsəti/</div>
+          <div class="wc-pos"><b>n.</b> 多样性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The ocean holds enormous biological <b>diversity</b>.</div>
+          <div class="wc-tr">海洋蕴藏着巨大的生物多样性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fragile</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfrædʒaɪl/ · 美 /ˈfrædʒl/</div>
+          <div class="wc-pos"><b>adj.</b> 脆弱的；易碎的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Deep-sea ecosystems are extremely <b>fragile</b>.</div>
+          <div class="wc-tr">深海生态系统极其脆弱。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inhabitant</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈhæbɪtənt/ · 美 /ɪnˈhæbɪtənt/</div>
+          <div class="wc-pos"><b>n.</b> 居民；栖息者</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many <b>inhabitants</b> of the deep have never been named.</div>
+          <div class="wc-tr">许多深海"居民"从未被命名。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">catalogue</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkætəlɒɡ/ · 美 /ˈkætəlɔːɡ/</div>
+          <div class="wc-pos"><b>v.</b> 编目；登记；<b>n.</b> 目录</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists are working to <b>catalogue</b> marine life.</div>
+          <div class="wc-tr">科学家正努力为海洋生物编目。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">biodiversity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌbaɪəʊdaɪˈvɜːsəti/ · 美 /ˌbaɪoʊdaɪˈvɜːrsəti/</div>
+          <div class="wc-pos"><b>n.</b> 生物多样性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Ocean <b>biodiversity</b> is still largely unmapped.</div>
+          <div class="wc-tr">海洋生物多样性在很大程度上仍未被摸清。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conservationist</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkɒnsəˈveɪʃənɪst/ · 美 /ˌkɑːnsərˈveɪʃənɪst/</div>
+          <div class="wc-pos"><b>n.</b> 自然保护人士</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The discovery inspires young <b>conservationists</b>.</div>
+          <div class="wc-tr">这一发现激励了年轻一代的环保人士。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">two-thirds of our planet</span><span class="zh">地球的三分之二</span></li>
+          <li><span class="en">waiting to be found</span><span class="zh">有待被发现</span></li>
+          <li><span class="en">a chain of seamounts</span><span class="zh">一连串海底山</span></li>
+          <li><span class="en">ancient underwater volcanoes</span><span class="zh">古老的海底火山</span></li>
+          <li><span class="en">far from any continent</span><span class="zh">远离任何大陆</span></li>
+          <li><span class="en">rely on</span><span class="zh">依靠；依赖</span></li>
+          <li><span class="en">remotely operated vehicles (ROVs)</span><span class="zh">遥控潜水器</span></li>
+          <li><span class="en">act as islands of life</span><span class="zh">充当"生命孤岛"</span></li>
+          <li><span class="en">be exposed to …</span><span class="zh">暴露于……；面临……</span></li>
+          <li><span class="en">bottom trawling</span><span class="zh">底拖网捕捞</span></li>
+          <li><span class="en">seabed mining</span><span class="zh">海底采矿</span></li>
+          <li><span class="en">grow scarce</span><span class="zh">变得稀缺</span></li>
+          <li><span class="en">the majority of …</span><span class="zh">大多数……</span></li>
+          <li><span class="en">part of a broader effort</span><span class="zh">更广泛努力的一部分</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>深海是探索最少的疆域，一次考察就带回 149 个新物种。</li>
+          <li>考察队锁定圣诞岛与科科斯群岛附近、远离大陆的一连串海底山。</li>
+          <li>新物种含梦参属海参、青眼鱼科的鱼和一种寄生生物。</li>
+          <li>科学家用遥控潜水器和诱饵相机下潜数千米采集标本。</li>
+          <li>海底山是荒芜深海平原上的"生命孤岛"，百万年隔绝演化出特有物种。</li>
+          <li>隔绝也使其脆弱：底拖网捕捞与海底采矿可能先于命名摧毁它们。</li>
+          <li>为新物种正式命名耗时漫长，保护因此更加紧迫。</li>
+          <li>这项发现是全球海洋生物编目行动的一部分，多数海洋物种仍未知。</li>
+          <li>启示：海洋虽受压，仍蕴藏足以激励新一代探索者与保护者的奇迹。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">A single expedition, conducted near two remote Australian islands, has just shown how much life there is still waiting to be found — 149 species that science had never described before.</div>
+        <div class="row"><b>主干：</b>A single expedition ... has just shown ...（主语 + has shown + 宾语从句）</div>
+        <div class="row"><b>后置定语（过去分词短语）：</b>conducted near two remote Australian islands（修饰 expedition）</div>
+        <div class="row"><b>宾语从句：</b>how much life there is still waiting to be found（how much 引导，作 shown 的宾语）</div>
+        <div class="row"><b>破折号同位语 + 定语从句：</b>149 species that science had never described before（that 引导定语从句修饰 species，时态为过去完成时）</div>
+        <div class="row"><b>考点：</b>过去分词作后置定语；how much 引导宾语从句；that 定语从句；过去完成时 had described</div>
+        <div class="row tr"><b>译文：</b>一次在澳大利亚两座偏远岛屿附近进行的考察，刚刚揭示了还有多少生命有待被发现——那是科学界此前从未描述过的 149 个物种。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Led by marine biologists from Australia's leading research institutions, the voyage targeted a chain of seamounts — ancient underwater volcanoes — rising from the floor of the Indian Ocean near Christmas Island and the Cocos (Keeling) Islands, a territory that lies far from any continent.</div>
+        <div class="row"><b>主干：</b>the voyage targeted a chain of seamounts（主语 + targeted + 宾语）</div>
+        <div class="row"><b>过去分词作状语：</b>Led by marine biologists from Australia's leading research institutions（"由……率领"）</div>
+        <div class="row"><b>同位语：</b>ancient underwater volcanoes（破折号引出，解释 seamounts）</div>
+        <div class="row"><b>现在分词作定语：</b>rising from the floor of the Indian Ocean near ...（修饰 seamounts）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a territory that lies far from any continent（解释 Christmas Island and the Cocos Islands，that 引导定语从句）</div>
+        <div class="row"><b>考点：</b>过去分词作状语；同位语；现在分词作后置定语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>这次航行由澳大利亚顶尖研究机构的海洋生物学家率领，目标是一连串海底山——即古老的海底火山——它们从圣诞岛和科科斯（基林）群岛附近的印度洋洋底升起，而这片领地远离任何大陆。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What the team brought back astonished even seasoned researchers: among the 149 new species were a sea cucumber belonging to the genus Oneirophanta, a greeneye fish from the family Chlorophthalmus, and a parasitic creature that attaches itself to other deep-sea animals.</div>
+        <div class="row"><b>主语（名词性从句）：</b>What the team brought back（what 引导的主语从句）</div>
+        <div class="row"><b>主干：</b>What the team brought back astonished even seasoned researchers（主语 + astonished + 宾语）</div>
+        <div class="row"><b>倒装句：</b>among the 149 new species were a sea cucumber ...（表语 among ... 提前的完全倒装，主语为并列的三个名词短语）</div>
+        <div class="row"><b>现在分词作定语：</b>belonging to the genus Oneirophanta（修饰 sea cucumber）；that attaches itself to ...（定语从句修饰 creature）</div>
+        <div class="row"><b>考点：</b>what 主语从句；完全倒装；现在分词作后置定语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>考察队带回的东西令经验丰富的研究人员也惊叹不已：在这 149 个新物种中，有一种梦参属的海参、一种青眼鱼科的鱼，以及一种附着在其他深海动物身上的寄生生物。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">To reach depths where sunlight never penetrates, the scientists relied on remotely operated vehicles and baited cameras, which descended thousands of metres to film and collect specimens from habitats that had never before been disturbed by human hands.</div>
+        <div class="row"><b>主干：</b>the scientists relied on remotely operated vehicles and baited cameras（主语 + relied on + 宾语）</div>
+        <div class="row"><b>目的状语：</b>To reach depths where sunlight never penetrates（不定式作目的状语，内含 where 引导的定语从句修饰 depths）</div>
+        <div class="row"><b>非限制性定语从句：</b>which descended thousands of metres to film and collect specimens ...（which 修饰 vehicles and cameras）</div>
+        <div class="row"><b>定语从句：</b>that had never before been disturbed by human hands（修饰 habitats，被动语态 + 过去完成时）</div>
+        <div class="row"><b>考点：</b>不定式作目的状语；where / which / that 三类定语从句的区分；被动语态</div>
+        <div class="row tr"><b>译文：</b>为了到达阳光永远无法穿透的深度，科学家依靠遥控潜水器和诱饵相机，它们下潜数千米，从从未被人类之手扰动过的栖息地拍摄并采集标本。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Deep-sea bottom trawling and seabed mining, both of which are expanding as resources on land grow scarce, could destroy these fragile ecosystems long before most of their inhabitants have even been named.</div>
+        <div class="row"><b>主干：</b>Deep-sea bottom trawling and seabed mining ... could destroy these fragile ecosystems（主语 + could destroy + 宾语）</div>
+        <div class="row"><b>非限制性定语从句：</b>both of which are expanding（which 指代前面的两个并列主语，both of which 表示"两者都"）</div>
+        <div class="row"><b>原因/时间状语从句：</b>as resources on land grow scarce（as 引导，表"随着"）</div>
+        <div class="row"><b>时间状语从句：</b>long before most of their inhabitants have even been named（long before 引导，表"远在……之前"）</div>
+        <div class="row"><b>考点：</b>both of which 非限制性定语从句；as 引导状语从句；long before 时间状语从句；could 表推测</div>
+        <div class="row tr"><b>译文：</b>随着陆地上的资源日益稀缺，深海底拖网捕捞和海底采矿都在不断扩张，而这两者可能在大多数栖息者尚未被命名之前，就摧毁这些脆弱的生态系统。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">海洋覆盖了地球超过三分之二的表面，但深海至今仍是人类探索最少的"最后疆域"。一支由澳大利亚顶尖研究机构海洋生物学家率领的考察队，把目标锁定在圣诞岛和科科斯（基林）群岛附近、远离任何大陆的一连串海底山——这些古老的海底火山从印度洋洋底升起，是散布在荒芜深海平原上的"生命孤岛"。科学家借助遥控潜水器和诱饵相机下潜数千米，从从未被人类扰动过的栖息地采集标本，一举带回 149 个科学界从未描述过的新物种，其中包括一种梦参属的海参、一种青眼鱼科的鱼，以及一种附着在其他深海动物身上的寄生生物。这些海底山在数百万年的隔绝中，让无数生物演化出地球上独一无二的特征，但正是这种隔绝让它们格外脆弱：随着陆地资源日益稀缺，底拖网捕捞和海底采矿不断扩张，可能在多数"居民"被正式命名之前就摧毁这些生态系统。为新物种正式命名往往需要数年细致研究，因此保护显得刻不容缓。这项发表于多篇科学论文的发现，是全球海洋生物编目行动的一部分——科学家估计海洋中可能有多达 200 万种生物，其中大多数仍不为人知。对普通人而言，这一发现既令人谦卑又充满希望：一次航行就能揭示如此之多的未知，说明海洋尽管承受着日益增长的压力，仍蕴藏着足以激励新一代探索者和自然保护者的奇迹。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6 段，为什么"海底山的隔绝"既造就了物种的独特多样，又让它们面临被破坏的风险？这种"同一因素的两面性"，你还能在自然或社会现象中找到其他例子吗？</div>
+      <div class="q"><b>仿写题：</b>仿照第 1 段 <span style="font-family:Georgia,serif;font-style:italic">"The deep ocean, which covers more than two-thirds of our planet, remains one of the least explored frontiers on Earth."</span>（非限制性定语从句 + remain one of the + 最高级 + 名词复数）的句式，围绕「海洋保护」「绿色生活」或「学习」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 深海是最后疆域，一次考察发现 149 个新物种</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 目标：圣诞岛与科科斯群岛附近的海底山</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 新物种含海参、青眼鱼与寄生生物</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 遥控潜水器下潜数千米采集标本</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 海底山是"生命孤岛"，隔绝演化出特有物种</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 拖网与采矿可能先于命名摧毁它们</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 正式命名耗时漫长，保护刻不容缓</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 属全球海洋生物编目行动的一部分</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：海洋仍蕴藏激励后人的奇迹</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 考察目标 → 主要发现 → 研究方法 → 生态机制 → 威胁风险 → 保护紧迫 → 更广意义 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Mongabay / Australian Museum / The Cool Down 公开资料（2026-09-12 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
