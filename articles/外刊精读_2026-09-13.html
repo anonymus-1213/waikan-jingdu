@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 双语如何重塑大脑：说两种语言为何能推迟痴呆数年</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Society · 人与社会 / 教育 / 认知科学 / 健康</div>
+  <h1>双语如何重塑大脑：说两种语言为何能推迟痴呆数年</h1>
+  <div class="deck">Decades of research suggest that speaking two languages forges a more resilient brain — one that can postpone the symptoms of dementia by several years</div>
+  <div class="byline"><span><b>来源</b> The Guardian / Scientific American / York University（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-13</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-13.jpg" alt="双语与大脑（配图）">
+    <figcaption>配图：以两种语言交织而成的大脑意象，象征双语能力与认知储备（图片来源：AutoGLM 生成，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>我们常把学外语当作升学、求职的敲门砖，却很少想到：每天在两种语言之间切换，本身可能就是给大脑做的一场"健身"。二十多年来，以加拿大约克大学心理学家为首的研究团队追踪大量记忆门诊患者后发现，双语者出现阿尔茨海默病症状的时间平均比单语者晚四到五年——尽管两组人的大脑损伤程度其实相当。本文沿着"研究证据 → 作用机理 → 影像佐证 → 争议局限"的脉络，揭示"认知储备"这一概念：双语并非阻止疾病，而是锻造出更密实的脑网络，让大脑在受损后仍能"绕路而行"，多撑几年清醒的时光，并由此带出对教育政策与个人终身学习选择的深层思考。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">For two decades, one question has animated <span class="kw" data-tip="n. 神经科学">neuroscience</span>: whether speaking two languages daily reshapes the brain in ways that matter in old age. The answer is subtle — <span class="kw" data-tip="n. 双语能力；双语现象">bilingualism</span> does not prevent <span class="kw" data-tip="n. 痴呆（症）">dementia</span>, but it seems to build a deep reserve the aging mind can draw on long after damage has begun.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The most influential evidence comes from <span class="kw" data-tip="adj. 纵向的；长期的">longitudinal</span> research at York University in Toronto, whose psychologists tracked hundreds of memory-clinic patients with the same <span class="kw" data-tip="n. 诊断">diagnosis</span>. Comparing bilingual and monolingual patients, all else being equal, they found a pattern too consistent to dismiss as chance.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">On average, bilingual patients developed symptoms of Alzheimer's disease four to five years later than their monolingual <span class="kw" data-tip="n. 对应的人（或物）">counterparts</span> — a gap persisting even when brain scans showed comparable <span class="kw" data-tip="n. 恶化；衰退">deterioration</span>. The two groups were damaged to a similar degree; what differed was how long each could keep functioning before the disease announced itself.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">Neuroscientists attribute the effect to <span class="kw" data-tip="n. 执行控制（大脑抑制干扰、切换任务的机制）">executive control</span>, the mental machinery governing attention, <span class="kw" data-tip="n. 抑制；克制">inhibition</span> and the switching between tasks. Because a bilingual must constantly <span class="kw" data-tip="v. 抑制；压制">suppress</span> one language while producing another, the practice <span class="kw" data-tip="v. 行使；运用（熟词僻义：锻炼）">exercises</span> this system daily, <span class="kw" data-tip="v. 锻造；建立（熟词僻义：伪造）">forging</span> denser connections that serve as a <span class="kw" data-tip="n. 水库；储备">reservoir</span> of <span class="kw" data-tip="n. 认知储备">cognitive reserve</span>.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Neuroimaging lends weight to this account: scans of lifelong bilinguals reveal greater <span class="kw" data-tip="n. 灰质（大脑的一种组织）">gray-matter</span> volume and more efficient activity in precisely the regions that normally <span class="kw" data-tip="v. 萎缩">atrophy</span> with age. Far from being a burden, juggling two vocabularies <span class="kw" data-tip="v. 征用；动员（熟词僻义：招聘）">recruits</span> extra networks, letting the brain reroute around damaged tissue.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">"Bilingualism is not a magic bullet," cautions a researcher whose own work popularized the idea. "What it seems to do is build a richer system that tolerates more damage before it fails." The effect, she insists, is one of delay rather than <span class="kw" data-tip="n. 免疫（力）">immunity</span>.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">Not every study has reproduced this so-called bilingual advantage; critics note that early papers suffered from small samples and imperfect controls. Some argue that the true protective factors may be education, occupation or lifelong intellectual engagement, of which bilingualism is merely one expression. Not until better-controlled studies appeared did the field begin to settle.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Whatever the final verdict, the research speaks to parents and policymakers, who have sometimes treated a second language as a luxury to drop when budgets tighten. If language learning is a form of cognitive investment, cutting it from schools may impose a cost far heavier than the saving it yields, let alone one that later spending can repair.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For the individual, the lesson is humbling in the best sense: the choices we make in youth and middle age, however ordinary, quietly <span class="kw" data-tip="v. 囤积；储备">stockpile</span> resources for the decades ahead. Bilingualism may never halt the aging brain; yet by <span class="kw" data-tip="v. 锻造；建立（熟词僻义：伪造）">forging</span> a more <span class="kw" data-tip="adj. 有韧性的；适应力强的">resilient</span> architecture, it offers what medicine cannot — a few more years of clear thought, granted to those who simply kept speaking.</span></div>
+
+      <p class="muted">原文出处：本文根据 Ellen Bialystok（约克大学）等关于"双语与认知储备 / 阿尔茨海默病"的系列纵向研究，及 The Guardian、Scientific American 相关报道（2026-09 上旬）综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">neuroscience</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈnjʊərəʊsaɪəns/ · 美 /ˈnʊroʊsaɪəns/</div>
+          <div class="wc-pos"><b>n.</b> 神经科学</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Advances in <b>neuroscience</b> help us understand how the brain learns.</div>
+          <div class="wc-tr">神经科学的进步帮助我们理解大脑如何学习。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bilingualism</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌbaɪˈlɪŋɡwəlɪzəm/ · 美 /ˌbaɪˈlɪŋɡwəlɪzəm/</div>
+          <div class="wc-pos"><b>n.</b> 双语能力；双语现象</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Bilingualism</b> is common in many border regions.</div>
+          <div class="wc-tr">双语能力在许多边境地区很常见。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dementia</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪˈmenʃə/ · 美 /dɪˈmenʃə/</div>
+          <div class="wc-pos"><b>n.</b> 痴呆（症）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Regular exercise may lower the risk of <b>dementia</b>.</div>
+          <div class="wc-tr">经常锻炼可能降低患痴呆的风险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">longitudinal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌlɒŋɡɪˈtjuːdɪnl/ · 美 /ˌlɑːndʒəˈtuːdɪnl/</div>
+          <div class="wc-pos"><b>adj.</b> 纵向的；长期的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>longitudinal</b> study followed the same group for twenty years.</div>
+          <div class="wc-tr">这项纵向研究对同一群体追踪了二十年。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diagnosis</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdaɪəɡˈnəʊsɪs/ · 美 /ˌdaɪəɡˈnoʊsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 诊断</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An early <b>diagnosis</b> can greatly improve treatment.</div>
+          <div class="wc-tr">早期诊断能大大改善治疗。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">counterpart</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkaʊntəpɑːt/ · 美 /ˈkaʊntərpɑːrt/</div>
+          <div class="wc-pos"><b>n.</b> 对应的人（或物）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The results were compared with those of their foreign <b>counterparts</b>.</div>
+          <div class="wc-tr">结果与国外同行的情况做了比较。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">deterioration</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˌtɪəriəˈreɪʃn/ · 美 /dɪˌtɪriəˈreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 恶化；衰退</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The patient showed no sign of <b>deterioration</b>.</div>
+          <div class="wc-tr">病人没有表现出恶化的迹象。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">executive control</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪɡˈzekjətɪv kənˈtrəʊl/ · 美 /ɪɡˈzekjətɪv kənˈtroʊl/</div>
+          <div class="wc-pos"><b>n.</b> 执行控制（抑制干扰、切换任务的机制）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Executive control</b> helps us focus and resist distraction.</div>
+          <div class="wc-tr">执行控制帮助我们集中注意力、抵制干扰。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inhibition</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪnhɪˈbɪʃn/ · 美 /ˌɪnhɪˈbɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 抑制；克制</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bilinguals often show stronger <b>inhibition</b> of irrelevant information.</div>
+          <div class="wc-tr">双语者往往表现出对无关信息更强的抑制能力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">suppress</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səˈpres/ · 美 /səˈpres/</div>
+          <div class="wc-pos"><b>v.</b> 抑制；压制</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She tried to <b>suppress</b> a smile during the class.</div>
+          <div class="wc-tr">上课时她努力忍住不笑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">exercise</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈeksəsaɪz/ · 美 /ˈeksərsaɪz/</div>
+          <div class="wc-pos"><b>v.</b> 行使；运用（熟词僻义：<b>n.</b>/<b>v.</b> 锻炼）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Everyone has the right to <b>exercise</b> their own judgment.</div>
+          <div class="wc-tr">每个人都有权运用自己的判断。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">forge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /fɔːdʒ/ · 美 /fɔːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 锻造；建立（熟词僻义：伪造）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Years of reading <b>forged</b> her strong thinking skills.</div>
+          <div class="wc-tr">多年的阅读锻造了她强大的思维能力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reservoir</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrezəvwɑː(r)/ · 美 /ˈrezərvwɑːr/</div>
+          <div class="wc-pos"><b>n.</b> 水库；储备</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading builds a <b>reservoir</b> of knowledge for future use.</div>
+          <div class="wc-tr">阅读为未来储备知识。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cognitive reserve</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɒɡnətɪv rɪˈzɜːv/ · 美 /ˈkɑːɡnətɪv rɪˈzɜːrv/</div>
+          <div class="wc-pos"><b>n.</b> 认知储备</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Lifelong learning helps build <b>cognitive reserve</b>.</div>
+          <div class="wc-tr">终身学习有助于建立认知储备。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gray matter</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɡreɪ ˈmætə(r)/ · 美 /ˌɡreɪ ˈmætər/</div>
+          <div class="wc-pos"><b>n.</b> 灰质（大脑的一种组织）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Exercise can increase the volume of <b>gray matter</b> in the brain.</div>
+          <div class="wc-tr">锻炼能增加大脑灰质的体积。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">atrophy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈætrəfi/ · 美 /ˈætrəfi/</div>
+          <div class="wc-pos"><b>v.</b>/<b>n.</b> 萎缩</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Muscles <b>atrophy</b> if they are not used.</div>
+          <div class="wc-tr">肌肉不用就会萎缩。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recruit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈkruːt/ · 美 /rɪˈkruːt/</div>
+          <div class="wc-pos"><b>v.</b> 征用；动员（熟词僻义：招聘）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brain <b>recruits</b> extra regions to cope with the task.</div>
+          <div class="wc-tr">大脑征用额外的区域来应对这项任务。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">immunity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈmjuːnəti/ · 美 /ɪˈmjuːnəti/</div>
+          <div class="wc-pos"><b>n.</b> 免疫（力）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A vaccine gives us <b>immunity</b> to certain diseases.</div>
+          <div class="wc-tr">疫苗让我们对某些疾病产生免疫力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">resilient</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈzɪliənt/ · 美 /rɪˈzɪliənt/</div>
+          <div class="wc-pos"><b>adj.</b> 有韧性的；适应力强的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Children are often more <b>resilient</b> than we expect.</div>
+          <div class="wc-tr">孩子往往比我们想象的更有韧性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stockpile</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈstɒkpaɪl/ · 美 /ˈstɑːkpaɪl/</div>
+          <div class="wc-pos"><b>v.</b> 囤积；储备</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We should <b>stockpile</b> knowledge while we are young.</div>
+          <div class="wc-tr">我们应趁年轻时储备知识。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">draw on</span><span class="zh">利用；汲取</span></li>
+          <li><span class="en">in old age</span><span class="zh">在晚年</span></li>
+          <li><span class="en">long after</span><span class="zh">在……之后很久</span></li>
+          <li><span class="en">all else being equal</span><span class="zh">其他条件相同的情况下（独立主格）</span></li>
+          <li><span class="en">be matched for</span><span class="zh">在……方面相匹配</span></li>
+          <li><span class="en">four to five years later</span><span class="zh">晚四到五年</span></li>
+          <li><span class="en">attribute A to B</span><span class="zh">把 A 归因于 B</span></li>
+          <li><span class="en">a reservoir of …</span><span class="zh">……的储备（库）</span></li>
+          <li><span class="en">lend weight to</span><span class="zh">为……提供依据；佐证</span></li>
+          <li><span class="en">far from being</span><span class="zh">远非；绝非</span></li>
+          <li><span class="en">magic bullet</span><span class="zh">灵丹妙药；万灵药</span></li>
+          <li><span class="en">let alone</span><span class="zh">更不用说</span></li>
+          <li><span class="en">not until … did …</span><span class="zh">直到……才……（倒装）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>提出问题：每天说两种语言是否会重塑大脑，并影响晚年健康。</li>
+          <li>约克大学纵向研究，匹配年龄等变量，发现规律过于一致、难以归为偶然。</li>
+          <li>双语者阿尔茨海默症状晚 4–5 年出现，但两组脑损伤程度相当。</li>
+          <li>机理：双语训练"执行控制"，锻造更密连接，形成认知储备。</li>
+          <li>神经影像佐证：双语者灰质更厚、激活更高效，可绕开受损组织。</li>
+          <li>专家引语：双语非"灵丹妙药"，是"延迟"而非"免疫"。</li>
+          <li>争议与局限：早期研究样本小、控制不严；更严谨研究出现后学界才渐趋共识。</li>
+          <li>政策启示：削减第二语言课程可能付出比节省更重的代价。</li>
+          <li>个人启示：早年选择悄然储备资源，换来更久的清醒思考。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">For two decades, one question has animated neuroscience: whether speaking two languages daily reshapes the brain in ways that matter in old age.</div>
+        <div class="row"><b>主干：</b>one question has animated neuroscience（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>同位语从句：</b>whether speaking two languages daily reshapes the brain（whether 引导，说明 question 的具体内容；speaking 为动名词作从句主语）</div>
+        <div class="row"><b>定语从句：</b>that matter in old age（修饰 ways，"在晚年很重要的方面"）</div>
+        <div class="row"><b>考点：</b>whether 引导同位语从句；that 引导定语从句；动名词短语作主语</div>
+        <div class="row tr"><b>译文：</b>二十年来，有一个问题一直牵动着神经科学界：每天说两种语言，是否会在晚年至关重要的那些方面重塑大脑。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Comparing bilingual and monolingual patients, all else being equal, they found a pattern too consistent to dismiss as chance.</div>
+        <div class="row"><b>主干：</b>they found a pattern（主语 + found + 宾语）</div>
+        <div class="row"><b>现在分词作状语：</b>Comparing bilingual and monolingual patients（"通过比较……"，表示方式）</div>
+        <div class="row"><b>独立主格：</b>all else being equal（"其他条件相同的情况下"，逻辑主语 all else + 现在分词 being）</div>
+        <div class="row"><b>固定结构：</b>too consistent to dismiss as chance（too + adj. + to do，"太……而不能……"）</div>
+        <div class="row"><b>考点：</b>现在分词作状语；独立主格结构；too … to …</div>
+        <div class="row tr"><b>译文：</b>在其他条件相同的情况下比较双语与单语患者，他们发现了一种过于一致、难以归为偶然的规律。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">On average, bilingual patients developed symptoms of Alzheimer's disease four to five years later than their monolingual counterparts — a gap persisting even when brain scans showed comparable deterioration.</div>
+        <div class="row"><b>主干：</b>bilingual patients developed symptoms of Alzheimer's disease（主语 + developed + 宾语）</div>
+        <div class="row"><b>同位语 + 现在分词作定语：</b>a gap persisting even when …（破折号引出，解释整个前半句；persisting 作后置定语修饰 gap）</div>
+        <div class="row"><b>让步状语从句：</b>even when brain scans showed comparable deterioration（even when 引导，"即使当……时"）</div>
+        <div class="row"><b>考点：</b>同位语；现在分词作后置定语；even when 引导让步状语从句</div>
+        <div class="row tr"><b>译文：</b>平均而言，双语患者出现阿尔茨海默病症状的时间比单语患者晚四到五年——即便脑部扫描显示两者的生理衰退程度相当，这一差距依然存在。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Because a bilingual must constantly suppress one language while producing another, the practice exercises this system daily, forging denser connections that serve as a reservoir of cognitive reserve.</div>
+        <div class="row"><b>主干：</b>the practice exercises this system daily（主语 + exercises + 宾语 + 状语）</div>
+        <div class="row"><b>原因状语从句：</b>Because a bilingual must constantly suppress one language while producing another（内含 while producing 现在分词作时间状语，表"同时"）</div>
+        <div class="row"><b>现在分词作结果状语：</b>forging denser connections（"从而锻造出更密的连接"，表自然结果）</div>
+        <div class="row"><b>定语从句：</b>that serve as a reservoir of cognitive reserve（修饰 connections）</div>
+        <div class="row"><b>考点：</b>现在分词作结果状语；that 定语从句；熟词僻义 exercise（行使）/forge（锻造）</div>
+        <div class="row tr"><b>译文：</b>由于双语者必须在说一种语言的同时不断抑制另一种语言，这种练习每天都在"行使"这一系统，锻造出更密实的连接，从而构成一座"认知储备"的水库。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">If language learning is a form of cognitive investment, cutting it from schools may impose a cost far heavier than the saving it yields, let alone one that later spending can repair.</div>
+        <div class="row"><b>主干：</b>cutting it from schools may impose a cost（动名词短语 cutting it from schools 作主语 + may impose + 宾语）</div>
+        <div class="row"><b>条件状语从句：</b>If language learning is a form of cognitive investment（If 引导）</div>
+        <div class="row"><b>比较级 + let alone：</b>a cost far heavier than the saving it yields, let alone one that later spending can repair（far + 比较级表示"……得多"；let alone 引出更进一层）</div>
+        <div class="row"><b>定语从句（省略关系代词）：</b>that later spending can repair（修饰 one）</div>
+        <div class="row"><b>考点：</b>动名词作主语；If 条件状语从句；far + 比较级；let alone 递进；定语从句省略关系代词</div>
+        <div class="row tr"><b>译文：</b>如果语言学习是一种认知投资，那么把它从学校课程中砍掉，可能招致远比省下的钱更重的代价，更不用说这笔代价是日后投入再多也难以弥补的。</div>
+      </div>
+
+      <p class="muted">另注：第 7 段的倒装句 <span style="font-family:Georgia,serif;font-style:italic">"Not until better-controlled studies appeared did the field begin to settle."</span>（否定词 Not until 置于句首，主句用部分倒装 did the field begin），以及第 6 段 <span style="font-family:Georgia,serif;font-style:italic">"a researcher whose own work popularized the idea"</span> 中 whose 引导的定语从句，均为高考语法填空与阅读理解的高频考点，请一并留意。</p>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">二十多年来，神经科学界一直在追问一个问题：每天说两种语言，是否会在晚年至关重要的方面重塑大脑。最有力的证据来自加拿大约克大学的一项纵向研究——研究者追踪了数百名诊断相同的记忆门诊患者，在年龄、教育等条件相同的情况下，发现双语患者出现阿尔茨海默病症状的时间平均比单语患者晚四到五年，而且这一差距即便在脑部扫描显示两者生理衰退程度相当时依然存在：两组人大脑受损程度相似，区别只在于在疾病"宣告到来"之前，各自还能正常运转多久。科学家把这种效应归因于"执行控制"——这一掌控注意力、抑制干扰与任务切换的大脑机制。双语者必须边说一种语言边抑制另一种，于是每天都在"行使"这套系统，锻造出更密实的神经连接，形成一座"认知储备"的水库。神经影像研究佐证了这一说法：终生双语者的大脑灰质体积更大、相关脑区激活更高效，而这些区域正是随年龄增长而萎缩的部位；说两种语言非但不是负担，反而能征用更多神经网络，让大脑绕过受损组织继续运转。不过，研究者也提醒，双语并非"灵丹妙药"——它带来的是"延迟"而非"免疫"，且效果因人而异。事实上，并非所有研究都复现了这种"双语优势"，早期论文样本小、控制不严，有人认为真正的保护因素可能是教育、职业或终身的智力投入，双语只是其中一种表现；直到更严谨的研究出现，学界才逐渐达成共识。这项研究对家长与政策制定者同样有话要说：如果把学外语当作预算紧张时可裁掉的奢侈品，可能付出比节省更重的代价。对个人而言，启示则令人谦卑而振奋——年轻时那些看似平常的选择，会悄悄为未来储备资源；双语也许无法阻止大脑衰老，却能锻造出更具韧性的结构，给予我们医学无法提供的东西：多几年的清醒思考。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 3、4 段，为什么两组患者"脑损伤程度相当"，双语者却能更晚出现症状？"认知储备"在这里起了什么作用？这对你学习外语（乃至终身学习）有何启发？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"Bilingualism may never halt the aging brain; yet by forging a more resilient architecture, it offers what medicine cannot — a few more years of clear thought."</span>（分号并列两个分句 + 现在分词短语 by doing 作方式状语 + what 引导的宾语从句）的句式，围绕「坚持运动」「坚持阅读」或「绿色生活」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 提出问题：双语能否重塑大脑并影响晚年</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 约克大学纵向研究 + 匹配变量</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 双语者症状晚 4–5 年，损伤却相当</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 机理：训练执行控制，形成认知储备</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 神经影像：灰质更厚、可绕开损伤</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 专家引语：是"延迟"而非"免疫"</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 争议与局限：早期研究样本小</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 政策启示：削减外语课代价更重</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 个人启示：早年选择储备认知资源</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「提出问题 → 研究证据 → 核心数据 → 作用机理 → 影像佐证 → 专家澄清 → 争议局限 → 政策启示 → 个人启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：The Guardian / Scientific American / York University 公开资料（2026-09-13 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
