@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 大象会用"名字"互相呼唤：非洲象的个体命名研究</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 动物 / 认知 / 科普</div>
+  <h1>大象会用"名字"互相呼唤：非洲象的个体命名研究</h1>
+  <div class="deck">A machine-learning analysis of hundreds of elephant calls suggests that wild African elephants address one another with individually specific rumbles — the first non-human animal known to use name-like calls that are not mere imitation</div>
+  <div class="byline"><span><b>来源</b> Nature Ecology &amp; Evolution / Colorado State University / Save the Elephants（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-14</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-14.jpg" alt="非洲象群（配图）">
+    <figcaption>配图：肯尼亚草原上的非洲象群（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>长期以来，人类一直以为"用名字称呼同类"是自己独有的能力。但《自然·生态与进化》发表的一项研究却挑战了这一认知：非洲草原象会用各不相同的低沉吼声（rumble）来"称呼"特定的同伴。研究者分析了过去约 36 年间在肯尼亚录下的 469 段叫声，用机器学习模型从声学特征中预测每一声是"说给"哪头象听的；随后又对 17 头象做了回放实验，结果它们对"喊自己名字"的叫声反应更快、回应更多。这项发现之所以震撼，在于大象并非像海豚或鹦鹉那样靠模仿"复制"声音，而更像在使用一种任意的、非模仿的"标签"——这在概念上更接近人类的名字。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">For centuries, humans have assumed that the ability to <span class="kw" data-tip="v. 称呼；向…说话（熟词僻义：n. 地址）">address</span> one another by name is uniquely ours. A new study of wild African savannah elephants suggests otherwise: these animals appear to address each other with individually specific <span class="kw" data-tip="n. 低沉的吼声；隆隆声">rumbles</span> — the first non-human creature known to use name-like <span class="kw" data-tip="n. 叫声（熟词僻义：v. 打电话；称呼）">calls</span> that are not mere imitation.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">Led by researchers at Colorado State University and published in the journal <em>Nature Ecology &amp; Evolution</em>, the study drew on 469 recorded rumbles collected from two populations in Kenya over roughly 36 years. The team fed the <span class="kw" data-tip="adj. 声学的；声音的">acoustic</span> features of each call into a machine-learning model and asked it to predict which specific elephant a given call was directed toward.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">To rule out the possibility that receivers were simply reacting to the caller's voice, the researchers also conducted <span class="kw" data-tip="n. 回放；重放">playback</span> experiments with 17 elephants. When they heard a call originally addressed to them, the animals approached the loudspeaker more quickly and produced more <span class="kw" data-tip="n. 发声；叫声">vocalizations</span> in response, a pattern that vanished when the same call was played to a different elephant.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The model, by contrast, proved a surprisingly able listener. Guided by acoustic cues alone, it correctly identified the intended receiver in more than a quarter of trials — a rate far above chance, and one that held even when the calls came from unfamiliar voices, suggesting that the "names" reside in the call itself rather than in the caller's identity.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">What makes the finding striking is its departure from the animal kingdom's better-known examples. Dolphins and parrots, for instance, produce <span class="kw" data-tip="adj. 标志性的；签名的">signature</span> whistles or calls that are acquired by <span class="kw" data-tip="v. 模仿">imitating</span> other individuals — a form of "calling" that copies rather than <span class="kw" data-tip="v. 贴上标签；称呼（熟词僻义：n. 标签）">labels</span>. The elephants, by contrast, appear to use <span class="kw" data-tip="adj. 任意的；武断的">arbitrary</span>, non-imitative sounds — a step conceptually closer to the way human names work.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Such labels, the authors argue, make sense for a species whose society is built on long-distance communication and dense <span class="kw" data-tip="n. 亲属关系；血缘">kinship</span> networks. Elephants frequently separate and reunite across vast savannahs, and a mother, or a <span class="kw" data-tip="n. 女族长；母象首领">matriarch</span> guiding her herd, may need to single out one <span class="kw" data-tip="adj. 独特的；清楚的">distinct</span> individual among dozens without visual contact — a demand that imitation alone cannot meet.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">To be sure, the researchers are careful not to <span class="kw" data-tip="v. 夸大；言过其实">overstate</span> the case. Whether these calls carry the full <span class="kw" data-tip="adj. 语义的">semantic</span> weight of human names remains unknown, and the team could not prove that elephants understand a call as referring to a specific individual in the way that we do. "This is an exciting step, but many questions remain," one author noted, observing that the study raises as many questions as it answers.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The discovery nonetheless reshapes how scientists think about the evolution of language. If a non-<span class="kw" data-tip="n. 灵长类动物">primate</span> mammal, whose last common ancestor with humans lived tens of millions of years ago, can evolve name-like communication, then the building blocks of language may be far older, and far more widespread, than once believed.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For <span class="kw" data-tip="n. 自然保护人士">conservationists</span>, the finding carries a quieter lesson. Each of these elephants — each named, recognized, and addressed within its own society — is an individual, not a number; and the more we learn about the richness of their inner lives, the harder it becomes to treat them, or their shrinking habitats, as <span class="kw" data-tip="adj. 可牺牲的；可有可无的">expendable</span>.</span></div>
+
+      <p class="muted">原文出处：本文根据《自然·生态与进化》（Nature Ecology &amp; Evolution，2024 年 6 月）刊发、由科罗拉多州立大学（Colorado State University）与"拯救大象"组织（Save the Elephants）联合开展的非洲象"个体命名"研究，及相关公开报道综合整理编写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">address</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈdres/ · 美 /əˈdres/</div>
+          <div class="wc-pos"><b>v.</b> 称呼；向…说话；应对（熟词僻义：<b>n.</b> 地址）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He <b>addressed</b> the audience in a calm voice.</div>
+          <div class="wc-tr">他用平静的声音向听众讲话。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rumble</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrʌmbl/ · 美 /ˈrʌmbl/</div>
+          <div class="wc-pos"><b>n.</b> 低沉的吼声；隆隆声</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The elephant answered with a deep <b>rumble</b>.</div>
+          <div class="wc-tr">大象以一声低沉的吼声作答。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">call</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kɔːl/ · 美 /kɔːl/</div>
+          <div class="wc-pos"><b>n.</b> 叫声；呼喊（熟词僻义：<b>v.</b> 打电话；称呼）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Birds use <b>calls</b> to warn each other of danger.</div>
+          <div class="wc-tr">鸟儿用叫声相互警示危险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">acoustic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈkuːstɪk/ · 美 /əˈkuːstɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 声学的；声音的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The model analyses the <b>acoustic</b> features of each sound.</div>
+          <div class="wc-tr">该模型分析每个声音的声学特征。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">playback</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈpleɪbæk/ · 美 /ˈpleɪbæk/</div>
+          <div class="wc-pos"><b>n.</b> 回放；重放</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In <b>playback</b> experiments, elephants reacted to recorded calls.</div>
+          <div class="wc-tr">在回放实验中，大象对录音叫声作出了反应。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">vocalization</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌvəʊkəlaɪˈzeɪʃn/ · 美 /ˌvoʊkələˈzeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 发声；叫声</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Elephants produce a wide range of <b>vocalizations</b>.</div>
+          <div class="wc-tr">大象能发出各种各样的叫声。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">imitate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɪmɪteɪt/ · 美 /ˈɪmɪteɪt/</div>
+          <div class="wc-pos"><b>v.</b> 模仿</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Parrots are famous for <b>imitating</b> human speech.</div>
+          <div class="wc-tr">鹦鹉以模仿人类语言而闻名。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">signature</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsɪɡnətʃə(r)/ · 美 /ˈsɪɡnətʃər/</div>
+          <div class="wc-pos"><b>adj.</b> 标志性的；签名的（<b>n.</b> 签名）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each dolphin has its own <b>signature</b> whistle.</div>
+          <div class="wc-tr">每只海豚都有自己标志性的哨声。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">label</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈleɪbl/ · 美 /ˈleɪbl/</div>
+          <div class="wc-pos"><b>v.</b> 贴上标签；称呼（熟词僻义：<b>n.</b> 标签）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists <b>label</b> each animal so they can tell them apart.</div>
+          <div class="wc-tr">科学家给每只动物做标记，以便区分它们。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arbitrary</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɑːbɪtrəri/ · 美 /ˈɑːrbɪtreri/</div>
+          <div class="wc-pos"><b>adj.</b> 任意的；武断的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Human words are <b>arbitrary</b> symbols of meaning.</div>
+          <div class="wc-tr">人类的词语是表义的任意符号。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">kinship</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɪnʃɪp/ · 美 /ˈkɪnʃɪp/</div>
+          <div class="wc-pos"><b>n.</b> 亲属关系；血缘</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Elephant herds are held together by close <b>kinship</b>.</div>
+          <div class="wc-tr">象群靠亲密的血缘关系维系在一起。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">matriarch</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmeɪtriɑːk/ · 美 /ˈmeɪtriɑːrk/</div>
+          <div class="wc-pos"><b>n.</b> 女族长；母象首领</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The oldest female leads the herd as its <b>matriarch</b>.</div>
+          <div class="wc-tr">最年长的母象作为首领带领象群。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">distinct</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /dɪˈstɪŋkt/ · 美 /dɪˈstɪŋkt/</div>
+          <div class="wc-pos"><b>adj.</b> 独特的；清楚的；截然不同的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each elephant has a <b>distinct</b> personality.</div>
+          <div class="wc-tr">每头大象都有独特的个性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">overstate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌəʊvəˈsteɪt/ · 美 /ˌoʊvərˈsteɪt/</div>
+          <div class="wc-pos"><b>v.</b> 夸大；言过其实</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is easy to <b>overstate</b> the importance of a single study.</div>
+          <div class="wc-tr">人们很容易夸大单项研究的重要性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">semantic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /sɪˈmæntɪk/ · 美 /sɪˈmæntɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 语义的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Words carry <b>semantic</b> meaning that sounds alone lack.</div>
+          <div class="wc-tr">词语承载着单纯声音所没有的语义。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">primate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈpraɪmeɪt/ · 美 /ˈpraɪmeɪt/</div>
+          <div class="wc-pos"><b>n.</b> 灵长类动物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Humans, monkeys and apes are all <b>primates</b>.</div>
+          <div class="wc-tr">人类、猴子和猿都属于灵长类动物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conservationist</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkɒnsəˈveɪʃənɪst/ · 美 /ˌkɑːnsərˈveɪʃənɪst/</div>
+          <div class="wc-pos"><b>n.</b> 自然保护人士</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Conservationists</b> work to protect elephants and their habitats.</div>
+          <div class="wc-tr">自然保护人士致力于保护大象及其栖息地。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">expendable</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪkˈspendəbl/ · 美 /ɪkˈspendəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 可牺牲的；可有可无的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>No living creature should be treated as <b>expendable</b>.</div>
+          <div class="wc-tr">任何生灵都不应被当作可有可无的存在。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">call one another by name</span><span class="zh">用名字互相称呼</span></li>
+          <li><span class="en">individually specific rumbles</span><span class="zh">各不相同的低沉吼声</span></li>
+          <li><span class="en">draw on</span><span class="zh">利用；借鉴</span></li>
+          <li><span class="en">feed … into a model</span><span class="zh">把……输入模型</span></li>
+          <li><span class="en">rule out</span><span class="zh">排除（可能性）</span></li>
+          <li><span class="en">in response</span><span class="zh">作为回应</span></li>
+          <li><span class="en">far above chance</span><span class="zh">远高于偶然水平</span></li>
+          <li><span class="en">single out</span><span class="zh">单独挑出；专门指出</span></li>
+          <li><span class="en">depart from</span><span class="zh">偏离；不同于</span></li>
+          <li><span class="en">a step closer to …</span><span class="zh">朝……更近一步</span></li>
+          <li><span class="en">make sense for …</span><span class="zh">对……有意义；合理</span></li>
+          <li><span class="en">the building blocks of …</span><span class="zh">……的基石</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>人类以为"以名相称"独属于己，而大象用个体化吼声"称呼"同伴。</li>
+          <li>研究分析肯尼亚 469 段叫声，用机器学习从声学特征预测呼叫对象。</li>
+          <li>回放实验：17 头象对"喊自己"的叫声反应更快、回应更多。</li>
+          <li>模型仅凭声学线索，正确率超四分之一、远高于偶然，"名字"在叫声本身里。</li>
+          <li>海豚鹦鹉靠模仿"复制"，大象用任意、非模仿的"标签"，更接近人类命名。</li>
+          <li>远距离交流与紧密亲缘，使母象或首领需单独呼唤某头个体。</li>
+          <li>是否承载人类名字的完整语义尚不可知，研究"提出的问题与回答的一样多"。</li>
+          <li>非灵长类也能演化出类命名交流，语言基石或更古老、更普遍。</li>
+          <li>每头象都是被"命名"的个体，认识其内心世界让保护更迫切。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Led by researchers at Colorado State University and published in the journal Nature Ecology &amp; Evolution, the study drew on 469 recorded rumbles collected from two populations in Kenya over roughly 36 years.</div>
+        <div class="row"><b>主干：</b>the study drew on 469 recorded rumbles（主语 + drew on + 宾语）</div>
+        <div class="row"><b>过去分词短语作状语：</b>Led by researchers … and published in the journal …（并列过去分词，说明研究的"出身"）</div>
+        <div class="row"><b>后置定语（过去分词短语）：</b>collected from two populations in Kenya over roughly 36 years（修饰 rumbles）</div>
+        <div class="row"><b>考点：</b>过去分词作状语与后置定语（done 表被动、完成）；draw on 搭配</div>
+        <div class="row tr"><b>译文：</b>这项由科罗拉多州立大学研究人员领导、发表于《自然·生态与进化》的研究，利用了约 36 年间从肯尼亚两个象群采集的 469 段录音叫声。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">When they heard a call originally addressed to them, the animals approached the loudspeaker more quickly and produced more vocalizations in response, a pattern that vanished when the same call was played to a different elephant.</div>
+        <div class="row"><b>主干：</b>the animals approached the loudspeaker … and produced more vocalizations（并列谓语）</div>
+        <div class="row"><b>时间状语从句：</b>When they heard a call originally addressed to them（originally addressed to them 作 call 的后置定语）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a pattern that vanished …（a pattern 概括前面整句内容；that 引导定语从句，其中又含 when 时间状语从句）</div>
+        <div class="row"><b>考点：</b>when 时间状语从句；过去分词作后置定语；同位语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>当听到一段原本是"喊自己"的叫声时，这些大象更快地走近扬声器，并发出更多叫声作为回应——而当同一段叫声播放给另一头象时，这一模式便消失了。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Guided by acoustic cues alone, it correctly identified the intended receiver in more than a quarter of trials — a rate far above chance, and one that held even when the calls came from unfamiliar voices, suggesting that the "names" reside in the call itself rather than in the caller's identity.</div>
+        <div class="row"><b>主干：</b>it correctly identified the intended receiver（主语 + identified + 宾语）</div>
+        <div class="row"><b>过去分词短语作状语：</b>Guided by acoustic cues alone（"仅凭声学线索"）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a rate far above chance, and one that held even when …（one 指代 a rate；that 引导定语从句）</div>
+        <div class="row"><b>现在分词作结果状语：</b>suggesting that the "names" reside in the call itself（suggesting 引出结论，that 宾语从句）</div>
+        <div class="row"><b>考点：</b>过去分词作状语；同位语；现在分词作结果状语；that 宾语从句</div>
+        <div class="row tr"><b>译文：</b>仅凭声学线索，该模型就在超过四分之一的试验中正确识别出"接听对象"——这一比率远高于偶然水平，而且即便叫声来自陌生的声音也依然成立，表明"名字"就存在于叫声本身，而非呼叫者的身份之中。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">If a non-primate mammal, whose last common ancestor with humans lived tens of millions of years ago, can evolve name-like communication, then the building blocks of language may be far older, and far more widespread, than once believed.</div>
+        <div class="row"><b>主干：</b>the building blocks of language may be far older, and far more widespread, than once believed（主句，系表结构）</div>
+        <div class="row"><b>条件状语从句：</b>If a non-primate mammal … can evolve name-like communication</div>
+        <div class="row"><b>非限制性定语从句：</b>whose last common ancestor with humans lived tens of millions of years ago（whose 引导，修饰 mammal）</div>
+        <div class="row"><b>考点：</b>if 条件句；whose 非限制性定语从句；形容词比较级 older / more widespread；than once believed（省略）</div>
+        <div class="row tr"><b>译文：</b>如果一种与人类最近的共同祖先生活在数千万年前的非灵长类哺乳动物，也能演化出类命名的交流方式，那么语言的基石可能比人们以往所认为的更加古老、也更加普遍。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Each of these elephants — each named, recognized, and addressed within its own society — is an individual, not a number; and the more we learn about the richness of their inner lives, the harder it becomes to treat them, or their shrinking habitats, as expendable.</div>
+        <div class="row"><b>主干（并列句）：</b>Each of these elephants … is an individual, not a number; and the harder it becomes to treat them … as expendable</div>
+        <div class="row"><b>插入语（同位说明）：</b>each named, recognized, and addressed within its own society（三个过去分词并列）</div>
+        <div class="row"><b>比较结构：</b>the more we learn …, the harder it becomes …（the + 比较级，the + 比较级，"越……越……"）</div>
+        <div class="row"><b>考点：</b>the + 比较级，the + 比较级；过去分词并列作插入语；it 作形式主语</div>
+        <div class="row tr"><b>译文：</b>这些大象中的每一头——每一头都在自己的社会里被命名、被辨认、被呼唤——都是一个个体，而非一个数字；我们越了解它们内心世界的丰富，就越难以把它们，或它们日益缩小的栖息地，当作可有可无的存在。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">长久以来，人类一直以为"用名字称呼同类"是自己独有的能力，但《自然·生态与进化》发表的一项研究打破了这一认知。由科罗拉多州立大学研究人员领导、"拯救大象"组织参与的研究，分析了约 36 年间从肯尼亚两个象群采集的 469 段叫声，把每一声叫声的声学特征输入机器学习模型，让它预测这段叫声是"说给"哪头象听的。为避免大象只是对呼叫者的嗓音作出反应，研究者又对 17 头象做了回放实验：当听到一段原本"喊自己"的叫声时，大象更快走近扬声器、发出更多回应，而播放给另一头象时则毫无反应。机器学习模型仅凭声学线索，就能在超过四分之一的试验中正确识别"接听对象"，且这一结果在叫声来自陌生声音时依然成立，说明"名字"就藏在叫声本身里。更关键的是，这项发现区别于海豚和鹦鹉的"签名叫声"——后者靠模仿复制声音，而大象使用的是任意的、非模仿的"标签"，这在概念上更接近人类的名字。研究认为，这种命名能力对大象意义重大：它们的社会建立在远距离交流与紧密的亲缘网络上，母象或带领象群的首领常常需要在看不到的情况下从几十头象中单独呼唤某一头。当然，研究者谨慎地指出，这些叫声是否承载人类名字那样完整的语义尚不可知，这项研究"提出的问题和回答的一样多"。尽管如此，它仍重塑了人们对语言演化的认识——若一种非灵长类哺乳动物也能演化出类命名的交流，语言基石可能远比想象中古老和普遍。对保护人士而言，这份发现还带有一层更安静的含义：每一头被命名、被辨认、被呼唤的大象都是一个独特的个体，越了解它们丰富的内心世界，就越难将其及它们日益缩小的栖息地当作可有可无的东西。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6 段，说说大象的"命名"方式与海豚、鹦鹉的"签名叫声"有何本质区别？这种区别为什么让研究者联想到人类语言？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"the more we learn about …, the harder it becomes to treat them … as expendable"</span>（the + 比较级，the + 比较级）的句式，围绕「坚持锻炼」或「保护环境」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 人类以名相称或非独有，大象用吼声"称呼"同伴</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 研究设计：469 段叫声 + 机器学习预测对象</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 回放实验：象对"喊自己"的叫声反应更强</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 模型识别的正确率远高于偶然</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 非模仿"标签" vs 海豚鹦鹉的模仿叫声</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 亲缘网络与远距离交流使命名成为必需</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 研究局限：语义分量尚不可知，问题多于答案</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 语言基石可能更古老、更普遍</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 保护启示：每个被"命名"的个体都不容牺牲</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究设计 → 行为实验 → 模型结果 → 机制对比 → 社会功能 → 研究局限 → 更广意义 → 保护启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Ecology &amp; Evolution / Colorado State University / Save the Elephants 公开资料（2026-09-14 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
