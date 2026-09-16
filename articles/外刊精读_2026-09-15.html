@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 当城市灯光成为"生态陷阱"：人造光如何扰乱候鸟的夜间迁徙</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 生态 / 科普</div>
+  <h1>当城市灯光成为"生态陷阱"：人造光如何扰乱候鸟的夜间迁徙</h1>
+  <div class="deck">A radar-and-satellite study finds that artificial light is the strongest predictor of where migrating birds stop to rest — drawing them into bright but barren "ecological traps"</div>
+  <div class="byline"><span><b>来源</b> Nature Communications / ScienceDaily / Audubon（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-15</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-15.jpg" alt="城市夜景与飞鸟（配图）">
+    <figcaption>配图：城市灯火通明的夜空与飞鸟（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>在人类历史的大部分时间里，夜空是一张可靠的"地图"——无数生灵借着恒星的方位指引自己的一生。然而这张地图正被一点点抹去：人造光从城市向外蔓延，把曾经漆黑的夜空染成发光的雾霭。一项发表在《自然·通讯》的研究，把美国上空的鸟类雷达观测与夜间灯光卫星数据结合起来，首次清晰回答了长期困扰科学家的一个问题——疲惫的候鸟落地过夜时，究竟靠什么选择落脚点？答案既清晰又令人不安：人造光是候鸟选择停歇地的"最强预测因子"，其影响力胜过温度、植被与水源。作者指出，这正是"生态陷阱"的典型特征：在自然环境中，动物用来判断一个地方的线索是可靠的指南，而人造光却让这些线索与现实脱钩，把候鸟诱入明亮却贫瘠、食物匮乏又危机四伏的城市。从"关灯计划"到向下照射的灯罩，光污染恰恰是最容易逆转的环境危害——黑暗本身，其实是一片需要我们去守护的栖息地。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">For most of human history, the night sky was a reliable map — a vast, predictable dome of stars by which countless creatures steered their lives. That map is now being erased. <span class="kw" data-tip="adj. 人造的；人工的">Artificial</span> light, spreading outward from cities, has turned the once-dark horizon into a glowing haze, with the consequences for animals that <span class="kw" data-tip="v. 导航；为……领航">navigate</span> by starlight only beginning to be understood.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The scale of the problem has been made newly visible by a study published in the journal <em>Nature Communications</em>, which combined radar observations of <span class="kw" data-tip="v. 迁徙；迁移">migrating</span> birds with satellite measurements of nighttime light across the United States. Tracking birds through the air, the researchers could at last ask a question that had long eluded scientists: when a weary migrant touches down for the night, what determines where it lands?</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The answer was as clear as it was troubling. Artificial light, the team found, was the single strongest predictor of where migrating birds chose to stop — stronger than temperature, stronger than vegetation or water. Where a city's glow burned brightest, birds gathered in numbers that bore little relation to the quality of the habitat below.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">This, the authors argue, is the signature of an "ecological trap." In a natural landscape, the cues an animal uses to judge a place are reliable guides to its true value. Artificial light decouples those cues from reality, <span class="kw" data-tip="v. 引诱；诱惑（熟词僻义：n. 诱饵、魅力）">luring</span> birds into habitats that <span class="kw" data-tip="v. 庇护；怀有（熟词僻义：n. 港口）">harbor</span> little food or shelter — bright, yet dangerously <span class="kw" data-tip="adj. 贫瘠的；荒芜的">barren</span>.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The mechanism reaches back to the deep past. Many <span class="kw" data-tip="adj. 夜间的；夜行性的">nocturnal</span> migrants steer by <span class="kw" data-tip="adj. 天体的；天空的">celestial</span> cues, reading the stars and the moon as a compass — an <span class="kw" data-tip="n. 本能；直觉">instinct</span> they cannot easily unlearn. A sky <span class="kw" data-tip="v. 遮蔽；掩盖（熟词僻义：n. 面纱）">veiled</span> in artificial glow can <span class="kw" data-tip="v. 使迷失方向">disorient</span> a bird mid-flight, drawing it off its <span class="kw" data-tip="n. 轨迹；航线">trajectory</span> and onto a costly <span class="kw" data-tip="n./v. 绕道；迂回">detour</span> toward the very cities that produced the light.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The costs are concrete. Studies document migrants circling <span class="kw" data-tip="v. 照亮；照明">illuminated</span> towers until <span class="kw" data-tip="n. 精疲力竭；疲惫">exhaustion</span>, colliding with glass by the hundreds of millions each year, and falling prey to <span class="kw" data-tip="n. 捕食者；天敌">predators</span> that have learned to hunt beneath the glow. Over time, the disruption may shift the timing of migration itself, with effects that ripple through entire ecosystems.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">The researchers are careful to acknowledge the limits of their work. Light is rarely the only stressor a migrant faces, and the pathways from a bright horizon to a bird's death remain, in many cases, <span class="kw" data-tip="adj. 推测的；臆断的">conjectural</span>. Yet the association, they note, is hard to dismiss, arriving just as the world's dark places are in steep <span class="kw" data-tip="n./v. 下降；减少">decline</span>.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The hopeful corollary is that light pollution is, in principle, the easiest of environmental harms to reverse. "Lights Out" campaigns, which ask cities to dim or <span class="kw" data-tip="v. 熄灭；扑灭">extinguish</span> unnecessary illumination during migration seasons, have already cut bird collisions, and shielded, downward-facing lighting can preserve human safety while restoring darkness overhead.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For those of us who rarely look up at night, the finding is a quiet invitation. Darkness is not the absence of anything; it is a <span class="kw" data-tip="n. 避难所；庇护所">refuge</span> in its own right, a habitat that billions of creatures depend on, and one we can begin to restore — not with a grand gesture, but by simply turning down the lights.</span></div>
+
+      <p class="muted">原文出处：本文根据《自然·通讯》（Nature Communications，2023-12-04）刊发的鸟类迁徙停歇研究，及 ScienceDaily、Audubon（奥杜邦学会）相关报道与"关灯计划"资料综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">artificial</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌɑːtɪˈfɪʃl/ · 美 /ˌɑːrtɪˈfɪʃl/</div>
+          <div class="wc-pos"><b>adj.</b> 人造的；人工的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Artificial</b> light has changed the way many animals live.</div>
+          <div class="wc-tr">人造光改变了许多动物的生活方式。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">navigate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈnævɪɡeɪt/ · 美 /ˈnævɪɡeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 导航；为……领航</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Birds <b>navigate</b> by the stars during migration.</div>
+          <div class="wc-tr">候鸟在迁徙时靠星星导航。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">migrate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /maɪˈɡreɪt/ · 美 /ˈmaɪɡreɪt/</div>
+          <div class="wc-pos"><b>v.</b> 迁徙；迁移</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many birds <b>migrate</b> south before winter arrives.</div>
+          <div class="wc-tr">许多鸟在冬天来临前南迁。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lure</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /lʊə(r)/ · 美 /lʊr/</div>
+          <div class="wc-pos"><b>v.</b> 引诱；诱惑（熟词僻义：<b>n.</b> 诱饵、魅力）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bright city lights <b>lure</b> insects and birds at night.</div>
+          <div class="wc-tr">明亮的城市灯光在夜间引诱昆虫和鸟类。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">harbor</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈhɑːbə(r)/ · 美 /ˈhɑːrbər/</div>
+          <div class="wc-pos"><b>v.</b> 庇护；怀有（熟词僻义：<b>n.</b> 港口）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The wetland <b>harbors</b> hundreds of bird species.</div>
+          <div class="wc-tr">这片湿地庇护着数百种鸟类。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">barren</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbærən/ · 美 /ˈbærən/</div>
+          <div class="wc-pos"><b>adj.</b> 贫瘠的；荒芜的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nothing grows on the <b>barren</b> hillside.</div>
+          <div class="wc-tr">贫瘠的山坡上寸草不生。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nocturnal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /nɒkˈtɜːnl/ · 美 /nɑːkˈtɜːrnl/</div>
+          <div class="wc-pos"><b>adj.</b> 夜间的；夜行性的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Owls are <b>nocturnal</b> birds of prey.</div>
+          <div class="wc-tr">猫头鹰是夜行性猛禽。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">celestial</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /səˈlestiəl/ · 美 /səˈlestʃl/</div>
+          <div class="wc-pos"><b>adj.</b> 天体的；天空的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sailors once read <b>celestial</b> bodies to find their way.</div>
+          <div class="wc-tr">水手曾借助天体来辨别方向。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">instinct</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɪnstɪŋkt/ · 美 /ˈɪnstɪŋkt/</div>
+          <div class="wc-pos"><b>n.</b> 本能；直觉</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Birds fly south by <b>instinct</b>.</div>
+          <div class="wc-tr">鸟类凭本能南飞。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">veil</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /veɪl/ · 美 /veɪl/</div>
+          <div class="wc-pos"><b>v.</b> 遮蔽；掩盖（熟词僻义：<b>n.</b> 面纱）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Thick clouds <b>veiled</b> the moon that night.</div>
+          <div class="wc-tr">那晚浓云遮蔽了月亮。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disorient</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪsˈɔːrient/ · 美 /dɪsˈɔːrient/</div>
+          <div class="wc-pos"><b>v.</b> 使迷失方向</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The fog <b>disoriented</b> the hikers on the mountain.</div>
+          <div class="wc-tr">大雾使山上的徒步者迷失了方向。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trajectory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /trəˈdʒektəri/ · 美 /trəˈdʒektəri/</div>
+          <div class="wc-pos"><b>n.</b> 轨迹；航线</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The satellite changed its <b>trajectory</b> in space.</div>
+          <div class="wc-tr">卫星在太空中改变了轨道。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">detour</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdiːtʊə(r)/ · 美 /ˈdiːtʊr/</div>
+          <div class="wc-pos"><b>n./v.</b> 绕道；迂回</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We made a <b>detour</b> around the flooded road.</div>
+          <div class="wc-tr">我们绕道避开了被淹的道路。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">illuminate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈluːmɪneɪt/ · 美 /ɪˈluːmɪneɪt/</div>
+          <div class="wc-pos"><b>v.</b> 照亮；照明</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Street lamps <b>illuminate</b> the road at night.</div>
+          <div class="wc-tr">路灯在夜间照亮道路。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">exhaustion</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪɡˈzɔːstʃən/ · 美 /ɪɡˈzɔːstʃən/</div>
+          <div class="wc-pos"><b>n.</b> 精疲力竭；疲惫</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The long flight left the birds in <b>exhaustion</b>.</div>
+          <div class="wc-tr">长途飞行使这些鸟精疲力竭。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">predator</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈpredətə(r)/ · 美 /ˈpredətər/</div>
+          <div class="wc-pos"><b>n.</b> 捕食者；天敌</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Hawks are natural <b>predators</b> of small birds.</div>
+          <div class="wc-tr">鹰是小鸟的天敌。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conjectural</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈdʒektʃərəl/ · 美 /kənˈdʒektʃərəl/</div>
+          <div class="wc-pos"><b>adj.</b> 推测的；臆断的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The link between the two events remains <b>conjectural</b>.</div>
+          <div class="wc-tr">两件事之间的联系仍属推测。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decline</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /dɪˈklaɪn/ · 美 /dɪˈklaɪn/</div>
+          <div class="wc-pos"><b>n./v.</b> 下降；减少</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The number of migratory birds is in <b>decline</b>.</div>
+          <div class="wc-tr">候鸟的数量正在下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">extinguish</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪkˈstɪŋɡwɪʃ/ · 美 /ɪkˈstɪŋɡwɪʃ/</div>
+          <div class="wc-pos"><b>v.</b> 熄灭；扑灭</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The city decided to <b>extinguish</b> some lights during migration.</div>
+          <div class="wc-tr">该市决定在候鸟迁徙期熄灭部分灯光。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">refuge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrefjuːdʒ/ · 美 /ˈrefjuːdʒ/</div>
+          <div class="wc-pos"><b>n.</b> 避难所；庇护所</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The forest provides a <b>refuge</b> for wildlife.</div>
+          <div class="wc-tr">森林为野生动物提供了庇护所。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">a reliable map</span><span class="zh">一张可靠的地图</span></li>
+          <li><span class="en">steer one's life</span><span class="zh">指引……的生活</span></li>
+          <li><span class="en">spread outward from cities</span><span class="zh">从城市向外蔓延</span></li>
+          <li><span class="en">navigate by starlight</span><span class="zh">借星光导航</span></li>
+          <li><span class="en">combine A with B</span><span class="zh">把 A 与 B 结合</span></li>
+          <li><span class="en">touch down for the night</span><span class="zh">降落过夜</span></li>
+          <li><span class="en">bear little relation to …</span><span class="zh">与……几乎无关</span></li>
+          <li><span class="en">ecological trap</span><span class="zh">生态陷阱</span></li>
+          <li><span class="en">decouple A from B</span><span class="zh">使 A 与 B 脱钩</span></li>
+          <li><span class="en">reach back to the deep past</span><span class="zh">追溯到远古</span></li>
+          <li><span class="en">steer by celestial cues</span><span class="zh">靠天体线索导航</span></li>
+          <li><span class="en">fall prey to …</span><span class="zh">沦为……的猎物</span></li>
+          <li><span class="en">in steep decline</span><span class="zh">急剧减少</span></li>
+          <li><span class="en">in one's own right</span><span class="zh">本身；凭自身</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>夜空这张"地图"正被人造光抹去，靠星光导航的动物受影响。</li>
+          <li>研究结合雷达与卫星数据，追问候鸟落地时选择哪里过夜。</li>
+          <li>人造光是候鸟选择停歇地的最强预测因子，胜过温度与植被。</li>
+          <li>这是"生态陷阱"：光把线索与现实脱钩，把鸟诱入亮却贫瘠之地。</li>
+          <li>机理：夜间候鸟靠天体导航，光遮蔽星空、使其偏航绕道。</li>
+          <li>代价：绕塔盘旋至力竭、撞玻璃、被捕食，迁徙时序受扰。</li>
+          <li>研究者承认局限：光非唯一压力，机理部分仍属推测，但关联难以忽视。</li>
+          <li>转机：光污染最易逆转，"关灯"计划已见效。</li>
+          <li>启示：黑暗本身是一种栖息地，关灯即可恢复。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The scale of the problem has been made newly visible by a study published in the journal Nature Communications, which combined radar observations of migrating birds with satellite measurements of nighttime light across the United States.</div>
+        <div class="row"><b>主干：</b>The scale of the problem has been made newly visible by a study（主语 + has been made + 宾补 + by 施动者，被动语态）</div>
+        <div class="row"><b>过去分词作后置定语：</b>published in the journal Nature Communications（修饰 study）</div>
+        <div class="row"><b>非限制性定语从句：</b>which combined radar observations of migrating birds with satellite measurements of nighttime light（which 指代 study；combined A with B 搭配；migrating birds 现在分词作定语）</div>
+        <div class="row"><b>考点：</b>现在完成时被动语态；过去分词作后置定语；which 非限制性定语从句；combine A with B</div>
+        <div class="row tr"><b>译文：</b>这个问题的规模，最近被发表在《自然·通讯》上的一项研究清晰地揭示出来——该研究把美国上空的候鸟雷达观测与夜间灯光卫星测量结合了起来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Many nocturnal migrants steer by celestial cues, reading the stars and the moon as a compass — an instinct they cannot easily unlearn.</div>
+        <div class="row"><b>主干：</b>Many nocturnal migrants steer by celestial cues（主语 + steer + 方式状语 by ...）</div>
+        <div class="row"><b>现在分词作伴随状语：</b>reading the stars and the moon as a compass（reading 表伴随，read ... as ..."把……当作……来解读"）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>an instinct they cannot easily unlearn（an instinct 概括前面内容；they cannot easily unlearn 为省略关系代词的定语从句）</div>
+        <div class="row"><b>考点：</b>现在分词作伴随状语；同位语；省略关系代词的定语从句</div>
+        <div class="row tr"><b>译文：</b>许多夜间迁徙的候鸟靠天体线索导航，把星星和月亮当作指南针来解读——这是一种它们难以轻易舍弃的本能。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A sky veiled in artificial glow can disorient a bird mid-flight, drawing it off its trajectory and onto a costly detour toward the very cities that produced the light.</div>
+        <div class="row"><b>主干：</b>A sky ... can disorient a bird mid-flight（主语 + can disorient + 宾语 + 时间状语 mid-flight）</div>
+        <div class="row"><b>过去分词作后置定语：</b>veiled in artificial glow（修饰 sky，"被人造光遮蔽的天空"）</div>
+        <div class="row"><b>现在分词作结果状语：</b>drawing it off its trajectory and onto a costly detour（drawing 表结果；off ... and onto ... 并列介词短语）</div>
+        <div class="row"><b>定语从句：</b>that produced the light（修饰 cities）</div>
+        <div class="row"><b>考点：</b>过去分词作后置定语；现在分词作结果状语；that 定语从句；the very + 名词 表强调</div>
+        <div class="row tr"><b>译文：</b>被人造光遮蔽的天空，能让一只飞行中的鸟迷失方向，把它拽离原来的航线，转而绕道飞向那些恰恰制造了这些光的城市。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Studies document migrants circling illuminated towers until exhaustion, colliding with glass by the hundreds of millions each year, and falling prey to predators that have learned to hunt beneath the glow.</div>
+        <div class="row"><b>主干：</b>Studies document migrants（主语 + document + 宾语）</div>
+        <div class="row"><b>三个并列现在分词作宾语补足语：</b>circling illuminated towers until exhaustion / colliding with glass ... / falling prey to predators ...（描述 migrants 的三种状态）</div>
+        <div class="row"><b>过去分词作定语：</b>illuminated towers（"被照亮的塔楼"）</div>
+        <div class="row"><b>定语从句：</b>that have learned to hunt beneath the glow（修饰 predators）</div>
+        <div class="row"><b>考点：</b>现在分词作宾语补足语；过去分词作定语；that 定语从句；by the hundreds of millions 表数量</div>
+        <div class="row tr"><b>译文：</b>研究记录了候鸟围着被照亮的塔楼盘旋直至力竭、每年数以亿计地撞上玻璃、以及沦为那些学会在光晕下捕食的天敌之猎物等种种情形。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Darkness is not the absence of anything; it is a refuge in its own right, a habitat that billions of creatures depend on, and one we can begin to restore — not with a grand gesture, but by simply turning down the lights.</div>
+        <div class="row"><b>主干（并列句）：</b>Darkness is not the absence of anything; it is a refuge ...（分号连接两个并列分句）</div>
+        <div class="row"><b>表语 1：</b>not the absence of anything（"不是什么都没有"）</div>
+        <div class="row"><b>表语 2 + 同位语：</b>a refuge ... a habitat that billions of creatures depend on, and one we can begin to restore（a habitat 与 one 为 refuge 的同位语）</div>
+        <div class="row"><b>定语从句：</b>that billions of creatures depend on（修饰 habitat；depend on 的 on 提前）；we can begin to restore（省略关系代词，修饰 one）</div>
+        <div class="row"><b>对比结构：</b>not with a grand gesture, but by simply turning down the lights（not ... but ..."不是……而是……"）</div>
+        <div class="row"><b>考点：</b>分号并列；同位语；"介词 + which/that" 定语从句；not ... but ... 结构；动名词短语 turning down</div>
+        <div class="row tr"><b>译文：</b>黑暗并非"什么都没有"；它本身就是一片庇护所，是数十亿生灵赖以生存的栖息地，也是一片我们能够开始恢复的地方——不必靠什么壮举，只需把灯调暗一点。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">在人类历史的大部分时间里，夜空是一张可靠的"地图"——一个广阔而可预测的星空穹顶，无数生灵借它指引自己的一生。然而这张地图正在被抹去：人造光从城市向外蔓延，把曾经漆黑的夜空变成发光的雾霭，而它对靠星光导航的动物带来的后果，才刚刚开始被认识。发表在《自然·通讯》上的一项研究，把美国上空的候鸟雷达观测与夜间灯光卫星测量结合起来，首次清晰地回答了长期困扰科学家的问题：疲惫的候鸟落地过夜时，究竟靠什么选择落脚点？答案既清晰又令人不安——人造光是候鸟选择停歇地的"最强预测因子"，其影响力胜过温度、胜过植被或水源；在城市灯光最亮的地方，聚集的鸟群数量与下方栖息地的质量几乎毫无关系。作者指出，这正是"生态陷阱"的典型特征：在自然环境中，动物用来判断一个地方的线索——亮度、温暖、表面的丰饶——是判断其真实价值的可靠指南；而人造光却让这些线索与现实脱钩，把候鸟诱入明亮却贫瘠、食物匮乏又危机四伏的地方。这一机理可以追溯到远古：许多夜间迁徙的候鸟靠天体线索导航，把星星和月亮当作难以舍弃的指南针；被人造光遮蔽的天空会让飞行中的鸟迷失方向，把它拽离航线、绕道飞向制造这些光的城市。代价是实实在在的：研究记录了候鸟围着被照亮的塔楼盘旋直至力竭、每年数以亿计地撞上玻璃、以及沦为学会在光晕下捕食的天敌之猎物；久而久之，这种干扰甚至可能改变迁徙的时序，其影响波及整个生态系统。研究者谨慎地承认研究的局限：光很少是候鸟面临的唯一压力，从明亮的夜空到一只鸟的死亡之间，许多环节仍属推测；但他们也指出，这种关联的强度难以忽视，而它恰恰出现在世界上黑暗之地急剧减少的时刻。值得欣慰的是，光污染在原理上是最容易逆转的环境危害——"关灯"计划呼吁城市在迁徙季节调暗或熄灭不必要的照明，已显著减少了鸟类撞击，而加装灯罩、向下照射的灯具，既能保障人类安全，又能恢复头顶的黑暗。对我们这些很少在夜里抬头的人来说，这项发现是一份安静的邀请：黑暗并非"什么都没有"，它本身就是一片庇护所，是数十亿生灵赖以生存的栖息地，也是一片我们能够开始恢复的地方——不必靠什么壮举，只需把灯调暗一点。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 3、4 段，作者为什么说人造光是"生态陷阱"？"陷阱"的"诱饵"是什么，候鸟"上当"的代价又是什么？你能否结合生活经验，再举一个"线索与现实脱钩"的例子？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"Darkness is not the absence of anything; it is a refuge in its own right, a habitat that billions of creatures depend on ..."</span>（分号并列 + not ... but ... + 同位语）的句式，围绕「保护环境」「节约资源」或「坚持阅读」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现象引入：夜空"地图"正被人造光抹去</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 研究方法：雷达 + 卫星数据结合</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 核心发现：人造光是停歇地的最强预测因子</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 定性：这是"生态陷阱"，线索与现实脱钩</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机理：天体导航被光遮蔽，偏航绕道</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 代价：力竭、撞玻璃、被捕食、时序受扰</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 客观立场：机理部分仍属推测，但关联难忽视</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 转机："关灯"计划与向下照射的灯具</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 总结启示：黑暗本身就是一片栖息地</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究方法 → 核心发现 → 定性分析 → 神经机理 → 具体代价 → 客观局限 → 解决之道 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Communications / ScienceDaily / Audubon 公开资料（2026-09-15 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
