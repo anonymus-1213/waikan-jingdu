@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 手写还是打字？神经科学揭示"提笔写字"对记忆的独特作用</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Science · 人与社会 / 教育 / 认知科学</div>
+  <h1>手写还是打字？神经科学揭示"提笔写字"对记忆的独特作用</h1>
+  <div class="deck">An EEG study finds that forming letters by hand produces far more widespread brain connectivity than typing — with profound implications for how we learn in a digital age</div>
+  <div class="byline"><span><b>来源</b> Scientific American / Frontiers in Psychology / NTNU（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-16</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-16.jpg" alt="手写笔记（配图）">
+    <figcaption>配图：手在笔记本上书写（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>当教室以越来越快的速度走向数字化，手写这一朴素的动作正被一步步挤到课程的边缘，被不少教育决策者视为无足轻重的怀旧遗迹。然而，挪威科技大学一项发表在《心理学前沿》的脑电图研究，把一个问题摆到了"我们如何学习"的核心：当我们以键盘取代纸笔时，究竟失去了什么？研究让 36 名大学生分别用手写和打字书写词语，同时记录大脑"连通性"，结果发现手写激发的脑区连接远比打字更广泛、更精细，尤其在负责记忆编码与感觉加工的区域。科学家把机理归结于书写字母所需的精细动作与"感觉运动参与"——正是这种缓慢而费力的过程，让脑波跨半球同步，锻造出持久记忆所依赖的神经联结。这项发现既令人谦卑又充满力量：学习不是被动接收信息，而是一种"建构"，而最牢固的理解，或许仍要从"提笔"开始。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">As classrooms across the world <span class="kw" data-tip="v. 使数字化；数字化处理">digitize</span> at an accelerating pace, the humble act of writing by hand has been steadily <span class="kw" data-tip="v. 使降级；把……降到次要地位">relegated</span> to the margins of the curriculum, a skill that many policymakers now regard as little more than a nostalgic <span class="kw" data-tip="n. 遗物；遗迹">relic</span>. Yet a growing body of neuroscience is asking a question that cuts to the heart of how we learn: when we trade the pen for the keyboard, what, precisely, do we lose?</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The question was taken up most directly by a team at the Norwegian University of Science and Technology, whose study, published in the journal <em>Frontiers in Psychology</em>, fitted 36 university students with electrode nets to record the electrical activity of the brain. While the participants wrote words by hand with a digital pen and, on other trials, typed the same words on a keyboard, the researchers measured what neuroscientists call "brain <span class="kw" data-tip="n. 连通性；连接度">connectivity</span>" — the degree to which distant regions of the cortex fire in <span class="kw" data-tip="n. 同步（性）">synchrony</span>.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The results were unambiguous. Handwriting, the team found, produced far more widespread and more <span class="kw" data-tip="adj. 复杂精细的">intricate</span> patterns of connectivity across the brain than typing did, particularly in regions associated with memory <span class="kw" data-tip="v. 编码；把……转化为记忆">encoding</span> and the processing of sensory information. Typing, by contrast, elicited activity that was comparatively localized and <span class="kw" data-tip="adj. 短暂的；转瞬即逝的">transient</span>, leaving only a faint imprint in the same networks.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The mechanism, the researchers argue, lies in the demands of forming letters. Writing by hand requires precise, carefully controlled <span class="kw" data-tip="adj. 精细的；细微的（熟词僻义：fine 好的、罚款）">fine</span> motor movements, and it is this deliberate <span class="kw" data-tip="adj. 感觉运动的">sensorimotor</span> engagement — the need to shape each stroke, to <span class="kw" data-tip="v. 描摹；追踪（熟词僻义：n. 痕迹、踪迹）">trace</span> each letter and coordinate eye with hand — that appears to <span class="kw" data-tip="v. 使同步">synchronize</span> brain waves across <span class="kw" data-tip="n. （大脑）半球">hemispheres</span>, <span class="kw" data-tip="v. 锻造；建立（熟词僻义：forge 伪造）">forging</span> the <span class="kw" data-tip="adj. 神经的">neural</span> links on which lasting memory depends.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Typing, in this account, is a victim of its own efficiency. Because every letter is produced by an identical tap of a key, the movement carries almost no information about the shape of the word, and the brain is spared the slow, effortful work that handwriting imposes. What the keyboard gains in speed, it surrenders in depth, a trade-off that researchers believe helps explain why notes taken by hand are often better remembered than those typed <span class="kw" data-tip="adv./adj. 逐字地（的）">verbatim</span>.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The findings extend a long line of evidence. Earlier studies have shown that children who learn to write letters by hand recognize them more quickly and read more fluently, and that students who take handwritten notes retain concepts longer, a phenomenon psychologists attribute to the deeper processing that slower writing demands — a processing through which new information is both <span class="kw" data-tip="n. 保持；记忆">retention</span>-friendly and, over time, <span class="kw" data-tip="v. 巩固；整合">consolidated</span>.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">The researchers are careful, however, not to frame the debate as a simple either/or. Typing, they <span class="kw" data-tip="v. 承认；让步">concede</span>, offers advantages that handwriting cannot match — speed, <span class="kw" data-tip="n. 清晰可读性">legibility</span>, and the ease of editing — and in an age of proliferating digital tools, the keyboard is unlikely to be abandoned. The point, they insist, is not to reject technology but to recognize what is at stake when handwriting is pushed to the margins, let alone eliminated.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">That recognition carries practical weight. As some school systems scale back or abandon cursive instruction, cognitive scientists urge a measured balance: keep the keyboard for speed and revision, but preserve handwriting as a deliberate tool for the moments when understanding, rather than recording, is the goal. The slow, embodied act of writing, they argue, is not a relic but a cognitive instrument.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For students and teachers alike, the message is at once humbling and empowering. That the simple movement of a pen across paper can so visibly reshape the brain suggests that learning is not merely the passive receipt of information but an act of construction — and that the most enduring understanding may still begin, quite literally, by hand.</span></div>
+
+      <p class="muted">原文出处：本文根据 Scientific American 报道《Why Writing by Hand Is Better for Memory and Learning》（2024-02-21）、挪威科技大学（NTNU）Van der Weel 与 Van der Meer 团队发表于 Frontiers in Psychology（2024）的脑电图研究，及 Edutopia 后续综述（2026-05）综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">digitize</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdɪdʒɪtaɪz/ · 美 /ˈdɪdʒɪtaɪz/</div>
+          <div class="wc-pos"><b>v.</b> 使数字化；数字化处理</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Schools are rapidly <b>digitizing</b> their teaching materials.</div>
+          <div class="wc-tr">学校正在迅速将教学材料数字化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">relegate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrelɪɡeɪt/ · 美 /ˈrelɪɡeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 使降级；把……降到次要地位</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Handwriting has been <b>relegated</b> to the margins of the curriculum.</div>
+          <div class="wc-tr">手写已被挤到课程的边缘。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">relic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrelɪk/ · 美 /ˈrelɪk/</div>
+          <div class="wc-pos"><b>n.</b> 遗物；遗迹</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Some people see the pen as a nostalgic <b>relic</b> of the past.</div>
+          <div class="wc-tr">有人把钢笔看作怀旧的往昔遗迹。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">synchrony</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsɪŋkrəni/ · 美 /ˈsɪŋkrəni/</div>
+          <div class="wc-pos"><b>n.</b> 同步（性）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Distant brain regions fire in <b>synchrony</b> during writing.</div>
+          <div class="wc-tr">书写时相隔较远的脑区同步放电。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">connectivity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkɒnekˈtɪvəti/ · 美 /ˌkɑːnekˈtɪvəti/</div>
+          <div class="wc-pos"><b>n.</b> 连通性；连接度</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Handwriting boosts brain <b>connectivity</b> more than typing does.</div>
+          <div class="wc-tr">手写比打字更能增强大脑连通性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intricate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɪntrɪkət/ · 美 /ˈɪntrɪkət/</div>
+          <div class="wc-pos"><b>adj.</b> 复杂精细的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Forming letters by hand involves <b>intricate</b> movements.</div>
+          <div class="wc-tr">手写字母涉及复杂精细的动作。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">encode</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈkəʊd/ · 美 /ɪnˈkoʊd/</div>
+          <div class="wc-pos"><b>v.</b> 编码；把……转化为记忆</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brain <b>encodes</b> new information through deep processing.</div>
+          <div class="wc-tr">大脑通过深度加工把新信息转化为记忆。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">transient</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtrænziənt/ · 美 /ˈtrænʃnt/</div>
+          <div class="wc-pos"><b>adj.</b> 短暂的；转瞬即逝的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Typing leaves only a <b>transient</b> trace in memory networks.</div>
+          <div class="wc-tr">打字在记忆网络中只留下短暂的痕迹。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trace</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /treɪs/ · 美 /treɪs/</div>
+          <div class="wc-pos"><b>v.</b> 描摹；追踪（熟词僻义：<b>n.</b> 痕迹、踪迹）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Children <b>trace</b> each letter with deliberate care.</div>
+          <div class="wc-tr">孩子们用心描摹每一个字母。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fine</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /faɪn/ · 美 /faɪn/</div>
+          <div class="wc-pos"><b>adj.</b> 精细的；细微的（熟词僻义：好的、罚款）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Writing requires <b>fine</b> motor control of the hand.</div>
+          <div class="wc-tr">写字需要手部精细的运动控制。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sensorimotor</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌsensəriˈməʊtə(r)/ · 美 /ˌsensəriˈmoʊtər/</div>
+          <div class="wc-pos"><b>adj.</b> 感觉运动的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Handwriting involves rich <b>sensorimotor</b> engagement.</div>
+          <div class="wc-tr">手写涉及丰富的感觉运动参与。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">synchronize</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsɪŋkrənaɪz/ · 美 /ˈsɪŋkrənaɪz/</div>
+          <div class="wc-pos"><b>v.</b> 使同步</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The movements <b>synchronize</b> brain waves across hemispheres.</div>
+          <div class="wc-tr">这些动作使脑波跨半球同步。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hemisphere</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈhemɪsfɪə(r)/ · 美 /ˈhemɪsfɪr/</div>
+          <div class="wc-pos"><b>n.</b> （大脑）半球</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The two <b>hemispheres</b> work together during writing.</div>
+          <div class="wc-tr">书写时左右两个半球协同工作。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">forge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /fɔːdʒ/ · 美 /fɔːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 锻造；建立（熟词僻义：伪造）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Slow writing <b>forges</b> lasting neural links.</div>
+          <div class="wc-tr">缓慢的书写能锻造持久的神经联结。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">neural</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈnjʊərəl/ · 美 /ˈnʊrəl/</div>
+          <div class="wc-pos"><b>adj.</b> 神经的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>New <b>neural</b> connections underpin lasting memory.</div>
+          <div class="wc-tr">新的神经连接是持久记忆的基础。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">verbatim</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /vɜːˈbeɪtɪm/ · 美 /vɜːrˈbeɪtɪm/</div>
+          <div class="wc-pos"><b>adv./adj.</b> 逐字地（的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Students who type notes <b>verbatim</b> remember less.</div>
+          <div class="wc-tr">逐字打字记录的学生记住的更少。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">retention</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈtenʃn/ · 美 /rɪˈtenʃn/</div>
+          <div class="wc-pos"><b>n.</b> 保持；记忆</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Handwritten notes improve memory <b>retention</b>.</div>
+          <div class="wc-tr">手写笔记能提高记忆保持。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consolidate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈsɒlɪdeɪt/ · 美 /kənˈsɑːlɪdeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 巩固；整合</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep helps <b>consolidate</b> what we have learned.</div>
+          <div class="wc-tr">睡眠有助于巩固所学内容。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">concede</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈsiːd/ · 美 /kənˈsiːd/</div>
+          <div class="wc-pos"><b>v.</b> 承认；让步</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The researchers <b>concede</b> that typing has its advantages.</div>
+          <div class="wc-tr">研究者承认打字有其优势。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">legibility</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌledʒəˈbɪləti/ · 美 /ˌledʒəˈbɪləti/</div>
+          <div class="wc-pos"><b>n.</b> 清晰可读性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Typing guarantees speed and <b>legibility</b>.</div>
+          <div class="wc-tr">打字保证了速度与清晰可读。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">at an accelerating pace</span><span class="zh">以不断加快的速度</span></li>
+          <li><span class="en">relegate … to the margins</span><span class="zh">把……边缘化</span></li>
+          <li><span class="en">a nostalgic relic</span><span class="zh">一件怀旧的遗迹</span></li>
+          <li><span class="en">cut to the heart of …</span><span class="zh">切中……的核心</span></li>
+          <li><span class="en">trade the pen for the keyboard</span><span class="zh">以键盘取代纸笔</span></li>
+          <li><span class="en">fire in synchrony</span><span class="zh">同步放电</span></li>
+          <li><span class="en">a victim of one's own efficiency</span><span class="zh">自身效率的牺牲品</span></li>
+          <li><span class="en">take notes verbatim</span><span class="zh">逐字记录笔记</span></li>
+          <li><span class="en">attribute … to …</span><span class="zh">把……归因于……</span></li>
+          <li><span class="en">at stake</span><span class="zh">处于危险中；利害攸关</span></li>
+          <li><span class="en">let alone</span><span class="zh">更不用说</span></li>
+          <li><span class="en">scale back</span><span class="zh">缩减；削减</span></li>
+          <li><span class="en">an act of construction</span><span class="zh">一种建构行为</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>数字化浪潮把手写挤到课程边缘，神经科学追问"换键盘"失去什么。</li>
+          <li>挪威科技大学用脑电图记录 36 名学生手写与打字时的大脑连通性。</li>
+          <li>手写产生更广泛、更精细的脑连接，打字则短暂、局部。</li>
+          <li>机理：写字的精细动作与感觉运动参与，让脑波跨半球同步，锻造记忆所需的神经联结。</li>
+          <li>打字因"高效"反而吃亏：按键动作不含字形信息，速度换深度。</li>
+          <li>印证旧证：手写学字认得更快、读得更流利，手写笔记记得更牢。</li>
+          <li>研究者不搞二元对立：打字有速度与易编辑优势，关键在认识"边缘化"的代价。</li>
+          <li>实操意义：学校削减书法课，认知科学家呼吁"快慢结合"。</li>
+          <li>启示：提笔写字重塑大脑，学习是"建构"而非被动接收。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">While the participants wrote words by hand with a digital pen and, on other trials, typed the same words on a keyboard, the researchers measured what neuroscientists call "brain connectivity" — the degree to which distant regions of the cortex fire in synchrony.</div>
+        <div class="row"><b>主干：</b>the researchers measured what neuroscientists call "brain connectivity"（主语 + measured + what 宾语从句）</div>
+        <div class="row"><b>时间状语从句：</b>While the participants wrote words by hand ... and ... typed the same words（while 引导，内含两个并列谓语 wrote 与 typed）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>the degree to which distant regions of the cortex fire in synchrony（破折号引出，解释 connectivity；to which 引导定语从句）</div>
+        <div class="row"><b>考点：</b>while 时间状语从句；what 宾语从句；"介词 + which" 定语从句；同位语</div>
+        <div class="row tr"><b>译文：</b>当参与者用手写笔手写词语，又在另一些测试中在键盘上打出相同词语时，研究人员测量了神经科学家所称的"大脑连通性"——即相隔较远的皮层区域同步放电的程度。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Writing by hand requires precise, carefully controlled fine motor movements, and it is this deliberate sensorimotor engagement — the need to shape each stroke, to trace each letter and coordinate eye with hand — that appears to synchronize brain waves across hemispheres, forging the neural links on which lasting memory depends.</div>
+        <div class="row"><b>主干：</b>Writing by hand requires ... movements（and 连接的并列句第一分句，动名词短语作主语）</div>
+        <div class="row"><b>强调句型：</b>it is this deliberate sensorimotor engagement ... that appears to synchronize ...（it is ... that ...，强调主语）</div>
+        <div class="row"><b>同位语：</b>the need to shape each stroke, to trace each letter and coordinate eye with hand（解释 engagement，三个并列不定式）</div>
+        <div class="row"><b>现在分词作结果状语 + 定语从句：</b>forging the neural links on which lasting memory depends（forging 表结果；on which 定语从句修饰 links）</div>
+        <div class="row"><b>考点：</b>动名词作主语；it is ... that 强调句；同位语；现在分词作结果状语；"介词 + which" 定语从句</div>
+        <div class="row tr"><b>译文：</b>手写需要精确、受精细控制的运动，而正是这种刻意的感觉运动参与——即塑造每一笔、描摹每一个字母并让眼与手协调的需要——让脑波跨半球同步，从而锻造出持久记忆所依赖的神经联结。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What the keyboard gains in speed, it surrenders in depth, a trade-off that researchers believe helps explain why notes taken by hand are often better remembered than those typed verbatim.</div>
+        <div class="row"><b>主干：</b>it surrenders in depth（主语 it + 谓语 surrenders + 状语 in depth）</div>
+        <div class="row"><b>前置宾语从句：</b>What the keyboard gains in speed（what 引导，作 surrenders 的宾语，置于句首）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a trade-off that researchers believe helps explain ...（a trade-off 概括前面整句；that 引导定语从句，内含插入语 researchers believe）</div>
+        <div class="row"><b>宾语从句 + 过去分词作定语：</b>why notes taken by hand are often better remembered than those typed verbatim（why 从句作 explain 的宾语；taken by hand 与 typed verbatim 作后置定语）</div>
+        <div class="row"><b>考点：</b>what 宾语从句前置；同位语；that 定语从句；插入语；过去分词作后置定语</div>
+        <div class="row tr"><b>译文：</b>键盘在速度上所得，在深度上便有所失——研究者相信，这一取舍有助于解释为什么手写记录往往比逐字打出的笔记记得更牢。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Earlier studies have shown that children who learn to write letters by hand recognize them more quickly and read more fluently, and that students who take handwritten notes retain concepts longer, a phenomenon psychologists attribute to the deeper processing that slower writing demands.</div>
+        <div class="row"><b>主干：</b>Earlier studies have shown that ... and that ...（主语 + have shown + 两个并列 that 宾语从句）</div>
+        <div class="row"><b>宾语从句 1：</b>children who learn to write letters by hand recognize them more quickly and read more fluently（who 定语从句修饰 children）</div>
+        <div class="row"><b>宾语从句 2：</b>students who take handwritten notes retain concepts longer（who 定语从句修饰 students）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a phenomenon psychologists attribute to the deeper processing that slower writing demands（a phenomenon 概括前文；psychologists attribute to 为省略关系代词的定语从句；that 定语从句修饰 processing）</div>
+        <div class="row"><b>考点：</b>that 宾语从句并列；who 定语从句；同位语；省略关系代词的定语从句</div>
+        <div class="row tr"><b>译文：</b>早先的研究已经表明，学会手写字母的孩子能更快地认出它们、阅读也更流利，而手写笔记的学生能更长久地记住概念——心理学家把这一现象归因于更慢的书写所要求的那种更深层的加工。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">That the simple movement of a pen across paper can so visibly reshape the brain suggests that learning is not merely the passive receipt of information but an act of construction — and that the most enduring understanding may still begin, quite literally, by hand.</div>
+        <div class="row"><b>主干：</b>That the simple movement ... can so visibly reshape the brain suggests that ...（That 主语从句 + 谓语 suggests + that 宾语从句）</div>
+        <div class="row"><b>主语从句：</b>That the simple movement of a pen across paper can so visibly reshape the brain（That 引导，作主语）</div>
+        <div class="row"><b>宾语从句 + 并列结构：</b>that learning is not merely the passive receipt of information but an act of construction（not merely ... but ... "不仅仅是……而是……"）</div>
+        <div class="row"><b>并列宾语从句：</b>and that the most enduring understanding may still begin, quite literally, by hand（破折号后 and that 引出第二个宾语从句；quite literally 作插入语）</div>
+        <div class="row"><b>考点：</b>that 主语从句；that 宾语从句；not merely ... but ... 并列；插入语</div>
+        <div class="row tr"><b>译文：</b>一支笔在纸上轻轻移动就能如此明显地重塑大脑，这一点表明：学习不只是被动地接收信息，而是一种建构行为——而最持久、最深刻的理解，或许仍要实实在在地从"提笔"开始。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">随着世界各地的教室以越来越快的速度数字化，手写这一朴素的动作正被一步步挤到课程的边缘，被不少教育决策者视作无足轻重的怀旧遗迹。然而，挪威科技大学一个研究团队在《心理学前沿》上发表的研究，直指"我们如何学习"的核心问题：当我们以键盘取代纸笔，究竟失去了什么？研究者给 36 名大学生戴上电极网，记录他们在手写与打字书写相同词语时的大脑电活动，并测量神经科学家所称的"大脑连通性"——即相隔较远的皮层区域同步放电的程度。结果清晰明确：手写在大脑中产生的连接模式远比打字更广泛、更精细，尤其在负责记忆编码与感觉信息加工的区域；相比之下，打字激发的活动则相对局部而短暂，只在同一网络中留下微弱的印记。研究者把机理归结于书写字母本身的要求：手写需要精确、受精细控制的运动，正是这种刻意的"感觉运动参与"——塑造每一笔、描摹每一个字母、让眼与手协调的需要——使脑波跨半球同步，锻造出持久记忆所依赖的神经联结。打字则在某种程度上成了自身效率的牺牲品：由于每个字母都由完全相同的按键动作产生，动作几乎不携带关于字形与词形的信息，大脑便省去了手写强加给它的缓慢而费力的工作；键盘在速度上所得，在深度上便有所失，研究者相信这有助于解释为什么手写笔记比逐字打出的笔记记得更牢。这一发现延伸了一条长长的证据链：学会手写字母的孩子能更快地认出它们、阅读也更流利，手写笔记的学生能更长久地记住概念，心理学家把这一现象归因于更慢书写所要求的深层加工。不过研究者谨慎地不把这场争论框定为非此即彼：他们承认打字拥有手写无法匹敌的优势——速度快、清晰可读、易于编辑，在数字工具激增的时代，键盘不可能被抛弃。关键不在于拒绝技术，而在于认清手写被边缘化甚至被淘汰时究竟会失去什么。这一认识具有实际分量：随着一些学校缩减或放弃书法课程，认知科学家呼吁一种审慎的平衡——用键盘处理速度与修改，却把手写保留为一种刻意的工具，用于那些以"理解"而非"记录"为目标的时刻。对学生和教师而言，这一发现既令人谦卑又充满力量：一支笔在纸上轻轻移动就能如此明显地重塑大脑，说明学习不只是被动地接收信息，而是一种建构行为，而最持久、最深刻的理解，或许仍要实实在在地从提笔开始。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 4、5 段，作者认为手写之所以能促进记忆，其神经机制是什么？打字为何"在速度上所得、在深度上有所失"？你如何理解第 7 段"不是拒绝技术，而是认清代价"这一观点？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"That the simple movement of a pen across paper can so visibly reshape the brain suggests that learning is not merely the passive receipt of information but an act of construction ..."</span>（That 引导主语从句 + not merely ... but ...）的句式，围绕「坚持阅读」「保持运动」或「绿色生活」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现象引入：手写被边缘化，我们失去了什么</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 研究方法：脑电图记录手写与打字的大脑连通性</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 核心发现：手写连接更广、更细，打字短暂局部</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 机理：精细动作与感觉运动参与同步脑波、锻造联结</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 对比：打字高效却浅，速度换深度</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 延伸证据：手写识字、阅读与记忆更优</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 客观立场：打字有优势，关键在认清代价</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 实践意义：呼吁"快慢结合"保留手写</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 总结启示：学习是建构，理解从"提笔"开始</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究方法 → 核心发现 → 神经机理 → 打字对比 → 延伸证据 → 客观立场 → 实践意义 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Scientific American / Frontiers in Psychology / NTNU 公开资料（2026-09-16 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
