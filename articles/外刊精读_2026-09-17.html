@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 消失的"嗡嗡声"：昆虫数量为何以惊人速度衰退</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 生态 / 生物多样性 / 科普</div>
+  <h1>消失的"嗡嗡声"：昆虫数量为何以惊人速度衰退</h1>
+  <div class="deck">A decades-long study of flying insects suggests the planet's pollinators are vanishing — yet freshwater insects and a wave of restoration hint that decline is not destiny</div>
+  <div class="byline"><span><b>来源</b> The Guardian / PLOS ONE / Science / Biological Conservation（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-17</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-17.jpg" alt="野花与传粉昆虫（配图）">
+    <figcaption>配图：野花草甸上飞舞的蝴蝶与蜜蜂（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>夏日田野边嗡嗡作响的昆虫最容易被忽视，然而它们的悄然消失，可能是我们这个时代最沉重的生态叙事。德国克雷菲尔德昆虫学会在 63 个自然保护区内布设马来氏网，历经 27 年监测发现：飞行昆虫的生物量暴跌了约 76%——而且这发生在本该"原始纯净"的保护区里。本文通过回顾 2017 年奠基性研究、2019 年《生物保护》的荟萃分析与 2020 年《科学》的全球综述，剖析栖息地破碎化、杀虫剂与气候变暖三大机制，揭示传粉昆虫衰退如何沿着食物网层层传导、威胁全球粮食安全，同时也点出一个反直觉的事实：淡水昆虫数量其实在回升，说明衰退并非不可逆转。文章最终落点在于：记录自家花园的昆虫、留一片不修剪的草坪，每个普通人都能为留住那阵"嗡嗡声"出一份力。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Few creatures are easier to overlook than the insects that hum at the edges of a summer field, yet their quiet disappearance may be the most consequential ecological story of our age. A growing body of research suggests that the planet's insects, whose services underpin nearly everything that blooms and flies, are vanishing at a rate that scientists struggle to <span class="kw" data-tip="v. 绘制；记录（熟词僻义：n. 图表）">chart</span>.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The most cited evidence comes from a study led by <span class="kw" data-tip="n. 昆虫学家">entomologists</span> working with the Krefeld Society in Germany, who set <span class="kw" data-tip="n. 马来氏网（帐篷状捕虫装置）">malaise traps</span> — tent-like nets that capture flying insects — across 63 protected nature reserves. Between 1989 and 2016, the total <span class="kw" data-tip="n. 生物量">biomass</span> of flying insects caught in those traps <span class="kw" data-tip="v. 暴跌；骤降">plummeted</span> by roughly 76 percent, a collapse researchers described as "alarming" precisely because it occurred inside supposedly <span class="kw" data-tip="adj. 原始的；未受污染的">pristine</span> habitats.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">That finding, published in 2017, prompted a global reassessment. A subsequent <span class="kw" data-tip="n. 荟萃分析；元分析">meta-analysis</span> of 73 long-term studies, appearing in the journal <em>Biological Conservation</em>, concluded that more than 40 percent of insect species are declining and one third are threatened with extinction — a rate of loss some eight times faster than that of mammals, birds and reptiles.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The mechanisms behind the decline are neither mysterious nor mutually exclusive. Habitat <span class="kw" data-tip="n. 破碎化；分裂">fragmentation</span> driven by agricultural intensification strips insects of the wildflowers and hedgerows on which they depend, while the widespread use of <span class="kw" data-tip="n. 杀虫剂">insecticides</span> — notably neonicotinoids — poisons the very <span class="kw" data-tip="n. 传粉者；传粉昆虫">pollinators</span> farmers rely on to produce crops, and a warming climate disrupts the delicate timing between insects and the plants they visit.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The consequences ripple far beyond the insects themselves. Roughly three quarters of the world's flowering plants and about a third of its food crops depend, at least partly, on animal <span class="kw" data-tip="n. 授粉；传粉">pollination</span>; as pollinator numbers fall, so too does the security of the harvests that feed billions. Birds and other <span class="kw" data-tip="n. 食虫鸟（在空中捕食昆虫的鸟类）">aerial insectivores</span>, which keep pest populations in check, have declined in lockstep with their prey — a signal that entire food webs are thinning.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Yet the picture is more nuanced than the alarming headlines suggest, and here the science offers a <span class="kw" data-tip="adj. 反直觉的">counterintuitive</span> twist. A meta-analysis of 166 long-term surveys published in <em>Science</em> in 2020 found that, while <span class="kw" data-tip="adj. 陆地的；陆生的">terrestrial</span> insects were shrinking by about 0.92 percent a year, freshwater insects were actually increasing by 1.08 percent — a <span class="kw" data-tip="n. 分化；背离">divergence</span> that some researchers attribute to cleaner rivers and the absence, in water, of the pesticides that saturate farmland.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">Scientists caution against treating "insect apocalypse" as a settled verdict, noting that the data remain heavily biased toward Europe and North America, where monitoring has been most systematic. The tropics, which <span class="kw" data-tip="v. 容纳；庇护">harbour</span> the great majority of insect diversity, remain largely uncharted — a gap that makes any confident global estimate premature.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Still, the researchers insist, the <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount v. 骑；安装）">mounting</span> evidence points clearly enough in one direction to warrant action rather than despair. <span class="kw" data-tip="n. 恢复；修复">Restoration</span> efforts — from planting native wildflower strips along field margins to phasing out the most harmful insecticides — have repeatedly shown that insect populations can <span class="kw" data-tip="v. 反弹；回升">rebound</span> once the pressures that drove them down are eased.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For ordinary people, the message is at once humbling and empowering. Citizen science projects that invite residents to <span class="kw" data-tip="v. 编目；记录（熟词僻义：n. 目录）">catalogue</span> the insects in their own gardens have begun to fill the data void, while the simple act of leaving a corner of lawn unmown can create a <span class="kw" data-tip="n. 庇护所；避难处">refuge</span> for pollinators — the hum of a meadow, it turns out, is not a backdrop to human life but a measure of its health.</span></div>
+
+      <p class="muted">原文出处：本文根据德国克雷菲尔德昆虫学会（Krefeld Society）发表于《PLOS ONE》的长时段监测研究（2017），《Biological Conservation》的昆虫衰退全球综述（2019，Sánchez-Bayo &amp; Wyckhuys），《Science》的 166 项长时段调查荟萃分析（2020，van Klink 等），及 The Guardian / National Geographic 相关报道综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chart</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /tʃɑːt/ · 美 /tʃɑːrt/</div>
+          <div class="wc-pos"><b>v.</b> 绘制；详细记录（熟词僻义：<b>n.</b> 图表）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists are struggling to <b>chart</b> the full scale of the decline.</div>
+          <div class="wc-tr">科学家正努力弄清衰退的全貌。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mounting</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmaʊntɪŋ/ · 美 /ˈmaʊntɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 日益增长的（熟词僻义：mount v. 骑；安装）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is <b>mounting</b> evidence that insects are disappearing.</div>
+          <div class="wc-tr">越来越多的证据表明昆虫正在消失。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">catalogue</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkætəlɒɡ/ · 美 /ˈkætəlɔːɡ/</div>
+          <div class="wc-pos"><b>v.</b> 编目；记录（熟词僻义：<b>n.</b> 目录）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Volunteers <b>catalogue</b> the insects found in their gardens.</div>
+          <div class="wc-tr">志愿者为自家花园里发现的昆虫编目。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">entomologist</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌentəˈmɒlədʒɪst/ · 美 /ˌentəˈmɑːlədʒɪst/</div>
+          <div class="wc-pos"><b>n.</b> 昆虫学家</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An <b>entomologist</b> can spend a lifetime studying a single family of beetles.</div>
+          <div class="wc-tr">一位昆虫学家可能毕生研究一个科的甲虫。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">biomass</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbaɪəʊmæs/ · 美 /ˈbaɪoʊmæs/</div>
+          <div class="wc-pos"><b>n.</b> 生物量（某一区域内生物的总质量）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>biomass</b> of flying insects fell sharply over 27 years.</div>
+          <div class="wc-tr">飞行昆虫的生物量在 27 年间急剧下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plummet</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈplʌmɪt/ · 美 /ˈplʌmɪt/</div>
+          <div class="wc-pos"><b>v.</b> 暴跌；骤降</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Temperatures <b>plummeted</b> to minus ten degrees overnight.</div>
+          <div class="wc-tr">气温一夜之间骤降至零下十度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pristine</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈprɪstiːn/ · 美 /ˈprɪstiːn/</div>
+          <div class="wc-pos"><b>adj.</b> 原始的；未受污染的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The decline happened even inside <b>pristine</b> nature reserves.</div>
+          <div class="wc-tr">这种衰退甚至发生在原始的自然保护区内。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">meta-analysis</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmetə əˈnæləsɪs/ · 美 /ˌmetə əˈnæləsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 荟萃分析；元分析（对多项研究的综合分析）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>meta-analysis</b> combined data from 73 long-term studies.</div>
+          <div class="wc-tr">这项荟萃分析整合了 73 项长期研究的数据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fragmentation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌfræɡmenˈteɪʃn/ · 美 /ˌfræɡmenˈteɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 破碎化；分裂</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Habitat <b>fragmentation</b> leaves wildlife isolated in small patches.</div>
+          <div class="wc-tr">栖息地破碎化使野生动物被隔离在小块区域内。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">insecticide</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈsektɪsaɪd/ · 美 /ɪnˈsektɪsaɪd/</div>
+          <div class="wc-pos"><b>n.</b> 杀虫剂</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Farmers once relied heavily on chemical <b>insecticides</b>.</div>
+          <div class="wc-tr">农民曾严重依赖化学杀虫剂。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pollinator</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈpɒlɪneɪtə(r)/ · 美 /ˈpɑːlɪneɪtər/</div>
+          <div class="wc-pos"><b>n.</b> 传粉者；传粉昆虫</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bees are among the most important <b>pollinators</b> on Earth.</div>
+          <div class="wc-tr">蜜蜂是地球上最重要的传粉者之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pollination</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌpɒləˈneɪʃn/ · 美 /ˌpɑːləˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 授粉；传粉</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many crops depend on insect <b>pollination</b> to bear fruit.</div>
+          <div class="wc-tr">许多农作物依靠昆虫授粉才能结果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">aerial insectivore</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈeəriəl ɪnˈsektɪvɔː(r)/ · 美 /ˈeriəl ɪnˈsektɪvɔːr/</div>
+          <div class="wc-pos"><b>n.</b> 食虫鸟（在空中捕食昆虫的鸟类）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Aerial insectivores</b> such as swallows are vanishing too.</div>
+          <div class="wc-tr">燕子等食虫鸟也在消失。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">counterintuitive</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkaʊntərɪnˈtjuːɪtɪv/ · 美 /ˌkaʊntərɪnˈtuːɪtɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 反直觉的；与直觉相反的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It sounds <b>counterintuitive</b>, but freshwater insects are increasing.</div>
+          <div class="wc-tr">这听起来有悖直觉，但淡水昆虫确实在增多。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">terrestrial</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /təˈrestriəl/ · 美 /təˈrestriəl/</div>
+          <div class="wc-pos"><b>adj.</b> 陆地的；陆生的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Terrestrial</b> insects are declining by nearly one percent a year.</div>
+          <div class="wc-tr">陆生昆虫正以每年近 1% 的速度减少。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diverge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /daɪˈvɜːdʒ/ · 美 /daɪˈvɜːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 分化；背离；出现分歧</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The trends of land and water insects sharply <b>diverge</b>.</div>
+          <div class="wc-tr">陆生与水生昆虫的趋势出现明显分化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">harbour</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈhɑːbə(r)/ · 美 /ˈhɑːrbər/</div>
+          <div class="wc-pos"><b>v.</b> 容纳；庇护（也作 <b>n.</b> 港口）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Tropical forests <b>harbour</b> most of the world's insect diversity.</div>
+          <div class="wc-tr">热带雨林容纳了世界上大部分的昆虫多样性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">restoration</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌrestəˈreɪʃn/ · 美 /ˌrestəˈreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 恢复；修复</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Habitat <b>restoration</b> can help insects recover.</div>
+          <div class="wc-tr">栖息地修复有助于昆虫恢复。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rebound</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈbaʊnd/ · 美 /rɪˈbaʊnd/</div>
+          <div class="wc-pos"><b>v.</b> 反弹；回升</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Insect populations can <b>rebound</b> once the pressure is eased.</div>
+          <div class="wc-tr">一旦压力减轻，昆虫种群就能回升。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">refuge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrefjuːdʒ/ · 美 /ˈrefjuːdʒ/</div>
+          <div class="wc-pos"><b>n.</b> 庇护所；避难处</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A wild corner of the garden can serve as a <b>refuge</b> for bees.</div>
+          <div class="wc-tr">花园里一片荒芜的角落可以成为蜜蜂的庇护所。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">a growing body of research</span><span class="zh">越来越多的研究</span></li>
+          <li><span class="en">at a rate of …</span><span class="zh">以……的速度</span></li>
+          <li><span class="en">by roughly 76 percent</span><span class="zh">大约 76%（下降幅度）</span></li>
+          <li><span class="en">prompt a global reassessment</span><span class="zh">引发全球范围的重新评估</span></li>
+          <li><span class="en">be threatened with extinction</span><span class="zh">濒临灭绝</span></li>
+          <li><span class="en">strip sb of sth</span><span class="zh">剥夺某人/某物的……</span></li>
+          <li><span class="en">rely on … to do sth</span><span class="zh">依靠……做某事</span></li>
+          <li><span class="en">keep … in check</span><span class="zh">控制；抑制……</span></li>
+          <li><span class="en">in lockstep with …</span><span class="zh">与……步调一致</span></li>
+          <li><span class="en">attribute A to B</span><span class="zh">把 A 归因于 B</span></li>
+          <li><span class="en">phase out</span><span class="zh">逐步淘汰</span></li>
+          <li><span class="en">bear fruit</span><span class="zh">结出果实；奏效</span></li>
+          <li><span class="en">a measure of …</span><span class="zh">……的衡量标准</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>昆虫最易被忽视，但它们的消失正以科学家难以摸清的速度发生。</li>
+          <li>克雷菲尔德研究用马来氏网监测 63 个保护区 27 年，飞行昆虫生物量暴跌 76%。</li>
+          <li>2019 年荟萃分析显示：超四成昆虫物种在减少，三分之一濒危，灭绝速度是哺乳动物的八倍。</li>
+          <li>三大机制：栖息地破碎化、杀虫剂、气候变暖打乱昆虫与植物的节律。</li>
+          <li>后果沿食物网传导：授粉减少威胁粮食安全，食虫鸟随之减少。</li>
+          <li>反直觉的转折：淡水昆虫反而在增多，说明衰退并非不可逆。</li>
+          <li>数据偏重欧美，热带昆虫多样性未被摸清，全球估算为时过早。</li>
+          <li>但方向已足够清晰：恢复行动表明昆虫种群可回升。</li>
+          <li>人人可为：编目自家昆虫、留一片草地，为传粉者提供庇护。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The most cited evidence comes from a study led by entomologists working with the Krefeld Society in Germany, who set malaise traps — tent-like nets that capture flying insects — across 63 protected nature reserves.</div>
+        <div class="row"><b>主干：</b>The most cited evidence comes from a study（主语 + comes from + 宾语）</div>
+        <div class="row"><b>过去分词作后置定语：</b>led by entomologists working with the Krefeld Society（修饰 a study）</div>
+        <div class="row"><b>非限制性定语从句：</b>who set malaise traps ... across 63 protected nature reserves（who 指代 entomologists）</div>
+        <div class="row"><b>插入语（同位语补充说明）：</b>tent-like nets that capture flying insects（破折号引出，解释 malaise traps；that 引导定语从句修饰 nets）</div>
+        <div class="row"><b>考点：</b>过去分词 / 现在分词作后置定语；非限制性定语从句；同位语</div>
+        <div class="row tr"><b>译文：</b>被引用最多的证据来自一项由德国克雷菲尔德昆虫学会的昆虫学家主导的研究——他们在 63 个自然保护区里布设了马来氏网（一种捕捉飞行昆虫的帐篷状网子）。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Habitat fragmentation driven by agricultural intensification strips insects of the wildflowers and hedgerows on which they depend, while the widespread use of insecticides — notably neonicotinoids — poisons the very pollinators farmers rely on to produce crops.</div>
+        <div class="row"><b>并列结构：</b>Habitat fragmentation ... strips insects of ... , while the widespread use ... poisons the very pollinators ...（while 连接两个并列分句，表对比）</div>
+        <div class="row"><b>过去分词作后置定语：</b>driven by agricultural intensification（修饰 fragmentation）</div>
+        <div class="row"><b>定语从句：</b>on which they depend（介词 + which，修饰 wildflowers and hedgerows）；farmers rely on（省略 that 的定语从句，修饰 pollinators）</div>
+        <div class="row"><b>插入语：</b>notably neonicotinoids（举例说明 insecticides）</div>
+        <div class="row"><b>考点：</b>"介词 + which" 定语从句；省略关系代词 that；strip sb of sth 搭配；while 并列对比</div>
+        <div class="row tr"><b>译文：</b>由农业集约化驱动的栖息地破碎化，剥夺了昆虫赖以生存的野花和树篱；而杀虫剂（尤其是新烟碱类）的广泛使用，则毒害了农民赖以生产作物的传粉者。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A meta-analysis of 166 long-term surveys published in Science in 2020 found that, while terrestrial insects were shrinking by about 0.92 percent a year, freshwater insects were actually increasing by 1.08 percent — a divergence that some researchers attribute to cleaner rivers and the absence, in water, of the pesticides that saturate farmland.</div>
+        <div class="row"><b>主干：</b>A meta-analysis ... found that ...（主语 + found + that 宾语从句）</div>
+        <div class="row"><b>过去分词作后置定语：</b>published in Science in 2020（修饰 surveys）</div>
+        <div class="row"><b>宾语从句（含让步状语从句）：</b>while terrestrial insects were shrinking ..., freshwater insects were actually increasing ...（while 引导让步状语从句，表对比）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a divergence that some researchers attribute to ...（破折号引出，解释前面主句；that 定语从句修饰 divergence；其中 the pesticides that saturate farmland 又嵌套一层定语从句）</div>
+        <div class="row"><b>考点：</b>宾语从句；while 让步/对比；同位语；attribute A to B；多层定语从句嵌套</div>
+        <div class="row tr"><b>译文：</b>2020 年发表在《科学》上、整合了 166 项长期调查的一项荟萃分析发现：虽然陆生昆虫正以每年约 0.92% 的速度减少，淡水昆虫却以 1.08% 的速度增加——这一分化，一些研究者将其归因于河流变得更干净，以及水中不存在那些浸透农田的杀虫剂。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">As pollinator numbers fall, so too does the security of the harvests that feed billions.</div>
+        <div class="row"><b>时间/条件状语从句：</b>As pollinator numbers fall（As 引导，表"随着……"）</div>
+        <div class="row"><b>主句（部分倒装）：</b>so too does the security of the harvests（so + 助动词 does + 主语，表"……也一样"）</div>
+        <div class="row"><b>定语从句：</b>that feed billions（修饰 harvests）</div>
+        <div class="row"><b>考点：</b>as 引导状语从句；so 引导的部分倒装（so + 助动词/情态动词 + 主语）；定语从句</div>
+        <div class="row tr"><b>译文：</b>随着传粉者数量下降，养活数十亿人口的收成安全也随之下降。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Citizen science projects that invite residents to catalogue the insects in their own gardens have begun to fill the data void, while the simple act of leaving a corner of lawn unmown can create a refuge for pollinators — the hum of a meadow, it turns out, is not a backdrop to human life but a measure of its health.</div>
+        <div class="row"><b>主干（并列）：</b>Citizen science projects ... have begun to fill the data void, while the simple act ... can create a refuge（while 连接两个并列分句）</div>
+        <div class="row"><b>定语从句：</b>that invite residents to catalogue the insects（修饰 projects）</div>
+        <div class="row"><b>动名词短语作后置定语：</b>leaving a corner of lawn unmown（修饰 the simple act）</div>
+        <div class="row"><b>插入语 + 同位语总结：</b>the hum of a meadow, it turns out, is not ... but a measure of its health（破折号引出总结；it turns out 为插入语；not A but B 结构）</div>
+        <div class="row"><b>考点：</b>定语从句；动名词短语作后置定语；插入语；not ... but ... 结构</div>
+        <div class="row tr"><b>译文：</b>邀请居民为自家花园昆虫编目的公民科学项目，已开始填补数据空白；而给草坪留出一角不修剪这一简单举动，就能为传粉者创造庇护所——事实证明，草甸的嗡嗡声并非人类生活的背景音，而是衡量其健康的一把尺子。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">夏日田野边嗡嗡作响的昆虫最容易被忽视，但它们的悄然消失，正成为这个时代最沉重的生态叙事。被引用最多的证据来自德国克雷菲尔德昆虫学会的一项研究：昆虫学家在 63 个自然保护区内布设马来氏网，历经 1989 年至 2016 年的 27 年监测，发现飞行昆虫的生物量暴跌约 76%——而这一"令人警醒"的崩溃恰恰发生在本该原始纯净的保护区里。这一 2017 年发表的研究引发了全球性的重新评估：2019 年发表在《生物保护》上、整合 73 项长期研究的荟萃分析指出，超过四成的昆虫物种正在减少，三分之一濒临灭绝，其灭绝速度大约是哺乳动物、鸟类和爬行动物的八倍。衰退的机制并不神秘，也并非彼此排斥：农业集约化导致的栖息地破碎化，剥夺了昆虫赖以生存的野花与树篱；新烟碱类杀虫剂的广泛使用毒害了传粉者；气候变暖则打乱了昆虫与植物之间的节律。后果沿着食物网层层传导——全球约四分之三的开花植物和三分之一的粮食作物至少部分依赖动物授粉，传粉者减少直接动摇粮食安全；以昆虫为食的鸟类等"食虫鸟"也与其猎物同步减少。然而真实图景比耸人听闻的标题更复杂：2020 年《科学》上整合 166 项长期调查的荟萃分析揭示了一个反直觉的事实——陆生昆虫以每年约 0.92% 的速度减少，淡水昆虫却以 1.08% 的速度增加，研究者将其归因于河流变清与水中无杀虫剂。科学家提醒，"昆虫末日"并非定论，因为现有数据严重偏向监测最系统的欧美地区，容纳绝大多数昆虫多样性的热带仍几乎未被摸清。尽管如此，方向已足够清晰，足以促使行动而非绝望：在田边种植本土野花带、逐步淘汰最有害的杀虫剂等恢复行动，反复证明昆虫种群可在压力减轻后回升。对普通人而言，这既是谦卑的提醒，也是赋权的召唤——记录自家花园的昆虫、留出一角不修剪的草坪，就能为传粉者提供庇护；草甸的嗡嗡声，其实是衡量人类健康的一把尺子。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6 段，为什么说淡水昆虫数量的"回升"恰恰为昆虫衰退的逆转提供了希望？从"机制"角度谈谈你对"衰退并非不可逆"这句话的理解。</div>
+      <div class="q"><b>仿写题：</b>仿照第 5 段 <span style="font-family:Georgia,serif;font-style:italic">"As pollinator numbers fall, so too does the security of the harvests that feed billions."</span>（As 引导状语从句 + so 引导的部分倒装）的句式，围绕「保护环境」「低碳出行」或「坚持阅读」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 昆虫最易被忽视，其消失速度难以摸清</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 克雷菲尔德研究：保护区昆虫生物量暴跌 76%</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 荟萃分析：超四成物种减少、三分之一濒危</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 三大机制：栖息地破碎化、杀虫剂、气候变暖</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 后果：授粉减少威胁粮食安全与食物网</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 反直觉转折：淡水昆虫反而增多</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 局限：数据偏重欧美，热带仍未摸清</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 恢复行动证明昆虫种群可回升</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 人人可为：记录昆虫、留片草地留住嗡嗡声</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 核心证据 → 全球评估 → 衰退机制 → 生态后果 → 反直觉转折 → 研究局限 → 恢复希望 → 个人行动」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：PLOS ONE / Biological Conservation / Science / The Guardian / National Geographic 公开资料（2026-09-17 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
