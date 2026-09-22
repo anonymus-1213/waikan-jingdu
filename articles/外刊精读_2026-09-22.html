@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 日常生活中的"敬畏"体验，如何悄悄驱散孤独</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Mind · 人与自我 / 情感与价值观 / 心理健康 / 科普</div>
+  <h1>日常生活中的"敬畏"体验，如何悄悄驱散孤独</h1>
+  <div class="deck">A 22-day daily diary study finds that daily moments of awe predict lower same-day loneliness among healthcare workers</div>
+  <div class="byline"><span><b>来源</b> Scientific Reports (Nature) / News-Medical（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-22</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-22.jpg" alt="海边夕阳（配图）">
+    <figcaption>配图：海边夕阳下的剪影，常被视为触发"敬畏"体验的日常瞬间（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>世界卫生组织已把孤独列为与吸烟、肥胖同等严重的公共健康威胁，而悖论在于：许多感到孤独的人并非独处，身边尽是同事、患者与邻里——孤独关乎的不是"没人"，而是"没有连接"。发表在《科学报告》上的一项研究，把目光投向一个意想不到的良方——"敬畏"：那种面对宏大、超越既有认知之物时涌起的情绪。研究者用 22 天的日记法追踪医护人员，让每个人每天记录自己的敬畏体验与孤独程度，再用多层次建模与自身基线对照。结果一致地显示：敬畏更多的那一天，同一个人当晚感到的孤独更低。研究者把机制归结为"敬畏缩小自我"——注意力外移后，自身的烦恼显得微不足道，人也重新感到自己属于更大的整体。他们强调敬畏廉价易得，却也谨慎指出这是观察性研究、无法证明因果。本文拆解这项研究的逻辑、机理与局限，为"如何在日常中主动寻得片刻惊奇"提供启示。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Loneliness has quietly become one of the most pressing public-health concerns of our age, a condition the World Health Organization now treats as seriously as smoking or obesity. The paradox is striking: many who feel isolated are not physically alone, suggesting that loneliness is less about the absence of people than about the absence of connection.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">Against this backdrop, a small but growing field has turned to an unexpected remedy — <span class="kw" data-tip="n. 敬畏">awe</span>, the feeling we get when we encounter something <span class="kw" data-tip="adj. 广阔的；巨大的">vast</span> that <span class="kw" data-tip="v. 超越；超出">transcends</span> our current understanding of the world. First described in detail by psychologists Dacher Keltner and Jonathan Haidt, awe involves two elements: perceived vastness, and a need for "<span class="kw" data-tip="n. 顺应；适应（熟词僻义：住宿）">accommodation</span>" — the mental adjustment required to make sense of an experience that does not fit our existing frames of reference.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">In a study published in the journal <em>Scientific Reports</em>, psychologist Öznur Ugurlu and colleagues set out to test whether this <span class="kw" data-tip="adj. 短暂的；转瞬即逝的">fleeting</span> emotion could move the needle on loneliness. Rather than relying on a one-off questionnaire, the team conducted a 22-day daily diary study, recruiting healthcare workers whose <span class="kw" data-tip="adj. 要求高的；费力的">demanding</span> jobs made them a population of particular interest.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">Each evening, participants recorded how much awe they had experienced that day — triggered, for instance, by a sunset, a piece of music, or a stranger's generosity — alongside how lonely they felt. Because the same individuals were tracked day after day, the researchers could use multilevel modelling to compare each person against their own <span class="kw" data-tip="n. 基线；基准">baseline</span>, thereby separating the effect of a particularly awe-filled day from the traits that make someone generally <span class="kw" data-tip="adj. 易于……的；有……倾向的">prone</span> to loneliness.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The results were <span class="kw" data-tip="adj. 一致的；始终如一的">consistent</span>: on days when a worker reported more awe, that same person reported feeling less lonely that same evening, and the pattern held even after accounting for mood and other factors. The effect, though <span class="kw" data-tip="adj. 适度的；不太大的">modest</span> in size, appeared reliably across the sample, and it <span class="kw" data-tip="v. 呼应；与……一致（熟词僻义：回声）">echoes</span> experimental work showing that awe can make people feel smaller yet more connected.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The researchers point to a likely <span class="kw" data-tip="n. 机制；机理">mechanism</span>: awe shrinks the self. By directing attention outward toward something vast, awe <span class="kw" data-tip="v. 消解；溶解；消散">dissolves</span> the boundaries of the self, making our own worries feel comparatively <span class="kw" data-tip="adj. 极小的（熟词僻义：分钟）">minute</span> and reminding us that we are part of something larger. An emotion that is intensely <span class="kw" data-tip="adj. 孤独的；独自的">solitary</span> — one usually felt alone — thus paradoxically reduces the sense of being cut off from others.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">"Awe is not a luxury; it is a resource that is remarkably cheap and <span class="kw" data-tip="adj. 易获得的；可接近的">accessible</span>," the authors note, arguing that a few deliberate moments of wonder each day may be among the most affordable interventions for loneliness available. Unlike passive scrolling, which can deepen isolation, seeking out the sublime — in nature, art, music or even the night sky — actively repositions the self within a wider world.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Yet the researchers are careful not to overstate their case. Because the study is <span class="kw" data-tip="adj. 观察性的">observational</span>, it cannot prove that awe causes lower loneliness, only that the two travel together; self-report measures are also inherently subjective, and the sample, drawn entirely from healthcare workers, may not <span class="kw" data-tip="v. 推广；概括（到其他人）">generalise</span> to everyone.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">Even so, the findings carry a humbling and hopeful message. Loneliness may be <span class="kw" data-tip="adj. 慢性的；长期的">chronic</span> and widespread, but so too is the capacity for wonder that lies within easy reach. Whether through a mindful pause before a sunset or a quiet moment before a work of art, small, deliberate doses of awe may, over time, help loosen the grip of isolation — one <span class="kw" data-tip="adj. 转瞬即逝的">transient</span> but meaningful moment at a time.</span></div>
+
+      <p class="muted">原文出处：本文根据《科学报告》（Scientific Reports，Nature 旗下期刊，2026 年 2 月）刊发、由 Öznur Ugurlu 等完成的研究《Experiencing awe in daily life is linked to lower loneliness》，及 News-Medical 相关报道（2026-02-23）整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">awe</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɔː/ · 美 /ɑː/</div>
+          <div class="wc-pos"><b>n.</b> 敬畏；惊奇</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The night sky filled me with a sense of <b>awe</b>.</div>
+          <div class="wc-tr">夜空让我心中充满敬畏。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">vast</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /vɑːst/ · 美 /væst/</div>
+          <div class="wc-pos"><b>adj.</b> 广阔的；巨大的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The desert stretches across a <b>vast</b> area of land.</div>
+          <div class="wc-tr">沙漠横跨广阔的土地。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">transcend</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /trænˈsend/ · 美 /trænˈsend/</div>
+          <div class="wc-pos"><b>v.</b> 超越；超出</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Great art can <b>transcend</b> differences of culture and language.</div>
+          <div class="wc-tr">伟大的艺术能超越文化与语言的差异。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accommodation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˌkɒməˈdeɪʃn/ · 美 /əˌkɑːməˈdeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 顺应；适应（熟词僻义：住宿）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>New ideas require mental <b>accommodation</b> before we accept them.</div>
+          <div class="wc-tr">接受新观念之前需要先进行思维上的顺应调整。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fleeting</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfliːtɪŋ/ · 美 /ˈfliːtɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 短暂的；转瞬即逝的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We only caught a <b>fleeting</b> glimpse of the rainbow.</div>
+          <div class="wc-tr">我们只匆匆瞥见了那道彩虹。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">demanding</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈmɑːndɪŋ/ · 美 /dɪˈmændɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 要求高的；费力的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nursing is a <b>demanding</b> but rewarding job.</div>
+          <div class="wc-tr">护理是一份要求很高却很有回报的工作。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">baseline</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbeɪslaɪn/ · 美 /ˈbeɪslaɪn/</div>
+          <div class="wc-pos"><b>n.</b> 基线；基准</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each person's score was compared with their own <b>baseline</b>.</div>
+          <div class="wc-tr">每个人的得分都与自身的基线进行比较。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prone</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prəʊn/ · 美 /proʊn/</div>
+          <div class="wc-pos"><b>adj.</b> 易于……的；有……倾向的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>People who work alone are more <b>prone</b> to loneliness.</div>
+          <div class="wc-tr">独自工作的人更容易感到孤独。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consistent</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kənˈsɪstənt/ · 美 /kənˈsɪstənt/</div>
+          <div class="wc-pos"><b>adj.</b> 一致的；始终如一的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The results were <b>consistent</b> across all the groups.</div>
+          <div class="wc-tr">所有组的结果都是一致的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">modest</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdɪst/ · 美 /ˈmɑːdɪst/</div>
+          <div class="wc-pos"><b>adj.</b> 适度的；不太大的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The drug produced only a <b>modest</b> improvement.</div>
+          <div class="wc-tr">这种药物只带来了适度的改善。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">echo</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈekəʊ/ · 美 /ˈekoʊ/</div>
+          <div class="wc-pos"><b>v.</b> 呼应；与……一致（熟词僻义：<b>n.</b> 回声）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Her findings <b>echo</b> those of earlier experiments.</div>
+          <div class="wc-tr">她的发现与先前的实验相互呼应。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mechanism</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmekənɪzəm/ · 美 /ˈmekənɪzəm/</div>
+          <div class="wc-pos"><b>n.</b> 机制；机理</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists are still unsure of the exact <b>mechanism</b>.</div>
+          <div class="wc-tr">科学家仍不确定其确切机制。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dissolve</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈzɒlv/ · 美 /dɪˈzɑːlv/</div>
+          <div class="wc-pos"><b>v.</b> 消解；溶解；消散</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Watching the ocean seemed to <b>dissolve</b> her anxiety.</div>
+          <div class="wc-tr">望着大海似乎消解了她的焦虑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">minute</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /maɪˈnjuːt/ · 美 /maɪˈnuːt/</div>
+          <div class="wc-pos"><b>adj.</b> 极小的；微小的（熟词僻义：<b>n.</b> 分钟 /ˈmɪnɪt/）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Our own problems feel <b>minute</b> beside the vast universe.</div>
+          <div class="wc-tr">在浩瀚宇宙面前，我们自己的烦恼显得微不足道。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">solitary</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsɒlətri/ · 美 /ˈsɑːləteri/</div>
+          <div class="wc-pos"><b>adj.</b> 孤独的；独自的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He led a <b>solitary</b> life in the mountains.</div>
+          <div class="wc-tr">他在山里过着独居的生活。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accessible</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əkˈsesəbl/ · 美 /əkˈsesəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 易获得的；可接近的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nature is freely <b>accessible</b> to everyone.</div>
+          <div class="wc-tr">大自然对每个人都是免费开放的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">observational</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɒbzəˈveɪʃənl/ · 美 /ˌɑːbzərˈveɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 观察性的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>This is an <b>observational</b> study, not an experiment.</div>
+          <div class="wc-tr">这是一项观察性研究，而非实验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">generalise</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdʒenrəlaɪz/ · 美 /ˈdʒenrəlaɪz/</div>
+          <div class="wc-pos"><b>v.</b> 推广；概括（到其他人）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We cannot <b>generalise</b> from such a small sample.</div>
+          <div class="wc-tr">我们不能从这么小的样本中一概而论。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chronic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkrɒnɪk/ · 美 /ˈkrɑːnɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 慢性的；长期的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Loneliness can become a <b>chronic</b> condition.</div>
+          <div class="wc-tr">孤独可能成为一种长期的状况。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">transient</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈtrænziənt/ · 美 /ˈtrænʃnt/</div>
+          <div class="wc-pos"><b>adj.</b> 转瞬即逝的；短暂的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Beauty is <b>transient</b>, but memory is lasting.</div>
+          <div class="wc-tr">美是短暂的，而记忆是持久的。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">public-health concern</span><span class="zh">公共卫生问题</span></li>
+          <li><span class="en">an unexpected remedy</span><span class="zh">意想不到的良方</span></li>
+          <li><span class="en">frames of reference</span><span class="zh">参照框架</span></li>
+          <li><span class="en">a one-off questionnaire</span><span class="zh">一次性问卷</span></li>
+          <li><span class="en">multilevel modelling</span><span class="zh">多层次建模</span></li>
+          <li><span class="en">compare against one's own baseline</span><span class="zh">与自身基线比较</span></li>
+          <li><span class="en">be prone to loneliness</span><span class="zh">易于感到孤独</span></li>
+          <li><span class="en">shrink the self / small self</span><span class="zh">缩小自我 / 渺小的自我</span></li>
+          <li><span class="en">be cut off from others</span><span class="zh">与他人隔绝</span></li>
+          <li><span class="en">the sublime</span><span class="zh">崇高的事物</span></li>
+          <li><span class="en">overstate one's case</span><span class="zh">夸大其论点</span></li>
+          <li><span class="en">the two travel together</span><span class="zh">两者相伴而行</span></li>
+          <li><span class="en">loosen the grip of isolation</span><span class="zh">松解孤独的束缚</span></li>
+          <li><span class="en">one ... moment at a time</span><span class="zh">一个接一个的……瞬间</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>孤独已成时代最紧迫的公共健康问题，孤独者往往并不独处，缺的是"连接"。</li>
+          <li>研究转向"敬畏"：宏大 + 顺应两大要素构成敬畏。</li>
+          <li>Ugurlu 团队在《科学报告》用 22 天日记法研究医护人员。</li>
+          <li>每晚记录当日敬畏与孤独，用多层次建模与自身基线对照。</li>
+          <li>结果：敬畏更多的那天，同一个人当晚孤独更低，且效应稳健。</li>
+          <li>机制：敬畏"缩小自我"，让烦恼显得微小、重新感到归属。</li>
+          <li>作者称敬畏廉价易得，是比被动刷屏更触手可及的干预。</li>
+          <li>局限：观察性研究不能证因果，样本限于医护人员。</li>
+          <li>启示：孤独虽慢性普遍，但触手可及的惊奇能松解孤独。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">First described in detail by psychologists Dacher Keltner and Jonathan Haidt, awe involves two elements: perceived vastness, and a need for "accommodation" — the mental adjustment required to make sense of an experience that does not fit our existing frames of reference.</div>
+        <div class="row"><b>主干：</b>awe involves two elements（主语 + involves + 宾语）</div>
+        <div class="row"><b>过去分词作状语：</b>First described in detail by psychologists Dacher Keltner and Jonathan Haidt（"首先由……详细描述"，修饰主句主语 awe）</div>
+        <div class="row"><b>同位语（破折号引出）：</b>the mental adjustment（解释 accommodation）</div>
+        <div class="row"><b>过去分词作定语 + 定语从句：</b>required to make sense of an experience（修饰 adjustment）；that does not fit our existing frames of reference（that 修饰 experience）</div>
+        <div class="row"><b>考点：</b>过去分词作状语；同位语；过去分词作后置定语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>敬畏这一概念最初由心理学家达契尔·凯尔特纳与乔纳森·海特详细描述，它包含两个要素：被感知的宏大，以及对"顺应"的需要——即为了理解某种超出我们既有参照框架的体验而做出的心理调适。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Because the same individuals were tracked day after day, the researchers could use multilevel modelling to compare each person against their own baseline, thereby separating the effect of a particularly awe-filled day from the traits that make someone generally prone to loneliness.</div>
+        <div class="row"><b>主干：</b>the researchers could use multilevel modelling to compare each person against their own baseline（主语 + could use + 宾语 + 不定式目的状语）</div>
+        <div class="row"><b>原因状语从句：</b>Because the same individuals were tracked day after day（被动语态）</div>
+        <div class="row"><b>现在分词作结果状语：</b>thereby separating the effect ... from the traits（separate A from B 结构）</div>
+        <div class="row"><b>定语从句：</b>that make someone generally prone to loneliness（修饰 the traits）</div>
+        <div class="row"><b>考点：</b>because 原因状语从句；separate A from B 搭配；现在分词作结果状语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>由于同一个人被日复一日地追踪，研究者得以用多层次建模把每个人与自身基线进行比较，从而将"某个格外充满敬畏的一天"的效应，与那些让人总体上易于孤独的特质区分开来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The effect, though modest in size, appeared reliably across the sample, and it echoes experimental work showing that awe can make people feel smaller yet more connected.</div>
+        <div class="row"><b>主干：</b>The effect ... appeared reliably across the sample, and it echoes experimental work（并列句：主谓 + and + 主谓）</div>
+        <div class="row"><b>插入语（让步）：</b>though modest in size（"虽然幅度不大"）</div>
+        <div class="row"><b>现在分词作定语：</b>showing that awe can make people feel smaller yet more connected（修饰 work；内含 that 宾语从句 + make + 宾语 + 宾补）</div>
+        <div class="row"><b>考点：</b>插入语；并列句；现在分词作定语；that 宾语从句；make sb do（feel）宾补</div>
+        <div class="row tr"><b>译文：</b>这一效应虽然幅度不大，却在样本中稳定地出现，并且它与实验研究相呼应——那些实验表明，敬畏能让人感到更渺小，却又更有归属。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">By directing attention outward toward something vast, awe dissolves the boundaries of the self, making our own worries feel comparatively minute and reminding us that we are part of something larger.</div>
+        <div class="row"><b>主干：</b>awe dissolves the boundaries of the self（主语 + dissolves + 宾语）</div>
+        <div class="row"><b>方式状语：</b>By directing attention outward toward something vast（By doing 结构）</div>
+        <div class="row"><b>现在分词作结果状语（并列）：</b>making our own worries feel comparatively minute and reminding us that ...（make + 宾语 + 宾补 feel；remind sb that 宾语从句）</div>
+        <div class="row"><b>考点：</b>by doing 方式状语；现在分词作结果状语；make + 宾语 + 宾补；that 宾语从句</div>
+        <div class="row tr"><b>译文：</b>通过把注意力向外引向某种宏大的事物，敬畏消解了自我的边界，让自身的烦恼显得微不足道，并提醒我们：自己是某个更大整体的一部分。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Whether through a mindful pause before a sunset or a quiet moment before a work of art, small, deliberate doses of awe may, over time, help loosen the grip of isolation — one transient but meaningful moment at a time.</div>
+        <div class="row"><b>主干：</b>small, deliberate doses of awe may ... help loosen the grip of isolation（主语 + may help + 动词原形 loosen）</div>
+        <div class="row"><b>让步状语（Whether ... or ...）：</b>Whether through a mindful pause before a sunset or a quiet moment before a work of art（"无论是……还是……"）</div>
+        <div class="row"><b>插入语：</b>over time（"随着时间推移"）</div>
+        <div class="row"><b>同位语：</b>one transient but meaningful moment at a time（补充说明"剂量"）</div>
+        <div class="row"><b>考点：</b>whether ... or ... 让步状语；插入语；help (to) do 省略 to；同位语</div>
+        <div class="row tr"><b>译文：</b>无论是在日落前的一次专注停顿，还是在一件艺术品前的一段静谧时光，小小而刻意的敬畏剂量，都可能随着时间推移，帮助松解孤独的束缚——一个转瞬即逝却意味深长的瞬间接一个瞬间。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">孤独已悄然成为我们这个时代最紧迫的公共健康问题之一，世界卫生组织已将其视为与吸烟、肥胖同等严重的威胁。其悖论在于：许多感到孤独的人其实并不独处，身边尽是同事、患者与邻里——孤独关乎的不是"没有人"，而是"没有连接"。在这样的背景下，一个规模不大却不断壮大的研究领域，把目光投向一种意想不到的良方——"敬畏"：那种当我们面对宏大、超越既有认知之物时涌起的情绪。这一概念由心理学家凯尔特纳与海特详细描述，包含"被感知的宏大"与"顺应"两大要素。心理学家厄兹努尔·乌古尔卢及其同事发表在《科学报告》上的研究，用一个 22 天的日记法来检验这种短暂情绪能否改变孤独。他们招募了工作繁重的医护人员，让每个人每晚记录当天经历的敬畏（可能来自日落、音乐或陌生人的善意）以及自己感到的孤独程度。由于同一个人被日复一日追踪，研究者用多层次建模把每个人与自身基线对照，从而把"格外充满敬畏的一天"的效应与"天生易孤独"的特质区分开来。结果一致：某天报告更多敬畏的人，当晚报告的孤独更低，即便控制了情绪等因素依然成立；这一幅度不大的效应在样本中稳定出现，并与实验研究相呼应。研究者把机制归结为"敬畏缩小自我"——注意力外移后，自我的边界被消解，自身的烦恼显得微不足微，人也重新感到属于更大的整体；于是这种通常独自体验的强烈情绪，反而减轻了"与他人隔绝"之感。作者强调敬畏并非奢侈品，而是极其廉价、易得的资源，几个刻意的惊奇时刻或许是最触手可及的孤独干预；与加深隔绝的被动刷屏不同，主动追寻自然、艺术、音乐乃至星空中的崇高，会把自我重新置于更广阔的世界。不过研究者也谨慎地不过度解读：由于是观察性研究，它不能证明敬畏"导致"孤独降低，只能说两者相伴而行；自我报告本身主观，样本又全部来自医护人员，未必能推广到所有人，因果方向也可能相反。尽管如此，这项发现仍带来既谦卑又充满希望的信息：孤独或许是慢性的、普遍的，但触手可及的惊奇能力同样如此——无论是对着日落的一次专注停顿，还是在艺术品前的一段静谧时光，小小而刻意的敬畏剂量，都可能随着时间推移，一点一点地松解孤独的束缚。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 6 段，解释"敬畏缩小自我"这一机制为何能减轻孤独感；再结合第 8 段的局限，谈谈我们应如何客观看待"敬畏能治孤独"这一说法。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"Whether through a mindful pause before a sunset or a quiet moment before a work of art, small, deliberate doses of awe may ... help loosen the grip of isolation."</span>（Whether ... or ... 让步状语 + 主干）的句式，围绕「坚持阅读」「绿色生活」或「缓解压力」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 孤独是时代公共健康问题：缺的是"连接"</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 意外良方"敬畏"：宏大 + 顺应两要素</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 研究设计：22 天日记法追踪医护人员</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 方法：每晚记录 + 多层次建模对照自身基线</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 核心发现：敬畏更多的那天孤独更低</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 机制：敬畏缩小自我，烦恼微小、重获归属</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 作者观点：敬畏廉价易得，胜过被动刷屏</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：观察性、不能证因果、样本有限</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：触手可及的惊奇，一点一点松解孤独</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 核心概念 → 研究设计 → 研究方法 → 核心发现 → 作用机制 → 作者观点 → 研究局限 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Scientific Reports (Nature) / News-Medical 公开资料（2026-09-22 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
