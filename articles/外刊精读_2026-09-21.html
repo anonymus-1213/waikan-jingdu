@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 边走边想更"灵光"：步行如何提升创造性思维</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Mind · 人与自我 / 认知 / 健康 / 教育</div>
+  <h1>边走边想更"灵光"：步行如何提升创造性思维</h1>
+  <div class="deck">A systematic review finds that walking produces a large increase in divergent thinking, the engine of creative ideas</div>
+  <div class="byline"><span><b>来源</b> Scientific Reports / Stanford University / PMC（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-21</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-21.jpg" alt="林间散步的人（配图）">
+    <figcaption>配图：在林间小径散步的人（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>好点子从何而来？尼采写作前常长时间散步，梭罗流连于林间，乔布斯则边走边开会——历史上许多最有创造力的人，都坚信灵感常常"步行而至"。如今，科学开始认真检验这条民间智慧。斯坦福大学的经典实验率先发现：边走边想的人，比坐着想的人产生更多、更新颖的点子——这正是所谓的"发散思维"。2026 年一项系统综述与荟萃分析汇总了此后数十项研究，得出了清晰的结论：步行带来发散思维的"大幅提升"，而这一效应具体而有限——它强力促进"发散"（广撒网找多种答案），对"收敛"（锁定唯一正解）的影响却较弱且模糊。研究者提出了多条机制：运动提高唤醒度、改善情绪，环境提供新鲜刺激，散步的节奏让注意力得以自由漫游。由于无需器材与训练，步行堪称最触手可及的创造力"干预"。但作者也谨慎指出：研究设计各异、证据异质，且多为年轻人，因果尚未完全量化。本文拆解这项研究的证据链、机理、局限与对学生的启示。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Where do good ideas come from? For centuries, some of history's most original minds have insisted that the answer often arrives on foot. Nietzsche walked for hours before writing; Thoreau roamed the woods; Steve Jobs held meetings while strolling. Now science is beginning to test this folk wisdom with care.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The modern study of walking and creativity began with a famous experiment at Stanford University. Researchers Marily Oppezzo and Daniel Schwartz asked volunteers to complete tests of <span class="kw" data-tip="n. 创造力；创造性">creativity</span> while either seated or walking, measuring their ability to generate <span class="kw" data-tip="adj. 新颖的（熟词僻义：n. 小说）">novel</span> and useful ideas — a capacity known as <span class="kw" data-tip="adj. 发散的">divergent</span> thinking.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The Stanford results were striking: walking <span class="kw" data-tip="v. 产生；带来（熟词僻义：屈服；让路）">yielded</span> a large boost in divergent thinking, with participants producing more ideas, and more original ones, on the move. A 2026 <span class="kw" data-tip="adj. 系统的">systematic</span> review and meta-analysis has now <span class="kw" data-tip="v. 综合；汇总">synthesized</span> this and dozens of later studies to ask how strong the effect really is.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The review's conclusion is clear. Across the accumulated experiments, walking produced what the authors describe as a "large increase" in divergent thinking, confirming that the simple act of putting one foot in front of the other can <span class="kw" data-tip="v. 提升；增强">enhance</span> the generation of ideas.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The effect, however, is specific rather than universal. Walking reliably improves divergent thought — the broad search for many possible answers — while its influence on <span class="kw" data-tip="adj. 收敛的">convergent</span> thinking, the narrowing pursuit of a single correct solution, is weaker and more <span class="kw" data-tip="adj. 模糊的；模棱两可的">ambiguous</span>.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Why should movement sharpen the imagination? Researchers propose several mechanisms: physical activity raises <span class="kw" data-tip="n. 唤醒；兴奋">arousal</span> and improves mood, the changing environment provides fresh <span class="kw" data-tip="n. 刺激（物）">stimuli</span>, and the gentle rhythm of walking may free attention to wander — together <span class="kw" data-tip="v. 引导（熟词僻义：n. 频道）">channeling</span> mental energy toward <span class="kw" data-tip="adj. 认知的">cognitive</span> exploration rather than fixed routines.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">For educators and workers, the implication is practical. Because walking requires no special equipment or training, it ranks among the most <span class="kw" data-tip="adj. 可行的">feasible</span> <span class="kw" data-tip="n. 干预；介入">interventions</span> available for unlocking creative thinking — a possibility the authors frame as both <span class="kw" data-tip="adj. 有趣的；引人入胜的">intriguing</span> and refreshingly low-cost.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The authors are careful about limits. The studies vary widely in design, making the evidence <span class="kw" data-tip="adj. 异质的；混杂的">heterogeneous</span>, and most participants were young adults, so the findings may not apply equally to everyone. Nor can a <span class="kw" data-tip="adj. 因果的">causal</span> link be fully <span class="kw" data-tip="v. 量化">quantified</span>: it remains possible that the benefits come less from walking itself than from the simple act of stepping away from a desk and a screen.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">Still, the message for students is hard to ignore. If the mind stalls over a hard problem, the research suggests that the best move may be, quite literally, to move — to walk, wander, and let <span class="kw" data-tip="adj. 稳健的；强有力的">robust</span> science, not just folklore, walk us toward better ideas.</span></div>
+
+      <p class="muted">原文出处：本文根据 Thabane 等 2026 年系统综述《The impact of walking on creative thinking: a systematic review》及斯坦福大学 Oppezzo & Schwartz（2014）经典实验研究综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">creativity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkriːeɪˈtɪvəti/ · 美 /ˌkriːeɪˈtɪvəti/</div>
+          <div class="wc-pos"><b>n.</b> 创造力；创造性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Walking can boost our <b>creativity</b>.</div>
+          <div class="wc-tr">散步能激发我们的创造力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">divergent</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /daɪˈvɜːdʒənt/ · 美 /daɪˈvɜːrdʒənt/</div>
+          <div class="wc-pos"><b>adj.</b> 发散的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Divergent</b> thinking means finding many possible answers.</div>
+          <div class="wc-tr">发散思维意味着找出多种可能的答案。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">convergent</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈvɜːdʒənt/ · 美 /kənˈvɜːrdʒənt/</div>
+          <div class="wc-pos"><b>adj.</b> 收敛的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Convergent</b> thinking seeks a single correct answer.</div>
+          <div class="wc-tr">收敛思维追求唯一的正确答案。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">systematic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌsɪstəˈmætɪk/ · 美 /ˌsɪstəˈmætɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 系统的；有条理的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team made a <b>systematic</b> review of the studies.</div>
+          <div class="wc-tr">团队对这些研究做了系统综述。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">synthesize</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsɪnθəsaɪz/ · 美 /ˈsɪnθəsaɪz/</div>
+          <div class="wc-pos"><b>v.</b> 综合；汇总</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The review <b>synthesized</b> dozens of earlier studies.</div>
+          <div class="wc-tr">这篇综述汇总了数十项早期研究。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">novel</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈnɒvl/ · 美 /ˈnɑːvl/</div>
+          <div class="wc-pos"><b>adj.</b> 新颖的；新奇的（熟词僻义：<b>n.</b> 小说）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She came up with a <b>novel</b> solution to the problem.</div>
+          <div class="wc-tr">她想出了一个新颖的解决办法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">yield</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /jiːld/ · 美 /jiːld/</div>
+          <div class="wc-pos"><b>v.</b> 产生；带来（熟词僻义：屈服；让路）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The experiment <b>yielded</b> surprising results.</div>
+          <div class="wc-tr">这个实验得出了令人惊讶的结果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">channel</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈtʃænl/ · 美 /ˈtʃænl/</div>
+          <div class="wc-pos"><b>v.</b> 引导；输送（熟词僻义：<b>n.</b> 频道）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Walking <b>channels</b> our energy toward new ideas.</div>
+          <div class="wc-tr">散步把我们的精力引向新的想法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">enhance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈhɑːns/ · 美 /ɪnˈhæns/</div>
+          <div class="wc-pos"><b>v.</b> 提升；增强</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading widely can <b>enhance</b> your writing.</div>
+          <div class="wc-tr">广泛阅读能提升你的写作。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cognitive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɒɡnətɪv/ · 美 /ˈkɑːɡnətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 认知的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Memory is an important <b>cognitive</b> ability.</div>
+          <div class="wc-tr">记忆是一项重要的认知能力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arousal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈraʊzl/ · 美 /əˈraʊzl/</div>
+          <div class="wc-pos"><b>n.</b> 唤醒；兴奋</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Exercise raises the body's level of <b>arousal</b>.</div>
+          <div class="wc-tr">运动提高身体的唤醒水平。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stimulus</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈstɪmjələs/ · 美 /ˈstɪmjələs/</div>
+          <div class="wc-pos"><b>n.</b> 刺激（物）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A new environment provides fresh <b>stimuli</b>.</div>
+          <div class="wc-tr">新环境提供新鲜的刺激。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intervention</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈvenʃn/ · 美 /ˌɪntərˈvenʃn/</div>
+          <div class="wc-pos"><b>n.</b> 干预；介入</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Walking is a simple <b>intervention</b> for creativity.</div>
+          <div class="wc-tr">散步是一种激发创造力的简单干预。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">robust</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rəʊˈbʌst/ · 美 /roʊˈbʌst/</div>
+          <div class="wc-pos"><b>adj.</b> 稳健的；强有力的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The effect is <b>robust</b> across many studies.</div>
+          <div class="wc-tr">这一效应在多项研究中都很稳健。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">heterogeneous</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌhetərəˈdʒiːniəs/ · 美 /ˌhetərəˈdʒiːniəs/</div>
+          <div class="wc-pos"><b>adj.</b> 异质的；混杂的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The studies were <b>heterogeneous</b> in design.</div>
+          <div class="wc-tr">这些研究在设计上各不相同。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">causal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɔːzl/ · 美 /ˈkɔːzl/</div>
+          <div class="wc-pos"><b>adj.</b> 因果的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We cannot prove a <b>causal</b> link yet.</div>
+          <div class="wc-tr">我们还无法证明其中的因果关系。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ambiguous</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /æmˈbɪɡjuəs/ · 美 /æmˈbɪɡjuəs/</div>
+          <div class="wc-pos"><b>adj.</b> 模糊的；模棱两可的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The evidence on this point remains <b>ambiguous</b>.</div>
+          <div class="wc-tr">在这一点上证据仍然模糊。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">quantify</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkwɒntɪfaɪ/ · 美 /ˈkwɑːntɪfaɪ/</div>
+          <div class="wc-pos"><b>v.</b> 量化</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is hard to <b>quantify</b> the exact benefit.</div>
+          <div class="wc-tr">很难量化确切的好处。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intriguing</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈtriːɡɪŋ/ · 美 /ɪnˈtriːɡɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 有趣的；引人入胜的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Walking offers an <b>intriguing</b> way to think.</div>
+          <div class="wc-tr">散步是一种引人入胜的思考方式。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">feasible</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfiːzəbl/ · 美 /ˈfiːzəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 可行的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>This is a cheap and <b>feasible</b> habit to build.</div>
+          <div class="wc-tr">这是一个廉价且可行的习惯。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">arrive on foot</span><span class="zh">步行而至</span></li>
+          <li><span class="en">hold meetings while strolling</span><span class="zh">边走边开会</span></li>
+          <li><span class="en">folk wisdom</span><span class="zh">民间智慧</span></li>
+          <li><span class="en">divergent thinking</span><span class="zh">发散思维</span></li>
+          <li><span class="en">convergent thinking</span><span class="zh">收敛思维</span></li>
+          <li><span class="en">on the move</span><span class="zh">在走动中</span></li>
+          <li><span class="en">systematic review</span><span class="zh">系统综述</span></li>
+          <li><span class="en">meta-analysis</span><span class="zh">荟萃分析</span></li>
+          <li><span class="en">put one foot in front of the other</span><span class="zh">迈出脚步</span></li>
+          <li><span class="en">raise arousal</span><span class="zh">提高唤醒度</span></li>
+          <li><span class="en">free attention to wander</span><span class="zh">让注意力自由漫游</span></li>
+          <li><span class="en">fixed routines</span><span class="zh">固定的程式</span></li>
+          <li><span class="en">step away from a desk and a screen</span><span class="zh">离开书桌与屏幕</span></li>
+          <li><span class="en">walk toward better ideas</span><span class="zh">走向更好的想法</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>好点子常"步行而至"，历代创造者都推崇散步，科学开始检验。</li>
+          <li>斯坦福经典实验：走 vs 坐测创造力（发散思维）。</li>
+          <li>结果惊人：步行大幅提升发散思维，2026 综述汇总验证。</li>
+          <li>结论明确：迈步能增强想法的产生。</li>
+          <li>效应具体有限：强推发散，对收敛思维影响弱而模糊。</li>
+          <li>机制：提高唤醒、改善情绪、新鲜刺激、注意力漫游。</li>
+          <li>应用：无需器材，步行是最可行的创造力干预。</li>
+          <li>局限：证据异质、多为年轻人、因果未量化。</li>
+          <li>启示：卡壳时不妨动起来，让科学陪我们走向好点子。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Researchers Marily Oppezzo and Daniel Schwartz asked volunteers to complete tests of creativity while either seated or walking, measuring their ability to generate novel and useful ideas — a capacity known as divergent thinking.</div>
+        <div class="row"><b>主干：</b>Researchers ... asked volunteers to complete tests of creativity（主语 + asked + 宾语 + 不定式宾补）</div>
+        <div class="row"><b>时间状语（省略式）：</b>while either seated or walking（= while they were either seated or walking）</div>
+        <div class="row"><b>现在分词作状语：</b>measuring their ability to generate novel and useful ideas（"测量……的能力"）</div>
+        <div class="row"><b>同位语 + 过去分词作定语：</b>a capacity known as divergent thinking（解释 ability；known as 修饰 capacity）</div>
+        <div class="row"><b>考点：</b>ask sb to do；while + 分词（省略主语）；现在分词作状语；过去分词作定语；同位语</div>
+        <div class="row tr"><b>译文：</b>研究者玛丽·奥佩佐与丹尼尔·施瓦茨让志愿者在坐着或步行两种状态下完成创造力测试，测量他们产生新颖而有用想法的能力——一种被称为"发散思维"的能力。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A 2026 systematic review and meta-analysis has now synthesized this and dozens of later studies to ask how strong the effect really is.</div>
+        <div class="row"><b>主干：</b>A 2026 systematic review and meta-analysis has now synthesized this and dozens of later studies（主语 + has synthesized + 宾语）</div>
+        <div class="row"><b>目的状语：</b>to ask how strong the effect really is（不定式表目的）</div>
+        <div class="row"><b>宾语从句：</b>how strong the effect really is（how 引导，作 ask 的宾语）</div>
+        <div class="row"><b>考点：</b>现在完成时 has synthesized；不定式作目的状语；how 宾语从句（陈述语序）</div>
+        <div class="row tr"><b>译文：</b>2026 年的一项系统综述与荟萃分析，如今已把这项实验及其后数十项研究综合起来，以追问这一效应究竟有多强。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Walking reliably improves divergent thought — the broad search for many possible answers — while its influence on convergent thinking, the narrowing pursuit of a single correct solution, is weaker and more ambiguous.</div>
+        <div class="row"><b>主干（并列句）：</b>Walking reliably improves divergent thought ... while its influence ... is weaker and more ambiguous（while 表对比）</div>
+        <div class="row"><b>同位语（破折号引出）：</b>the broad search for many possible answers（解释 divergent thought）</div>
+        <div class="row"><b>同位语（逗号引出）：</b>the narrowing pursuit of a single correct solution（解释 convergent thinking）</div>
+        <div class="row"><b>考点：</b>while 表对比；并列句；同位语（破折号/逗号两种形式）</div>
+        <div class="row tr"><b>译文：</b>步行能稳定地改善发散思维——那种对多种可能答案的广泛搜寻——而它对收敛思维（对唯一正确解法的收窄追求）的影响，则更弱、也更模糊。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Physical activity raises arousal and improves mood, the changing environment provides fresh stimuli, and the gentle rhythm of walking may free attention to wander — together channeling mental energy toward cognitive exploration rather than fixed routines.</div>
+        <div class="row"><b>主干（三个并列分句）：</b>physical activity raises ... and improves ... ; the changing environment provides ... ; and the gentle rhythm ... may free attention ...</div>
+        <div class="row"><b>现在分词作结果状语：</b>together channeling mental energy toward cognitive exploration rather than fixed routines（"共同把……引向……而非……"）</div>
+        <div class="row"><b>考点：</b>多分句并列（分号连接）；现在分词作结果状语；rather than 对比结构</div>
+        <div class="row tr"><b>译文：</b>身体活动提高唤醒度并改善情绪，不断变化的环境提供新鲜的刺激，而散步舒缓的节奏可能让注意力得以自由漫游——这些共同把心理能量引向认知探索，而非固定的程式。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Nor can a causal link be fully quantified: it remains possible that the benefits come less from walking itself than from the simple act of stepping away from a desk and a screen.</div>
+        <div class="row"><b>主干（部分倒装）：</b>Nor can a causal link be fully quantified（否定词 Nor 置于句首，情态动词 can 提前）</div>
+        <div class="row"><b>同位语（冒号引出）：</b>it remains possible that ...（it 作形式主语，that 从句为真正主语）</div>
+        <div class="row"><b>比较结构：</b>less from walking itself than from the simple act of stepping away（less ... than ... "与其说……不如说……"）</div>
+        <div class="row"><b>考点：</b>Nor 句首部分倒装；形式主语 it；that 主语从句；less ... than 比较结构</div>
+        <div class="row tr"><b>译文：</b>因果关系也无法被完全量化：仍有可能，其益处与其说来自步行本身，不如说来自"离开书桌与屏幕"这个简单动作。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">好点子从何而来？几个世纪以来，历史上一些最有创造力的人一直坚信：答案往往"步行而至"。尼采写作前长时间散步，梭罗流连于林间，乔布斯边走边开会。如今，科学开始认真检验这条民间智慧。现代关于"步行与创造力"的研究始于斯坦福大学的一项著名实验：研究者玛丽·奥佩佐与丹尼尔·施瓦茨让志愿者在坐着或步行两种状态下完成创造力测试，测量他们产生新颖而有用想法的能力——即"发散思维"。结果惊人：步行带来了发散思维的大幅提升，走动中的人想出更多、也更原创的点子。2026 年的一项系统综述与荟萃分析，把这项实验及其后数十项研究综合起来，追问这一效应究竟有多强，结论清晰：在累积的实验中，步行产生了作者所称的发散思维的"大幅提升"，证实"迈出脚步"这一简单动作确能增强想法的产生。不过这一效应是"具体"而非"普遍"的：步行能稳定改善发散思维——对多种可能答案的广泛搜寻——而对收敛思维（对唯一正确解法的收窄追求）的影响则更弱、也更模糊。为什么运动会磨砺想象力？研究者提出几条机制：身体活动提高唤醒度、改善情绪，不断变化的环境提供新鲜刺激，散步舒缓的节奏让注意力得以自由漫游——这些共同把心理能量引向认知探索而非固定程式。对教育者与工作者而言，其启示十分实际：由于步行无需任何器材或训练，它堪称最触手可及的解锁创造性思维的"干预"，作者称之为既有趣又出奇廉价。当然，作者也谨慎指出局限：各研究设计差异很大、证据异质，且被试多为年轻人，结论未必人人适用；因果关系也无法完全量化——仍有可能，益处与其说来自步行本身，不如说来自"离开书桌与屏幕"这一简单动作。尽管如此，对学生的启示仍难以忽视：当思绪在难题前卡壳时，研究给出的最佳行动或许就是"动起来"——去走走、去漫游，让稳健的科学（而非仅仅民间传说）陪我们一步步走向更好的想法。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5 段，说说"发散思维"与"收敛思维"的区别；为什么步行对前者效果显著、对后者却较弱？结合第 8 段，谈谈"离开书桌"本身可能才是关键。</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"...the benefits come less from walking itself than from the simple act of stepping away from a desk and a screen."</span>（less ... than ... 与其说……不如说……）的句式，围绕「学习进步」「阅读收获」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 好点子常"步行而至"，科学开始检验</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 斯坦福实验：走 vs 坐测发散思维</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 结果惊人，2026 综述汇总验证</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 结论：步行大幅提升发散思维</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 效应具体：强推发散，弱于收敛</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 机制：唤醒、情绪、刺激与注意力漫游</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 应用：最可行的创造力"干预"</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：证据异质、因果未量化</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：卡壳时动起来，走向好点子</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 经典实验 → 综述验证 → 核心结论 → 效应边界 → 作用机制 → 应用价值 → 研究局限 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Scientific Reports / Stanford University / PMC 公开资料（2026-09-21 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>

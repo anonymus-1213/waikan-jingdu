@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 座头鲸的歌声，原来和潜水"同步"</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 海洋 / 动物行为 / 科普</div>
+  <h1>座头鲸的歌声，原来和潜水"同步"：在不同深度唱不同的歌</h1>
+  <div class="deck">Using suction-cup tags on 16 whales off Maui, researchers find that specific song themes match distinct phases of a whale's dive cycle</div>
+  <div class="byline"><span><b>来源</b> Current Biology / Syracuse University / Earth.com（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-19</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-19.jpg" alt="跃出水面的座头鲸（配图）">
+    <figcaption>配图：跃出海面的座头鲸（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>座头鲸的歌声是动物界最复杂的声音之一——雄性会在繁殖季反复吟唱由呻吟、鸣叫与低吟构成的旋律，动辄数小时。但长久以来，海洋生物学家始终困惑：这头唱歌的鲸，在水下到底在做什么？雪城大学的一支团队在毛伊岛附近给 16 头鲸装上能同时记录声音与运动的吸盘式标签，抓取了数千次潜水及其伴随的歌声。结果发表在《当代生物学》上：鲸歌的"主题"与其潜水循环的阶段惊人地一一对应——下潜时唱一套主题，转身上升时唱另一套，最深处的潜水恰与最繁复的乐段相伴。这意味着鲸并非随机歌唱，而是围绕自身呼吸与运动的节奏编排曲目。这一发现为研究者打开了一扇"声学窗口"：只靠"听"，或许就能推断一头鲸在潜水中的位置与姿态。本文拆解这项研究的工具、发现、机理、局限与保护启示。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">The song of the humpback whale is among the most complex sounds in the animal kingdom, a series of moans, cries and rumbles that a singing male may repeat for hours on end. Yet for all its beauty, one question has long puzzled marine biologists: what, exactly, is a singing whale doing beneath the waves while it performs?</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">A team of biologists at Syracuse University set out to answer that question with a tool that had never been applied in quite this way. Working off the island of Maui, they attached suction-cup <span class="kw" data-tip="v. 给……做标记；追踪（熟词僻义：n. 标签）">tags</span>, which record both sound and movement, to sixteen adult whales, capturing thousands of <span class="kw" data-tip="n./v. 潜水；下潜">dives</span> and the songs that accompanied them.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The results, published in the journal <em>Current Biology</em>, revealed a remarkably tight <span class="kw" data-tip="v. 相对应；相符">correspondence</span> between the structure of a whale's song and the stages of its dive. Specific song <span class="kw" data-tip="n. 主题；乐句">themes</span>, the researchers found, are matched to specific <span class="kw" data-tip="n. 阶段；时期">phases</span> of the dive cycle, as if each movement of the body were choreographed to a particular musical passage.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">As a whale <span class="kw" data-tip="v. 下潜；下降">descended</span>, it sang one set of themes; as it turned and <span class="kw" data-tip="v. 上升；升高">ascended</span> toward the surface, it sang another. The deepest portions of a dive, in particular, were associated with the most elaborate segments of the song, suggesting that the animals were not merely singing at random but organising their <span class="kw" data-tip="n. 曲目；全部技能">repertoire</span> around the rhythm of their own breath and motion.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">This link between sound and behaviour is more than a curiosity. Because singing whales are notoriously difficult to observe underwater, the discovery offers researchers a kind of <span class="kw" data-tip="adj. 声学的；声音的">acoustic</span> window: by listening to which theme a whale is singing, they may be able to <span class="kw" data-tip="v. 监测；监控">monitor</span> where it is in a dive and how its body is moving, without ever seeing it.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The finding also deepens our understanding of why whales sing at all. Humpback song is culturally <span class="kw" data-tip="v. 传递；传播">transmitted</span> — learned, modified and shared within populations — and its <span class="kw" data-tip="adj. 复杂精细的">intricate</span> structure is now shown to be inseparable from the physical act of diving, a feat that demands careful management of air and energy under crushing pressure.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">"The song is not just floating above the behaviour; it is woven into it," one of the researchers noted, adding that the correspondence could help scientists <span class="kw" data-tip="v. 传递；传达">convey</span> and track the <span class="kw" data-tip="adj. 生理的">physiological</span> state of whales in places and at depths where visual tracking is impossible.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The authors are careful to note the study's limits. The sample of sixteen whales came from a single breeding ground, and whether the same song-to-dive mapping holds for other populations, or for females and calves, remains an open question that will require far more listening.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For those who study and love the ocean, the work carries a <span class="kw" data-tip="adj. 深刻的；深远的">profound</span> <span class="kw" data-tip="n. 影响；含义；启示">implication</span>. It suggests that even the most familiar sounds of the sea still hold secrets, and that understanding them may be vital to protecting the <span class="kw" data-tip="adj. 难以捉摸的；难以发现的">elusive</span> creatures that produce them — whales whose hidden lives we are only beginning to hear.</span></div>
+
+      <p class="muted">原文出处：本文根据雪城大学（Syracuse University）生物学系研究《How a Whale's Dive Shapes Its Song》（发表于 Current Biology，2026-08）及 Earth.com、Syracuse Today 相关报道（2026-08-31）综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">acoustic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈkuːstɪk/ · 美 /əˈkuːstɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 声学的；声音的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Whales are studied using <b>acoustic</b> monitoring.</div>
+          <div class="wc-tr">人们借助声学监测来研究鲸。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tag</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /tæɡ/ · 美 /tæɡ/</div>
+          <div class="wc-pos"><b>v.</b> 给……做标记；追踪（熟词僻义：<b>n.</b> 标签）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Researchers <b>tag</b> the birds to follow their migration.</div>
+          <div class="wc-tr">研究者给鸟儿做标记以追踪其迁徙。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dive</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /daɪv/ · 美 /daɪv/</div>
+          <div class="wc-pos"><b>n./v.</b> 潜水；下潜</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The whale made a deep <b>dive</b> in search of food.</div>
+          <div class="wc-tr">那头鲸深深地潜入水中觅食。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sequence</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsiːkwəns/ · 美 /ˈsiːkwəns/</div>
+          <div class="wc-pos"><b>n.</b> 序列；一连串</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The song follows a fixed <b>sequence</b> of themes.</div>
+          <div class="wc-tr">这首歌遵循固定的主题序列。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">theme</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /θiːm/ · 美 /θiːm/</div>
+          <div class="wc-pos"><b>n.</b> 主题；乐句（音乐中反复出现的旋律单元）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The main <b>theme</b> of the song repeats again and again.</div>
+          <div class="wc-tr">这首歌的主旋律一遍又一遍地重复。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">correspond</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkɒrəˈspɒnd/ · 美 /ˌkɔːrəˈspɑːnd/</div>
+          <div class="wc-pos"><b>v.</b> 相对应；相符</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each song theme <b>corresponds</b> to a dive phase.</div>
+          <div class="wc-tr">每个乐句主题都对应一个潜水阶段。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">phase</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /feɪz/ · 美 /feɪz/</div>
+          <div class="wc-pos"><b>n.</b> 阶段；时期</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The project is now in its final <b>phase</b>.</div>
+          <div class="wc-tr">这个项目现在处于最后阶段。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">descend</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈsend/ · 美 /dɪˈsend/</div>
+          <div class="wc-pos"><b>v.</b> 下潜；下降</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The whale <b>descended</b> to the depths of the ocean.</div>
+          <div class="wc-tr">那头鲸下潜到了海洋深处。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ascend</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈsend/ · 美 /əˈsend/</div>
+          <div class="wc-pos"><b>v.</b> 上升；升高</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Hot air rises and <b>ascends</b> into the sky.</div>
+          <div class="wc-tr">热空气上升，升向天空。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pitch</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /pɪtʃ/ · 美 /pɪtʃ/</div>
+          <div class="wc-pos"><b>n.</b> 音高（熟词僻义：球场；投掷）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The singer's <b>pitch</b> rose to a thrilling height.</div>
+          <div class="wc-tr">那位歌手的音高升到了令人激动的高度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">range</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /reɪndʒ/ · 美 /reɪndʒ/</div>
+          <div class="wc-pos"><b>n.</b> 音域（熟词僻义：范围；射程）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The whale's song covers a wide <b>range</b> of tones.</div>
+          <div class="wc-tr">鲸的歌声涵盖了很宽的音域。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">repertoire</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrepətwɑː(r)/ · 美 /ˈrepərtwɑːr/</div>
+          <div class="wc-pos"><b>n.</b> 曲目；全部技能</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each population has its own song <b>repertoire</b>.</div>
+          <div class="wc-tr">每个种群都有自己的歌曲曲目。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intricate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɪntrɪkət/ · 美 /ˈɪntrɪkət/</div>
+          <div class="wc-pos"><b>adj.</b> 复杂精细的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The song has an <b>intricate</b> structure.</div>
+          <div class="wc-tr">这首歌有着复杂精细的结构。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">monitor</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒnɪtə(r)/ · 美 /ˈmɑːnɪtər/</div>
+          <div class="wc-pos"><b>v.</b> 监测；监控</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists <b>monitor</b> the whales from a distance.</div>
+          <div class="wc-tr">科学家在远处监测这些鲸。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">physiological</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌfɪziəˈlɒdʒɪkl/ · 美 /ˌfɪziəˈlɑːdʒɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 生理的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Diving places great <b>physiological</b> demands on whales.</div>
+          <div class="wc-tr">潜水对鲸提出了极大的生理要求。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">elusive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈluːsɪv/ · 美 /ɪˈluːsɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 难以捉摸的；难以发现的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Whales remain <b>elusive</b> and hard to observe.</div>
+          <div class="wc-tr">鲸依然难以捉摸、难以观察。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">convey</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈveɪ/ · 美 /kənˈveɪ/</div>
+          <div class="wc-pos"><b>v.</b> 传递；传达</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Whales use song to <b>convey</b> messages.</div>
+          <div class="wc-tr">鲸用歌声传递信息。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">transmit</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /trænzˈmɪt/ · 美 /trænzˈmɪt/</div>
+          <div class="wc-pos"><b>v.</b> 传递；传播</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Whale song is <b>transmitted</b> from one generation to the next.</div>
+          <div class="wc-tr">鲸歌代代相传。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">implication</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪmplɪˈkeɪʃn/ · 美 /ˌɪmplɪˈkeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 影响；含义；启示</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The finding has important <b>implications</b> for conservation.</div>
+          <div class="wc-tr">这一发现对保护工作有重要启示。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">profound</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prəˈfaʊnd/ · 美 /prəˈfaʊnd/</div>
+          <div class="wc-pos"><b>adj.</b> 深刻的；深远的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The discovery has a <b>profound</b> meaning for science.</div>
+          <div class="wc-tr">这一发现对科学有深远的意义。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">the animal kingdom</span><span class="zh">动物王国</span></li>
+          <li><span class="en">for hours on end</span><span class="zh">连续数小时</span></li>
+          <li><span class="en">set out to do sth</span><span class="zh">着手做某事</span></li>
+          <li><span class="en">suction-cup tags</span><span class="zh">吸盘式标签</span></li>
+          <li><span class="en">be matched to sth</span><span class="zh">与……相匹配</span></li>
+          <li><span class="en">as if ... were ...</span><span class="zh">仿佛……（虚拟语气）</span></li>
+          <li><span class="en">at random</span><span class="zh">随机地</span></li>
+          <li><span class="en">a kind of acoustic window</span><span class="zh">一扇"声学窗口"</span></li>
+          <li><span class="en">be woven into sth</span><span class="zh">被编织进……之中</span></li>
+          <li><span class="en">a single breeding ground</span><span class="zh">单一的繁殖地</span></li>
+          <li><span class="en">remain an open question</span><span class="zh">仍是一个悬而未决的问题</span></li>
+          <li><span class="en">hidden lives</span><span class="zh">隐秘的生活</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>座头鲸歌声是动物界最复杂的声音，但唱歌时鲸在水下做什么一直成谜。</li>
+          <li>雪城团队用吸盘式标签追踪毛伊岛附近 16 头鲸的潜水与歌声。</li>
+          <li>发现：鲸歌主题与潜水阶段惊人地一一对应。</li>
+          <li>下潜与上升唱不同主题，最深潜水配最繁复乐段。</li>
+          <li>声学"窗口"：听歌即可推断鲸的位置与姿态。</li>
+          <li>歌声是文化传播的，其结构与潜水生理密不可分。</li>
+          <li>研究者称歌声与行为"编织"在一起，可远程监测鲸。</li>
+          <li>局限：样本仅 16 头、单一繁殖地，能否推广待验证。</li>
+          <li>启示：熟悉的海声仍藏秘密，理解它们关乎保护。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The song of the humpback whale is among the most complex sounds in the animal kingdom, a series of moans, cries and rumbles that a singing male may repeat for hours on end.</div>
+        <div class="row"><b>主干：</b>The song ... is among the most complex sounds（主语 + is + 表语）</div>
+        <div class="row"><b>后置定语：</b>of the humpback whale 修饰 song；in the animal kingdom 修饰 sounds</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a series of moans, cries and rumbles that a singing male may repeat for hours on end（解释 the song；that 引导定语从句）</div>
+        <div class="row"><b>考点：</b>among the + 最高级；同位语；that 定语从句；for hours on end 短语</div>
+        <div class="row tr"><b>译文：</b>座头鲸的歌声是动物界最复杂的声音之一——那是一连串由呻吟、鸣叫与低吟构成的旋律，一头歌唱的雄鲸可以连续重复数小时。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Working off the island of Maui, they attached suction-cup tags, which record both sound and movement, to sixteen adult whales, capturing thousands of dives and the songs that accompanied them.</div>
+        <div class="row"><b>主干：</b>they attached suction-cup tags ... to sixteen adult whales（主语 + attached A to B）</div>
+        <div class="row"><b>现在分词作状语：</b>Working off the island of Maui（"在毛伊岛附近工作"）</div>
+        <div class="row"><b>非限制性定语从句：</b>which record both sound and movement（which 指代 tags）</div>
+        <div class="row"><b>现在分词作结果状语：</b>capturing thousands of dives and the songs that accompanied them（内含 that 定语从句修饰 songs）</div>
+        <div class="row"><b>考点：</b>现在分词作状语；attach A to B；非限制性定语从句；现在分词作结果状语</div>
+        <div class="row tr"><b>译文：</b>在毛伊岛附近开展工作期间，他们把能同时记录声音与运动的吸盘式标签装到 16 头成年鲸身上，捕捉到了数千次潜水及其伴随的歌声。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Specific song themes, the researchers found, are matched to specific phases of the dive cycle, as if each movement of the body were choreographed to a particular musical passage.</div>
+        <div class="row"><b>主干：</b>Specific song themes ... are matched to specific phases of the dive cycle（主语 + are matched to + 宾语）</div>
+        <div class="row"><b>插入语：</b>the researchers found（"研究者发现"）</div>
+        <div class="row"><b>方式状语从句（虚拟语气）：</b>as if each movement of the body were choreographed to a particular musical passage（as if 后用 were，表"仿佛"）</div>
+        <div class="row"><b>考点：</b>插入语；被动语态 be matched to；as if 虚拟语气（were 表非真实）</div>
+        <div class="row tr"><b>译文：</b>研究者发现，特定的乐句主题与潜水循环的特定阶段相匹配，仿佛身体的每一个动作都对应着某一段特定的旋律。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Because singing whales are notoriously difficult to observe underwater, the discovery offers researchers a kind of acoustic window: by listening to which theme a whale is singing, they may be able to monitor where it is in a dive and how its body is moving, without ever seeing it.</div>
+        <div class="row"><b>主干：</b>the discovery offers researchers a kind of acoustic window（主语 + offers + 间接宾语 + 直接宾语）</div>
+        <div class="row"><b>原因状语从句：</b>Because singing whales are notoriously difficult to observe underwater</div>
+        <div class="row"><b>同位语（冒号引出）：</b>by listening to which theme ... they may be able to monitor where ... and how ...（介词 + which 宾语从句；where/how 宾语从句并列）</div>
+        <div class="row"><b>考点：</b>because 原因状语从句；offer sb sth 双宾语；"介词 + which" 宾语从句；where/how 宾语从句并列</div>
+        <div class="row tr"><b>译文：</b>由于唱歌的鲸在水下极难观察，这一发现为研究者提供了一扇"声学窗口"：通过听一头鲸正在唱哪个主题，他们或许就能监测它在潜水中的位置与身体的运动方式，而无须真正看到它。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Humpback song is culturally transmitted — learned, modified and shared within populations — and its intricate structure is now shown to be inseparable from the physical act of diving, a feat that demands careful management of air and energy under crushing pressure.</div>
+        <div class="row"><b>主干：</b>Humpback song is culturally transmitted ... and its intricate structure is now shown to be inseparable from the physical act of diving（并列句）</div>
+        <div class="row"><b>插入语（过去分词并列）：</b>learned, modified and shared within populations（补充说明"文化传播"）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a feat that demands careful management of air and energy（解释 diving；that 定语从句）</div>
+        <div class="row"><b>考点：</b>并列句；过去分词并列作插入语；be inseparable from；同位语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>座头鲸的歌声是文化传播的——在种群内部习得、修改与共享——而其精细复杂的结构如今被证明与潜水的身体动作密不可分，这一壮举要求在巨大水压下精心调配空气与能量。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">座头鲸的歌声是动物界最复杂的声音之一，雄性会在繁殖季反复吟唱由呻吟、鸣叫与低吟构成的旋律，动辄连续数小时，但海洋生物学家始终困惑：这头唱歌的鲸在水下到底在做什么。雪城大学的一支团队在毛伊岛附近展开研究，把能同时记录声音与运动的吸盘式标签装到 16 头成年鲸身上，抓取了数千次潜水及其伴随的歌声。结果发表在《当代生物学》上，揭示出鲸歌结构与潜水阶段之间惊人而紧密的对应关系：特定的乐句主题与潜水循环的特定阶段相匹配，仿佛身体每个动作都对应某段特定旋律。具体而言，鲸下潜时唱一套主题，转身上升时唱另一套，而潜水的最深处恰与最繁复的乐段相伴——这说明鲸并非随机歌唱，而是围绕自身呼吸与运动的节奏编排曲目。这一发现的意义远不止猎奇：由于唱歌的鲸在水下极难观察，它为研究者提供了一扇"声学窗口"，通过"听"就能推断鲸在潜水中的位置与姿态。它同时也深化了我们对鲸为何歌唱的理解——座头鲸的歌声是文化传播的，在种群内习得、修改与共享，其精细结构与潜水的身体动作密不可分，而潜水需要在巨大水压下精心调配空气与能量。研究者形容"歌声并非浮在行为之上，而是被编织进行为之中"，并指出这种对应关系有助于在视觉追踪不可能的海域与深度远程监测鲸的生理状态。不过作者也谨慎说明局限：样本仅 16 头、来自单一繁殖地，这种"歌—潜"对应是否适用于其他种群、雌鲸或幼鲸，仍是待解之谜。对研究并热爱海洋的人而言，这项研究传递了更深的信息：即便是大海里最熟悉的声音，也仍藏着秘密，而理解这些秘密，或许是保护那些发出歌声的、行踪隐秘的动物所不可或缺的——它们的隐秘生活，我们才刚刚开始"听见"。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6 段，说说"声学窗口"指的是什么？为什么鲸歌与潜水的对应关系能为研究者提供一种"听声知行为"的监测手段？</div>
+      <div class="q"><b>仿写题：</b>仿照第 3 段 <span style="font-family:Georgia,serif;font-style:italic">"as if each movement of the body were choreographed to a particular musical passage"</span>（as if + were 虚拟语气）的句式，围绕「自然之美」「专注学习」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 鲸歌最复杂，但唱歌时鲸在做什么成谜</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 方法：吸盘式标签追踪 16 头鲸的潜水与歌声</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 核心发现：歌声主题与潜水阶段一一对应</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 细节：不同深度唱不同主题，最深配最繁复</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 意义：声学"窗口"可听声知行为</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 背景：歌声是文化传播，与潜水生理密不可分</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 研究者引语：歌声被编织进行为，可远程监测</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：样本少、单一繁殖地，待进一步验证</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：熟悉的海声仍藏秘密，理解关乎保护</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究方法 → 核心发现 → 具体表现 → 研究意义 → 背景机理 → 专家引语 → 研究局限 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Current Biology / Syracuse University / Earth.com 公开资料（2026-09-19 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>

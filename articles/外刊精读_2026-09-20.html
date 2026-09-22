@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 学校"手机禁令"真的有效吗</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Society · 人与社会 / 教育 / 科技 / 社会现象</div>
+  <h1>学校"手机禁令"真的有效吗？一项全国研究的意外发现</h1>
+  <div class="deck">A national study of lockable-pouch phone bans finds usage drops sharply — but in the first year, disciplinary incidents rise and student well-being falls</div>
+  <div class="byline"><span><b>来源</b> NBER / Stanford / University of Michigan（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-20</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-20.jpg" alt="教室里的手机（配图）">
+    <figcaption>配图：课桌上的手机（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>从欧洲到美国，智能手机正从"课堂常客"变成"被禁之物"：政府、学区和学校纷纷出台禁令，笃信"禁手机"能提升专注、修复社交、提高成绩。但严谨的证据却姗姗来迟。美国全国经济研究所（NBER）一项由经济学家亨特·奥尔科特领衔的工作论文，基于数百所采用"锁袋"（Yondr 式密封布袋）的学校，给出了迄今最全面的全国性证据。研究者利用各校引入锁袋的时间差做"双重差分"分析，结果出人意料：手机使用确实骤降，但第一年纪律处分事件激增、学生主观幸福感下滑；此后几年幸福感回升、纪律事件增幅消退；然而即便多年过去，也没有明确证据表明锁袋提升了学业成绩。这项研究的意义在于，它把公众讨论中常被混为一谈的两件事——"减少手机使用"与"改善学校生活"——区分了开来：一项禁令可以做到前者，却未必在短期内兑现后者。本文拆解其方法、反直觉发现、局限与对学校与家庭的启示。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Across much of the world, the school smartphone has gone from classroom fixture to forbidden object. Governments, districts and individual schools have rushed to <span class="kw" data-tip="v. 强制实行；推行">impose</span> <span class="kw" data-tip="n. 限制；约束">restrictions</span>, convinced that banning phones will sharpen attention, restore social life and lift grades. Yet for all this enthusiasm, <span class="kw" data-tip="adj. 严谨的；严格的">rigorous</span> evidence on what bans actually accomplish has been slow to arrive.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">A new working paper from the National Bureau of Economic Research, led by economist Hunt Allcott, now offers the most comprehensive look yet. Drawing on <span class="kw" data-tip="adj. 全国性的">nationwide</span> data from hundreds of schools that <span class="kw" data-tip="v. 采纳；采用（熟词僻义：收养）">adopted</span> lockable <span class="kw" data-tip="n. 小袋；（封存手机的）锁袋">pouches</span> — sealed fabric bags in which students store phones during the day — the study tracks outcomes over several years.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">Because schools introduced pouches at different times, the researchers could compare what changed in adopting schools against what happened in otherwise similar schools, a <span class="kw" data-tip="adj. 纵向的；长期的">longitudinal</span> technique known as difference-in-differences that helps separate the effect of the policy from broader trends.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">On the surface, the bans worked as intended. Phone use fell sharply in the first year, confirming that the pouches did their immediate job of separating students from their screens. The question was whether this separation translated into better schooling.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The first year brought a surprise. Rather than improving, <span class="kw" data-tip="adj. 纪律的；惩戒的">disciplinary</span> incidents <span class="kw" data-tip="v./n. 激增（熟词僻义：尖钉）">spiked</span>, and students reported lower subjective <span class="kw" data-tip="n. 幸福感">well-being</span> — findings the authors read as short-term <span class="kw" data-tip="n. 干扰；中断">disruption</span> as schools and students adjusted to a sudden change in daily life.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Over time, however, the picture shifted. In later years the reported well-being recovered and the rise in disciplinary incidents <span class="kw" data-tip="v. 消退；逐渐消失">faded</span>, suggesting that the initial shock, while real, was temporary. What did not emerge, even after several years, was clear evidence that the pouches lifted academic achievement.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">"The results are more <span class="kw" data-tip="n. 细微差别">nuanced</span> than either side of the debate might wish," the authors observe, noting that the <span class="kw" data-tip="n. 文献（熟词僻义：文学）">literature</span> to date is strikingly mixed: some studies find small academic gains, others find none, and none offers a simple, <span class="kw" data-tip="adj. 令人信服的">compelling</span> verdict.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The finding is <span class="kw" data-tip="adj. 反直觉的">counterintuitive</span> precisely because it separates two things that public debate tends to blend: reducing phone use, and improving school life. A ban can achieve the first without delivering the second, at least in the short run.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For schools and families, the message is one of patience and humility. A phone ban is not a quick fix: its <span class="kw" data-tip="n. 功效；有效性">efficacy</span> depends on careful <span class="kw" data-tip="n. 实施；执行">implementation</span>, and the <span class="kw" data-tip="n. 直觉">intuition</span> that "less phone means better school" may take years to <span class="kw" data-tip="v. 超过；胜过">outweigh</span> the short-term costs of adjustment — if it ever does.</span></div>
+
+      <p class="muted">原文出处：本文根据美国全国经济研究所（NBER）工作论文《The Effects of School Phone Bans: National Evidence from Lockable Pouches》（Allcott 等，2026，Working Paper 35132）及 Stanford、University of Michigan 相关解读（2026-05）综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">impose</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪmˈpəʊz/ · 美 /ɪmˈpoʊz/</div>
+          <div class="wc-pos"><b>v.</b> 强制实行；推行</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The school decided to <b>impose</b> a ban on phones.</div>
+          <div class="wc-tr">学校决定强制推行手机禁令。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">restriction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈstrɪkʃn/ · 美 /rɪˈstrɪkʃn/</div>
+          <div class="wc-pos"><b>n.</b> 限制；约束</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The new <b>restriction</b> applies to all students.</div>
+          <div class="wc-tr">这项新限制适用于所有学生。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">adopt</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈdɒpt/ · 美 /əˈdɑːpt/</div>
+          <div class="wc-pos"><b>v.</b> 采纳；采用（熟词僻义：收养）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Many schools have <b>adopted</b> the new policy.</div>
+          <div class="wc-tr">许多学校已采纳这项新政策。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pouch</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /paʊtʃ/ · 美 /paʊtʃ/</div>
+          <div class="wc-pos"><b>n.</b> 小袋；（封存手机的）锁袋</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Students lock their phones in a <b>pouch</b> each morning.</div>
+          <div class="wc-tr">学生们每天早上把手机锁进袋子里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nationwide</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌneɪʃnˈwaɪd/ · 美 /ˌneɪʃnˈwaɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 全国性的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study drew on <b>nationwide</b> school data.</div>
+          <div class="wc-tr">这项研究利用了全国性的学校数据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">longitudinal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌlɒŋɡɪˈtjuːdɪnl/ · 美 /ˌlɑːndʒɪˈtuːdɪnl/</div>
+          <div class="wc-pos"><b>adj.</b> 纵向的；长期的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>longitudinal</b> study follows the same group over time.</div>
+          <div class="wc-tr">纵向研究是对同一群体进行长期追踪。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disciplinary</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdɪsəˈplɪnəri/ · 美 /ˈdɪsəpləneri/</div>
+          <div class="wc-pos"><b>adj.</b> 纪律的；惩戒的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The school recorded more <b>disciplinary</b> incidents.</div>
+          <div class="wc-tr">这所学校记录的纪律处分事件更多了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">well-being</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌwel ˈbiːɪŋ/ · 美 /ˌwel ˈbiːɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 幸福感；身心健康</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Regular exercise improves our <b>well-being</b>.</div>
+          <div class="wc-tr">规律运动能提升我们的幸福感。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">spike</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /spaɪk/ · 美 /spaɪk/</div>
+          <div class="wc-pos"><b>v./n.</b> 激增；飙升（熟词僻义：尖钉）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Complaints <b>spiked</b> in the first month.</div>
+          <div class="wc-tr">投诉在第一个月激增。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fade</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /feɪd/ · 美 /feɪd/</div>
+          <div class="wc-pos"><b>v.</b> 消退；逐渐消失</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The effect gradually <b>faded</b> over the years.</div>
+          <div class="wc-tr">这种效应随年份逐渐消退。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">counterintuitive</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkaʊntərɪnˈtjuːɪtɪv/ · 美 /ˌkaʊntərɪnˈtuːɪtɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 反直觉的；出人意料的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The result was <b>counterintuitive</b> but real.</div>
+          <div class="wc-tr">这个结果虽然反直觉，却是真实的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disruption</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪsˈrʌpʃn/ · 美 /dɪsˈrʌpʃn/</div>
+          <div class="wc-pos"><b>n.</b> 干扰；中断</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The change caused temporary <b>disruption</b> in class.</div>
+          <div class="wc-tr">这一变化在课堂上造成了暂时的干扰。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">literature</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈlɪtrətʃə(r)/ · 美 /ˈlɪtərətʃər/</div>
+          <div class="wc-pos"><b>n.</b> 文献（熟词僻义：文学）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>literature</b> on phone bans is still mixed.</div>
+          <div class="wc-tr">关于手机禁令的文献仍然意见不一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nuance</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈnjuːɑːns/ · 美 /ˈnuːɑːns/</div>
+          <div class="wc-pos"><b>n.</b> 细微差别</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The debate is full of <b>nuance</b>.</div>
+          <div class="wc-tr">这场争论充满了细微差别。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">compelling</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəmˈpelɪŋ/ · 美 /kəmˈpelɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 令人信服的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is no <b>compelling</b> evidence yet.</div>
+          <div class="wc-tr">目前还没有令人信服的证据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rigorous</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrɪɡərəs/ · 美 /ˈrɪɡərəs/</div>
+          <div class="wc-pos"><b>adj.</b> 严谨的；严格的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The policy needs <b>rigorous</b> testing.</div>
+          <div class="wc-tr">这项政策需要经过严谨的检验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">efficacy</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈefɪkəsi/ · 美 /ˈefɪkəsi/</div>
+          <div class="wc-pos"><b>n.</b> 功效；有效性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>efficacy</b> of the ban is still debated.</div>
+          <div class="wc-tr">这项禁令的有效性仍存争议。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intuition</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntjuˈɪʃn/ · 美 /ˌɪntuˈɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 直觉</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Our <b>intuition</b> is not always correct.</div>
+          <div class="wc-tr">我们的直觉并不总是正确的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outweigh</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌaʊtˈweɪ/ · 美 /ˌaʊtˈweɪ/</div>
+          <div class="wc-pos"><b>v.</b> 超过；胜过</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The benefits may <b>outweigh</b> the costs in the end.</div>
+          <div class="wc-tr">最终收益可能会超过成本。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">implementation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪmplɪmenˈteɪʃn/ · 美 /ˌɪmplɪmenˈteɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 实施；执行</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The success depends on careful <b>implementation</b>.</div>
+          <div class="wc-tr">成功与否取决于细致的实施。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">classroom fixture</span><span class="zh">课堂常客</span></li>
+          <li><span class="en">forbidden object</span><span class="zh">被禁止之物</span></li>
+          <li><span class="en">rush to do sth</span><span class="zh">争先恐后做某事</span></li>
+          <li><span class="en">lift grades</span><span class="zh">提高成绩</span></li>
+          <li><span class="en">rigorous evidence</span><span class="zh">严谨的证据</span></li>
+          <li><span class="en">a working paper</span><span class="zh">工作论文</span></li>
+          <li><span class="en">lockable pouches</span><span class="zh">可锁袋</span></li>
+          <li><span class="en">difference-in-differences</span><span class="zh">双重差分法</span></li>
+          <li><span class="en">separate A from B</span><span class="zh">把 A 与 B 区分开</span></li>
+          <li><span class="en">on the surface</span><span class="zh">表面上看</span></li>
+          <li><span class="en">translate into</span><span class="zh">转化为</span></li>
+          <li><span class="en">disciplinary incidents</span><span class="zh">纪律处分事件</span></li>
+          <li><span class="en">subjective well-being</span><span class="zh">主观幸福感</span></li>
+          <li><span class="en">a quick fix</span><span class="zh">速效之法</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>手机从课堂常客变被禁之物，各国纷纷禁，但严谨证据滞后。</li>
+          <li>NBER 工作论文基于数百所采用锁袋的学校，给出最全证据。</li>
+          <li>利用各校引入时间差做"双重差分"，剥离政策与趋势。</li>
+          <li>表面看禁令奏效：第一年手机使用骤降。</li>
+          <li>意外：第一年纪律事件激增、主观幸福感下滑。</li>
+          <li>几年后幸福感回升、纪律增幅消退，但学业仍无提升证据。</li>
+          <li>作者称结果比争论双方想象的更微妙，文献总体混杂。</li>
+          <li>发现反直觉，因它区分"减少使用"与"改善学校生活"。</li>
+          <li>启示：禁令非速效药，实施与耐心决定其效力。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Drawing on nationwide data from hundreds of schools that adopted lockable pouches — sealed fabric bags in which students store phones during the day — the study tracks outcomes over several years.</div>
+        <div class="row"><b>主干：</b>the study tracks outcomes over several years（主语 + tracks + 宾语）</div>
+        <div class="row"><b>现在分词作状语：</b>Drawing on nationwide data from hundreds of schools（"利用……数据"）</div>
+        <div class="row"><b>定语从句：</b>that adopted lockable pouches（修饰 schools）</div>
+        <div class="row"><b>同位语 + "介词 + which" 定语从句：</b>sealed fabric bags in which students store phones during the day（解释 pouches；in which 修饰 bags）</div>
+        <div class="row"><b>考点：</b>现在分词作状语；that 定语从句；同位语；"介词 + which" 定语从句</div>
+        <div class="row tr"><b>译文：</b>这项研究利用数百所采用了锁袋——学生白天存放手机的密封布袋——的学校的全国性数据，对长达数年的结果进行追踪。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Because schools introduced pouches at different times, the researchers could compare what changed in adopting schools against what happened in otherwise similar schools, a longitudinal technique known as difference-in-differences that helps separate the effect of the policy from broader trends.</div>
+        <div class="row"><b>主干：</b>the researchers could compare what changed ... against what happened ...（主语 + compare A against B）</div>
+        <div class="row"><b>原因状语从句：</b>Because schools introduced pouches at different times</div>
+        <div class="row"><b>宾语从句并列：</b>what changed in adopting schools / what happened in otherwise similar schools（两个 what 从句）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a longitudinal technique known as difference-in-differences that helps separate the effect ...（known as 过去分词作定语；that 定语从句）</div>
+        <div class="row"><b>考点：</b>because 原因状语从句；what 宾语从句；过去分词作定语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>由于各校在不同时间引入锁袋，研究者得以把"采用禁令的学校发生了什么变化"与"其他情况相似的学校发生了什么"进行比较——这是一种被称为"双重差分"的纵向方法，有助于把政策的效应与更广泛的趋势区分开来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Rather than improving, disciplinary incidents spiked, and students reported lower subjective well-being — findings the authors read as short-term disruption as schools and students adjusted to a sudden change in daily life.</div>
+        <div class="row"><b>主干（并列句）：</b>disciplinary incidents spiked, and students reported lower subjective well-being</div>
+        <div class="row"><b>让步状语（省略式）：</b>Rather than improving（"非但没有改善"）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>findings the authors read as short-term disruption（省略 that 的定语从句修饰 findings）</div>
+        <div class="row"><b>时间状语从句：</b>as schools and students adjusted to a sudden change in daily life</div>
+        <div class="row"><b>考点：</b>rather than + 现在分词；并列句；省略 that 的定语从句；as 时间状语从句</div>
+        <div class="row tr"><b>译文：</b>情况非但没有改善，纪律处分事件反而激增，学生报告的主观幸福感也下降了——研究者把这些发现解读为：学校与学生适应日常生活骤然改变时出现的短期干扰。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The finding is counterintuitive precisely because it separates two things that public debate tends to blend: reducing phone use, and improving school life.</div>
+        <div class="row"><b>主干：</b>The finding is counterintuitive（主语 + is + 表语）</div>
+        <div class="row"><b>原因状语从句：</b>precisely because it separates two things（强调"恰恰因为"）</div>
+        <div class="row"><b>定语从句：</b>that public debate tends to blend（修饰 two things）</div>
+        <div class="row"><b>同位语（冒号引出）：</b>reducing phone use, and improving school life（解释 two things）</div>
+        <div class="row"><b>考点：</b>表语 + because 原因状语从句；that 定语从句；同位语</div>
+        <div class="row tr"><b>译文：</b>这一发现之所以反直觉，恰恰在于它把公众讨论中常被混为一谈的两件事区分了开来：减少手机使用，与改善学校生活。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A phone ban is not a quick fix: its efficacy depends on careful implementation, and the intuition that "less phone means better school" may take years to outweigh the short-term costs of adjustment — if it ever does.</div>
+        <div class="row"><b>主干：</b>A phone ban is not a quick fix（主语 + is + 表语）</div>
+        <div class="row"><b>同位语（冒号引出）：</b>its efficacy depends on careful implementation, and the intuition ... may take years to outweigh ...（两个并列分句解释"不是速效药"）</div>
+        <div class="row"><b>同位语从句：</b>that "less phone means better school"（解释 the intuition）</div>
+        <div class="row"><b>条件状语从句：</b>if it ever does（"如果它真的能的话"，语气谨慎）</div>
+        <div class="row"><b>考点：</b>冒号引出同位语；that 同位语从句；take years to do；if 条件状语从句（省略 + 谨慎语气）</div>
+        <div class="row tr"><b>译文：</b>手机禁令并非速效之法：它的有效性取决于细致的实施，而"少用手机，学校就会变好"这一直觉，可能要花上数年才能胜过短期调整的代价——如果它真能胜过的话。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">在世界许多地方，学校里的智能手机已经从"课堂常客"变成了"被禁止之物"：政府、学区和学校纷纷出台限制措施，笃信禁手机能提升专注、修复社交、提高成绩。然而，关于禁令究竟能带来什么，严谨的证据却姗姗来迟。美国全国经济研究所（NBER）一项由经济学家亨特·奥尔科特领衔的工作论文，基于数百所采用"锁袋"（密封布袋，学生白天把手机锁在里面）的学校的全国性数据，给出了迄今最全面的图景。由于各校引入锁袋的时间各不相同，研究者得以采用"双重差分"这一纵向方法，把采纳禁令的学校与其他情况相似的学校进行比较，从而将政策的效应与更广泛的趋势区分开来。表面上看，禁令如期奏效——第一年手机使用量大幅下降，锁袋完成了"把学生与屏幕分开"的直接任务。但第一年却出现了出人意料的转折：纪律处分事件非但没有减少反而激增，学生报告的主观幸福感也下降了，研究者把这解读为学校与学生在适应日常生活骤然改变时出现的短期干扰。不过随着时间推移，图景又发生了变化：几年后报告中的幸福感回升，纪律事件的增幅也逐渐消退，说明最初的冲击虽然真实却是暂时的；而即便多年过去，也没有明确证据表明锁袋提升了学业成绩。作者指出，结果比争论双方希望的都更微妙——迄今的文献总体上意见混杂：有的研究发现小幅学业提升，有的则一无所获，没有任何一项给出简单、令人信服的定论。这一发现之所以反直觉，恰恰在于它把公众讨论中常被混为一谈的两件事——"减少手机使用"与"改善学校生活"——区分了开来：一项禁令可以做到前者，却未必在短期内兑现后者。对学校和家庭而言，这传递的是耐心与谦逊：手机禁令并非速效药，其有效性取决于细致的实施，而"少用手机、学校就会变好"的直觉，或许要花上数年才能胜过短期调整的代价——如果它真能胜过的话。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6 段，为什么禁令第一年会出现"纪律事件激增、幸福感下滑"的反直觉现象？结合第 8 段，谈谈"减少手机使用"与"改善学校生活"为何不能划等号。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"A phone ban is not a quick fix: its efficacy depends on careful implementation..."</span>（主句 + 冒号引出同位语解释）的句式，围绕「坚持阅读」「合理使用网络」或「健康作息」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 各国竞相禁手机，但严谨证据滞后</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 研究：NBER 基于数百所锁袋学校的全国证据</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 方法："双重差分"剥离政策与趋势</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 表面奏效：第一年手机使用骤降</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 意外：纪律事件激增、幸福感下滑</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 数年后回升，但学业仍无提升证据</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 作者：结果微妙，文献总体混杂</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 关键：区分"减少使用"与"改善学校生活"</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：禁令非速效药，实施与耐心决定效力</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究背景 → 研究方法 → 初步结果 → 反直觉发现 → 长期结果 → 作者解读 → 关键辨析 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：NBER / Stanford / University of Michigan 公开资料（2026-09-20 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
