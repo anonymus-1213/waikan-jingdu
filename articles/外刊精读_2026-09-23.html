@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 深睡眠里的"清洁工"：大脑如何趁熟睡冲洗废物</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Health · 人与自我 / 健康 / 神经科学 / 科普</div>
+  <h1>深睡眠里的"清洁工"：科学家揭示大脑如何趁你熟睡"冲洗"废物</h1>
+  <div class="deck">A study reveals how slow, rhythmic waves of a signalling molecule pump cerebrospinal fluid through the sleeping brain to flush out metabolic waste</div>
+  <div class="byline"><span><b>来源</b> Cell / University of Copenhagen / Nature News（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-23</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-23.jpg" alt="深睡眠中的大脑（配图）">
+    <figcaption>配图：深睡眠中的大脑清洁意象（图片来源：AutoGLM Seedream 生成，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>我们常听说"睡眠是大脑的排毒时间"，但大脑究竟如何"自我清洁"，长期是个谜。十年前，科学家发现大脑有一套名为"类淋巴系统"的废物清除网络——脑脊液像潮水一样流经脑组织，把代谢废物冲刷出去。2025 年发表在《细胞》的一项研究，首次看清了驱动这股"潮水"的"泵"：深睡眠时，脑干会以大约每 50 秒一次的节奏释放去甲肾上腺素，让血管有规律地收缩，像泵一样把脑脊液压进大脑深处、洗走包括与阿尔茨海默病相关的蛋白在内的废物。更令人警醒的是，研究者在实验中还发现，常用安眠药唑吡坦会削弱这种"泵血"节律。本文带你走近这场大脑深处的"夜间大扫除"。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Every night, while we sleep, the brain appears to give itself a thorough cleaning, yet for decades scientists could not explain precisely how. The discovery of the <span class="kw" data-tip="adj. 类淋巴的">glymphatic</span> system in 2013 showed that <span class="kw" data-tip="adj. 脑脊液的">cerebrospinal</span> <span class="kw" data-tip="n. 液体；流体">fluid</span> flows through the brain's tissue, but what drives this tide has remained one of neuroscience's most stubborn puzzles.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">A study published in the journal <em>Cell</em>, led by researchers at the University of Copenhagen and the University of Oxford, now claims to have located the long-sought "pump". The team focused on <span class="kw" data-tip="n. 去甲肾上腺素">norepinephrine</span>, a signalling <span class="kw" data-tip="n. 分子">molecule</span> that the <span class="kw" data-tip="n. 脑干">brainstem</span> releases in slow, <span class="kw" data-tip="adj. 有节奏的；周期性的">rhythmic</span> waves during deep, non-REM sleep.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The researchers observed that every fifty seconds or so, a surge of norepinephrine makes blood <span class="kw" data-tip="n. 血管；容器">vessels</span> in the brain <span class="kw" data-tip="v. 收缩（熟词僻义：n. 合同）">contract</span>, and each contraction squeezes cerebrospinal fluid through the tissue, <span class="kw" data-tip="v. 冲洗；冲刷（熟词僻义：n. 脸红）">flushing</span> out <span class="kw" data-tip="adj. 代谢的；新陈代谢的">metabolic</span> waste. This slow "vasomotion", they argue, acts as a piston whose regular strokes wash the sleeping brain.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">To watch the process unfold, the scientists implanted fibre-optic probes into the brains of living mice, recording norepinephrine levels and fluid movement in real time as the animals slept. With <span class="kw" data-tip="adj. 荧光的">fluorescent</span> <span class="kw" data-tip="n. 示踪剂；追踪物">tracers</span> injected into the fluid, the team could track the passage of waste from deep regions toward the surface.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The waste being removed includes amyloid-beta, the sticky protein whose <span class="kw" data-tip="n. 积累；堆积">accumulation</span> is a <span class="kw" data-tip="n. 标志；特征">hallmark</span> of Alzheimer's disease. Sleep has long been linked to the risk of <span class="kw" data-tip="n. 痴呆">dementia</span>, and the new findings, if they hold, provide a <span class="kw" data-tip="adj. 机理层面的；机械的">mechanical</span> explanation for that connection.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Most strikingly, the team tested <span class="kw" data-tip="n. 唑吡坦（一种安眠药）">zolpidem</span>, a widely used sleep <span class="kw" data-tip="n. 药物；药剂">medication</span>, and found that it suppressed the norepinephrine waves and reduced fluid transport. This raises the unsettling possibility that some sleep aids, by sedating the brain, may <span class="kw" data-tip="v. 损害；削弱">impair</span> the very <span class="kw" data-tip="n. 清除；排出">clearance</span> that sleep exists to perform.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">The authors are careful to stress that the experiments were performed in mice, and that the results cannot yet be translated directly to humans. Whether the pump can be strengthened to prevent dementia — let alone to treat it — remains an open question demanding years of <span class="kw" data-tip="adj. 临床的">clinical</span> study.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Independent researchers praised the work for closing a critical gap, while cautioning that a good night's sleep is shaped by many factors, from stress to caffeine. Rarely, they note, has a single experiment made so vividly clear that sleep is not a passive state but an active, physical process of self-repair.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For the public, the message is at once humbling and practical. The body's nightly maintenance, <span class="kw" data-tip="v. 驱动；推动（熟词僻义：v. 驾驶）">driven</span> by rhythms we barely notice, reminds us that sleep is not an indulgence to be sacrificed, but a <span class="kw" data-tip="adj. 生理的">physiological</span> necessity whose benefits we are only beginning to understand.</span></div>
+
+      <p class="muted">原文出处：本文根据《细胞》（Cell，2025 年 1 月）刊发、由哥本哈根大学与牛津大学团队主导的"睡眠中大脑废物清除"研究，及 Nature News 相关报道综合整理编写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cerebrospinal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌserɪbrəʊˈspaɪnl/ · 美 /səˌriːbroʊˈspaɪnl/</div>
+          <div class="wc-pos"><b>adj.</b> 脑脊液的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Cerebrospinal</b> fluid cushions the brain and spinal cord.</div>
+          <div class="wc-tr">脑脊液对大脑和脊髓起到缓冲保护作用。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fluid</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈfluːɪd/ · 美 /ˈfluːɪd/</div>
+          <div class="wc-pos"><b>n.</b> 液体；流体</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Drink plenty of <b>fluid</b> when you exercise.</div>
+          <div class="wc-tr">运动时要多喝水（补充液体）。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">glymphatic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɡlɪmˈfætɪk/ · 美 /ɡlɪmˈfætɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 类淋巴的（指大脑废物清除系统）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>glymphatic</b> system clears waste from the brain.</div>
+          <div class="wc-tr">类淋巴系统负责清除大脑中的废物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">norepinephrine</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌnɔːrepɪˈnefrɪn/ · 美 /ˌnɔːrepɪˈnefrɪn/</div>
+          <div class="wc-pos"><b>n.</b> 去甲肾上腺素（一种神经递质）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Norepinephrine</b> rises when the body is under stress.</div>
+          <div class="wc-tr">身体处于压力下时，去甲肾上腺素会升高。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">molecule</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒlɪkjuːl/ · 美 /ˈmɑːlɪkjuːl/</div>
+          <div class="wc-pos"><b>n.</b> 分子</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A water <b>molecule</b> consists of two hydrogen atoms and one oxygen atom.</div>
+          <div class="wc-tr">一个水分子由两个氢原子和一个氧原子构成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">brainstem</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbreɪnstem/ · 美 /ˈbreɪnstem/</div>
+          <div class="wc-pos"><b>n.</b> 脑干</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>brainstem</b> controls breathing and heartbeat.</div>
+          <div class="wc-tr">脑干控制着呼吸和心跳。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rhythmic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrɪðmɪk/ · 美 /ˈrɪðmɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 有节奏的；周期性的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The machine made a steady <b>rhythmic</b> sound.</div>
+          <div class="wc-tr">这台机器发出平稳而有节奏的声音。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">vessel</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈvesl/ · 美 /ˈvesl/</div>
+          <div class="wc-pos"><b>n.</b> 血管；容器；船</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Blood flows through the <b>vessels</b> to every part of the body.</div>
+          <div class="wc-tr">血液通过血管流遍全身。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">contract</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈtrækt/ · 美 /kənˈtrækt/</div>
+          <div class="wc-pos"><b>v.</b> 收缩；感染（疾病）（熟词僻义：<b>n.</b> /ˈkɒntrækt/ 合同）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Muscles <b>contract</b> and relax as we move.</div>
+          <div class="wc-tr">我们活动时，肌肉会收缩和放松。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flush</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /flʌʃ/ · 美 /flʌʃ/</div>
+          <div class="wc-pos"><b>v.</b> 冲洗；冲刷（熟词僻义：<b>n.</b> 脸红；冲水）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep helps <b>flush</b> waste products out of the brain.</div>
+          <div class="wc-tr">睡眠有助于把废物冲离大脑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">metabolic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌmetəˈbɒlɪk/ · 美 /ˌmetəˈbɑːlɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 代谢的；新陈代谢的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Regular exercise can raise your <b>metabolic</b> rate.</div>
+          <div class="wc-tr">规律运动可以提高你的代谢率。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fluorescent</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /flɔːˈresnt/ · 美 /flʊˈresnt/</div>
+          <div class="wc-pos"><b>adj.</b> 荧光的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The cells were labelled with a <b>fluorescent</b> dye.</div>
+          <div class="wc-tr">这些细胞被标记上了荧光染料。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tracer</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈtreɪsə(r)/ · 美 /ˈtreɪsər/</div>
+          <div class="wc-pos"><b>n.</b> 示踪剂；追踪物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists used a <b>tracer</b> to follow the fluid's path.</div>
+          <div class="wc-tr">科学家用示踪剂来追踪液体的流动路径。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accumulation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˌkjuːmjəˈleɪʃn/ · 美 /əˌkjuːmjəˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 积累；堆积</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Stress can lead to the <b>accumulation</b> of bad habits.</div>
+          <div class="wc-tr">压力会导致坏习惯的积累。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hallmark</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈhɔːlmɑːk/ · 美 /ˈhɔːlmɑːrk/</div>
+          <div class="wc-pos"><b>n.</b> 标志；特征</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Patience is the <b>hallmark</b> of a good teacher.</div>
+          <div class="wc-tr">耐心是一位好老师的标志。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dementia</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈmenʃə/ · 美 /dɪˈmenʃə/</div>
+          <div class="wc-pos"><b>n.</b> 痴呆（症）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Regular sleep may lower the risk of <b>dementia</b>.</div>
+          <div class="wc-tr">规律睡眠或许能降低患痴呆的风险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">zolpidem</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈzɒlpɪdem/ · 美 /ˈzoʊlpɪdem/</div>
+          <div class="wc-pos"><b>n.</b> 唑吡坦（一种常用安眠药）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Zolpidem</b> is often prescribed for short-term insomnia.</div>
+          <div class="wc-tr">唑吡坦常用于短期失眠的治疗。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">impair</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪmˈpeə(r)/ · 美 /ɪmˈper/</div>
+          <div class="wc-pos"><b>v.</b> 损害；削弱</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Lack of sleep can <b>impair</b> your memory.</div>
+          <div class="wc-tr">睡眠不足会损害你的记忆力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">clearance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈklɪərəns/ · 美 /ˈklɪrəns/</div>
+          <div class="wc-pos"><b>n.</b> 清除；排出；许可</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>clearance</b> of waste is vital for brain health.</div>
+          <div class="wc-tr">废物的清除对大脑健康至关重要。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">drive</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /draɪv/ · 美 /draɪv/</div>
+          <div class="wc-pos"><b>v.</b> 驱动；推动（熟词僻义：<b>v.</b> 驾驶）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Curiosity <b>drives</b> scientists to explore the unknown.</div>
+          <div class="wc-tr">好奇心驱使科学家去探索未知。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">give oneself a thorough cleaning</span><span class="zh">给自己做一次彻底清洗</span></li>
+          <li><span class="en">remain a stubborn puzzle</span><span class="zh">依然是一道棘手的难题</span></li>
+          <li><span class="en">the long-sought "pump"</span><span class="zh">寻觅已久的"泵"</span></li>
+          <li><span class="en">non-REM sleep</span><span class="zh">非快速眼动睡眠</span></li>
+          <li><span class="en">every fifty seconds or so</span><span class="zh">大约每五十秒一次</span></li>
+          <li><span class="en">flush out metabolic waste</span><span class="zh">冲走代谢废物</span></li>
+          <li><span class="en">act as a piston</span><span class="zh">起到活塞的作用</span></li>
+          <li><span class="en">in real time</span><span class="zh">实时地</span></li>
+          <li><span class="en">a hallmark of Alzheimer's disease</span><span class="zh">阿尔茨海默病的一个标志</span></li>
+          <li><span class="en">be linked to the risk of dementia</span><span class="zh">与患痴呆的风险相关</span></li>
+          <li><span class="en">sedate the brain</span><span class="zh">使大脑镇静</span></li>
+          <li><span class="en">let alone</span><span class="zh">更不用说</span></li>
+          <li><span class="en">an open question</span><span class="zh">一个悬而未决的问题</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>睡眠中大脑会自我清洗，但驱动机制长期是神经科学难题。</li>
+          <li>哥本哈根与牛津团队把"泵"锁定为深睡眠中的去甲肾上腺素。</li>
+          <li>约每 50 秒一次：去甲肾上腺素令血管收缩，脑脊液冲刷代谢废物。</li>
+          <li>光纤探针加荧光示踪，实时观察小鼠大脑的废物流动。</li>
+          <li>被冲走的废物含淀粉样蛋白，与阿尔茨海默病紧密相关。</li>
+          <li>安眠药唑吡坦抑制泵血节律、削弱清除，令人警醒。</li>
+          <li>局限：实验基于小鼠，能否借此预防痴呆仍待临床验证。</li>
+          <li>专家：睡眠是主动的生理性自我修复，而非被动静止。</li>
+          <li>启示：睡眠是不可牺牲的生理必需，其益处才刚被认识。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The discovery of the glymphatic system in 2013 showed that cerebrospinal fluid flows through the brain's tissue, but what drives this tide has remained one of neuroscience's most stubborn puzzles.</div>
+        <div class="row"><b>主干：</b>The discovery ... showed that ... , but what drives this tide has remained ...（并列句：showed + that 宾语从句；but 转折连接第二分句）</div>
+        <div class="row"><b>宾语从句：</b>that cerebrospinal fluid flows through the brain's tissue（作 showed 的宾语）</div>
+        <div class="row"><b>主语从句：</b>what drives this tide（what 引导，作第二分句的主语）</div>
+        <div class="row"><b>考点：</b>that 引导宾语从句；what 引导主语从句；并列连词 but 连接的并列句</div>
+        <div class="row tr"><b>译文：</b>2013 年"类淋巴系统"的发现表明，脑脊液流经大脑组织，但究竟是什么驱动了这股"潮水"，一直是神经科学最棘手的难题之一。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A study published in the journal Cell, led by researchers at the University of Copenhagen and the University of Oxford, now claims to have located the long-sought "pump".</div>
+        <div class="row"><b>主干：</b>A study ... now claims to have located the long-sought "pump"（主语 + claims + 不定式短语）</div>
+        <div class="row"><b>过去分词作后置定语：</b>published in the journal Cell（修饰 study）</div>
+        <div class="row"><b>过去分词作后置定语：</b>led by researchers at the University of Copenhagen and the University of Oxford（修饰 study）</div>
+        <div class="row"><b>考点：</b>过去分词短语作后置定语（语法填空常考 done 的选择）；claim to do / to have done 不定式完成式</div>
+        <div class="row tr"><b>译文：</b>一项发表于《细胞》杂志、由哥本哈根大学和牛津大学研究人员领导的研究，如今声称已找到了那个寻觅已久的"泵"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The researchers observed that every fifty seconds or so, a surge of norepinephrine makes blood vessels in the brain contract, and each contraction squeezes cerebrospinal fluid through the tissue, flushing out metabolic waste.</div>
+        <div class="row"><b>主干：</b>The researchers observed that ...（主语 + observed + that 宾语从句）</div>
+        <div class="row"><b>宾语从句（并列）：</b>a surge of norepinephrine makes blood vessels ... contract, and each contraction squeezes cerebrospinal fluid ...</div>
+        <div class="row"><b>使役结构：</b>makes blood vessels contract（make + 宾语 + 动词原形作宾补）</div>
+        <div class="row"><b>现在分词作结果状语：</b>flushing out metabolic waste（"从而冲走代谢废物"）</div>
+        <div class="row"><b>考点：</b>make + 宾语 + 宾补（省略 to 的不定式）；现在分词作结果状语</div>
+        <div class="row tr"><b>译文：</b>研究人员观察到，大约每五十秒，一股去甲肾上腺素就会令大脑中的血管收缩，而每一次收缩都挤压脑脊液穿过组织，从而冲走代谢废物。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">This raises the unsettling possibility that some sleep aids, by sedating the brain, may impair the very clearance that sleep exists to perform.</div>
+        <div class="row"><b>主干：</b>This raises the unsettling possibility（主语 + raises + 宾语）</div>
+        <div class="row"><b>同位语从句：</b>that some sleep aids ... may impair the very clearance（解释 possibility 的内容）</div>
+        <div class="row"><b>插入的介词短语（方式状语）：</b>by sedating the brain（"通过使大脑镇静"）</div>
+        <div class="row"><b>定语从句：</b>that sleep exists to perform（修饰 clearance，"睡眠存在就是为了完成的清除"）</div>
+        <div class="row"><b>考点：</b>that 引导同位语从句；by doing 作方式状语；that 引导定语从句；the very + 名词（表强调）</div>
+        <div class="row tr"><b>译文：</b>这引出一个令人不安的可能性：某些助眠药物通过使大脑镇静，可能恰恰损害了睡眠存在本身所要完成的清除作用。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The body's nightly maintenance, driven by rhythms we barely notice, reminds us that sleep is not an indulgence to be sacrificed, but a physiological necessity whose benefits we are only beginning to understand.</div>
+        <div class="row"><b>主干：</b>The body's nightly maintenance ... reminds us that ...（主语 + reminds + 宾语 + that 宾语从句）</div>
+        <div class="row"><b>过去分词作后置定语：</b>driven by rhythms we barely notice（修饰 maintenance；内含省略关系词的定语从句 we barely notice）</div>
+        <div class="row"><b>宾语从句：</b>that sleep is not an indulgence ... but a physiological necessity（not ... but ... 结构）</div>
+        <div class="row"><b>定语从句：</b>whose benefits we are only beginning to understand（whose 引导，修饰 necessity）</div>
+        <div class="row"><b>考点：</b>过去分词作定语；not ... but ...；whose 引导定语从句</div>
+        <div class="row tr"><b>译文：</b>身体夜间的自我维护，由我们几乎察觉不到的节律所驱动，提醒我们：睡眠不是一种可以牺牲的享受，而是一种生理必需——其益处我们才刚刚开始理解。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">睡眠时大脑会"自我清洗"，但驱动这一过程的具体机制长期是神经科学的难题。2013 年科学家发现了"类淋巴系统"——脑脊液流经脑组织、冲走代谢废物，却不知这股"潮水"由何驱动。2025 年发表在《细胞》的一项研究，由哥本哈根大学与牛津大学团队完成，终于找到了那个"泵"：深睡眠（非快速眼动睡眠）期间，脑干会以大约每 50 秒一次的节奏释放神经递质去甲肾上腺素，令大脑血管有规律地收缩，而每一次收缩都像活塞一样挤压脑脊液穿过脑组织，把废物冲刷出去。研究者在活体小鼠脑中植入光纤探针，并用荧光示踪剂实时追踪废物流向，观察到了这一过程。被冲走的废物中包含淀粉样蛋白——这种黏性蛋白的堆积正是阿尔茨海默病的标志，而睡眠与痴呆风险的联系由此获得了一个机理层面的解释。最令人警醒的是，团队测试了常用安眠药唑吡坦，发现它会抑制去甲肾上腺素的节律性释放、削弱脑脊液的流动，这提示某些助眠药可能反而损害了睡眠的清洁功能。不过，作者谨慎强调实验基于小鼠、尚不能直接外推到人，能否通过强化这个"泵"来预防乃至治疗痴呆，仍是有待多年临床研究的开放问题。独立研究者赞赏该研究填补了关键空白，同时提醒良好睡眠受压力、咖啡因等诸多因素影响。这项研究最鲜明地说明：睡眠并非被动静止，而是一个主动的、生理性的自我修复过程；身体的夜间维护提醒我们，睡眠是不可牺牲的生理必需。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 6、7 段，为什么研究者发现常用安眠药唑吡坦可能"削弱"大脑的清洁作用？这给我们如何看待"靠药物助眠"带来什么启示？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"The body's nightly maintenance, driven by rhythms we barely notice, reminds us that..."</span>（过去分词作后置定语 + that 宾语从句）的句式，围绕「坚持锻炼」「规律作息」或「健康生活」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 睡眠中大脑自我清洗，驱动机制长期成谜</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 团队锁定"泵"：深睡眠中的去甲肾上腺素</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 每 50 秒一次：血管收缩、脑脊液冲刷废物</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 光纤探针 + 荧光示踪，实时观察小鼠大脑</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 废物含淀粉样蛋白，与阿尔茨海默病相关</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 安眠药唑吡坦抑制泵血、削弱清除</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 局限：小鼠实验，能否预防痴呆仍待验证</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 专家：睡眠是主动的生理性自我修复</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：睡眠是不可牺牲的生理必需</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究团队与研究对象 → 核心机理 → 研究方法 → 废物与疾病关联 → 意外发现（安眠药）→ 研究局限 → 专家评价 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Cell / University of Copenhagen / Nature News 公开资料（2026-09-23 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
