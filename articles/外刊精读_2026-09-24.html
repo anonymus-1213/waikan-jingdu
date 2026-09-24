@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 自然之声的疗愈力量：鸟鸣与水声如何悄悄改善健康</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 健康 / 声景 / 科普</div>
+  <h1>自然之声的疗愈力量：鸟鸣与水声如何悄悄改善健康</h1>
+  <div class="deck">A systematic review finds that natural sounds — birdsong, water and wind — lower stress, ease pain and sharpen focus, even as chronic human noise erodes the benefit</div>
+  <div class="byline"><span><b>来源</b> PNAS / Colorado State University / Scientific American（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-24</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-24.jpg" alt="森林与鸟鸣（配图）">
+    <figcaption>配图：晨光中鸟鸣啾啾的森林（图片来源：AutoGLM 文生图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>人们走进森林、走向海边，常说"心静了下来"，但究竟是什么在起作用？一项发表于《美国国家科学院院刊》（PNAS）、由科罗拉多州立大学团队主导的系统综述，梳理了 18 篇同行评审论文中的 30 余项研究，首次把"自然之声"对健康的影响量化出来：水声带来的整体改善最大，鸟鸣则最能安抚噪声所激起的焦虑与烦躁；约四分之三的研究都记录到心率下降、疼痛缓解与认知提升等积极效应。研究者把这一机制追溯到人类的演化史——在漫长的岁月里，鸟鸣是安全的信号，骤然的寂静或轰鸣则是危险的警报。然而，交通、飞机与施工等慢性噪声正像一种"隐形污染物"，推高高血压与心脏病风险，侵蚀着自然声景本可带来的益处。文章最后提出一个发人深省的呼吁：自然声音是被系统性低估的公共资源，我们能否在"利用"之前，先学会倾听、并保护那些值得被听见的声音？</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Humans have long retreated into nature to rest and recover, yet only recently have scientists begun to <span class="kw" data-tip="v. 量化；用数字表示">quantify</span> precisely what the natural world does to the body. A growing body of research now suggests that it is not merely the sight of greenery that heals — the sounds of nature, from birdsong to running water, <span class="kw" data-tip="v. 施加；发挥（影响、力量）">exert</span> measurable effects on stress, pain and mood.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">In a landmark <span class="kw" data-tip="n. 综合；综述；合成">synthesis</span> published in the Proceedings of the National Academy of Sciences, a team led by researchers at Colorado State University examined three dozen studies, drawn from eighteen <span class="kw" data-tip="adj. 经同行评审的">peer-reviewed</span> papers, that asked how natural sounds shape human health outcomes.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">By <span class="kw" data-tip="v. 把……标绘成图（熟词僻义：n. 情节）">plotting</span> each study's reported effect against the type of sound involved, the team discovered a clear pattern: water sounds produced the largest overall improvements, while birdsong proved most effective at <span class="kw" data-tip="v. 抚慰；缓解（痛苦、焦虑）">soothing</span> the stress and annoyance that noise pollution <span class="kw" data-tip="v. 激起；引发；挑衅">provokes</span>.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">Roughly three-quarters of the studies recorded positive health effects, with natural sounds lowering heart rate, easing pain and sharpening <span class="kw" data-tip="adj. 认知的">cognitive</span> performance; some participants even <span class="kw" data-tip="v. 显示出；记录（熟词僻义：登记）">registered</span> measurable drops in blood pressure and in the stress hormone <span class="kw" data-tip="n. 皮质醇（应激激素）">cortisol</span>.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The researchers trace the <span class="kw" data-tip="n. 机制；原理">mechanism</span> to human evolutionary history. For most of our existence, a landscape rich in birdsong signalled safety, whereas an abrupt silence — or a sudden human-made racket — warned of danger; the body, in other words, still reads sound as a map of threat and <span class="kw" data-tip="n. 庇护所；保护区">sanctuary</span>.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">By contrast, <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount 攀登、安装）">mounting</span> evidence shows that <span class="kw" data-tip="adj. 慢性的；长期的">chronic</span> noise — traffic, aircraft, construction — behaves as an invisible pollutant that raises the risk of <span class="kw" data-tip="n. 高血压">hypertension</span> and heart disease, eroding precisely the benefits that natural soundscapes <span class="kw" data-tip="v. 赋予；给予">confer</span>.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">The findings carry implications for conservation, prompting some national parks to treat their <span class="kw" data-tip="adj. 声学的；听觉的">acoustic</span> environment as a resource to be protected no less than their scenery. Yet the authors <span class="kw" data-tip="v. 警告；告诫">caution</span> that the studies vary widely in method and scale, and that a <span class="kw" data-tip="adj. 因果的">causal</span> chain from sound to health remains hard to <span class="kw" data-tip="v. 使孤立；分离；单独考虑">isolate</span>, let alone to quantify across cultures.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Natural sounds, the researchers argue, <span class="kw" data-tip="v. 构成；组成">constitute</span> a public good whose value has been systematically <span class="kw" data-tip="v. 低估；贬低">undervalued</span>. Not until soundscapes are measured and mapped, they insist, will policymakers grasp how much quiet and birdsong contribute to <span class="kw" data-tip="adj. 集体的；共同的">collective</span> well-being.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For the public, the message is at once simple and hopeful. That a few minutes of birdsong can measurably calm the nervous system suggests that one of the cheapest and most accessible forms of medicine may lie just outside our windows — provided we choose to listen, and to protect what remains worth hearing.</span></div>
+
+      <p class="muted">原文出处：本文根据《美国国家科学院院刊》（PNAS）刊发、由科罗拉多州立大学主导的自然声音与健康系统综述研究，及 Scientific American 相关报道（2026-09）综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">quantify</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkwɒntɪfaɪ/ · 美 /ˈkwɑːntɪfaɪ/</div>
+          <div class="wc-pos"><b>v.</b> 量化；用数字表示</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is hard to <b>quantify</b> the value of a quiet forest.</div>
+          <div class="wc-tr">一片宁静森林的价值很难量化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">exert</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪɡˈzɜːt/ · 美 /ɪɡˈzɜːrt/</div>
+          <div class="wc-pos"><b>v.</b> 施加；发挥（影响、力量）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Regular exercise <b>exerts</b> a calming effect on the mind.</div>
+          <div class="wc-tr">经常锻炼能对大脑产生镇静作用。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">synthesis</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsɪnθəsɪs/ · 美 /ˈsɪnθəsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 综合；综述；合成</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The paper is a careful <b>synthesis</b> of dozens of earlier studies.</div>
+          <div class="wc-tr">这篇论文是对数十项早期研究的细致综述。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">peer-reviewed</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌpɪə rɪˈvjuːd/ · 美 /ˌpɪr rɪˈvjuːd/</div>
+          <div class="wc-pos"><b>adj.</b> 经同行评审的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The findings appeared in a <b>peer-reviewed</b> journal.</div>
+          <div class="wc-tr">这些发现发表在一份同行评审的期刊上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plot</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /plɒt/ · 美 /plɑːt/</div>
+          <div class="wc-pos"><b>v.</b> 把……标绘成图；绘制（熟词僻义：<b>n.</b> 情节；小块地）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The scientist <b>plotted</b> the data on a graph.</div>
+          <div class="wc-tr">科学家把数据标绘在一张图表上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">soothe</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /suːð/ · 美 /suːð/</div>
+          <div class="wc-pos"><b>v.</b> 抚慰；缓解（痛苦、焦虑）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Soft music can <b>soothe</b> a crying baby.</div>
+          <div class="wc-tr">轻柔的音乐能安抚哭泣的婴儿。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">provoke</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prəˈvəʊk/ · 美 /prəˈvoʊk/</div>
+          <div class="wc-pos"><b>v.</b> 激起；引发；挑衅</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The noise <b>provoked</b> complaints from residents.</div>
+          <div class="wc-tr">噪声引发了居民的投诉。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cognitive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɒɡnətɪv/ · 美 /ˈkɑːɡnətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 认知的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reading improves children's <b>cognitive</b> abilities.</div>
+          <div class="wc-tr">阅读能提升儿童的认知能力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">register</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈredʒɪstə(r)/ · 美 /ˈredʒɪstər/</div>
+          <div class="wc-pos"><b>v.</b> 显示出；记录（熟词僻义：登记、注册）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The thermometer <b>registered</b> a sharp drop in temperature.</div>
+          <div class="wc-tr">温度计显示出温度急剧下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cortisol</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɔːtɪzɒl/ · 美 /ˈkɔːrtɪzɔːl/</div>
+          <div class="wc-pos"><b>n.</b> 皮质醇（应激激素）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Chronic stress keeps <b>cortisol</b> levels high.</div>
+          <div class="wc-tr">长期压力使皮质醇水平居高不下。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mechanism</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmekənɪzəm/ · 美 /ˈmekənɪzəm/</div>
+          <div class="wc-pos"><b>n.</b> 机制；原理</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists are studying the <b>mechanism</b> behind the effect.</div>
+          <div class="wc-tr">科学家正在研究这种效应背后的机制。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sanctuary</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsæŋktʃuəri/ · 美 /ˈsæŋktʃueri/</div>
+          <div class="wc-pos"><b>n.</b> 庇护所；保护区</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The forest became a <b>sanctuary</b> for rare birds.</div>
+          <div class="wc-tr">这片森林成了珍稀鸟类的庇护所。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mounting</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmaʊntɪŋ/ · 美 /ˈmaʊntɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 日益增长的（熟词僻义：mount 攀登、安装）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is <b>mounting</b> evidence that noise harms health.</div>
+          <div class="wc-tr">越来越多的证据表明噪声危害健康。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chronic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkrɒnɪk/ · 美 /ˈkrɑːnɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 慢性的；长期的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Chronic</b> noise can lead to sleep problems.</div>
+          <div class="wc-tr">长期噪声会导致睡眠问题。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hypertension</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌhaɪpəˈtenʃn/ · 美 /ˌhaɪpərˈtenʃn/</div>
+          <div class="wc-pos"><b>n.</b> 高血压</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Noise pollution is linked to a higher risk of <b>hypertension</b>.</div>
+          <div class="wc-tr">噪声污染与高血压风险升高有关。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">confer</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈfɜː(r)/ · 美 /kənˈfɜːr/</div>
+          <div class="wc-pos"><b>v.</b> 赋予；给予</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Natural landscapes <b>confer</b> a sense of peace.</div>
+          <div class="wc-tr">自然景观赋予人一种宁静感。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">acoustic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈkuːstɪk/ · 美 /əˈkuːstɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 声学的；听觉的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Parks are working to protect their <b>acoustic</b> environment.</div>
+          <div class="wc-tr">公园正努力保护它们的声学环境。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">causal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɔːzl/ · 美 /ˈkɔːzl/</div>
+          <div class="wc-pos"><b>adj.</b> 因果的；因果关系的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study cannot prove a <b>causal</b> link between the two.</div>
+          <div class="wc-tr">这项研究无法证明两者之间存在因果联系。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">isolate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈaɪsəleɪt/ · 美 /ˈaɪsəleɪt/</div>
+          <div class="wc-pos"><b>v.</b> 使孤立；分离；单独考虑</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is hard to <b>isolate</b> one factor from the rest.</div>
+          <div class="wc-tr">很难把某个因素从其余因素中单独分离出来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">constitute</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɒnstɪtjuːt/ · 美 /ˈkɑːnstɪtuːt/</div>
+          <div class="wc-pos"><b>v.</b> 构成；组成</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These sounds <b>constitute</b> a shared public good.</div>
+          <div class="wc-tr">这些声音构成了一种共享的公共资源。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">undervalue</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌʌndəˈvæljuː/ · 美 /ˌʌndərˈvæljuː/</div>
+          <div class="wc-pos"><b>v.</b> 低估；贬低</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We often <b>undervalue</b> the peace that nature offers.</div>
+          <div class="wc-tr">我们常常低估自然给予的那份宁静。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">collective</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəˈlektɪv/ · 美 /kəˈlektɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 集体的；共同的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Quiet contributes to our <b>collective</b> well-being.</div>
+          <div class="wc-tr">宁静有助于我们的集体福祉。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">retreat into nature</span><span class="zh">回归自然；退入自然</span></li>
+          <li><span class="en">a growing body of research</span><span class="zh">越来越多的研究</span></li>
+          <li><span class="en">exert effects on …</span><span class="zh">对……产生影响</span></li>
+          <li><span class="en">a landmark synthesis</span><span class="zh">一项里程碑式的综述</span></li>
+          <li><span class="en">peer-reviewed papers</span><span class="zh">同行评审的论文</span></li>
+          <li><span class="en">plot A against B</span><span class="zh">把 A 与 B 对应标绘</span></li>
+          <li><span class="en">prove effective at doing</span><span class="zh">被证明在做……方面有效</span></li>
+          <li><span class="en">lower heart rate / ease pain</span><span class="zh">降低心率 / 缓解疼痛</span></li>
+          <li><span class="en">trace the mechanism to …</span><span class="zh">把机制追溯到……</span></li>
+          <li><span class="en">by contrast</span><span class="zh">相比之下</span></li>
+          <li><span class="en">raise the risk of …</span><span class="zh">提高……的风险</span></li>
+          <li><span class="en">let alone</span><span class="zh">更不用说</span></li>
+          <li><span class="en">a public good</span><span class="zh">一种公共资源</span></li>
+          <li><span class="en">not until … will …</span><span class="zh">直到……才……（倒装）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>人类自古回归自然休养，科学开始量化自然对身体的精确作用。</li>
+          <li>科罗拉多州立大学团队在 PNAS 发表综述，梳理 18 篇同行评审论文中的 30 余项研究。</li>
+          <li>把效应与声音类型对应标绘：水声改善最大，鸟鸣最能缓解噪声引发的压力。</li>
+          <li>约四分之三研究记录到积极效应：降心率、止痛、提升认知，部分人血压与皮质醇下降。</li>
+          <li>机理追溯到演化史：鸟鸣=安全、骤静或轰鸣=危险，身体仍把声音读作"威胁/庇护"地图。</li>
+          <li>相反，慢性噪声是隐形污染物，推高高血压与心脏病风险，侵蚀自然声景的益处。</li>
+          <li>启示：国家公园应把声景当资源保护；但研究差异大，因果链难分离、更难跨文化量化。</li>
+          <li>自然声音是被系统性低估的"公共资源"，须先测绘声景，政策才能认识其贡献。</li>
+          <li>启示：几分钟鸟鸣即可镇静神经，最廉价可及的"药"就在窗外——去倾听、去保护。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Humans have long retreated into nature to rest and recover, yet only recently have scientists begun to quantify precisely what the natural world does to the body.</div>
+        <div class="row"><b>主干：</b>Humans have long retreated into nature（主语 + have retreated into）</div>
+        <div class="row"><b>并列 + 部分倒装：</b>yet only recently have scientists begun to quantify …（only + 时间状语置于句首，助动词 have 提前，构成部分倒装）</div>
+        <div class="row"><b>宾语从句：</b>what the natural world does to the body（what 引导，作 quantify 的宾语）</div>
+        <div class="row"><b>考点：</b>only + 状语位于句首引起部分倒装；what 宾语从句；不定式作目的状语</div>
+        <div class="row tr"><b>译文：</b>人类长期以来回归自然以休养生息，然而直到最近，科学家才开始精确地量化自然究竟对身体做了什么。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">In a landmark synthesis published in the Proceedings of the National Academy of Sciences, a team led by researchers at Colorado State University examined three dozen studies, drawn from eighteen peer-reviewed papers, that asked how natural sounds shape human health outcomes.</div>
+        <div class="row"><b>主干：</b>a team … examined three dozen studies（主语 + examined + 宾语）</div>
+        <div class="row"><b>过去分词作定语：</b>published in the Proceedings of …（修饰 synthesis）；led by researchers at Colorado State University（修饰 team）；drawn from eighteen peer-reviewed papers（修饰 studies）</div>
+        <div class="row"><b>定语从句：</b>that asked how natural sounds shape human health outcomes（that 修饰 studies，内含 how 引导的宾语从句）</div>
+        <div class="row"><b>考点：</b>过去分词短语作后置定语；that 定语从句；how 宾语从句</div>
+        <div class="row tr"><b>译文：</b>在发表于《美国国家科学院院刊》的一项里程碑式综述中，由科罗拉多州立大学研究人员领导的一个团队考察了来自 18 篇同行评审论文的 30 余项研究，这些研究探讨自然声音如何塑造人类的健康结局。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">By plotting each study's reported effect against the type of sound involved, the team discovered a clear pattern: water sounds produced the largest overall improvements, while birdsong proved most effective at soothing the stress and annoyance that noise pollution provokes.</div>
+        <div class="row"><b>主干：</b>the team discovered a clear pattern（主语 + discovered + 宾语）</div>
+        <div class="row"><b>方式状语：</b>By plotting each study's reported effect against the type of sound involved（"通过把……对应标绘"；involved 为过去分词作后置定语）</div>
+        <div class="row"><b>同位语（冒号引出）：</b>water sounds produced the largest overall improvements, while birdsong proved most effective …（while 表对比）</div>
+        <div class="row"><b>定语从句：</b>that noise pollution provokes（修饰 the stress and annoyance）</div>
+        <div class="row"><b>考点：</b>by + doing 方式状语；冒号引出解释；while 对比连词；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>通过把每项研究报告的效应与所涉及的声音类型对应标绘，团队发现了一个清晰的模式：水声带来的整体改善最大，而鸟鸣则在安抚噪声污染所激起的压力与烦躁方面最为有效。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">For most of our existence, a landscape rich in birdsong signalled safety, whereas an abrupt silence — or a sudden human-made racket — warned of danger; the body, in other words, still reads sound as a map of threat and sanctuary.</div>
+        <div class="row"><b>主干：</b>a landscape … signalled safety（主语 + signalled + 宾语）</div>
+        <div class="row"><b>后置定语：</b>rich in birdsong（形容词短语修饰 landscape）</div>
+        <div class="row"><b>对比状语从句：</b>whereas an abrupt silence — or a sudden human-made racket — warned of danger（破折号引出插入性并列成分）</div>
+        <div class="row"><b>并列分句：</b>the body, in other words, still reads sound as a map of threat and sanctuary（in other words 作插入语）</div>
+        <div class="row"><b>考点：</b>whereas 对比连词；插入语；形容词短语作后置定语；read … as …（把……解读为……）</div>
+        <div class="row tr"><b>译文：</b>在我们存在的绝大部分时间里，鸟鸣丰富的环境意味着安全，而骤然寂静——或是突然的人造轰鸣——则警示着危险；换句话说，身体至今仍把声音解读为一张标注着威胁与庇护的地图。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Not until soundscapes are measured and mapped, they insist, will policymakers grasp how much quiet and birdsong contribute to collective well-being.</div>
+        <div class="row"><b>主干（部分倒装）：</b>will policymakers grasp …（Not until … 置于句首，主句助动词 will 提前，构成部分倒装）</div>
+        <div class="row"><b>时间状语从句：</b>Not until soundscapes are measured and mapped（"直到……才……"）</div>
+        <div class="row"><b>插入语：</b>they insist（"他们坚持认为"）</div>
+        <div class="row"><b>宾语从句：</b>how much quiet and birdsong contribute to collective well-being（how much 引导，作 grasp 的宾语）</div>
+        <div class="row"><b>考点：</b>Not until … 置于句首引起的部分倒装；插入语；how much 宾语从句；名词化表达 collective well-being</div>
+        <div class="row tr"><b>译文：</b>他们坚持认为，只有等到声景被测量、被绘制成图，政策制定者才会明白，宁静与鸟鸣对集体福祉究竟有多大的贡献。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">人类长期以来回归自然以休养生息，但直到最近，科学家才开始精确量化自然对身体的作用。一项由科罗拉多州立大学团队主导、发表于《美国国家科学院院刊》的里程碑式系统综述，梳理了 18 篇同行评审论文中的 30 余项研究，考察自然声音如何塑造人类健康。通过把每项研究的效应与所涉及的声音类型对应标绘，团队发现：水声带来的整体改善最大，鸟鸣则在安抚噪声污染所激起的压力与烦躁方面最为有效。总体而言，约四分之三的研究记录到积极健康效应——自然声音能降低心率、缓解疼痛、提升认知表现，部分参与者甚至出现血压与压力激素皮质醇的可测量下降。研究者把这一机制追溯到人类演化史：在漫长的岁月里，鸟鸣丰富的环境意味着安全，而骤然的寂静或人造轰鸣则警示危险，身体至今仍把声音解读为一张"威胁与庇护"的地图。与此相对，越来越多的证据表明，交通、飞机与施工等慢性噪声是一种"隐形污染物"，会推高高血压与心脏病的风险，恰恰侵蚀着自然声景本可带来的益处。这些发现对保护工作具有启示意义，促使一些国家公园把"声学环境"当作与风景同等重要的资源来保护；不过作者也提醒，现有研究在方法与规模上差异很大，从声音到健康的因果链条难以分离，更不用说跨文化加以量化。研究者进一步指出，自然声音是一种被系统性低估的公共资源，只有先把声景测量并绘制成图，政策制定者才会明白宁静与鸟鸣对集体福祉的贡献。对普通人而言，这一信息既简单又充满希望：几分钟的鸟鸣就能可测量地安抚神经系统，说明最廉价、最易得的"良药"或许就在窗外——前提是我们愿意去倾听，并保护那些仍值得被听见的东西。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6 段，为什么同一片声音既能"疗愈"也能"致病"？作者是如何通过"安全/危险"的演化框架来解释自然声与慢性噪声对健康的不同影响的？</div>
+      <div class="q"><b>仿写题：</b>仿照第 1 段 <span style="font-family:Georgia,serif;font-style:italic">"only recently have scientists begun to quantify precisely what the natural world does to the body."</span>（only + 时间状语置于句首引起的部分倒装 + what 宾语从句）的句式，围绕「保护环境」「坚持阅读」或「绿色生活」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 人类回归自然，科学开始量化自然的作用</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 科罗拉多团队在 PNAS 发表系统综述</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 标绘效应：水声改善最大、鸟鸣最能安神</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 约四分之三研究记录到积极健康效应</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机理追溯演化史：鸟鸣=安全、轰鸣=危险</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 慢性噪声是隐形污染物，侵蚀声景益处</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 声景应受保护；但因果链难分离量化</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 自然声音是被系统性低估的公共资源</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：去倾听、去保护"窗外的药"</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究方法 → 研究设计（标绘） → 核心发现 → 演化机理 → 反面对比 → 保护启示与局限 → 更广意义 → 总结呼吁」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：PNAS / Colorado State University / Scientific American 公开资料（2026-09-24 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
