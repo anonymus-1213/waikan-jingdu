@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 近视的"静默流行病"：屏幕时代的孩子们为何越来越看不清远方</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Society · 人与社会 / 健康 / 教育 / 科普</div>
+  <h1>近视的"静默流行病"：屏幕时代的孩子们为何越来越看不清远方</h1>
+  <div class="deck">A mounting body of evidence links the global rise in childhood myopia to too much near work and too little daylight — and suggests the cure may be as simple as going outside</div>
+  <div class="byline"><span><b>来源</b> The Guardian / The Lancet / Brien Holden Vision Institute（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-25</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-25.jpg" alt="儿童视力与眼镜（配图）">
+    <figcaption>配图：儿童视力检查与眼镜主题插画（本站绘制，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>人们常把近视当作一副眼镜就能解决的小事，但一组权威的流行病学数据正把这件事推向公共健康的聚光灯下：到本世纪中叶，全球或将有近一半人口近视，而东亚城市的青少年近视率已高达八九成。本文梳理了关于"近视静默流行"的系统研究，指出真正的推手并非基因这一单一因素，而是现代童年里两股交织的习惯——无休止的近距离用眼，与户外日照的急剧萎缩。研究揭示了一条耐人寻味的保护机制：明亮的户外光促使视网膜释放多巴胺，从而抑制眼轴的过度拉长；而昏暗的室内与近距离屏幕，恰恰不给眼睛踩下这道"刹车"。更紧迫的是，高度近视会显著抬高视网膜脱离、青光眼与黄斑变性等致盲风险。好消息是，预防既便宜又有据可依——每天两小时户外、"20-20-20"用眼法、低剂量阿托品——只是这道"户外处方"对许多家庭而言，仍是一份奢侈。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Far removed from any infectious outbreak, a quiet <span class="kw" data-tip="n. 流行病；蔓延">epidemic</span> has been creeping through the world's classrooms, and it has nothing to do with viruses. <span class="kw" data-tip="n. 近视；目光短浅">myopia</span>, the failure to bring distant objects into focus, already blurs the vision of one person in three — a share that may approach one in two by the middle of this century.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The projections come from a landmark review by the Brien Holden Vision Institute, whose modelling, published in the journal <em>Ophthalmology</em>, drew on 145 studies spanning nearly 2.1 million participants. Its conclusion was blunt: within a generation, myopia could <span class="kw" data-tip="v. 使痛苦；折磨；困扰">afflict</span> some five billion people, a major public health concern.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">Nowhere is the shift more striking than in urban East Asia, where 80 to 90 percent of teenagers finishing secondary school are myopic. Researchers increasingly attribute the surge not to genes alone but to two interlocking habits of modern childhood — relentless <span class="kw" data-tip="n. 近距离用眼（活动）">near work</span> and a sharp decline in time spent outdoors.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The <span class="kw" data-tip="n. 机制；机理">mechanism</span>, though still debated, centres on light. Bright outdoor light, many orders of magnitude stronger than indoor lighting, is thought to <span class="kw" data-tip="v. 促使；激起（熟词僻义：adj. 迅速的）">prompt</span> the <span class="kw" data-tip="n. 视网膜">retina</span> to release <span class="kw" data-tip="n. 多巴胺">dopamine</span>, which in turn restrains the excessive <span class="kw" data-tip="n. 伸长；拉长">elongation</span> of the eyeball that defines myopia; dim rooms and close screens offer the eye no such brake.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The COVID-19 lockdowns <span class="kw" data-tip="v. 使恶化；加剧（熟词僻义：n. 化合物）">compounded</span> the problem. With schools shut and lives grown <span class="kw" data-tip="adj. 久坐的；少活动的">sedentary</span>, children's screen time soared while their daylight hours collapsed, and cohort studies recorded a sharp acceleration in the <span class="kw" data-tip="n. 开始；发作">onset</span> of myopia among the youngest.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The costs extend far beyond thicker lenses. High myopia raises the lifetime risk of retinal <span class="kw" data-tip="n. 脱离；分离">detachment</span>, <span class="kw" data-tip="n. 青光眼">glaucoma</span> and macular <span class="kw" data-tip="n. 退化；变性">degeneration</span>, conditions that can lead to irreversible blindness, turning a correctable inconvenience into a lifelong <span class="kw" data-tip="n. 负担；重担">burden</span> on individuals and health systems alike.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">Prevention, the experts insist, is both cheap and well established. Roughly two hours of outdoor time each day, whatever the weather, can meaningfully <span class="kw" data-tip="v. 遏制；抑制">curb</span> the onset of myopia, while simple routines such as the "20-20-20" rule are now widely recommended; in much of the world, however, even a basic pair of spectacles remains beyond reach — let alone the <span class="kw" data-tip="n. 阿托品">atropine</span> drops that wealthier families take for granted.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Sceptics caution that most of the evidence is observational, so the direction of causality is not fully proven, and heredity remains a powerful <span class="kw" data-tip="n. 决定因素">determinant</span>. Yet even the most guarded reviewers concede that the balance of evidence favours a protective role for daylight — a conclusion few parents would find costly to accept.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">The message, then, is a hopeful one: a largely outdoor remedy for a thoroughly indoor condition. That so simple a prescription — more daylight, less screen — could <span class="kw" data-tip="v. 保护；遮蔽（熟词僻义：n. 盾牌）">shield</span> an entire generation of eyes suggests that the fight against the myopia epidemic may be won one recess at a time.</span></div>
+
+      <p class="muted">原文出处：本文根据 The Guardian 报道及《眼科学》（Ophthalmology，Brien Holden Vision Institute）系统综述、《柳叶刀》（The Lancet）儿童近视系列研究（2026-09 综合）整理编写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">myopia</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /maɪˈəʊpiə/ · 美 /maɪˈoʊpiə/</div>
+          <div class="wc-pos"><b>n.</b> 近视；目光短浅（引申义）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Childhood <b>myopia</b> has become a global health concern.</div>
+          <div class="wc-tr">儿童近视已成为一个全球性的健康问题。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">epidemic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌepɪˈdemɪk/ · 美 /ˌepɪˈdemɪk/</div>
+          <div class="wc-pos"><b>n.</b> 流行病；（坏事的）蔓延</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The city faces an <b>epidemic</b> of loneliness among the young.</div>
+          <div class="wc-tr">这座城市正面临年轻人孤独感的蔓延。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">afflict</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈflɪkt/ · 美 /əˈflɪkt/</div>
+          <div class="wc-pos"><b>v.</b> 使痛苦；折磨；困扰</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The disease <b>afflicts</b> millions of people worldwide.</div>
+          <div class="wc-tr">这种疾病折磨着全世界数百万人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">near work</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌnɪə ˈwɜːk/ · 美 /ˌnɪr ˈwɜːrk/</div>
+          <div class="wc-pos"><b>n.</b> 近距离用眼（活动）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Long hours of <b>near work</b> are linked to a higher risk of myopia.</div>
+          <div class="wc-tr">长时间的近距离用眼与更高的近视风险相关。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mechanism</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈmekənɪzəm/ · 美 /ˈmekənɪzəm/</div>
+          <div class="wc-pos"><b>n.</b> 机制；机理</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists are still exploring the <b>mechanism</b> behind the effect.</div>
+          <div class="wc-tr">科学家仍在探索这一效应背后的机制。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prompt</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɒmpt/ · 美 /prɑːmpt/</div>
+          <div class="wc-pos"><b>v.</b> 促使；激起（熟词僻义：<b>adj.</b> 迅速的；及时的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bright light <b>prompts</b> the retina to release dopamine.</div>
+          <div class="wc-tr">明亮的光线促使视网膜释放多巴胺。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">retina</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈretɪnə/ · 美 /ˈretɪnə/</div>
+          <div class="wc-pos"><b>n.</b> 视网膜</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>retina</b> turns light into signals the brain can read.</div>
+          <div class="wc-tr">视网膜把光转化为大脑能解读的信号。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dopamine</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdəʊpəmiːn/ · 美 /ˈdoʊpəmiːn/</div>
+          <div class="wc-pos"><b>n.</b> 多巴胺</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Dopamine</b> plays a key role in mood and motivation.</div>
+          <div class="wc-tr">多巴胺在情绪与动机中起关键作用。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">elongation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌiːlɒŋˈɡeɪʃn/ · 美 /ˌiːlɔːŋˈɡeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 伸长；拉长</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Myopia results from the <b>elongation</b> of the eyeball.</div>
+          <div class="wc-tr">近视源于眼球的拉长。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">compound</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəmˈpaʊnd/ · 美 /kəmˈpaʊnd/</div>
+          <div class="wc-pos"><b>v.</b> 使恶化；加剧（熟词僻义：<b>n.</b> 化合物；复合物）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Lockdowns <b>compounded</b> the problem of screen addiction.</div>
+          <div class="wc-tr">封控加剧了屏幕成瘾问题。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sedentary</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsedntri/ · 美 /ˈsednteri/</div>
+          <div class="wc-pos"><b>adj.</b> 久坐的；少活动的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>sedentary</b> lifestyle increases the risk of many diseases.</div>
+          <div class="wc-tr">久坐的生活方式会增加多种疾病的风险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">onset</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɒnset/ · 美 /ˈɑːnset/</div>
+          <div class="wc-pos"><b>n.</b> 开始；发作</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Outdoor time can delay the <b>onset</b> of myopia.</div>
+          <div class="wc-tr">户外活动可以推迟近视的发生。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">detachment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈtætʃmənt/ · 美 /dɪˈtætʃmənt/</div>
+          <div class="wc-pos"><b>n.</b> 脱离；分离</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Retinal <b>detachment</b> can cause sudden loss of vision.</div>
+          <div class="wc-tr">视网膜脱离可导致视力骤降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">glaucoma</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɡlɔːˈkəʊmə/ · 美 /ɡlaʊˈkoʊmə/</div>
+          <div class="wc-pos"><b>n.</b> 青光眼</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Glaucoma</b> often develops without early symptoms.</div>
+          <div class="wc-tr">青光眼常在早期没有症状。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">degeneration</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˌdʒenəˈreɪʃn/ · 美 /dɪˌdʒenəˈreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 退化；变性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Macular <b>degeneration</b> is a leading cause of blindness.</div>
+          <div class="wc-tr">黄斑变性是致盲的主要原因之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">burden</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈbɜːdn/ · 美 /ˈbɜːrdn/</div>
+          <div class="wc-pos"><b>n.</b> 负担；重担</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>High myopia places a heavy <b>burden</b> on health systems.</div>
+          <div class="wc-tr">高度近视给卫生系统带来沉重负担。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">curb</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kɜːb/ · 美 /kɜːrb/</div>
+          <div class="wc-pos"><b>v.</b> 遏制；抑制</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Outdoor time can <b>curb</b> the development of myopia.</div>
+          <div class="wc-tr">户外活动能遏制近视的发展。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">atropine</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈætrəpiːn/ · 美 /ˈætrəpiːn/</div>
+          <div class="wc-pos"><b>n.</b> 阿托品</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Low-dose <b>atropine</b> is used to slow myopia in children.</div>
+          <div class="wc-tr">低剂量阿托品被用于减缓儿童近视。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">determinant</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈtɜːmɪnənt/ · 美 /dɪˈtɜːrmɪnənt/</div>
+          <div class="wc-pos"><b>n.</b> 决定因素</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Heredity is a powerful <b>determinant</b> of eye health.</div>
+          <div class="wc-tr">遗传是眼健康的一个强大决定因素。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shield</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ʃiːld/ · 美 /ʃiːld/</div>
+          <div class="wc-pos"><b>v.</b> 保护；遮蔽（熟词僻义：<b>n.</b> 盾牌）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Outdoor light <b>shields</b> children's eyes from myopia.</div>
+          <div class="wc-tr">户外光线保护儿童的眼睛免受近视困扰。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">an infectious outbreak</span><span class="zh">传染病暴发</span></li>
+          <li><span class="en">bring sth into focus</span><span class="zh">使……清晰聚焦</span></li>
+          <li><span class="en">one person in three</span><span class="zh">每三人中一人</span></li>
+          <li><span class="en">a landmark review</span><span class="zh">一项里程碑式的综述</span></li>
+          <li><span class="en">draw on …</span><span class="zh">利用；借鉴</span></li>
+          <li><span class="en">near work</span><span class="zh">近距离用眼</span></li>
+          <li><span class="en">attribute A to B</span><span class="zh">把 A 归因于 B</span></li>
+          <li><span class="en">orders of magnitude</span><span class="zh">数量级</span></li>
+          <li><span class="en">in turn</span><span class="zh">反过来；依次</span></li>
+          <li><span class="en">the onset of …</span><span class="zh">……的开始；发作</span></li>
+          <li><span class="en">whatever the weather</span><span class="zh">无论天气如何</span></li>
+          <li><span class="en">curb the onset of …</span><span class="zh">遏制……的发生</span></li>
+          <li><span class="en">let alone</span><span class="zh">更不用说</span></li>
+          <li><span class="en">one … at a time</span><span class="zh">一次一点；逐步</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>近视是一场与病毒无关、正悄然蔓延的"静默流行病"，约三分之一人口已受影响。</li>
+          <li>权威综述基于 145 项研究、210 万参与者建模，预测一代人内近视将波及 50 亿人。</li>
+          <li>东亚城市青少年近视率高达八九成，主因是近距离用眼与户外时间骤减。</li>
+          <li>机理在"光"：强光促使视网膜释放多巴胺，抑制眼轴过度拉长。</li>
+          <li>疫情封控加剧问题：屏幕时间飙升、日照锐减，儿童近视加速发生。</li>
+          <li>高度近视推高视网膜脱离、青光眼与黄斑变性风险，可能致盲。</li>
+          <li>每天两小时户外与"20-20-20"规则等预防手段廉价有效，但部分地区连眼镜都难获得。</li>
+          <li>证据多为观察性、因果未完全证实，但综合证据仍支持"日光保护"。</li>
+          <li>启示：一副"户外处方"或能以每次课间一点一滴赢得这场战役。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Nowhere is the shift more striking than in urban East Asia, where 80 to 90 percent of teenagers finishing secondary school are myopic.</div>
+        <div class="row"><b>主干：</b>Nowhere is the shift more striking（倒装句：否定副词 nowhere 置于句首，部分倒装 is + 主语）</div>
+        <div class="row"><b>比较结构：</b>more striking than in urban East Asia（"比东亚城市地区更显著"）</div>
+        <div class="row"><b>非限制性定语从句：</b>where 80 to 90 percent of teenagers … are myopic（where 指代 in urban East Asia）</div>
+        <div class="row"><b>后置定语（现在分词短语）：</b>finishing secondary school（修饰 teenagers）</div>
+        <div class="row"><b>考点：</b>否定词置句首的部分倒装（语法填空常考）；现在分词作后置定语；where 引导非限制性定语从句</div>
+        <div class="row tr"><b>译文：</b>这一转变在东亚城市地区最为显著，那里 80% 到 90% 的、即将完成中学学业的青少年都是近视眼。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The projections come from a landmark review by the Brien Holden Vision Institute, whose modelling, published in the journal Ophthalmology, drew on 145 studies spanning nearly 2.1 million participants.</div>
+        <div class="row"><b>主干：</b>The projections come from a landmark review（主语 + come from + 宾语）</div>
+        <div class="row"><b>定语从句（whose）：</b>whose modelling … drew on 145 studies（whose 指代 the Brien Holden Vision Institute）</div>
+        <div class="row"><b>过去分词作定语：</b>published in the journal Ophthalmology（修饰 modelling，插入在从句主语与谓语之间）</div>
+        <div class="row"><b>现在分词作定语：</b>spanning nearly 2.1 million participants（修饰 145 studies）</div>
+        <div class="row"><b>考点：</b>whose 引导定语从句；过去分词 / 现在分词作定语（doing/done 的选择）；draw on 搭配</div>
+        <div class="row tr"><b>译文：</b>这些预测来自布莱恩·霍尔登视觉研究所的一项里程碑式综述，该研究所发表《眼科学》杂志上的建模利用了涵盖近 210 万名参与者的 145 项研究。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Bright outdoor light, many orders of magnitude stronger than indoor lighting, is thought to prompt the retina to release dopamine, which in turn restrains the excessive elongation of the eyeball that defines myopia.</div>
+        <div class="row"><b>主干：</b>Bright outdoor light … is thought to prompt the retina to release dopamine（主语 + 被动 is thought + 不定式）</div>
+        <div class="row"><b>插入语（比较短语）：</b>many orders of magnitude stronger than indoor lighting（补充说明 outdoor light 的强度）</div>
+        <div class="row"><b>非限制性定语从句：</b>which in turn restrains the excessive elongation …（which 指代 dopamine 释放这一行为）</div>
+        <div class="row"><b>限制性定语从句：</b>that defines myopia（修饰 the excessive elongation of the eyeball）</div>
+        <div class="row"><b>考点：</b>be thought to do 被动结构；which 非限制性 / that 限制性定语从句的区别；名词化 the elongation of …</div>
+        <div class="row tr"><b>译文：</b>比室内照明强出许多个数量级的明亮户外光，被认为能促使视网膜释放多巴胺，而多巴胺反过来又抑制了导致近视的眼球过度拉长。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">High myopia raises the lifetime risk of retinal detachment, glaucoma and macular degeneration, conditions that can lead to irreversible blindness, turning a correctable inconvenience into a lifelong burden on individuals and health systems alike.</div>
+        <div class="row"><b>主干：</b>High myopia raises the lifetime risk（主语 + raises + 宾语）</div>
+        <div class="row"><b>介词短语作定语：</b>of retinal detachment, glaucoma and macular degeneration（修饰 risk）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>conditions that can lead to irreversible blindness（conditions 概括前面三种眼病，that 引导定语从句）</div>
+        <div class="row"><b>现在分词作结果状语：</b>turning a correctable inconvenience into a lifelong burden（"从而把……变成……"）</div>
+        <div class="row"><b>考点：</b>同位语；that 定语从句；现在分词短语作结果状语；turn A into B 搭配</div>
+        <div class="row tr"><b>译文：</b>高度近视会提高视网膜脱离、青光眼和黄斑变性这几种疾病的终生患病风险，这些疾病可能导致不可逆的失明，从而把一种可矫正的小麻烦变成压在个人与整个卫生系统身上的终身重担。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">That so simple a prescription — more daylight, less screen — could shield an entire generation of eyes suggests that the fight against the myopia epidemic may be won one recess at a time.</div>
+        <div class="row"><b>主干：</b>That … could shield an entire generation of eyes suggests that …（That 引导主语从句 + suggests + that 宾语从句）</div>
+        <div class="row"><b>主语从句：</b>That so simple a prescription … could shield an entire generation of eyes（that 引导，作 suggests 的主语）</div>
+        <div class="row"><b>插入语（同位语）：</b>more daylight, less screen（破折号引出，解释 prescription）</div>
+        <div class="row"><b>宾语从句：</b>that the fight against the myopia epidemic may be won one recess at a time（that 引导，作 suggests 的宾语）</div>
+        <div class="row"><b>考点：</b>that 引导主语从句；that 引导宾语从句；插入语；one … at a time 结构</div>
+        <div class="row tr"><b>译文：</b>如此简单的一纸"处方"——多一点日光、少一点屏幕——竟能庇护整整一代人的眼睛，这表明对抗近视流行病的战斗，或许可以靠每一次课间休息一点点地打赢。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">近视常被视作一副眼镜就能解决的小问题，但一组权威流行病学数据正在把它推向公共健康舞台的中央。文章开篇指出，一场与病毒无关、正悄然蔓延的"静默流行病"已让约三分之一人口视力模糊，而这一比例到本世纪中叶或逼近二分之一。这一预测来自布莱恩·霍尔登视觉研究所发表于《眼科学》杂志的里程碑式综述——它综合了 145 项研究、近 210 万名参与者的数据，结论直白：一代人之内近视可能波及约 50 亿人。转变最显著的地方是东亚城市，八九成青少年在完成中学学业时已是近视眼；研究者越来越倾向于把这一激增归因于现代童年的两股交织习惯——无休止的近距离用眼，以及户外日照的急剧萎缩。其机理虽仍在争论，但核心在"光"：比室内强许多个数量级的户外光促使视网膜释放多巴胺，从而抑制导致近视的眼球过度拉长，而昏暗房间与近距离屏幕恰恰不给眼睛踩下这道刹车。疫情封控使问题雪上加霜——学校关闭、生活久坐，屏幕时间飙升、日照锐减，多项队列研究记录了低龄儿童近视发生与进展的急剧加速。代价远不止更厚的镜片：高度近视抬高视网膜脱离、青光眼与黄斑变性的终生风险，这些疾病可能致盲，把可矫正的小麻烦变成个人与卫生系统的终身负担。所幸预防既便宜又有据可依——每天两小时户外、"20-20-20"用眼法、低剂量阿托品均被证实有效；然而在世界许多地方，一副普通眼镜尚且难求，更不用说富裕家庭习以为常的阿托品滴剂。批评者提醒，多数证据是观察性的，因果方向尚未完全证实，遗传仍是强大决定因素；但即便是最谨慎的评论者也承认，证据的天平倾向"日光具有保护作用"。文章的结语充满希望：这是一副"以户外治室内"的处方，而它或许能以每一次课间、每一点日光的累积，一点点赢得这场战役。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 4 段，用自己的话解释"户外强光 → 多巴胺 → 抑制眼轴拉长"这条保护机制是如何运作的？再结合第 7、8 段，说说为什么科学证据有说服力却仍被提醒"因果未完全证实"？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"That so simple a prescription … could shield … suggests that …"</span>（That 引导主语从句 + suggests + that 宾语从句）的句式，围绕「坚持运动」「保护视力」或「绿色生活」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 引入：近视是一场"静默流行病"</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 数据：综述预测一代人内波及 50 亿人</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 重灾区：东亚 + 近用眼与户外骤减</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 机理：户外光→多巴胺→抑制眼轴拉长</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 催化：疫情封控加速近视发生</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 危害：高度近视抬高致盲风险</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 干预：户外 + 20-20-20 + 阿托品，但可及性不均</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：观察性证据，因果未完全证实</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：以户外治室内，逐课间赢得战役</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 数据建模 → 区域表现 → 生物机理 → 催化因素 → 危害后果 → 干预手段 → 证据局限 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：The Guardian / Ophthalmology (Brien Holden Vision Institute) / The Lancet 公开资料（2026-09-25 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
