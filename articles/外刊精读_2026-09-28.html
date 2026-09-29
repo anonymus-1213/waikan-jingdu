@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 友谊的"衰退"：当年轻人的朋友圈越来越小</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Society · 人与社会 / 心理健康 / 社科议论</div>
+  <h1>友谊的"衰退"：当年轻人的朋友圈越来越小</h1>
+  <div class="deck">A growing body of surveys warns that people — especially young men — have fewer close friends than a generation ago. What is lost when friendship thins, and can it be rebuilt?</div>
+  <div class="byline"><span><b>来源</b> US Surgeon General Advisory / American Perspectives Survey（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-28</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-28.jpg" alt="年轻朋友户外聚会（配图）">
+    <figcaption>配图：一群年轻人在户外轻松聚会交谈（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>友谊曾经是生活中无需多想的背景色，如今却被越来越多的人描述成一件需要"安排日程、刻意经营、甚至常常错过"的事。调查数据令人警醒：在美国一项被广泛引用的调查中，自称"一个密友都没有"的男性比例从 1990 年的 3% 一路升至三十年后的 15%，女性的朋友圈也在缩小，孤独感以过去难以想象的方式横跨各个年龄段。公共卫生官员开始把这一趋势当作"流行病"对待——美国卫生总署署长把长期孤独对健康的危害比作"每天抽 15 根烟"，将其与心脏病、痴呆症、抑郁症的高风险联系在一起。原因何在？屏幕承诺了连接，却常常只交付了干扰；更深层的结构变迁——更频繁的迁徙、更长的工作、更松散的家庭与社区——也在悄悄松动人与人之间的纽带。本文梳理这场"友谊衰退"的数据、成因与代价，并追问一个更朴素的问题：友谊变薄，我们失去了什么，又能否把它重新找回来？</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Friendship used to be taken for granted, an effortless background to daily life. Today it is increasingly described as something to be scheduled, managed and, for a growing number of people, missed altogether.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">The numbers are <span class="kw" data-tip="adj. 鲜明的；严峻的；赤裸裸的">stark</span>. In one widely cited American survey, the <span class="kw" data-tip="n. 份额；比例（熟词僻义：share 本义"分享"）">share</span> of men reporting no close friends at all rose from 3 percent in 1990 to 15 percent three decades later; women's circles shrank too, and loneliness now cuts across age groups in ways that once seemed unlikely.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">Public health officials have begun to treat the trend as an <span class="kw" data-tip="n. 流行病；（思想的）蔓延">epidemic</span>. The US Surgeon General has compared the health <span class="kw" data-tip="n. 损失；代价；伤亡人数（熟词僻义：toll 本义"通行费"）">toll</span> of <span class="kw" data-tip="adj. 慢性的；长期的">chronic</span> loneliness to smoking fifteen cigarettes a day, linking <span class="kw" data-tip="n. 孤立；隔离">isolation</span> to higher risks of heart disease, <span class="kw" data-tip="n. 痴呆症">dementia</span> and depression.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">What has changed? Technology is an obvious <span class="kw" data-tip="n. 嫌疑对象；可疑分子（熟词僻义：suspect 本义 v."怀疑"）">suspect</span>. Screens promise connection but often deliver distraction, replacing the deep, <span class="kw" data-tip="adj. 不匆忙的；从容的">unrushed</span> conversations that once bound people together with a stream of <span class="kw" data-tip="adj. 肤浅的；浅的">shallow</span>, <span class="kw" data-tip="adj. 表演性的；作秀式的">performative</span> updates.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Deeper structural shifts matter too. People move more, work longer and change jobs more often than they once did, while the institutions that once <span class="kw" data-tip="v. 编织；使紧密结合">knitted</span> neighbourhoods together — churches, clubs, extended families — have <span class="kw" data-tip="v. 磨损；使（关系）紧张、瓦解">frayed</span>.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The cost is not merely emotional. Researchers find that weak social ties predict earlier death as strongly as well-known risks like <span class="kw" data-tip="n. 肥胖">obesity</span> and physical inactivity, making friendship, in effect, a matter of survival rather than sentiment.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">To be sure, "fewer friends" need not mean "lonelier" in every case; a single <span class="kw" data-tip="n. 知己；密友">confidant</span> can matter more than a dozen <span class="kw" data-tip="n. 熟人；泛泛之交">acquaintances</span>, and some <span class="kw" data-tip="n. 独处；孤独（中性，区别于 loneliness）">solitude</span> is freely chosen and restorative.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The good news is that friendship can be rebuilt with <span class="kw" data-tip="adj. 刻意的；深思熟虑的">deliberate</span> effort. Studies suggest that simply reaching out — a message, a shared meal, a <span class="kw" data-tip="adj. 反复出现的；定期重复的">recurring</span> commitment — restores closeness faster than most people expect, and that the fear of rejection is usually far worse than the reality.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">In the end, the "friendship recession" is not a law of nature but a habit we have drifted into — and habits, however stubborn, can be changed. The question is whether we still remember how to begin.</span></div>
+
+      <p class="muted">原文出处：本文根据美国卫生总署署长咨询报告《Our Epidemic of Loneliness and Isolation》（2023）、Survey Center on American Life《The State of American Friendship》（2021）等公开资料整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stark</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /stɑːk/ · 美 /stɑːrk/</div>
+          <div class="wc-pos"><b>adj.</b> 鲜明的；严峻的；赤裸裸的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The survey reveals a <b>stark</b> decline in friendship.</div>
+          <div class="wc-tr">这项调查揭示了友谊的急剧衰退。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">share</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ʃeə(r)/ · 美 /ʃer/</div>
+          <div class="wc-pos"><b>n.</b> 份额；比例（熟词僻义：share 本义"分享"）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>share</b> of men with no close friends has risen sharply.</div>
+          <div class="wc-tr">没有密友的男性比例已急剧上升。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">epidemic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌepɪˈdemɪk/ · 美 /ˌepɪˈdemɪk/</div>
+          <div class="wc-pos"><b>n.</b> 流行病；（思想的）蔓延</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Loneliness has been called a silent <b>epidemic</b>.</div>
+          <div class="wc-tr">孤独被称为一场无声的"流行病"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">toll</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /təʊl/ · 美 /toʊl/</div>
+          <div class="wc-pos"><b>n.</b> 损失；代价；伤亡人数（熟词僻义：toll 本义"通行费"）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The health <b>toll</b> of chronic loneliness is severe.</div>
+          <div class="wc-tr">长期孤独对健康的代价是严重的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chronic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkrɒnɪk/ · 美 /ˈkrɑːnɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 慢性的；长期的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Chronic</b> loneliness harms both body and mind.</div>
+          <div class="wc-tr">长期孤独对身心都有害。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">isolation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌaɪsəˈleɪʃn/ · 美 /ˌaɪsəˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 孤立；隔离</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Social <b>isolation</b> raises the risk of many diseases.</div>
+          <div class="wc-tr">社交孤立会增加许多疾病的风险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dementia</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪˈmenʃə/ · 美 /dɪˈmenʃə/</div>
+          <div class="wc-pos"><b>n.</b> 痴呆症</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Isolation is linked to a higher risk of <b>dementia</b>.</div>
+          <div class="wc-tr">孤立与更高的痴呆症风险相关。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">suspect</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈsʌspekt/（n.） · 美 /ˈsʌspekt/</div>
+          <div class="wc-pos"><b>n.</b> 嫌疑对象；可疑分子（熟词僻义：suspect 本义 v."怀疑"）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Technology is an obvious <b>suspect</b> in this story.</div>
+          <div class="wc-tr">在这场变化中，技术是一个明显的"嫌疑对象"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">unrushed</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌʌnˈrʌʃt/ · 美 /ˌʌnˈrʌʃt/</div>
+          <div class="wc-pos"><b>adj.</b> 不匆忙的；从容的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Friendship needs deep, <b>unrushed</b> conversation.</div>
+          <div class="wc-tr">友谊需要深入、从容的交谈。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shallow</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈʃæləʊ/ · 美 /ˈʃæloʊ/</div>
+          <div class="wc-pos"><b>adj.</b> 肤浅的；浅的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Online updates are often <b>shallow</b> and brief.</div>
+          <div class="wc-tr">网络上的更新往往肤浅而简短。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">performative</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /pəˈfɔːmətɪv/ · 美 /pərˈfɔːrmətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 表演性的；作秀式的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Social media rewards <b>performative</b> updates.</div>
+          <div class="wc-tr">社交媒体奖励"作秀式"的动态。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">knit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /nɪt/ · 美 /nɪt/</div>
+          <div class="wc-pos"><b>v.</b> 编织；使紧密结合</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Institutions once <b>knitted</b> neighbourhoods together.</div>
+          <div class="wc-tr">各种机构曾把邻里紧密联结在一起。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fray</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /freɪ/ · 美 /freɪ/</div>
+          <div class="wc-pos"><b>v.</b> 磨损；使（关系）紧张、瓦解</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Community ties have slowly <b>frayed</b>.</div>
+          <div class="wc-tr">社区纽带已慢慢松动瓦解。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">obesity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əʊˈbiːsəti/ · 美 /oʊˈbiːsəti/</div>
+          <div class="wc-pos"><b>n.</b> 肥胖</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Weak social ties predict death as strongly as <b>obesity</b>.</div>
+          <div class="wc-tr">薄弱的人际关系对早逝的预测力与肥胖相当。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">confidant</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɒnfɪdænt/ · 美 /ˈkɑːnfɪdænt/</div>
+          <div class="wc-pos"><b>n.</b> 知己；密友</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A single <b>confidant</b> matters more than many acquaintances.</div>
+          <div class="wc-tr">一位知己胜过许多泛泛之交。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">acquaintance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈkweɪntəns/ · 美 /əˈkweɪntəns/</div>
+          <div class="wc-pos"><b>n.</b> 熟人；泛泛之交</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He has many <b>acquaintances</b> but few real friends.</div>
+          <div class="wc-tr">他有很多熟人，却没什么真正的朋友。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">solitude</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsɒlɪtjuːd/ · 美 /ˈsɑːlətuːd/</div>
+          <div class="wc-pos"><b>n.</b> 独处；孤独（中性，区别于 loneliness）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Some <b>solitude</b> is freely chosen and restorative.</div>
+          <div class="wc-tr">有些独处是主动选择、有益身心的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">deliberate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈlɪbərət/ · 美 /dɪˈlɪbərət/</div>
+          <div class="wc-pos"><b>adj.</b> 刻意的；深思熟虑的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Rebuilding friendship takes <b>deliberate</b> effort.</div>
+          <div class="wc-tr">重建友谊需要刻意的努力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recurring</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈkɜːrɪŋ/ · 美 /rɪˈkɜːrɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 反复出现的；定期重复的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>recurring</b> commitment keeps friendship alive.</div>
+          <div class="wc-tr">一个定期重复的约定能让友谊保持鲜活。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">take something for granted</span><span class="zh">把……视为理所当然</span></li>
+          <li><span class="en">cut across age groups</span><span class="zh">横跨各个年龄段</span></li>
+          <li><span class="en">treat the trend as an epidemic</span><span class="zh">把这一趋势当作流行病对待</span></li>
+          <li><span class="en">the health toll of</span><span class="zh">……对健康的代价</span></li>
+          <li><span class="en">link A to B</span><span class="zh">把 A 与 B 联系起来</span></li>
+          <li><span class="en">a stream of</span><span class="zh">一连串的；源源不断的</span></li>
+          <li><span class="en">in effect</span><span class="zh">实际上；事实上</span></li>
+          <li><span class="en">a matter of survival</span><span class="zh">关乎生存的事</span></li>
+          <li><span class="en">reach out</span><span class="zh">主动联系；伸出援手</span></li>
+          <li><span class="en">drift into</span><span class="zh">不知不觉地陷入</span></li>
+          <li><span class="en">a law of nature</span><span class="zh">自然规律；不可改变的法则</span></li>
+          <li><span class="en">physical inactivity</span><span class="zh">缺乏运动；久坐不动</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>友谊曾被视为理所当然，如今却需要刻意经营、常常错过。</li>
+          <li>数据触目惊心：无密友者比例骤升，孤独横跨各年龄段。</li>
+          <li>官方视之为"流行病"：孤独的健康代价堪比每日吸烟。</li>
+          <li>技术是嫌疑对象：屏幕承诺连接，却交付肤浅与干扰。</li>
+          <li>结构变迁：迁徙、加班与松散的社区悄悄瓦解纽带。</li>
+          <li>代价不止情感：弱关系对早逝的预测力堪比肥胖。</li>
+          <li>澄清：朋友少≠孤独，知己胜过熟人，独处亦可有益。</li>
+          <li>好消息：友谊可刻意重建，主动联系效果超乎预期。</li>
+          <li>结论："友谊衰退"是习惯而非铁律，习惯可以改变。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">In one widely cited American survey, the share of men reporting no close friends at all rose from 3 percent in 1990 to 15 percent three decades later; women's circles shrank too, and loneliness now cuts across age groups in ways that once seemed unlikely.</div>
+        <div class="row"><b>并列句（分号与 and 连接三层）：</b>the share of men … rose … ; women's circles shrank … , and loneliness now cuts across …</div>
+        <div class="row"><b>介词短语作地点状语：</b>In one widely cited American survey</div>
+        <div class="row"><b>现在分词作后置定语：</b>reporting no close friends at all（修饰 men）</div>
+        <div class="row"><b>状语：</b>from 3 percent in 1990 to 15 percent three decades later（表变化幅度）</div>
+        <div class="row"><b>定语从句：</b>that once seemed unlikely（修饰 ways）</div>
+        <div class="row"><b>考点：</b>并列句；现在分词作定语；from…to… 表变化；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>在一项被广泛引用的美国调查中，自称"一个密友都没有"的男性比例从 1990 年的 3% 上升到了三十年后的 15%；女性的朋友圈也在缩小，而孤独感如今以过去看似不可能的方式横跨各个年龄段。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The US Surgeon General has compared the health toll of chronic loneliness to smoking fifteen cigarettes a day, linking isolation to higher risks of heart disease, dementia and depression.</div>
+        <div class="row"><b>主干：</b>The US Surgeon General has compared the health toll … to smoking fifteen cigarettes a day（主语 + has compared A to B）</div>
+        <div class="row"><b>介词短语作后置定语：</b>of chronic loneliness（修饰 toll）</div>
+        <div class="row"><b>现在分词作结果/方式状语：</b>linking isolation to higher risks of heart disease, dementia and depression</div>
+        <div class="row"><b>考点：</b>compare A to B；现在分词作状语；名词并列作介词宾语</div>
+        <div class="row tr"><b>译文：</b>美国卫生总署署长把长期孤独对健康的代价比作"每天抽 15 根烟"，并将孤立与心脏病、痴呆症、抑郁症的更高风险联系在一起。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Screens promise connection but often deliver distraction, replacing the deep, unrushed conversations that once bound people together with a stream of shallow, performative updates.</div>
+        <div class="row"><b>主干（转折并列）：</b>Screens promise connection but often deliver distraction</div>
+        <div class="row"><b>现在分词作方式状语：</b>replacing the deep, unrushed conversations … with a stream of shallow, performative updates</div>
+        <div class="row"><b>定语从句：</b>that once bound people together（修饰 conversations）</div>
+        <div class="row"><b>考点：</b>but 并列；replace A with B；现在分词作状语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>屏幕承诺了连接，却常常只交付了干扰——用一连串肤浅、作秀式的动态，取代了那些曾把人们紧密联结在一起的深入、从容的交谈。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Researchers find that weak social ties predict earlier death as strongly as well-known risks like obesity and physical inactivity, making friendship, in effect, a matter of survival rather than sentiment.</div>
+        <div class="row"><b>主干：</b>Researchers find that …（主语 + find + that 宾语从句）</div>
+        <div class="row"><b>宾语从句：</b>weak social ties predict earlier death as strongly as well-known risks like obesity and physical inactivity（as…as 同级比较）</div>
+        <div class="row"><b>现在分词作结果状语：</b>making friendship … a matter of survival rather than sentiment</div>
+        <div class="row"><b>插入语：</b>in effect（实际上）</div>
+        <div class="row"><b>考点：</b>that 宾语从句；as…as 比较；现在分词作结果状语；rather than 取舍</div>
+        <div class="row tr"><b>译文：</b>研究者发现，薄弱的人际关系对早逝的预测力，与肥胖、缺乏运动等众所周知的健康风险一样强——这实际上使友谊成了一件关乎生存而非情感的事。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Studies suggest that simply reaching out — a message, a shared meal, a recurring commitment — restores closeness faster than most people expect, and that the fear of rejection is usually far worse than the reality.</div>
+        <div class="row"><b>主干：</b>Studies suggest that … and that …（主语 + suggest + 两个并列 that 宾语从句）</div>
+        <div class="row"><b>宾语从句一：</b>simply reaching out … restores closeness faster than most people expect（动名词短语作主语；than 比较状语从句）</div>
+        <div class="row"><b>插入语（破折号之间）：</b>a message, a shared meal, a recurring commitment（举例解释 reaching out）</div>
+        <div class="row"><b>宾语从句二：</b>that the fear of rejection is usually far worse than the reality（far 修饰比较级）</div>
+        <div class="row"><b>考点：</b>并列 that 宾语从句；动名词作主语；插入语；比较状语从句</div>
+        <div class="row tr"><b>译文：</b>研究表明，仅仅是主动联系——一条消息、一顿共进的饭、一个定期重复的约定——恢复亲密的速度就比大多数人预想的更快；而对被拒绝的恐惧，通常远比现实来得严重。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">友谊曾经是生活中无需多想的背景色，如今却被越来越多的人描述成一件需要"安排日程、刻意经营、甚至常常错过"的事。数据令人警醒：在一项被广泛引用的美国调查中，自称"一个密友都没有"的男性比例从 1990 年的 3% 一路升至三十年后的 15%，女性的朋友圈也在缩小，孤独感以过去难以想象的方式横跨各个年龄段。公共卫生官员开始把这一趋势当作"流行病"对待——美国卫生总署署长把长期孤独对健康的危害比作"每天抽 15 根烟"，并将其与心脏病、痴呆症、抑郁症的更高风险联系在一起。原因何在？技术是一个明显的"嫌疑对象"：屏幕承诺连接，却常常只交付干扰，用一连串肤浅、作秀式的动态，取代了曾把人们紧密联结的深入交谈。更深层的结构变迁同样重要：人们比过去更频繁地迁徙、加班、跳槽，而曾把邻里联结在一起的教会、社团、大家庭等机构，也在慢慢松动瓦解。代价远不止情感层面：研究者发现，薄弱的人际关系对早逝的预测力，与肥胖、缺乏运动等众所周知的风险一样强——这实际上使友谊成了一件关乎生存而非情感的事。当然，"朋友更少"未必等于"更孤独"：一位知己胜过许多泛泛之交，而有些独处是主动选择、有益身心的。好消息是，友谊可以通过刻意的努力重建：研究表明，仅仅是主动联系——一条消息、一顿共进的饭、一个定期重复的约定——恢复亲密的速度就超乎预期，而对被拒绝的恐惧通常远比现实严重。归根结底，"友谊衰退"并非不可改变的自然规律，而是我们不知不觉陷入的一种习惯——而习惯，无论多么顽固，都可以改变。问题只在于：我们是否还记得该如何开始。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 4、5 段，概括作者认为导致"友谊衰退"的两类原因，并各举一个你在生活中观察到的例子；再结合第 7 段，谈谈为什么"朋友少"不等于"孤独"。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"… is not a law of nature but a habit we have drifted into — and habits, however stubborn, can be changed."</span> 中 "… is not … but … — and …, however …, can be …" 的转折句式，围绕「拖延」「熬夜」或「沉迷手机」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr3" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 友谊由"理所当然"变为"刻意经营"</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 数据：无密友者骤增，孤独普遍化</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 官方定性：孤独是"流行病"</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 成因一：技术交付肤浅与干扰</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 成因二：迁徙、加班与社区瓦解</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 代价：弱关系预测早逝堪比肥胖</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 澄清：朋友少≠孤独，独处亦可益</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 希望：友谊可刻意重建</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 结论：习惯而非铁律，可以改变</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr3)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr3)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr3)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr3)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr3)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr3)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr3)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr3)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 数据呈现 → 官方定性 → 成因一 → 成因二 → 代价 → 澄清 → 重建希望 → 总结升华」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：US Surgeon General Advisory / Survey Center on American Life 公开资料（2026-09-28 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>

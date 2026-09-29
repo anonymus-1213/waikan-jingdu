@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 自然的"处方"：每周两小时户外，为何是一剂被低估的良药</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 健康 / 科普</div>
+  <h1>自然的"处方"：每周两小时户外，为何是一剂被低估的良药</h1>
+  <div class="deck">A study of nearly 20,000 people finds that spending at least 120 minutes a week in nature is the threshold at which measurable health benefits appear</div>
+  <div class="byline"><span><b>来源</b> Scientific Reports / University of Exeter（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-26</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-26.jpg" alt="森林徒步（配图）">
+    <figcaption>配图：徒步者在森林小径中行走（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>在人类历史的大部分时间里，待在户外不是一种选择，而是生存的条件；如今城市生活让我们久居室内，科学家开始追问一个看似简单的问题：一个人究竟需要多少"自然"？英国埃克塞特大学的研究团队分析了近两万名成年人一年的数据，把他们在公园、树林、海滩等自然环境中度过的时间，与自评健康和幸福感指标一一对应，结果揭示出一个清晰的"临界点"——每周至少 120 分钟的自然接触，健康与幸福显著提升，且这一好处跨越性别、年龄、贫富甚至长期患病者。更耐人寻味的是：超过约 200–300 分钟后收益便不再增长，"剂量"而非"奢华"才是关键。本文梳理这项研究的方法、机理与局限，并追问：在昂贵养生当道的时代，那一小片最近的绿地，是否正是被我们集体低估的免费良药？</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">For much of human history, being outdoors was not a choice but a condition of <span class="kw" data-tip="n. 生存；幸存">survival</span>. Today, as urban life keeps us indoors, scientists are beginning to ask a deceptively simple question: how much nature, exactly, does a person need?</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">To answer it, a team led by researchers at the University of Exeter <span class="kw" data-tip="v. 利用；动用（熟词僻义：draw 画、拉）">drew on</span> data from nearly 20,000 adults who had reported, over a full year, how much time they had spent in natural <span class="kw" data-tip="n. 环境；场所；背景">settings</span> such as parks, woods and beaches. The responses were then matched against standard measures of self-reported health and psychological <span class="kw" data-tip="n. 幸福感；健康">well-being</span>.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The results revealed a clear <span class="kw" data-tip="n. 门槛；临界点；阈值">threshold</span>. People who spent at least 120 minutes a week in nature were <span class="kw" data-tip="adv. 显著地；明显地">significantly</span> more likely to describe their health as good and their well-being as high — a benefit that was <span class="kw" data-tip="adj. 一致的；稳定的；前后连贯的">consistent</span> across men and women, young and old, rich and poor, and even among those with long-term illness.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">Just as striking was what the data did not show. Beyond roughly 200 to 300 minutes a week, the gains <span class="kw" data-tip="v. 趋于平稳；不再增长（短语 level off）">levelled off</span>, suggesting that the <span class="kw" data-tip="n. 剂量；一剂（熟词僻义：可作动词"给……服药"）">dose</span>, not its extravagance, is what matters. A modest, regular exposure, it seems, delivers most of what nature has to offer.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Why nature should work at all remains a matter of lively debate. Some researchers point to the <span class="kw" data-tip="adj. 有恢复作用的；令人恢复精力的">restorative</span> effect of "soft fascination" — the gentle, effortless attention that natural scenes command, which allows a <span class="kw" data-tip="adj. 疲惫的；疲劳的">fatigued</span> mind to recover; others emphasise reduced stress hormones and the simple fact that time outdoors is time away from screens and <span class="kw" data-tip="adj. 久坐的；缺乏运动的">sedentary</span> habits.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">"It doesn't have to be a trip to a national park," one of the authors noted, stressing that the benefit <span class="kw" data-tip="v. 积累；累积">accumulated</span> regardless of whether the two hours came in one long <span class="kw" data-tip="n. 漫步；闲逛">ramble</span> or a dozen short <span class="kw" data-tip="n. 散步；溜达">strolls</span>. What mattered, they insisted, was <span class="kw" data-tip="n. 规律性；定期">regularity</span> rather than <span class="kw" data-tip="n. 壮观景象；奇观（熟词僻义：spectacles 眼镜）">spectacle</span>.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">The implications are quietly <span class="kw" data-tip="adj. 深刻的；深远的">profound</span> for public health. If a two-hour weekly "nature dose" is both cheap and universally available, then parks, street trees and allotments cease to be mere <span class="kw" data-tip="n. 便利设施；宜人之处">amenities</span> and become a form of <span class="kw" data-tip="adj. 预防性的">preventative</span> medicine — one that no prescription and no budget are required to obtain.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">To be sure, the authors caution that their study is <span class="kw" data-tip="adj. 观察性的（指无法证明因果的研究）">observational</span>, drawn from self-reports, and cannot prove that nature causes better health rather than simply attracting those already well enough to visit it. Nor does it <span class="kw" data-tip="v. 捕捉；捕获；把握（熟词僻义：俘获）">capture</span> the quality of the green space or the seasons in which it was visited.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">Yet even with these <span class="kw" data-tip="n. 警告；附加说明；局限">caveats</span>, the message carries an uncommon simplicity. In an age of expensive wellness regimes, the natural world may offer one of the few <span class="kw" data-tip="n. 疗法；补救办法">remedies</span> that is at once free, effective and, for most of us, no farther than the nearest patch of green.</span></div>
+
+      <p class="muted">原文出处：本文根据 White, Alcock 等（University of Exeter）发表于《Scientific Reports》的研究《Spending at least 120 minutes a week in nature is associated with good health and wellbeing》（2019，近 2 万人样本）整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> 门槛；临界点；阈值</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There seems to be a <b>threshold</b> of about two hours a week.</div>
+          <div class="wc-tr">似乎存在着一个每周约两小时的临界点。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">well-being</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌwel ˈbiːɪŋ/ · 美 /ˌwel ˈbiːɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 幸福感；健康（状态）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Regular exercise contributes to both physical and mental <b>well-being</b>.</div>
+          <div class="wc-tr">规律运动有助于身心两方面的健康。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">significantly</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /sɪɡˈnɪfɪkəntli/ · 美 /sɪɡˈnɪfɪkəntli/</div>
+          <div class="wc-pos"><b>adv.</b> 显著地；明显地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their test scores improved <b>significantly</b> after the training.</div>
+          <div class="wc-tr">训练之后，他们的考试成绩显著提高。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consistent</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈsɪstənt/ · 美 /kənˈsɪstənt/</div>
+          <div class="wc-pos"><b>adj.</b> 一致的；稳定的；前后连贯的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The results were <b>consistent</b> across all age groups.</div>
+          <div class="wc-tr">这一结果在所有年龄段都保持一致。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">survival</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səˈvaɪvl/ · 美 /sərˈvaɪvl/</div>
+          <div class="wc-pos"><b>n.</b> 生存；幸存</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>For early humans, being outdoors was a condition of <b>survival</b>.</div>
+          <div class="wc-tr">对早期人类而言，待在户外是生存的条件。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dose</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dəʊs/ · 美 /doʊs/</div>
+          <div class="wc-pos"><b>n.</b> 剂量；一剂（熟词僻义：也可作动词"给……服药"）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A weekly nature <b>dose</b> of two hours seems enough.</div>
+          <div class="wc-tr">每周两小时的"自然剂量"似乎已经足够。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">restorative</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈstɒrətɪv/ · 美 /rɪˈstɔːrətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 有恢复作用的；令人恢复精力的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A walk in the woods has a <b>restorative</b> effect on the mind.</div>
+          <div class="wc-tr">林中散步对大脑有恢复精力的作用。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fatigued</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /fəˈtiːɡd/ · 美 /fəˈtiːɡd/</div>
+          <div class="wc-pos"><b>adj.</b> 疲惫的；疲劳的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>After hours of study, my <b>fatigued</b> mind could not focus.</div>
+          <div class="wc-tr">学习数小时后，我疲惫的大脑无法集中注意力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sedentary</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsedntri/ · 美 /ˈsednteri/</div>
+          <div class="wc-pos"><b>adj.</b> 久坐的；缺乏运动的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>sedentary</b> lifestyle raises the risk of many diseases.</div>
+          <div class="wc-tr">久坐的生活方式会增加许多疾病的风险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ramble</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈræmbl/ · 美 /ˈræmbl/</div>
+          <div class="wc-pos"><b>n.</b> / <b>v.</b> 漫步；闲逛</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We enjoyed a long <b>ramble</b> through the countryside.</div>
+          <div class="wc-tr">我们在乡间享受了一次长时间的漫步。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stroll</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /strəʊl/ · 美 /stroʊl/</div>
+          <div class="wc-pos"><b>n.</b> / <b>v.</b> 散步；溜达</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>She took a short <b>stroll</b> in the park after dinner.</div>
+          <div class="wc-tr">晚饭后她在公园里散了一小会儿步。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accumulate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈkjuːmjəleɪt/ · 美 /əˈkjuːmjəleɪt/</div>
+          <div class="wc-pos"><b>v.</b> 积累；累积</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The benefits <b>accumulate</b> over many short visits.</div>
+          <div class="wc-tr">这些好处在许多次短暂的接触中不断累积。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">spectacle</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈspektəkl/ · 美 /ˈspektəkl/</div>
+          <div class="wc-pos"><b>n.</b> 壮观景象；奇观（熟词僻义：spectacles 眼镜）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What matters is regularity, not a grand <b>spectacle</b>.</div>
+          <div class="wc-tr">重要的是规律，而非宏大的奇观。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">profound</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prəˈfaʊnd/ · 美 /prəˈfaʊnd/</div>
+          <div class="wc-pos"><b>adj.</b> 深刻的；深远的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The discovery has <b>profound</b> implications for public health.</div>
+          <div class="wc-tr">这一发现对公共卫生具有深远影响。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">amenity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈmiːnəti/ · 美 /əˈmenəti/</div>
+          <div class="wc-pos"><b>n.</b> 便利设施；宜人之处</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Parks are more than mere <b>amenities</b>; they protect health.</div>
+          <div class="wc-tr">公园不只是便利设施，它们还守护健康。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">preventative</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɪˈventətɪv/ · 美 /prɪˈventətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 预防性的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Green space can be a form of <b>preventative</b> medicine.</div>
+          <div class="wc-tr">绿地可以是一种预防性的"药物"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">observational</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɒbzəˈveɪʃənl/ · 美 /ˌɑːbzərˈveɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 观察性的（指无法证明因果的研究）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study is <b>observational</b>, so it cannot prove cause.</div>
+          <div class="wc-tr">这是一项观察性研究，因此无法证明因果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">caveat</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkæviæt/ · 美 /ˈkæviæt/</div>
+          <div class="wc-pos"><b>n.</b> 警告；附加说明；局限</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>One important <b>caveat</b> is that the data are self-reported.</div>
+          <div class="wc-tr">一个重要局限是，这些数据是自报的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">remedy</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈremədi/ · 美 /ˈremədi/</div>
+          <div class="wc-pos"><b>n.</b> 疗法；补救办法</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nature offers a free <b>remedy</b> for a stressed mind.</div>
+          <div class="wc-tr">自然为焦虑的心灵提供了一味免费的良药。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">capture</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈkæptʃə(r)/ · 美 /ˈkæptʃər/</div>
+          <div class="wc-pos"><b>v.</b> 捕捉；捕获；把握（熟词僻义：俘获）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The survey cannot <b>capture</b> the quality of the green space.</div>
+          <div class="wc-tr">这项调查无法捕捉到绿地的质量。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">a condition of survival</span><span class="zh">生存的条件</span></li>
+          <li><span class="en">a deceptively simple question</span><span class="zh">一个看似简单的问题</span></li>
+          <li><span class="en">draw on data</span><span class="zh">利用（动用）数据</span></li>
+          <li><span class="en">natural settings</span><span class="zh">自然环境</span></li>
+          <li><span class="en">self-reported health</span><span class="zh">自评健康</span></li>
+          <li><span class="en">a clear threshold</span><span class="zh">一个明确的临界点</span></li>
+          <li><span class="en">level off</span><span class="zh">趋于平稳；不再增长</span></li>
+          <li><span class="en">soft fascination</span><span class="zh">柔性魅力（注意力恢复理论）</span></li>
+          <li><span class="en">a fatigued mind</span><span class="zh">疲惫的大脑</span></li>
+          <li><span class="en">preventative medicine</span><span class="zh">预防医学</span></li>
+          <li><span class="en">regardless of</span><span class="zh">无论；不管</span></li>
+          <li><span class="en">the nearest patch of green</span><span class="zh">最近的一片绿地</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>户外曾是生存条件，如今科学家追问"需要多少自然"。</li>
+          <li>埃克塞特团队分析近两万人的自然接触时长与自评健康数据。</li>
+          <li>核心发现：每周 120 分钟是临界点，且好处跨越人群、普遍存在。</li>
+          <li>超 200–300 分钟后收益趋平，"剂量"而非"奢华"是关键。</li>
+          <li>机理：柔性魅力助疲惫大脑恢复，户外也意味着远离屏幕与久坐。</li>
+          <li>专家引语：不必远赴国家公园，规律比壮观更重要。</li>
+          <li>对公共健康意义深远：绿地是免费的"预防医学"。</li>
+          <li>局限：观察性研究无法证明因果，也未捕捉绿地质量与季节。</li>
+          <li>结论：自然是最廉价有效、又近在咫尺的良药。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">To answer it, a team led by researchers at the University of Exeter drew on data from nearly 20,000 adults who had reported, over a full year, how much time they had spent in natural settings such as parks, woods and beaches.</div>
+        <div class="row"><b>主干：</b>a team … drew on data（主语 + drew on + 宾语）</div>
+        <div class="row"><b>目的状语：</b>To answer it（"为了回答它"）</div>
+        <div class="row"><b>过去分词作后置定语：</b>led by researchers at the University of Exeter（修饰 team）</div>
+        <div class="row"><b>定语从句（内含宾语从句）：</b>who had reported … how much time they had spent …（who 修饰 adults；how much 引导宾语从句作 reported 的宾语）</div>
+        <div class="row"><b>考点：</b>不定式作目的状语；过去分词作定语；who 定语从句；how much 宾语从句</div>
+        <div class="row tr"><b>译文：</b>为了回答这一问题，一支由埃克塞特大学研究人员率领的团队利用了近两万名成年人的数据——这些人在整整一年里报告了他们在公园、树林、海滩等自然环境中度过了多少时间。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">People who spent at least 120 minutes a week in nature were significantly more likely to describe their health as good and their well-being as high — a benefit that was consistent across men and women, young and old, rich and poor, and even among those with long-term illness.</div>
+        <div class="row"><b>主干：</b>People … were significantly more likely to describe their health as good and their well-being as high（主语 + be likely to do）</div>
+        <div class="row"><b>定语从句：</b>who spent at least 120 minutes a week in nature（who 修饰 People）</div>
+        <div class="row"><b>同位语（破折号引出）：</b>a benefit that was consistent across …（解释前句所述的好处）</div>
+        <div class="row"><b>定语从句：</b>that was consistent across men and women, young and old, rich and poor（修饰 benefit）</div>
+        <div class="row"><b>考点：</b>who 定语从句；be likely to do；同位语；that 定语从句；成对并列名词短语</div>
+        <div class="row tr"><b>译文：</b>每周在自然中至少度过 120 分钟的人，更有可能称自己健康状况良好、幸福感较高——这一好处在男女、老幼、贫富之间，甚至在长期患病者中都保持一致。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Just as striking was what the data did not show: beyond roughly 200 to 300 minutes a week, the gains levelled off, suggesting that the dose, not its extravagance, is what matters.</div>
+        <div class="row"><b>主干（倒装）：</b>Just as striking was what the data did not show（表语前置 + was + what 表语从句，正常语序 What the data did not show was just as striking）</div>
+        <div class="row"><b>表语从句：</b>what the data did not show</div>
+        <div class="row"><b>冒号后的同位说明：</b>beyond roughly 200 to 300 minutes a week, the gains levelled off</div>
+        <div class="row"><b>现在分词作结果状语：</b>suggesting that …（内含 that 宾语从句）</div>
+        <div class="row"><b>考点：</b>表语前置倒装；what 表语从句；现在分词作状语；that 宾语从句</div>
+        <div class="row tr"><b>译文：</b>同样引人注目的是数据"没有"显示的东西：当每周超过约 200 至 300 分钟后，收益便趋于平稳，这表明起作用的是"剂量"而非"奢华"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Some researchers point to the restorative effect of "soft fascination" — the gentle, effortless attention that natural scenes command, which allows a fatigued mind to recover; others emphasise reduced stress hormones and the simple fact that time outdoors is time away from screens and sedentary habits.</div>
+        <div class="row"><b>并列句（分号连接）：</b>Some researchers point to … ; others emphasise …</div>
+        <div class="row"><b>同位语（破折号引出）：</b>the gentle, effortless attention（解释 soft fascination）</div>
+        <div class="row"><b>定语从句：</b>that natural scenes command（修饰 attention）</div>
+        <div class="row"><b>非限制性定语从句：</b>which allows a fatigued mind to recover（which 指代 attention）</div>
+        <div class="row"><b>同位语从句：</b>the simple fact that time outdoors is time away from screens（that 引导，解释 fact）</div>
+        <div class="row"><b>考点：</b>并列句；同位语；that 定语从句；which 非限制性定语从句；that 同位语从句</div>
+        <div class="row tr"><b>译文：</b>一些研究者指向"柔性魅力"的恢复作用——即自然景色所唤起的温和而不费力的注意力，它能让疲惫的大脑得以恢复；另一些则强调压力激素的下降，以及一个简单的事实：待在户外，就是远离屏幕和久坐习惯的时间。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">If a two-hour weekly "nature dose" is both cheap and universally available, then parks, street trees and allotments cease to be mere amenities and become a form of preventative medicine — one that no prescription and no budget are required to obtain.</div>
+        <div class="row"><b>主干：</b>then parks, street trees and allotments cease to be mere amenities and become a form of preventative medicine（主语 + cease to be … and become …）</div>
+        <div class="row"><b>条件状语从句：</b>If a two-hour weekly "nature dose" is both cheap and universally available</div>
+        <div class="row"><b>同位语（破折号引出）：</b>one that no prescription and no budget are required to obtain（one 指代 a form）</div>
+        <div class="row"><b>定语从句：</b>that no prescription and no budget are required to obtain（修饰 one）</div>
+        <div class="row"><b>考点：</b>if 条件状语从句；cease to do / become 并列谓语；同位语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>如果每周两小时的"自然剂量"既便宜又人人可得，那么公园、行道树和市民菜园就不再只是便利设施，而成为一种预防医学——一种无需处方、也无需预算即可获得的良药。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">在人类历史的大部分时间里，待在户外不是一种选择，而是生存的条件；如今城市生活让我们久居室内，科学家开始追问一个看似简单的问题：一个人究竟需要多少"自然"？为了回答它，英国埃克塞特大学研究人员率领的团队利用了近两万名成年人整整一年的数据，把他们在公园、树林、海滩等自然环境中度过的时间，与自评健康和幸福感指标一一对应。结果揭示出一个清晰的临界点：每周在自然中至少度过 120 分钟的人，更有可能称自己健康状况良好、幸福感较高，而且这一好处在男女、老幼、贫富之间，甚至在长期患病者中都保持一致。同样引人注目的是数据"没有"显示的东西——当每周超过约 200 至 300 分钟后，收益便趋于平稳，表明起作用的是"剂量"而非"奢华"，适度的定期接触便能收获自然的大部分馈赠。至于自然为何有效，仍众说纷纭：一些研究者指向"柔性魅力"的恢复作用，即自然景色所唤起的温和而不费力的注意力，能让疲惫的大脑得以恢复；另一些则强调压力激素下降，以及"待在户外即远离屏幕与久坐"这一简单事实。一位作者强调，这不必是一次国家公园之旅，好处会在一次次长漫步或十余次短散步中累积，关键在于规律而非壮观。对公共健康而言，这一发现意义深远：若每周两小时的"自然剂量"既便宜又人人可得，那么公园、行道树和市民菜园就不再只是便利设施，而成为一种无需处方、无需预算的预防医学。当然，研究者也谨慎指出，这是一项观察性研究，数据来自自我报告，无法证明是自然"导致"了健康，而非健康者本就更有能力亲近自然，也未能捕捉绿地的质量与到访的季节。然而即便有这些局限，这一信息仍带着罕见的朴素：在昂贵养生当道的时代，自然世界或许提供了少数几种既免费又有效、而且对大多数人而言不过就在最近那片绿地之外的良药。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 3、4 段，说说为什么研究者把"每周 120 分钟"称为"临界点"（threshold）？再结合第 8 段，谈谈"观察性研究"与"证明因果"之间的区别。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"In an age of expensive wellness regimes, the natural world may offer one of the few remedies that is at once free, effective and … no farther than the nearest patch of green."</span> 中 "In an age of … , … may offer one of the few … that is at once … " 的句式，围绕「低碳出行」「节约资源」或「坚持运动」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 户外曾是生存条件，追问"需要多少自然"</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 埃克塞特团队分析近两万人数据</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 每周 120 分钟是临界点，好处普遍</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 超 200–300 分钟收益趋平，剂量是关键</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机理：柔性魅力助恢复，远离屏幕久坐</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 专家：不必远赴国家公园，规律更重</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 绿地是免费的"预防医学"</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：观察性研究，不能证明因果</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 自然是最廉价有效、近在咫尺的良药</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究方法 → 核心发现 → 量化细节 → 机理解释 → 专家引语 → 公共健康意义 → 局限澄清 → 总结升华」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Scientific Reports / University of Exeter 公开资料（2026-09-26 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 练琴的孩子大脑不一样：音乐训练如何重塑神经与学习能力</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Self &amp; Society · 人与自我 / 教育 / 认知科学</div>
+  <h1>练琴的孩子大脑不一样：音乐训练如何重塑神经与学习能力</h1>
+  <div class="deck">Research shows that learning an instrument changes the brain's structure and sharpens hearing, memory and language — but the effect depends on something that has little to do with talent</div>
+  <div class="byline"><span><b>来源</b> Journal of Neuroscience / Northwestern Auditory Neuroscience Laboratory（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-27</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-27.jpg" alt="弹钢琴的手（配图）">
+    <figcaption>配图：双手在钢琴琴键上弹奏（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>练琴到底练的是什么？是手指的灵活，还是别的东西？近二十年的神经科学研究给出的答案越来越清晰：学一门乐器，可能真的在"改造"大脑。研究者追踪接受乐器训练的儿童，发现其控制精细运动与听觉的脑区出现可测的增长；音乐家的大脑对言语中的细微声学差异反应更敏锐，而这又与阅读能力、甚至第二语言学习相关；音乐还像在训练大脑的"执行功能"——持续注意、工作记忆与抗干扰能力，恰是课堂学习最需要的素质。可为什么练音阶会有这种效果？因为演奏要求同时协调读谱、计时、动作与聆听，是一场高强度的多感官"协同训练"。然而研究者也谨慎提醒：相关不等于因果，坚持学琴的孩子本就可能有更强的毅力与家庭支持，效果真实但有限，任何捷径都替代不了年复一年的练习。本文带你拆解这份"音乐处方"的科学依据、教育意义与局限。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">The image of the child at the piano is a familiar one, yet <span class="kw" data-tip="n. 神经科学">neuroscience</span> now suggests that practice may do far more than produce a pleasing tune — it may <span class="kw" data-tip="adv. 身体上地；物理上地">physically</span> <span class="kw" data-tip="v. 重塑；改造">reshape</span> the brain itself.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">A <span class="kw" data-tip="adj. 里程碑式的；地标（n.）">landmark</span> study followed young children through fifteen months of <span class="kw" data-tip="n. 乐器；工具；手段">instrument</span> training and found measurable growth in regions controlling fine <span class="kw" data-tip="adj. 运动的；motor 本义"发动机/马达"（熟词僻义）">motor</span> skills and hearing — brain changes not seen in <span class="kw" data-tip="n. 同龄人；同辈">peers</span> who took only drama classes or no training at all.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The benefits extend to language. Musicians' brains respond to <span class="kw" data-tip="adj. 细微的；微妙的">subtle</span> differences in speech sounds that others overlook, a sensitivity researchers link to better reading and, for some, stronger second-language skills.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">Music also appears to train the brain's <span class="kw" data-tip="adj. 执行的；executive 本义"高管/经理"（熟词僻义）">executive</span> functions — <span class="kw" data-tip="adj. 持续的；持久的">sustained</span> attention, working memory and the ability to ignore <span class="kw" data-tip="n. 分心；干扰；使人分心的事物">distraction</span> — the very skills that classroom learning demands.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">Why should practising scales matter? Playing music demands the <span class="kw" data-tip="adj. 同时的；同步的">simultaneous</span> <span class="kw" data-tip="n. 协调；协作">coordination</span> of reading symbols, timing movements and listening to the result — an intense, <span class="kw" data-tip="adj. 多感官的">multisensory</span> workout that strengthens the connections between brain regions.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">Yet researchers are careful to distinguish <span class="kw" data-tip="n. 相关；关联">correlation</span> from <span class="kw" data-tip="n. 因果关系">causation</span>. The children who stick with music may already differ in motivation or parental support; the effect, they warn, is real but <span class="kw" data-tip="adj. 适度的；有限的；谦虚的">modest</span>, and no shortcut replaces years of steady practice.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">These findings matter for schools. As budgets squeeze the arts, the evidence hints that cutting music programmes may cost more than it saves — and that a child need not become a musician to <span class="kw" data-tip="v. 收获；获得">reap</span> the benefit of simply playing.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">Of course, not all studies agree, and how long the gains last once practice stops remains unclear; nor does every type of training deliver identical results.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">Still, the message is hopeful. The instrument is not a luxury but a tool for building a more <span class="kw" data-tip="adj. 敏捷的；灵活的">agile</span> mind; what the fingers learn, the brain remembers — long after the final note has faded.</span></div>
+
+      <p class="muted">原文出处：本文根据 Hyde 等（2009，Journal of Neuroscience，儿童乐器训练研究）、Kraus 团队（Northwestern Auditory Neuroscience Laboratory，音乐训练与言语加工研究）等公开成果整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">neuroscience</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈnjʊərəʊsaɪəns/ · 美 /ˈnʊroʊsaɪəns/</div>
+          <div class="wc-pos"><b>n.</b> 神经科学</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Neuroscience</b> reveals how practice reshapes the brain.</div>
+          <div class="wc-tr">神经科学揭示了练习如何重塑大脑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reshape</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌriːˈʃeɪp/ · 美 /ˌriːˈʃeɪp/</div>
+          <div class="wc-pos"><b>v.</b> 重塑；改造</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Years of training can <b>reshape</b> the brain's structure.</div>
+          <div class="wc-tr">多年的训练能够重塑大脑的结构。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">physically</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfɪzɪkli/ · 美 /ˈfɪzɪkli/</div>
+          <div class="wc-pos"><b>adv.</b> 身体上地；物理上地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brain changes <b>physically</b> after sustained practice.</div>
+          <div class="wc-tr">持续练习之后，大脑在生理上发生了变化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">landmark</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈlændmɑːk/ · 美 /ˈlændmɑːrk/</div>
+          <div class="wc-pos"><b>adj.</b> / <b>n.</b> 里程碑式的；地标</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>landmark</b> study tracked children through music training.</div>
+          <div class="wc-tr">一项里程碑式的研究追踪了接受音乐训练的儿童。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">instrument</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɪnstrəmənt/ · 美 /ˈɪnstrəmənt/</div>
+          <div class="wc-pos"><b>n.</b> 乐器；工具；手段</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Learning an <b>instrument</b> benefits the developing brain.</div>
+          <div class="wc-tr">学习一种乐器有益于发育中的大脑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">motor</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈməʊtə(r)/ · 美 /ˈmoʊtər/</div>
+          <div class="wc-pos"><b>adj.</b> 运动的；motor 本义"发动机/马达"（熟词僻义）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Fine <b>motor</b> skills improve with instrument practice.</div>
+          <div class="wc-tr">精细运动技能随着乐器练习而提高。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">peer</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /pɪə(r)/ · 美 /pɪr/</div>
+          <div class="wc-pos"><b>n.</b> 同龄人；同辈</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their <b>peers</b> who had no training showed no such changes.</div>
+          <div class="wc-tr">他们未受训练的同龄人没有出现这样的变化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">subtle</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsʌtl/ · 美 /ˈsʌtl/</div>
+          <div class="wc-pos"><b>adj.</b> 细微的；微妙的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Musicians notice <b>subtle</b> differences in speech sounds.</div>
+          <div class="wc-tr">音乐家能察觉言语声音中的细微差异。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">executive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪɡˈzekjətɪv/ · 美 /ɪɡˈzekjətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 执行的；executive 本义"高管/经理"（熟词僻义）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Music trains the brain's <b>executive</b> functions.</div>
+          <div class="wc-tr">音乐训练着大脑的执行功能。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sustained</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səˈsteɪnd/ · 美 /səˈsteɪnd/</div>
+          <div class="wc-pos"><b>adj.</b> 持续的；持久的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Playing requires <b>sustained</b> attention.</div>
+          <div class="wc-tr">演奏需要持续的注意力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">distraction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈstrækʃn/ · 美 /dɪˈstrækʃn/</div>
+          <div class="wc-pos"><b>n.</b> 分心；干扰；使人分心的事物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Musicians are better at ignoring <b>distraction</b>.</div>
+          <div class="wc-tr">音乐家更善于忽略干扰。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">simultaneous</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌsɪmlˈteɪniəs/ · 美 /ˌsaɪmlˈteɪniəs/</div>
+          <div class="wc-pos"><b>adj.</b> 同时的；同步的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Playing needs the <b>simultaneous</b> use of eyes, hands and ears.</div>
+          <div class="wc-tr">演奏需要眼、手、耳的同时配合。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">coordination</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəʊˌɔːdɪˈneɪʃn/ · 美 /koʊˌɔːrdɪˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 协调；协作</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Music improves hand–eye <b>coordination</b>.</div>
+          <div class="wc-tr">音乐能改善手眼协调。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">multisensory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmʌltiˈsensəri/ · 美 /ˌmʌltiˈsensəri/</div>
+          <div class="wc-pos"><b>adj.</b> 多感官的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Playing is an intense <b>multisensory</b> workout.</div>
+          <div class="wc-tr">演奏是一场高强度的多感官训练。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">correlation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkɒrəˈleɪʃn/ · 美 /ˌkɔːrəˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 相关；关联</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Researchers distinguish <b>correlation</b> from causation.</div>
+          <div class="wc-tr">研究者区分"相关"与"因果"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">causation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kɔːˈzeɪʃn/ · 美 /kɔːˈzeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 因果关系</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Correlation does not prove <b>causation</b>.</div>
+          <div class="wc-tr">相关并不能证明因果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">modest</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdɪst/ · 美 /ˈmɑːdɪst/</div>
+          <div class="wc-pos"><b>adj.</b> 适度的；有限的；谦虚的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The effect is real but <b>modest</b>.</div>
+          <div class="wc-tr">效果真实但有限。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reap</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /riːp/ · 美 /riːp/</div>
+          <div class="wc-pos"><b>v.</b> 收获；获得</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Even amateurs can <b>reap</b> the benefits of playing.</div>
+          <div class="wc-tr">即便是业余者也能从演奏中获益。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">agile</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈædʒaɪl/ · 美 /ˈædʒl/</div>
+          <div class="wc-pos"><b>adj.</b> 敏捷的；灵活的；机敏的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Music builds a more <b>agile</b> mind.</div>
+          <div class="wc-tr">音乐造就更敏捷的头脑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scale</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /skeɪl/ · 美 /skeɪl/</div>
+          <div class="wc-pos"><b>n.</b> 音阶；scale 本义"规模/刻度/鳞片"（熟词僻义）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Why should practising <b>scales</b> matter so much?</div>
+          <div class="wc-tr">为什么练音阶会如此重要？</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">a familiar one</span><span class="zh">一个熟悉的情景</span></li>
+          <li><span class="en">do far more than</span><span class="zh">远不止于；大大超出</span></li>
+          <li><span class="en">fine motor skills</span><span class="zh">精细运动技能</span></li>
+          <li><span class="en">extend to</span><span class="zh">延伸到；扩展到</span></li>
+          <li><span class="en">speech sounds</span><span class="zh">言语声音</span></li>
+          <li><span class="en">executive functions</span><span class="zh">执行功能</span></li>
+          <li><span class="en">working memory</span><span class="zh">工作记忆</span></li>
+          <li><span class="en">distinguish A from B</span><span class="zh">区分 A 与 B</span></li>
+          <li><span class="en">stick with</span><span class="zh">坚持（做某事）</span></li>
+          <li><span class="en">cost more than it saves</span><span class="zh">得不偿失；省下的不如花的</span></li>
+          <li><span class="en">reap the benefit of</span><span class="zh">收获……的好处</span></li>
+          <li><span class="en">a more agile mind</span><span class="zh">更敏捷的头脑</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>练琴或许不只为悦耳，神经科学发现它能重塑大脑。</li>
+          <li>里程碑式研究：15 个月训练使运动与听觉脑区可测增长。</li>
+          <li>好处延伸到语言：对言语细微差异更敏感，利于阅读与二语。</li>
+          <li>音乐训练执行功能：持续注意、工作记忆与抗干扰。</li>
+          <li>机理：演奏是读谱、计时、动作与聆听同步的多感官训练。</li>
+          <li>谨慎：相关非因果，效果真实但有限，无捷径可替。</li>
+          <li>对教育意义：削减音乐课可能得不偿失，业余者亦能获益。</li>
+          <li>局限：研究结论不一，停止练习后效果存续未知。</li>
+          <li>总结：乐器是塑造敏捷头脑的工具，手指所学大脑记得。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">A landmark study followed young children through fifteen months of instrument training and found measurable growth in regions controlling fine motor skills and hearing — brain changes not seen in peers who took only drama classes or no training at all.</div>
+        <div class="row"><b>主干：</b>A landmark study followed young children … and found measurable growth（主语 + 并列谓语 followed … and found …）</div>
+        <div class="row"><b>介词短语作状语：</b>through fifteen months of instrument training（贯穿……过程）</div>
+        <div class="row"><b>介词短语作后置定语：</b>in regions controlling fine motor skills and hearing（regions 后接现在分词短语）</div>
+        <div class="row"><b>同位语（破折号引出）：</b>brain changes not seen in peers（解释 growth）</div>
+        <div class="row"><b>定语从句：</b>who took only drama classes or no training at all（修饰 peers）</div>
+        <div class="row"><b>考点：</b>并列谓语；现在分词作定语；同位语；过去分词作定语；who 定语从句</div>
+        <div class="row tr"><b>译文：</b>一项里程碑式的研究追踪了接受 15 个月乐器训练的幼儿，发现其控制精细运动与听觉的脑区出现了可测量的增长——而这些脑部变化，在只上戏剧课或完全未受训练的同龄人身上并未出现。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Musicians' brains respond to subtle differences in speech sounds that others overlook, a sensitivity researchers link to better reading and, for some, stronger second-language skills.</div>
+        <div class="row"><b>主干：</b>Musicians' brains respond to subtle differences（主语 + respond to + 宾语）</div>
+        <div class="row"><b>介词短语作定语：</b>in speech sounds that others overlook（内含 that 定语从句修饰 differences）</div>
+        <div class="row"><b>同位语：</b>a sensitivity researchers link to better reading and … second-language skills（概括前句，其后是省略 that 的定语从句）</div>
+        <div class="row"><b>省略关系词的定语从句：</b>researchers link to better reading（a sensitivity 是 link 的宾语）</div>
+        <div class="row"><b>考点：</b>that 定语从句；同位语；省略 that 的定语从句</div>
+        <div class="row tr"><b>译文：</b>音乐家的大脑会对言语声音中他人忽略的细微差异作出反应，研究者把这种敏感性与更出色的阅读能力、对某些人而言更强的第二语言能力联系起来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Music also appears to train the brain's executive functions — sustained attention, working memory and the ability to ignore distraction — the very skills that classroom learning demands.</div>
+        <div class="row"><b>主干：</b>Music also appears to train the brain's executive functions（主语 + appears to do）</div>
+        <div class="row"><b>插入语（破折号之间）：</b>sustained attention, working memory and the ability to ignore distraction（并列列举，解释 executive functions）</div>
+        <div class="row"><b>同位语：</b>the very skills that classroom learning demands（再次解释 executive functions；very 加强语气"正是"）</div>
+        <div class="row"><b>定语从句：</b>that classroom learning demands（修饰 skills）</div>
+        <div class="row"><b>考点：</b>appear to do；插入语；同位语；very 的强调用法；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>音乐似乎还在训练大脑的"执行功能"——持续注意、工作记忆以及忽略干扰的能力——而这些恰恰是课堂学习所需要的素质。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Playing music demands the simultaneous coordination of reading symbols, timing movements and listening to the result — an intense, multisensory workout that strengthens the connections between brain regions.</div>
+        <div class="row"><b>主干：</b>Playing music demands the simultaneous coordination（动名词短语作主语 + demands + 宾语）</div>
+        <div class="row"><b>动名词并列作介词宾语：</b>of reading symbols, timing movements and listening to the result</div>
+        <div class="row"><b>同位语（破折号引出）：</b>an intense, multisensory workout that strengthens the connections（解释前面的整体行为）</div>
+        <div class="row"><b>定语从句：</b>that strengthens the connections between brain regions（修饰 workout）</div>
+        <div class="row"><b>考点：</b>动名词作主语；动名词并列；同位语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>演奏音乐要求同时协调读谱、把握节奏动作与倾听结果——这是一场高强度的、多感官的训练，它加强了大脑各区域之间的联系。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">As budgets squeeze the arts, the evidence hints that cutting music programmes may cost more than it saves — and that a child need not become a musician to reap the benefit of simply playing.</div>
+        <div class="row"><b>主干：</b>the evidence hints that … and that …（主语 + hints + 两个并列的 that 宾语从句）</div>
+        <div class="row"><b>时间状语从句：</b>As budgets squeeze the arts（as 引导，"随着"）</div>
+        <div class="row"><b>宾语从句一：</b>that cutting music programmes may cost more than it saves（动名词 cutting 作主语；比较状语从句 than it saves）</div>
+        <div class="row"><b>宾语从句二：</b>that a child need not become a musician to reap the benefit of simply playing（need not do；不定式作目的状语）</div>
+        <div class="row"><b>考点：</b>as 时间状语从句；并列 that 宾语从句；动名词作主语；比较状语从句；need not do</div>
+        <div class="row tr"><b>译文：</b>随着预算压缩艺术类开支，有证据暗示：削减音乐课程可能得不偿失——而且一个孩子无需成为音乐家，也能从"单纯地演奏"中获益。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">孩子在钢琴前的画面再熟悉不过，但神经科学如今提示我们：练琴的收获或许远不止弹出一段悦耳的旋律，它可能实实在在"重塑"了大脑本身。一项里程碑式的研究追踪了接受 15 个月乐器训练的幼儿，发现其控制精细运动与听觉的脑区出现可测量的增长，而这些变化在只上戏剧课或完全未受训练的同龄人身上并未出现。好处还延伸到语言：音乐家的大脑会对言语声音中他人忽略的细微差异作出反应，研究者把这种敏感性与更出色的阅读能力、对某些人而言更强的第二语言能力联系起来。音乐似乎还在训练大脑的"执行功能"——持续注意、工作记忆与忽略干扰的能力，而这恰恰是课堂学习所必需的素质。为什么练音阶会如此重要？因为演奏要求同时协调读谱、把握节奏动作与倾听结果，是一场高强度的、多感官的训练，它加强了大脑各区域之间的联系。不过，研究者也谨慎地区分"相关"与"因果"：坚持学琴的孩子，在毅力或家庭支持上本就可能不同，效果真实却有限，任何捷径都无法替代年复一年的稳定练习。这些发现对学校意义重大：随着预算压缩艺术类开支，有证据暗示削减音乐课程可能得不偿失，而且一个孩子无需成为音乐家，也能从"单纯地演奏"中获益。当然，并非所有研究结论一致，停止练习后这些好处能维持多久也尚不清楚，不同训练方式带来的效果也未必相同。尽管如此，这一信息仍是令人鼓舞的：乐器不是奢侈品，而是塑造更敏捷头脑的工具——手指所学，大脑记得，直至最后一个音符散去之后依然如此。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5 段，用自己的话解释"为什么演奏音乐是一场多感官训练"；再结合第 6 段，说明研究者为什么要强调"相关（correlation）不等于因果（causation）"。</div>
+      <div class="q"><b>仿写题：</b>仿照第 1 段 <span style="font-family:Georgia,serif;font-style:italic">"… practice may do far more than produce a pleasing tune — it may physically reshape the brain itself."</span> 中 "… may do far more than … — it may …" 的递进句式，围绕「阅读」「运动」或「写作」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 练琴或能重塑大脑本身</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 15 个月训练：运动与听觉脑区增长</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 延伸到语言：对言语差异更敏感</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 训练执行功能：注意、记忆、抗干扰</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机理：多感官协同训练</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 谨慎：相关非因果，效果有限</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 教育意义：削减音乐课可能得不偿失</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：结论不一，效果存续未知</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 乐器是塑造敏捷头脑的工具</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr2)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr2)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr2)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr2)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr2)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr2)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr2)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr2)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 实证发现 → 语言迁移 → 执行功能 → 机理解释 → 因果澄清 → 教育意义 → 局限说明 → 总结升华」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Journal of Neuroscience / Northwestern Auditory Neuroscience Laboratory 公开资料（2026-09-27 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
