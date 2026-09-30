@@ -509,11 +509,24 @@ footer a{color:var(--muted);text-decoration:underline;}
   var tl = [[0.1,9.932],[9.882,13.921],[13.921,21.132],[21.132,33.013],[33.013,42.789],[42.789,46.211],[46.211,55.092],[55.092,63.669],[63.669,66.618],[66.618,78.538],[78.538,89.461],[89.461,97.526],[97.526,111.145],[111.145,115.158],[115.158,121.263],[121.263,131.434],[131.434,134.447],[134.447,142.961],[142.961,147.145],[147.145,154.829],[154.829,163.447],[163.447,171.645],[171.645,178.513],[178.513,184.579],[184.579,190.974],[190.974,201.763]];
 
   function splitSents(text){
-    try { return text.split(/(?<=[.!?])\s+/); }
-    catch(e){
-      var parts = text.match(/[^.!?]*[.!?]+/g) || [];
-      return parts.length ? parts : [text];
+    // 不依赖正则 lookbehind（旧版 iOS Safari / Android WebView 会在解析期报错，导致整段脚本失效），改为逐字符断句
+    var out = [], buf = '';
+    for(var i=0;i<text.length;i++){
+      var ch = text.charAt(i);
+      buf += ch;
+      if(ch === '.' || ch === '!' || ch === '?'){
+        var j = i + 1;
+        while(j < text.length && (text.charAt(j) === '"' || text.charAt(j) === '\u201d')){ buf += text.charAt(j); j++; }
+        var nxt = text.charAt(j);
+        if(nxt === '' || nxt === ' ' || nxt === '\n' || nxt === '\t' || nxt === '\r'){
+          out.push(buf); buf = '';
+          while(j < text.length && (text.charAt(j) === ' ' || text.charAt(j) === '\n' || text.charAt(j) === '\t' || text.charAt(j) === '\r')){ j++; }
+          i = j - 1;
+        }
+      }
     }
+    if(buf.replace(/\s/g,'') !== '') out.push(buf);
+    return out.length ? out : [text];
   }
 
   // 把每段原文按句子包成 <span class="s" data-t data-e>，保留生词悬停
