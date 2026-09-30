@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 森林的"生物保险"：树种越多样，越能扛住高温与干旱</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 生态 / 气候 / 科普</div>
+  <h1>森林的"生物保险"：树种越多样，越能扛住高温与干旱</h1>
+  <div class="deck">A study published in Nature Communications finds that forests rich in tree species resist and recover from compound heat-and-drought extremes better than simplified stands — evidence that biodiversity acts as insurance against climate breakdown</div>
+  <div class="byline"><span><b>来源</b> Nature Communications / The Conversation / preventionweb（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-09-30</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-09-30.jpg" alt="多种树种混交的森林（配图）">
+    <figcaption>配图：多种树种混交的森林树冠（图片来源：AutoGLM 文生图生成，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>森林是地球上最可靠的"碳仓库"，却正被越来越极端的气候逼向极限——高温与干旱不再是偶发，而是结伴而来的"复合极端"。一项发表于《自然·通讯》的研究，跨越多个大洲、结合数十年卫星记录，量化了不同树种数量的林地在热浪与干旱同时来袭时的表现。结果高度一致：树种越多样，森林不仅越能"抵抗"，也越能"恢复"，科学家把这种力量称为"生物保险"。研究同时剖析了其中的机制——不同物种的"互补性"，并冷静地指出：保险效应真实存在，但幅度有限。这为全球正在进行的植树造林给出了一个既清醒又充满希望的答案：多种一些、少种单一，是最廉价也最可靠的保护。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Forests, long regarded as the planet's most dependable carbon <span class="kw" data-tip="n. 仓库；宝库">storehouses</span>, are being pushed to their limits by a climate that no longer behaves as it once did. Heat and drought, once occasional, now arrive together, and the combination — what <span class="kw" data-tip="n. 生态学家">ecologists</span> call "<span class="kw" data-tip="adj. 复合的；合成的（熟词僻义：n. 化合物）">compound</span> extremes" — has begun to test whether the world's woodlands can hold their ground.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">A study published in the journal <em>Nature Communications</em> set out to measure exactly that, drawing on data from forest plots spanning several continents, together with decades of satellite records. Led by an international team of researchers, the analysis compared how stands with different numbers of tree species responded when heat and drought struck at once.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The authors focused on two separate qualities: <span class="kw" data-tip="n. 抵抗力；耐受力">resistance</span>, or a forest's capacity to keep functioning while the stress is at its worst, and <span class="kw" data-tip="n. 恢复；复苏">recovery</span>, the speed with which it bounces back afterwards. Together these two measures define what scientists call <span class="kw" data-tip="n. 复原力；韧性">resilience</span>, the ability of an ecosystem to absorb disturbance without collapsing.</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">The results were strikingly consistent. Wherever tree diversity was high, forests not only resisted compound extremes more effectively but also recovered more quickly, a pattern that held across both <span class="kw" data-tip="adj. 温带的；温和的">temperate</span> and <span class="kw" data-tip="adj. 北方的；寒带的">boreal</span> regions. In the authors' words, species richness appears to function as a form of "biological insurance," <span class="kw" data-tip="v. 缓冲；减轻冲击（熟词僻义：n. 垫子）">cushioning</span> ecosystems against shocks no single species could withstand alone.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">The mechanism, the team suggests, lies in <span class="kw" data-tip="n. 互补性">complementarity</span> — the tendency of different species to occupy different <span class="kw" data-tip="n. 生态位；合适的定位">niches</span>. With roots reaching different depths and crowns <span class="kw" data-tip="v. 拦截；截取">intercepting</span> light at different heights, a mixed forest uses water, light and nutrients more completely, and when one species suffers, others step into the breach, buffering the whole.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">The contrast with simplified stands was equally telling. <span class="kw" data-tip="n. 单一栽培；单一化">Monocultures</span>, however fast they grow, place all their bets on a single set of <span class="kw" data-tip="n. 特征；性状">traits</span>; a drought that overwhelms that one strategy can <span class="kw" data-tip="v. 砍倒；击倒（勿与 fall 的过去式 fell 混淆）">fell</span> an entire plantation at once, whereas a diverse forest, spreading its risk, rarely fails all at once.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">The authors are careful to temper the claim, acknowledging that the study is <span class="kw" data-tip="adj. 相关的；相关性的">correlational</span> rather than experimental, and that the insurance effect, though real, is modest in size. Its strength, they note, also varies with context, dimming in places where water scarcity is so severe that no amount of diversity can rescue a forest from collapse.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">"Planting a single fast-growing species may look efficient on paper," one of the lead researchers observed, "but a forest is not a crop. What we are learning is that diversity is not an <span class="kw" data-tip="n. 装饰物；点缀">ornament</span>; it is the load-bearing structure of a woodland, and we ignore it at our peril." The practical message, she argued, is that <span class="kw" data-tip="n. 重新造林">reforestation</span> should favour mixtures over monocultures.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For a world <span class="kw" data-tip="v. 争抢；匆忙行动">scrambling</span> to restore its forests, the implication is sobering yet hopeful. Trees alone will not stop climate change, and diversity alone cannot make a forest <span class="kw" data-tip="adj. 不受伤害的；无懈可击的">invulnerable</span>; but choosing many species over one remains among the cheapest forms of protection available — insurance purchased not with money but with a commitment to letting forests be forests.</span></div>
+
+      <p class="muted">原文出处：本文根据《自然·通讯》（Nature Communications）刊发的研究《Biodiversity buffers forest ecosystems from compound climate extremes》（2026-09），及 The Conversation、preventionweb 相关科普报道（2026-09）综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">storehouse</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈstɔːhaʊs/ · 美 /ˈstɔːrhaʊs/</div>
+          <div class="wc-pos"><b>n.</b> 仓库；宝库</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The old forest is a vast <b>storehouse</b> of carbon and life.</div>
+          <div class="wc-tr">这片原始森林是碳与生命的巨大宝库。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">compound</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɒmpaʊnd/ · 美 /ˈkɑːmpaʊnd/</div>
+          <div class="wc-pos"><b>adj.</b> 复合的；合成的（熟词僻义：<b>n.</b> 化合物）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Heat and drought form a <b>compound</b> threat to crops.</div>
+          <div class="wc-tr">高温与干旱构成对庄稼的复合威胁。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ecologist</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /iˈkɒlədʒɪst/ · 美 /iˈkɑːlədʒɪst/</div>
+          <div class="wc-pos"><b>n.</b> 生态学家</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Ecologists</b> warn that the wetland is shrinking fast.</div>
+          <div class="wc-tr">生态学家警告这片湿地正在迅速缩小。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">resistance</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈzɪstəns/ · 美 /rɪˈzɪstəns/</div>
+          <div class="wc-pos"><b>n.</b> 抵抗力；耐受力</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These trees show strong <b>resistance</b> to dry weather.</div>
+          <div class="wc-tr">这些树对干燥天气表现出很强的抵抗力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recovery</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈkʌvəri/ · 美 /rɪˈkʌvəri/</div>
+          <div class="wc-pos"><b>n.</b> 恢复；复苏</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The forest's <b>recovery</b> after the fire was surprisingly fast.</div>
+          <div class="wc-tr">火灾后森林的恢复快得惊人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">resilience</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈzɪliəns/ · 美 /rɪˈzɪliəns/</div>
+          <div class="wc-pos"><b>n.</b> 复原力；韧性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Biodiversity gives an ecosystem greater <b>resilience</b>.</div>
+          <div class="wc-tr">生物多样性赋予生态系统更强的复原力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cushion</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkʊʃn/ · 美 /ˈkʊʃn/</div>
+          <div class="wc-pos"><b>v.</b> 缓冲；减轻冲击（熟词僻义：<b>n.</b> 垫子）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Green spaces <b>cushion</b> the impact of city heat.</div>
+          <div class="wc-tr">绿地缓冲了城市高温的影响。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">complementarity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkɒmplɪmenˈtærəti/ · 美 /ˌkɑːmplɪmenˈterəti/</div>
+          <div class="wc-pos"><b>n.</b> 互补性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>complementarity</b> of the two species helps both survive.</div>
+          <div class="wc-tr">两个物种的互补性帮助双方都存活下来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">niche</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /niːʃ/ · 美 /niːʃ, nɪtʃ/</div>
+          <div class="wc-pos"><b>n.</b> 生态位；合适的定位</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each species has its own <b>niche</b> in the forest.</div>
+          <div class="wc-tr">每个物种在森林中都有自己的生态位。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intercept</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈsept/ · 美 /ˌɪntərˈsept/</div>
+          <div class="wc-pos"><b>v.</b> 拦截；截取</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Tall trees <b>intercept</b> much of the sunlight.</div>
+          <div class="wc-tr">高大的树木拦截了大部分阳光。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">monoculture</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmɒnəʊkʌltʃə(r)/ · 美 /ˈmɑːnoʊkʌltʃər/</div>
+          <div class="wc-pos"><b>n.</b> 单一栽培；单一化</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>monoculture</b> is more easily destroyed by pests.</div>
+          <div class="wc-tr">单一栽培更容易被病虫害摧毁。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trait</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /treɪt/ · 美 /treɪt/</div>
+          <div class="wc-pos"><b>n.</b> 特征；性状</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Adaptability is a valuable <b>trait</b> in a changing climate.</div>
+          <div class="wc-tr">适应力是气候变化时代宝贵的特质。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fell</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /fel/ · 美 /fel/</div>
+          <div class="wc-pos"><b>v.</b> 砍倒；击倒（勿与 fall 的过去式 fell 混淆）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The storm <b>felled</b> hundreds of trees overnight.</div>
+          <div class="wc-tr">一夜之间暴风雨刮倒了数百棵树。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">temperate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtempərət/ · 美 /ˈtempərət/</div>
+          <div class="wc-pos"><b>adj.</b> 温带的；温和的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>China has both <b>temperate</b> and subtropical forests.</div>
+          <div class="wc-tr">中国既有温带森林也有亚热带森林。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">boreal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbɔːriəl/ · 美 /ˈbɔːriəl/</div>
+          <div class="wc-pos"><b>adj.</b> 北方的；寒带的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>boreal</b> forest stretches across northern countries.</div>
+          <div class="wc-tr">北方针叶林横跨多个北方国家。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">correlational</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkɒrəˈleɪʃənl/ · 美 /ˌkɔːrəˈleɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 相关的；相关性的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study found only a <b>correlational</b> link, not proof.</div>
+          <div class="wc-tr">该研究只发现了相关性联系，而非证据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ornament</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɔːnəmənt/ · 美 /ˈɔːrnəmənt/</div>
+          <div class="wc-pos"><b>n.</b> 装饰物；点缀</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The tree is not a mere <b>ornament</b> to the garden.</div>
+          <div class="wc-tr">这棵树不只是花园的装饰。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reforestation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌriːfɒrɪˈsteɪʃn/ · 美 /ˌriːfɔːrɪˈsteɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 重新造林</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Reforestation</b> is a key part of fighting climate change.</div>
+          <div class="wc-tr">重新造林是应对气候变化的关键一环。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">invulnerable</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈvʌlnərəbl/ · 美 /ɪnˈvʌlnərəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 不受伤害的；无懈可击的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>No ecosystem is <b>invulnerable</b> to human damage.</div>
+          <div class="wc-tr">没有任何生态系统能免受人类破坏。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scramble</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈskræmbl/ · 美 /ˈskræmbl/</div>
+          <div class="wc-pos"><b>v.</b> 争抢；匆忙行动</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Countries are <b>scrambling</b> to meet their green goals.</div>
+          <div class="wc-tr">各国正争相实现其环保目标。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">hold their ground</span><span class="zh">坚守阵地；屹立不倒</span></li>
+          <li><span class="en">compound extremes</span><span class="zh">复合极端（事件）</span></li>
+          <li><span class="en">draw on</span><span class="zh">利用；借鉴</span></li>
+          <li><span class="en">spanning several continents</span><span class="zh">横跨多个大洲</span></li>
+          <li><span class="en">bounce back</span><span class="zh">恢复；反弹</span></li>
+          <li><span class="en">absorb disturbance</span><span class="zh">承受干扰</span></li>
+          <li><span class="en">a form of "biological insurance"</span><span class="zh">一种"生物保险"</span></li>
+          <li><span class="en">step into the breach</span><span class="zh">挺身而出；填补空缺</span></li>
+          <li><span class="en">place all their bets on …</span><span class="zh">把全部赌注押在……上</span></li>
+          <li><span class="en">spread its risk</span><span class="zh">分散风险</span></li>
+          <li><span class="en">temper the claim</span><span class="zh">使论断有所保留</span></li>
+          <li><span class="en">at our peril</span><span class="zh">自担风险；自食其果</span></li>
+          <li><span class="en">load-bearing structure</span><span class="zh">承重结构</span></li>
+          <li><span class="en">as it were</span><span class="zh">可以说是；仿佛</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>森林正承受高温与干旱"复合极端"的考验。</li>
+          <li>一项发表于《自然·通讯》的研究跨大洲分析不同树种数量的林地如何响应极端气候。</li>
+          <li>研究者区分"抵抗力"与"恢复力"，二者共同构成生态系统的"复原力"。</li>
+          <li>核心发现：树种越多样，森林越能抵御并更快恢复，即"生物保险"效应。</li>
+          <li>机制在于"互补性"：不同物种占据不同生态位，更充分利用资源、互相补位。</li>
+          <li>对比单一栽培：单一性状"孤注一掷"，旱灾可整片摧毁，多样化则分散风险。</li>
+          <li>局限：研究为相关而非实验，保险效应真实但幅度有限，且随情境变化。</li>
+          <li>专家引语：多样性是森林的"承重结构"而非装饰，造林应优先混交。</li>
+          <li>启示：树木与多样性都不是万能，但"多种优于一种"是最廉价的保护。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Forests, long regarded as the planet's most dependable carbon storehouses, are being pushed to their limits by a climate that no longer behaves as it once did.</div>
+        <div class="row"><b>主干：</b>Forests ... are being pushed to their limits（主语 + 进行时被动语态）</div>
+        <div class="row"><b>过去分词短语作后置定语：</b>long regarded as the planet's most dependable carbon storehouses（修饰 Forests，表"长期被视为……"）</div>
+        <div class="row"><b>定语从句：</b>that no longer behaves as it once did（修饰 climate，内含 as 引导的方式状语从句）</div>
+        <div class="row"><b>考点：</b>过去分词作后置定语；that 定语从句；现在进行时被动语态 be being done</div>
+        <div class="row tr"><b>译文：</b>长期以来被视为地球上最可靠"碳仓库"的森林，正被一个不再像以往那样运作的气候逼向极限。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A study published in the journal Nature Communications set out to measure exactly that, drawing on data from forest plots spanning several continents, together with decades of satellite records.</div>
+        <div class="row"><b>主干：</b>A study ... set out to measure exactly that（主语 + set out to do）</div>
+        <div class="row"><b>过去分词短语作后置定语：</b>published in the journal Nature Communications（修饰 study）</div>
+        <div class="row"><b>现在分词短语作伴随状语：</b>drawing on data from forest plots ...（内含现在分词短语 spanning several continents 作后置定语修饰 plots）</div>
+        <div class="row"><b>考点：</b>过去分词/现在分词作后置定语；现在分词作伴随状语；set out to do sth</div>
+        <div class="row tr"><b>译文：</b>一项发表于《自然·通讯》的研究着手精确测量这一点，它利用了横跨多个大洲的森林样地数据，以及数十年的卫星记录。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Wherever tree diversity was high, forests not only resisted compound extremes more effectively but also recovered more quickly, a pattern that held across both temperate and boreal regions.</div>
+        <div class="row"><b>主干：</b>forests not only resisted compound extremes ... but also recovered more quickly（not only ... but also 并列谓语）</div>
+        <div class="row"><b>让步状语从句：</b>Wherever tree diversity was high（wherever 引导，"无论何处……"）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a pattern that held across both temperate and boreal regions（a pattern 概括前面整个主句；that 定语从句）</div>
+        <div class="row"><b>考点：</b>wherever 引导让步状语从句；not only ... but also；同位语 + that 定语从句</div>
+        <div class="row tr"><b>译文：</b>无论在何处，只要树种多样性高，森林不仅能更有效地抵御复合极端，也能更快地恢复——这一规律在温带和寒带地区都成立。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">With roots reaching different depths and crowns intercepting light at different heights, a mixed forest uses water, light and nutrients more completely, and when one species suffers, others step into the breach, buffering the whole.</div>
+        <div class="row"><b>主干：</b>a mixed forest uses water, light and nutrients more completely（主语 + uses + 宾语）</div>
+        <div class="row"><b>独立主格结构（with + n. + 现在分词）：</b>With roots reaching different depths and crowns intercepting light at different heights（表伴随状态）</div>
+        <div class="row"><b>时间状语从句：</b>when one species suffers</div>
+        <div class="row"><b>现在分词短语作结果状语：</b>buffering the whole（"从而缓冲了整个系统"）</div>
+        <div class="row"><b>考点：</b>with 复合结构/独立主格；现在分词作结果状语；when 状语从句</div>
+        <div class="row tr"><b>译文：</b>根扎向不同深度、树冠在不同高度截获阳光，混交林因此能更充分地利用水、光和养分；当某一个物种受灾时，其他物种便挺身补位，从而缓冲了整个系统。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What we are learning is that diversity is not an ornament; it is the load-bearing structure of a woodland, and we ignore it at our peril.</div>
+        <div class="row"><b>主干：</b>it is the load-bearing structure of a woodland, and we ignore it at our peril（并列句）</div>
+        <div class="row"><b>主语从句：</b>What we are learning（what 引导，作整个句子的主语）</div>
+        <div class="row"><b>表语从句：</b>that diversity is not an ornament（that 引导，作 is 的表语）</div>
+        <div class="row"><b>考点：</b>what 引导主语从句；that 引导表语从句；并列句（分号 + and）；at one's peril</div>
+        <div class="row tr"><b>译文：</b>我们正在领悟到的是：多样性不是装饰，而是森林的"承重结构"；忽视它，我们将自食其果。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">森林长期被视为地球上最可靠的"碳仓库"，却正被一个越来越极端的气候逼向极限：高温与干旱不再是偶发事件，而是结伴而来的"复合极端"。一项发表于《自然·通讯》的研究，利用横跨多个大洲的森林样地数据与数十年的卫星记录，考察了树种数量不同的林地在热浪与干旱同时来袭时的表现。研究者把森林的表现拆解为两个维度——"抵抗力"（压力最大时维持运转的能力）与"恢复力"（事后反弹的速度），二者共同构成生态系统的"复原力"。结果高度一致：只要树种多样性高，森林不仅能更有效地抵御复合极端，也能更快地恢复，这一规律在温带和寒带地区都成立，科学家称之为"生物保险"。其机制在于"互补性"：不同物种扎根不同深度、在不同高度截获阳光，从而更充分地利用水、光和养分，某个物种受灾时其他物种可以挺身补位。与之相对，单一栽培无论长得多快，都只是把全部赌注押在一种性状上，一场旱灾就可能整片摧毁；而多样化森林分散风险，很少会整体崩溃。不过，研究者也冷静地指出：这项研究是相关性而非实验性的，保险效应真实存在但幅度有限，其强度随环境而变化，在极端缺水的地方，再高的多样性也救不了森林。一位主要研究者强调："多样性不是装饰，而是森林的承重结构；忽视它，我们将自食其果。"对正在努力恢复森林的世界而言，启示既清醒又充满希望——树木本身阻止不了气候变化，多样性也造就不了刀枪不入的森林；但"多种一些、少种单一"仍是最廉价可靠的保护，这份保险不用金钱购买，而用"让森林成为森林"的承诺来换取。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6 段，解释"互补性"为何能让混交林比单一栽培更抗灾？再结合第 9 段，谈谈你对"多种树好过只种一种树"这一主张的看法。</div>
+      <div class="q"><b>仿写题：</b>仿照第 4 段 <span style="font-family:Georgia,serif;font-style:italic">"Wherever tree diversity was high, forests not only resisted ... but also recovered ..."</span>（wherever 引导让步状语从句 + not only ... but also）的句式，围绕「坚持阅读」「低碳出行」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 森林正承受"复合极端"的考验</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 研究方法：跨大洲样地 + 卫星记录</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 区分"抵抗力"与"恢复力"</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 核心发现：多样性 = "生物保险"</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机制：物种间的"互补性"</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 对比：单一栽培的脆弱</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 局限：相关非因果、幅度有限</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 专家引语：造林应优先混交</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：多种优于一种，最廉价的保护</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究方法 → 研究设计（定义核心概念）→ 核心发现 → 机理机制 → 反面对比 → 研究局限 → 专家引语 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Communications / The Conversation / preventionweb 公开资料（2026-09-30 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
