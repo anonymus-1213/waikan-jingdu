@@ -50,6 +50,12 @@ figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
 h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
 .main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 
+/* 英音朗读播放器 */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
 /* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
@@ -155,6 +161,11 @@ footer a{color:var(--muted);text-decoration:underline;}
 
     <section class="main-top">
       <h2>一、原文精读</h2>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio controls src="../assets/audio/外刊精读_2026-09-30.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，约 9 段。建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
       <div class="para"><span class="idx">【1】</span><span class="en">Forests, long regarded as the planet's most dependable carbon <span class="kw" data-tip="n. 仓库；宝库">storehouses</span>, are being pushed to their limits by a climate that no longer behaves as it once did. Heat and drought, once occasional, now arrive together, and the combination — what <span class="kw" data-tip="n. 生态学家">ecologists</span> call "<span class="kw" data-tip="adj. 复合的；合成的（熟词僻义：n. 化合物）">compound</span> extremes" — has begun to test whether the world's woodlands can hold their ground.</span></div>
