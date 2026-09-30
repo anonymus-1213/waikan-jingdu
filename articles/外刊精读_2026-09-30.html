@@ -56,6 +56,12 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 .audio-box audio{width:100%;display:block;}
 .audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
 
+/* 跟读同步高亮（当前朗读句） */
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
 /* 原文段落 */
 .para{margin-bottom:16px;}
 .para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
@@ -163,7 +169,7 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <div class="audio-box">
         <div class="audio-label">🔊 英音朗读 · British English</div>
-        <audio controls src="../assets/audio/外刊精读_2026-09-30.mp3" preload="none"></audio>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-30.mp3" preload="none"></audio>
         <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，约 9 段。建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
       </div>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
@@ -494,6 +500,75 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+<script>
+(function(){
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  // 20 句时间轴（秒），与下方原文逐句一一对应
+  var tl = [[0.1,9.905],[9.855,21.105],[21.105,32.947],[32.947,42.711],[42.711,54.592],[54.592,63.182],[63.182,66.132],[66.132,78.051],[78.051,88.974],[88.974,97.039],[97.039,110.658],[110.658,114.671],[114.671,129.947],[129.947,140.75],[140.75,151.605],[151.605,160.224],[160.224,168.408],[168.408,175.276],[175.276,181.368],[181.368,197.472]];
+
+  function splitSents(text){
+    try { return text.split(/(?<=[.!?])\s+/); }
+    catch(e){
+      var parts = text.match(/[^.!?]*[.!?]+/g) || [];
+      return parts.length ? parts : [text];
+    }
+  }
+
+  // 把每段原文按句子包成 <span class="s" data-t data-e>，保留生词悬停
+  var si = 0;
+  [].slice.call(document.querySelectorAll('.main-top .para .en')).forEach(function(en){
+    var frag = document.createDocumentFragment();
+    var cur = document.createElement('span');
+    cur.className = 's';
+    var has = false;
+    function flush(){
+      if(!has) return;
+      var t = tl[si] || [0,0];
+      cur.setAttribute('data-t', t[0]);
+      cur.setAttribute('data-e', t[1]);
+      si++;
+      frag.appendChild(cur);
+      cur = document.createElement('span');
+      cur.className = 's';
+      has = false;
+    }
+    [].slice.call(en.childNodes).forEach(function(node){
+      if(node.nodeType === 3){
+        var parts = splitSents(node.nodeValue);
+        parts.forEach(function(part, idx){
+          if(part === '') return;
+          cur.appendChild(document.createTextNode(part));
+          has = true;
+          if(idx < parts.length - 1) flush();
+        });
+      } else {
+        cur.appendChild(node);
+        has = true;
+      }
+    });
+    flush();
+    en.innerHTML = '';
+    en.appendChild(frag);
+  });
+
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
 
 </body>
 </html>
