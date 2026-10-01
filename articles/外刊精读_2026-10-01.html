@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 大脑如何"筛选"记忆：θ 波在睡眠中决定哪些该留、哪些该弃</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Science · 人与自我 / 神经科学 / 睡眠 / 教育</div>
+  <h1>大脑如何"筛选"记忆：θ 波在睡眠中决定哪些该留、哪些该弃</h1>
+  <div class="deck">New research suggests theta brain waves tag important experiences while they happen, and the sleeping brain replays only these tagged traces to fix them in long-term memory</div>
+  <div class="byline"><span><b>来源</b> Technology Networks / Nature Neuroscience（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-01</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-01.jpg" alt="大脑与记忆（配图）">
+    <figcaption>配图：大脑神经联结与记忆（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>我们每天醒来，大脑都会淹没在无数画面、声音与触感之中，可最终真正沉淀为长期记忆的，只是其中极小一部分。大脑凭什么决定"记住什么、忘掉什么"？长期以来，神经科学家都把这个谜题视为记忆研究的核心难题。2026 年 8 月末的一项研究给出了一个惊人答案：大脑会在体验发生的当下，用被称为"θ 波"的节律性电活动给重要经历"打标签"，随后在睡眠中只"重放"这些被标记的痕迹，将其固化进长期存储。本文沿着"清醒时标记——睡眠中重放"这条机制链，揭示遗忘或许不是缺陷，而是一种主动的"分诊"，并探讨它对学习与教育的深远启示。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="para"><span class="idx">【1】</span><span class="en">Every waking hour, the human brain is flooded with sights, sounds and sensations, yet only a small fraction ever becomes <span class="kw" data-tip="adj. 持久的；耐久的">durable</span> memory. How the brain decides what to keep — and what to let vanish — has long puzzled neuroscientists, who once imagined the organ as a passive recorder rather than an active editor.</span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en">Now a team of neuroscientists, whose findings were reported in late August, has offered a striking answer: the brain <span class="kw" data-tip="v. 标记；给……贴标签（熟词僻义：n. 标签）">tags</span> important experiences while they are still happening, using rhythmic bursts of electrical activity known as theta waves, and later <span class="kw" data-tip="v./n. 重放；重演">replays</span> only those tagged traces during sleep.</span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en">The <span class="kw" data-tip="n. 海马体（大脑中负责记忆的结构）">hippocampus</span>, a seahorse-shaped structure deep in the brain that is central to memory formation, produces theta <span class="kw" data-tip="n. 振荡；波动">oscillations</span> — slow, rhythmic waves of neural activity — whenever an animal or person is awake and <span class="kw" data-tip="adj. 专注的；留意的">attentive</span>. Recording from this region during learning tasks, the researchers observed that experiences carrying significance — a reward, a surprise, or an emotional charge — coincided with a <span class="kw" data-tip="n./v. 激增；涌动">surge</span> in these waves, the brain's way of <span class="kw" data-tip="v. 标示；标记（熟词僻义：n. 旗帜）">flagging</span> "this matters."</span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en">During the sleep that followed, the brain did not replay everything <span class="kw" data-tip="adv. 不加区分地；不加选择地">indiscriminately</span>. Instead, brief bursts called sharp-wave ripples, the hippocampus's signature nighttime signal, selectively <span class="kw" data-tip="v. 重新激活；使恢复活动">reactivated</span> the neural patterns that had been tagged, as if reviewing only the day's highlighted passages while the untagged pages quietly dissolved.</span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en">This <span class="kw" data-tip="n. 耦合；联结；结合">coupling</span> of waking tags and sleeping replay, the authors argue, is the mechanism by which the brain manages its <span class="kw" data-tip="adj. 有限的；限定的">finite</span> storage capacity. Memories left untagged during <span class="kw" data-tip="v. 编码；把信息转换成某种形式">encoding</span> were replayed far less often and were far more likely to fade, a result that suggests forgetting is less a failure than a deliberate act of <span class="kw" data-tip="n./v. 分诊；按轻重缓急分类处理">triage</span>.</span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en">"The brain is not a camera; it is an editor," one researcher observed, adding that the tagging system amounts to a prediction about what will prove useful later. What the brain chooses to <span class="kw" data-tip="v. 保留；保持">retain</span>, in other words, is decided in advance — not reconstructed afterward.</span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en">Behavioral tests supported the mechanism: items that had been tagged during learning were recalled with <span class="kw" data-tip="adv. 显著地；明显地">markedly</span> higher accuracy days later. <span class="kw" data-tip="v. 干扰；妨碍">Interfering</span> with theta activity during encoding, the team found, weakened the selective replay and blurred the line between the important and the trivial.</span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en">The researchers caution that much of the evidence comes from animal models, and that translating these findings to human classrooms will require further work; correlation, they note, is not the same as <span class="kw" data-tip="n. 因果关系">causation</span>. Even so, the implications for learning are hard to ignore: attention during study may be the very signal that tells a sleeping brain what deserves to survive, and it is during sleep that fragile memories are <span class="kw" data-tip="v. 巩固；合并；加强">consolidated</span>.</span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en">For students and teachers alike, the message is at once humbling and <span class="kw" data-tip="adj. 赋予力量的；使人有信心的">empowering</span>. Sleep is not downtime but an active <span class="kw" data-tip="v. 归档；整理入档（熟词僻义：n. 文件）">filing</span> system, and the hours spent focusing deliberately during the day shape, quite literally, what the night preserves — a reminder that attention is the first draft of memory.</span></div>
+
+      <p class="muted">原文出处：本文根据 Technology Networks 报道《Theta Brain Waves Help Select Memories During Sleep》（2026-08-28）及 Nature Neuroscience 相关神经科学研究综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tag</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /tæɡ/ · 美 /tæɡ/</div>
+          <div class="wc-pos"><b>v.</b> 标记；给……贴标签（熟词僻义：<b>n.</b> 标签）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brain <b>tags</b> important memories for later review.</div>
+          <div class="wc-tr">大脑会给重要记忆打上标签，以供稍后复习。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flag</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /flæɡ/ · 美 /flæɡ/</div>
+          <div class="wc-pos"><b>v.</b> 标示；标记（熟词僻义：<b>n.</b> 旗帜）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>I <b>flagged</b> the key points with a red pen.</div>
+          <div class="wc-tr">我用红笔标出了要点。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">file</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /faɪl/ · 美 /faɪl/</div>
+          <div class="wc-pos"><b>v.</b> 归档；整理入档（熟词僻义：<b>n.</b> 文件）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep <b>files</b> away the day's memories overnight.</div>
+          <div class="wc-tr">睡眠在夜间把白天的记忆归档存好。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">oscillation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɒsɪˈleɪʃn/ · 美 /ˌɑːsɪˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 振荡；波动</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Neurons produce slow <b>oscillations</b> during deep sleep.</div>
+          <div class="wc-tr">神经元在深睡时会产生缓慢的振荡。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hippocampus</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌhɪpəˈkæmpəs/ · 美 /ˌhɪpəˈkæmpəs/</div>
+          <div class="wc-pos"><b>n.</b> 海马体（大脑中负责记忆的结构）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>hippocampus</b> is essential for forming new memories.</div>
+          <div class="wc-tr">海马体对于形成新记忆至关重要。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attentive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈtentɪv/ · 美 /əˈtentɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 专注的；留意的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Be <b>attentive</b> in class if you want to remember the lesson.</div>
+          <div class="wc-tr">如果你想记住这堂课，上课时要专心。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">surge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /sɜːdʒ/ · 美 /sɜːrdʒ/</div>
+          <div class="wc-pos"><b>n./v.</b> 激增；涌动</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>surge</b> of excitement swept through the crowd.</div>
+          <div class="wc-tr">一阵兴奋的情绪涌过人群。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">indiscriminately</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪndɪˈskrɪmɪnətli/ · 美 /ˌɪndɪˈskrɪmɪnətli/</div>
+          <div class="wc-pos"><b>adv.</b> 不加区分地；不加选择地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brain does not store information <b>indiscriminately</b>.</div>
+          <div class="wc-tr">大脑并不会不加选择地存储信息。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reactivate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌriːˈæktɪveɪt/ · 美 /ˌriːˈæktɪveɪt/</div>
+          <div class="wc-pos"><b>v.</b> 重新激活；使恢复活动</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep <b>reactivates</b> the brain circuits used during learning.</div>
+          <div class="wc-tr">睡眠会重新激活学习时用到的脑回路。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">coupling</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkʌplɪŋ/ · 美 /ˈkʌplɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 耦合；联结；结合</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>coupling</b> of the two systems makes learning efficient.</div>
+          <div class="wc-tr">这两个系统的耦合使学习变得高效。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">finite</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfaɪnaɪt/ · 美 /ˈfaɪnaɪt/</div>
+          <div class="wc-pos"><b>adj.</b> 有限的；限定的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Our time and energy are <b>finite</b> resources.</div>
+          <div class="wc-tr">我们的时间和精力都是有限的资源。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">encode</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈkəʊd/ · 美 /ɪnˈkoʊd/</div>
+          <div class="wc-pos"><b>v.</b> 编码；把信息转换成某种形式</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brain <b>encodes</b> new words during focused study.</div>
+          <div class="wc-tr">大脑在专注学习时会对新单词进行编码。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">triage</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈtriːɑːʒ/ · 美 /triˈɑːʒ/</div>
+          <div class="wc-pos"><b>n./v.</b> 分诊；按轻重缓急分类处理</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Forgetting is, in part, a kind of mental <b>triage</b>.</div>
+          <div class="wc-tr">遗忘在某种程度上是一种大脑的"分诊"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">retain</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈteɪn/ · 美 /rɪˈteɪn/</div>
+          <div class="wc-pos"><b>v.</b> 保留；保持</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reviewing notes helps you <b>retain</b> what you have learned.</div>
+          <div class="wc-tr">复习笔记有助于你记住所学内容。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">markedly</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɑːkɪdli/ · 美 /ˈmɑːrkɪdli/</div>
+          <div class="wc-pos"><b>adv.</b> 显著地；明显地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Her pronunciation has improved <b>markedly</b> this term.</div>
+          <div class="wc-tr">她的发音这学期进步显著。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">interfere</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈfɪə(r)/ · 美 /ˌɪntərˈfɪr/</div>
+          <div class="wc-pos"><b>v.</b> 干扰；妨碍</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Noise can <b>interfere</b> with your concentration.</div>
+          <div class="wc-tr">噪音会干扰你的注意力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">causation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kɔːˈzeɪʃn/ · 美 /kɔːˈzeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 因果关系</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Correlation does not prove <b>causation</b>.</div>
+          <div class="wc-tr">相关并不能证明因果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consolidate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈsɒlɪdeɪt/ · 美 /kənˈsɑːlɪdeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 巩固；合并；加强</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep helps <b>consolidate</b> the memories of the day.</div>
+          <div class="wc-tr">睡眠有助于巩固白天的记忆。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">replay</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌriːˈpleɪ/ · 美 /ˌriːˈpleɪ/</div>
+          <div class="wc-pos"><b>v./n.</b> 重放；重演</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The sleeping brain <b>replays</b> the day's key moments.</div>
+          <div class="wc-tr">睡眠中的大脑会重放白天的关键时刻。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">empowering</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪmˈpaʊərɪŋ/ · 美 /ɪmˈpaʊərɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 赋予力量的；使人有信心的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Knowing how memory works is deeply <b>empowering</b>.</div>
+          <div class="wc-tr">了解记忆的运作方式会让人充满力量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">durable</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdjʊərəbl/ · 美 /ˈdʊrəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 持久的；耐久的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Deep understanding makes for <b>durable</b> knowledge.</div>
+          <div class="wc-tr">深入的理解能带来持久的知识。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">a small fraction of …</span><span class="zh">一小部分……</span></li>
+          <li><span class="en">be flooded with …</span><span class="zh">充斥着……</span></li>
+          <li><span class="en">be central to …</span><span class="zh">对……至关重要</span></li>
+          <li><span class="en">coincide with …</span><span class="zh">与……同时发生</span></li>
+          <li><span class="en">amounts to …</span><span class="zh">相当于；等于</span></li>
+          <li><span class="en">in advance</span><span class="zh">提前；事先</span></li>
+          <li><span class="en">in other words</span><span class="zh">换句话说</span></li>
+          <li><span class="en">as if …</span><span class="zh">仿佛……</span></li>
+          <li><span class="en">the line between A and B</span><span class="zh">A 与 B 之间的界限</span></li>
+          <li><span class="en">be hard to ignore</span><span class="zh">难以忽视</span></li>
+          <li><span class="en">at once … and …</span><span class="zh">既……又……</span></li>
+          <li><span class="en">the first draft of …</span><span class="zh">……的初稿</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>大脑每天接收海量信息，却只有极小一部分成为持久记忆，"筛选"机制长期成谜。</li>
+          <li>新研究给出答案：θ 波在体验发生时"标记"重要记忆，睡眠中只重放被标记的痕迹。</li>
+          <li>海马体在清醒专注时产生 θ 振荡，重要体验（奖赏、惊喜、情绪）会引发 θ 波激增，即"标记"。</li>
+          <li>睡眠中大脑并非全盘重放，而是用"尖波涟漪"有选择地再激活被标记的神经模式。</li>
+          <li>清醒标记与睡眠重放的耦合，是大脑管理有限存储容量的机制；遗忘更像主动的"分诊"。</li>
+          <li>专家引语："大脑不是相机，而是编辑"；保留什么是在事前就已预判好的。</li>
+          <li>行为实验证实：被标记的记忆几天后回忆准确率显著更高；干扰 θ 活动会削弱选择性重放。</li>
+          <li>局限：证据多来自动物模型，相关性不等于因果；但"专注即保留信号"的启示难以忽视。</li>
+          <li>启示：睡眠是主动的"归档系统"，白天的专注塑造夜晚所保存的内容，专注是记忆的初稿。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The hippocampus, a seahorse-shaped structure deep in the brain that is central to memory formation, produces theta oscillations — slow, rhythmic waves of neural activity — whenever an animal or person is awake and attentive.</div>
+        <div class="row"><b>主干：</b>The hippocampus ... produces theta oscillations（主语 + produces + 宾语）</div>
+        <div class="row"><b>同位语：</b>a seahorse-shaped structure deep in the brain（解释 The hippocampus）</div>
+        <div class="row"><b>定语从句：</b>that is central to memory formation（修饰 structure）</div>
+        <div class="row"><b>破折号同位语：</b>slow, rhythmic waves of neural activity（解释 theta oscillations）</div>
+        <div class="row"><b>时间状语从句：</b>whenever an animal or person is awake and attentive（"每当……时"）</div>
+        <div class="row"><b>考点：</b>同位语；that 引导定语从句；whenever 引导时间状语从句</div>
+        <div class="row tr"><b>译文：</b>海马体——大脑深处一个形似海马、对记忆形成至关重要的结构——会在动物或人清醒且专注时，产生 θ 振荡，即缓慢而有节律的神经活动波。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Recording from this region during learning tasks, the researchers observed that experiences carrying significance — a reward, a surprise, or an emotional charge — coincided with a surge in these waves, the brain's way of flagging "this matters."</div>
+        <div class="row"><b>主干：</b>the researchers observed that ...（主语 + observed + that 宾语从句）</div>
+        <div class="row"><b>现在分词作状语：</b>Recording from this region during learning tasks（"在……时记录"）</div>
+        <div class="row"><b>宾语从句：</b>experiences carrying significance ... coincided with a surge in these waves</div>
+        <div class="row"><b>现在分词作后置定语：</b>carrying significance（修饰 experiences）</div>
+        <div class="row"><b>同位语：</b>the brain's way of flagging "this matters"（解释前面整个现象）</div>
+        <div class="row"><b>考点：</b>现在分词作状语；that 宾语从句；现在分词作后置定语；同位语</div>
+        <div class="row tr"><b>译文：</b>研究人员在学习任务中记录这一脑区的活动，观察到那些具有重要意义的体验——一次奖赏、一个惊喜，或一阵情绪波动——都会与这些波的一次激增同时发生，这正是大脑在标示"这件事很重要"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">This coupling of waking tags and sleeping replay, the authors argue, is the mechanism by which the brain manages its finite storage capacity.</div>
+        <div class="row"><b>主干：</b>This coupling ... is the mechanism（主语 + is + 表语）</div>
+        <div class="row"><b>插入语：</b>the authors argue（"作者们认为"）</div>
+        <div class="row"><b>定语从句：</b>by which the brain manages its finite storage capacity（"介词 + which" 修饰 mechanism）</div>
+        <div class="row"><b>考点：</b>"介词 + which" 引导定语从句；插入语</div>
+        <div class="row tr"><b>译文：</b>作者们认为，清醒时的标记与睡眠中的重放这两者的耦合，正是大脑管理其有限存储容量的机制。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Memories left untagged during encoding were replayed far less often and were far more likely to fade, a result that suggests forgetting is less a failure than a deliberate act of triage.</div>
+        <div class="row"><b>主干：</b>Memories ... were replayed ... and were far more likely to fade（主语 + 并列谓语）</div>
+        <div class="row"><b>过去分词作后置定语：</b>left untagged during encoding（修饰 Memories）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a result that suggests ...（that 引导定语从句修饰 result）</div>
+        <div class="row"><b>宾语从句（含比较结构）：</b>forgetting is less a failure than a deliberate act of triage（less A than B）</div>
+        <div class="row"><b>考点：</b>过去分词作后置定语；that 定语从句；宾语从句；less ... than ... 比较结构</div>
+        <div class="row tr"><b>译文：</b>在编码时未被标记的记忆，被重放的次数要少得多，也更容易消退——这一结果表明，遗忘与其说是一种失败，不如说是一种主动的"分诊"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The researchers caution that much of the evidence comes from animal models, and that translating these findings to human classrooms will require further work; correlation, they note, is not the same as causation.</div>
+        <div class="row"><b>主干：</b>The researchers caution that ... and that ...（主语 + caution + 两个并列宾语从句）</div>
+        <div class="row"><b>宾语从句①：</b>much of the evidence comes from animal models</div>
+        <div class="row"><b>宾语从句②：</b>translating these findings to human classrooms will require further work（动名词短语作主语）</div>
+        <div class="row"><b>插入语：</b>they note（"他们指出"）</div>
+        <div class="row"><b>考点：</b>并列宾语从句；动名词短语作主语；插入语</div>
+        <div class="row tr"><b>译文：</b>研究人员提醒说，大部分证据来自动物模型，把这些发现转化到人类课堂还需要进一步研究；他们指出，相关性并不等同于因果关系。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">人在醒着的每一小时里，大脑都会淹没在无数的画面、声音与触感之中，可最终真正沉淀为持久记忆的，只是其中极小一部分。大脑究竟凭什么决定"记住什么、忘掉什么"，长期以来一直是困扰神经科学家的难题——他们过去曾把大脑想象成一台被动的"记录仪"，而非一位主动的"编辑"。2026 年 8 月末报道的一项研究给出了一个令人耳目一新的答案：大脑会在重要体验发生的当下，用被称为 θ 波的节律性电活动为其"打上标签"，随后在睡眠中只"重放"这些被标记的神经痕迹，把它们固化进长期记忆。具体机制是：大脑深处形似海马、对记忆形成至关重要的海马体，会在动物或人清醒且专注时产生 θ 振荡；研究人员在学习任务中记录这一脑区发现，凡带重要意义的体验——一次奖赏、一个惊喜或一阵情绪波动——都会伴随这些波的激增，相当于大脑在标示"这件事很重要"。而在随后的睡眠里，大脑并不会不加区分地全盘重放，而是用被称为"尖波涟漪"的夜间信号，有选择地重新激活那些被标记过的神经模式，仿佛只翻阅白天划出的重点段落，任由未标记的页码悄然消散。作者认为，这种"清醒标记 + 睡眠重放"的耦合，正是大脑管理其有限存储容量的机制；编码时未被标记的记忆被重放得少得多、也更容易消退，这说明遗忘与其说是缺陷，不如说是一种主动的"分诊"。一位研究者形容："大脑不是相机，而是编辑"——要保留什么，早在事前就已预判好了。行为实验也印证了这一机制：被标记过的内容几天后回忆准确率显著更高，而干扰编码阶段的 θ 活动会削弱选择性重放、模糊"重要"与"琐碎"的界限。当然，研究者也谨慎指出，大部分证据来自动物模型，把这些发现转化到人类课堂还需更多研究，相关性并不等于因果。即便如此，它对学习的启示仍难以忽视：学习时的专注，可能正是告诉沉睡大脑"什么值得留下"的那个信号——记忆的固化，恰恰发生在睡眠之中。对学生与教师而言，这个发现既令人谦卑又充满力量：睡眠不是"停机时间"，而是一套主动运转的归档系统；白天那一段段刻意专注的时光，在相当字面的意义上塑造了夜晚所保存的内容——专注，是记忆的初稿。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5 段与第 8 段，为什么作者既把遗忘称为"主动的分诊"，又提醒"相关性不等于因果"？这两处表述分别体现了科学解释中的什么态度？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"Sleep is not downtime but an active filing system, and the hours spent focusing ... shape what the night preserves."</span>（"not A but B" 并列结构 + 过去分词短语作定语）的句式，围绕「阅读」「坚持锻炼」或「时间管理」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现象引入：大脑如何筛选记忆成谜</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 答案：θ 波标记记忆，睡眠中重放</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 海马体 θ 振荡：重要体验触发激增</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 睡眠中选择性再激活被标记的模式</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机制：耦合管理有限容量，遗忘即分诊</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 专家引语：大脑是编辑，保留在事前预判</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 行为实验验证：标记提升回忆，干扰则削弱</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限与启示：相关≠因果，但专注即信号</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 总结：睡眠是归档系统，专注是记忆初稿</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究答案 → 清醒标记机制 → 睡眠重放机制 → 耦合与遗忘本质 → 专家引语 → 行为实验证据 → 局限与启示 → 总结升华」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Technology Networks / Nature Neuroscience 公开资料（2026-10-01 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+</body>
+</html>
