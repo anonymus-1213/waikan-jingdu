@@ -118,6 +118,37 @@ h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 footer a{color:var(--muted);text-decoration:underline;}
 
+/* 词汇级别色块：卡片左边条 + 级别标签着色 */
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+/* 词汇级别色块图例 */
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+/* 朗读栏与段落播放按钮 */
+.audio-bar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 18px;}
+.abtn{font-family:var(--sans);font-size:13px;color:#fff;background:var(--blue);border:1px solid var(--blue);border-radius:4px;padding:7px 16px;cursor:pointer;}
+.abtn:hover{background:#16304f;}
+.abtn.ghost{color:var(--blue);background:#fff;border:1px solid var(--blue);}
+.abtn.ghost:hover{background:var(--blue-soft);}
+.audio-hint{font-size:12px;color:var(--muted);}
+.pplay{font-family:var(--sans);font-size:12px;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;cursor:pointer;margin-left:6px;vertical-align:middle;transition:background .15s;}
+.pplay:hover{background:#dbe7f3;}
+.pplay.speaking{color:#fff;background:var(--accent);border-color:var(--accent);}
+
 /* 响应式 */
 @media (max-width:999px){
   .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
@@ -155,7 +186,12 @@ footer a{color:var(--muted);text-decoration:underline;}
 
     <section class="main-top">
       <h2>一、原文精读</h2>
-      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-bar">
+        <button class="abtn" id="read-all" type="button">🔊 朗读全文</button>
+        <button class="abtn ghost" id="read-stop" type="button">⏹ 停止</button>
+        <span class="audio-hint">点击每段段号旁的小 <span style="color:var(--blue)">🔊</span> 可单段朗读（浏览器内置英文语音）。</span>
+      </div>
 
       <div class="para"><span class="idx">【1】</span><span class="en">Every waking hour, the human brain is flooded with sights, sounds and sensations, yet only a small fraction ever becomes <span class="kw" data-tip="adj. 持久的；耐久的">durable</span> memory. How the brain decides what to keep — and what to let vanish — has long puzzled neuroscientists, who once imagined the organ as a passive recorder rather than an active editor.</span></div>
       <div class="para"><span class="idx">【2】</span><span class="en">Now a team of neuroscientists, whose findings were reported in late August, has offered a striking answer: the brain <span class="kw" data-tip="v. 标记；给……贴标签（熟词僻义：n. 标签）">tags</span> important experiences while they are still happening, using rhythmic bursts of electrical activity known as theta waves, and later <span class="kw" data-tip="v./n. 重放；重演">replays</span> only those tagged traces during sleep.</span></div>
@@ -171,6 +207,15 @@ footer a{color:var(--muted);text-decoration:underline;}
     </section>
 
     <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
       <div class="side-box">
         <h3>二、重点词汇</h3>
 
@@ -494,6 +539,68 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 段落朗读（浏览器 Web Speech API，英文语音）
+  if(!('speechSynthesis' in window)){
+    var hint = document.querySelector('.audio-hint');
+    if(hint) hint.textContent = '当前浏览器不支持语音朗读，请使用 Chrome / Edge 打开。';
+    return;
+  }
+  var paras = [].slice.call(document.querySelectorAll('.para .en'));
+  var texts = paras.map(function(en){ return en.textContent.replace(/\s+/g,' ').trim(); });
+  var pbtns = [];
+  var stop = false;
+
+  function pickVoice(){
+    var vs = speechSynthesis.getVoices();
+    return vs.filter(function(v){ return /^en/i.test(v.lang); })[0] || null;
+  }
+  function utter(text, done){
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US'; u.rate = 0.9;
+    var v = pickVoice(); if(v) u.voice = v;
+    if(done){ u.onend = done; u.onerror = done; }
+    speechSynthesis.speak(u);
+  }
+  function mark(i){
+    pbtns.forEach(function(b){ b.classList.remove('speaking'); });
+    if(i != null && pbtns[i]) pbtns[i].classList.add('speaking');
+  }
+
+  paras.forEach(function(en, i){
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'pplay'; btn.textContent = '🔊';
+    btn.title = '朗读本段'; btn.setAttribute('aria-label','朗读第'+(i+1)+'段');
+    btn.addEventListener('click', function(){
+      stop = false; speechSynthesis.cancel(); mark(i);
+      utter(texts[i], function(){ mark(null); });
+    });
+    pbtns.push(btn);
+    var idx = en.parentNode.querySelector('.idx');
+    idx.parentNode.insertBefore(btn, idx.nextSibling);
+  });
+
+  var allBtn = document.getElementById('read-all');
+  var stopBtn = document.getElementById('read-stop');
+  function readAll(i){
+    if(stop || i >= texts.length){ mark(null); return; }
+    mark(i); utter(texts[i], function(){ readAll(i+1); });
+  }
+  if(allBtn){ allBtn.addEventListener('click', function(){ stop = false; speechSynthesis.cancel(); readAll(0); }); }
+  if(stopBtn){ stopBtn.addEventListener('click', function(){ stop = true; speechSynthesis.cancel(); mark(null); }); }
+})();
+</script>
 
 </body>
 </html>
