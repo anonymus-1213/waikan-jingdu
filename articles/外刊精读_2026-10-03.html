@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 格陵兰与南极冰盖：卫星"对账"揭示 44 年流失 11 万亿吨冰</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 词汇级别色块：卡片左边条 + 级别标签着色 */
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+/* 词汇级别色块图例 */
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+/* 英音朗读播放器 */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+/* 跟读同步高亮（当前朗读句） */
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 气候 / 科普 / 卫星观测</div>
+  <h1>格陵兰与南极冰盖：卫星"对账"揭示 44 年流失 11 万亿吨冰</h1>
+  <div class="deck">A study reconciling 50 satellite estimates finds the Greenland and Antarctic ice sheets lost 11,309 billion tonnes of ice between 1979 and 2023, lifting sea level by 3.14 centimetres — with fast-flowing glaciers, not surface melt, doing most of the damage</div>
+  <div class="byline"><span><b>来源</b> Nature / ESA（欧洲空间局）/ IMBIE / AP（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-03</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-03.jpg" alt="极地冰盖与冰川（配图）">
+    <figcaption>配图：正在崩解入海的极地冰盖与冰川（图片来源：AutoGLM 生成图片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>格陵兰与南极的冰盖，储存着足以让全球海平面抬升六十多米的淡水，是地球气候系统里最"慢热"却也最致命的一环。可过去几十年，关于它们到底流失了多少冰、流失得多快，不同的卫星测量方法给出的答案常常对不上。2026 年的一项国际研究，首次把约五十种相互独立、彼此分歧的卫星估测"对账"成一个统一口径的记录：1979 至 2023 年间，两大冰盖合计流失了 11,309 亿吨冰，使全球海平面抬升了 3.14 厘米。更出乎意料的是，约 84% 的流失并非来自表面融化，而是源于"冰川动力失衡"——流动越来越快的冰川把冰倾泻入海、冰山不断崩解。本文带你读懂这份"对账"背后的方法、机理与局限，以及它对你我脚下每一条海岸线意味着什么。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-03.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.1" data-e="11.866">The Greenland and Antarctic ice sheets, which together hold enough frozen fresh water to raise the world's oceans by more than sixty metres, are <span class="kw" data-tip="v. 流失；脱落（此处指冰量流失）">shedding</span> ice at a pace that grows harder to ignore each year.</span> <span class="s" data-t="11.816" data-e="19.132">Yet precisely how much ice, and how fast, has long depended on which satellite record one chose to trust.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.132" data-e="30.776">Now an international team, coordinated through the Ice Sheet Mass Balance Intercomparison Exercise, has <span class="kw" data-tip="v. 调和；使一致；对账">reconciled</span> roughly fifty independent <span class="kw" data-tip="n./v. 估计；估算">estimates</span> into one authoritative record.</span> <span class="s" data-t="30.776" data-e="42.829">By <span class="kw" data-tip="v. 汇总；合计">aggregating</span> satellite <span class="kw" data-tip="n. 测高法（通过测量冰面高度推算冰量）">altimetry</span>, which gauges ice-surface height, with <span class="kw" data-tip="n. 重力测量法（通过引力变化测质量）">gravimetry</span>, which weighs the ice from orbit, they produced a forty-four-year account rival methods had never agreed upon.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="42.829" data-e="44.737">The verdict is <span class="kw" data-tip="adj. 鲜明的；严酷的">stark</span>.</span> <span class="s" data-t="44.737" data-e="59.445">Between 1979 and 2023 the two ice sheets shed 11,309 billion tonnes of ice, a figure whose scale—enough to bury Europe beneath more than a metre of water—is difficult to grasp, let alone reverse.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="59.445" data-e="71.882">Of that total, the Antarctic Ice Sheet contributed 4,780 billion tonnes, raising global sea level by 13.3 millimetres, with Greenland supplying most of the remainder.</span> <span class="s" data-t="71.882" data-e="80.592">Greenland's losses, modest at the outset, have since accelerated so sharply that researchers describe the trend as entering "hyperdrive."</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="80.592" data-e="83.737">More surprising is what has driven the melt.</span> <span class="s" data-t="83.737" data-e="99.895">Fully eighty-four per cent of the loss, the authors calculate, stems not from surface melting but from <span class="kw" data-tip="adj. 动力的；动态的">dynamical</span> <span class="kw" data-tip="n. 失衡；不平衡">imbalance</span>—the quickening flow of glaciers that dump ice into the sea as icebergs <span class="kw" data-tip="v. （冰山）崩解；产犊（熟词僻义：calf 小牛）">calve</span> from their snouts, a process that, once begun, can feed on itself.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="99.895" data-e="112.934">"The ice sheets are melting away fast," one coordinator observed, adding that fast-flowing outlet glaciers, whose <span class="kw" data-tip="n. 边缘；前沿；幅度、差额（熟词僻义：页边空白）">margins</span> are bathed in ever-warmer seawater, now <span class="kw" data-tip="v. 排放；释放（熟词僻义：解雇、放电）">discharge</span> far more ice than snowfall can replenish.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="112.934" data-e="118.592">For the hundreds of millions who live within a metre of the sea, the message is uncomfortable.</span> <span class="s" data-t="118.592" data-e="130.645">The thirty-one millimetres of rise already delivered may sound <span class="kw" data-tip="adj. 微不足道的；琐碎的">trivial</span>, but it is <span class="kw" data-tip="adj. 累积的；渐增的">cumulative</span>, and every extra tonne lost pushes low-lying coastlines closer to the flooding scientists have long predicted.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="130.645" data-e="133.553">The authors are <span class="kw" data-tip="adj. 坦率的；直言不讳的">candid</span> about their limits.</span> <span class="s" data-t="133.553" data-e="149.997">Because the fifty estimates still <span class="kw" data-tip="v. 分歧；偏离">diverge</span> in places, the record carries an uncertainty of 565 billion tonnes and cannot alone say whether losses will follow their current <span class="kw" data-tip="n. 轨迹；走势">trajectory</span>; what it establishes is a single agreed baseline from which the future can be measured.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="149.997" data-e="157.553">For a public inclined to treat polar ice as a distant <span class="kw" data-tip="n. 抽象概念；抽象">abstraction</span>, the finding is at once humbling and instructive.</span> <span class="s" data-t="157.553" data-e="169.301">The ice sheets are not passive scenery but slow-moving <span class="kw" data-tip="n. 蓄积；储藏；水库（此处喻指"变化之源"）">reservoirs</span> of change, and knowing how much they have surrendered is the <span class="kw" data-tip="adj. 不可或缺的；必需的">indispensable</span> first step toward deciding how much more we will allow them to lose.</span></span></div>
+
+      <p class="muted">原文出处：本文根据《自然》（Nature，2026-09）刊发的 IMBIE 冰盖物质平衡研究（Otosaka 等，综合约 50 种卫星估测）、欧洲空间局（ESA）报道《Faster-flowing glaciers fuel decades of polar ice loss》（2026-09）及美联社（AP）相关报道综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shed</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ʃed/ · 美 /ʃed/</div>
+          <div class="wc-pos"><b>v.</b> 流失；脱落；摆脱；散发</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The ice sheet has <b>shed</b> more than 11 trillion tonnes of ice since 1979.</div>
+          <div class="wc-tr">自 1979 年以来，这片冰盖已流失超过 11 万亿吨冰。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reconcile</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrekənsaɪl/ · 美 /ˈrekənsaɪl/</div>
+          <div class="wc-pos"><b>v.</b> 调和；使一致；对账</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is hard to <b>reconcile</b> the two conflicting figures.</div>
+          <div class="wc-tr">很难让这两个相互矛盾的数字达成一致。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">estimate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈestɪmət/ · 美 /ˈestɪmət/</div>
+          <div class="wc-pos"><b>n.</b> 估计；估算（<b>v.</b> /ˈestɪmeɪt/ 估计）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists combined fifty separate <b>estimates</b> into one record.</div>
+          <div class="wc-tr">科学家把五十种单独的估测合并成一条记录。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">altimetry</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ælˈtɪmətri/ · 美 /ælˈtɪmətri/</div>
+          <div class="wc-pos"><b>n.</b> 测高法（通过测量冰面高度变化推算冰量）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Satellite <b>altimetry</b> tracks how the ice surface rises and falls.</div>
+          <div class="wc-tr">卫星测高法追踪冰面的升高与下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gravimetry</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɡrəˈvɪmətri/ · 美 /ɡrəˈvɪmətri/</div>
+          <div class="wc-pos"><b>n.</b> 重力测量法（通过地球引力变化"称量"冰量）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Gravimetry</b> weighs the entire ice mass from orbit.</div>
+          <div class="wc-tr">重力测量法从轨道上"称量"整片冰的质量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">aggregate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈæɡrɪɡeɪt/ · 美 /ˈæɡrɪɡeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 汇总；合计（<b>n.</b> 总量）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team <b>aggregated</b> decades of satellite data into one record.</div>
+          <div class="wc-tr">团队把几十年的卫星数据汇总成一条记录。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stark</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /stɑːk/ · 美 /stɑːrk/</div>
+          <div class="wc-pos"><b>adj.</b> 鲜明的；严酷的；毫无掩饰的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The report paints a <b>stark</b> picture of the melting poles.</div>
+          <div class="wc-tr">这份报告描绘了极地融化的严酷景象。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">imbalance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪmˈbæləns/ · 美 /ɪmˈbæləns/</div>
+          <div class="wc-pos"><b>n.</b> 失衡；不平衡</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The ice loss is driven by a deep <b>imbalance</b> between gain and loss.</div>
+          <div class="wc-tr">冰量流失是由增与减之间的深刻失衡造成的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dynamical</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /daɪˈnæmɪkl/ · 美 /daɪˈnæmɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 动力的；动态的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Most of the loss comes from <b>dynamical</b> changes in glacier flow.</div>
+          <div class="wc-tr">大部分流失来自冰川流动方式的动力变化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">calve</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /kɑːv/ · 美 /kæv/</div>
+          <div class="wc-pos"><b>v.</b> （冰山）崩解；产犊（熟词僻义：源自 calf 小牛，母牛"产犊"→ 冰川"崩解"出冰山）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Enormous icebergs <b>calve</b> from the glacier's front into the sea.</div>
+          <div class="wc-tr">巨大的冰山从冰川前端崩解入海。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">discharge</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /dɪsˈtʃɑːdʒ/ · 美 /dɪsˈtʃɑːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 排放；释放（熟词僻义：解雇、放电、履行）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The outlet glaciers <b>discharge</b> far more ice than snowfall can replace.</div>
+          <div class="wc-tr">这些出海口冰川排放的冰远超降雪所能补充的量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">margin</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈmɑːdʒɪn/ · 美 /ˈmɑːrdʒɪn/</div>
+          <div class="wc-pos"><b>n.</b> 边缘；前沿；幅度、差额（熟词僻义：页边空白、利润）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The glaciers' <b>margins</b> are bathed in ever-warmer seawater.</div>
+          <div class="wc-tr">这些冰川的边缘正浸泡在越来越暖的海水中。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cumulative</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkjuːmjələtɪv/ · 美 /ˈkjuːmjəleɪtɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 累积的；渐增的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Small daily habits have a <b>cumulative</b> effect on health.</div>
+          <div class="wc-tr">每天的小习惯会对健康产生累积性的影响。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trivial</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtrɪviəl/ · 美 /ˈtrɪviəl/</div>
+          <div class="wc-pos"><b>adj.</b> 微不足道的；琐碎的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A few millimetres of sea rise may sound <b>trivial</b>, but it adds up.</div>
+          <div class="wc-tr">几毫米的海平面上升听起来微不足道，但它会不断累积。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diverge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /daɪˈvɜːdʒ/ · 美 /daɪˈvɜːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 分歧；偏离；分化</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The two methods <b>diverge</b> slightly in their results.</div>
+          <div class="wc-tr">这两种方法的结果略有分歧。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trajectory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /trəˈdʒektəri/ · 美 /trəˈdʒektəri/</div>
+          <div class="wc-pos"><b>n.</b> 轨迹；走势；发展路径</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>No one knows whether the losses will keep their current <b>trajectory</b>.</div>
+          <div class="wc-tr">没人知道这些流失是否会延续当前的走势。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">candid</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkændɪd/ · 美 /ˈkændɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 坦率的；直言不讳的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists are <b>candid</b> about the limits of their models.</div>
+          <div class="wc-tr">科学家坦率地承认他们模型的局限。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">abstraction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /æbˈstrækʃn/ · 美 /æbˈstrækʃn/</div>
+          <div class="wc-pos"><b>n.</b> 抽象概念；抽象（<b>adj.</b> abstract 抽象的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Climate change often feels like a distant <b>abstraction</b>.</div>
+          <div class="wc-tr">气候变化常常让人觉得是一个遥远的抽象概念。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reservoir</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrezəvwɑː(r)/ · 美 /ˈrezərvwɑːr/</div>
+          <div class="wc-pos"><b>n.</b> 蓄积；储藏；水库（此处喻指"变化之源"）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The ice sheets are vast <b>reservoirs</b> of fresh water and of change.</div>
+          <div class="wc-tr">冰盖是巨大的淡水库，也是变化的蓄积之源。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">indispensable</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪndɪˈspensəbl/ · 美 /ˌɪndɪˈspensəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 不可或缺的；必需的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Accurate data is <b>indispensable</b> to making wise decisions.</div>
+          <div class="wc-tr">准确的数据对于做出明智的决策不可或缺。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">hold enough frozen fresh water</span><span class="zh">储存足够的淡水冰</span></li>
+          <li><span class="en">raise the world's oceans</span><span class="zh">抬升全球海平面</span></li>
+          <li><span class="en">shed ice</span><span class="zh">流失冰量</span></li>
+          <li><span class="en">depend on which ...</span><span class="zh">取决于哪一个……</span></li>
+          <li><span class="en">reconcile A into B</span><span class="zh">把 A 调和／对账成 B</span></li>
+          <li><span class="en">ice-surface height</span><span class="zh">冰面高度</span></li>
+          <li><span class="en">weigh the ice from orbit</span><span class="zh">从轨道上"称量"冰量</span></li>
+          <li><span class="en">let alone</span><span class="zh">更不用说</span></li>
+          <li><span class="en">contribute ... to sea level rise</span><span class="zh">对海平面上升贡献……</span></li>
+          <li><span class="en">dynamical imbalance</span><span class="zh">动力失衡</span></li>
+          <li><span class="en">dump ice into the sea</span><span class="zh">把冰倾泻入海</span></li>
+          <li><span class="en">feed on itself</span><span class="zh">自我强化；循环加剧</span></li>
+          <li><span class="en">be bathed in ...</span><span class="zh">被……浸泡／包围</span></li>
+          <li><span class="en">live within a metre of the sea</span><span class="zh">住在海拔不足一米的地方</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>格陵兰与南极冰盖正以惊人的速度流失冰量，"流失多少"曾取决于你信哪条卫星记录。</li>
+          <li>国际团队把约 50 种独立的卫星估测"对账"成一条权威记录。</li>
+          <li>结论鲜明：1979–2023 年两大冰盖合计流失 11,309 亿吨冰，规模之大难以把握、更无从逆转。</li>
+          <li>南极贡献 4,780 亿吨，格陵兰占其余大部，且格陵兰近年损失加速进入"超速档"。</li>
+          <li>更出人意料：84% 的损失源于"动力失衡"——冰川加速流动、冰山崩解入海，并自我强化。</li>
+          <li>专家引语：冰盖"消融得很快"，出海口冰川排放的冰远超降雪所能补充。</li>
+          <li>对住在海拔不足一米的人群而言，31 毫米的上升虽小却在累积，逼近预测中的洪涝。</li>
+          <li>局限：五十种估测仍有分歧、误差达 565 亿吨，但确立了一条可衡量未来的统一基线。</li>
+          <li>启示：冰盖是"变化之源"，精确认识其流失，是决定还愿让它失去多少的前提。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The Greenland and Antarctic ice sheets, which together hold enough frozen fresh water to raise the world's oceans by more than sixty metres, are shedding ice at a pace that grows harder to ignore each year.</div>
+        <div class="row"><b>主干：</b>The Greenland and Antarctic ice sheets ... are shedding ice at a pace（主语 + are shedding + 宾语 + 状语）</div>
+        <div class="row"><b>非限制性定语从句：</b>which together hold enough frozen fresh water to raise the world's oceans by more than sixty metres（which 指代 ice sheets）</div>
+        <div class="row"><b>定语从句：</b>that grows harder to ignore each year（that 修饰 pace）</div>
+        <div class="row"><b>考点：</b>非限制性定语从句；that 引导限制性定语从句；不定式 to raise 作结果状语</div>
+        <div class="row tr"><b>译文：</b>格陵兰与南极的冰盖，共同储存着足以把全球海平面抬升六十多米的淡水冰，正以一年比一年更难忽视的速度流失冰量。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">By aggregating satellite altimetry, which gauges ice-surface height, with gravimetry, which weighs the ice from orbit, they produced a forty-four-year account rival methods had never agreed upon.</div>
+        <div class="row"><b>主干：</b>they produced a forty-four-year account（主语 + produced + 宾语）</div>
+        <div class="row"><b>方式状语：</b>By aggregating satellite altimetry ... with gravimetry（"通过把……与……汇总"）</div>
+        <div class="row"><b>定语从句①：</b>which gauges ice-surface height（修饰 altimetry）</div>
+        <div class="row"><b>定语从句②：</b>which weighs the ice from orbit（修饰 gravimetry）</div>
+        <div class="row"><b>省略关系词的定语从句：</b>rival methods had never agreed upon（修饰 account，省略 that/which）</div>
+        <div class="row"><b>考点：</b>介词 By + 动名词作方式状语；两个 which 定语从句；省略关系代词的定语从句</div>
+        <div class="row tr"><b>译文：</b>通过把测量冰面高度的卫星测高法，与从轨道上"称量"冰量的重力测量法汇总在一起，他们得出了一条此前各种方法从未达成一致的、长达四十四年的记录。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Between 1979 and 2023 the two ice sheets shed 11,309 billion tonnes of ice, a figure whose scale—enough to bury Europe beneath more than a metre of water—is difficult to grasp, let alone reverse.</div>
+        <div class="row"><b>主干：</b>the two ice sheets shed 11,309 billion tonnes of ice（主语 + shed + 宾语）</div>
+        <div class="row"><b>同位语：</b>a figure（解释前面的数字）</div>
+        <div class="row"><b>whose 定语从句：</b>whose scale ... is difficult to grasp（whose 修饰 figure）</div>
+        <div class="row"><b>插入的同位语：</b>enough to bury Europe beneath more than a metre of water（解释 scale）</div>
+        <div class="row"><b>考点：</b>同位语；whose 引导定语从句；let alone + 动词原形</div>
+        <div class="row tr"><b>译文：</b>从 1979 年到 2023 年，两大冰盖流失了 11,309 亿吨冰——这个数字的规模（足以把整个欧洲埋在一米多深的水下）难以把握，更不用说逆转了。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Fully eighty-four per cent of the loss, the authors calculate, stems not from surface melting but from dynamical imbalance—the quickening flow of glaciers that dump ice into the sea as icebergs calve from their snouts, a process that, once begun, can feed on itself.</div>
+        <div class="row"><b>主干：</b>eighty-four per cent of the loss ... stems not from surface melting but from dynamical imbalance（not ... but ... 结构）</div>
+        <div class="row"><b>插入语：</b>the authors calculate（"作者们估算"）</div>
+        <div class="row"><b>同位语：</b>the quickening flow of glaciers（解释 dynamical imbalance）</div>
+        <div class="row"><b>定语从句 + 时间状语从句：</b>that dump ice into the sea as icebergs calve from their snouts（that 修饰 glaciers；as 引导时间状语从句）</div>
+        <div class="row"><b>同位语 + 定语从句 + 省略式状语：</b>a process that, once begun, can feed on itself（once begun = once it is begun）</div>
+        <div class="row"><b>考点：</b>not ... but ... 并列；插入语；同位语；as 时间状语从句；once + 过去分词</div>
+        <div class="row tr"><b>译文：</b>作者们估算，足足 84% 的流失并非来自表面融化，而是源于"动力失衡"——即冰川不断加速流动、把冰倾泻入海、冰山从冰川前端崩解的过程，而这一过程一旦开始，就会自我强化。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Because the fifty estimates still diverge in places, the record carries an uncertainty of 565 billion tonnes and cannot alone say whether losses will follow their current trajectory; what it establishes is a single agreed baseline from which the future can be measured.</div>
+        <div class="row"><b>主干：</b>the record carries an uncertainty ... and cannot alone say whether ...（并列谓语）</div>
+        <div class="row"><b>原因状语从句：</b>Because the fifty estimates still diverge in places（"因为……"）</div>
+        <div class="row"><b>宾语从句：</b>whether losses will follow their current trajectory（whether 引导，作 say 的宾语）</div>
+        <div class="row"><b>主语从句：</b>what it establishes is a single agreed baseline（what 引导主语从句）</div>
+        <div class="row"><b>定语从句：</b>from which the future can be measured（"介词 + which" 修饰 baseline）</div>
+        <div class="row"><b>考点：</b>Because 原因状语从句；whether 宾语从句；what 主语从句；"介词 + which" 定语从句</div>
+        <div class="row tr"><b>译文：</b>由于这五十种估测在某些地方仍有分歧，这条记录带有 565 亿吨的不确定性，也无法单独判断流失是否会延续当前的走势；但它所确立的，是一条可以据此衡量未来的、各方一致同意的基线。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">格陵兰与南极的冰盖共同储存着足以把全球海平面抬升六十多米的淡水冰，却正以一年比一年更难忽视的速度流失冰量；而"到底流失了多少、多快"，过去几十年里一直取决于你选择相信哪一条卫星记录。2026 年，一支由"冰盖物质平衡比较实验"（IMBIE）协调的国际团队首次把约五十种相互独立、彼此分歧的卫星估测"对账"成一条权威记录：通过把测量冰面高度的卫星测高法与从轨道上"称量"冰量的重力测量法汇总在一起，他们得出一条此前各种方法从未达成一致的、长达四十四年的记录。结论鲜明：1979 至 2023 年间，两大冰盖合计流失了 11,309 亿吨冰，使全球海平面抬升了 3.14 厘米；其中南极贡献 4,780 亿吨、抬升 13.3 毫米，格陵兰占其余大部，且格陵兰近年损失加速、进入"超速档"。更出人意料的是，足足 84% 的流失并非来自表面融化，而是源于"动力失衡"——冰川不断加速流动、把冰倾泻入海、冰山从冰川前端崩解，而这一过程一旦开始就会自我强化。一位协调者形容："冰盖消融得很快"，出海口冰川的边缘正浸泡在越来越暖的海水中，排放的冰远超降雪所能补充。对全球数以亿计住在海拔不足一米的人们而言，这 31 毫米的上升听起来微不足道，却是在累积的，每多流失一吨冰，就把低洼海岸线推向科学家早已预测的洪涝。当然，作者也坦率承认局限：五十种估测仍有分歧、记录带有 565 亿吨的不确定性，也无法单独判断未来走势；但它的价值在于确立了一条可衡量未来的统一基线。对习惯于把极地冰看作遥远抽象概念的公众而言，这一发现既令人谦卑又发人深省：冰盖不是静止的风景，而是缓慢流动的"变化之源"，精确认识它已经失去了多少，正是决定我们愿意再让它失去多少的、不可或缺的第一步。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5 段与第 6 段，为什么"动力失衡"比"表面融化"更令人担忧？"冰山崩解"这一过程为何能"自我强化"（feed on itself）？请用自己的话说明这条机制链。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"The ice sheets are not passive scenery but slow-moving reservoirs of change, and knowing how much they have surrendered is the indispensable first step toward deciding how much more we will allow them to lose."</span>（"not A but B" 并列结构 + 动名词短语作主语 + 名词化表达）的句式，围绕「节约资源」「保护环境」或「珍惜时间」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现象引入：冰盖正以惊人速度流失冰量</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 方法：50 种卫星估测被"对账"成统一记录</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 核心数据：44 年合计流失 11,309 亿吨冰</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 分项：南极贡献 4,780 亿吨，格陵兰加速</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机理：84% 损失源于"动力失衡"与冰山崩解</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 专家引语：冰川排放远超降雪补充</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 影响：海平面上升虽缓却在累积</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：估测仍有分歧，但确立了统一基线</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：先精确认识流失，再决定取舍</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究方法 → 核心数据 → 分项拆解 → 作用机理 → 专家引语 → 现实影响 → 局限与价值 → 总结启示」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature / ESA（欧洲空间局）/ IMBIE / AP 公开资料（2026-10-03 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
