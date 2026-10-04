@@ -117,6 +117,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -145,15 +155,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Friendship used to be taken for granted, an effortless background to daily life. Today it is increasingly described as something to be scheduled, managed and, for a growing number of people, missed altogether.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The numbers are <span class="kw" data-tip="adj. 鲜明的；严峻的；赤裸裸的">stark</span>. In one widely cited American survey, the <span class="kw" data-tip="n. 份额；比例（熟词僻义：share 本义"分享"）">share</span> of men reporting no close friends at all rose from 3 percent in 1990 to 15 percent three decades later; women's circles shrank too, and loneliness now cuts across age groups in ways that once seemed unlikely.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">Public health officials have begun to treat the trend as an <span class="kw" data-tip="n. 流行病；（思想的）蔓延">epidemic</span>. The US Surgeon General has compared the health <span class="kw" data-tip="n. 损失；代价；伤亡人数（熟词僻义：toll 本义"通行费"）">toll</span> of <span class="kw" data-tip="adj. 慢性的；长期的">chronic</span> loneliness to smoking fifteen cigarettes a day, linking <span class="kw" data-tip="n. 孤立；隔离">isolation</span> to higher risks of heart disease, <span class="kw" data-tip="n. 痴呆症">dementia</span> and depression.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">What has changed? Technology is an obvious <span class="kw" data-tip="n. 嫌疑对象；可疑分子（熟词僻义：suspect 本义 v."怀疑"）">suspect</span>. Screens promise connection but often deliver distraction, replacing the deep, <span class="kw" data-tip="adj. 不匆忙的；从容的">unrushed</span> conversations that once bound people together with a stream of <span class="kw" data-tip="adj. 肤浅的；浅的">shallow</span>, <span class="kw" data-tip="adj. 表演性的；作秀式的">performative</span> updates.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Deeper structural shifts matter too. People move more, work longer and change jobs more often than they once did, while the institutions that once <span class="kw" data-tip="v. 编织；使紧密结合">knitted</span> neighbourhoods together — churches, clubs, extended families — have <span class="kw" data-tip="v. 磨损；使（关系）紧张、瓦解">frayed</span>.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">The cost is not merely emotional. Researchers find that weak social ties predict earlier death as strongly as well-known risks like <span class="kw" data-tip="n. 肥胖">obesity</span> and physical inactivity, making friendship, in effect, a matter of survival rather than sentiment.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">To be sure, "fewer friends" need not mean "lonelier" in every case; a single <span class="kw" data-tip="n. 知己；密友">confidant</span> can matter more than a dozen <span class="kw" data-tip="n. 熟人；泛泛之交">acquaintances</span>, and some <span class="kw" data-tip="n. 独处；孤独（中性，区别于 loneliness）">solitude</span> is freely chosen and restorative.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">The good news is that friendship can be rebuilt with <span class="kw" data-tip="adj. 刻意的；深思熟虑的">deliberate</span> effort. Studies suggest that simply reaching out — a message, a shared meal, a <span class="kw" data-tip="adj. 反复出现的；定期重复的">recurring</span> commitment — restores closeness faster than most people expect, and that the fear of rejection is usually far worse than the reality.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">In the end, the "friendship recession" is not a law of nature but a habit we have drifted into — and habits, however stubborn, can be changed. The question is whether we still remember how to begin.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-28.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="5.497">Friendship used to be taken for granted, an effortless background to daily life.</span> <span class="s" data-t="5.497" data-e="13.513">Today it is increasingly described as something to be scheduled, managed and, for a growing number of people, missed altogether.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="13.513" data-e="15.355">The numbers are <span class="kw" data-tip="adj. 鲜明的；严峻的；赤裸裸的">stark</span>.</span> <span class="s" data-t="15.355" data-e="31.393">In one widely cited American survey, the <span class="kw" data-tip="n. 份额；比例（熟词僻义：share 本义"分享"）">share</span> of men reporting no close friends at all rose from 3 percent in 1990 to 15 percent three decades later; women's circles shrank too, and loneliness now cuts across age groups in ways that once seemed unlikely.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="31.393" data-e="35.907">Public health officials have begun to treat the trend as an <span class="kw" data-tip="n. 流行病；（思想的）蔓延">epidemic</span>.</span> <span class="s" data-t="35.907" data-e="47.158">The US Surgeon General has compared the health <span class="kw" data-tip="n. 损失；代价；伤亡人数（熟词僻义：toll 本义"通行费"）">toll</span> of <span class="kw" data-tip="adj. 慢性的；长期的">chronic</span> loneliness to smoking fifteen cigarettes a day, linking <span class="kw" data-tip="n. 孤立；隔离">isolation</span> to higher risks of heart disease, <span class="kw" data-tip="n. 痴呆症">dementia</span> and depression.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="47.158" data-e="48.776">What has changed?</span> <span class="s" data-t="48.776" data-e="51.669">Technology is an obvious <span class="kw" data-tip="n. 嫌疑对象；可疑分子（熟词僻义：suspect 本义 v."怀疑"）">suspect</span>.</span> <span class="s" data-t="51.669" data-e="62.684">Screens promise connection but often deliver distraction, replacing the deep, <span class="kw" data-tip="adj. 不匆忙的；从容的">unrushed</span> conversations that once bound people together with a stream of <span class="kw" data-tip="adj. 肤浅的；浅的">shallow</span>, <span class="kw" data-tip="adj. 表演性的；作秀式的">performative</span> updates.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="62.684" data-e="65.513">Deeper structural shifts matter too.</span> <span class="s" data-t="65.513" data-e="77.498">People move more, work longer and change jobs more often than they once did, while the institutions that once <span class="kw" data-tip="v. 编织；使紧密结合">knitted</span> neighbourhoods together — churches, clubs, extended families — have <span class="kw" data-tip="v. 磨损；使（关系）紧张、瓦解">frayed</span>.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="77.498" data-e="80.145">The cost is not merely emotional.</span> <span class="s" data-t="80.145" data-e="93.038">Researchers find that weak social ties predict earlier death as strongly as well-known risks like <span class="kw" data-tip="n. 肥胖">obesity</span> and physical inactivity, making friendship, in effect, a matter of survival rather than sentiment.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="93.038" data-e="104.235">To be sure, "fewer friends" need not mean "lonelier" in every case; a single <span class="kw" data-tip="n. 知己；密友">confidant</span> can matter more than a dozen <span class="kw" data-tip="n. 熟人；泛泛之交">acquaintances</span>, and some <span class="kw" data-tip="n. 独处；孤独（中性，区别于 loneliness）">solitude</span> is freely chosen and restorative.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="104.235" data-e="108.724">The good news is that friendship can be rebuilt with <span class="kw" data-tip="adj. 刻意的；深思熟虑的">deliberate</span> effort.</span> <span class="s" data-t="108.724" data-e="121.511">Studies suggest that simply reaching out — a message, a shared meal, a <span class="kw" data-tip="adj. 反复出现的；定期重复的">recurring</span> commitment — restores closeness faster than most people expect, and that the fear of rejection is usually far worse than the reality.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="121.511" data-e="130.382">In the end, the "friendship recession" is not a law of nature but a habit we have drifted into — and habits, however stubborn, can be changed.</span> <span class="s" data-t="130.382" data-e="133.908">The question is whether we still remember how to begin.</span></span></div>
 
       <p class="muted">原文出处：本文根据美国卫生总署署长咨询报告《Our Epidemic of Loneliness and Isolation》（2023）、Survey Center on American Life《The State of American Friendship》（2021）等公开资料整理改写，供学习使用。</p>
     </section>
@@ -464,6 +480,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

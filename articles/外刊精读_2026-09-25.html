@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Far removed from any infectious outbreak, a quiet <span class="kw" data-tip="n. 流行病；蔓延">epidemic</span> has been creeping through the world's classrooms, and it has nothing to do with viruses. <span class="kw" data-tip="n. 近视；目光短浅">myopia</span>, the failure to bring distant objects into focus, already blurs the vision of one person in three — a share that may approach one in two by the middle of this century.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The projections come from a landmark review by the Brien Holden Vision Institute, whose modelling, published in the journal <em>Ophthalmology</em>, drew on 145 studies spanning nearly 2.1 million participants. Its conclusion was blunt: within a generation, myopia could <span class="kw" data-tip="v. 使痛苦；折磨；困扰">afflict</span> some five billion people, a major public health concern.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">Nowhere is the shift more striking than in urban East Asia, where 80 to 90 percent of teenagers finishing secondary school are myopic. Researchers increasingly attribute the surge not to genes alone but to two interlocking habits of modern childhood — relentless <span class="kw" data-tip="n. 近距离用眼（活动）">near work</span> and a sharp decline in time spent outdoors.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">The <span class="kw" data-tip="n. 机制；机理">mechanism</span>, though still debated, centres on light. Bright outdoor light, many orders of magnitude stronger than indoor lighting, is thought to <span class="kw" data-tip="v. 促使；激起（熟词僻义：adj. 迅速的）">prompt</span> the <span class="kw" data-tip="n. 视网膜">retina</span> to release <span class="kw" data-tip="n. 多巴胺">dopamine</span>, which in turn restrains the excessive <span class="kw" data-tip="n. 伸长；拉长">elongation</span> of the eyeball that defines myopia; dim rooms and close screens offer the eye no such brake.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The COVID-19 lockdowns <span class="kw" data-tip="v. 使恶化；加剧（熟词僻义：n. 化合物）">compounded</span> the problem. With schools shut and lives grown <span class="kw" data-tip="adj. 久坐的；少活动的">sedentary</span>, children's screen time soared while their daylight hours collapsed, and cohort studies recorded a sharp acceleration in the <span class="kw" data-tip="n. 开始；发作">onset</span> of myopia among the youngest.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">The costs extend far beyond thicker lenses. High myopia raises the lifetime risk of retinal <span class="kw" data-tip="n. 脱离；分离">detachment</span>, <span class="kw" data-tip="n. 青光眼">glaucoma</span> and macular <span class="kw" data-tip="n. 退化；变性">degeneration</span>, conditions that can lead to irreversible blindness, turning a correctable inconvenience into a lifelong <span class="kw" data-tip="n. 负担；重担">burden</span> on individuals and health systems alike.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">Prevention, the experts insist, is both cheap and well established. Roughly two hours of outdoor time each day, whatever the weather, can meaningfully <span class="kw" data-tip="v. 遏制；抑制">curb</span> the onset of myopia, while simple routines such as the "20-20-20" rule are now widely recommended; in much of the world, however, even a basic pair of spectacles remains beyond reach — let alone the <span class="kw" data-tip="n. 阿托品">atropine</span> drops that wealthier families take for granted.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Sceptics caution that most of the evidence is observational, so the direction of causality is not fully proven, and heredity remains a powerful <span class="kw" data-tip="n. 决定因素">determinant</span>. Yet even the most guarded reviewers concede that the balance of evidence favours a protective role for daylight — a conclusion few parents would find costly to accept.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">The message, then, is a hopeful one: a largely outdoor remedy for a thoroughly indoor condition. That so simple a prescription — more daylight, less screen — could <span class="kw" data-tip="v. 保护；遮蔽（熟词僻义：n. 盾牌）">shield</span> an entire generation of eyes suggests that the fight against the myopia epidemic may be won one recess at a time.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-25.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.918">Far removed from any infectious outbreak, a quiet <span class="kw" data-tip="n. 流行病；蔓延">epidemic</span> has been creeping through the world's classrooms, and it has nothing to do with viruses.</span> <span class="s" data-t="8.918" data-e="19.184"><span class="kw" data-tip="n. 近视；目光短浅">myopia</span>, the failure to bring distant objects into focus, already blurs the vision of one person in three — a share that may approach one in two by the middle of this century.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.184" data-e="32.579">The projections come from a landmark review by the Brien Holden Vision Institute, whose modelling, published in the journal <em>Ophthalmology</em>, drew on 145 studies spanning nearly 2.1 million participants.</span> <span class="s" data-t="32.579" data-e="40.921">Its conclusion was blunt: within a generation, myopia could <span class="kw" data-tip="v. 使痛苦；折磨；困扰">afflict</span> some five billion people, a major public health concern.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.921" data-e="49.487">Nowhere is the shift more striking than in urban East Asia, where 80 to 90 percent of teenagers finishing secondary school are myopic.</span> <span class="s" data-t="49.487" data-e="60.316">Researchers increasingly attribute the surge not to genes alone but to two interlocking habits of modern childhood — relentless <span class="kw" data-tip="n. 近距离用眼（活动）">near work</span> and a sharp decline in time spent outdoors.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="60.316" data-e="64.368">The <span class="kw" data-tip="n. 机制；机理">mechanism</span>, though still debated, centres on light.</span> <span class="s" data-t="64.368" data-e="80.103">Bright outdoor light, many orders of magnitude stronger than indoor lighting, is thought to <span class="kw" data-tip="v. 促使；激起（熟词僻义：adj. 迅速的）">prompt</span> the <span class="kw" data-tip="n. 视网膜">retina</span> to release <span class="kw" data-tip="n. 多巴胺">dopamine</span>, which in turn restrains the excessive <span class="kw" data-tip="n. 伸长；拉长">elongation</span> of the eyeball that defines myopia; dim rooms and close screens offer the eye no such brake.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="80.103" data-e="83.671">The COVID-19 lockdowns <span class="kw" data-tip="v. 使恶化；加剧（熟词僻义：n. 化合物）">compounded</span> the problem.</span> <span class="s" data-t="83.671" data-e="95.974">With schools shut and lives grown <span class="kw" data-tip="adj. 久坐的；少活动的">sedentary</span>, children's screen time soared while their daylight hours collapsed, and cohort studies recorded a sharp acceleration in the <span class="kw" data-tip="n. 开始；发作">onset</span> of myopia among the youngest.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="95.974" data-e="99.382">The costs extend far beyond thicker lenses.</span> <span class="s" data-t="99.382" data-e="114.974">High myopia raises the lifetime risk of retinal <span class="kw" data-tip="n. 脱离；分离">detachment</span>, <span class="kw" data-tip="n. 青光眼">glaucoma</span> and macular <span class="kw" data-tip="n. 退化；变性">degeneration</span>, conditions that can lead to irreversible blindness, turning a correctable inconvenience into a lifelong <span class="kw" data-tip="n. 负担；重担">burden</span> on individuals and health systems alike.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="114.974" data-e="120.011">Prevention, the experts insist, is both cheap and well established.</span> <span class="s" data-t="120.011" data-e="141.605">Roughly two hours of outdoor time each day, whatever the weather, can meaningfully <span class="kw" data-tip="v. 遏制；抑制">curb</span> the onset of myopia, while simple routines such as the "20-20-20" rule are now widely recommended; in much of the world, however, even a basic pair of spectacles remains beyond reach — let alone the <span class="kw" data-tip="n. 阿托品">atropine</span> drops that wealthier families take for granted.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="141.605" data-e="151.605">Sceptics caution that most of the evidence is observational, so the direction of causality is not fully proven, and heredity remains a powerful <span class="kw" data-tip="n. 决定因素">determinant</span>.</span> <span class="s" data-t="151.605" data-e="161.368">Yet even the most guarded reviewers concede that the balance of evidence favours a protective role for daylight — a conclusion few parents would find costly to accept.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="161.368" data-e="167.987">The message, then, is a hopeful one: a largely outdoor remedy for a thoroughly indoor condition.</span> <span class="s" data-t="167.987" data-e="179.145">That so simple a prescription — more daylight, less screen — could <span class="kw" data-tip="v. 保护；遮蔽（熟词僻义：n. 盾牌）">shield</span> an entire generation of eyes suggests that the fight against the myopia epidemic may be won one recess at a time.</span></span></div>
 
       <p class="muted">原文出处：本文根据 The Guardian 报道及《眼科学》（Ophthalmology，Brien Holden Vision Institute）系统综述、《柳叶刀》（The Lancet）儿童近视系列研究（2026-09 综合）整理编写，供学习使用。</p>
     </section>
@@ -487,6 +503,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

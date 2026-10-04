@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,14 +167,20 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">The Iberian lynx, once the world's most <span class="kw" data-tip="adj. 濒危的">endangered</span> cat, has continued its <span class="kw" data-tip="adj. 显著的；非凡的">remarkable</span> <span class="kw" data-tip="n. 恢复；东山再起">comeback</span>. The latest <span class="kw" data-tip="n. 普查；统计">census</span> recorded 2,663 individuals living in the wild across Spain and Portugal in 2025 — an increase of 10.9 percent over the previous year, with 262 more animals counted.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">When the 21st century began, the species seemed doomed, with only about 62 <span class="kw" data-tip="adj. 成年的；成熟的">mature</span> lynx remaining in a few shrinking patches of scrubland in southern Spain.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The <span class="kw" data-tip="n./v. 下降；衰退">decline</span> was driven largely by the collapse of its main <span class="kw" data-tip="n. 猎物；被捕食的动物">prey</span>, the European rabbit, which was hit hard by disease, together with <span class="kw" data-tip="n. 栖息地">habitat</span> loss and road accidents.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en"><span class="kw" data-tip="n. 环保人士；保护人士">Conservationists</span> responded with a patient, long-term plan: <span class="kw" data-tip="adj. 圈养的">captive</span> breeding, the restoration of rabbit populations, the protection of habitat, and the <span class="kw" data-tip="v. 释放；放归">release</span> of captive-bred lynx back into the wild.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The efforts paid off. In 2024 the International Union for Conservation of Nature (IUCN) moved the lynx from "Endangered" to "<span class="kw" data-tip="adj. 易受伤害的；脆弱的">Vulnerable</span>" on its Red List — the first time in more than two decades that its <span class="kw" data-tip="n. 地位；状况">status</span> had improved.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Officials say the recovery shows what patient, well-funded conservation can <span class="kw" data-tip="v. 实现；达到">achieve</span>, but they <span class="kw" data-tip="v. 警告；提醒">warn</span> that the species is not yet out of danger.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The lynx still faces threats such as road traffic and the uncertain future of rabbit populations, and experts stress that continued efforts are needed to secure its future.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Conservationists hope the lynx can become a symbol that humans and wild animals can <span class="kw" data-tip="v. 共存；和谐共处">coexist</span> — and a reminder that no species is beyond saving when people act in time.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-03.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 8 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="6.695">The Iberian lynx, once the world's most <span class="kw" data-tip="adj. 濒危的">endangered</span> cat, has continued its <span class="kw" data-tip="adj. 显著的；非凡的">remarkable</span> <span class="kw" data-tip="n. 恢复；东山再起">comeback</span>.</span> <span class="s" data-t="6.695" data-e="21.366">The latest <span class="kw" data-tip="n. 普查；统计">census</span> recorded 2,663 individuals living in the wild across Spain and Portugal in 2025 — an increase of 10.9 percent over the previous year, with 262 more animals counted.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="21.366" data-e="31.553">When the 21st century began, the species seemed doomed, with only about 62 <span class="kw" data-tip="adj. 成年的；成熟的">mature</span> lynx remaining in a few shrinking patches of scrubland in southern Spain.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="31.553" data-e="41.671">The <span class="kw" data-tip="n./v. 下降；衰退">decline</span> was driven largely by the collapse of its main <span class="kw" data-tip="n. 猎物；被捕食的动物">prey</span>, the European rabbit, which was hit hard by disease, together with <span class="kw" data-tip="n. 栖息地">habitat</span> loss and road accidents.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="41.671" data-e="54.38"><span class="kw" data-tip="n. 环保人士；保护人士">Conservationists</span> responded with a patient, long-term plan: <span class="kw" data-tip="adj. 圈养的">captive</span> breeding, the restoration of rabbit populations, the protection of habitat, and the <span class="kw" data-tip="v. 释放；放归">release</span> of captive-bred lynx back into the wild.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="54.38" data-e="56.301">The efforts paid off.</span> <span class="s" data-t="56.301" data-e="69.197">In 2024 the International Union for Conservation of Nature (IUCN) moved the lynx from "Endangered" to "<span class="kw" data-tip="adj. 易受伤害的；脆弱的">Vulnerable</span>" on its Red List — the first time in more than two decades that its <span class="kw" data-tip="n. 地位；状况">status</span> had improved.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="69.197" data-e="78.145">Officials say the recovery shows what patient, well-funded conservation can <span class="kw" data-tip="v. 实现；达到">achieve</span>, but they <span class="kw" data-tip="v. 警告；提醒">warn</span> that the species is not yet out of danger.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="78.145" data-e="88.408">The lynx still faces threats such as road traffic and the uncertain future of rabbit populations, and experts stress that continued efforts are needed to secure its future.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="88.408" data-e="98.603">Conservationists hope the lynx can become a symbol that humans and wild animals can <span class="kw" data-tip="v. 共存；和谐共处">coexist</span> — and a reminder that no species is beyond saving when people act in time.</span></span></div>
 
       <p class="muted">原文出处：综合西班牙生态转型部生物多样性基金会（Fundación Biodiversidad）2026-06-05 新闻稿、IUCN 世界自然保护联盟 2024 年红色名录公告及 WWF 世界自然基金会公开资料整理改写。</p>
     </section>
@@ -418,6 +434,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

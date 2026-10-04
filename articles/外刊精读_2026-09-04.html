@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,13 +167,19 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">The early <span class="kw" data-tip="n. 热情；热忱">enthusiasm</span> around <span class="kw" data-tip="n. 人工智能">artificial intelligence</span> in education is cooling. According to Quizlet's second annual "How America Learns" report, only 30 percent of students and teachers now say they feel positive — excited or <span class="kw" data-tip="adj. 乐观的">optimistic</span> — about AI in the classroom, down from 43 percent a year earlier.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">Yet the same survey reveals a <span class="kw" data-tip="adj. 显著的；惊人的">striking</span> <span class="kw" data-tip="n. 矛盾；对立">contradiction</span>: even as enthusiasm fades, students are not turning away from AI. They are simply <span class="kw" data-tip="v. 强烈要求（demand）">demanding</span> better tools. Many students who use AI report real benefits, including saving time and getting faster explanations.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">"Students are no longer impressed by AI just because it is AI," researchers note. What they want are study tools that <span class="kw" data-tip="v. 适应；调整">adapt</span> to how they actually learn — tools that can explain, quiz, and coach them in a <span class="kw" data-tip="adj. 个性化的">personalized</span> way.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en"><span class="kw" data-tip="n. 怀疑；质疑">Skepticism</span> is growing among teachers and parents too. Many worry that students may <span class="kw" data-tip="v. 依赖；依靠">rely on</span> AI to do their work for them rather than to learn, and they want clearer guidance on how to use AI <span class="kw" data-tip="adv. 负责任地">responsibly</span>.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The report found that students who use AI regularly <span class="kw" data-tip="v. 倾向于；往往会">tend to</span> study more, not less. More than half of K-12 students say they use AI for homework help, and a similar share of college students use it to save time.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Experts say the message is clear: the "wow" factor has <span class="kw" data-tip="v. 逐渐消失；减退（wear off）">worn off</span>, but the need for smart, <span class="kw" data-tip="adj. 自适应的；能灵活调整的">adaptive</span> learning tools is stronger than ever. Companies are responding by building features that focus on practice, feedback, and understanding rather than quick answers.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The challenge now is to turn a tool of <span class="kw" data-tip="n. 便利；方便">convenience</span> into a tool of <span class="kw" data-tip="adj. 真正的；真诚的">genuine</span> learning — and to make sure that as AI becomes a normal part of studying, it <span class="kw" data-tip="v. 增强；加强（strengthen）">strengthens</span> students' skills instead of <span class="kw" data-tip="v. 取代；代替">replacing</span> them.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-04.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 7 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="5.524">The early <span class="kw" data-tip="n. 热情；热忱">enthusiasm</span> around <span class="kw" data-tip="n. 人工智能">artificial intelligence</span> in education is cooling.</span> <span class="s" data-t="5.524" data-e="19.592">According to Quizlet's second annual "How America Learns" report, only 30 percent of students and teachers now say they feel positive — excited or <span class="kw" data-tip="adj. 乐观的">optimistic</span> — about AI in the classroom, down from 43 percent a year earlier.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.592" data-e="27.671">Yet the same survey reveals a <span class="kw" data-tip="adj. 显著的；惊人的">striking</span> <span class="kw" data-tip="n. 矛盾；对立">contradiction</span>: even as enthusiasm fades, students are not turning away from AI.</span> <span class="s" data-t="27.671" data-e="30.513">They are simply <span class="kw" data-tip="v. 强烈要求（demand）">demanding</span> better tools.</span> <span class="s" data-t="30.513" data-e="37.842">Many students who use AI report real benefits, including saving time and getting faster explanations.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="37.842" data-e="43.539">"Students are no longer impressed by AI just because it is AI," researchers note.</span> <span class="s" data-t="43.539" data-e="51.998">What they want are study tools that <span class="kw" data-tip="v. 适应；调整">adapt</span> to how they actually learn — tools that can explain, quiz, and coach them in a <span class="kw" data-tip="adj. 个性化的">personalized</span> way.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="51.998" data-e="56.039"><span class="kw" data-tip="n. 怀疑；质疑">Skepticism</span> is growing among teachers and parents too.</span> <span class="s" data-t="56.039" data-e="64.921">Many worry that students may <span class="kw" data-tip="v. 依赖；依靠">rely on</span> AI to do their work for them rather than to learn, and they want clearer guidance on how to use AI <span class="kw" data-tip="adv. 负责任地">responsibly</span>.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="64.921" data-e="70.658">The report found that students who use AI regularly <span class="kw" data-tip="v. 倾向于；往往会">tend to</span> study more, not less.</span> <span class="s" data-t="70.658" data-e="78.709">More than half of K-12 students say they use AI for homework help, and a similar share of college students use it to save time.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="78.709" data-e="87.053">Experts say the message is clear: the "wow" factor has <span class="kw" data-tip="v. 逐渐消失；减退（wear off）">worn off</span>, but the need for smart, <span class="kw" data-tip="adj. 自适应的；能灵活调整的">adaptive</span> learning tools is stronger than ever.</span> <span class="s" data-t="87.053" data-e="94.921">Companies are responding by building features that focus on practice, feedback, and understanding rather than quick answers.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="94.921" data-e="106.656">The challenge now is to turn a tool of <span class="kw" data-tip="n. 便利；方便">convenience</span> into a tool of <span class="kw" data-tip="adj. 真正的；真诚的">genuine</span> learning — and to make sure that as AI becomes a normal part of studying, it <span class="kw" data-tip="v. 增强；加强（strengthen）">strengthens</span> students' skills instead of <span class="kw" data-tip="v. 取代；代替">replacing</span> them.</span></span></div>
 
       <p class="muted">原文出处：Stacker 商业报道（作者 Kurt Beilder，2026-09）。素材源自 Quizlet 第二份年度报告《How America Learns Report 2026》，本文为根据公开转载内容整理的精读版。</p>
     </section>
@@ -435,6 +451,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

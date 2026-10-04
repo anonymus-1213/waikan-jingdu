@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">For centuries, humans have assumed that the ability to <span class="kw" data-tip="v. 称呼；向…说话（熟词僻义：n. 地址）">address</span> one another by name is uniquely ours. A new study of wild African savannah elephants suggests otherwise: these animals appear to address each other with individually specific <span class="kw" data-tip="n. 低沉的吼声；隆隆声">rumbles</span> — the first non-human creature known to use name-like <span class="kw" data-tip="n. 叫声（熟词僻义：v. 打电话；称呼）">calls</span> that are not mere imitation.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">Led by researchers at Colorado State University and published in the journal <em>Nature Ecology &amp; Evolution</em>, the study drew on 469 recorded rumbles collected from two populations in Kenya over roughly 36 years. The team fed the <span class="kw" data-tip="adj. 声学的；声音的">acoustic</span> features of each call into a machine-learning model and asked it to predict which specific elephant a given call was directed toward.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">To rule out the possibility that receivers were simply reacting to the caller's voice, the researchers also conducted <span class="kw" data-tip="n. 回放；重放">playback</span> experiments with 17 elephants. When they heard a call originally addressed to them, the animals approached the loudspeaker more quickly and produced more <span class="kw" data-tip="n. 发声；叫声">vocalizations</span> in response, a pattern that vanished when the same call was played to a different elephant.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">The model, by contrast, proved a surprisingly able listener. Guided by acoustic cues alone, it correctly identified the intended receiver in more than a quarter of trials — a rate far above chance, and one that held even when the calls came from unfamiliar voices, suggesting that the "names" reside in the call itself rather than in the caller's identity.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">What makes the finding striking is its departure from the animal kingdom's better-known examples. Dolphins and parrots, for instance, produce <span class="kw" data-tip="adj. 标志性的；签名的">signature</span> whistles or calls that are acquired by <span class="kw" data-tip="v. 模仿">imitating</span> other individuals — a form of "calling" that copies rather than <span class="kw" data-tip="v. 贴上标签；称呼（熟词僻义：n. 标签）">labels</span>. The elephants, by contrast, appear to use <span class="kw" data-tip="adj. 任意的；武断的">arbitrary</span>, non-imitative sounds — a step conceptually closer to the way human names work.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Such labels, the authors argue, make sense for a species whose society is built on long-distance communication and dense <span class="kw" data-tip="n. 亲属关系；血缘">kinship</span> networks. Elephants frequently separate and reunite across vast savannahs, and a mother, or a <span class="kw" data-tip="n. 女族长；母象首领">matriarch</span> guiding her herd, may need to single out one <span class="kw" data-tip="adj. 独特的；清楚的">distinct</span> individual among dozens without visual contact — a demand that imitation alone cannot meet.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">To be sure, the researchers are careful not to <span class="kw" data-tip="v. 夸大；言过其实">overstate</span> the case. Whether these calls carry the full <span class="kw" data-tip="adj. 语义的">semantic</span> weight of human names remains unknown, and the team could not prove that elephants understand a call as referring to a specific individual in the way that we do. "This is an exciting step, but many questions remain," one author noted, observing that the study raises as many questions as it answers.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">The discovery nonetheless reshapes how scientists think about the evolution of language. If a non-<span class="kw" data-tip="n. 灵长类动物">primate</span> mammal, whose last common ancestor with humans lived tens of millions of years ago, can evolve name-like communication, then the building blocks of language may be far older, and far more widespread, than once believed.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For <span class="kw" data-tip="n. 自然保护人士">conservationists</span>, the finding carries a quieter lesson. Each of these elephants — each named, recognized, and addressed within its own society — is an individual, not a number; and the more we learn about the richness of their inner lives, the harder it becomes to treat them, or their shrinking habitats, as <span class="kw" data-tip="adj. 可牺牲的；可有可无的">expendable</span>.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-14.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="6.747">For centuries, humans have assumed that the ability to <span class="kw" data-tip="v. 称呼；向…说话（熟词僻义：n. 地址）">address</span> one another by name is uniquely ours.</span> <span class="s" data-t="6.747" data-e="20.263">A new study of wild African savannah elephants suggests otherwise: these animals appear to address each other with individually specific <span class="kw" data-tip="n. 低沉的吼声；隆隆声">rumbles</span> — the first non-human creature known to use name-like <span class="kw" data-tip="n. 叫声（熟词僻义：v. 打电话；称呼）">calls</span> that are not mere imitation.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="20.263" data-e="34.934">Led by researchers at Colorado State University and published in the journal <em>Nature Ecology &amp; Evolution</em>, the study drew on 469 recorded rumbles collected from two populations in Kenya over roughly 36 years.</span> <span class="s" data-t="34.934" data-e="44.158">The team fed the <span class="kw" data-tip="adj. 声学的；声音的">acoustic</span> features of each call into a machine-learning model and asked it to predict which specific elephant a given call was directed toward.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="44.158" data-e="54.156">To rule out the possibility that receivers were simply reacting to the caller's voice, the researchers also conducted <span class="kw" data-tip="n. 回放；重放">playback</span> experiments with 17 elephants.</span> <span class="s" data-t="54.156" data-e="66.524">When they heard a call originally addressed to them, the animals approached the loudspeaker more quickly and produced more <span class="kw" data-tip="n. 发声；叫声">vocalizations</span> in response, a pattern that vanished when the same call was played to a different elephant.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="66.524" data-e="71.118">The model, by contrast, proved a surprisingly able listener.</span> <span class="s" data-t="71.118" data-e="87.866">Guided by acoustic cues alone, it correctly identified the intended receiver in more than a quarter of trials — a rate far above chance, and one that held even when the calls came from unfamiliar voices, suggesting that the "names" reside in the call itself rather than in the caller's identity.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="87.866" data-e="93.882">What makes the finding striking is its departure from the animal kingdom's better-known examples.</span> <span class="s" data-t="93.882" data-e="104.485">Dolphins and parrots, for instance, produce <span class="kw" data-tip="adj. 标志性的；签名的">signature</span> whistles or calls that are acquired by <span class="kw" data-tip="v. 模仿">imitating</span> other individuals — a form of "calling" that copies rather than <span class="kw" data-tip="v. 贴上标签；称呼（熟词僻义：n. 标签）">labels</span>.</span> <span class="s" data-t="104.485" data-e="113.513">The elephants, by contrast, appear to use <span class="kw" data-tip="adj. 任意的；武断的">arbitrary</span>, non-imitative sounds — a step conceptually closer to the way human names work.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="113.513" data-e="122.645">Such labels, the authors argue, make sense for a species whose society is built on long-distance communication and dense <span class="kw" data-tip="n. 亲属关系；血缘">kinship</span> networks.</span> <span class="s" data-t="122.645" data-e="137.222">Elephants frequently separate and reunite across vast savannahs, and a mother, or a <span class="kw" data-tip="n. 女族长；母象首领">matriarch</span> guiding her herd, may need to single out one <span class="kw" data-tip="adj. 独特的；清楚的">distinct</span> individual among dozens without visual contact — a demand that imitation alone cannot meet.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="137.222" data-e="141.853">To be sure, the researchers are careful not to <span class="kw" data-tip="v. 夸大；言过其实">overstate</span> the case.</span> <span class="s" data-t="141.853" data-e="153.485">Whether these calls carry the full <span class="kw" data-tip="adj. 语义的">semantic</span> weight of human names remains unknown, and the team could not prove that elephants understand a call as referring to a specific individual in the way that we do.</span> <span class="s" data-t="153.485" data-e="162.368">"This is an exciting step, but many questions remain," one author noted, observing that the study raises as many questions as it answers.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="162.368" data-e="168.079">The discovery nonetheless reshapes how scientists think about the evolution of language.</span> <span class="s" data-t="168.079" data-e="182.145">If a non-<span class="kw" data-tip="n. 灵长类动物">primate</span> mammal, whose last common ancestor with humans lived tens of millions of years ago, can evolve name-like communication, then the building blocks of language may be far older, and far more widespread, than once believed.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="182.145" data-e="186.395">For <span class="kw" data-tip="n. 自然保护人士">conservationists</span>, the finding carries a quieter lesson.</span> <span class="s" data-t="186.395" data-e="201.803">Each of these elephants — each named, recognized, and addressed within its own society — is an individual, not a number; and the more we learn about the richness of their inner lives, the harder it becomes to treat them, or their shrinking habitats, as <span class="kw" data-tip="adj. 可牺牲的；可有可无的">expendable</span>.</span></span></div>
 
       <p class="muted">原文出处：本文根据《自然·生态与进化》（Nature Ecology &amp; Evolution，2024 年 6 月）刊发、由科罗拉多州立大学（Colorado State University）与"拯救大象"组织（Save the Elephants）联合开展的非洲象"个体命名"研究，及相关公开报道综合整理编写，供学习使用。</p>
     </section>
@@ -465,6 +481,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

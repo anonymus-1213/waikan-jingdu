@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,14 +167,20 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">When we think of how humans affect <span class="kw" data-tip="n. 野生动物（总称）">wildlife</span>, we often picture roads, cities and cleared forests. But a large new study suggests that simply being present — even for a short visit — can change the way animals move and live.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The research, led by scientists at Yale University and published in the journal <em>Science</em>, combined GPS <span class="kw" data-tip="v. 追踪；跟踪">tracking</span> data from 37 <span class="kw" data-tip="n. 物种（单复数同形）">species</span> — 22 kinds of birds and 15 <span class="kw" data-tip="n. 哺乳动物">mammals</span> — across the United States with mobile phone location data showing where people go.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">In total, the team recorded about 11.8 million location points from more than 4,500 animals. By <span class="kw" data-tip="v. 比较；对比">comparing</span> animal movements with human activity, they could <span class="kw" data-tip="v. 区分；使分离">separate</span> the effect of human <span class="kw" data-tip="n. 在场；存在">presence</span> from the effect of <span class="kw" data-tip="n. 地貌；景观">landscape</span> changes such as roads and buildings.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">The results were <span class="kw" data-tip="adj. 显著的；惊人的">striking</span>. Human presence alone was enough to <span class="kw" data-tip="v. 重塑；改变">reshape</span> wildlife movement. Around 57 percent of the species studied were affected by both human presence and changes to the landscape.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The study also found that 67 percent of mammals and 68 percent of birds <span class="kw" data-tip="v. 改变；变更">altered</span> the size of their <span class="kw" data-tip="n. 家域；活动范围">home range</span> — the area where they feed, rest and raise their young. Some animals <span class="kw" data-tip="v. 转移；转变">shifted</span> to nighttime activity, while others abandoned areas they had used for years.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">These changes matter. When animals are pushed out of good <span class="kw" data-tip="n. 栖息地">habitat</span>, they may spend less time <span class="kw" data-tip="v. 觅食">foraging</span> and feeding their young, which can lower their chances of <span class="kw" data-tip="n. 生存">survival</span>.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The researchers say the findings have important lessons for <span class="kw" data-tip="n. （对自然资源的）保护">conservation</span>. Parks, trails and <span class="kw" data-tip="n. 保护区">protected areas</span> can reduce the stress on wildlife if they are carefully designed, for example by limiting how close visitors can get.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">For ordinary people, the message is simple: when we step into nature, we are not <span class="kw" data-tip="adj. 看不见的；隐形的">invisible</span>. Giving wild animals space is one of the easiest ways to protect them.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-08.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 8 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="6.853">When we think of how humans affect <span class="kw" data-tip="n. 野生动物（总称）">wildlife</span>, we often picture roads, cities and cleared forests.</span> <span class="s" data-t="6.853" data-e="14.445">But a large new study suggests that simply being present — even for a short visit — can change the way animals move and live.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="14.445" data-e="31.011">The research, led by scientists at Yale University and published in the journal <em>Science</em>, combined GPS <span class="kw" data-tip="v. 追踪；跟踪">tracking</span> data from 37 <span class="kw" data-tip="n. 物种（单复数同形）">species</span> — 22 kinds of birds and 15 <span class="kw" data-tip="n. 哺乳动物">mammals</span> — across the United States with mobile phone location data showing where people go.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="31.011" data-e="38.763">In total, the team recorded about 11.8 million location points from more than 4,500 animals.</span> <span class="s" data-t="38.763" data-e="48.645">By <span class="kw" data-tip="v. 比较；对比">comparing</span> animal movements with human activity, they could <span class="kw" data-tip="v. 区分；使分离">separate</span> the effect of human <span class="kw" data-tip="n. 在场；存在">presence</span> from the effect of <span class="kw" data-tip="n. 地貌；景观">landscape</span> changes such as roads and buildings.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="48.645" data-e="50.711">The results were <span class="kw" data-tip="adj. 显著的；惊人的">striking</span>.</span> <span class="s" data-t="50.711" data-e="55.132">Human presence alone was enough to <span class="kw" data-tip="v. 重塑；改变">reshape</span> wildlife movement.</span> <span class="s" data-t="55.132" data-e="62.25">Around 57 percent of the species studied were affected by both human presence and changes to the landscape.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="62.25" data-e="72.763">The study also found that 67 percent of mammals and 68 percent of birds <span class="kw" data-tip="v. 改变；变更">altered</span> the size of their <span class="kw" data-tip="n. 家域；活动范围">home range</span> — the area where they feed, rest and raise their young.</span> <span class="s" data-t="72.763" data-e="79.053">Some animals <span class="kw" data-tip="v. 转移；转变">shifted</span> to nighttime activity, while others abandoned areas they had used for years.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="79.053" data-e="80.908">These changes matter.</span> <span class="s" data-t="80.908" data-e="89.382">When animals are pushed out of good <span class="kw" data-tip="n. 栖息地">habitat</span>, they may spend less time <span class="kw" data-tip="v. 觅食">foraging</span> and feeding their young, which can lower their chances of <span class="kw" data-tip="n. 生存">survival</span>.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="89.382" data-e="94.184">The researchers say the findings have important lessons for <span class="kw" data-tip="n. （对自然资源的）保护">conservation</span>.</span> <span class="s" data-t="94.184" data-e="104.053">Parks, trails and <span class="kw" data-tip="n. 保护区">protected areas</span> can reduce the stress on wildlife if they are carefully designed, for example by limiting how close visitors can get.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="104.053" data-e="110.447">For ordinary people, the message is simple: when we step into nature, we are not <span class="kw" data-tip="adj. 看不见的；隐形的">invisible</span>.</span> <span class="s" data-t="110.447" data-e="115.026">Giving wild animals space is one of the easiest ways to protect them.</span></span></div>
 
       <p class="muted">原文出处：本文根据《科学》（Science，2026 年 5 月）刊发、由耶鲁大学主导的动物追踪研究，及 ScienceDaily 相关报道（2026-08-28）整理编写，供学习使用。</p>
     </section>
@@ -450,6 +466,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

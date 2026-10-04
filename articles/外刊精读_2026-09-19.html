@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">The song of the humpback whale is among the most complex sounds in the animal kingdom, a series of moans, cries and rumbles that a singing male may repeat for hours on end. Yet for all its beauty, one question has long puzzled marine biologists: what, exactly, is a singing whale doing beneath the waves while it performs?</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">A team of biologists at Syracuse University set out to answer that question with a tool that had never been applied in quite this way. Working off the island of Maui, they attached suction-cup <span class="kw" data-tip="v. 给……做标记；追踪（熟词僻义：n. 标签）">tags</span>, which record both sound and movement, to sixteen adult whales, capturing thousands of <span class="kw" data-tip="n./v. 潜水；下潜">dives</span> and the songs that accompanied them.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The results, published in the journal <em>Current Biology</em>, revealed a remarkably tight <span class="kw" data-tip="v. 相对应；相符">correspondence</span> between the structure of a whale's song and the stages of its dive. Specific song <span class="kw" data-tip="n. 主题；乐句">themes</span>, the researchers found, are matched to specific <span class="kw" data-tip="n. 阶段；时期">phases</span> of the dive cycle, as if each movement of the body were choreographed to a particular musical passage.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">As a whale <span class="kw" data-tip="v. 下潜；下降">descended</span>, it sang one set of themes; as it turned and <span class="kw" data-tip="v. 上升；升高">ascended</span> toward the surface, it sang another. The deepest portions of a dive, in particular, were associated with the most elaborate segments of the song, suggesting that the animals were not merely singing at random but organising their <span class="kw" data-tip="n. 曲目；全部技能">repertoire</span> around the rhythm of their own breath and motion.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">This link between sound and behaviour is more than a curiosity. Because singing whales are notoriously difficult to observe underwater, the discovery offers researchers a kind of <span class="kw" data-tip="adj. 声学的；声音的">acoustic</span> window: by listening to which theme a whale is singing, they may be able to <span class="kw" data-tip="v. 监测；监控">monitor</span> where it is in a dive and how its body is moving, without ever seeing it.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">The finding also deepens our understanding of why whales sing at all. Humpback song is culturally <span class="kw" data-tip="v. 传递；传播">transmitted</span> — learned, modified and shared within populations — and its <span class="kw" data-tip="adj. 复杂精细的">intricate</span> structure is now shown to be inseparable from the physical act of diving, a feat that demands careful management of air and energy under crushing pressure.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">"The song is not just floating above the behaviour; it is woven into it," one of the researchers noted, adding that the correspondence could help scientists <span class="kw" data-tip="v. 传递；传达">convey</span> and track the <span class="kw" data-tip="adj. 生理的">physiological</span> state of whales in places and at depths where visual tracking is impossible.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">The authors are careful to note the study's limits. The sample of sixteen whales came from a single breeding ground, and whether the same song-to-dive mapping holds for other populations, or for females and calves, remains an open question that will require far more listening.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For those who study and love the ocean, the work carries a <span class="kw" data-tip="adj. 深刻的；深远的">profound</span> <span class="kw" data-tip="n. 影响；含义；启示">implication</span>. It suggests that even the most familiar sounds of the sea still hold secrets, and that understanding them may be vital to protecting the <span class="kw" data-tip="adj. 难以捉摸的；难以发现的">elusive</span> creatures that produce them — whales whose hidden lives we are only beginning to hear.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-19.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.603">The song of the humpback whale is among the most complex sounds in the animal kingdom, a series of moans, cries and rumbles that a singing male may repeat for hours on end.</span> <span class="s" data-t="10.603" data-e="20.382">Yet for all its beauty, one question has long puzzled marine biologists: what, exactly, is a singing whale doing beneath the waves while it performs?</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="20.382" data-e="28.737">A team of biologists at Syracuse University set out to answer that question with a tool that had never been applied in quite this way.</span> <span class="s" data-t="28.737" data-e="40.553">Working off the island of Maui, they attached suction-cup <span class="kw" data-tip="v. 给……做标记；追踪（熟词僻义：n. 标签）">tags</span>, which record both sound and movement, to sixteen adult whales, capturing thousands of <span class="kw" data-tip="n./v. 潜水；下潜">dives</span> and the songs that accompanied them.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.553" data-e="50.474">The results, published in the journal <em>Current Biology</em>, revealed a remarkably tight <span class="kw" data-tip="v. 相对应；相符">correspondence</span> between the structure of a whale's song and the stages of its dive.</span> <span class="s" data-t="50.474" data-e="61.289">Specific song <span class="kw" data-tip="n. 主题；乐句">themes</span>, the researchers found, are matched to specific <span class="kw" data-tip="n. 阶段；时期">phases</span> of the dive cycle, as if each movement of the body were choreographed to a particular musical passage.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="61.289" data-e="68.566">As a whale <span class="kw" data-tip="v. 下潜；下降">descended</span>, it sang one set of themes; as it turned and <span class="kw" data-tip="v. 上升；升高">ascended</span> toward the surface, it sang another.</span> <span class="s" data-t="68.566" data-e="82.553">The deepest portions of a dive, in particular, were associated with the most elaborate segments of the song, suggesting that the animals were not merely singing at random but organising their <span class="kw" data-tip="n. 曲目；全部技能">repertoire</span> around the rhythm of their own breath and motion.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="82.553" data-e="86.934">This link between sound and behaviour is more than a curiosity.</span> <span class="s" data-t="86.934" data-e="102.734">Because singing whales are notoriously difficult to observe underwater, the discovery offers researchers a kind of <span class="kw" data-tip="adj. 声学的；声音的">acoustic</span> window: by listening to which theme a whale is singing, they may be able to <span class="kw" data-tip="v. 监测；监控">monitor</span> where it is in a dive and how its body is moving, without ever seeing it.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="102.734" data-e="107.447">The finding also deepens our understanding of why whales sing at all.</span> <span class="s" data-t="107.447" data-e="122.921">Humpback song is culturally <span class="kw" data-tip="v. 传递；传播">transmitted</span> — learned, modified and shared within populations — and its <span class="kw" data-tip="adj. 复杂精细的">intricate</span> structure is now shown to be inseparable from the physical act of diving, a feat that demands careful management of air and energy under crushing pressure.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="122.921" data-e="138.066">"The song is not just floating above the behaviour; it is woven into it," one of the researchers noted, adding that the correspondence could help scientists <span class="kw" data-tip="v. 传递；传达">convey</span> and track the <span class="kw" data-tip="adj. 生理的">physiological</span> state of whales in places and at depths where visual tracking is impossible.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="138.066" data-e="141.605">The authors are careful to note the study's limits.</span> <span class="s" data-t="141.605" data-e="154.472">The sample of sixteen whales came from a single breeding ground, and whether the same song-to-dive mapping holds for other populations, or for females and calves, remains an open question that will require far more listening.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="154.472" data-e="159.645">For those who study and love the ocean, the work carries a <span class="kw" data-tip="adj. 深刻的；深远的">profound</span> <span class="kw" data-tip="n. 影响；含义；启示">implication</span>.</span> <span class="s" data-t="159.645" data-e="172.513">It suggests that even the most familiar sounds of the sea still hold secrets, and that understanding them may be vital to protecting the <span class="kw" data-tip="adj. 难以捉摸的；难以发现的">elusive</span> creatures that produce them — whales whose hidden lives we are only beginning to hear.</span></span></div>
 
       <p class="muted">原文出处：本文根据雪城大学（Syracuse University）生物学系研究《How a Whale's Dive Shapes Its Song》（发表于 Current Biology，2026-08）及 Earth.com、Syracuse Today 相关报道（2026-08-31）综合整理改写，供学习使用。</p>
     </section>
@@ -481,6 +497,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">For two decades, one question has animated <span class="kw" data-tip="n. 神经科学">neuroscience</span>: whether speaking two languages daily reshapes the brain in ways that matter in old age. The answer is subtle — <span class="kw" data-tip="n. 双语能力；双语现象">bilingualism</span> does not prevent <span class="kw" data-tip="n. 痴呆（症）">dementia</span>, but it seems to build a deep reserve the aging mind can draw on long after damage has begun.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The most influential evidence comes from <span class="kw" data-tip="adj. 纵向的；长期的">longitudinal</span> research at York University in Toronto, whose psychologists tracked hundreds of memory-clinic patients with the same <span class="kw" data-tip="n. 诊断">diagnosis</span>. Comparing bilingual and monolingual patients, all else being equal, they found a pattern too consistent to dismiss as chance.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">On average, bilingual patients developed symptoms of Alzheimer's disease four to five years later than their monolingual <span class="kw" data-tip="n. 对应的人（或物）">counterparts</span> — a gap persisting even when brain scans showed comparable <span class="kw" data-tip="n. 恶化；衰退">deterioration</span>. The two groups were damaged to a similar degree; what differed was how long each could keep functioning before the disease announced itself.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">Neuroscientists attribute the effect to <span class="kw" data-tip="n. 执行控制（大脑抑制干扰、切换任务的机制）">executive control</span>, the mental machinery governing attention, <span class="kw" data-tip="n. 抑制；克制">inhibition</span> and the switching between tasks. Because a bilingual must constantly <span class="kw" data-tip="v. 抑制；压制">suppress</span> one language while producing another, the practice <span class="kw" data-tip="v. 行使；运用（熟词僻义：锻炼）">exercises</span> this system daily, <span class="kw" data-tip="v. 锻造；建立（熟词僻义：伪造）">forging</span> denser connections that serve as a <span class="kw" data-tip="n. 水库；储备">reservoir</span> of <span class="kw" data-tip="n. 认知储备">cognitive reserve</span>.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Neuroimaging lends weight to this account: scans of lifelong bilinguals reveal greater <span class="kw" data-tip="n. 灰质（大脑的一种组织）">gray-matter</span> volume and more efficient activity in precisely the regions that normally <span class="kw" data-tip="v. 萎缩">atrophy</span> with age. Far from being a burden, juggling two vocabularies <span class="kw" data-tip="v. 征用；动员（熟词僻义：招聘）">recruits</span> extra networks, letting the brain reroute around damaged tissue.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">"Bilingualism is not a magic bullet," cautions a researcher whose own work popularized the idea. "What it seems to do is build a richer system that tolerates more damage before it fails." The effect, she insists, is one of delay rather than <span class="kw" data-tip="n. 免疫（力）">immunity</span>.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">Not every study has reproduced this so-called bilingual advantage; critics note that early papers suffered from small samples and imperfect controls. Some argue that the true protective factors may be education, occupation or lifelong intellectual engagement, of which bilingualism is merely one expression. Not until better-controlled studies appeared did the field begin to settle.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Whatever the final verdict, the research speaks to parents and policymakers, who have sometimes treated a second language as a luxury to drop when budgets tighten. If language learning is a form of cognitive investment, cutting it from schools may impose a cost far heavier than the saving it yields, let alone one that later spending can repair.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For the individual, the lesson is humbling in the best sense: the choices we make in youth and middle age, however ordinary, quietly <span class="kw" data-tip="v. 囤积；储备">stockpile</span> resources for the decades ahead. Bilingualism may never halt the aging brain; yet by <span class="kw" data-tip="v. 锻造；建立（熟词僻义：伪造）">forging</span> a more <span class="kw" data-tip="adj. 有韧性的；适应力强的">resilient</span> architecture, it offers what medicine cannot — a few more years of clear thought, granted to those who simply kept speaking.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-13.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.734">For two decades, one question has animated <span class="kw" data-tip="n. 神经科学">neuroscience</span>: whether speaking two languages daily reshapes the brain in ways that matter in old age.</span> <span class="s" data-t="9.734" data-e="19.237">The answer is subtle — <span class="kw" data-tip="n. 双语能力；双语现象">bilingualism</span> does not prevent <span class="kw" data-tip="n. 痴呆（症）">dementia</span>, but it seems to build a deep reserve the aging mind can draw on long after damage has begun.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.237" data-e="30.434">The most influential evidence comes from <span class="kw" data-tip="adj. 纵向的；长期的">longitudinal</span> research at York University in Toronto, whose psychologists tracked hundreds of memory-clinic patients with the same <span class="kw" data-tip="n. 诊断">diagnosis</span>.</span> <span class="s" data-t="30.434" data-e="38.695">Comparing bilingual and monolingual patients, all else being equal, they found a pattern too consistent to dismiss as chance.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="38.695" data-e="50.579">On average, bilingual patients developed symptoms of Alzheimer's disease four to five years later than their monolingual <span class="kw" data-tip="n. 对应的人（或物）">counterparts</span> — a gap persisting even when brain scans showed comparable <span class="kw" data-tip="n. 恶化；衰退">deterioration</span>.</span> <span class="s" data-t="50.579" data-e="58.605">The two groups were damaged to a similar degree; what differed was how long each could keep functioning before the disease announced itself.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="58.605" data-e="68.118">Neuroscientists attribute the effect to <span class="kw" data-tip="n. 执行控制（大脑抑制干扰、切换任务的机制）">executive control</span>, the mental machinery governing attention, <span class="kw" data-tip="n. 抑制；克制">inhibition</span> and the switching between tasks.</span> <span class="s" data-t="68.118" data-e="80.132">Because a bilingual must constantly <span class="kw" data-tip="v. 抑制；压制">suppress</span> one language while producing another, the practice <span class="kw" data-tip="v. 行使；运用（熟词僻义：锻炼）">exercises</span> this system daily, <span class="kw" data-tip="v. 锻造；建立（熟词僻义：伪造）">forging</span> denser connections that serve as a <span class="kw" data-tip="n. 水库；储备">reservoir</span> of <span class="kw" data-tip="n. 认知储备">cognitive reserve</span>.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="80.132" data-e="91.461">Neuroimaging lends weight to this account: scans of lifelong bilinguals reveal greater <span class="kw" data-tip="n. 灰质（大脑的一种组织）">gray-matter</span> volume and more efficient activity in precisely the regions that normally <span class="kw" data-tip="v. 萎缩">atrophy</span> with age.</span> <span class="s" data-t="91.461" data-e="99.618">Far from being a burden, juggling two vocabularies <span class="kw" data-tip="v. 征用；动员（熟词僻义：招聘）">recruits</span> extra networks, letting the brain reroute around damaged tissue.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="99.618" data-e="106.169">"Bilingualism is not a magic bullet," cautions a researcher whose own work popularized the idea.</span> <span class="s" data-t="106.169" data-e="116.461">"What it seems to do is build a richer system that tolerates more damage before it fails." The effect, she insists, is one of delay rather than <span class="kw" data-tip="n. 免疫（力）">immunity</span>.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="116.461" data-e="126.197">Not every study has reproduced this so-called bilingual advantage; critics note that early papers suffered from small samples and imperfect controls.</span> <span class="s" data-t="126.197" data-e="136.316">Some argue that the true protective factors may be education, occupation or lifelong intellectual engagement, of which bilingualism is merely one expression.</span> <span class="s" data-t="136.316" data-e="141.158">Not until better-controlled studies appeared did the field begin to settle.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="141.158" data-e="151.237">Whatever the final verdict, the research speaks to parents and policymakers, who have sometimes treated a second language as a luxury to drop when budgets tighten.</span> <span class="s" data-t="151.237" data-e="162.039">If language learning is a form of cognitive investment, cutting it from schools may impose a cost far heavier than the saving it yields, let alone one that later spending can repair.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="162.039" data-e="172.895">For the individual, the lesson is humbling in the best sense: the choices we make in youth and middle age, however ordinary, quietly <span class="kw" data-tip="v. 囤积；储备">stockpile</span> resources for the decades ahead.</span> <span class="s" data-t="172.895" data-e="185.09">Bilingualism may never halt the aging brain; yet by <span class="kw" data-tip="v. 锻造；建立（熟词僻义：伪造）">forging</span> a more <span class="kw" data-tip="adj. 有韧性的；适应力强的">resilient</span> architecture, it offers what medicine cannot — a few more years of clear thought, granted to those who simply kept speaking.</span></span></div>
 
       <p class="muted">原文出处：本文根据 Ellen Bialystok（约克大学）等关于"双语与认知储备 / 阿尔茨海默病"的系列纵向研究，及 The Guardian、Scientific American 相关报道（2026-09 上旬）综合整理改写，供学习使用。</p>
     </section>
@@ -486,6 +502,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

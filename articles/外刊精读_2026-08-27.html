@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,14 +167,20 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">There are three things you need to know which are not widely known. Think <span class="kw" data-tip="adj. 认知的">cognitive</span> change not cognitive decline: one way people think about our cognitive function is by comparing it to what it was like when we were in our 20s and it's not a valid comparison. It leads to an <span class="kw" data-tip="n. 假设；臆断">assumption</span> that we've declined into <span class="kw" data-tip="n. 缺陷；不足">deficit</span>.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">Sure, our <span class="kw" data-tip="n. 流体智力">fluid intelligence</span> – which is about speed and problem-solving – peaks in our 20s, but unless you're a maths whiz or a gun lab researcher, that is less important than what's called your <span class="kw" data-tip="n. 晶体智力">crystallised intelligence</span>, which can actually <span class="kw" data-tip="v. 改善；提升">improve</span> with age. It's the wisdom of knowledge and experience.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">This is about a <span class="kw" data-tip="n. 现象">phenomenon</span> in the brain called <span class="kw" data-tip="n. 脚手架；支架">scaffolding</span>. To protect our cognitive abilities and perhaps even enhance them as the years pass, our brains build out networks of nerves which act pretty much like the scaffolding inside a skyscraper.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">For The Brain Cliff I interviewed seven cognitive super-agers, who are as different as you could imagine – from the <span class="kw" data-tip="adj. 不识字的">illiterate</span> 95-year-old shoemaker to the woman who taught Mick Jagger statistics and the 94-year-old woman who still works in McDonald's in Kyushu, Japan.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">One example is how they respond to stress. They get over it. They problem-solve. They don't <span class="kw" data-tip="v. 反复思考；反刍">ruminate</span>. And where do you think we ruminate? Yes, in our <span class="kw" data-tip="n. 前额叶皮层">prefrontal cortex</span>. So you're occupying valuable brain space for cognitive function with <span class="kw" data-tip="adj. 徒劳的；无用的">unproductive</span> circular thoughts.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Exercise enhances our brain <span class="kw" data-tip="n. 可塑性">plasticity</span>, which in turn encourages brain scaffolding. An <span class="kw" data-tip="adj. 抗炎的">anti-inflammatory</span> diet – with low amounts of red meat, high diversity of vegetables including leafy greens, fermented foods such as yoghurt and fruits such as berries – can change the <span class="kw" data-tip="n. 微生物组">microbiome</span> and aid direct absorption of bioactive compounds, both of which support brain scaffolding.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">When the <span class="kw" data-tip="n. 默认模式网络">default mode network</span> fires up, parts of the brain that don't normally talk to each other make connections. How do you know if your default network is at work? Your mind <span class="kw" data-tip="v. 漫游；走神">wanders</span>. Mind wandering looks as though it's good for your brain.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">One of the important findings from research has been that <span class="kw" data-tip="n. 基因">genes</span> don't play a large role in whether we're on a journey to the brain cliff or when we might reach it. That means the <span class="kw" data-tip="n. 环境">environment</span> and how we live matter hugely. Work is mostly good for our brains. The evidence is strong that cognitive decline <span class="kw" data-tip="v. 加速">speeds up</span> after retirement.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-08-27.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 8 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="3.879">There are three things you need to know which are not widely known.</span> <span class="s" data-t="3.879" data-e="15.105">Think <span class="kw" data-tip="adj. 认知的">cognitive</span> change not cognitive decline: one way people think about our cognitive function is by comparing it to what it was like when we were in our 20s and it's not a valid comparison.</span> <span class="s" data-t="15.105" data-e="18.961">It leads to an <span class="kw" data-tip="n. 假设；臆断">assumption</span> that we've declined into <span class="kw" data-tip="n. 缺陷；不足">deficit</span>.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.961" data-e="33.961">Sure, our <span class="kw" data-tip="n. 流体智力">fluid intelligence</span> – which is about speed and problem-solving – peaks in our 20s, but unless you're a maths whiz or a gun lab researcher, that is less important than what's called your <span class="kw" data-tip="n. 晶体智力">crystallised intelligence</span>, which can actually <span class="kw" data-tip="v. 改善；提升">improve</span> with age.</span> <span class="s" data-t="33.961" data-e="37.092">It's the wisdom of knowledge and experience.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="37.092" data-e="40.803">This is about a <span class="kw" data-tip="n. 现象">phenomenon</span> in the brain called <span class="kw" data-tip="n. 脚手架；支架">scaffolding</span>.</span> <span class="s" data-t="40.803" data-e="51.709">To protect our cognitive abilities and perhaps even enhance them as the years pass, our brains build out networks of nerves which act pretty much like the scaffolding inside a skyscraper.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="51.709" data-e="67.237">For The Brain Cliff I interviewed seven cognitive super-agers, who are as different as you could imagine – from the <span class="kw" data-tip="adj. 不识字的">illiterate</span> 95-year-old shoemaker to the woman who taught Mick Jagger statistics and the 94-year-old woman who still works in McDonald's in Kyushu, Japan.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="67.237" data-e="70.539">One example is how they respond to stress.</span> <span class="s" data-t="70.539" data-e="72.182">They get over it.</span> <span class="s" data-t="72.182" data-e="73.919">They problem-solve.</span> <span class="s" data-t="73.919" data-e="75.592">They don't <span class="kw" data-tip="v. 反复思考；反刍">ruminate</span>.</span> <span class="s" data-t="75.592" data-e="77.934">And where do you think we ruminate?</span> <span class="s" data-t="77.934" data-e="80.908">Yes, in our <span class="kw" data-tip="n. 前额叶皮层">prefrontal cortex</span>.</span> <span class="s" data-t="80.908" data-e="87.211">So you're occupying valuable brain space for cognitive function with <span class="kw" data-tip="adj. 徒劳的；无用的">unproductive</span> circular thoughts.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="87.211" data-e="93.327">Exercise enhances our brain <span class="kw" data-tip="n. 可塑性">plasticity</span>, which in turn encourages brain scaffolding.</span> <span class="s" data-t="93.327" data-e="110.276">An <span class="kw" data-tip="adj. 抗炎的">anti-inflammatory</span> diet – with low amounts of red meat, high diversity of vegetables including leafy greens, fermented foods such as yoghurt and fruits such as berries – can change the <span class="kw" data-tip="n. 微生物组">microbiome</span> and aid direct absorption of bioactive compounds, both of which support brain scaffolding.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="110.276" data-e="117.026">When the <span class="kw" data-tip="n. 默认模式网络">default mode network</span> fires up, parts of the brain that don't normally talk to each other make connections.</span> <span class="s" data-t="117.026" data-e="120.329">How do you know if your default network is at work?</span> <span class="s" data-t="120.329" data-e="122.066">Your mind <span class="kw" data-tip="v. 漫游；走神">wanders</span>.</span> <span class="s" data-t="122.066" data-e="125.408">Mind wandering looks as though it's good for your brain.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="125.408" data-e="134.092">One of the important findings from research has been that <span class="kw" data-tip="n. 基因">genes</span> don't play a large role in whether we're on a journey to the brain cliff or when we might reach it.</span> <span class="s" data-t="134.092" data-e="137.868">That means the <span class="kw" data-tip="n. 环境">environment</span> and how we live matter hugely.</span> <span class="s" data-t="137.868" data-e="140.579">Work is mostly good for our brains.</span> <span class="s" data-t="140.579" data-e="145.461">The evidence is strong that cognitive decline <span class="kw" data-tip="v. 加速">speeds up</span> after retirement.</span></span></div>
 
       <p class="muted">原文出处：The Guardian（访谈，2026-09-07）。受访者为澳大利亚广播员、作家 Dr Norman Swan，谈其新书《The Brain Cliff》中关于大脑老化与认知衰退的科学研究与应对策略。</p>
     </section>
@@ -413,6 +429,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="https://www.theguardian.com/lifeandstyle/2026/sep/07/dr-norman-swan-new-book-science-of-ageing-cognitive-decline">原文链接</a> · <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,13 +167,19 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">The populist, <span class="kw" data-tip="adj. 极右翼的">far-right</span>, anti-immigration Alternative für Deutschland (AfD) has <span class="kw" data-tip="v. 激增；飙升">surged</span> to a <span class="kw" data-tip="adj. 响亮的；巨大的">resounding</span> victory in a crucial state election in Germany, but fell just short of winning a majority in its <span class="kw" data-tip="n. 追求；目标">quest</span> to form the country's first far-right state government since the second world war.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The party of Germany's unpopular <span class="kw" data-tip="n. （德国）总理">chancellor</span> Friedrich Merz, the Christian Democrats (CDU), <span class="kw" data-tip="v. 暴跌；骤降">slumped</span> to a <span class="kw" data-tip="adj. 灾难性的">disastrous</span> result in the eastern state of Saxony-Anhalt.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">Final results showed AfD <span class="kw" data-tip="phr. 差三席；不足三席">falling three seats short</span>, with 39 <span class="kw" data-tip="n. 议员；立法者">lawmakers</span> in an 83-member parliament. Siegmund, 35, said it would not engage in "games" such as a <span class="kw" data-tip="n. 少数派政府">minority government</span>. But it was not evident how its divided opponents could <span class="kw" data-tip="v. 组建；集合">assemble</span> any stable government without it.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">AfD won 43.8% of the vote, more than double its showing five years ago in the region of 2.1 million people west of Berlin. That was <span class="kw" data-tip="phr. 遥遥领先于">far ahead of</span> Merz's CDU, which <span class="kw" data-tip="v. 获得（选票）">polled</span> 17.2% – losing about half its support – and won 15 seats.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en"><span class="kw" data-tip="n. 投票率；参与">Participation</span> in the election was at a <span class="kw" data-tip="n. 历史新高">record high</span> of 76.5%. Addressing <span class="kw" data-tip="adj. 欢欣鼓舞的">jubilant</span> supporters after exit polls had been published, Siegmund said his party was ready to reach out to all powers that <span class="kw" data-tip="v. 努力；奋斗（strive 过去式）">strove</span> for political change.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">If the AfD manages to form a government in Saxony-Anhalt, Siegmund has promised to immediately start a <span class="kw" data-tip="n. 反向移民；遣返">remigration</span> and <span class="kw" data-tip="n. 驱逐出境">deportation</span> offensive, ban rainbow flags in schools and <span class="kw" data-tip="v. 停止；中止">halt</span> the building of new windfarms.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The <span class="kw" data-tip="n. 主教">bishop</span> of Magdeburg, Gerhard Feige, in an address to a gathering of churchgoers, warned against forces "that want to <span class="kw" data-tip="phr. 播撒不和；挑拨离间">sow discord</span>, <span class="kw" data-tip="v. 煽动；激起">stoke</span> mistrust and fear". He drew parallels with history, warning that a democracy has the potential to <span class="kw" data-tip="v. 废除；废止">abolish</span> itself.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-01.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 7 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="17.037">The populist, <span class="kw" data-tip="adj. 极右翼的">far-right</span>, anti-immigration Alternative für Deutschland (AfD) has <span class="kw" data-tip="v. 激增；飙升">surged</span> to a <span class="kw" data-tip="adj. 响亮的；巨大的">resounding</span> victory in a crucial state election in Germany, but fell just short of winning a majority in its <span class="kw" data-tip="n. 追求；目标">quest</span> to form the country's first far-right state government since the second world war.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="17.037" data-e="27.632">The party of Germany's unpopular <span class="kw" data-tip="n. （德国）总理">chancellor</span> Friedrich Merz, the Christian Democrats (CDU), <span class="kw" data-tip="v. 暴跌；骤降">slumped</span> to a <span class="kw" data-tip="adj. 灾难性的">disastrous</span> result in the eastern state of Saxony-Anhalt.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="27.632" data-e="35.197">Final results showed AfD <span class="kw" data-tip="phr. 差三席；不足三席">falling three seats short</span>, with 39 <span class="kw" data-tip="n. 议员；立法者">lawmakers</span> in an 83-member parliament.</span> <span class="s" data-t="35.197" data-e="41.171">Siegmund, 35, said it would not engage in "games" such as a <span class="kw" data-tip="n. 少数派政府">minority government</span>.</span> <span class="s" data-t="41.171" data-e="47.169">But it was not evident how its divided opponents could <span class="kw" data-tip="v. 组建；集合">assemble</span> any stable government without it.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="47.169" data-e="56.605">AfD won 43.8% of the vote, more than double its showing five years ago in the region of 2.1 million people west of Berlin.</span> <span class="s" data-t="56.605" data-e="65.395">That was <span class="kw" data-tip="phr. 遥遥领先于">far ahead of</span> Merz's CDU, which <span class="kw" data-tip="v. 获得（选票）">polled</span> 17.2% – losing about half its support – and won 15 seats.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="65.395" data-e="71.209"><span class="kw" data-tip="n. 投票率；参与">Participation</span> in the election was at a <span class="kw" data-tip="n. 历史新高">record high</span> of 76.5%.</span> <span class="s" data-t="71.209" data-e="80.895">Addressing <span class="kw" data-tip="adj. 欢欣鼓舞的">jubilant</span> supporters after exit polls had been published, Siegmund said his party was ready to reach out to all powers that <span class="kw" data-tip="v. 努力；奋斗（strive 过去式）">strove</span> for political change.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="80.895" data-e="94.211">If the AfD manages to form a government in Saxony-Anhalt, Siegmund has promised to immediately start a <span class="kw" data-tip="n. 反向移民；遣返">remigration</span> and <span class="kw" data-tip="n. 驱逐出境">deportation</span> offensive, ban rainbow flags in schools and <span class="kw" data-tip="v. 停止；中止">halt</span> the building of new windfarms.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="94.211" data-e="104.395">The <span class="kw" data-tip="n. 主教">bishop</span> of Magdeburg, Gerhard Feige, in an address to a gathering of churchgoers, warned against forces "that want to <span class="kw" data-tip="phr. 播撒不和；挑拨离间">sow discord</span>, <span class="kw" data-tip="v. 煽动；激起">stoke</span> mistrust and fear".</span> <span class="s" data-t="104.395" data-e="110.697">He drew parallels with history, warning that a democracy has the potential to <span class="kw" data-tip="v. 废除；废止">abolish</span> itself.</span></span></div>
 
       <p class="muted">原文出处：The Guardian（卫报）2026-09-06 报道，报道对象为德国萨克森-安哈尔特州（Saxony-Anhalt）议会选举。原文链接见文末。</p>
     </section>
@@ -437,6 +453,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,13 +167,19 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Ryanair has warned that air fares in Europe will jump next year if the oil price remains high and that some airlines could <span class="kw" data-tip="v. 破产；倒闭">go bust</span>.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The Irish <span class="kw" data-tip="n. 廉价航空公司">budget carrier</span> has cut its passenger target for the year to 31 March, down from 216 million customers to 214 million, to help reduce its <span class="kw" data-tip="n. 风险敞口；暴露">exposure</span> to "unhedged winter oil" during the unprofitable <span class="kw" data-tip="n. 淡季">off season</span>, with <span class="kw" data-tip="n. 航空燃油">jet fuel</span> currently trading at $140 (£104) a barrel.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The company said: "If high oil prices continue through to summer 2027, Ryanair believes <span class="kw" data-tip="adj. 短途的">short-haul</span> air fares in Europe will increase materially to reflect higher oil prices, as some less well-<span class="kw" data-tip="adj. 未对冲的；无套期保值的">hedged</span> competitors will struggle to maintain <span class="kw" data-tip="n. 运力；产能">capacity</span> or even survive this coming winter season."</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en"><span class="kw" data-tip="n. 基准；基准价">Brent crude</span>, the global oil <span class="kw" data-tip="n. 基准；参照标准">benchmark</span>, touched $97.04 a barrel on Wednesday, the highest since late July, after renewed clashes between the US and Iran <span class="kw" data-tip="v. 加剧；助长">fuelled</span> concerns over supply. It later <span class="kw" data-tip="v. 回落；缓解">eased back</span> to just below $95.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Ryanair expects the cut to its winter schedule to reduce its winter losses by €70m (£60m) to €100m. But, because it has <span class="kw" data-tip="v. 对冲；套期保值">hedged</span> 80% of its jet fuel at $67 a barrel, it expects to record another <span class="kw" data-tip="adj. 盈利的">profitable</span> year, <span class="kw" data-tip="conj. 尽管；虽然">albeit</span> below last year's record profit after tax.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">The airline said it was <span class="kw" data-tip="adj. 按计划进行；进展顺利">on track</span> to increase summer passenger numbers – between April and October – by more than 5% from 138 million to 145 million.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The rival budget airline Wizz Air reported on Wednesday that its passenger numbers had grown by 25.9% last month compared with a year earlier, driven by a jump in <span class="kw" data-tip="n. 航班运力；载客量">flight capacity</span>.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-08-28.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 7 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="7.879">Ryanair has warned that air fares in Europe will jump next year if the oil price remains high and that some airlines could <span class="kw" data-tip="v. 破产；倒闭">go bust</span>.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="7.879" data-e="29.697">The Irish <span class="kw" data-tip="n. 廉价航空公司">budget carrier</span> has cut its passenger target for the year to 31 March, down from 216 million customers to 214 million, to help reduce its <span class="kw" data-tip="n. 风险敞口；暴露">exposure</span> to "unhedged winter oil" during the unprofitable <span class="kw" data-tip="n. 淡季">off season</span>, with <span class="kw" data-tip="n. 航空燃油">jet fuel</span> currently trading at $140 (£104) a barrel.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="29.697" data-e="47.013">The company said: "If high oil prices continue through to summer 2027, Ryanair believes <span class="kw" data-tip="adj. 短途的">short-haul</span> air fares in Europe will increase materially to reflect higher oil prices, as some less well-<span class="kw" data-tip="adj. 未对冲的；无套期保值的">hedged</span> competitors will struggle to maintain <span class="kw" data-tip="n. 运力；产能">capacity</span> or even survive this coming winter season."</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="47.013" data-e="60.211"><span class="kw" data-tip="n. 基准；基准价">Brent crude</span>, the global oil <span class="kw" data-tip="n. 基准；参照标准">benchmark</span>, touched $97.04 a barrel on Wednesday, the highest since late July, after renewed clashes between the US and Iran <span class="kw" data-tip="v. 加剧；助长">fuelled</span> concerns over supply.</span> <span class="s" data-t="60.211" data-e="64.039">It later <span class="kw" data-tip="v. 回落；缓解">eased back</span> to just below $95.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="64.039" data-e="74.013">Ryanair expects the cut to its winter schedule to reduce its winter losses by €70m (£60m) to €100m.</span> <span class="s" data-t="74.013" data-e="85.816">But, because it has <span class="kw" data-tip="v. 对冲；套期保值">hedged</span> 80% of its jet fuel at $67 a barrel, it expects to record another <span class="kw" data-tip="adj. 盈利的">profitable</span> year, <span class="kw" data-tip="conj. 尽管；虽然">albeit</span> below last year's record profit after tax.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="85.816" data-e="97.092">The airline said it was <span class="kw" data-tip="adj. 按计划进行；进展顺利">on track</span> to increase summer passenger numbers – between April and October – by more than 5% from 138 million to 145 million.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="97.092" data-e="108.63">The rival budget airline Wizz Air reported on Wednesday that its passenger numbers had grown by 25.9% last month compared with a year earlier, driven by a jump in <span class="kw" data-tip="n. 航班运力；载客量">flight capacity</span>.</span></span></div>
 
       <p class="muted">原文出处：The Guardian（卫报商务版，2026-09-02）。报道对象为瑞安航空（Ryanair）因高油价下调乘客目标、预警欧洲机票价格上涨。</p>
     </section>
@@ -410,6 +426,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

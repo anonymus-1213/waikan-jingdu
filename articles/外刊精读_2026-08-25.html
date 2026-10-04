@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">NASA's newest telescope is officially on its way to deep space after more than a decade of development and high <span class="kw" data-tip="n. 期待；预期">anticipation</span>. Onboard a SpaceX Falcon Heavy rocket, the Nancy Grace Roman Space Telescope <span class="kw" data-tip="v. 升空；发射">lifted off</span> from Launch Complex 39A at the Kennedy Space Center in Florida at 7:26 A.M. EDT on August 30.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The telescope is set to <span class="kw" data-tip="v. 改变；变革">transform</span> our understanding of the <span class="kw" data-tip="n. 宇宙">cosmos</span>—from the furthest reaches and most mysterious forces to the planets and stars that make up our own galaxy and even objects in our solar system.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">NASA administrator Jared Isaacman said at a postlaunch press conference that all systems appear <span class="kw" data-tip="adj. 正常的；名义上的">nominal</span> after launch. In the next weeks, the telescope's instruments will be <span class="kw" data-tip="v. 校准">calibrated</span> and turned on as it travels to its point in space.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">The Roman Telescope will conduct its science observations from a <span class="kw" data-tip="n. 高处的位置；栖息处">perch</span> at the second sun-Earth <span class="kw" data-tip="n. 拉格朗日点">Lagrange point</span>, or L2, a location some million miles "behind" our planet where the sun's and Earth's <span class="kw" data-tip="adj. 引力的">gravitational</span> pulls balance each other out.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">"Roman is <span class="kw" data-tip="adj. 蓄势待发的；准备就绪的">poised</span> to conduct extraordinary <span class="kw" data-tip="n. 巡天；观测普查">surveys</span> that will impact every area of astronomy," said Julie McEnery, Roman's senior project scientist, at a press conference ahead of the launch on Saturday.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">"We'll perform a revolutionary <span class="kw" data-tip="n. 普查；统计">census</span> of planets around other stars and may confirm that our standard model of the universe is incorrect and put us on the path to figuring out what is right," she added.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">With an initial science mission lasting five years, Roman will join NASA's Hubble Space Telescope and James Webb Space Telescope in revealing the universe in ways we have never seen before. Among the secrets Roman will <span class="kw" data-tip="v. 探测；探究">probe</span> is the nature of dark energy and dark matter.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Roman is also <span class="kw" data-tip="v. 配备；装备">outfitted</span> with a special instrument called a <span class="kw" data-tip="n. 日冕仪">coronagraph</span>, which will enable the telescope to observe <span class="kw" data-tip="n. 系外行星">exoplanets</span> with <span class="kw" data-tip="adj. 前所未有的">unprecedented</span> sensitivity. "We think that we will be capable of detecting exoplanets that are about 100 million times <span class="kw" data-tip="adj. 微弱的；暗淡的">fainter</span> than their stars," says Vanessa Bailey, Roman coronagraph instrument scientist at NASA's Jet Propulsion Laboratory.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">At the postlaunch press conference, Nicky Fox, associate administrator of NASA's Science Mission Directorate, said Roman could increase the number of known exoplanets from some 6,000 to 100,000.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-08-25.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="7.907">NASA's newest telescope is officially on its way to deep space after more than a decade of development and high <span class="kw" data-tip="n. 期待；预期">anticipation</span>.</span> <span class="s" data-t="7.907" data-e="18.025">Onboard a SpaceX Falcon Heavy rocket, the Nancy Grace Roman Space Telescope <span class="kw" data-tip="v. 升空；发射">lifted off</span> from Launch Complex 39A at the Kennedy Space Center in Florida at 7:26 A.M.</span> <span class="s" data-t="18.025" data-e="19.087">EDT on August 30.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.087" data-e="32.141">The telescope is set to <span class="kw" data-tip="v. 改变；变革">transform</span> our understanding of the <span class="kw" data-tip="n. 宇宙">cosmos</span>—from the furthest reaches and most mysterious forces to the planets and stars that make up our own galaxy and even objects in our solar system.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="32.141" data-e="39.449">NASA administrator Jared Isaacman said at a postlaunch press conference that all systems appear <span class="kw" data-tip="adj. 正常的；名义上的">nominal</span> after launch.</span> <span class="s" data-t="39.449" data-e="46.694">In the next weeks, the telescope's instruments will be <span class="kw" data-tip="v. 校准">calibrated</span> and turned on as it travels to its point in space.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="46.694" data-e="61.621">The Roman Telescope will conduct its science observations from a <span class="kw" data-tip="n. 高处的位置；栖息处">perch</span> at the second sun-Earth <span class="kw" data-tip="n. 拉格朗日点">Lagrange point</span>, or L2, a location some million miles "behind" our planet where the sun's and Earth's <span class="kw" data-tip="adj. 引力的">gravitational</span> pulls balance each other out.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="61.621" data-e="74.175">"Roman is <span class="kw" data-tip="adj. 蓄势待发的；准备就绪的">poised</span> to conduct extraordinary <span class="kw" data-tip="n. 巡天；观测普查">surveys</span> that will impact every area of astronomy," said Julie McEnery, Roman's senior project scientist, at a press conference ahead of the launch on Saturday.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="74.175" data-e="86.792">"We'll perform a revolutionary <span class="kw" data-tip="n. 普查；统计">census</span> of planets around other stars and may confirm that our standard model of the universe is incorrect and put us on the path to figuring out what is right," she added.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="86.792" data-e="98.596">With an initial science mission lasting five years, Roman will join NASA's Hubble Space Telescope and James Webb Space Telescope in revealing the universe in ways we have never seen before.</span> <span class="s" data-t="98.596" data-e="103.593">Among the secrets Roman will <span class="kw" data-tip="v. 探测；探究">probe</span> is the nature of dark energy and dark matter.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="103.593" data-e="113.399">Roman is also <span class="kw" data-tip="v. 配备；装备">outfitted</span> with a special instrument called a <span class="kw" data-tip="n. 日冕仪">coronagraph</span>, which will enable the telescope to observe <span class="kw" data-tip="n. 系外行星">exoplanets</span> with <span class="kw" data-tip="adj. 前所未有的">unprecedented</span> sensitivity.</span> <span class="s" data-t="113.399" data-e="126.765">"We think that we will be capable of detecting exoplanets that are about 100 million times <span class="kw" data-tip="adj. 微弱的；暗淡的">fainter</span> than their stars," says Vanessa Bailey, Roman coronagraph instrument scientist at NASA's Jet Propulsion Laboratory.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="126.765" data-e="138.882">At the postlaunch press conference, Nicky Fox, associate administrator of NASA's Science Mission Directorate, said Roman could increase the number of known exoplanets from some 6,000 to 100,000.</span></span></div>
 
       <p class="muted">原文出处：Scientific American，Claire Cameron，2026-08-30（发射后持续更新中）。</p>
     </section>
@@ -438,6 +454,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

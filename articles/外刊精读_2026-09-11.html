@@ -130,6 +130,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -159,14 +169,20 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">For generations, adults have assured children that books are windows to the world. Yet a <span class="kw" data-tip="adj. 不断增长的；日益加剧的">mounting</span> body of evidence now suggests that the habit of reading for pleasure is in steep decline among the young — a shift that researchers argue carries consequences far more <span class="kw" data-tip="adj. 深远的；深刻的">profound</span> than many parents and educators realise.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The statistics are <span class="kw" data-tip="adj. 发人深省的；令人警醒的">sobering</span>. According to the United States' National Assessment of Educational Progress, only 14 percent of 13-year-olds reported reading for enjoyment almost every day in 2023, a <span class="kw" data-tip="adj. 急剧的；陡然的">precipitous</span> drop from 27 percent in 2012. Britain tells a strikingly similar story: a nationwide survey by the National Literacy Trust found that merely one in five children and young people now reads daily in their spare time, down from 38 percent in 2005.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The <span class="kw" data-tip="n. 退却；减少">retreat</span> is especially <span class="kw" data-tip="adj. 明显的；显著的">pronounced</span> among boys, and the gap widens with age. By the time they reach 14 to 16, only about one in five boys says he enjoys reading, compared with roughly two in five girls. Having abandoned books as they entered <span class="kw" data-tip="n. 青春期">adolescence</span>, many boys have redirected their attention toward video games, social media feeds and short-form videos, which deliver instant <span class="kw" data-tip="n. 满足感；快感">gratification</span> but rarely require <span class="kw" data-tip="adj. 持续的；持久的">sustained</span> concentration.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">Why should this matter? Because reading for pleasure is far more than a leisure pursuit. Research consistently shows that children who read for enjoyment tend to <span class="kw" data-tip="v. 超过；优于">outperform</span> their peers academically, <span class="kw" data-tip="v. 获得；习得">acquire</span> a richer vocabulary and develop the capacity to think critically and at length.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Perhaps most important, reading fiction in particular enables young people to inhabit the minds of others, <span class="kw" data-tip="v. 培养；培育">cultivating</span> the quality scientists call <span class="kw" data-tip="n. 共情；同理心">empathy</span> — the ability to understand and share another person's feelings. When children cease to read, they also <span class="kw" data-tip="v. 丧失；失去">forfeit</span> a rare opportunity to practise sustained attention, a <span class="kw" data-tip="adj. 认知的">cognitive</span> skill that short videos, by their very design, seldom reward.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">The underlying causes are not difficult to identify. The <span class="kw" data-tip="adj. 无处不在的；普遍存在的">ubiquitous</span> presence of smartphones has transformed idle moments — once filled by books — into opportunities for scrolling. Compounding this, leisure reading competes for children's time against a widening array of digital distractions, while the pressure of academic testing leaves ever less room for the unhurried pleasure of a good novel.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">Nevertheless, the decline is not <span class="kw" data-tip="adj. 不可逆的；无法逆转的">irreversible</span>. Experts maintain that children are far more likely to <span class="kw" data-tip="v. 欣然接受；拥抱">embrace</span> books when they are allowed to choose what they read, when their parents model reading beside them, and when schools deliberately safeguard quiet time for free reading. Even modest interventions — a well-stocked classroom library, a ten-minute daily reading ritual — can, over time, <span class="kw" data-tip="v. 重新点燃；重新激起">rekindle</span> a lifelong love of literature.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">In an age saturated with endless distraction, the ability to sit still with a single story may prove to be one of the most valuable gifts we can bestow upon the next generation — a quiet act of resistance against the fragmenting pull of the screen.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-11.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 8 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="5.379">For generations, adults have assured children that books are windows to the world.</span> <span class="s" data-t="5.379" data-e="18.5">Yet a <span class="kw" data-tip="adj. 不断增长的；日益加剧的">mounting</span> body of evidence now suggests that the habit of reading for pleasure is in steep decline among the young — a shift that researchers argue carries consequences far more <span class="kw" data-tip="adj. 深远的；深刻的">profound</span> than many parents and educators realise.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.5" data-e="20.776">The statistics are <span class="kw" data-tip="adj. 发人深省的；令人警醒的">sobering</span>.</span> <span class="s" data-t="20.776" data-e="35.84">According to the United States' National Assessment of Educational Progress, only 14 percent of 13-year-olds reported reading for enjoyment almost every day in 2023, a <span class="kw" data-tip="adj. 急剧的；陡然的">precipitous</span> drop from 27 percent in 2012.</span> <span class="s" data-t="35.84" data-e="49.419">Britain tells a strikingly similar story: a nationwide survey by the National Literacy Trust found that merely one in five children and young people now reads daily in their spare time, down from 38 percent in 2005.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="49.419" data-e="54.671">The <span class="kw" data-tip="n. 退却；减少">retreat</span> is especially <span class="kw" data-tip="adj. 明显的；显著的">pronounced</span> among boys, and the gap widens with age.</span> <span class="s" data-t="54.671" data-e="63.406">By the time they reach 14 to 16, only about one in five boys says he enjoys reading, compared with roughly two in five girls.</span> <span class="s" data-t="63.406" data-e="77.829">Having abandoned books as they entered <span class="kw" data-tip="n. 青春期">adolescence</span>, many boys have redirected their attention toward video games, social media feeds and short-form videos, which deliver instant <span class="kw" data-tip="n. 满足感；快感">gratification</span> but rarely require <span class="kw" data-tip="adj. 持续的；持久的">sustained</span> concentration.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="77.829" data-e="79.579">Why should this matter?</span> <span class="s" data-t="79.579" data-e="83.63">Because reading for pleasure is far more than a leisure pursuit.</span> <span class="s" data-t="83.63" data-e="95.408">Research consistently shows that children who read for enjoyment tend to <span class="kw" data-tip="v. 超过；优于">outperform</span> their peers academically, <span class="kw" data-tip="v. 获得；习得">acquire</span> a richer vocabulary and develop the capacity to think critically and at length.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="95.408" data-e="108.616">Perhaps most important, reading fiction in particular enables young people to inhabit the minds of others, <span class="kw" data-tip="v. 培养；培育">cultivating</span> the quality scientists call <span class="kw" data-tip="n. 共情；同理心">empathy</span> — the ability to understand and share another person's feelings.</span> <span class="s" data-t="108.616" data-e="119.724">When children cease to read, they also <span class="kw" data-tip="v. 丧失；失去">forfeit</span> a rare opportunity to practise sustained attention, a <span class="kw" data-tip="adj. 认知的">cognitive</span> skill that short videos, by their very design, seldom reward.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="119.724" data-e="123.605">The underlying causes are not difficult to identify.</span> <span class="s" data-t="123.605" data-e="131.539">The <span class="kw" data-tip="adj. 无处不在的；普遍存在的">ubiquitous</span> presence of smartphones has transformed idle moments — once filled by books — into opportunities for scrolling.</span> <span class="s" data-t="131.539" data-e="143.972">Compounding this, leisure reading competes for children's time against a widening array of digital distractions, while the pressure of academic testing leaves ever less room for the unhurried pleasure of a good novel.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="143.972" data-e="147.632">Nevertheless, the decline is not <span class="kw" data-tip="adj. 不可逆的；无法逆转的">irreversible</span>.</span> <span class="s" data-t="147.632" data-e="160.274">Experts maintain that children are far more likely to <span class="kw" data-tip="v. 欣然接受；拥抱">embrace</span> books when they are allowed to choose what they read, when their parents model reading beside them, and when schools deliberately safeguard quiet time for free reading.</span> <span class="s" data-t="160.274" data-e="170.276">Even modest interventions — a well-stocked classroom library, a ten-minute daily reading ritual — can, over time, <span class="kw" data-tip="v. 重新点燃；重新激起">rekindle</span> a lifelong love of literature.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="170.276" data-e="184.592">In an age saturated with endless distraction, the ability to sit still with a single story may prove to be one of the most valuable gifts we can bestow upon the next generation — a quiet act of resistance against the fragmenting pull of the screen.</span></span></div>
 
       <p class="muted">原文出处：本文综合美国国家教育进展评估（NAEP，2023）、英国国家读写信托（National Literacy Trust，2025–2026）等公开报告改编编写，供学习使用。</p>
     </section>
@@ -471,6 +487,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

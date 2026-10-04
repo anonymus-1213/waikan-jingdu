@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,14 +167,20 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Schools and councils across England are expecting the <span class="kw" data-tip="n. 比例；占比">proportion</span> of children with special needs plans to double to one in 10, with families rushing to secure support before ministers bring in changes.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">Headteachers have reported an "unreal" <span class="kw" data-tip="n. 激增；猛增">surge</span> in applications for education, health and care plans (EHCPs) <span class="kw" data-tip="v. 强制规定；授权">mandating</span> support for needs or disabilities such as speech and learning difficulties, <span class="kw" data-tip="n. 自闭症">autism</span> or ADHD. In 2025, just one in 20 school-age children had EHCPs.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The number of pupils with EHCPs has risen by more than 11% in each of the past two years, and <span class="kw" data-tip="n. 预测；预估">projections</span> by local authorities seen by the Guardian are anticipating similar double-digit annual increases over the next three years.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">Such a rapid increase would <span class="kw" data-tip="v. 超过；超越">outstrip</span> the government's own forecasts and <span class="kw" data-tip="v. 蚕食；侵占">eat into</span> funding for improving specialist support in mainstream schools, undermining its plans for immediate reform while <span class="kw" data-tip="v. 使紧张；加重负担">straining</span> school and council budgets.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">EHCPs are legal documents agreed between local authorities and families in England detailing the support required for children and young people up to the age of 25, allowing access to extra funding or places in special schools. While more than 530,000 school-age children have EHCPs, an additional 1.3 million have identified special needs, according to official data.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">The costs are met out of local authority high needs budgets but the massive growth in EHCPs has led to councils amassing sustained <span class="kw" data-tip="n. 赤字；缺口">deficits</span>, and require a <span class="kw" data-tip="adj. 法定的">statutory</span> <span class="kw" data-tip="n. 豁免；推翻">override</span> granted by central government to avoid many local authorities becoming technically bankrupt.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">Paul Whiteman, the general secretary of the National Association of Head Teachers, said: "While it is hard to give a definitive reason for why this is happening, it appears likely that the government's plans to restrict future EHCPs to children with the most complex needs may have led to more families and schools applying before these changes <span class="kw" data-tip="v. 生效；开始实施">kick in</span>."</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">The surge in applications has led some local authorities to dramatically raise their own <span class="kw" data-tip="n. 预测；预期">forecasts</span>. A report by Hampshire council in July showed applications so far this year were at record levels and forecasted a 58% increase in EHCPs between 2026 and 2030. Manchester council is also anticipating a 40% increase in school-age children with EHCPs by 2029.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-08-29.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 8 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="11.653">Schools and councils across England are expecting the <span class="kw" data-tip="n. 比例；占比">proportion</span> of children with special needs plans to double to one in 10, with families rushing to secure support before ministers bring in changes.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="11.653" data-e="26.053">Headteachers have reported an "unreal" <span class="kw" data-tip="n. 激增；猛增">surge</span> in applications for education, health and care plans (EHCPs) <span class="kw" data-tip="v. 强制规定；授权">mandating</span> support for needs or disabilities such as speech and learning difficulties, <span class="kw" data-tip="n. 自闭症">autism</span> or ADHD.</span> <span class="s" data-t="26.053" data-e="31.855">In 2025, just one in 20 school-age children had EHCPs.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="31.855" data-e="46.327">The number of pupils with EHCPs has risen by more than 11% in each of the past two years, and <span class="kw" data-tip="n. 预测；预估">projections</span> by local authorities seen by the Guardian are anticipating similar double-digit annual increases over the next three years.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="46.327" data-e="59.355">Such a rapid increase would <span class="kw" data-tip="v. 超过；超越">outstrip</span> the government's own forecasts and <span class="kw" data-tip="v. 蚕食；侵占">eat into</span> funding for improving specialist support in mainstream schools, undermining its plans for immediate reform while <span class="kw" data-tip="v. 使紧张；加重负担">straining</span> school and council budgets.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="59.355" data-e="73.722">EHCPs are legal documents agreed between local authorities and families in England detailing the support required for children and young people up to the age of 25, allowing access to extra funding or places in special schools.</span> <span class="s" data-t="73.722" data-e="84.566">While more than 530,000 school-age children have EHCPs, an additional 1.3 million have identified special needs, according to official data.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="84.566" data-e="100.75">The costs are met out of local authority high needs budgets but the massive growth in EHCPs has led to councils amassing sustained <span class="kw" data-tip="n. 赤字；缺口">deficits</span>, and require a <span class="kw" data-tip="adj. 法定的">statutory</span> <span class="kw" data-tip="n. 豁免；推翻">override</span> granted by central government to avoid many local authorities becoming technically bankrupt.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="100.75" data-e="121.303">Paul Whiteman, the general secretary of the National Association of Head Teachers, said: "While it is hard to give a definitive reason for why this is happening, it appears likely that the government's plans to restrict future EHCPs to children with the most complex needs may have led to more families and schools applying before these changes <span class="kw" data-tip="v. 生效；开始实施">kick in</span>."</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="121.303" data-e="127.632">The surge in applications has led some local authorities to dramatically raise their own <span class="kw" data-tip="n. 预测；预期">forecasts</span>.</span> <span class="s" data-t="127.632" data-e="139.88">A report by Hampshire council in July showed applications so far this year were at record levels and forecasted a 58% increase in EHCPs between 2026 and 2030.</span> <span class="s" data-t="139.88" data-e="148.092">Manchester council is also anticipating a 40% increase in school-age children with EHCPs by 2029.</span></span></div>
 
       <p class="muted">原文出处：The Guardian（卫报教育版，2026-09-06）。报道对象为英格兰特殊教育需求（Send）EHCP 申请激增及其对地方财政的影响。</p>
     </section>
@@ -423,6 +439,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

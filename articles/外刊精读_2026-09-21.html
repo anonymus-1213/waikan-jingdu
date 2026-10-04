@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Where do good ideas come from? For centuries, some of history's most original minds have insisted that the answer often arrives on foot. Nietzsche walked for hours before writing; Thoreau roamed the woods; Steve Jobs held meetings while strolling. Now science is beginning to test this folk wisdom with care.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The modern study of walking and creativity began with a famous experiment at Stanford University. Researchers Marily Oppezzo and Daniel Schwartz asked volunteers to complete tests of <span class="kw" data-tip="n. 创造力；创造性">creativity</span> while either seated or walking, measuring their ability to generate <span class="kw" data-tip="adj. 新颖的（熟词僻义：n. 小说）">novel</span> and useful ideas — a capacity known as <span class="kw" data-tip="adj. 发散的">divergent</span> thinking.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The Stanford results were striking: walking <span class="kw" data-tip="v. 产生；带来（熟词僻义：屈服；让路）">yielded</span> a large boost in divergent thinking, with participants producing more ideas, and more original ones, on the move. A 2026 <span class="kw" data-tip="adj. 系统的">systematic</span> review and meta-analysis has now <span class="kw" data-tip="v. 综合；汇总">synthesized</span> this and dozens of later studies to ask how strong the effect really is.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">The review's conclusion is clear. Across the accumulated experiments, walking produced what the authors describe as a "large increase" in divergent thinking, confirming that the simple act of putting one foot in front of the other can <span class="kw" data-tip="v. 提升；增强">enhance</span> the generation of ideas.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The effect, however, is specific rather than universal. Walking reliably improves divergent thought — the broad search for many possible answers — while its influence on <span class="kw" data-tip="adj. 收敛的">convergent</span> thinking, the narrowing pursuit of a single correct solution, is weaker and more <span class="kw" data-tip="adj. 模糊的；模棱两可的">ambiguous</span>.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Why should movement sharpen the imagination? Researchers propose several mechanisms: physical activity raises <span class="kw" data-tip="n. 唤醒；兴奋">arousal</span> and improves mood, the changing environment provides fresh <span class="kw" data-tip="n. 刺激（物）">stimuli</span>, and the gentle rhythm of walking may free attention to wander — together <span class="kw" data-tip="v. 引导（熟词僻义：n. 频道）">channeling</span> mental energy toward <span class="kw" data-tip="adj. 认知的">cognitive</span> exploration rather than fixed routines.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">For educators and workers, the implication is practical. Because walking requires no special equipment or training, it ranks among the most <span class="kw" data-tip="adj. 可行的">feasible</span> <span class="kw" data-tip="n. 干预；介入">interventions</span> available for unlocking creative thinking — a possibility the authors frame as both <span class="kw" data-tip="adj. 有趣的；引人入胜的">intriguing</span> and refreshingly low-cost.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">The authors are careful about limits. The studies vary widely in design, making the evidence <span class="kw" data-tip="adj. 异质的；混杂的">heterogeneous</span>, and most participants were young adults, so the findings may not apply equally to everyone. Nor can a <span class="kw" data-tip="adj. 因果的">causal</span> link be fully <span class="kw" data-tip="v. 量化">quantified</span>: it remains possible that the benefits come less from walking itself than from the simple act of stepping away from a desk and a screen.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">Still, the message for students is hard to ignore. If the mind stalls over a hard problem, the research suggests that the best move may be, quite literally, to move — to walk, wander, and let <span class="kw" data-tip="adj. 稳健的；强有力的">robust</span> science, not just folklore, walk us toward better ideas.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-21.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="2.418">Where do good ideas come from?</span> <span class="s" data-t="2.418" data-e="9.382">For centuries, some of history's most original minds have insisted that the answer often arrives on foot.</span> <span class="s" data-t="9.382" data-e="16.368">Nietzsche walked for hours before writing; Thoreau roamed the woods; Steve Jobs held meetings while strolling.</span> <span class="s" data-t="16.368" data-e="20.513">Now science is beginning to test this folk wisdom with care.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="20.513" data-e="27.053">The modern study of walking and creativity began with a famous experiment at Stanford University.</span> <span class="s" data-t="27.053" data-e="40.961">Researchers Marily Oppezzo and Daniel Schwartz asked volunteers to complete tests of <span class="kw" data-tip="n. 创造力；创造性">creativity</span> while either seated or walking, measuring their ability to generate <span class="kw" data-tip="adj. 新颖的（熟词僻义：n. 小说）">novel</span> and useful ideas — a capacity known as <span class="kw" data-tip="adj. 发散的">divergent</span> thinking.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.961" data-e="51.355">The Stanford results were striking: walking <span class="kw" data-tip="v. 产生；带来（熟词僻义：屈服；让路）">yielded</span> a large boost in divergent thinking, with participants producing more ideas, and more original ones, on the move.</span> <span class="s" data-t="51.355" data-e="60.921">A 2026 <span class="kw" data-tip="adj. 系统的">systematic</span> review and meta-analysis has now <span class="kw" data-tip="v. 综合；汇总">synthesized</span> this and dozens of later studies to ask how strong the effect really is.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="60.921" data-e="63.408">The review's conclusion is clear.</span> <span class="s" data-t="63.408" data-e="76.748">Across the accumulated experiments, walking produced what the authors describe as a "large increase" in divergent thinking, confirming that the simple act of putting one foot in front of the other can <span class="kw" data-tip="v. 提升；增强">enhance</span> the generation of ideas.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="76.748" data-e="81.079">The effect, however, is specific rather than universal.</span> <span class="s" data-t="81.079" data-e="94.079">Walking reliably improves divergent thought — the broad search for many possible answers — while its influence on <span class="kw" data-tip="adj. 收敛的">convergent</span> thinking, the narrowing pursuit of a single correct solution, is weaker and more <span class="kw" data-tip="adj. 模糊的；模棱两可的">ambiguous</span>.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="94.079" data-e="97.211">Why should movement sharpen the imagination?</span> <span class="s" data-t="97.211" data-e="114.763">Researchers propose several mechanisms: physical activity raises <span class="kw" data-tip="n. 唤醒；兴奋">arousal</span> and improves mood, the changing environment provides fresh <span class="kw" data-tip="n. 刺激（物）">stimuli</span>, and the gentle rhythm of walking may free attention to wander — together <span class="kw" data-tip="v. 引导（熟词僻义：n. 频道）">channeling</span> mental energy toward <span class="kw" data-tip="adj. 认知的">cognitive</span> exploration rather than fixed routines.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="114.763" data-e="119.105">For educators and workers, the implication is practical.</span> <span class="s" data-t="119.105" data-e="132.498">Because walking requires no special equipment or training, it ranks among the most <span class="kw" data-tip="adj. 可行的">feasible</span> <span class="kw" data-tip="n. 干预；介入">interventions</span> available for unlocking creative thinking — a possibility the authors frame as both <span class="kw" data-tip="adj. 有趣的；引人入胜的">intriguing</span> and refreshingly low-cost.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="132.498" data-e="135.289">The authors are careful about limits.</span> <span class="s" data-t="135.289" data-e="145.382">The studies vary widely in design, making the evidence <span class="kw" data-tip="adj. 异质的；混杂的">heterogeneous</span>, and most participants were young adults, so the findings may not apply equally to everyone.</span> <span class="s" data-t="145.382" data-e="155.855">Nor can a <span class="kw" data-tip="adj. 因果的">causal</span> link be fully <span class="kw" data-tip="v. 量化">quantified</span>: it remains possible that the benefits come less from walking itself than from the simple act of stepping away from a desk and a screen.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="155.855" data-e="159.592">Still, the message for students is hard to ignore.</span> <span class="s" data-t="159.592" data-e="172.882">If the mind stalls over a hard problem, the research suggests that the best move may be, quite literally, to move — to walk, wander, and let <span class="kw" data-tip="adj. 稳健的；强有力的">robust</span> science, not just folklore, walk us toward better ideas.</span></span></div>
 
       <p class="muted">原文出处：本文根据 Thabane 等 2026 年系统综述《The impact of walking on creative thinking: a systematic review》及斯坦福大学 Oppezzo & Schwartz（2014）经典实验研究综合整理改写，供学习使用。</p>
     </section>
@@ -482,6 +498,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

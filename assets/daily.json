@@ -1,0 +1,85 @@
+{
+  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
+  "sentences": [
+    {
+      "date": "2026-10-04",
+      "en": "Beneath a thin layer of vegetation, the Arctic holds one of the planet's largest stores of carbon — frozen, quiet, and, until recently, safely sealed away.",
+      "zh": "在薄薄一层植被之下，北极封存着地球上最大的碳库之一——它冻结着、静默着，直到不久之前，还被安稳地锁在其中。",
+      "src": "外刊精读 · 冻土苏醒（2026-10-04）",
+      "key": "seal away",
+      "keyZh": "封存；把…锁藏起来",
+      "tip": "「stores of carbon」中 store 是熟词僻义（n. 储存量），不是「商店」；hold 在此意为「容纳、拥有」。",
+      "tags": ["气候", "生态"]
+    },
+    {
+      "date": "2026-10-03",
+      "en": "A study reconciling 50 satellite estimates finds the two ice sheets lost 11,309 billion tonnes of ice between 1979 and 2023 — a loss that has lifted global sea level by about three centimetres.",
+      "zh": "一项把约 50 份卫星估测「对账」的研究发现，1979 至 2023 年间两大冰盖共流失 11,309 亿吨冰，使全球海平面上升约三厘米。",
+      "src": "外刊精读 · 格陵兰与南极冰盖（2026-10-03）",
+      "key": "reconcile",
+      "keyZh": "使一致；对账（熟词僻义）",
+      "tip": "reconcile 常见义为「和解」，此处指把相互不一致的数据「调和、对账」成一个统一记录。",
+      "tags": ["气候", "卫星观测"]
+    },
+    {
+      "date": "2026-10-02",
+      "en": "Wheat, barley, cattle and sheep crossed Eurasia into northwest China roughly 4,000 years ago — yet left no detectable trace of the western farmers who first domesticated them.",
+      "zh": "约四千年前，小麦、大麦、牛与羊跨越欧亚大陆传入中国西北——却没有留下任何可检测到的、最早驯化它们的西方农耕人群的痕迹。",
+      "src": "外刊精读 · 麦子西来，人未东迁（2026-10-02）",
+      "key": "detectable",
+      "keyZh": "可检测到的；可察觉的",
+      "tip": "破折号后的 yet 是「然而」，构成强烈的对比：作物来了，人却没来。leave no trace of 是固定表达「不留痕迹」。",
+      "tags": ["考古", "古基因组"]
+    },
+    {
+      "date": "2026-10-01",
+      "en": "The brain does not simply file memories away while we sleep; it replays them, in fast, rhythmic bursts, deciding which to keep and which to let fade.",
+      "zh": "大脑在我们睡眠时并非只是把记忆归档了事——它会以快速而有节律的爆发式活动重放这些记忆，决定哪些该留下、哪些任其消褪。",
+      "src": "外刊精读 · 记忆与睡眠（2026-10-01）",
+      "key": "file away",
+      "keyZh": "把…归档保存",
+      "tip": "file away 字面是「归档」，此处与 replays（重放）形成对照，强调记忆不是被动存放而是主动加工。",
+      "tags": ["神经科学", "学习"]
+    },
+    {
+      "date": "2026-09-30",
+      "en": "For a generation raised on glowing screens, the paper book can look like a technology whose day is done.",
+      "zh": "对在屏幕前长大的一代而言，纸质书看起来可能像是一项早已过时的技术。",
+      "src": "外刊精读 · 屏幕之困（2026-09-29）",
+      "key": "whose day is done",
+      "keyZh": "…的时代已经结束",
+      "tip": "此句以「过时之物」的成见开篇，随后用 Yet 转折引出研究结论，是议论文「先立靶、再反驳」的经典开头。",
+      "tags": ["教育", "认知科学"]
+    },
+    {
+      "date": "2026-09-29",
+      "en": "What looks like a simple choice — paper or screen — turns out to shape not only what we understand but how deeply we think.",
+      "zh": "看似简单的选择——读纸还是读屏——原来不仅影响我们理解了什么，更影响我们思考得有多深。",
+      "src": "外刊精读 · 阅读的媒介（2026-09-29）",
+      "key": "turn out to",
+      "keyZh": "结果是；原来是",
+      "tip": "not only A but B 结构中，B 往往是作者真正想强调的重点（此处为 how deeply we think）。",
+      "tags": ["教育", "认知科学"]
+    },
+    {
+      "date": "2026-09-28",
+      "en": "Cities that plant trees for shade today are, in effect, writing a public-health policy for the century to come.",
+      "zh": "今天为遮荫而植树的城市，实际上是在为未来一百年拟定一份公共卫生政策。",
+      "src": "外刊精读 · 城市与热浪（2026-09-28）",
+      "key": "in effect",
+      "keyZh": "实际上；事实上",
+      "tip": "in effect 是高频插入语，用「换句话说」的语气把具体行为提升到政策高度。",
+      "tags": ["城市", "公共卫生"]
+    },
+    {
+      "date": "2026-09-27",
+      "en": "The most striking finding is not that the machines can write, but that readers so often cannot tell — and, worse, do not much care.",
+      "zh": "最引人注目的发现不是机器会写作，而是读者常常分辨不出——更糟的是，他们并不太在意。",
+      "src": "外刊精读 · 人工智能与写作（2026-09-27）",
+      "key": "tell",
+      "keyZh": "分辨；辨别（熟词僻义）",
+      "tip": "tell 在此不是「告诉」而是「分辨」（tell A from B）。破折号后递进加重了批评语气。",
+      "tags": ["科技", "人工智能"]
+    }
+  ]
+}

@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Pollution from increasingly intense <span class="kw" data-tip="n. 野火；山火">wildfires</span> and <span class="kw" data-tip="n. 热浪">heat waves</span> could <span class="kw" data-tip="v. 削弱；暗中破坏">undermine</span> global efforts to improve air quality and protect human health, the United Nations' weather agency said on Monday, warning that climate change is making it harder to meet international air quality goals.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">In its annual report on air quality and the climate, the World Meteorological Organization said air pollution and climate change are closely linked and should be <span class="kw" data-tip="v. 应对；处理">tackled</span> through coordinated policies rather than <span class="kw" data-tip="adv. 孤立地；单独地">in isolation</span>. It warned that meeting the World Health Organization's air quality <span class="kw" data-tip="n. 指导方针；准则">guidelines</span> will become more difficult because extreme wildfires are more likely to occur in the future.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">Wildfires are becoming a growing source of harmful air pollution even as regulations have reduced <span class="kw" data-tip="n. 排放（物）">emissions</span> from industry and transport in many developed countries, the WMO said in its report.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">"No matter how clean your city or your region is … if you have a lot of pollution brought about by wildfires, that has the potential to negatively impact air quality in those regions as well," Lorenzo Labrador, scientific officer at the WMO, told Reuters.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The report highlights the growing impact of fine <span class="kw" data-tip="n. 颗粒物；粉尘（PM2.5）">particulate matter</span>, known as PM2.5, and <span class="kw" data-tip="n. 近地面臭氧">ground-level ozone</span>, pollutants linked to <span class="kw" data-tip="adj. 呼吸的">respiratory</span> and <span class="kw" data-tip="adj. 心血管的">cardiovascular</span> disease. It also calls for improved monitoring of pollutants and <span class="kw" data-tip="n. 气溶胶">aerosols</span> including <span class="kw" data-tip="n. 黑碳">black carbon</span> and <span class="kw" data-tip="n. 微塑料">microplastics</span>, which it said remain poorly tracked despite their widespread presence in the atmosphere.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">This year has been marked by extreme heat and destructive wildfires across parts of Europe, including Spain, France and Greece. The WMO has said extreme heat is becoming more frequent, intense and longer-lasting as the planet warms.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The new report said PM2.5 <span class="kw" data-tip="n. 浓度">concentrations</span> in 2025 were above long-term averages in northern Canada, parts of Russia and western-central Africa due to heightened fire activity, while northwestern Spain was a hot spot following exceptional late-summer fires.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">A study cited in the report found extreme fire-smoke events have <span class="kw" data-tip="v. 增至三倍">tripled</span> globally since the 1990s and may have contributed to nearly 100,000 additional deaths annually between 2010 and 2018.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">Particulate matter from wildfires is particularly harmful because it comes with a host of toxic chemicals, Labrador said, adding that inhalation causes body-wide <span class="kw" data-tip="n. 炎症">inflammation</span> that can lead to <span class="kw" data-tip="adj. 肺的；肺部的">pulmonary</span> disease.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-02.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="16.193">Pollution from increasingly intense <span class="kw" data-tip="n. 野火；山火">wildfires</span> and <span class="kw" data-tip="n. 热浪">heat waves</span> could <span class="kw" data-tip="v. 削弱；暗中破坏">undermine</span> global efforts to improve air quality and protect human health, the United Nations' weather agency said on Monday, warning that climate change is making it harder to meet international air quality goals.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="16.193" data-e="28.947">In its annual report on air quality and the climate, the World Meteorological Organization said air pollution and climate change are closely linked and should be <span class="kw" data-tip="v. 应对；处理">tackled</span> through coordinated policies rather than <span class="kw" data-tip="adv. 孤立地；单独地">in isolation</span>.</span> <span class="s" data-t="28.947" data-e="38.671">It warned that meeting the World Health Organization's air quality <span class="kw" data-tip="n. 指导方针；准则">guidelines</span> will become more difficult because extreme wildfires are more likely to occur in the future.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="38.671" data-e="50.684">Wildfires are becoming a growing source of harmful air pollution even as regulations have reduced <span class="kw" data-tip="n. 排放（物）">emissions</span> from industry and transport in many developed countries, the WMO said in its report.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="50.684" data-e="66.579">"No matter how clean your city or your region is … if you have a lot of pollution brought about by wildfires, that has the potential to negatively impact air quality in those regions as well," Lorenzo Labrador, scientific officer at the WMO, told Reuters.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="66.579" data-e="78.079">The report highlights the growing impact of fine <span class="kw" data-tip="n. 颗粒物；粉尘（PM2.5）">particulate matter</span>, known as PM2.5, and <span class="kw" data-tip="n. 近地面臭氧">ground-level ozone</span>, pollutants linked to <span class="kw" data-tip="adj. 呼吸的">respiratory</span> and <span class="kw" data-tip="adj. 心血管的">cardiovascular</span> disease.</span> <span class="s" data-t="78.079" data-e="89.669">It also calls for improved monitoring of pollutants and <span class="kw" data-tip="n. 气溶胶">aerosols</span> including <span class="kw" data-tip="n. 黑碳">black carbon</span> and <span class="kw" data-tip="n. 微塑料">microplastics</span>, which it said remain poorly tracked despite their widespread presence in the atmosphere.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="89.669" data-e="98.092">This year has been marked by extreme heat and destructive wildfires across parts of Europe, including Spain, France and Greece.</span> <span class="s" data-t="98.092" data-e="105.447">The WMO has said extreme heat is becoming more frequent, intense and longer-lasting as the planet warms.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="105.447" data-e="122.261">The new report said PM2.5 <span class="kw" data-tip="n. 浓度">concentrations</span> in 2025 were above long-term averages in northern Canada, parts of Russia and western-central Africa due to heightened fire activity, while northwestern Spain was a hot spot following exceptional late-summer fires.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="122.261" data-e="135.263">A study cited in the report found extreme fire-smoke events have <span class="kw" data-tip="v. 增至三倍">tripled</span> globally since the 1990s and may have contributed to nearly 100,000 additional deaths annually between 2010 and 2018.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="135.263" data-e="148.132">Particulate matter from wildfires is particularly harmful because it comes with a host of toxic chemicals, Labrador said, adding that inhalation causes body-wide <span class="kw" data-tip="n. 炎症">inflammation</span> that can lead to <span class="kw" data-tip="adj. 肺的；肺部的">pulmonary</span> disease.</span></span></div>
 
       <p class="muted">原文出处：路透社日内瓦报道（Reuters, Geneva, Sept 7, 2026）。报道对象为世界气象组织（WMO）2026 年度《空气质量与气候公报》。</p>
     </section>
@@ -447,6 +463,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Humans have long retreated into nature to rest and recover, yet only recently have scientists begun to <span class="kw" data-tip="v. 量化；用数字表示">quantify</span> precisely what the natural world does to the body. A growing body of research now suggests that it is not merely the sight of greenery that heals — the sounds of nature, from birdsong to running water, <span class="kw" data-tip="v. 施加；发挥（影响、力量）">exert</span> measurable effects on stress, pain and mood.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">In a landmark <span class="kw" data-tip="n. 综合；综述；合成">synthesis</span> published in the Proceedings of the National Academy of Sciences, a team led by researchers at Colorado State University examined three dozen studies, drawn from eighteen <span class="kw" data-tip="adj. 经同行评审的">peer-reviewed</span> papers, that asked how natural sounds shape human health outcomes.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">By <span class="kw" data-tip="v. 把……标绘成图（熟词僻义：n. 情节）">plotting</span> each study's reported effect against the type of sound involved, the team discovered a clear pattern: water sounds produced the largest overall improvements, while birdsong proved most effective at <span class="kw" data-tip="v. 抚慰；缓解（痛苦、焦虑）">soothing</span> the stress and annoyance that noise pollution <span class="kw" data-tip="v. 激起；引发；挑衅">provokes</span>.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">Roughly three-quarters of the studies recorded positive health effects, with natural sounds lowering heart rate, easing pain and sharpening <span class="kw" data-tip="adj. 认知的">cognitive</span> performance; some participants even <span class="kw" data-tip="v. 显示出；记录（熟词僻义：登记）">registered</span> measurable drops in blood pressure and in the stress hormone <span class="kw" data-tip="n. 皮质醇（应激激素）">cortisol</span>.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The researchers trace the <span class="kw" data-tip="n. 机制；原理">mechanism</span> to human evolutionary history. For most of our existence, a landscape rich in birdsong signalled safety, whereas an abrupt silence — or a sudden human-made racket — warned of danger; the body, in other words, still reads sound as a map of threat and <span class="kw" data-tip="n. 庇护所；保护区">sanctuary</span>.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">By contrast, <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount 攀登、安装）">mounting</span> evidence shows that <span class="kw" data-tip="adj. 慢性的；长期的">chronic</span> noise — traffic, aircraft, construction — behaves as an invisible pollutant that raises the risk of <span class="kw" data-tip="n. 高血压">hypertension</span> and heart disease, eroding precisely the benefits that natural soundscapes <span class="kw" data-tip="v. 赋予；给予">confer</span>.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The findings carry implications for conservation, prompting some national parks to treat their <span class="kw" data-tip="adj. 声学的；听觉的">acoustic</span> environment as a resource to be protected no less than their scenery. Yet the authors <span class="kw" data-tip="v. 警告；告诫">caution</span> that the studies vary widely in method and scale, and that a <span class="kw" data-tip="adj. 因果的">causal</span> chain from sound to health remains hard to <span class="kw" data-tip="v. 使孤立；分离；单独考虑">isolate</span>, let alone to quantify across cultures.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Natural sounds, the researchers argue, <span class="kw" data-tip="v. 构成；组成">constitute</span> a public good whose value has been systematically <span class="kw" data-tip="v. 低估；贬低">undervalued</span>. Not until soundscapes are measured and mapped, they insist, will policymakers grasp how much quiet and birdsong contribute to <span class="kw" data-tip="adj. 集体的；共同的">collective</span> well-being.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For the public, the message is at once simple and hopeful. That a few minutes of birdsong can measurably calm the nervous system suggests that one of the cheapest and most accessible forms of medicine may lie just outside our windows — provided we choose to listen, and to protect what remains worth hearing.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-24.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.918">Humans have long retreated into nature to rest and recover, yet only recently have scientists begun to <span class="kw" data-tip="v. 量化；用数字表示">quantify</span> precisely what the natural world does to the body.</span> <span class="s" data-t="9.918" data-e="22.316">A growing body of research now suggests that it is not merely the sight of greenery that heals — the sounds of nature, from birdsong to running water, <span class="kw" data-tip="v. 施加；发挥（影响、力量）">exert</span> measurable effects on stress, pain and mood.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="22.316" data-e="38.658">In a landmark <span class="kw" data-tip="n. 综合；综述；合成">synthesis</span> published in the Proceedings of the National Academy of Sciences, a team led by researchers at Colorado State University examined three dozen studies, drawn from eighteen <span class="kw" data-tip="adj. 经同行评审的">peer-reviewed</span> papers, that asked how natural sounds shape human health outcomes.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="38.658" data-e="54.092">By <span class="kw" data-tip="v. 把……标绘成图（熟词僻义：n. 情节）">plotting</span> each study's reported effect against the type of sound involved, the team discovered a clear pattern: water sounds produced the largest overall improvements, while birdsong proved most effective at <span class="kw" data-tip="v. 抚慰；缓解（痛苦、焦虑）">soothing</span> the stress and annoyance that noise pollution <span class="kw" data-tip="v. 激起；引发；挑衅">provokes</span>.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="54.092" data-e="69.643">Roughly three-quarters of the studies recorded positive health effects, with natural sounds lowering heart rate, easing pain and sharpening <span class="kw" data-tip="adj. 认知的">cognitive</span> performance; some participants even <span class="kw" data-tip="v. 显示出；记录（熟词僻义：登记）">registered</span> measurable drops in blood pressure and in the stress hormone <span class="kw" data-tip="n. 皮质醇（应激激素）">cortisol</span>.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="69.643" data-e="74.224">The researchers trace the <span class="kw" data-tip="n. 机制；原理">mechanism</span> to human evolutionary history.</span> <span class="s" data-t="74.224" data-e="88.289">For most of our existence, a landscape rich in birdsong signalled safety, whereas an abrupt silence — or a sudden human-made racket — warned of danger; the body, in other words, still reads sound as a map of threat and <span class="kw" data-tip="n. 庇护所；保护区">sanctuary</span>.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="88.289" data-e="103.761">By contrast, <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount 攀登、安装）">mounting</span> evidence shows that <span class="kw" data-tip="adj. 慢性的；长期的">chronic</span> noise — traffic, aircraft, construction — behaves as an invisible pollutant that raises the risk of <span class="kw" data-tip="n. 高血压">hypertension</span> and heart disease, eroding precisely the benefits that natural soundscapes <span class="kw" data-tip="v. 赋予；给予">confer</span>.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="103.761" data-e="113.934">The findings carry implications for conservation, prompting some national parks to treat their <span class="kw" data-tip="adj. 声学的；听觉的">acoustic</span> environment as a resource to be protected no less than their scenery.</span> <span class="s" data-t="113.934" data-e="124.947">Yet the authors <span class="kw" data-tip="v. 警告；告诫">caution</span> that the studies vary widely in method and scale, and that a <span class="kw" data-tip="adj. 因果的">causal</span> chain from sound to health remains hard to <span class="kw" data-tip="v. 使孤立；分离；单独考虑">isolate</span>, let alone to quantify across cultures.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="124.947" data-e="132.579">Natural sounds, the researchers argue, <span class="kw" data-tip="v. 构成；组成">constitute</span> a public good whose value has been systematically <span class="kw" data-tip="v. 低估；贬低">undervalued</span>.</span> <span class="s" data-t="132.579" data-e="141.789">Not until soundscapes are measured and mapped, they insist, will policymakers grasp how much quiet and birdsong contribute to <span class="kw" data-tip="adj. 集体的；共同的">collective</span> well-being.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="141.789" data-e="146.0">For the public, the message is at once simple and hopeful.</span> <span class="s" data-t="146.0" data-e="160.013">That a few minutes of birdsong can measurably calm the nervous system suggests that one of the cheapest and most accessible forms of medicine may lie just outside our windows — provided we choose to listen, and to protect what remains worth hearing.</span></span></div>
 
       <p class="muted">原文出处：本文根据《美国国家科学院院刊》（PNAS）刊发、由科罗拉多州立大学主导的自然声音与健康系统综述研究，及 Scientific American 相关报道（2026-09）综合整理改写，供学习使用。</p>
     </section>
@@ -501,6 +517,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,13 +167,19 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">When Alysa Liu announced her <span class="kw" data-tip="n. 退役；退休">retirement</span> from <span class="kw" data-tip="adj. 竞技的；竞争的">competitive</span> figure skating in April 2022, she was only 16 years old. The girl once called a "wonder child" had simply lost her love for the sport.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">Liu had become famous at an <span class="kw" data-tip="adv. 极其；令人难以置信地">incredibly</span> young age. At 13, she became the youngest U.S. national <span class="kw" data-tip="n. 冠军">champion</span> in history; a year later she <span class="kw" data-tip="v. 捍卫；卫冕">defended</span> the title. She was also the first American woman to land a triple axel and a quad in competition.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">But fame came with great <span class="kw" data-tip="n. 压力">pressure</span>. After finishing sixth at the 2022 Beijing Winter Olympics and winning bronze at the World Championships, she felt tired and <span class="kw" data-tip="adj. 空虚的；迷茫的">empty</span>. She decided to step away and live the life of an <span class="kw" data-tip="adj. 普通的；平凡的">ordinary</span> teenager — going to school, travelling and spending time with friends.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">For nearly two years she stayed off the ice. Then, on a skiing trip, a friend asked her a simple question: "Do you still love skating?" That question changed everything. She <span class="kw" data-tip="v. 意识到；实现">realized</span> she missed the feeling of <span class="kw" data-tip="v. 滑行；滑翔">gliding</span> across the ice.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">In March 2024, Liu announced her return to competitive skating. "I am <span class="kw" data-tip="adv. 非常；超出">beyond</span> excited to be back," she said. She trained harder than ever, but this time the <span class="kw" data-tip="n. 快乐；乐趣">joy</span> had returned with her.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Her hard work <span class="kw" data-tip="v. 取得成功；得到回报">paid off</span>. In 2025 she won the World Championships. Then, on February 19, 2026, at the Winter Olympics in Milan, Liu delivered a nearly <span class="kw" data-tip="adj. 完美的；无瑕疵的">flawless</span> free skate and won the gold medal — the first American woman to win an <span class="kw" data-tip="adj. 个人的；单独的">individual</span> figure skating gold in 24 years.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">"I'm so <span class="kw" data-tip="adj. 自豪的；骄傲的">proud</span> of how far I've come," Liu said afterwards. Her story reminds us that sometimes the bravest thing is to <span class="kw" data-tip="v. 暂停；停顿">pause</span>, listen to your heart, and start again.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-05.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 7 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.3">When Alysa Liu announced her <span class="kw" data-tip="n. 退役；退休">retirement</span> from <span class="kw" data-tip="adj. 竞技的；竞争的">competitive</span> figure skating in April 2022, she was only 16 years old.</span> <span class="s" data-t="8.3" data-e="12.974">The girl once called a "wonder child" had simply lost her love for the sport.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="12.974" data-e="16.592">Liu had become famous at an <span class="kw" data-tip="adv. 极其；令人难以置信地">incredibly</span> young age.</span> <span class="s" data-t="16.592" data-e="23.776">At 13, she became the youngest U.S.</span> <span class="s" data-t="23.776" data-e="29.539">national <span class="kw" data-tip="n. 冠军">champion</span> in history; a year later she <span class="kw" data-tip="v. 捍卫；卫冕">defended</span> the title.</span> <span class="s" data-t="29.539" data-e="32.053">She was also the first American woman to land a triple axel and a quad in competition.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="32.053" data-e="40.722">But fame came with great <span class="kw" data-tip="n. 压力">pressure</span>.</span> <span class="s" data-t="40.722" data-e="48.579">After finishing sixth at the 2022 Beijing Winter Olympics and winning bronze at the World Championships, she felt tired and <span class="kw" data-tip="adj. 空虚的；迷茫的">empty</span>.</span> <span class="s" data-t="48.579" data-e="51.566">She decided to step away and live the life of an <span class="kw" data-tip="adj. 普通的；平凡的">ordinary</span> teenager — going to school, travelling and spending time with friends.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="51.566" data-e="57.434">For nearly two years she stayed off the ice.</span> <span class="s" data-t="57.434" data-e="59.959">Then, on a skiing trip, a friend asked her a simple question: "Do you still love skating?" That question changed everything.</span> <span class="s" data-t="59.959" data-e="64.013">She <span class="kw" data-tip="v. 意识到；实现">realized</span> she missed the feeling of <span class="kw" data-tip="v. 滑行；滑翔">gliding</span> across the ice.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="64.013" data-e="69.184">In March 2024, Liu announced her return to competitive skating.</span> <span class="s" data-t="69.184" data-e="72.368">"I am <span class="kw" data-tip="adv. 非常；超出">beyond</span> excited to be back," she said.</span> <span class="s" data-t="72.368" data-e="76.974">She trained harder than ever, but this time the <span class="kw" data-tip="n. 快乐；乐趣">joy</span> had returned with her.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="76.974" data-e="79.0">Her hard work <span class="kw" data-tip="v. 取得成功；得到回报">paid off</span>.</span> <span class="s" data-t="79.0" data-e="82.803">In 2025 she won the World Championships.</span> <span class="s" data-t="82.803" data-e="97.079">Then, on February 19, 2026, at the Winter Olympics in Milan, Liu delivered a nearly <span class="kw" data-tip="adj. 完美的；无瑕疵的">flawless</span> free skate and won the gold medal — the first American woman to win an <span class="kw" data-tip="adj. 个人的；单独的">individual</span> figure skating gold in 24 years.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="97.079" data-e="101.026">"I'm so <span class="kw" data-tip="adj. 自豪的；骄傲的">proud</span> of how far I've come," Liu said afterwards.</span> <span class="s" data-t="101.026" data-e="107.75">Her story reminds us that sometimes the bravest thing is to <span class="kw" data-tip="v. 暂停；停顿">pause</span>, listen to your heart, and start again.</span></span></div>
 
       <p class="muted">原文出处：综合 NBC Olympics、Olympics.com、美国花样滑冰协会（U.S. Figure Skating）及美国奥委会（Team USA）公开报道编译整理（2026-02 至 2026-03）。报道对象为美国花样滑冰选手阿莉莎·刘（Alysa Liu，2005 年 8 月 8 日出生）。</p>
     </section>
@@ -439,6 +455,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

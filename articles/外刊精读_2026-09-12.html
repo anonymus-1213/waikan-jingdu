@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">The deep ocean, which covers more than two-thirds of our planet, remains so poorly <span class="kw" data-tip="v. 测绘；绘制地图（熟词僻义：名词"图表"）">charted</span> that scientists routinely compare its floor to the surface of an alien world. A single <span class="kw" data-tip="n. 探险；考察">expedition</span>, mounted near two remote Australian territories, has just shown how little of that world has been surveyed — by returning with 149 <span class="kw" data-tip="n. 物种（单复数同形）">species</span> that no <span class="kw" data-tip="n. 分类学家">taxonomist</span> had ever formally described.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">Led by marine biologists from Australia's principal research institutions, the voyage targeted a chain of <span class="kw" data-tip="n. 海底山；海山">seamounts</span>, the ancient underwater volcanoes that rise thousands of metres from the <span class="kw" data-tip="adj. 深海的；深渊的">abyssal</span> plain of the eastern Indian Ocean near Christmas Island and the Cocos (Keeling) Islands, a territory lying far beyond any continental shelf.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The haul, which astonished even seasoned researchers, ranged across the tree of life: a sea cucumber assigned to the <span class="kw" data-tip="n. 属（生物分类单位）">genus</span> Oneirophanta, a greeneye fish of the family Chlorophthalmus, and a <span class="kw" data-tip="adj. 寄生的">parasitic</span> creature that attaches itself to other deep-sea animals, together with dozens of corals, sponges and worms.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">To survey <span class="kw" data-tip="n. 栖息地">habitats</span> that sunlight never reaches, the team relied on remotely operated vehicles and baited cameras, which descended more than 4,000 metres to film and collect <span class="kw" data-tip="n. 标本；样本">specimens</span> from slopes that had never been disturbed by human activity. Each specimen, once <span class="kw" data-tip="v. 取回；回收（熟词僻义：检索）">retrieved</span>, entered a slow pipeline of <span class="kw" data-tip="adj. 形态学的">morphological</span> and genetic analysis — the only route by which a nameless organism becomes a named species.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Seamounts, the researchers argue, function as islands of life in an otherwise barren seascape. Isolated for millions of years, their summits and flanks have allowed countless <span class="kw" data-tip="n. 谱系；世系">lineages</span> to <span class="kw" data-tip="v. 分化；偏离">diverge</span> into forms found nowhere else, making each mount a potential reservoir of <span class="kw" data-tip="adj. 特有的；地方性的">endemic</span> <span class="kw" data-tip="n. 动物群">fauna</span> whose value science can barely estimate.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Yet the very isolation that produced this diversity has left it dangerously exposed. Deep-sea bottom <span class="kw" data-tip="n. 拖网捕捞">trawling</span> and seabed mining, both expanding as terrestrial resources grow scarce, could strip these <span class="kw" data-tip="adj. 脆弱的；易碎的">fragile</span> ecosystems bare long before most of their <span class="kw" data-tip="n. 居民；栖息者">inhabitants</span> have been <span class="kw" data-tip="v. 编目；登记（熟词僻义：名词"目录"）">catalogued</span>, let alone protected.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">"Naming a species is not a quick process," one researcher noted, observing that formally describing the 149 organisms may demand years of <span class="kw" data-tip="adj. 费尽心思的；刻苦的">painstaking</span> study. That lag, the team insists, is precisely what makes protection urgent rather than optional — a race between the slow pace of <span class="kw" data-tip="n. 分类学">taxonomy</span> and the accelerating machinery of extraction.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">The findings, published across a series of papers, form part of a broader global campaign to <span class="kw" data-tip="v. 编目；登记（熟词僻义）">catalogue</span> marine <span class="kw" data-tip="n. 生物多样性">biodiversity</span> before it vanishes. Scientists estimate that as many as two million marine species may exist, the great majority of which remain undescribed; by some accounts, a species can disappear before it is ever collected.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For the public, the message is at once humbling and hopeful. That a single voyage can surface so much unknown life suggests the ocean, though under <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount 骑、安装）">mounting</span> pressure, still holds wonders capable of inspiring the next generation of explorers and <span class="kw" data-tip="n. 自然保护人士">conservationists</span> alike — provided that we choose to know these places before we choose to use them.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-12.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.011">The deep ocean, which covers more than two-thirds of our planet, remains so poorly <span class="kw" data-tip="v. 测绘；绘制地图（熟词僻义：名词"图表"）">charted</span> that scientists routinely compare its floor to the surface of an alien world.</span> <span class="s" data-t="10.011" data-e="23.461">A single <span class="kw" data-tip="n. 探险；考察">expedition</span>, mounted near two remote Australian territories, has just shown how little of that world has been surveyed — by returning with 149 <span class="kw" data-tip="n. 物种（单复数同形）">species</span> that no <span class="kw" data-tip="n. 分类学家">taxonomist</span> had ever formally described.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="23.461" data-e="44.355">Led by marine biologists from Australia's principal research institutions, the voyage targeted a chain of <span class="kw" data-tip="n. 海底山；海山">seamounts</span>, the ancient underwater volcanoes that rise thousands of metres from the <span class="kw" data-tip="adj. 深海的；深渊的">abyssal</span> plain of the eastern Indian Ocean near Christmas Island and the Cocos (Keeling) Islands, a territory lying far beyond any continental shelf.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="44.355" data-e="62.908">The haul, which astonished even seasoned researchers, ranged across the tree of life: a sea cucumber assigned to the <span class="kw" data-tip="n. 属（生物分类单位）">genus</span> Oneirophanta, a greeneye fish of the family Chlorophthalmus, and a <span class="kw" data-tip="adj. 寄生的">parasitic</span> creature that attaches itself to other deep-sea animals, together with dozens of corals, sponges and worms.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="62.908" data-e="77.682">To survey <span class="kw" data-tip="n. 栖息地">habitats</span> that sunlight never reaches, the team relied on remotely operated vehicles and baited cameras, which descended more than 4,000 metres to film and collect <span class="kw" data-tip="n. 标本；样本">specimens</span> from slopes that had never been disturbed by human activity.</span> <span class="s" data-t="77.682" data-e="87.974">Each specimen, once <span class="kw" data-tip="v. 取回；回收（熟词僻义：检索）">retrieved</span>, entered a slow pipeline of <span class="kw" data-tip="adj. 形态学的">morphological</span> and genetic analysis — the only route by which a nameless organism becomes a named species.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="87.974" data-e="94.513">Seamounts, the researchers argue, function as islands of life in an otherwise barren seascape.</span> <span class="s" data-t="94.513" data-e="108.616">Isolated for millions of years, their summits and flanks have allowed countless <span class="kw" data-tip="n. 谱系；世系">lineages</span> to <span class="kw" data-tip="v. 分化；偏离">diverge</span> into forms found nowhere else, making each mount a potential reservoir of <span class="kw" data-tip="adj. 特有的；地方性的">endemic</span> <span class="kw" data-tip="n. 动物群">fauna</span> whose value science can barely estimate.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="108.616" data-e="114.434">Yet the very isolation that produced this diversity has left it dangerously exposed.</span> <span class="s" data-t="114.434" data-e="127.816">Deep-sea bottom <span class="kw" data-tip="n. 拖网捕捞">trawling</span> and seabed mining, both expanding as terrestrial resources grow scarce, could strip these <span class="kw" data-tip="adj. 脆弱的；易碎的">fragile</span> ecosystems bare long before most of their <span class="kw" data-tip="n. 居民；栖息者">inhabitants</span> have been <span class="kw" data-tip="v. 编目；登记（熟词僻义：名词"目录"）">catalogued</span>, let alone protected.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="127.816" data-e="138.921">"Naming a species is not a quick process," one researcher noted, observing that formally describing the 149 organisms may demand years of <span class="kw" data-tip="adj. 费尽心思的；刻苦的">painstaking</span> study.</span> <span class="s" data-t="138.921" data-e="150.039">That lag, the team insists, is precisely what makes protection urgent rather than optional — a race between the slow pace of <span class="kw" data-tip="n. 分类学">taxonomy</span> and the accelerating machinery of extraction.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="150.039" data-e="159.368">The findings, published across a series of papers, form part of a broader global campaign to <span class="kw" data-tip="v. 编目；登记（熟词僻义）">catalogue</span> marine <span class="kw" data-tip="n. 生物多样性">biodiversity</span> before it vanishes.</span> <span class="s" data-t="159.368" data-e="171.511">Scientists estimate that as many as two million marine species may exist, the great majority of which remain undescribed; by some accounts, a species can disappear before it is ever collected.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="171.511" data-e="175.75">For the public, the message is at once humbling and hopeful.</span> <span class="s" data-t="175.75" data-e="191.735">That a single voyage can surface so much unknown life suggests the ocean, though under <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount 骑、安装）">mounting</span> pressure, still holds wonders capable of inspiring the next generation of explorers and <span class="kw" data-tip="n. 自然保护人士">conservationists</span> alike — provided that we choose to know these places before we choose to use them.</span></span></div>
 
       <p class="muted">原文出处：本文根据 Mongabay 报道《Scientists discover 149 new deep-sea species at remote Indian Ocean seamounts》（2026-08-26）及澳大利亚博物馆（Australian Museum）相关分类学论文、The Cool Down 转载（2026-09-10）综合整理改写，供学习使用。</p>
     </section>
@@ -487,6 +503,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

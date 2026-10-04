@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Few creatures are easier to overlook than the insects that hum at the edges of a summer field, yet their quiet disappearance may be the most consequential ecological story of our age. A growing body of research suggests that the planet's insects, whose services underpin nearly everything that blooms and flies, are vanishing at a rate that scientists struggle to <span class="kw" data-tip="v. 绘制；记录（熟词僻义：n. 图表）">chart</span>.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The most cited evidence comes from a study led by <span class="kw" data-tip="n. 昆虫学家">entomologists</span> working with the Krefeld Society in Germany, who set <span class="kw" data-tip="n. 马来氏网（帐篷状捕虫装置）">malaise traps</span> — tent-like nets that capture flying insects — across 63 protected nature reserves. Between 1989 and 2016, the total <span class="kw" data-tip="n. 生物量">biomass</span> of flying insects caught in those traps <span class="kw" data-tip="v. 暴跌；骤降">plummeted</span> by roughly 76 percent, a collapse researchers described as "alarming" precisely because it occurred inside supposedly <span class="kw" data-tip="adj. 原始的；未受污染的">pristine</span> habitats.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">That finding, published in 2017, prompted a global reassessment. A subsequent <span class="kw" data-tip="n. 荟萃分析；元分析">meta-analysis</span> of 73 long-term studies, appearing in the journal <em>Biological Conservation</em>, concluded that more than 40 percent of insect species are declining and one third are threatened with extinction — a rate of loss some eight times faster than that of mammals, birds and reptiles.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">The mechanisms behind the decline are neither mysterious nor mutually exclusive. Habitat <span class="kw" data-tip="n. 破碎化；分裂">fragmentation</span> driven by agricultural intensification strips insects of the wildflowers and hedgerows on which they depend, while the widespread use of <span class="kw" data-tip="n. 杀虫剂">insecticides</span> — notably neonicotinoids — poisons the very <span class="kw" data-tip="n. 传粉者；传粉昆虫">pollinators</span> farmers rely on to produce crops, and a warming climate disrupts the delicate timing between insects and the plants they visit.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The consequences ripple far beyond the insects themselves. Roughly three quarters of the world's flowering plants and about a third of its food crops depend, at least partly, on animal <span class="kw" data-tip="n. 授粉；传粉">pollination</span>; as pollinator numbers fall, so too does the security of the harvests that feed billions. Birds and other <span class="kw" data-tip="n. 食虫鸟（在空中捕食昆虫的鸟类）">aerial insectivores</span>, which keep pest populations in check, have declined in lockstep with their prey — a signal that entire food webs are thinning.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Yet the picture is more nuanced than the alarming headlines suggest, and here the science offers a <span class="kw" data-tip="adj. 反直觉的">counterintuitive</span> twist. A meta-analysis of 166 long-term surveys published in <em>Science</em> in 2020 found that, while <span class="kw" data-tip="adj. 陆地的；陆生的">terrestrial</span> insects were shrinking by about 0.92 percent a year, freshwater insects were actually increasing by 1.08 percent — a <span class="kw" data-tip="n. 分化；背离">divergence</span> that some researchers attribute to cleaner rivers and the absence, in water, of the pesticides that saturate farmland.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">Scientists caution against treating "insect apocalypse" as a settled verdict, noting that the data remain heavily biased toward Europe and North America, where monitoring has been most systematic. The tropics, which <span class="kw" data-tip="v. 容纳；庇护">harbour</span> the great majority of insect diversity, remain largely uncharted — a gap that makes any confident global estimate premature.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Still, the researchers insist, the <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount v. 骑；安装）">mounting</span> evidence points clearly enough in one direction to warrant action rather than despair. <span class="kw" data-tip="n. 恢复；修复">Restoration</span> efforts — from planting native wildflower strips along field margins to phasing out the most harmful insecticides — have repeatedly shown that insect populations can <span class="kw" data-tip="v. 反弹；回升">rebound</span> once the pressures that drove them down are eased.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For ordinary people, the message is at once humbling and empowering. Citizen science projects that invite residents to <span class="kw" data-tip="v. 编目；记录（熟词僻义：n. 目录）">catalogue</span> the insects in their own gardens have begun to fill the data void, while the simple act of leaving a corner of lawn unmown can create a <span class="kw" data-tip="n. 庇护所；避难处">refuge</span> for pollinators — the hum of a meadow, it turns out, is not a backdrop to human life but a measure of its health.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-17.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="11.037">Few creatures are easier to overlook than the insects that hum at the edges of a summer field, yet their quiet disappearance may be the most consequential ecological story of our age.</span> <span class="s" data-t="11.037" data-e="22.026">A growing body of research suggests that the planet's insects, whose services underpin nearly everything that blooms and flies, are vanishing at a rate that scientists struggle to <span class="kw" data-tip="v. 绘制；记录（熟词僻义：n. 图表）">chart</span>.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="22.026" data-e="35.618">The most cited evidence comes from a study led by <span class="kw" data-tip="n. 昆虫学家">entomologists</span> working with the Krefeld Society in Germany, who set <span class="kw" data-tip="n. 马来氏网（帐篷状捕虫装置）">malaise traps</span> — tent-like nets that capture flying insects — across 63 protected nature reserves.</span> <span class="s" data-t="35.618" data-e="51.13">Between 1989 and 2016, the total <span class="kw" data-tip="n. 生物量">biomass</span> of flying insects caught in those traps <span class="kw" data-tip="v. 暴跌；骤降">plummeted</span> by roughly 76 percent, a collapse researchers described as "alarming" precisely because it occurred inside supposedly <span class="kw" data-tip="adj. 原始的；未受污染的">pristine</span> habitats.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="51.13" data-e="56.566">That finding, published in 2017, prompted a global reassessment.</span> <span class="s" data-t="56.566" data-e="74.382">A subsequent <span class="kw" data-tip="n. 荟萃分析；元分析">meta-analysis</span> of 73 long-term studies, appearing in the journal <em>Biological Conservation</em>, concluded that more than 40 percent of insect species are declining and one third are threatened with extinction — a rate of loss some eight times faster than that of mammals, birds and reptiles.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="74.382" data-e="79.671">The mechanisms behind the decline are neither mysterious nor mutually exclusive.</span> <span class="s" data-t="79.671" data-e="101.474">Habitat <span class="kw" data-tip="n. 破碎化；分裂">fragmentation</span> driven by agricultural intensification strips insects of the wildflowers and hedgerows on which they depend, while the widespread use of <span class="kw" data-tip="n. 杀虫剂">insecticides</span> — notably neonicotinoids — poisons the very <span class="kw" data-tip="n. 传粉者；传粉昆虫">pollinators</span> farmers rely on to produce crops, and a warming climate disrupts the delicate timing between insects and the plants they visit.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="101.474" data-e="105.592">The consequences ripple far beyond the insects themselves.</span> <span class="s" data-t="105.592" data-e="119.105">Roughly three quarters of the world's flowering plants and about a third of its food crops depend, at least partly, on animal <span class="kw" data-tip="n. 授粉；传粉">pollination</span>; as pollinator numbers fall, so too does the security of the harvests that feed billions.</span> <span class="s" data-t="119.105" data-e="128.855">Birds and other <span class="kw" data-tip="n. 食虫鸟（在空中捕食昆虫的鸟类）">aerial insectivores</span>, which keep pest populations in check, have declined in lockstep with their prey — a signal that entire food webs are thinning.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="128.855" data-e="136.289">Yet the picture is more nuanced than the alarming headlines suggest, and here the science offers a <span class="kw" data-tip="adj. 反直觉的">counterintuitive</span> twist.</span> <span class="s" data-t="136.289" data-e="160.276">A meta-analysis of 166 long-term surveys published in <em>Science</em> in 2020 found that, while <span class="kw" data-tip="adj. 陆地的；陆生的">terrestrial</span> insects were shrinking by about 0.92 percent a year, freshwater insects were actually increasing by 1.08 percent — a <span class="kw" data-tip="n. 分化；背离">divergence</span> that some researchers attribute to cleaner rivers and the absence, in water, of the pesticides that saturate farmland.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="160.276" data-e="172.092">Scientists caution against treating "insect apocalypse" as a settled verdict, noting that the data remain heavily biased toward Europe and North America, where monitoring has been most systematic.</span> <span class="s" data-t="172.092" data-e="181.684">The tropics, which <span class="kw" data-tip="v. 容纳；庇护">harbour</span> the great majority of insect diversity, remain largely uncharted — a gap that makes any confident global estimate premature.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="181.684" data-e="189.829">Still, the researchers insist, the <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount v. 骑；安装）">mounting</span> evidence points clearly enough in one direction to warrant action rather than despair.</span> <span class="s" data-t="189.829" data-e="203.498"><span class="kw" data-tip="n. 恢复；修复">Restoration</span> efforts — from planting native wildflower strips along field margins to phasing out the most harmful insecticides — have repeatedly shown that insect populations can <span class="kw" data-tip="v. 反弹；回升">rebound</span> once the pressures that drove them down are eased.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="203.498" data-e="208.408">For ordinary people, the message is at once humbling and empowering.</span> <span class="s" data-t="208.408" data-e="226.301">Citizen science projects that invite residents to <span class="kw" data-tip="v. 编目；记录（熟词僻义：n. 目录）">catalogue</span> the insects in their own gardens have begun to fill the data void, while the simple act of leaving a corner of lawn unmown can create a <span class="kw" data-tip="n. 庇护所；避难处">refuge</span> for pollinators — the hum of a meadow, it turns out, is not a backdrop to human life but a measure of its health.</span></span></div>
 
       <p class="muted">原文出处：本文根据德国克雷菲尔德昆虫学会（Krefeld Society）发表于《PLOS ONE》的长时段监测研究（2017），《Biological Conservation》的昆虫衰退全球综述（2019，Sánchez-Bayo &amp; Wyckhuys），《Science》的 166 项长时段调查荟萃分析（2020，van Klink 等），及 The Guardian / National Geographic 相关报道综合整理改写，供学习使用。</p>
     </section>
@@ -485,6 +501,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

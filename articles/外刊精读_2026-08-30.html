@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,14 +167,20 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Carlos Alcaraz is moving on in the 2026 US Open after a <span class="kw" data-tip="adj. 决定性的；彻底的">definitive</span> win over Tommy Paul, with the No. 2 ranked player beating the American in <span class="kw" data-tip="n. 直落三盘（一局未失）">straight sets</span>, 6-4, 6-3, 6-4.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">In a <span class="kw" data-tip="adj. 令人费解的">baffling</span> stat, Sunday's three-set victory marks the 14th straight sets that Alcaraz has won against the American. Paul has not <span class="kw" data-tip="v. 拿下一盘">taken a set</span> over Alcaraz since Wimbledon in 2024, even though the pair have faced off four times since then.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">Though Paul was unable to break through again this time, he did put up a fight in the first set: Alcaraz and Paul <span class="kw" data-tip="v. 交替拿分；互有胜负">traded games</span> until the young Spaniard finally <span class="kw" data-tip="v. 破发">broke the American's serve</span> to eventually win 6-4.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">Alcaraz has barely missed a step since returning from a wrist injury that <span class="kw" data-tip="v. 使…缺阵">sidelined</span> him for 4 ½ months. The Spaniard kicked things off with a strong showing, beating Roman Safiullin in straight sets; though he <span class="kw" data-tip="v. 丢掉第一盘">dropped the first set</span> to Jaime Faria in the second round, he pulled back for another win, and then beat Wu Yibing in straight sets as well.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Initially, Alcaraz's return, paired with World No. 1 Jannik Sinner pulling out of the tournament with a knee injury, left the impression of a <span class="kw" data-tip="n. 开放签表（人人有机会）">wide-open bracket</span> in men's singles. But even after a long <span class="kw" data-tip="n. 缺阵期；休战">layoff</span>, Alcaraz is continuing his <span class="kw" data-tip="n. 统治力">dominance</span>: He is now 63-0 in major tournaments after winning the first two sets.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Alcaraz will now continue his journey toward trying to <span class="kw" data-tip="v. 卫冕（冠军）">defend</span> his 2025 US Open title in the <span class="kw" data-tip="n. 四分之一决赛">quarterfinal</span>, facing No. 8 Ben Shelton, who beat Stefanos Tsitsipas in straight sets later Sunday.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">"I didn't see the <span class="kw" data-tip="n. 签表；抽签结果">draw</span> … oh my god," Alcaraz said, after revealing that he had thought he would be facing the winner of Frances Tiafoe-Daniil Medvedev. (Tiafoe beat Medvedev in straight sets shortly after Alcaraz's win.)</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Paul, meanwhile, will fall out of a <span class="kw" data-tip="n. 大满贯（赛事）">Grand Slam</span> before the quarterfinal for the sixth <span class="kw" data-tip="adj. 连续的">consecutive</span> tournament, with his last quarterfinal appearance coming at Roland-Garros in 2025.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-08-30.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 8 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="6.662">Carlos Alcaraz is moving on in the 2026 US Open after a <span class="kw" data-tip="adj. 决定性的；彻底的">definitive</span> win over Tommy Paul, with the No.</span> <span class="s" data-t="6.662" data-e="11.19">2 ranked player beating the American in <span class="kw" data-tip="n. 直落三盘（一局未失）">straight sets</span>, 6-4, 6-3, 6-4.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="11.19" data-e="18.933">In a <span class="kw" data-tip="adj. 令人费解的">baffling</span> stat, Sunday's three-set victory marks the 14th straight sets that Alcaraz has won against the American.</span> <span class="s" data-t="18.933" data-e="26.874">Paul has not <span class="kw" data-tip="v. 拿下一盘">taken a set</span> over Alcaraz since Wimbledon in 2024, even though the pair have faced off four times since then.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="26.874" data-e="40.589">Though Paul was unable to break through again this time, he did put up a fight in the first set: Alcaraz and Paul <span class="kw" data-tip="v. 交替拿分；互有胜负">traded games</span> until the young Spaniard finally <span class="kw" data-tip="v. 破发">broke the American's serve</span> to eventually win 6-4.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="40.589" data-e="47.348">Alcaraz has barely missed a step since returning from a wrist injury that <span class="kw" data-tip="v. 使…缺阵">sidelined</span> him for 4 ½ months.</span> <span class="s" data-t="47.348" data-e="63.425">The Spaniard kicked things off with a strong showing, beating Roman Safiullin in straight sets; though he <span class="kw" data-tip="v. 丢掉第一盘">dropped the first set</span> to Jaime Faria in the second round, he pulled back for another win, and then beat Wu Yibing in straight sets as well.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="63.425" data-e="66.706">Initially, Alcaraz's return, paired with World No.</span> <span class="s" data-t="66.706" data-e="74.974">1 Jannik Sinner pulling out of the tournament with a knee injury, left the impression of a <span class="kw" data-tip="n. 开放签表（人人有机会）">wide-open bracket</span> in men's singles.</span> <span class="s" data-t="74.974" data-e="83.899">But even after a long <span class="kw" data-tip="n. 缺阵期；休战">layoff</span>, Alcaraz is continuing his <span class="kw" data-tip="n. 统治力">dominance</span>: He is now 63-0 in major tournaments after winning the first two sets.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="83.899" data-e="91.511">Alcaraz will now continue his journey toward trying to <span class="kw" data-tip="v. 卫冕（冠军）">defend</span> his 2025 US Open title in the <span class="kw" data-tip="n. 四分之一决赛">quarterfinal</span>, facing No.</span> <span class="s" data-t="91.511" data-e="96.302">8 Ben Shelton, who beat Stefanos Tsitsipas in straight sets later Sunday.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="96.302" data-e="106.21">"I didn't see the <span class="kw" data-tip="n. 签表；抽签结果">draw</span> … oh my god," Alcaraz said, after revealing that he had thought he would be facing the winner of Frances Tiafoe-Daniil Medvedev.</span> <span class="s" data-t="106.21" data-e="110.673">(Tiafoe beat Medvedev in straight sets shortly after Alcaraz's win.)</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="110.673" data-e="122.419">Paul, meanwhile, will fall out of a <span class="kw" data-tip="n. 大满贯（赛事）">Grand Slam</span> before the quarterfinal for the sixth <span class="kw" data-tip="adj. 连续的">consecutive</span> tournament, with his last quarterfinal appearance coming at Roland-Garros in 2025.</span></span></div>
 
       <p class="muted">原文出处：Yahoo Sports（美国），2026-09-06 报道，标题为「US Open: Carlos Alcaraz breezes past Tommy Paul in straight sets to advance to quarterfinal」。赛事为 2026 年美国网球公开赛男单第四轮。</p>
     </section>
@@ -413,6 +429,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

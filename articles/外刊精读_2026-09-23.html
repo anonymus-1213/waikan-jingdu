@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Every night, while we sleep, the brain appears to give itself a thorough cleaning, yet for decades scientists could not explain precisely how. The discovery of the <span class="kw" data-tip="adj. 类淋巴的">glymphatic</span> system in 2013 showed that <span class="kw" data-tip="adj. 脑脊液的">cerebrospinal</span> <span class="kw" data-tip="n. 液体；流体">fluid</span> flows through the brain's tissue, but what drives this tide has remained one of neuroscience's most stubborn puzzles.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">A study published in the journal <em>Cell</em>, led by researchers at the University of Copenhagen and the University of Oxford, now claims to have located the long-sought "pump". The team focused on <span class="kw" data-tip="n. 去甲肾上腺素">norepinephrine</span>, a signalling <span class="kw" data-tip="n. 分子">molecule</span> that the <span class="kw" data-tip="n. 脑干">brainstem</span> releases in slow, <span class="kw" data-tip="adj. 有节奏的；周期性的">rhythmic</span> waves during deep, non-REM sleep.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The researchers observed that every fifty seconds or so, a surge of norepinephrine makes blood <span class="kw" data-tip="n. 血管；容器">vessels</span> in the brain <span class="kw" data-tip="v. 收缩（熟词僻义：n. 合同）">contract</span>, and each contraction squeezes cerebrospinal fluid through the tissue, <span class="kw" data-tip="v. 冲洗；冲刷（熟词僻义：n. 脸红）">flushing</span> out <span class="kw" data-tip="adj. 代谢的；新陈代谢的">metabolic</span> waste. This slow "vasomotion", they argue, acts as a piston whose regular strokes wash the sleeping brain.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">To watch the process unfold, the scientists implanted fibre-optic probes into the brains of living mice, recording norepinephrine levels and fluid movement in real time as the animals slept. With <span class="kw" data-tip="adj. 荧光的">fluorescent</span> <span class="kw" data-tip="n. 示踪剂；追踪物">tracers</span> injected into the fluid, the team could track the passage of waste from deep regions toward the surface.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">The waste being removed includes amyloid-beta, the sticky protein whose <span class="kw" data-tip="n. 积累；堆积">accumulation</span> is a <span class="kw" data-tip="n. 标志；特征">hallmark</span> of Alzheimer's disease. Sleep has long been linked to the risk of <span class="kw" data-tip="n. 痴呆">dementia</span>, and the new findings, if they hold, provide a <span class="kw" data-tip="adj. 机理层面的；机械的">mechanical</span> explanation for that connection.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Most strikingly, the team tested <span class="kw" data-tip="n. 唑吡坦（一种安眠药）">zolpidem</span>, a widely used sleep <span class="kw" data-tip="n. 药物；药剂">medication</span>, and found that it suppressed the norepinephrine waves and reduced fluid transport. This raises the unsettling possibility that some sleep aids, by sedating the brain, may <span class="kw" data-tip="v. 损害；削弱">impair</span> the very <span class="kw" data-tip="n. 清除；排出">clearance</span> that sleep exists to perform.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The authors are careful to stress that the experiments were performed in mice, and that the results cannot yet be translated directly to humans. Whether the pump can be strengthened to prevent dementia — let alone to treat it — remains an open question demanding years of <span class="kw" data-tip="adj. 临床的">clinical</span> study.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Independent researchers praised the work for closing a critical gap, while cautioning that a good night's sleep is shaped by many factors, from stress to caffeine. Rarely, they note, has a single experiment made so vividly clear that sleep is not a passive state but an active, physical process of self-repair.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For the public, the message is at once humbling and practical. The body's nightly maintenance, <span class="kw" data-tip="v. 驱动；推动（熟词僻义：v. 驾驶）">driven</span> by rhythms we barely notice, reminds us that sleep is not an indulgence to be sacrificed, but a <span class="kw" data-tip="adj. 生理的">physiological</span> necessity whose benefits we are only beginning to understand.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-23.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.761">Every night, while we sleep, the brain appears to give itself a thorough cleaning, yet for decades scientists could not explain precisely how.</span> <span class="s" data-t="8.761" data-e="20.59">The discovery of the <span class="kw" data-tip="adj. 类淋巴的">glymphatic</span> system in 2013 showed that <span class="kw" data-tip="adj. 脑脊液的">cerebrospinal</span> <span class="kw" data-tip="n. 液体；流体">fluid</span> flows through the brain's tissue, but what drives this tide has remained one of neuroscience's most stubborn puzzles.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="20.59" data-e="31.158">A study published in the journal <em>Cell</em>, led by researchers at the University of Copenhagen and the University of Oxford, now claims to have located the long-sought "pump".</span> <span class="s" data-t="31.158" data-e="40.658">The team focused on <span class="kw" data-tip="n. 去甲肾上腺素">norepinephrine</span>, a signalling <span class="kw" data-tip="n. 分子">molecule</span> that the <span class="kw" data-tip="n. 脑干">brainstem</span> releases in slow, <span class="kw" data-tip="adj. 有节奏的；周期性的">rhythmic</span> waves during deep, non-REM sleep.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.658" data-e="54.158">The researchers observed that every fifty seconds or so, a surge of norepinephrine makes blood <span class="kw" data-tip="n. 血管；容器">vessels</span> in the brain <span class="kw" data-tip="v. 收缩（熟词僻义：n. 合同）">contract</span>, and each contraction squeezes cerebrospinal fluid through the tissue, <span class="kw" data-tip="v. 冲洗；冲刷（熟词僻义：n. 脸红）">flushing</span> out <span class="kw" data-tip="adj. 代谢的；新陈代谢的">metabolic</span> waste.</span> <span class="s" data-t="54.158" data-e="60.724">This slow "vasomotion", they argue, acts as a piston whose regular strokes wash the sleeping brain.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="60.724" data-e="72.893">To watch the process unfold, the scientists implanted fibre-optic probes into the brains of living mice, recording norepinephrine levels and fluid movement in real time as the animals slept.</span> <span class="s" data-t="72.893" data-e="80.711">With <span class="kw" data-tip="adj. 荧光的">fluorescent</span> <span class="kw" data-tip="n. 示踪剂；追踪物">tracers</span> injected into the fluid, the team could track the passage of waste from deep regions toward the surface.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="80.711" data-e="88.737">The waste being removed includes amyloid-beta, the sticky protein whose <span class="kw" data-tip="n. 积累；堆积">accumulation</span> is a <span class="kw" data-tip="n. 标志；特征">hallmark</span> of Alzheimer's disease.</span> <span class="s" data-t="88.737" data-e="97.355">Sleep has long been linked to the risk of <span class="kw" data-tip="n. 痴呆">dementia</span>, and the new findings, if they hold, provide a <span class="kw" data-tip="adj. 机理层面的；机械的">mechanical</span> explanation for that connection.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="97.355" data-e="107.447">Most strikingly, the team tested <span class="kw" data-tip="n. 唑吡坦（一种安眠药）">zolpidem</span>, a widely used sleep <span class="kw" data-tip="n. 药物；药剂">medication</span>, and found that it suppressed the norepinephrine waves and reduced fluid transport.</span> <span class="s" data-t="107.447" data-e="116.579">This raises the unsettling possibility that some sleep aids, by sedating the brain, may <span class="kw" data-tip="v. 损害；削弱">impair</span> the very <span class="kw" data-tip="n. 清除；排出">clearance</span> that sleep exists to perform.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="116.579" data-e="125.013">The authors are careful to stress that the experiments were performed in mice, and that the results cannot yet be translated directly to humans.</span> <span class="s" data-t="125.013" data-e="133.342">Whether the pump can be strengthened to prevent dementia — let alone to treat it — remains an open question demanding years of <span class="kw" data-tip="adj. 临床的">clinical</span> study.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="133.342" data-e="143.0">Independent researchers praised the work for closing a critical gap, while cautioning that a good night's sleep is shaped by many factors, from stress to caffeine.</span> <span class="s" data-t="143.0" data-e="152.605">Rarely, they note, has a single experiment made so vividly clear that sleep is not a passive state but an active, physical process of self-repair.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="152.605" data-e="156.987">For the public, the message is at once humbling and practical.</span> <span class="s" data-t="156.987" data-e="169.789">The body's nightly maintenance, <span class="kw" data-tip="v. 驱动；推动（熟词僻义：v. 驾驶）">driven</span> by rhythms we barely notice, reminds us that sleep is not an indulgence to be sacrificed, but a <span class="kw" data-tip="adj. 生理的">physiological</span> necessity whose benefits we are only beginning to understand.</span></span></div>
 
       <p class="muted">原文出处：本文根据《细胞》（Cell，2025 年 1 月）刊发、由哥本哈根大学与牛津大学团队主导的"睡眠中大脑废物清除"研究，及 Nature News 相关报道综合整理编写，供学习使用。</p>
     </section>
@@ -484,6 +500,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

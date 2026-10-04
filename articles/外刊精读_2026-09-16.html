@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">As classrooms across the world <span class="kw" data-tip="v. 使数字化；数字化处理">digitize</span> at an accelerating pace, the humble act of writing by hand has been steadily <span class="kw" data-tip="v. 使降级；把……降到次要地位">relegated</span> to the margins of the curriculum, a skill that many policymakers now regard as little more than a nostalgic <span class="kw" data-tip="n. 遗物；遗迹">relic</span>. Yet a growing body of neuroscience is asking a question that cuts to the heart of how we learn: when we trade the pen for the keyboard, what, precisely, do we lose?</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The question was taken up most directly by a team at the Norwegian University of Science and Technology, whose study, published in the journal <em>Frontiers in Psychology</em>, fitted 36 university students with electrode nets to record the electrical activity of the brain. While the participants wrote words by hand with a digital pen and, on other trials, typed the same words on a keyboard, the researchers measured what neuroscientists call "brain <span class="kw" data-tip="n. 连通性；连接度">connectivity</span>" — the degree to which distant regions of the cortex fire in <span class="kw" data-tip="n. 同步（性）">synchrony</span>.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The results were unambiguous. Handwriting, the team found, produced far more widespread and more <span class="kw" data-tip="adj. 复杂精细的">intricate</span> patterns of connectivity across the brain than typing did, particularly in regions associated with memory <span class="kw" data-tip="v. 编码；把……转化为记忆">encoding</span> and the processing of sensory information. Typing, by contrast, elicited activity that was comparatively localized and <span class="kw" data-tip="adj. 短暂的；转瞬即逝的">transient</span>, leaving only a faint imprint in the same networks.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">The mechanism, the researchers argue, lies in the demands of forming letters. Writing by hand requires precise, carefully controlled <span class="kw" data-tip="adj. 精细的；细微的（熟词僻义：fine 好的、罚款）">fine</span> motor movements, and it is this deliberate <span class="kw" data-tip="adj. 感觉运动的">sensorimotor</span> engagement — the need to shape each stroke, to <span class="kw" data-tip="v. 描摹；追踪（熟词僻义：n. 痕迹、踪迹）">trace</span> each letter and coordinate eye with hand — that appears to <span class="kw" data-tip="v. 使同步">synchronize</span> brain waves across <span class="kw" data-tip="n. （大脑）半球">hemispheres</span>, <span class="kw" data-tip="v. 锻造；建立（熟词僻义：forge 伪造）">forging</span> the <span class="kw" data-tip="adj. 神经的">neural</span> links on which lasting memory depends.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Typing, in this account, is a victim of its own efficiency. Because every letter is produced by an identical tap of a key, the movement carries almost no information about the shape of the word, and the brain is spared the slow, effortful work that handwriting imposes. What the keyboard gains in speed, it surrenders in depth, a trade-off that researchers believe helps explain why notes taken by hand are often better remembered than those typed <span class="kw" data-tip="adv./adj. 逐字地（的）">verbatim</span>.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">The findings extend a long line of evidence. Earlier studies have shown that children who learn to write letters by hand recognize them more quickly and read more fluently, and that students who take handwritten notes retain concepts longer, a phenomenon psychologists attribute to the deeper processing that slower writing demands — a processing through which new information is both <span class="kw" data-tip="n. 保持；记忆">retention</span>-friendly and, over time, <span class="kw" data-tip="v. 巩固；整合">consolidated</span>.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The researchers are careful, however, not to frame the debate as a simple either/or. Typing, they <span class="kw" data-tip="v. 承认；让步">concede</span>, offers advantages that handwriting cannot match — speed, <span class="kw" data-tip="n. 清晰可读性">legibility</span>, and the ease of editing — and in an age of proliferating digital tools, the keyboard is unlikely to be abandoned. The point, they insist, is not to reject technology but to recognize what is at stake when handwriting is pushed to the margins, let alone eliminated.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">That recognition carries practical weight. As some school systems scale back or abandon cursive instruction, cognitive scientists urge a measured balance: keep the keyboard for speed and revision, but preserve handwriting as a deliberate tool for the moments when understanding, rather than recording, is the goal. The slow, embodied act of writing, they argue, is not a relic but a cognitive instrument.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For students and teachers alike, the message is at once humbling and empowering. That the simple movement of a pen across paper can so visibly reshape the brain suggests that learning is not merely the passive receipt of information but an act of construction — and that the most enduring understanding may still begin, quite literally, by hand.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-16.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="14.642">As classrooms across the world <span class="kw" data-tip="v. 使数字化；数字化处理">digitize</span> at an accelerating pace, the humble act of writing by hand has been steadily <span class="kw" data-tip="v. 使降级；把……降到次要地位">relegated</span> to the margins of the curriculum, a skill that many policymakers now regard as little more than a nostalgic <span class="kw" data-tip="n. 遗物；遗迹">relic</span>.</span> <span class="s" data-t="14.642" data-e="24.855">Yet a growing body of neuroscience is asking a question that cuts to the heart of how we learn: when we trade the pen for the keyboard, what, precisely, do we lose?</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="24.855" data-e="40.724">The question was taken up most directly by a team at the Norwegian University of Science and Technology, whose study, published in the journal <em>Frontiers in Psychology</em>, fitted 36 university students with electrode nets to record the electrical activity of the brain.</span> <span class="s" data-t="40.724" data-e="55.539">While the participants wrote words by hand with a digital pen and, on other trials, typed the same words on a keyboard, the researchers measured what neuroscientists call "brain <span class="kw" data-tip="n. 连通性；连接度">connectivity</span>" — the degree to which distant regions of the cortex fire in <span class="kw" data-tip="n. 同步（性）">synchrony</span>.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="55.539" data-e="58.066">The results were unambiguous.</span> <span class="s" data-t="58.066" data-e="72.053">Handwriting, the team found, produced far more widespread and more <span class="kw" data-tip="adj. 复杂精细的">intricate</span> patterns of connectivity across the brain than typing did, particularly in regions associated with memory <span class="kw" data-tip="v. 编码；把……转化为记忆">encoding</span> and the processing of sensory information.</span> <span class="s" data-t="72.053" data-e="81.472">Typing, by contrast, elicited activity that was comparatively localized and <span class="kw" data-tip="adj. 短暂的；转瞬即逝的">transient</span>, leaving only a faint imprint in the same networks.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="81.472" data-e="86.711">The mechanism, the researchers argue, lies in the demands of forming letters.</span> <span class="s" data-t="86.711" data-e="106.421">Writing by hand requires precise, carefully controlled <span class="kw" data-tip="adj. 精细的；细微的（熟词僻义：fine 好的、罚款）">fine</span> motor movements, and it is this deliberate <span class="kw" data-tip="adj. 感觉运动的">sensorimotor</span> engagement — the need to shape each stroke, to <span class="kw" data-tip="v. 描摹；追踪（熟词僻义：n. 痕迹、踪迹）">trace</span> each letter and coordinate eye with hand — that appears to <span class="kw" data-tip="v. 使同步">synchronize</span> brain waves across <span class="kw" data-tip="n. （大脑）半球">hemispheres</span>, <span class="kw" data-tip="v. 锻造；建立（熟词僻义：forge 伪造）">forging</span> the <span class="kw" data-tip="adj. 神经的">neural</span> links on which lasting memory depends.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="106.421" data-e="110.814">Typing, in this account, is a victim of its own efficiency.</span> <span class="s" data-t="110.814" data-e="123.261">Because every letter is produced by an identical tap of a key, the movement carries almost no information about the shape of the word, and the brain is spared the slow, effortful work that handwriting imposes.</span> <span class="s" data-t="123.261" data-e="134.382">What the keyboard gains in speed, it surrenders in depth, a trade-off that researchers believe helps explain why notes taken by hand are often better remembered than those typed <span class="kw" data-tip="adv./adj. 逐字地（的）">verbatim</span>.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="134.382" data-e="137.711">The findings extend a long line of evidence.</span> <span class="s" data-t="137.711" data-e="160.276">Earlier studies have shown that children who learn to write letters by hand recognize them more quickly and read more fluently, and that students who take handwritten notes retain concepts longer, a phenomenon psychologists attribute to the deeper processing that slower writing demands — a processing through which new information is both <span class="kw" data-tip="n. 保持；记忆">retention</span>-friendly and, over time, <span class="kw" data-tip="v. 巩固；整合">consolidated</span>.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="160.276" data-e="165.947">The researchers are careful, however, not to frame the debate as a simple either/or.</span> <span class="s" data-t="165.947" data-e="179.184">Typing, they <span class="kw" data-tip="v. 承认；让步">concede</span>, offers advantages that handwriting cannot match — speed, <span class="kw" data-tip="n. 清晰可读性">legibility</span>, and the ease of editing — and in an age of proliferating digital tools, the keyboard is unlikely to be abandoned.</span> <span class="s" data-t="179.184" data-e="188.842">The point, they insist, is not to reject technology but to recognize what is at stake when handwriting is pushed to the margins, let alone eliminated.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="188.842" data-e="192.053">That recognition carries practical weight.</span> <span class="s" data-t="192.053" data-e="207.934">As some school systems scale back or abandon cursive instruction, cognitive scientists urge a measured balance: keep the keyboard for speed and revision, but preserve handwriting as a deliberate tool for the moments when understanding, rather than recording, is the goal.</span> <span class="s" data-t="207.934" data-e="214.303">The slow, embodied act of writing, they argue, is not a relic but a cognitive instrument.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="214.303" data-e="219.737">For students and teachers alike, the message is at once humbling and empowering.</span> <span class="s" data-t="219.737" data-e="234.605">That the simple movement of a pen across paper can so visibly reshape the brain suggests that learning is not merely the passive receipt of information but an act of construction — and that the most enduring understanding may still begin, quite literally, by hand.</span></span></div>
 
       <p class="muted">原文出处：本文根据 Scientific American 报道《Why Writing by Hand Is Better for Memory and Learning》（2024-02-21）、挪威科技大学（NTNU）Van der Weel 与 Van der Meer 团队发表于 Frontiers in Psychology（2024）的脑电图研究，及 Edutopia 后续综述（2026-05）综合整理改写，供学习使用。</p>
     </section>
@@ -485,6 +501,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

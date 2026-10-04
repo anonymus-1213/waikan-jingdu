@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,13 +167,19 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">Getting a good night's sleep may be one of the simplest ways for teenagers to <span class="kw" data-tip="v. 茁壮成长；蓬勃发展">thrive</span> at school and get along well with friends, a new study suggests. Researchers found that sleep <span class="kw" data-tip="n. 质量；品质">quality</span> was the strongest lifestyle <span class="kw" data-tip="n. 因素；要素">factor</span> linking mental health <span class="kw" data-tip="n. 症状">symptoms</span> to lower grades.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The study, led by scientists at UC Davis Health, followed a group of young people in early <span class="kw" data-tip="n. 青春期">adolescence</span>. It examined how lifestyle factors — including sleep, screen time and physical activity — connected mental health problems such as <span class="kw" data-tip="n. 抑郁；沮丧">depression</span> and <span class="kw" data-tip="n. 焦虑">anxiety</span> to <span class="kw" data-tip="adj. 学业的；学术的">academic</span> and social <span class="kw" data-tip="n. 功能；机能">functioning</span>.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">Sleep quality was the most powerful link. It <span class="kw" data-tip="v. 占（比例）；解释">accounted for</span> about 18.5% of the association between depression and lower grades — more than screen time or exercise. In other words, poor sleep appears to be a major <span class="kw" data-tip="n. 途径；路径">pathway</span> through which mental health problems hurt school performance.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">Reduced screen time was the second most important factor. The researchers suggested that <span class="kw" data-tip="v. 减少；削减">cutting back on</span> phones and screens, especially before bed, could help teenagers sleep better and feel better.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">A separate study published earlier this year found that young people aged 16 to 24 who <span class="kw" data-tip="v. 补上；追赶（补觉）">caught up on</span> sleep over the weekend had a 41% lower risk of <span class="kw" data-tip="adj. 抑郁的">depressive</span> symptoms. This "catch-up sleep" may help repair some of the harm caused by short weeknight sleep.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Sleep experts explain that during sleep, the brain <span class="kw" data-tip="v. 巩固；强化（记忆）">consolidates</span> memories and clears out waste products. Without enough sleep, teenagers may find it hard to <span class="kw" data-tip="v. 集中注意力">concentrate</span>, remember what they have learned and control their <span class="kw" data-tip="n. 情绪">emotions</span>.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">For high school students, who often stay up late finishing homework, the message is clear: protecting sleep is not a waste of time, but an <span class="kw" data-tip="n. 投资；投入">investment</span> in both grades and mental health.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-06.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 7 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.8">Getting a good night's sleep may be one of the simplest ways for teenagers to <span class="kw" data-tip="v. 茁壮成长；蓬勃发展">thrive</span> at school and get along well with friends, a new study suggests.</span> <span class="s" data-t="8.8" data-e="16.25">Researchers found that sleep <span class="kw" data-tip="n. 质量；品质">quality</span> was the strongest lifestyle <span class="kw" data-tip="n. 因素；要素">factor</span> linking mental health <span class="kw" data-tip="n. 症状">symptoms</span> to lower grades.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="16.25" data-e="23.474">The study, led by scientists at UC Davis Health, followed a group of young people in early <span class="kw" data-tip="n. 青春期">adolescence</span>.</span> <span class="s" data-t="23.474" data-e="35.316">It examined how lifestyle factors — including sleep, screen time and physical activity — connected mental health problems such as <span class="kw" data-tip="n. 抑郁；沮丧">depression</span> and <span class="kw" data-tip="n. 焦虑">anxiety</span> to <span class="kw" data-tip="adj. 学业的；学术的">academic</span> and social <span class="kw" data-tip="n. 功能；机能">functioning</span>.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="35.316" data-e="38.461">Sleep quality was the most powerful link.</span> <span class="s" data-t="38.461" data-e="46.816">It <span class="kw" data-tip="v. 占（比例）；解释">accounted for</span> about 18.5% of the association between depression and lower grades — more than screen time or exercise.</span> <span class="s" data-t="46.816" data-e="53.697">In other words, poor sleep appears to be a major <span class="kw" data-tip="n. 途径；路径">pathway</span> through which mental health problems hurt school performance.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="53.697" data-e="57.724">Reduced screen time was the second most important factor.</span> <span class="s" data-t="57.724" data-e="66.145">The researchers suggested that <span class="kw" data-tip="v. 减少；削减">cutting back on</span> phones and screens, especially before bed, could help teenagers sleep better and feel better.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="66.145" data-e="77.039">A separate study published earlier this year found that young people aged 16 to 24 who <span class="kw" data-tip="v. 补上；追赶（补觉）">caught up on</span> sleep over the weekend had a 41% lower risk of <span class="kw" data-tip="adj. 抑郁的">depressive</span> symptoms.</span> <span class="s" data-t="77.039" data-e="82.474">This "catch-up sleep" may help repair some of the harm caused by short weeknight sleep.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="82.474" data-e="89.395">Sleep experts explain that during sleep, the brain <span class="kw" data-tip="v. 巩固；强化（记忆）">consolidates</span> memories and clears out waste products.</span> <span class="s" data-t="89.395" data-e="96.987">Without enough sleep, teenagers may find it hard to <span class="kw" data-tip="v. 集中注意力">concentrate</span>, remember what they have learned and control their <span class="kw" data-tip="n. 情绪">emotions</span>.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="96.987" data-e="108.303">For high school students, who often stay up late finishing homework, the message is clear: protecting sleep is not a waste of time, but an <span class="kw" data-tip="n. 投资；投入">investment</span> in both grades and mental health.</span></span></div>
 
       <p class="muted">原文出处：UC Davis Health 新闻稿《A good night's sleep may help adolescents thrive in school and with friends》（2026-08-04，Medical Xpress 转载）；另参考周末补觉与抑郁风险研究（Medical Xpress，2026-01-07）。为贴合高中英语学习，个别句子作了简化改写。</p>
     </section>
@@ -422,6 +438,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

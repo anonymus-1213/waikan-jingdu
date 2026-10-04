@@ -117,6 +117,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -145,15 +155,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">The image of the child at the piano is a familiar one, yet <span class="kw" data-tip="n. 神经科学">neuroscience</span> now suggests that practice may do far more than produce a pleasing tune — it may <span class="kw" data-tip="adv. 身体上地；物理上地">physically</span> <span class="kw" data-tip="v. 重塑；改造">reshape</span> the brain itself.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">A <span class="kw" data-tip="adj. 里程碑式的；地标（n.）">landmark</span> study followed young children through fifteen months of <span class="kw" data-tip="n. 乐器；工具；手段">instrument</span> training and found measurable growth in regions controlling fine <span class="kw" data-tip="adj. 运动的；motor 本义"发动机/马达"（熟词僻义）">motor</span> skills and hearing — brain changes not seen in <span class="kw" data-tip="n. 同龄人；同辈">peers</span> who took only drama classes or no training at all.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The benefits extend to language. Musicians' brains respond to <span class="kw" data-tip="adj. 细微的；微妙的">subtle</span> differences in speech sounds that others overlook, a sensitivity researchers link to better reading and, for some, stronger second-language skills.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">Music also appears to train the brain's <span class="kw" data-tip="adj. 执行的；executive 本义"高管/经理"（熟词僻义）">executive</span> functions — <span class="kw" data-tip="adj. 持续的；持久的">sustained</span> attention, working memory and the ability to ignore <span class="kw" data-tip="n. 分心；干扰；使人分心的事物">distraction</span> — the very skills that classroom learning demands.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Why should practising scales matter? Playing music demands the <span class="kw" data-tip="adj. 同时的；同步的">simultaneous</span> <span class="kw" data-tip="n. 协调；协作">coordination</span> of reading symbols, timing movements and listening to the result — an intense, <span class="kw" data-tip="adj. 多感官的">multisensory</span> workout that strengthens the connections between brain regions.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">Yet researchers are careful to distinguish <span class="kw" data-tip="n. 相关；关联">correlation</span> from <span class="kw" data-tip="n. 因果关系">causation</span>. The children who stick with music may already differ in motivation or parental support; the effect, they warn, is real but <span class="kw" data-tip="adj. 适度的；有限的；谦虚的">modest</span>, and no shortcut replaces years of steady practice.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">These findings matter for schools. As budgets squeeze the arts, the evidence hints that cutting music programmes may cost more than it saves — and that a child need not become a musician to <span class="kw" data-tip="v. 收获；获得">reap</span> the benefit of simply playing.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Of course, not all studies agree, and how long the gains last once practice stops remains unclear; nor does every type of training deliver identical results.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">Still, the message is hopeful. The instrument is not a luxury but a tool for building a more <span class="kw" data-tip="adj. 敏捷的；灵活的">agile</span> mind; what the fingers learn, the brain remembers — long after the final note has faded.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-27.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="11.39">The image of the child at the piano is a familiar one, yet <span class="kw" data-tip="n. 神经科学">neuroscience</span> now suggests that practice may do far more than produce a pleasing tune — it may <span class="kw" data-tip="adv. 身体上地；物理上地">physically</span> <span class="kw" data-tip="v. 重塑；改造">reshape</span> the brain itself.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="11.39" data-e="25.472">A <span class="kw" data-tip="adj. 里程碑式的；地标（n.）">landmark</span> study followed young children through fifteen months of <span class="kw" data-tip="n. 乐器；工具；手段">instrument</span> training and found measurable growth in regions controlling fine <span class="kw" data-tip="adj. 运动的；motor 本义"发动机/马达"（熟词僻义）">motor</span> skills and hearing — brain changes not seen in <span class="kw" data-tip="n. 同龄人；同辈">peers</span> who took only drama classes or no training at all.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="25.472" data-e="28.211">The benefits extend to language.</span> <span class="s" data-t="28.211" data-e="39.592">Musicians' brains respond to <span class="kw" data-tip="adj. 细微的；微妙的">subtle</span> differences in speech sounds that others overlook, a sensitivity researchers link to better reading and, for some, stronger second-language skills.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="39.592" data-e="50.737">Music also appears to train the brain's <span class="kw" data-tip="adj. 执行的；executive 本义"高管/经理"（熟词僻义）">executive</span> functions — <span class="kw" data-tip="adj. 持续的；持久的">sustained</span> attention, working memory and the ability to ignore <span class="kw" data-tip="n. 分心；干扰；使人分心的事物">distraction</span> — the very skills that classroom learning demands.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="50.737" data-e="53.434">Why should practising scales matter?</span> <span class="s" data-t="53.434" data-e="66.222">Playing music demands the <span class="kw" data-tip="adj. 同时的；同步的">simultaneous</span> <span class="kw" data-tip="n. 协调；协作">coordination</span> of reading symbols, timing movements and listening to the result — an intense, <span class="kw" data-tip="adj. 多感官的">multisensory</span> workout that strengthens the connections between brain regions.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="66.222" data-e="71.013">Yet researchers are careful to distinguish <span class="kw" data-tip="n. 相关；关联">correlation</span> from <span class="kw" data-tip="n. 因果关系">causation</span>.</span> <span class="s" data-t="71.013" data-e="82.855">The children who stick with music may already differ in motivation or parental support; the effect, they warn, is real but <span class="kw" data-tip="adj. 适度的；有限的；谦虚的">modest</span>, and no shortcut replaces years of steady practice.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="82.855" data-e="85.434">These findings matter for schools.</span> <span class="s" data-t="85.434" data-e="96.342">As budgets squeeze the arts, the evidence hints that cutting music programmes may cost more than it saves — and that a child need not become a musician to <span class="kw" data-tip="v. 收获；获得">reap</span> the benefit of simply playing.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="96.342" data-e="106.211">Of course, not all studies agree, and how long the gains last once practice stops remains unclear; nor does every type of training deliver identical results.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="106.211" data-e="108.842">Still, the message is hopeful.</span> <span class="s" data-t="108.842" data-e="118.382">The instrument is not a luxury but a tool for building a more <span class="kw" data-tip="adj. 敏捷的；灵活的">agile</span> mind; what the fingers learn, the brain remembers — long after the final note has faded.</span></span></div>
 
       <p class="muted">原文出处：本文根据 Hyde 等（2009，Journal of Neuroscience，儿童乐器训练研究）、Kraus 团队（Northwestern Auditory Neuroscience Laboratory，音乐训练与言语加工研究）等公开成果整理改写，供学习使用。</p>
     </section>
@@ -474,6 +490,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

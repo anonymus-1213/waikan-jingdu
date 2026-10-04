@@ -117,6 +117,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -145,15 +155,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">For much of human history, being outdoors was not a choice but a condition of <span class="kw" data-tip="n. 生存；幸存">survival</span>. Today, as urban life keeps us indoors, scientists are beginning to ask a deceptively simple question: how much nature, exactly, does a person need?</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">To answer it, a team led by researchers at the University of Exeter <span class="kw" data-tip="v. 利用；动用（熟词僻义：draw 画、拉）">drew on</span> data from nearly 20,000 adults who had reported, over a full year, how much time they had spent in natural <span class="kw" data-tip="n. 环境；场所；背景">settings</span> such as parks, woods and beaches. The responses were then matched against standard measures of self-reported health and psychological <span class="kw" data-tip="n. 幸福感；健康">well-being</span>.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">The results revealed a clear <span class="kw" data-tip="n. 门槛；临界点；阈值">threshold</span>. People who spent at least 120 minutes a week in nature were <span class="kw" data-tip="adv. 显著地；明显地">significantly</span> more likely to describe their health as good and their well-being as high — a benefit that was <span class="kw" data-tip="adj. 一致的；稳定的；前后连贯的">consistent</span> across men and women, young and old, rich and poor, and even among those with long-term illness.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">Just as striking was what the data did not show. Beyond roughly 200 to 300 minutes a week, the gains <span class="kw" data-tip="v. 趋于平稳；不再增长（短语 level off）">levelled off</span>, suggesting that the <span class="kw" data-tip="n. 剂量；一剂（熟词僻义：可作动词"给……服药"）">dose</span>, not its extravagance, is what matters. A modest, regular exposure, it seems, delivers most of what nature has to offer.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Why nature should work at all remains a matter of lively debate. Some researchers point to the <span class="kw" data-tip="adj. 有恢复作用的；令人恢复精力的">restorative</span> effect of "soft fascination" — the gentle, effortless attention that natural scenes command, which allows a <span class="kw" data-tip="adj. 疲惫的；疲劳的">fatigued</span> mind to recover; others emphasise reduced stress hormones and the simple fact that time outdoors is time away from screens and <span class="kw" data-tip="adj. 久坐的；缺乏运动的">sedentary</span> habits.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">"It doesn't have to be a trip to a national park," one of the authors noted, stressing that the benefit <span class="kw" data-tip="v. 积累；累积">accumulated</span> regardless of whether the two hours came in one long <span class="kw" data-tip="n. 漫步；闲逛">ramble</span> or a dozen short <span class="kw" data-tip="n. 散步；溜达">strolls</span>. What mattered, they insisted, was <span class="kw" data-tip="n. 规律性；定期">regularity</span> rather than <span class="kw" data-tip="n. 壮观景象；奇观（熟词僻义：spectacles 眼镜）">spectacle</span>.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The implications are quietly <span class="kw" data-tip="adj. 深刻的；深远的">profound</span> for public health. If a two-hour weekly "nature dose" is both cheap and universally available, then parks, street trees and allotments cease to be mere <span class="kw" data-tip="n. 便利设施；宜人之处">amenities</span> and become a form of <span class="kw" data-tip="adj. 预防性的">preventative</span> medicine — one that no prescription and no budget are required to obtain.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">To be sure, the authors caution that their study is <span class="kw" data-tip="adj. 观察性的（指无法证明因果的研究）">observational</span>, drawn from self-reports, and cannot prove that nature causes better health rather than simply attracting those already well enough to visit it. Nor does it <span class="kw" data-tip="v. 捕捉；捕获；把握（熟词僻义：俘获）">capture</span> the quality of the green space or the seasons in which it was visited.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">Yet even with these <span class="kw" data-tip="n. 警告；附加说明；局限">caveats</span>, the message carries an uncommon simplicity. In an age of expensive wellness regimes, the natural world may offer one of the few <span class="kw" data-tip="n. 疗法；补救办法">remedies</span> that is at once free, effective and, for most of us, no farther than the nearest patch of green.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-26.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="5.734">For much of human history, being outdoors was not a choice but a condition of <span class="kw" data-tip="n. 生存；幸存">survival</span>.</span> <span class="s" data-t="5.734" data-e="15.959">Today, as urban life keeps us indoors, scientists are beginning to ask a deceptively simple question: how much nature, exactly, does a person need?</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="15.959" data-e="30.195">To answer it, a team led by researchers at the University of Exeter <span class="kw" data-tip="v. 利用；动用（熟词僻义：draw 画、拉）">drew on</span> data from nearly 20,000 adults who had reported, over a full year, how much time they had spent in natural <span class="kw" data-tip="n. 环境；场所；背景">settings</span> such as parks, woods and beaches.</span> <span class="s" data-t="30.195" data-e="36.855">The responses were then matched against standard measures of self-reported health and psychological <span class="kw" data-tip="n. 幸福感；健康">well-being</span>.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="36.855" data-e="39.737">The results revealed a clear <span class="kw" data-tip="n. 门槛；临界点；阈值">threshold</span>.</span> <span class="s" data-t="39.737" data-e="55.761">People who spent at least 120 minutes a week in nature were <span class="kw" data-tip="adv. 显著地；明显地">significantly</span> more likely to describe their health as good and their well-being as high — a benefit that was <span class="kw" data-tip="adj. 一致的；稳定的；前后连贯的">consistent</span> across men and women, young and old, rich and poor, and even among those with long-term illness.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="55.761" data-e="59.169">Just as striking was what the data did not show.</span> <span class="s" data-t="59.169" data-e="68.224">Beyond roughly 200 to 300 minutes a week, the gains <span class="kw" data-tip="v. 趋于平稳；不再增长（短语 level off）">levelled off</span>, suggesting that the <span class="kw" data-tip="n. 剂量；一剂（熟词僻义：可作动词"给……服药"）">dose</span>, not its extravagance, is what matters.</span> <span class="s" data-t="68.224" data-e="74.211">A modest, regular exposure, it seems, delivers most of what nature has to offer.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="74.211" data-e="78.539">Why nature should work at all remains a matter of lively debate.</span> <span class="s" data-t="78.539" data-e="96.066">Some researchers point to the <span class="kw" data-tip="adj. 有恢复作用的；令人恢复精力的">restorative</span> effect of "soft fascination" — the gentle, effortless attention that natural scenes command, which allows a <span class="kw" data-tip="adj. 疲惫的；疲劳的">fatigued</span> mind to recover; others emphasise reduced stress hormones and the simple fact that time outdoors is time away from screens and <span class="kw" data-tip="adj. 久坐的；缺乏运动的">sedentary</span> habits.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="96.066" data-e="107.5">"It doesn't have to be a trip to a national park," one of the authors noted, stressing that the benefit <span class="kw" data-tip="v. 积累；累积">accumulated</span> regardless of whether the two hours came in one long <span class="kw" data-tip="n. 漫步；闲逛">ramble</span> or a dozen short <span class="kw" data-tip="n. 散步；溜达">strolls</span>.</span> <span class="s" data-t="107.5" data-e="112.474">What mattered, they insisted, was <span class="kw" data-tip="n. 规律性；定期">regularity</span> rather than <span class="kw" data-tip="n. 壮观景象；奇观（熟词僻义：spectacles 眼镜）">spectacle</span>.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="112.474" data-e="116.513">The implications are quietly <span class="kw" data-tip="adj. 深刻的；深远的">profound</span> for public health.</span> <span class="s" data-t="116.513" data-e="130.908">If a two-hour weekly "nature dose" is both cheap and universally available, then parks, street trees and allotments cease to be mere <span class="kw" data-tip="n. 便利设施；宜人之处">amenities</span> and become a form of <span class="kw" data-tip="adj. 预防性的">preventative</span> medicine — one that no prescription and no budget are required to obtain.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="130.908" data-e="143.051">To be sure, the authors caution that their study is <span class="kw" data-tip="adj. 观察性的（指无法证明因果的研究）">observational</span>, drawn from self-reports, and cannot prove that nature causes better health rather than simply attracting those already well enough to visit it.</span> <span class="s" data-t="143.051" data-e="148.553">Nor does it <span class="kw" data-tip="v. 捕捉；捕获；把握（熟词僻义：俘获）">capture</span> the quality of the green space or the seasons in which it was visited.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="148.553" data-e="153.566">Yet even with these <span class="kw" data-tip="n. 警告；附加说明；局限">caveats</span>, the message carries an uncommon simplicity.</span> <span class="s" data-t="153.566" data-e="165.145">In an age of expensive wellness regimes, the natural world may offer one of the few <span class="kw" data-tip="n. 疗法；补救办法">remedies</span> that is at once free, effective and, for most of us, no farther than the nearest patch of green.</span></span></div>
 
       <p class="muted">原文出处：本文根据 White, Alcock 等（University of Exeter）发表于《Scientific Reports》的研究《Spending at least 120 minutes a week in nature is associated with good health and wellbeing》（2019，近 2 万人样本）整理改写，供学习使用。</p>
     </section>
@@ -474,6 +490,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>

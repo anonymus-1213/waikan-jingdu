@@ -129,6 +129,16 @@ footer a{color:var(--muted);text-decoration:underline;}
 }
 
 @media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* ---- 音频 + 逐句高亮（backfill 注入） ---- */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
 </style>
 </head>
 <body>
@@ -157,15 +167,21 @@ footer a{color:var(--muted);text-decoration:underline;}
       <h2>一、原文精读</h2>
       <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
 
-      <div class="para"><span class="idx">【1】</span><span class="en">For decades, scientists have tracked <span class="kw" data-tip="n. 微塑料（直径小于 5 毫米的塑料颗粒）">microplastics</span> through the ocean, the soil and even the food we eat. A new study, however, has located them in the place we might least expect: the human brain, where their <span class="kw" data-tip="n. 浓度；聚集">concentration</span> appears to be climbing with each passing year.</span></div>
-      <div class="para"><span class="idx">【2】</span><span class="en">The findings, published in the journal <em>Nature Medicine</em> and led by a <span class="kw" data-tip="n. 毒理学家">toxicologist</span> at the University of New Mexico, examined brain, liver and kidney <span class="kw" data-tip="n. （细胞的）组织">tissue</span> from 52 people whose organs were donated after death, drawing on samples collected in both 2016 and 2024.</span></div>
-      <div class="para"><span class="idx">【3】</span><span class="en">Using a chemical process to <span class="kw" data-tip="v. 溶解；使分解">dissolve</span> the tissue and leave behind only particles, the researchers identified twelve different types of plastic, then weighed and counted the <span class="kw" data-tip="n. 碎片；小块">fragments</span> under an electron microscope — a technique sensitive enough to detect pieces far smaller than the width of a human hair.</span></div>
-      <div class="para"><span class="idx">【4】</span><span class="en">The results were <span class="kw" data-tip="adj. 明确的；不含糊的">unambiguous</span>: every brain sample contained microplastics, and the brain held seven to thirty times more than the liver or kidney. Most striking of all, brains collected in 2024 showed roughly fifty percent more plastic than those from 2016, a rise that mirrors the <span class="kw" data-tip="adj. 汹涌的；激增的（熟词僻义：surge v. 激增；n. 大浪）">surging</span> tide of plastic production worldwide.</span></div>
-      <div class="para"><span class="idx">【5】</span><span class="en">Why the brain should accumulate so much remains unclear, but the authors offer a compelling explanation. The brain is roughly sixty percent fat, and many plastics are <span class="kw" data-tip="adj. 脂溶性的">fat-soluble</span>, meaning they slip easily into <span class="kw" data-tip="adj. 脂质的；n. 脂质">lipid</span>-rich tissue; the smallest particles, moreover, may cross the <span class="kw" data-tip="n. 血脑屏障">blood-brain barrier</span>, the protective <span class="kw" data-tip="n. 膜；薄膜">membrane</span> that is supposed to keep harmful substances out.</span></div>
-      <div class="para"><span class="idx">【6】</span><span class="en">By far the most abundant material was <span class="kw" data-tip="n. 聚乙烯（一种常见塑料）">polyethylene</span>, the plastic used in bottles and shopping bags, which turned up as tiny <span class="kw" data-tip="n. 碎片（玻璃、塑料等的）">shards</span> and <span class="kw" data-tip="n. 薄片；碎屑">flakes</span> scattered through the tissue. Such particles, the researchers note, are now so widespread that no one — rich or poor, young or old — is likely to be free of them.</span></div>
-      <div class="para"><span class="idx">【7】</span><span class="en">The scientists were careful not to <span class="kw" data-tip="v. 夸大；言过其实">overstate</span> their findings. A link between microplastics and <span class="kw" data-tip="n. 痴呆（症）">dementia</span> has been <span class="kw" data-tip="v. 提出（想法、提议）（熟词僻义：漂浮）">floated</span>, they observed, but the present study was far too small, and too limited, to prove that the particles cause any specific disease, let alone the conditions that some headlines have implied.</span></div>
-      <div class="para"><span class="idx">【8】</span><span class="en">Even so, the study has sharpened an uncomfortable question about the modern world: whether the conveniences of plastic — cheap, durable, everywhere — carry a hidden cost that science is only beginning to measure. As <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount v. 骑；安装）">mounting</span> evidence finds the particles in blood, <span class="kw" data-tip="n. 胎盘">placentas</span> and breast milk, researchers increasingly ask not whether we are exposed, but what that exposure means.</span></div>
-      <div class="para"><span class="idx">【9】</span><span class="en">For the public, the message is one of caution rather than alarm. Experts say individuals can reduce their intake by drinking filtered water and avoiding food heated in plastic, yet they stress that real change must come from reducing plastic production itself — a task, they argue, that lies with industry and government, not with the choices of any single person.</span></div>
+            <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-09-18.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+<div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="7.366">For decades, scientists have tracked <span class="kw" data-tip="n. 微塑料（直径小于 5 毫米的塑料颗粒）">microplastics</span> through the ocean, the soil and even the food we eat.</span> <span class="s" data-t="7.366" data-e="17.368">A new study, however, has located them in the place we might least expect: the human brain, where their <span class="kw" data-tip="n. 浓度；聚集">concentration</span> appears to be climbing with each passing year.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="17.368" data-e="34.985">The findings, published in the journal <em>Nature Medicine</em> and led by a <span class="kw" data-tip="n. 毒理学家">toxicologist</span> at the University of New Mexico, examined brain, liver and kidney <span class="kw" data-tip="n. （细胞的）组织">tissue</span> from 52 people whose organs were donated after death, drawing on samples collected in both 2016 and 2024.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="34.985" data-e="51.932">Using a chemical process to <span class="kw" data-tip="v. 溶解；使分解">dissolve</span> the tissue and leave behind only particles, the researchers identified twelve different types of plastic, then weighed and counted the <span class="kw" data-tip="n. 碎片；小块">fragments</span> under an electron microscope — a technique sensitive enough to detect pieces far smaller than the width of a human hair.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="51.932" data-e="61.026">The results were <span class="kw" data-tip="adj. 明确的；不含糊的">unambiguous</span>: every brain sample contained microplastics, and the brain held seven to thirty times more than the liver or kidney.</span> <span class="s" data-t="61.026" data-e="73.327">Most striking of all, brains collected in 2024 showed roughly fifty percent more plastic than those from 2016, a rise that mirrors the <span class="kw" data-tip="adj. 汹涌的；激增的（熟词僻义：surge v. 激增；n. 大浪）">surging</span> tide of plastic production worldwide.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="73.327" data-e="80.024">Why the brain should accumulate so much remains unclear, but the authors offer a compelling explanation.</span> <span class="s" data-t="80.024" data-e="96.145">The brain is roughly sixty percent fat, and many plastics are <span class="kw" data-tip="adj. 脂溶性的">fat-soluble</span>, meaning they slip easily into <span class="kw" data-tip="adj. 脂质的；n. 脂质">lipid</span>-rich tissue; the smallest particles, moreover, may cross the <span class="kw" data-tip="n. 血脑屏障">blood-brain barrier</span>, the protective <span class="kw" data-tip="n. 膜；薄膜">membrane</span> that is supposed to keep harmful substances out.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="96.145" data-e="106.158">By far the most abundant material was <span class="kw" data-tip="n. 聚乙烯（一种常见塑料）">polyethylene</span>, the plastic used in bottles and shopping bags, which turned up as tiny <span class="kw" data-tip="n. 碎片（玻璃、塑料等的）">shards</span> and <span class="kw" data-tip="n. 薄片；碎屑">flakes</span> scattered through the tissue.</span> <span class="s" data-t="106.158" data-e="114.921">Such particles, the researchers note, are now so widespread that no one — rich or poor, young or old — is likely to be free of them.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="114.921" data-e="118.987">The scientists were careful not to <span class="kw" data-tip="v. 夸大；言过其实">overstate</span> their findings.</span> <span class="s" data-t="118.987" data-e="133.829">A link between microplastics and <span class="kw" data-tip="n. 痴呆（症）">dementia</span> has been <span class="kw" data-tip="v. 提出（想法、提议）（熟词僻义：漂浮）">floated</span>, they observed, but the present study was far too small, and too limited, to prove that the particles cause any specific disease, let alone the conditions that some headlines have implied.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="133.829" data-e="146.564">Even so, the study has sharpened an uncomfortable question about the modern world: whether the conveniences of plastic — cheap, durable, everywhere — carry a hidden cost that science is only beginning to measure.</span> <span class="s" data-t="146.564" data-e="157.039">As <span class="kw" data-tip="adj. 日益增长的（熟词僻义：mount v. 骑；安装）">mounting</span> evidence finds the particles in blood, <span class="kw" data-tip="n. 胎盘">placentas</span> and breast milk, researchers increasingly ask not whether we are exposed, but what that exposure means.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="157.039" data-e="161.316">For the public, the message is one of caution rather than alarm.</span> <span class="s" data-t="161.316" data-e="178.814">Experts say individuals can reduce their intake by drinking filtered water and avoiding food heated in plastic, yet they stress that real change must come from reducing plastic production itself — a task, they argue, that lies with industry and government, not with the choices of any single person.</span></span></div>
 
       <p class="muted">原文出处：本文根据《自然·医学》（Nature Medicine，2025 年 2 月）刊发、由新墨西哥大学（University of New Mexico）Matthew Campen 团队完成的尸检研究，及 Scientific American 相关报道（2025-08 综合）整理编写，供学习使用。</p>
     </section>
@@ -476,6 +492,31 @@ footer a{color:var(--muted);text-decoration:underline;}
     <a href="../index.html">返回外刊精读首页</a>
   </footer>
 </article>
+
+
+<script>
+(function(){
+  var a=document.getElementById('reader'); if(!a) return;
+  var spans=[].slice.call(document.querySelectorAll('.en .s'));
+  if(!spans.length) return;
+  var cur=null;
+  function clear(){ if(cur) cur.classList.remove('hl'); cur=null; }
+  a.addEventListener('timeupdate',function(){
+    var t=a.currentTime, hit=null;
+    for(var i=0;i<spans.length;i++){
+      var s=parseFloat(spans[i].getAttribute('data-t'));
+      var e=parseFloat(spans[i].getAttribute('data-e'));
+      if(t>=s && t<e){ hit=spans[i]; break; }
+    }
+    if(hit!==cur){ clear(); cur=hit; if(cur){ cur.classList.add('hl');
+      var r=cur.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-40){ cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }}
+  });
+  a.addEventListener('ended',clear);
+  a.addEventListener('pause',clear);
+})();
+</script>
 
 </body>
 </html>
