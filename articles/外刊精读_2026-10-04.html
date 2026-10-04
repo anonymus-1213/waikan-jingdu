@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 冻土苏醒：北极永久冻土融化，正把封存万年的"古碳"释放进海洋</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+/* 顶部导航 */
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+/* 文章头 */
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+/* Hero 配图 */
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* 中文导读 */
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+/* 布局：左正文 + 右词汇栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+/* 原文段落 */
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+/* 悬停查词 */
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+/* 词汇卡片 */
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+/* 短语积累 */
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;white-space:nowrap;}
+.phrases .zh{color:var(--muted);font-size:12.5px;}
+
+/* 段落主旨 */
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+/* 长难句 */
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+/* 词汇级别色块：卡片左边条 + 级别标签着色 */
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+/* 词汇级别色块图例 */
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+/* 英音朗读播放器 */
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+/* 跟读同步高亮（当前朗读句） */
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+/* 响应式 */
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nature · 人与自然 / 气候 / 生态 / 科普</div>
+  <h1>冻土苏醒：北极永久冻土融化，正把封存万年的"古碳"释放进海洋</h1>
+  <div class="deck">A sweeping new study finds the Arctic's thawing permafrost is flushing ancient carbon into rivers and the ocean, where long-dormant microbes can turn it into greenhouse gases that push warming further</div>
+  <div class="byline"><span><b>来源</b> ScienceDaily / Nature / phys.org（综合）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-04</span><span><b>难度</b> 难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-04.jpg" alt="北极冻土与极地景观（配图）">
+    <figcaption>配图：极地冰雪与冻土地貌（图片来源：Unsplash 图库，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>北极的表层植被之下，埋藏着地球上规模最大的碳库之一——数十万年来被封存在永久冻土里的古碳，其总量约为当前大气中碳含量的两倍。如今，这份"冰冻遗产"正在苏醒。最新一项综合研究警告：永久冻土正以前所未有的速度融化，把大量远古碳冲入河流与海洋；长期休眠的微生物随之"复活"，把碳分解成二氧化碳与甲烷，反过来加速气候变暖。这一"融化—释放—再变暖"的正反馈循环，被科学家视为未来气候预测中最大的不确定因素。本文沿"封存—融化—唤醒—反馈"的机制链，揭示北极冻土如何在不知不觉中，成为悬在气候系统上的一颗定时炸弹。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-04.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.1" data-e="10.761">Beneath a thin layer of vegetation, the Arctic holds one of the planet's largest <span class="kw" data-tip="n. 储存（熟词僻义：n. 商店）">stores</span> of carbon — frozen, quiet, and, until recently, safely <span class="kw" data-tip="v. 密封；封存（熟词僻义：n. 海豹）">sealed</span> away.</span> <span class="s" data-t="10.711" data-e="21.303">Roughly twice as much carbon as now circulates in the atmosphere lies locked in <span class="kw" data-tip="n. 永久冻土">permafrost</span>, the perennially frozen ground that has kept it <span class="kw" data-tip="adj. 惰性的；不活跃的">inert</span> for tens of thousands of years.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="21.303" data-e="32.539">A sweeping new study, published this month, warns that this frozen vault is now <span class="kw" data-tip="v. 融化；解冻">thawing</span> fast enough to reshape Arctic rivers and release vast quantities of ancient carbon into the ocean.</span> <span class="s" data-t="32.539" data-e="44.776">Led by an international team of climate scientists, the work combined satellite records, river-water sampling and laboratory incubations to <span class="kw" data-tip="v. 追踪；追溯">trace</span> the journey of carbon from thawing soil to the sea.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="44.776" data-e="48.316">The mechanism is at once simple and unsettling.</span> <span class="s" data-t="48.316" data-e="63.039">As ground that has been frozen since the last ice age thaws, long-<span class="kw" data-tip="adj. 休眠的；蛰伏的">dormant</span> <span class="kw" data-tip="n. 微生物">microbes</span> wake and begin to <span class="kw" data-tip="v. 分解；腐烂">decompose</span> the organic matter they find, respiring carbon dioxide and <span class="kw" data-tip="n. 甲烷">methane</span> into the atmosphere and <span class="kw" data-tip="v. 渗滤；溶解并带走">leaching</span> dissolved carbon into streams.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="63.039" data-e="73.526">Satellite measurements suggest the permafrost region now loses more carbon each year than it absorbs, a <span class="kw" data-tip="n. 逆转；颠倒">reversal</span> that has turned the Arctic from a carbon <span class="kw" data-tip="n. （碳）汇（熟词僻义：v. 下沉）">sink</span> into a net source.</span> <span class="s" data-t="73.526" data-e="82.63">Field data from Siberian and Alaskan sites show thaw depths increasing year on year, exposing soils that had been sealed for <span class="kw" data-tip="n. 千年（millennium 的复数）">millennia</span>.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="82.63" data-e="85.711">Worse, the process feeds on itself.</span> <span class="s" data-t="85.711" data-e="97.039">The greenhouse gases it emits warm the planet further, which melts more permafrost, which in turn releases more gas — a positive <span class="kw" data-tip="n. 反馈">feedback</span> loop that no model yet captures with confidence.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="97.039" data-e="106.039">"We are essentially turning on a heater that has been off for millennia, and the <span class="kw" data-tip="n. 恒温器；温控器">thermostat</span> is no longer in our hands," one of the study's lead authors observed.</span> <span class="s" data-t="106.039" data-e="116.053">The team estimates that permafrost emissions could rival those of a major industrial nation by mid-century, though the exact <span class="kw" data-tip="n. 规模；量级">magnitude</span> remains fiercely debated.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="116.053" data-e="120.329">The researchers are careful to stress the limits of their evidence.</span> <span class="s" data-t="120.329" data-e="131.053">Much of the carbon flushed into rivers may be buried again in coastal <span class="kw" data-tip="n. 沉积物">sediments</span> before it ever reaches the atmosphere, and not every thawed gram of carbon is immediately decomposed.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="131.053" data-e="135.25">Even so, the implications are difficult to overstate.</span> <span class="s" data-t="135.25" data-e="148.987">A feedback that accelerates beyond human control would <span class="kw" data-tip="v. 削弱；暗中破坏">undercut</span> every effort to <span class="kw" data-tip="v. 抑制；遏制">curb</span> emissions elsewhere, which is why the team urges that permafrost be treated not as a distant curiosity but as a front-line component of climate policy.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="148.987" data-e="158.684">For a public often focused on cars and factories, the message is humbling: some of the most consequential carbon on Earth is not burned but simply thawed.</span> <span class="s" data-t="158.684" data-e="169.974">Watching the frozen ground wake, scientists argue, is no longer a matter of curiosity but of urgency — a reminder that the quietest processes can carry the loudest consequences.</span></span></div>
+
+      <p class="muted">原文出处：本文根据 ScienceDaily 报道《Thawing permafrost releases ancient carbon into the ocean》（2026-10-03）及 Nature、phys.org 相关永久冻土碳循环研究（2026-08 至 09 月）综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">permafrost</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈpɜːməfrɒst/ · 美 /ˈpɜːrməfrɔːst/</div>
+          <div class="wc-pos"><b>n.</b> 永久冻土（常年冻结的土层）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Vast amounts of carbon are locked in Arctic <b>permafrost</b>.</div>
+          <div class="wc-tr">大量的碳被封存在北极的永久冻土中。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">store</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /stɔː(r)/ · 美 /stɔːr/</div>
+          <div class="wc-pos"><b>v.</b> 储存；贮藏（熟词僻义：<b>n.</b> 商店）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The frozen soil <b>stores</b> carbon for thousands of years.</div>
+          <div class="wc-tr">冻土把碳储存了数千年之久。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">seal</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /siːl/ · 美 /siːl/</div>
+          <div class="wc-pos"><b>v.</b> 密封；封存（熟词僻义：<b>n.</b> 海豹）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Ice has <b>sealed</b> the soil for millennia.</div>
+          <div class="wc-tr">冰雪把土壤封存了数千年。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inert</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪˈnɜːt/ · 美 /ɪˈnɜːrt/</div>
+          <div class="wc-pos"><b>adj.</b> 惰性的；不活跃的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Frozen carbon remains chemically <b>inert</b>.</div>
+          <div class="wc-tr">冻结的碳在化学上保持惰性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">thaw</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /θɔː/ · 美 /θɔː/</div>
+          <div class="wc-pos"><b>v./n.</b> 融化；解冻</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The permafrost is beginning to <b>thaw</b> as the Arctic warms.</div>
+          <div class="wc-tr">随着北极变暖，永久冻土开始解冻。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trace</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /treɪs/ · 美 /treɪs/</div>
+          <div class="wc-pos"><b>v.</b> 追踪；追溯；查找</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Scientists <b>trace</b> the carbon from soil to sea.</div>
+          <div class="wc-tr">科学家追踪碳从土壤到海洋的路径。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dormant</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdɔːmənt/ · 美 /ˈdɔːrmənt/</div>
+          <div class="wc-pos"><b>adj.</b> 休眠的；蛰伏的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Thawing wakes <b>dormant</b> microbes in the soil.</div>
+          <div class="wc-tr">解冻唤醒了土壤中休眠的微生物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">microbe</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmaɪkrəʊb/ · 美 /ˈmaɪkroʊb/</div>
+          <div class="wc-pos"><b>n.</b> 微生物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Microbes</b> break down the ancient organic matter.</div>
+          <div class="wc-tr">微生物分解这些古老的有机物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decompose</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdiːkəmˈpəʊz/ · 美 /ˌdiːkəmˈpoʊz/</div>
+          <div class="wc-pos"><b>v.</b> 分解；腐烂</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Leaves slowly <b>decompose</b> on the forest floor.</div>
+          <div class="wc-tr">落叶在森林地表慢慢腐烂分解。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">methane</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmiːθeɪn/ · 美 /ˈmeθeɪn/</div>
+          <div class="wc-pos"><b>n.</b> 甲烷（一种温室气体）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Methane</b> traps far more heat than carbon dioxide.</div>
+          <div class="wc-tr">甲烷捕获热量的能力远强于二氧化碳。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">leach</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /liːtʃ/ · 美 /liːtʃ/</div>
+          <div class="wc-pos"><b>v.</b> 渗滤；溶解并带走</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Rain <b>leaches</b> minerals out of the soil.</div>
+          <div class="wc-tr">雨水把矿物质从土壤中淋洗出来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sink</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /sɪŋk/ · 美 /sɪŋk/</div>
+          <div class="wc-pos"><b>n.</b> （碳）汇；吸收库（熟词僻义：<b>v.</b> 下沉）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Forests act as a carbon <b>sink</b> for the planet.</div>
+          <div class="wc-tr">森林是地球的碳汇。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reversal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈvɜːsl/ · 美 /rɪˈvɜːrsl/</div>
+          <div class="wc-pos"><b>n.</b> 逆转；颠倒</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The Arctic's shift is a dramatic <b>reversal</b> of its past role.</div>
+          <div class="wc-tr">北极的这一转变是其过去角色的戏剧性逆转。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">millennia</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /mɪˈleniə/ · 美 /mɪˈleniə/</div>
+          <div class="wc-pos"><b>n.</b> 千年（millennium 的复数）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The ground has been frozen for <b>millennia</b>.</div>
+          <div class="wc-tr">这片土地已被封冻了数千年。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">feedback</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfiːdbæk/ · 美 /ˈfiːdbæk/</div>
+          <div class="wc-pos"><b>n.</b> 反馈</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Warming and thawing form a dangerous <b>feedback</b> loop.</div>
+          <div class="wc-tr">变暖与融化形成了一个危险的反馈循环。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">thermostat</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈθɜːməstæt/ · 美 /ˈθɜːrməstæt/</div>
+          <div class="wc-pos"><b>n.</b> 恒温器；温控器</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>thermostat</b> keeps the room at a steady temperature.</div>
+          <div class="wc-tr">恒温器让房间保持稳定的温度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">magnitude</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmæɡnɪtjuːd/ · 美 /ˈmæɡnɪtuːd/</div>
+          <div class="wc-pos"><b>n.</b> 规模；量级；巨大</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Few grasp the <b>magnitude</b> of the problem.</div>
+          <div class="wc-tr">很少有人真正了解这个问题的严重程度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sediment</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsedɪmənt/ · 美 /ˈsedɪmənt/</div>
+          <div class="wc-pos"><b>n.</b> 沉积物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Layers of <b>sediment</b> settled at the river mouth.</div>
+          <div class="wc-tr">层层沉积物在河口沉积下来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">undercut</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌʌndəˈkʌt/ · 美 /ˌʌndərˈkʌt/</div>
+          <div class="wc-pos"><b>v.</b> 削弱；暗中破坏</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>New emissions <b>undercut</b> the progress made elsewhere.</div>
+          <div class="wc-tr">新增的排放削弱了别处取得的进展。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">curb</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kɜːb/ · 美 /kɜːrb/</div>
+          <div class="wc-pos"><b>v.</b> 抑制；遏制</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We must <b>curb</b> carbon emissions without delay.</div>
+          <div class="wc-tr">我们必须立即遏制碳排放。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">one of the planet's largest stores of carbon</span><span class="zh">地球上最大的碳库之一</span></li>
+          <li><span class="en">twice as much … as …</span><span class="zh">是……的两倍</span></li>
+          <li><span class="en">tens of thousands of years</span><span class="zh">数万年</span></li>
+          <li><span class="en">locked in permafrost</span><span class="zh">被封存在永久冻土中</span></li>
+          <li><span class="en">flush carbon into rivers</span><span class="zh">把碳冲入河流</span></li>
+          <li><span class="en">long-dormant microbes</span><span class="zh">长期休眠的微生物</span></li>
+          <li><span class="en">decompose organic matter</span><span class="zh">分解有机物</span></li>
+          <li><span class="en">a carbon sink</span><span class="zh">碳汇</span></li>
+          <li><span class="en">a net source</span><span class="zh">净排放源</span></li>
+          <li><span class="en">year on year</span><span class="zh">逐年</span></li>
+          <li><span class="en">a positive feedback loop</span><span class="zh">正反馈循环</span></li>
+          <li><span class="en">feed on itself</span><span class="zh">自我强化</span></li>
+          <li><span class="en">curb emissions</span><span class="zh">抑制排放</span></li>
+          <li><span class="en">a front-line component of …</span><span class="zh">……的前沿组成部分</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>北极冻土封存着约为大气两倍的碳，长期保持惰性、被封存。</li>
+          <li>新研究警告冻土正快速融化，把古碳释放进河流与海洋。</li>
+          <li>机理：冻土融化唤醒休眠微生物，分解有机物、释放温室气体。</li>
+          <li>数据：冻土区年排放已超吸收，北极从"碳汇"转为"净源"。</li>
+          <li>正反馈：排放加温→更多融化→更多排放，模型难以捕捉。</li>
+          <li>专家引语："加热器已开启，温控器已不在我们手中"。</li>
+          <li>局限：部分碳或被沉积物掩埋，相关不等于可靠的全球预算。</li>
+          <li>意义：反馈失控会削弱全球减排，冻土应成为气候政策前沿。</li>
+          <li>结语：最安静的过程可能带来最响亮的后果，保护刻不容缓。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Roughly twice as much carbon as now circulates in the atmosphere lies locked in permafrost, the perennially frozen ground that has kept it inert for tens of thousands of years.</div>
+        <div class="row"><b>主干：</b>twice as much carbon ... lies locked in permafrost（主语 + lies + 过去分词 locked 表状态）</div>
+        <div class="row"><b>比较状语从句：</b>as now circulates in the atmosphere（"如同现在大气中循环的那样多"，修饰 twice as much carbon）</div>
+        <div class="row"><b>同位语：</b>the perennially frozen ground（解释 permafrost）</div>
+        <div class="row"><b>定语从句：</b>that has kept it inert（修饰 ground，it 指代 carbon）</div>
+        <div class="row"><b>考点：</b>twice as much ... as ... 倍数比较结构；过去分词 locked 作状语；同位语；that 定语从句</div>
+        <div class="row tr"><b>译文：</b>封存在永久冻土中的碳，大约是当前在大气中循环的碳的两倍——这片常年冻结的土地使这些碳在数万年里一直保持惰性。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Led by an international team of climate scientists, the work combined satellite records, river-water sampling and laboratory incubations to trace the journey of carbon from thawing soil to the sea.</div>
+        <div class="row"><b>主干：</b>the work combined A, B and C（主语 + combined + 三个并列宾语）</div>
+        <div class="row"><b>过去分词作状语：</b>Led by an international team of climate scientists（"由……率领"）</div>
+        <div class="row"><b>不定式作目的状语：</b>to trace the journey of carbon from thawing soil to the sea</div>
+        <div class="row"><b>考点：</b>过去分词作状语；不定式作目的状语；并列宾语</div>
+        <div class="row tr"><b>译文：</b>这项研究由国际气候科学家团队牵头，综合了卫星记录、河流水样采集与实验室培养实验，以追踪碳从解冻土壤到海洋的旅程。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">As ground that has been frozen since the last ice age thaws, long-dormant microbes wake and begin to decompose the organic matter they find, respiring carbon dioxide and methane into the atmosphere and leaching dissolved carbon into streams.</div>
+        <div class="row"><b>主干：</b>long-dormant microbes wake and begin to decompose the organic matter（主语 + 并列谓语 wake and begin）</div>
+        <div class="row"><b>时间状语从句：</b>As ground ... thaws（"随着……解冻"）</div>
+        <div class="row"><b>定语从句：</b>that has been frozen since the last ice age（修饰 ground）</div>
+        <div class="row"><b>定语从句（省略 that）：</b>they find（修饰 matter）</div>
+        <div class="row"><b>现在分词作伴随/结果状语：</b>respiring ... and leaching ...（respire A into B；leach C into D）</div>
+        <div class="row"><b>考点：</b>As 时间状语从句；that 定语从句；省略关系词的定语从句；现在分词作状语</div>
+        <div class="row tr"><b>译文：</b>随着自上一个冰河时代以来一直被冻结的土地解冻，长期休眠的微生物苏醒过来，开始分解它们找到的有机物，把二氧化碳和甲烷呼入大气，并把溶解的碳渗滤进溪流。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The greenhouse gases it emits warm the planet further, which melts more permafrost, which in turn releases more gas — a positive feedback loop that no model yet captures with confidence.</div>
+        <div class="row"><b>主干：</b>The greenhouse gases ... warm the planet further（主语 + warm + 宾语 + 补语）</div>
+        <div class="row"><b>定语从句（省略 that）：</b>it emits（修饰 gases）</div>
+        <div class="row"><b>非限制性定语从句（连锁）：</b>which melts more permafrost ... which in turn releases more gas（两个 which 依次指代前面整个主句/从句）</div>
+        <div class="row"><b>同位语 + 定语从句：</b>a positive feedback loop that no model yet captures with confidence</div>
+        <div class="row"><b>考点：</b>省略关系词的定语从句；which 引导非限制性定语从句指代整个主句；同位语</div>
+        <div class="row tr"><b>译文：</b>冻土排放出的温室气体使地球进一步变暖，这又使更多永久冻土融化，进而释放出更多气体——这是一个任何模型都还无法准确捕捉的正反馈循环。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A feedback that accelerates beyond human control would undercut every effort to curb emissions elsewhere, which is why the team urges that permafrost be treated not as a distant curiosity but as a front-line component of climate policy.</div>
+        <div class="row"><b>主干：</b>A feedback ... would undercut every effort to curb emissions elsewhere（主语 + would undercut + 宾语）</div>
+        <div class="row"><b>定语从句：</b>that accelerates beyond human control（修饰 feedback）</div>
+        <div class="row"><b>非限制性定语从句：</b>which is why ...（which 指代前面整个主句）</div>
+        <div class="row"><b>表语从句：</b>why the team urges that ...</div>
+        <div class="row"><b>宾语从句（虚拟语气）：</b>permafrost (should) be treated ...（urge 后接 that + (should) + 动词原形）</div>
+        <div class="row"><b>并列结构：</b>not as a distant curiosity but as a front-line component（not ... but ...）</div>
+        <div class="row"><b>考点：</b>定语从句；which 指代整个主句；urge that ... (should) do 虚拟语气；not ... but ... 并列结构</div>
+        <div class="row tr"><b>译文：</b>一个超出人类控制的反馈会削弱其他地方抑制排放的一切努力，这正是研究团队敦促把永久冻土视为气候政策前沿组成部分、而非遥远奇闻的原因。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">在北极薄薄的植被之下，埋藏着地球上规模最大的碳库之一：永久冻土中封存的碳，约为当前大气中碳含量的两倍，数十万年来一直保持惰性、被冰雪密封。然而，这份"冰冻遗产"正在苏醒。本月发表的一项综合研究警告，永久冻土正以前所未有的速度融化，足以重塑北极河流，并把大量远古碳释放进海洋。该研究由国际气候科学家团队牵头，综合卫星记录、河流水样采集与实验室培养实验，追踪碳从解冻土壤到海洋的旅程。其机理既简单又令人不安：随着自上一个冰河时代以来一直被冻结的土地解冻，长期休眠的微生物苏醒，分解有机物，把二氧化碳与甲烷呼入大气，并把溶解的碳渗滤进溪流。卫星数据显示，冻土区每年流失的碳已超过其吸收量，这一逆转使北极从"碳汇"变成了"净排放源"；西伯利亚与阿拉斯加的野外观测也显示解冻深度逐年增加。更糟的是，这一过程会自我强化：排放的气体使地球进一步变暖，融化更多冻土，释放更多气体，形成一个任何模型都还无法准确捕捉的正反馈循环。一位主要作者形容："我们实质上是在开启一台停用了数千年的加热器，而温控器已不再掌握在我们手中。"研究团队估计，到本世纪中叶，永久冻土的排放量或可匹敌一个主要工业国，尽管其确切规模仍争议激烈。当然，研究者也谨慎指出证据的局限：冲入河流的碳可能在海床沉积物中被重新掩埋，未必全部进入大气，各站点的相关性也尚不能拼成可靠的全球预算。即便如此，其影响仍难以低估：一个失控的反馈会削弱其他所有减排努力，因此研究团队呼吁，把永久冻土从"遥远的奇闻"提升为气候政策的前沿组成部分。对习惯了关注汽车与工厂的公众而言，这一发现令人警醒：地球上一些影响最深远的碳，并非被"燃烧"掉，而只是被"融化"了出来。科学家指出，注视冻土苏醒，已不再是好奇，而是迫在眉睫的紧迫——最安静的进程，往往带来最响亮的后果。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 4、5 段，为什么北极由"碳汇"变成"净排放源"会形成一个"正反馈循环"？这一循环为什么被科学家称为气候预测中"最大的不确定因素"？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"some of the most consequential carbon on Earth is not burned but simply thawed."</span>（"not A but B" 并列结构 + 过去分词）的句式，围绕「低碳出行」「节约资源」或「保护环境」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 引入：北极冻土封存着两倍于大气的碳</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 新研究：冻土融化正把古碳冲入河流海洋</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 机理：休眠微生物"复活"分解有机物</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 数据：北极由"碳汇"转为"净排放源"</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 正反馈：排放→变暖→更多融化</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 专家引语：加热器已开启，温控器不在手中</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 局限：碳或被掩埋，相关不等于总量</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 意义：反馈失控将削弱全球减排努力</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 结语：最安静的进程带来最响亮的后果</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究发现 → 作用机理 → 观测数据 → 正反馈机制 → 专家引语 → 研究局限 → 意义启示 → 总结升华」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：ScienceDaily / Nature / phys.org 公开资料（2026-10-04 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
