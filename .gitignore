@@ -2,3 +2,6 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# 构建临时脚本与中间产物
+.openclaw/

@@ -8,9 +8,11 @@
 :root{
   --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
   --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --line-strong:#cbb89a;
   --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
   --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
 }
+html{scroll-behavior:smooth;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;}
 a{color:inherit;text-decoration:none;}
@@ -24,11 +26,19 @@ a{color:inherit;text-decoration:none;}
 
 .wrap{max-width:760px;margin:0 auto;padding:0 24px 80px;}
 
-/* ===== Search ===== */
-.search{margin:34px 0 6px;}
+/* ===== Sticky toolbar (search + filters) ===== */
+.toolbar{position:sticky;top:0;z-index:40;background:var(--bg);padding:14px 0 10px;margin:22px 0 4px;box-shadow:0 6px 14px -10px rgba(0,0,0,.35);}
+.search{margin:0;}
 .search input{width:100%;padding:12px 18px;font-size:15px;font-family:var(--sans);background:var(--paper);border:1px solid var(--line);border-radius:3px;color:var(--ink);outline:none;}
 .search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
 .search .hint{font-size:12px;color:var(--muted);margin-top:8px;}
+.search .hint kbd{font-family:var(--sans);font-size:11px;border:1px solid var(--line);border-bottom-width:2px;border-radius:3px;padding:0 5px;color:var(--muted);background:var(--paper);}
+
+/* 主题筛选 chips */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;}
+.chip{font-size:12.5px;letter-spacing:.02em;color:var(--muted);border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 13px;cursor:pointer;transition:all .15s;user-select:none;}
+.chip:hover{border-color:var(--accent);color:var(--accent);}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff;}
 
 /* ===== Latest hero ===== */
 .hero{margin:30px 0 40px;padding:30px 32px;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);}
@@ -41,11 +51,12 @@ a{color:inherit;text-decoration:none;}
 .hero .cta:hover{background:#7d2410;}
 
 /* ===== List ===== */
-.list-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;margin:44px 0 4px;}
+.list-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;margin:44px 0 4px;gap:12px;flex-wrap:wrap;}
 .list-head h3{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:-.01em;}
 .list-head .count{font-size:12px;color:var(--muted);letter-spacing:.08em;}
 
-.article{border-bottom:1px solid var(--line);padding:24px 2px;display:grid;grid-template-columns:78px 1fr;gap:20px;}
+.article{border-bottom:1px solid var(--line);padding:24px 2px;display:grid;grid-template-columns:78px 1fr;gap:20px;transition:background .15s;}
+.article:hover{background:rgba(156,47,22,.035);}
 .article .date{font-family:var(--serif);font-size:15px;color:var(--muted);text-align:right;padding-top:3px;}
 .article .date .d{font-size:26px;line-height:1;color:var(--ink);display:block;font-weight:400;}
 .article .date .m{font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
@@ -61,12 +72,26 @@ a{color:inherit;text-decoration:none;}
 
 footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
 
+/* 返回顶部 */
+#toTop{position:fixed;right:22px;bottom:26px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:18px;cursor:pointer;display:none;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:60;}
+#toTop:hover{background:#7d2410;}
+
+/* 深色模式 */
+body.dark{
+  --bg:#191713;--paper:#221f1a;--ink:#ece7dd;--muted:#a49c8d;--line:#37322a;
+  --accent:#e0917a;--accent-soft:#3a2620;--blue:#9dc0e8;--blue-soft:#20293a;--line-strong:#4a4238;
+}
+body.dark .masthead{border-bottom-color:var(--ink);}
+body.dark .hero .cta{color:#191713;}
+body.dark .tag{border-color:var(--accent);}
+
 @media (max-width:560px){
   .masthead h1{font-size:38px;}
   .article{grid-template-columns:1fr;gap:6px;}
   .article .date{text-align:left;display:flex;gap:8px;align-items:baseline;}
   .article .date .d{font-size:18px;}
   .hero{padding:24px 20px;}
+  .toolbar{padding:10px 0 8px;}
 }
 .article .thumb{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);border-radius:4px;margin-bottom:12px;background:var(--accent-soft);}
 .hero .hero-img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);border-radius:4px;margin-bottom:18px;background:var(--accent-soft);}
@@ -83,9 +108,12 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 <div class="wrap">
 
-  <div class="search">
-    <input type="search" id="q" placeholder="搜索标题 / 话题 / 来源…（如：气候、经济学人、环境）" aria-label="搜索文章">
-    <div class="hint">输入关键词即时过滤下方文章列表。</div>
+  <div class="toolbar">
+    <div class="search">
+      <input type="search" id="q" placeholder="搜索标题 / 话题 / 来源…（如：气候、经济学人、环境）" aria-label="搜索文章">
+      <div class="hint">即时过滤下方文章列表 · 按 <kbd>/</kbd> 快速定位搜索框 · 点下方标签按主题筛选</div>
+    </div>
+    <div class="chips" id="chips"></div>
   </div>
 
   <!-- 最新文章 hero（定时任务每次更新第一篇文章） -->
@@ -105,6 +133,18 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
   </div>
 
   <div id="list">
+    <article class="article" data-search="甘肃 磨沟 古DNA 古基因组 考古 史前 丝绸之路 欧亚 农业传播 小麦 大麦 牛羊 迁徙 人群 基因 付巧妹 细胞 Cell 社会结构 埋葬 血缘 文明 中西交流 人与自然 人与社会 archaeology ancient DNA genome Gansu Mogou Silk Road trans-Eurasian migration farming wheat barley ancestry kinship burial Fu Qiaomei">
+      <div class="date"><span class="d">02</span><span class="m">2026 · Oct</span></div>
+      <div class="body">
+        <img class="thumb" src="assets/images/外刊精读_2026-10-02.jpg" alt="配图" loading="lazy">
+
+        <h4><a href="articles/外刊精读_2026-10-02.html">麦子西来，人未东迁：149 份古基因组如何改写欧亚大陆的农业传播史</a></h4>
+        <span class="en">A twelve-year study of 149 ancient genomes from Gansu finds that wheat, barley, cattle and sheep crossed Eurasia into northwest China roughly 4,000 years ago — yet left no detectable trace of the western farmers who first domesticated them</span>
+        <p class="desc">《细胞》一项历时十二年的研究：甘肃 11 个遗址、149 例古基因组显示，约四千年前西亚作物与家畜传入当地，却<b>不见</b>西方农耕人群的遗传成分——麦来而人未迁，作物与人群的流动被"解耦"。</p>
+        <div class="tags"><span class="tag">考古</span><span class="tag">古基因组</span><span class="tag">文明交流</span><span class="tag src">Cell · 中科院古脊椎所</span></div>
+      </div>
+    </article>
+
     <article class="article" data-search="永久冻土 冻土 北极 碳 甲烷 微生物 气候 温室气体 融化 解冻 正反馈 海洋 生态 科普 自然 permafrost thaw carbon methane microbes climate greenhouse feedback ocean">
       <div class="date"><span class="d">04</span><span class="m">2026 · Oct</span></div>
       <div class="body">
@@ -598,35 +638,108 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
     </article>
   </div>
 
-  <div class="empty" id="empty">没有匹配的文章，换个关键词试试。</div>
+  <div class="empty" id="empty">没有匹配的文章，换个关键词或主题试试。</div>
 
   <footer>
     外刊精读 · 每日自动更新<br>
-    本网站为本地静态站，双击 index.html 即可打开；新文章每天 7:00 自动收录。<br>
-    素材来源为公开外刊报道，仅供个人学习使用。
+    精选外刊学术研究类长文，对标高考「难 / 极难」档；每篇含英音朗读 + 逐句同步高亮 + 生词悬停 + 长难句拆解。<br>
+    素材来源为公开外刊报道与学术论文，仅供个人学习使用。<br>
+    <button id="themeBtn" class="chip" style="margin-top:14px" aria-label="切换深色模式">🌙 深色模式</button>
   </footer>
 
 </div>
 
+<button id="toTop" aria-label="返回顶部">↑</button>
+
 <script>
 (function(){
+  // 1) 顶部日期
   var d=new Date();
   var week=['日','一','二','三','四','五','六'];
   document.getElementById('today').textContent=
     d.getFullYear()+' 年 '+(d.getMonth()+1)+' 月 '+d.getDate()+' 日 · 星期'+week[d.getDay()];
+
   var arts=[].slice.call(document.querySelectorAll('#list .article'));
-  document.getElementById('cnt').textContent='共 '+arts.length+' 篇';
+  var cnt=document.getElementById('cnt');
+  var empty=document.getElementById('empty');
   var q=document.getElementById('q');
-  q.addEventListener('input',function(){
+
+  // 2) 主题标签：汇总全部非来源 tag，取出现频率最高的若干作为筛选 chip
+  var topics={};
+  arts.forEach(function(a){
+    [].slice.call(a.querySelectorAll('.tags .tag:not(.src)')).forEach(function(t){
+      var k=t.textContent.trim(); topics[k]=(topics[k]||0)+1;
+    });
+  });
+  var ranked=Object.keys(topics).sort(function(x,y){return topics[y]-topics[x];}).slice(0,8);
+  var chipsBox=document.getElementById('chips');
+  var activeTopic=null;
+  function clearChips(){ [].slice.call(chipsBox.children).forEach(function(c){c.classList.remove('on');}); }
+  function addChip(label,val){
+    var b=document.createElement('button');
+    b.className='chip'; b.textContent=label;
+    b.addEventListener('click',function(){
+      activeTopic=(activeTopic===val)?null:val;
+      clearChips();
+      if(activeTopic!==null) b.classList.add('on'); else chipsBox.children[0].classList.add('on');
+      apply();
+    });
+    chipsBox.appendChild(b);
+    return b;
+  }
+  addChip('全部','__all__');
+  ranked.forEach(function(k){ addChip(k,k); });
+  chipsBox.children[0].classList.add('on');
+
+  // 3) 统一过滤
+  function apply(){
     var kw=q.value.trim().toLowerCase();
     var shown=0;
     arts.forEach(function(a){
-      var hit=!kw || a.getAttribute('data-search').toLowerCase().indexOf(kw)>-1;
+      var hay=a.getAttribute('data-search').toLowerCase();
+      var okKw=!kw||hay.indexOf(kw)>-1;
+      var okTopic=true;
+      if(activeTopic){
+        var tags=[].slice.call(a.querySelectorAll('.tag:not(.src)')).map(function(t){return t.textContent.trim();});
+        okTopic=tags.indexOf(activeTopic)>-1;
+      }
+      var hit=okKw&&okTopic;
       a.style.display=hit?'':'none';
       if(hit) shown++;
     });
-    document.getElementById('empty').style.display=shown?'none':'block';
+    cnt.textContent=(kw||activeTopic)?('筛出 '+shown+' / '+arts.length+' 篇'):('共 '+arts.length+' 篇');
+    empty.style.display=shown?'none':'block';
+  }
+  var timer=null;
+  q.addEventListener('input',function(){
+    clearTimeout(timer); timer=setTimeout(apply,120);
   });
+  // 按 / 聚焦搜索
+  document.addEventListener('keydown',function(e){
+    if(e.key==='/'&&document.activeElement!==q){ e.preventDefault(); q.focus(); }
+    if(e.key==='Escape'&&document.activeElement===q){ q.value=''; apply(); q.blur(); }
+  });
+
+  // 4) 返回顶部
+  var toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    toTop.style.display=(window.scrollY>600)?'grid':'none';
+  },{passive:true});
+  toTop.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  // 5) 深色模式（记忆偏好）
+  var themeBtn=document.getElementById('themeBtn');
+  function setTheme(dark){
+    document.body.classList.toggle('dark',dark);
+    themeBtn.textContent=dark?'☀️ 浅色模式':'🌙 深色模式';
+    try{ localStorage.setItem('wj_theme',dark?'dark':'light'); }catch(e){}
+  }
+  var saved='light';
+  try{ saved=localStorage.getItem('wj_theme')||'light'; }catch(e){}
+  if(saved==='dark'||(!('wj_theme' in localStorage)&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)) setTheme(true);
+  themeBtn.addEventListener('click',function(){ setTheme(!document.body.classList.contains('dark')); });
+
+  apply();
 })();
 </script>
 </body>

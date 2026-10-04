@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 麦子西来，人未东迁：149 份古基因组如何改写欧亚大陆的农业传播史</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;margin-top:1px;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+/* 阅读进度条 */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:80;transition:width .08s linear;}
+/* 返回顶部 */
+#toTop{position:fixed;right:22px;bottom:26px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:18px;cursor:pointer;display:none;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:60;}
+#toTop:hover{background:#7d2410;}
+/* 侧栏折叠（窄屏长文友好） */
+@media (max-width:999px){
+  .side-box > h3{cursor:pointer;}
+  .side-box.collapsed > *:not(h3){display:none;}
+  .side-box > h3::after{content:" ▾";font-size:11px;color:var(--muted);}
+  .side-box.collapsed > h3::after{content:" ▸";}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Archaeology · 人与社会 / 考古 / 古基因组学 / 文明交流</div>
+  <h1>麦子西来，人未东迁：149 份古基因组如何改写欧亚大陆的农业传播史</h1>
+  <div class="deck">A twelve-year study of 149 ancient genomes from Gansu finds that wheat, barley, cattle and sheep crossed Eurasia into northwest China roughly 4,000 years ago — yet left no detectable trace of the western farmers who first domesticated them</div>
+  <div class="byline"><span><b>来源</b> Cell（2026-09-03）/ 中国科学院古脊椎动物与古人类研究所</span><span><b>作者</b> 施涵、E. Andrew Bennett、陈国科、王辉、刘歆益、付巧妹等</span><span><b>日期</b> 2026-10-02</span><span><b>难度</b> 极难</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-02.jpg" alt="古 DNA 的提取与测序示意（配图）">
+    <figcaption>配图：古 DNA 的"旅程"——从先民遗骸与考古现场中提取、测序已高度破碎的遗传物质（图片来源：AutoGLM 搜图检索，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>大约四千年前，小麦、大麦与牛羊从西亚辗转传入今天的中国西北，甘肃恰好坐落在黄土高原、蒙古高原与青藏高原三大地理单元的交汇处，是史前东西方交流的关键走廊。一个长期困扰学界的问题随之而来：外来作物与家畜的东传，究竟是随着西方农耕人群的大规模迁徙同步发生，还是仅仅作为技术、观念沿通道扩散？在欧洲与中亚，农业的扩张几乎总是伴随着近东农民本身的迁移，人群流动与技术流动如影随形。然而，最新发表于《细胞》的一项历时十二年的研究，测序了甘肃十一个遗址、149 例距今约 4700 至 3000 年的古代基因组，却给出了一个截然不同的答案：麦作已经落地，西方人群却几乎不见踪影。本文沿"提出问题—研究方法—核心数据—机制解释—社会结构—研究局限"的学术脉络，展示现代科学与古老骸骨如何共同重写一部农业全球化史。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-02.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.1" data-e="13.153">Gansu, a narrow province in northwestern China, sits where three great landforms meet, making the region a <span class="kw" data-tip="n. 枢纽；交叉路口">crossroads</span> of <span class="kw" data-tip="n. 通道；走廊">corridors</span> along which people, ideas and goods once moved between East and West.</span> <span class="s" data-t="13.103" data-e="25.895">By roughly 4,000 years ago, crops and livestock first domesticated in southwest Asia — wheat, barley, cattle, sheep — had begun to appear there, yet how they arrived remained deeply contested.</span></span></div>
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="25.895" data-e="33.934">A central debate in archaeology concerns whether such <span class="kw" data-tip="n. 驯化物种；家养动植物">domesticates</span> travelled with the people who bred them, or merely with their know-how.</span> <span class="s" data-t="33.934" data-e="49.882">In Europe and Central Asia, the answer was long regarded as settled: farming spread alongside the farmers, and genomes still <span class="kw" data-tip="v. 承载；承担">bear</span> the imprint of those expansions thousands of years later, yet whether the same template applied to East Asia had never been tested with adequate data.</span></span></div>
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="49.882" data-e="63.103">Led by Fu Qiaomei of the Institute of Vertebrate Paleontology and Paleoanthropology, an international team spent twelve years extracting and sequencing ancient human genomes from eleven sites across Gansu.</span> <span class="s" data-t="63.103" data-e="83.961">After quality <span class="kw" data-tip="n. 过滤；筛选">filtering</span>, the researchers obtained 149 individuals dating from roughly 4,700 to 3,000 years before present, ninety-five of them from the large Mogou cemetery, while nine of the eleven sites yielded western-derived crops or livestock, meaning the domesticates had demonstrably reached the region.</span></span></div>
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="83.961" data-e="89.711">The genetic results, published in the journal Cell, were striking in their consistency.</span> <span class="s" data-t="89.711" data-e="110.921">Three independent methods — <span class="kw" data-tip="n. 主成分分析（PCA，统计学降维方法）">principal component analysis</span>, ancestry modelling and <span class="kw" data-tip="n. 统计量（D-statistics，用于检验基因流动）">D-statistics</span> — placed every sampled individual within the range of East Asian variation, with no detectable <span class="kw" data-tip="n. 遗传成分；祖源">ancestry</span> from western or central Eurasia, and Fu observed that the region's ancient population remained chiefly a mixing of northern East Asian groups.</span></span></div>
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="110.921" data-e="115.618">That finding <span class="kw" data-tip="v. 使脱离；解耦（把两者分开看待）">decouples</span> the movement of crops from the movement of people.</span> <span class="s" data-t="115.618" data-e="135.671">West Asian farming and metallurgy evidently crossed the continent, yet the farmers and herders who first developed them did not — at least not in numbers large enough to leave a genetic signature, so any account of trans-Eurasian food globalization must now explain how seeds and breeding stock travelled roughly 4,000 kilometres alone.</span></span></div>
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="135.671" data-e="140.408">The authors carefully limit the reach of what may be <span class="kw" data-tip="v. 推断；推论（从证据中推知）">inferred</span> from their data.</span> <span class="s" data-t="140.408" data-e="153.408">Absence of evidence at the population level, they concede, is not proof that no individual of western Eurasian descent ever set foot in Gansu; what the data rule out is a demographic event large enough to register.</span> <span class="s" data-t="153.408" data-e="166.895">They propose two candidate mechanisms — cultural diffusion along the Inner Asian Mountain Corridor, or transmission through intermediary groups on the Mongolian Steppe — while noting that direct support for either route remains thin.</span></span></div>
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="166.895" data-e="171.895">The study's social findings are, if anything, still more surprising.</span> <span class="s" data-t="171.895" data-e="188.684">At Mogou, one of the largest excavated cemeteries in China, thousands of individuals were interred over centuries, yet detailed kinship analysis found no strong evidence that people buried together were biological relatives, and relatedness did not <span class="kw" data-tip="v. 与……相关（此处指相关性是否匹配）">correlate</span> with burial position.</span> <span class="s" data-t="188.684" data-e="198.605">Males and females showed no significant difference in their genetic relationships, which is <span class="kw" data-tip="adj. 不一致的；相矛盾的">inconsistent</span> with either strict patrilocal or matrilocal residence.</span></span></div>
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="198.605" data-e="213.197">Burial practice, the researchers suggest, was organised less around blood than around status: individuals whose genomes set them apart from the core community were more likely to be buried in archaeologically <span class="kw" data-tip="v. 推断；解读（此处指考古学上被解读为）">read</span> as lower-status contexts.</span> <span class="s" data-t="213.197" data-e="225.314">The authors raise the possibility that some were captives taken in small-scale conflict, yet no single factor — kinship, sex or date of death — seems to have determined who was laid beside whom.</span></span></div>
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="225.314" data-e="231.487">The work carries a wider lesson about assuming that pots, crops and genes must move together.</span> <span class="s" data-t="231.487" data-e="241.526">Trade, curiosity and the sheer <span class="kw" data-tip="n. 欲望；驱动力">appetite</span> of communities to adopt what works can carry techniques across continents without displacing the peoples who develop them.</span> <span class="s" data-t="241.526" data-e="256.255">In Gansu, a society absorbed the products of a distant agricultural revolution while keeping its own genetic <span class="kw" data-tip="n. 连续性；延续">continuity</span>, a reminder that cultural exchange is not always, or even usually, a story of replacement.</span></span></div>
+
+      <p class="muted">原文出处：本文根据《细胞》（Cell）2026 年 9 月 3 日在线发表论文《Genomics and social practices at Mogou and other Gansu sites during prehistoric trans-Eurasian exchange》（Shi, Bennett, Chen, Wang, Liu, Fu et al.）及中国科学院古脊椎动物与古人类研究所新闻稿综合整理改写，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">domesticate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dəˈmestɪkeɪt/ · 美 /dəˈmestɪkeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 驯化；驯养（动植物）；使适应家居生活</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Wheat and barley were <b>domesticated</b> in southwest Asia long before they reached East Asia.</div>
+          <div class="wc-tr">早在传入东亚之前，小麦和大麦就已在西亚被驯化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">domesticate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dəˈmestɪkət/ · 美 /dəˈmestɪkət/</div>
+          <div class="wc-pos"><b>n.</b> 驯化物；家养物种（domesticate 的名词用法，指被驯化的动植物）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Western <b>domesticates</b> reached Gansu without any westward genetic influx.</div>
+          <div class="wc-tr">西方的驯化物种传入甘肃，却没有伴随任何基因上的西来人群。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">genome</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdʒiːnəʊm/ · 美 /ˈdʒiːnoʊm/</div>
+          <div class="wc-pos"><b>n.</b> 基因组；染色体组</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team sequenced 149 ancient human <b>genomes</b> from Gansu.</div>
+          <div class="wc-tr">该团队测序了来自甘肃的 149 例古代人类基因组。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ancestry</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈænsestri/ · 美 /ˈænsestri/</div>
+          <div class="wc-pos"><b>n.</b> 血统；祖源；祖先</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>No western Eurasian <b>ancestry</b> could be detected in the samples.</div>
+          <div class="wc-tr">在这些样本中检测不到任何西欧亚血统。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">corridor</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɒrɪdɔː(r)/ · 美 /ˈkɔːrɪdɔːr/</div>
+          <div class="wc-pos"><b>n.</b> 走廊；通道；（地理上的）狭长地带</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The Inner Asian Mountain <b>Corridor</b> may have carried crops eastward.</div>
+          <div class="wc-tr">内亚山地走廊可能把作物带向了东方。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">crossroads</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkrɒsrəʊdz/ · 美 /ˈkrɔːsroʊdz/</div>
+          <div class="wc-pos"><b>n.</b> 交叉路口；枢纽；（喻）需作出抉择的关键时刻</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Gansu was a <b>crossroads</b> of prehistoric exchange between East and West.</div>
+          <div class="wc-tr">甘肃是史前东西方交流的枢纽。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">filter</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈfɪltə(r)/ · 美 /ˈfɪltər/</div>
+          <div class="wc-pos"><b>v.</b> 过滤；筛选（熟词僻义：此处指对样本数据做质量筛除）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>After quality <b>filtering</b>, 149 usable genomes remained.</div>
+          <div class="wc-tr">经过质量筛选，最终留下 149 例可用基因组。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">extract</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ɪkˈstrækt/ · 美 /ɪkˈstrækt/</div>
+          <div class="wc-pos"><b>v.</b> 提取；萃取（熟词僻义：此处指从古代骸骨中提取 DNA）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Researchers <b>extracted</b> DNA from bones buried for millennia.</div>
+          <div class="wc-tr">研究人员从埋藏了数千年的骸骨中提取出 DNA。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">displace</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪsˈpleɪs/ · 美 /dɪsˈpleɪs/</div>
+          <div class="wc-pos"><b>v.</b> 取代；迫使……离开家园；置换</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>New techniques spread without <b>displacing</b> the peoples who created them.</div>
+          <div class="wc-tr">新技术得以传播，却并未取代创造它们的民族。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decouple</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /diːˈkʌpl/ · 美 /diːˈkʌpl/</div>
+          <div class="wc-pos"><b>v.</b> 使脱钩；使分离；解耦</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The genomes <b>decouple</b> the movement of crops from that of people.</div>
+          <div class="wc-tr">这些基因组把作物的流动与人群的流动分离开来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">infer</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈfɜː(r)/ · 美 /ɪnˈfɜːr/</div>
+          <div class="wc-pos"><b>v.</b> 推断；推论；推断出</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>We cannot <b>infer</b> from a null result that no one ever travelled east.</div>
+          <div class="wc-tr">我们不能仅凭一个"无结果"就推断从未有人东行。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">demographic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌdeməˈɡræfɪk/ · 美 /ˌdeməˈɡræfɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 人口统计的；人口结构的 · <b>n.</b> 特定人群</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study rules out a large-scale <b>demographic</b> influx, not every traveller.</div>
+          <div class="wc-tr">该研究排除的是大规模的人口流入，而非每一个旅人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intermediary</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈmiːdiəri/ · 美 /ˌɪntərˈmiːdieri/</div>
+          <div class="wc-pos"><b>n.</b> 中间人；中介 · <b>adj.</b> 中间阶段的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Crops may have passed through <b>intermediary</b> communities on the steppe.</div>
+          <div class="wc-tr">作物可能经由草原上作为中间人的群体辗转传入。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">kinship</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɪnʃɪp/ · 美 /ˈkɪnʃɪp/</div>
+          <div class="wc-pos"><b>n.</b> 亲属关系；血缘关系</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Kinship</b> did not predict where a person was buried.</div>
+          <div class="wc-tr">血缘关系并不能预测一个人的埋葬位置。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">patrilocal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌpætrɪˈləʊkl/ · 美 /ˌpætrɪˈloʊkl/</div>
+          <div class="wc-pos"><b>adj.</b> 从夫居的（婚后随男方居住）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The burial pattern is inconsistent with strict <b>patrilocal</b> residence.</div>
+          <div class="wc-tr">这种埋葬模式与严格的从夫居并不一致。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">matrilocal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmætrɪˈləʊkl/ · 美 /ˌmætrɪˈloʊkl/</div>
+          <div class="wc-pos"><b>adj.</b> 从妻居的（婚后随女方居住）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Mogou fits neither a <b>matrilocal</b> nor a patrilocal model.</div>
+          <div class="wc-tr">磨沟既不符合从妻居模式，也不符合从夫居模式。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inconsistent</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪnkənˈsɪstənt/ · 美 /ˌɪnkənˈsɪstənt/</div>
+          <div class="wc-pos"><b>adj.</b> 不一致的；相矛盾的；前后不一的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The result is <b>inconsistent</b> with both models of residence.</div>
+          <div class="wc-tr">该结果与两种居住模式都不相符。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">correlate</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈkɒrəleɪt/ · 美 /ˈkɔːrəleɪt/</div>
+          <div class="wc-pos"><b>v.</b> 相关联；符合（熟词僻义：此处指"相关性是否吻合"，非因果）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Genetic similarity only broadly <b>correlated</b> with cultural groups.</div>
+          <div class="wc-tr">遗传相似性与文化群体只是大体上相关联。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">appetite</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈæpɪtaɪt/ · 美 /ˈæpɪtaɪt/</div>
+          <div class="wc-pos"><b>n.</b> 欲望；强烈兴趣（熟词僻义：此处非"食欲"，c.f. appetite for risk）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Communities' <b>appetite</b> for useful tools carried ideas across the steppe.</div>
+          <div class="wc-tr">社群对实用器具的渴求，把观念带过了草原。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">continuity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkɒntɪˈnjuːəti/ · 美 /ˌkɑːntɪˈnuːəti/</div>
+          <div class="wc-pos"><b>n.</b> 连续性；连贯性；持续性</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The population kept its genetic <b>continuity</b> while adopting foreign crops.</div>
+          <div class="wc-tr">这些人群在接纳外来作物的同时，保持了遗传上的连续性。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">sit at a crossroads</span><span class="zh">地处十字路口 / 交汇之地</span></li>
+          <li><span class="en">first domesticated in …</span><span class="zh">最早在……被驯化</span></li>
+          <li><span class="en">domesticates travelled with the people who bred them</span><span class="zh">驯化物种随其培育者一同迁徙</span></li>
+          <li><span class="en">bear the imprint of …</span><span class="zh">承载着……的印记</span></li>
+          <li><span class="en">be tested with adequate data</span><span class="zh">用充分的数据加以检验</span></li>
+          <li><span class="en">after quality filtering</span><span class="zh">经过质量筛选之后</span></li>
+          <li><span class="en">reach a region</span><span class="zh">传入某地区</span></li>
+          <li><span class="en">place every individual within the range of …</span><span class="zh">把每个个体都归入……的范围</span></li>
+          <li><span class="en">decouple A from B</span><span class="zh">把 A 与 B 分离开来</span></li>
+          <li><span class="en">a genetic signature</span><span class="zh">遗传特征 / 基因印记</span></li>
+          <li><span class="en">absence of evidence is not proof</span><span class="zh">缺乏证据并不等于证据不存在</span></li>
+          <li><span class="en">rule out a demographic event</span><span class="zh">排除一次（大规模）人口事件</span></li>
+          <li><span class="en">be inconsistent with …</span><span class="zh">与……不一致 / 相矛盾</span></li>
+          <li><span class="en">keep one's genetic continuity</span><span class="zh">保持遗传上的连续性</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>甘肃地处三大高原交汇处，是史前东西交流的枢纽走廊。</li>
+          <li>核心争议：驯化物种是随人群迁徙，还是仅靠技术传播。</li>
+          <li>研究设计：十二年测序 11 遗址 149 例古代基因组。</li>
+          <li>核心数据：三种方法一致——样本全在东亚变异范围内。</li>
+          <li>结论：作物与人群的流动被"解耦"，麦来而人未来。</li>
+          <li>局限：零结果不等于无人东行，两条候选路线证据仍薄。</li>
+          <li>社会发现：磨沟合葬无血缘证据，也不见从夫/从妻居倾向。</li>
+          <li>埋葬逻辑：地位而非血缘决定位置，外来者地位偏低。</li>
+          <li>启示：技术可跨洲传播而不取代创造者，交流不等于替换。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">For archaeologists, this geography has long made the region a crossroads of corridors along which people, ideas and goods once moved between East and West.</div>
+        <div class="row"><b>主干：</b>this geography has long made the region a crossroads（主语 + made + 宾语 + 宾语补足语）</div>
+        <div class="row"><b>固定结构：</b>make + 宾语 + 名词（"使……成为……"）</div>
+        <div class="row"><b>定语从句：</b>along which people, ideas and goods once moved（"介词 + which" 引导，修饰 corridors）</div>
+        <div class="row"><b>考点：</b>make 复合宾语；"介词 + 关系代词 which" 定语从句；可数名词复数 goods</div>
+        <div class="row tr"><b>译文：</b>对考古学家而言，这一地理位置长期以来让该地区成为诸多通道的交汇枢纽，人、思想与货物曾沿这些通道在东西方之间流动。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">In Europe and Central Asia, the answer was long regarded as settled: farming spread alongside the farmers, and genomes still bear the imprint of those expansions thousands of years later.</div>
+        <div class="row"><b>主干：</b>the answer was long regarded as settled（被动语态：be regarded as + 形容词）</div>
+        <div class="row"><b>冒号后同位说明：</b>farming spread alongside the farmers, and genomes still bear the imprint…（用两个分句解释何为"settled"）</div>
+        <div class="row"><b>并列句：</b>farming spread … and genomes still bear …（两个主语平行）</div>
+        <div class="row"><b>考点：</b>be regarded as 被动结构；冒号表示解释说明；and 连接的并列句</div>
+        <div class="row tr"><b>译文：</b>在欧洲与中亚，这个答案长期以来被视为已成定论：农业随着农民一同扩散，而那些扩张的印记，至今仍在数千年后的基因组中清晰可辨。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Crucially, nine of the eleven sites yielded western-derived crops or livestock, meaning the domesticates had demonstrably reached the region.</div>
+        <div class="row"><b>主干：</b>nine of the eleven sites yielded western-derived crops or livestock（主语 + yielded + 宾语）</div>
+        <div class="row"><b>现在分词作状语：</b>meaning the domesticates had demonstrably reached the region（补充说明，相当于 which means ...）</div>
+        <div class="row"><b>宾语从句：</b>the domesticates had demonstrably reached the region（had + 过去分词，过去完成时，动作先于主句）</div>
+        <div class="row"><b>考点：</b>现在分词作结果 / 补充状语；过去完成时表"过去的过去"；nine of the eleven 部分与整体</div>
+        <div class="row tr"><b>译文：</b>关键在于，十一个遗址中有九个出土了源自西方的作物或家畜，这意味着这些驯化物种确凿无疑地传入了该地区。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Absence of evidence at the population level, they concede, is not proof that no individual of western Eurasian descent ever set foot in Gansu; what the data rule out is a demographic event large enough to register.</div>
+        <div class="row"><b>主干（前分句）：</b>Absence of evidence … is not proof（主语 + is not + 表语）</div>
+        <div class="row"><b>插入语：</b>they concede（"他们承认"，插入主谓之间）</div>
+        <div class="row"><b>同位语从句：</b>that no individual … ever set foot in Gansu（解释 proof 的具体内容）</div>
+        <div class="row"><b>主语从句：</b>what the data rule out（"数据所排除的（情况）"，作第二分句主语）</div>
+        <div class="row"><b>后置定语：</b>large enough to register（enough to 结构，"大到足以留下痕迹"）</div>
+        <div class="row"><b>考点：</b>插入语；同位语从句；what 引导的主语从句；enough to do 结构</div>
+        <div class="row tr"><b>译文：</b>他们承认，在群体层面缺乏证据，并不能证明从未有西欧亚血统的个体踏足甘肃；数据所排除的，是一次大到足以留下遗传痕迹的人口事件。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Individuals whose genomes set them apart from the core community were more likely to be buried in archaeologically read as lower-status contexts, and the authors raise the possibility that some were captives taken in small-scale conflict.</div>
+        <div class="row"><b>主干（前分句）：</b>Individuals … were more likely to be buried（主语 + be likely to do 结构）</div>
+        <div class="row"><b>定语从句：</b>whose genomes set them apart from the core community（whose 引导，修饰 Individuals）</div>
+        <div class="row"><b>过去分词作定语 / 状语：</b>read as lower-status contexts（"被解读为地位较低的（墓葬）环境"）；taken in small-scale conflict（修饰 captives）</div>
+        <div class="row"><b>同位语从句：</b>that some were captives（解释 possibility 的内容）</div>
+        <div class="row"><b>考点：</b>whose 引导的定语从句；be likely to do；过去分词作定语；同位语从句</div>
+        <div class="row tr"><b>译文：</b>那些基因组使自己有别于主体人群的个体，更可能被埋葬在考古学上解读为地位较低的环境中；作者还提出一种可能：其中一些人是在小规模冲突中被俘的战俘。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">甘肃地处黄土高原、蒙古高原与青藏高原三大地理单元的交汇处，长期以来被视为史前东西方交流的关键走廊。大约四千年前，最早在西亚被驯化的小麦、大麦以及牛、羊等家畜陆续出现在这里，但一个根本问题始终悬而未决：这些"舶来品"究竟是随着培育它们的农耕人群一同迁徙而来，还是仅仅作为技术与观念沿通道扩散？在欧洲和中亚，学界长期认为答案已然明朗——农业的传播总是伴随着农民本身的迁移，数千年后的基因组仍保留着那次扩张的印记；然而这套"人口替代"模板是否适用于东亚，此前从未用足够的数据加以检验。为回答这一问题，中国科学院古脊椎动物与古人类研究所付巧妹领衔的国际团队历时十二年，从甘肃十一个遗址中提取并测序古代人类基因组，经质量筛选后获得 149 例距今约 4700 至 3000 年的个体，其中 95 例来自规模宏大的磨沟墓地。关键在于，十一个遗址中有九个出土了源自西方的作物或家畜，说明驯化物种确已传入。然而遗传学结果却高度一致：主成分分析、祖源建模与 D 统计量三种独立方法，都把每一个样本置于东亚变异的范围之内，检测不到任何来自西欧亚或中亚的遗传成分。付巧妹指出，甘肃古代人群的主体仍然是东亚北方人群，其祖源主要来自古代黄河流域、蒙古高原东南缘与青藏高原东北缘人群的混合。这一发现把作物的流动与人群的流动"解耦"：西亚的农耕与冶金技术显然跨越了大陆，而最早发展出它们的农民和牧民却没有——至少没有以足以留下基因印记的规模到来。任何关于跨欧亚"食物全球化"的解释，如今都必须说明种子与种畜如何在没有西方移民定居的情况下传播了约四千公里。作者本人也谨慎地限定了结论的边界：群体层面缺乏证据，并不等于从未有西欧亚血统的个体踏足甘肃，数据所排除的只是一次大到足以被记录的人口事件；他们提出的两条候选路径——内亚山地走廊的文化扩散，或经由蒙古草原中间人群的传递——其直接的考古学支持都仍然单薄。研究的社会学发现则更令人意外：在磨沟这座中国迄今发掘规模最大的墓地之一，数百年间埋葬了成千上万人，但细致的亲缘分析并未发现同葬者互为近亲的有力证据，亲属关系也不与埋葬位置相关，男女的遗传关系没有显著差异，既不符合严格的从夫居，也不符合从妻居模式。研究者推测，埋葬逻辑更多围绕地位而非血缘：基因组上偏离主体人群的个体，更可能被葬在考古学解读中地位较低的位置，其中一些人甚至可能是小规模冲突中的战俘。这项研究带来的更大启示，是不要再想当然地认为陶器、作物与基因必然同步流动——贸易、好奇心以及社群对实用之物的渴求，可以跨越大陆传播技术，却不必然取代创造技术的民族。在甘肃，一个社会接纳了一场遥远农业革命的产物，同时保持着自己的遗传连续性，这提醒我们：文化交流并不总是、甚至通常也不是一个"替换"的故事。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 4、5 段，作者为什么强调三种"相互独立"的分析方法得出了一致结论？这种"多重证据互相印证"的做法，与第 6 段作者坦承"缺乏证据不等于证据不存在"之间，体现了怎样的科学态度？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"a reminder that cultural exchange is not always, or even usually, a story of replacement."</span>（"not always, or even usually" 递进否定 + 同位语从句）的句式，围绕「文明互鉴」「学习外来文化」「传统与创新」等高考书面表达常见话题，写一个总结句。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="140" y="42" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：甘肃为史前东西交流的枢纽走廊</text>
+
+          <rect x="140" y="94" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 争议：驯化物种随人群来，还是随技术来？</text>
+
+          <rect x="140" y="146" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 方法：十二年测序 11 遗址 149 例古基因组</text>
+
+          <rect x="140" y="198" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 数据：三种方法一致，样本全属东亚变异</text>
+
+          <rect x="140" y="250" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 结论：作物与人群被"解耦"，麦来而人未迁</text>
+
+          <rect x="140" y="302" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 局限：零结果非无人东行，两条路线证据薄</text>
+
+          <rect x="140" y="354" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 社会：合葬无血缘证据，亦无从夫/从妻居</text>
+
+          <rect x="140" y="406" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 埋葬：以地位而非血缘定位置，外来者偏低</text>
+
+          <rect x="140" y="458" width="440" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 启示：技术可跨洲传播，交流不等于替换</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景引入 → 学术争议 → 研究方法 → 核心数据 → 核心结论 → 研究局限 → 社会发现 → 埋葬逻辑 → 启示升华」的学术论述逻辑层层递进。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：《细胞》（Cell）2026-09-03 论文《Genomics and social practices at Mogou and other Gansu sites during prehistoric trans-Eurasian exchange》及中国科学院古脊椎动物与古人类研究所公开资料 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<button id="toTop" aria-label="返回顶部">↑</button>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  if(audio){
+    var update = function(){
+      var t = audio.currentTime;
+      sents.forEach(function(s){ s.classList.remove('hl'); });
+      for(var i=0;i<sents.length;i++){
+        var s = sents[i];
+        var st = parseFloat(s.getAttribute('data-t'));
+        var en = parseFloat(s.getAttribute('data-e'));
+        if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+      }
+    };
+    audio.addEventListener('timeupdate', update);
+    audio.addEventListener('seeked', update);
+    audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+  }
+
+  // 3) 阅读进度条 + 返回顶部
+  var progress=document.getElementById('progress');
+  var toTop=document.getElementById('toTop');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var pct=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    progress.style.width=pct+'%';
+    toTop.style.display=(pct>6)?'grid':'none';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  toTop.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  // 4) 窄屏侧栏折叠：点标题收展
+  if(window.matchMedia && window.matchMedia('(max-width:999px)').matches){
+    document.querySelectorAll('.side-box > h3').forEach(function(h){
+      h.addEventListener('click',function(){ h.parentNode.classList.toggle('collapsed'); });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
