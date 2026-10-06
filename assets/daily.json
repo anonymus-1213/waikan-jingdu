@@ -9,7 +9,10 @@
       "key": "seal away",
       "keyZh": "封存；把…锁藏起来",
       "tip": "「stores of carbon」中 store 是熟词僻义（n. 储存量），不是「商店」；hold 在此意为「容纳、拥有」。",
-      "tags": ["气候", "生态"]
+      "tags": [
+        "气候",
+        "生态"
+      ]
     },
     {
       "date": "2026-10-03",
@@ -19,7 +22,10 @@
       "key": "reconcile",
       "keyZh": "使一致；对账（熟词僻义）",
       "tip": "reconcile 常见义为「和解」，此处指把相互不一致的数据「调和、对账」成一个统一记录。",
-      "tags": ["气候", "卫星观测"]
+      "tags": [
+        "气候",
+        "卫星观测"
+      ]
     },
     {
       "date": "2026-10-02",
@@ -29,7 +35,10 @@
       "key": "detectable",
       "keyZh": "可检测到的；可察觉的",
       "tip": "破折号后的 yet 是「然而」，构成强烈的对比：作物来了，人却没来。leave no trace of 是固定表达「不留痕迹」。",
-      "tags": ["考古", "古基因组"]
+      "tags": [
+        "考古",
+        "古基因组"
+      ]
     },
     {
       "date": "2026-10-01",
@@ -39,7 +48,10 @@
       "key": "file away",
       "keyZh": "把…归档保存",
       "tip": "file away 字面是「归档」，此处与 replays（重放）形成对照，强调记忆不是被动存放而是主动加工。",
-      "tags": ["神经科学", "学习"]
+      "tags": [
+        "神经科学",
+        "学习"
+      ]
     },
     {
       "date": "2026-09-30",
@@ -49,7 +61,10 @@
       "key": "whose day is done",
       "keyZh": "…的时代已经结束",
       "tip": "此句以「过时之物」的成见开篇，随后用 Yet 转折引出研究结论，是议论文「先立靶、再反驳」的经典开头。",
-      "tags": ["教育", "认知科学"]
+      "tags": [
+        "教育",
+        "认知科学"
+      ]
     },
     {
       "date": "2026-09-29",
@@ -59,7 +74,10 @@
       "key": "turn out to",
       "keyZh": "结果是；原来是",
       "tip": "not only A but B 结构中，B 往往是作者真正想强调的重点（此处为 how deeply we think）。",
-      "tags": ["教育", "认知科学"]
+      "tags": [
+        "教育",
+        "认知科学"
+      ]
     },
     {
       "date": "2026-09-28",
@@ -69,7 +87,10 @@
       "key": "in effect",
       "keyZh": "实际上；事实上",
       "tip": "in effect 是高频插入语，用「换句话说」的语气把具体行为提升到政策高度。",
-      "tags": ["城市", "公共卫生"]
+      "tags": [
+        "城市",
+        "公共卫生"
+      ]
     },
     {
       "date": "2026-09-27",
@@ -79,7 +100,23 @@
       "key": "tell",
       "keyZh": "分辨；辨别（熟词僻义）",
       "tip": "tell 在此不是「告诉」而是「分辨」（tell A from B）。破折号后递进加重了批评语气。",
-      "tags": ["科技", "人工智能"]
+      "tags": [
+        "科技",
+        "人工智能"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "en": "A society that lets its most capable citizens rise, whatever family they were born into, is not merely a fairer place to live but also, the data suggest, a more inventive one.",
+      "zh": "一个能让最有能力的公民无论出身何种家庭都能向上流动的社会，不仅更公平宜居；数据表明，它也更具创造力。",
+      "src": "外刊精读 · 社会流动与创新（2026-10-06）",
+      "key": "whatever family they were born into",
+      "keyZh": "无论出生于何种家庭（让步状语从句，插入主谓之间）",
+      "tip": "whatever 引导让步状语从句，插在主句主语与谓语之间，起「无论怎样都成立」的强调作用；not merely ... but also ... 构成递进并列。",
+      "tags": [
+        "经济",
+        "社会流动"
+      ]
     }
   ]
 }
