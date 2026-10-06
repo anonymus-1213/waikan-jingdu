@@ -117,6 +117,20 @@
         "经济",
         "社会流动"
       ]
+    },
+    {
+      "date": "2026-10-05",
+      "en": "Brain aging doesn't suddenly begin when we get older, but the biological signals may be detectable decades earlier.",
+      "zh": "大脑老化并非在我们变老的那一刻才突然开始；它的生物学信号，也许早在几十年前就已经可以被察觉。",
+      "src": "eBioMedicine · UCLA Health",
+      "key": "detectable",
+      "keyZh": "可察觉的；可检测到的",
+      "tip": "detectable 由动词 detect（察觉、检测）加 -able 构成，表示'能够被察觉的'。注意它与 sensible（可感知的）、perceptible 近义，但 detectable 更强调借助仪器或方法'检测得出'，常用于科研语境——如 detectable levels（可检测到的水平）、no detectable trace（检测不到的痕迹）。这里是'熟词僻义'的反向提醒：detect 最常见的搭配是 detect a problem / detect a change，书面语中却常用来指机器、实验对微弱信号的捕捉。",
+      "tags": [
+        "健康",
+        "神经科学",
+        "微生物组"
+      ]
     }
   ]
 }

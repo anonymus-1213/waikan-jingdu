@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 肠道里的"时钟"：一项近 1500 人的研究，把大脑老化的信号指向了菌群</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Health · 人与自我 / 健康 / 神经科学 / 微生物组</div>
+  <h1>肠道里的"时钟"：一项近 1500 人的研究，把大脑老化的信号指向了菌群</h1>
+  <div class="deck">A UCLA study of nearly 1,500 adults links an older-looking brain to specific gut bacteria and the molecules they release, hinting that the biological clock of the mind may be readable — and perhaps reachable — decades before symptoms appear</div>
+  <div class="byline"><span><b>来源</b> eBioMedicine（UCLA Health）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-05</span><span><b>难度</b> 难</span><span><b>词数</b> 约 640 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-05.jpg" alt="肠道菌群与大脑的相互作用（配图）">
+    <figcaption>配图：肠道微生物与大脑之间的相互作用示意（图片来源：Unsplash 图库，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>人过了四十，偶尔会忘记钥匙放在哪里，于是开始担心："是我老了，还是脑子出了毛病？"神经科学家给出的答案比想象中更精细：大脑的"生物年龄"未必与身份证上的年龄同步。加州大学洛杉矶分校（UCLA）的一项新研究，扫描了近 1500 名成年人的静息态脑活动，为每个人估算出一个"大脑年龄"，并与真实年龄相减，得到"大脑老化指数"（BAI）。指数越高的人，工作记忆与执行功能表现越差，抑郁症状也越多。更耐人寻味的是其中一个子研究：研究者分析粪便样本后发现，大脑"显老"的人，其肠道里特定的细菌与代谢产物也与众不同——包括某些脂肪分子、一种与胆固醇相关的化合物，以及一种名为雌四醇的激素水平偏低。论文资深作者强调，大脑老化并非从中年开始，其生物学信号可能提前数十年就可被侦测。本文沿"问题—方法—发现—菌群线索—通路—引语—局限—意义"的链条，讲述这条从肠道通往大脑的隐秘通道。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-05.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="18.311">Forgetting where the keys are is such a common experience in middle age that most people treat it as a harmless quirk, yet it is precisely this kind of everyday lapse that has pushed neuroscientists to ask a sharper question: is the brain simply ageing with the body, or is it ageing at a pace of its own?@@</span></span></div>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.311" data-e="28.987">To answer that question, researchers have spent years estimating a person's "brain age" from scans, which frequently diverges from the number of birthdays a person has celebrated.</span> <span class="s" data-t="28.987" data-e="38.351">When a brain looks older than expected, earlier studies have found, its owner tends to remember less well, think more slowly and report more changes in mood.</span> <span class="s" data-t="38.351" data-e="51.532">Almost all of that evidence, however, came from older adults or from patients who already had a neurological condition, leaving an obvious gap: does an old-looking brain also matter in younger, generally healthy people?@@</span></span></div>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="51.532" data-e="60.002">A new study from UCLA Health set out to close that gap by examining brain scans from nearly 1,500 adults divided across three separate groups.</span> <span class="s" data-t="60.002" data-e="77.776">Rather than measuring the size of any single region, the team used a scanning approach that captures how different areas of the brain communicate with one another while a person is simply resting, and then built a computer model to estimate each participant's age from those communication patterns.</span> <span class="s" data-t="77.776" data-e="86.126">The difference between the estimated brain age and the person's actual age became the measure the researchers named the Brain Aging Index.@@</span></span></div>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="86.126" data-e="91.076">The results were consistent across all three groups, and they were not encouraging.</span> <span class="s" data-t="91.076" data-e="105.212">Participants whose brains appeared older than their chronological age generally performed worse on tests of working memory and executive function, the capacities that allow us to hold information in mind, stay focused, plan and organise.</span> <span class="s" data-t="105.212" data-e="119.526">Those with a higher Brain Aging Index also reported more symptoms of depression, and the pattern repeatedly <span class="kw" data-tip="v. 涉及；牵涉（熟词僻义：adj. 复杂的）">involved</span> brain regions linked to memory and to self-referential thought, the mental processes we use when reflecting on ourselves.@@</span></span></div>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="119.526" data-e="128.771">For one of the three groups, the team went a step further and examined stool samples, asking whether differences in brain ageing were reflected in the gut.</span> <span class="s" data-t="128.771" data-e="129.367">They were.</span> <span class="s" data-t="129.367" data-e="142.668">A higher Brain Aging Index was associated with particular gut bacteria and with several metabolic byproducts, including certain fat molecules, a compound related to cholesterol and lower levels of a hormone called estetrol.</span> <span class="s" data-t="142.668" data-e="154.12">The biological pathways tied to these signals <span class="kw" data-tip="v. 覆盖；涉及（熟词僻义：v. 使卷入）">embraced</span> the immune system, the function of blood vessels, communication between brain cells and the machinery that cells use to produce energy.@@</span></span></div>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="154.12" data-e="168.136">"Brain aging doesn't suddenly begin when we get older, but the biological signals may be detectable decades earlier," said the study's senior author, Dr Arpana Church, co-director of the Goodman-Luskin Microbiome Center at UCLA Health.</span> <span class="s" data-t="168.136" data-e="181.854">She added that by linking early brain changes to the gut microbiome and its metabolites, her team is beginning to identify pathways that could help explain who may be at risk and, more importantly, where doctors might intervene.@@</span></span></div>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="181.854" data-e="187.162">The researchers are careful not to overstate what a single snapshot of the gut can prove.</span> <span class="s" data-t="187.162" data-e="202.67">The study was cross-sectional, capturing one moment rather than following people over years, so it cannot establish whether unusual bacteria <span class="kw" data-tip="v. 驱动；推动（熟词僻义：n. 驱动器）">drive</span> brain ageing, whether an ageing brain somehow reshapes the gut, or whether some third factor quietly shapes both.</span> <span class="s" data-t="202.67" data-e="207.322">Much of the microbiome evidence also came from only one of the three groups.@@</span></span></div>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="207.322" data-e="213.346">Even so, the findings point towards a practical possibility that would once have sounded far-fetched.</span> <span class="s" data-t="213.346" data-e="228.317">If the gut is not merely a bystander but part of the machinery that ages the brain, then diet, probiotics or other interventions aimed at the microbiome might one day be tested as ways of protecting memory and mood <span class="kw" data-tip="prep. 在……之前；先于（熟词僻义：prep. 在……面前）">before</span> decline becomes irreversible.</span> <span class="s" data-t="228.317" data-e="234.818">Church's own centre is already exploring whether <span class="kw" data-tip="v. 以……为目标（熟词僻义：n. 目标）">targeting</span> gut health could support healthier brain ageing.@@</span></span></div>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="234.818" data-e="249.371">For patients, the study offers something more modest but still valuable: a reminder that the mind's decline is not a single event that begins at retirement, but a slow biological process whose earliest traces may already be written in the body.</span> <span class="s" data-t="249.371" data-e="257.542">Whether those traces can eventually be read, and perhaps rewritten, remains an open question, yet the direction of travel is now clear.@@</span></span></div>
+
+      <p class="muted">原文出处：本文根据 UCLA Health 在 eBioMedicine 发表的研究《Brain-gut crosstalk associated with brain ageing in young and mid-life adults: a multicohort cross-sectional study》（2026）及 ScienceDaily 报道（2026-10-04）改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lapse</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /læps/ · 美 /læps/</div>
+          <div class="wc-pos"><b>n.</b> （一时的）疏忽；失误（<b>v.</b> 失效）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Forgetting a name is an everyday <b>lapse</b>, not a diagnosis.</div>
+          <div class="wc-tr">忘记一个名字只是日常的小疏漏，并非某种诊断。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diverge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /daɪˈvɜːdʒ/ · 美 /daɪˈvɜːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 分歧；偏离</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Brain age can <b>diverge</b> sharply from chronological age.</div>
+          <div class="wc-tr">大脑年龄可能与真实年龄严重背离。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chronological</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkrɒnəˈlɒdʒɪkl/ · 美 /ˌkrɑːnəˈlɑːdʒɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 按时间顺序的；实际年龄的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Participants' brain age exceeded their <b>chronological</b> age.</div>
+          <div class="wc-tr">参与者的大脑年龄超过了他们的实际年龄。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scan</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /skæn/ · 美 /skæn/</div>
+          <div class="wc-pos"><b>n./v.</b> 扫描（检查）；<b>v.</b> 细看；浏览</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team examined <b>scans</b> from nearly 1,500 adults.</div>
+          <div class="wc-tr">研究团队检查了近 1500 名成年人的（脑部）扫描图像。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">estimate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈestɪmeɪt/ · 美 /ˈestɪmeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 估算；估计（<b>n.</b> 估价）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A computer model <b>estimates</b> each participant's age.</div>
+          <div class="wc-tr">一个计算机模型估算每位参与者的年龄。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">executive function</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪɡˈzekjətɪv ˈfʌŋkʃn/ · 美 /ɪɡˈzekjətɪv ˈfʌŋkʃn/</div>
+          <div class="wc-pos"><b>n.</b> 执行功能（大脑的计划、专注与自我控制能力）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Working memory and <b>executive function</b> declined together.</div>
+          <div class="wc-tr">工作记忆与执行功能同步下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">involve</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ɪnˈvɒlv/ · 美 /ɪnˈvɑːlv/</div>
+          <div class="wc-pos"><b>v.</b> 涉及；包含（熟词僻义：<b>adj.</b> 复杂的、纠缠的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The pattern <b>involved</b> regions linked to memory.</div>
+          <div class="wc-tr">这一模式涉及与记忆相关的脑区。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">microbiome</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmaɪkrəʊˈbaɪəʊm/ · 美 /ˌmaɪkroʊˈbaɪoʊm/</div>
+          <div class="wc-pos"><b>n.</b> 微生物组（群）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study linked brain ageing to the gut <b>microbiome</b>.</div>
+          <div class="wc-tr">该研究把大脑老化与肠道微生物组联系起来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">metabolite</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /məˈtæbəlaɪt/ · 美 /məˈtæbəlaɪt/</div>
+          <div class="wc-pos"><b>n.</b> 代谢产物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Several <b>metabolites</b> tracked with a higher brain age.</div>
+          <div class="wc-tr">若干代谢产物与更高的大脑年龄同步变化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">embrace</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ɪmˈbreɪs/ · 美 /ɪmˈbreɪs/</div>
+          <div class="wc-pos"><b>v.</b> 包括；涵盖（熟词僻义：<b>v.</b> 拥抱；欣然接受）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The pathways <b>embraced</b> immunity and blood vessels.</div>
+          <div class="wc-tr">这些通路涵盖了免疫与血管功能。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">drive</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /draɪv/ · 美 /draɪv/</div>
+          <div class="wc-pos"><b>v.</b> 驱动；推动（熟词僻义：<b>n.</b> 驱动器；车道）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It cannot show whether bacteria <b>drive</b> brain ageing.</div>
+          <div class="wc-tr">它无法证明细菌是否"驱动"了大脑老化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cross-sectional</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌkrɒs ˈsekʃənl/ · 美 /ˌkrɔːs ˈsekʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 横断面的（研究在同一时点观察不同对象）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The analysis was <b>cross-sectional</b>, not longitudinal.</div>
+          <div class="wc-tr">该分析是横断面研究，而非纵向追踪。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">establish</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈstæblɪʃ/ · 美 /ɪˈstæblɪʃ/</div>
+          <div class="wc-pos"><b>v.</b> 证实；确立；建立</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A single snapshot cannot <b>establish</b> cause and effect.</div>
+          <div class="wc-tr">单一时点的快照无法证实因果关系。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bystander</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbaɪstændə(r)/ · 美 /ˈbaɪstændər/</div>
+          <div class="wc-pos"><b>n.</b> 旁观者</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The gut may be no mere <b>bystander</b> in brain ageing.</div>
+          <div class="wc-tr">在大脑老化中，肠道或许并非单纯的旁观者。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">far-fetched</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌfɑː ˈfetʃt/ · 美 /ˌfɑːr ˈfetʃt/</div>
+          <div class="wc-pos"><b>adj.</b> 牵强的；难以置信的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The idea once sounded <b>far-fetched</b>.</div>
+          <div class="wc-tr">这个想法曾听起来十分牵强。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">target</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈtɑːɡɪt/ · 美 /ˈtɑːrɡɪt/</div>
+          <div class="wc-pos"><b>v.</b> 以……为目标；针对（熟词僻义：<b>n.</b> 靶子；目标）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Interventions might <b>target</b> gut health directly.</div>
+          <div class="wc-tr">干预措施或许可以直接针对肠道健康。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">irreversible</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪrɪˈvɜːsəbl/ · 美 /ˌɪrɪˈvɜːrsəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 不可逆的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Intervening early may matter before decline becomes <b>irreversible</b>.</div>
+          <div class="wc-tr">在衰退变得不可逆之前及早干预可能很关键。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">modest</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdɪst/ · 美 /ˈmɑːdɪst/</div>
+          <div class="wc-pos"><b>adj.</b> 有限的；适度的；谦逊的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study offers a <b>modest</b> but valuable lesson.</div>
+          <div class="wc-tr">这项研究给出了一个有限却有价值 的启示。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">replicate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈreplɪkeɪt/ · 美 /ˈreplɪkeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 重复（实验）；复制</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Independent groups must <b>replicate</b> the pattern in other cohorts.</div>
+          <div class="wc-tr">独立团队需在其他队列中重复验证这一模式。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">estimate a person's brain age from scans</span><span class="zh">从脑扫描中估算某人的大脑年龄</span></li>
+          <li><span class="en">diverge from the number of birthdays</span><span class="zh">与（其）生日数相背离</span></li>
+          <li><span class="en">an old-looking brain</span><span class="zh">一个"显老"的大脑</span></li>
+          <li><span class="en">set out to close that gap</span><span class="zh">着手填补这一空白</span></li>
+          <li><span class="en">how different areas of the brain communicate</span><span class="zh">大脑不同区域之间如何通信</span></li>
+          <li><span class="en">while a person is simply resting</span><span class="zh">在人静息的状态下</span></li>
+          <li><span class="en">hold information in mind</span><span class="zh">把信息保持在脑中</span></li>
+          <li><span class="en">self-referential thought</span><span class="zh">自我参照思维</span></li>
+          <li><span class="en">go a step further</span><span class="zh">更进一步</span></li>
+          <li><span class="en">be associated with</span><span class="zh">与……相关联</span></li>
+          <li><span class="en">a single snapshot of the gut</span><span class="zh">对肠道的一次性快照</span></li>
+          <li><span class="en">establish cause and effect</span><span class="zh">证实因果关系</span></li>
+          <li><span class="en">overstate what the evidence proves</span><span class="zh">夸大证据所能证明的东西</span></li>
+          <li><span class="en">a mere bystander</span><span class="zh">单纯的旁观者</span></li>
+          <li><span class="en">before decline becomes irreversible</span><span class="zh">在衰退变得不可逆之前</span></li>
+          <li><span class="en">the direction of travel is now clear</span><span class="zh">行进的方向已经清晰</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>引入：中年健忘这一日常现象，引出"大脑是否独立于身体而老化"的问题。</li>
+          <li>背景：脑龄可由扫描估算，"显老"的大脑与记忆、思维、情绪变差相关；但既往研究多局限于老人或患者。</li>
+          <li>方法：UCLA 扫描近 1500 名成年人，以静息态脑区通信模式建模估算年龄，得到"大脑老化指数"（BAI）。</li>
+          <li>发现：三组一致——BAI 越高，工作记忆与执行功能越差，抑郁症状越多，涉及记忆与自我参照相关脑区。</li>
+          <li>菌群线索：其中一组分析粪便样本，发现高 BAI 与特定肠道菌及代谢物（脂肪分子、胆固醇相关化合物、雌四醇偏低）相关。</li>
+          <li>专家引语：资深作者 Church 指出，大脑老化的生物学信号可能提前数十年即可检出。</li>
+          <li>局限：横断面设计无法确立因果，方向可能相反，菌群证据仅来自三组中的一组。</li>
+          <li>意义：若肠道是老化机器的一部分，饮食、益生菌等针对菌群的干预或可用于保护记忆与情绪。</li>
+          <li>结语：认知衰退不是退休后的单一事件，而是缓慢的生物过程，其痕迹或已写在身体里。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Forgetting where the keys are is such a common experience in middle age that most people treat it as a harmless quirk, yet it is precisely this kind of everyday lapse that has pushed neuroscientists to ask a sharper question.</div>
+        <div class="row"><b>主干：</b>Forgetting ... is such a common experience ... yet it is precisely this kind of everyday lapse that has pushed ...（such ... that 结果结构 + yet 转折 + it is ... that 强调句）</div>
+        <div class="row"><b>动名词作主语：</b>Forgetting where the keys are（动名词短语 + 其中嵌套 where 宾语从句）</div>
+        <div class="row"><b>such ... that 结果状语：</b>such a common experience ... that most people treat it as a harmless quirk</div>
+        <div class="row"><b>强调句：</b>it is precisely this kind of everyday lapse that has pushed neuroscientists to ask ...（强调主语 lapse）</div>
+        <div class="row"><b>考点：</b>动名词作主语；such ... that 结果状语；it is ... that 强调句型；push sb to do sth</div>
+        <div class="row tr"><b>译文：</b>忘记钥匙放在哪里，是中年如此普遍的经历，以至于大多数人都把它当成一个无害的小毛病；然而，正是这类日常的小疏漏，促使神经科学家提出了一个更尖锐的问题。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Rather than measuring the size of any single region, the team used a scanning approach that captures how different areas of the brain communicate with one another while a person is simply resting, and then built a computer model to estimate each participant's age from those communication patterns.</div>
+        <div class="row"><b>主干：</b>the team used a scanning approach ... and then built a computer model ...（并列谓语 used ... and built ...）</div>
+        <div class="row"><b>rather than 让步/取舍状语：</b>Rather than measuring the size of any single region（"不是测量……，而是……"）</div>
+        <div class="row"><b>定语从句：</b>that captures how different areas of the brain communicate with one another（修饰 approach；内含 how 宾语从句）</div>
+        <div class="row"><b>时间状语从句：</b>while a person is simply resting</div>
+        <div class="row"><b>不定式作目的状语：</b>to estimate each participant's age from those communication patterns</div>
+        <div class="row"><b>考点：</b>rather than 引导的取舍结构；that 定语从句；how 宾语从句；不定式作目的状语</div>
+        <div class="row tr"><b>译文：</b>研究团队没有去测量任何单一脑区的大小，而是采用了一种能够捕捉"人在静息状态下大脑不同区域之间如何通信"的扫描方法，随后构建计算机模型，依据这些通信模式估算每位参与者的年龄。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Participants whose brains appeared older than their chronological age generally performed worse on tests of working memory and executive function, the capacities that allow us to hold information in mind, stay focused, plan and organise.</div>
+        <div class="row"><b>主干：</b>Participants ... performed worse on tests（主语 + performed + 比较状语）</div>
+        <div class="row"><b>定语从句：</b>whose brains appeared older than their chronological age（修饰 Participants；内含比较结构 older than）</div>
+        <div class="row"><b>同位语：</b>the capacities（解释 working memory and executive function）</div>
+        <div class="row"><b>定语从句：</b>that allow us to hold information in mind, stay focused, plan and organise（allow sb to do 结构 + 四个并列动词）</div>
+        <div class="row"><b>考点：</b>whose 引导的定语从句；比较级；同位语；allow sb to do sth 及其并列不定式</div>
+        <div class="row tr"><b>译文：</b>大脑看起来比实际年龄更老的那些参与者，在工作记忆与执行功能的测试中通常表现更差——这些能力让我们能够把信息保持在脑中、保持专注、做出计划并条理分明。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The study was cross-sectional, capturing one moment rather than following people over years, so it cannot establish whether unusual bacteria drive brain ageing, whether an ageing brain somehow reshapes the gut, or whether some third factor quietly shapes both.</div>
+        <div class="row"><b>主干：</b>The study was cross-sectional ... so it cannot establish ...（主句 + so 结果状语从句）</div>
+        <div class="row"><b>现在分词作状语：</b>capturing one moment rather than following people over years（rather than 对比）</div>
+        <div class="row"><b>宾语从句（三个并列 whether）：</b>whether unusual bacteria drive brain ageing, whether an ageing brain somehow reshapes the gut, or whether some third factor quietly shapes both</div>
+        <div class="row"><b>考点：</b>现在分词作状语；rather than 取舍对比；三个由 whether 引导的并列宾语从句</div>
+        <div class="row tr"><b>译文：</b>该研究是横断面的，只捕捉了某一个时点，而没有对人们进行多年追踪，因此它无法确定：究竟是异常的细菌在驱动大脑老化，还是一个正在老化的大脑以某种方式重塑了肠道，抑或某个第三因素在悄然塑造着两者。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">If the gut is not merely a bystander but part of the machinery that ages the brain, then diet, probiotics or other interventions aimed at the microbiome might one day be tested as ways of protecting memory and mood before decline becomes irreversible.</div>
+        <div class="row"><b>主干：</b>diet, probiotics or other interventions ... might one day be tested（主语 + 情态动词被动 + 谓语）</div>
+        <div class="row"><b>条件状语从句：</b>If the gut is not merely a bystander but part of the machinery ...（not merely ... but ... 并列）</div>
+        <div class="row"><b>定语从句：</b>that ages the brain（修饰 the machinery）</div>
+        <div class="row"><b>过去分词作后置定语：</b>aimed at the microbiome（修饰 interventions）</div>
+        <div class="row"><b>介词短语作方式：</b>as ways of protecting memory and mood</div>
+        <div class="row"><b>时间状语从句：</b>before decline becomes irreversible</div>
+        <div class="row"><b>考点：</b>if 条件从句；not merely ... but ... 并列；that 定语从句；过去分词作后置定语；before 时间状语从句</div>
+        <div class="row tr"><b>译文：</b>如果肠道不仅仅是一个旁观者，而是"使大脑老化"那套机器的一部分，那么饮食、益生菌或其他针对微生物组的干预，有朝一日或许可以被检验为保护记忆与情绪的方法——前提是在衰退变得不可逆之前。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">忘记钥匙放在哪里，是中年阶段如此普遍的经历，以至于大多数人都把它当作一个无害的小毛病；然而正是这类日常疏漏，促使神经科学家提出了一个更尖锐的问题：大脑究竟是随着身体一起变老，还是在以自己独有的节奏变老？为了回答这个问题，研究者多年来一直尝试从脑部扫描中估算一个人的"大脑年龄"，而这个数字往往与其真实年龄并不一致。既往研究发现，大脑看起来比预期更"老"的人，往往记忆力更差、思维更慢、情绪波动更多。但几乎所有这些证据都来自老年人或已患有神经系统疾病的患者，留下一个明显的空白：在更年轻的、总体健康的人群中，一个"显老"的大脑是否同样重要？加州大学洛杉矶分校健康中心的一项新研究正是为填补这一空白而展开：他们检查了近 1500 名成年人分成三组的脑部扫描。研究团队并不去测量任何单一脑区的大小，而是采用一种能够捕捉"人在静息状态下大脑不同区域如何相互通信"的扫描方法，再据此建立计算机模型来估算每位参与者的年龄；估算出的"大脑年龄"与真实年龄之差，被命名为"大脑老化指数"（BAI）。三组结果高度一致，且并不乐观：大脑看起来比实际年龄更老的参与者，在工作记忆与执行功能测试中通常表现更差——工作记忆与执行功能正是让我们把信息保持在脑中、保持专注、制定计划并条理分明地组织事物的能力；BAI 更高的人还报告了更多抑郁症状，而这一模式反复涉及与记忆以及"自我参照思维"（即我们反思自身时所运用的心理过程）相关的脑区。在其中一组参与者中，研究团队更进一步，分析了粪便样本，追问大脑老化的差异是否反映在肠道之中。答案是肯定的：更高的 BAI 与特定的肠道细菌以及若干代谢产物相关，其中包括某些脂肪分子、一种与胆固醇相关的化合物，以及一种名为雌四醇的激素水平偏低；与这些信号相关的生物通路则涵盖免疫系统、血管功能、脑细胞之间的通信，以及细胞产生能量所用的机制。论文资深作者、UCLA 健康中心 Goodman-Luskin 微生物组中心联席主任 Arpana Church 博士表示："大脑老化并不是在我们变老时才突然开始的，其生物学信号或许在这之前数十年就可被侦测到。"她补充说，通过把早期的大脑变化与肠道微生物组及其代谢物联系起来，团队正开始识别一些通路，它们或许有助于解释哪些人可能面临风险，更重要的是，医生可以在哪里进行干预。研究者也谨慎地不夸大"肠道快照"所能证明的东西：该研究是横断面的，只捕捉了一个时点而非多年追踪，因此无法确定究竟是异常细菌在"驱动"大脑老化，还是老化的大脑以某种方式重塑了肠道，抑或某个第三因素同时塑造了两者；而且微生物组的证据也仅来自三组中的一组。即便如此，这些发现指向了一种曾经听起来十分牵强的现实可能：如果肠道不仅仅是一个旁观者，而是"使大脑老化"那套机器的一部分，那么饮食、益生菌或其他针对微生物组的干预，有朝一日或许会被检验为保护记忆与情绪的方法——前提是在衰退变得不可逆之前。Church 所在的中心已经在探索"针对性改善肠道健康"能否支持更健康的大脑老化。对患者而言，这项研究给出的启示更为有限，却仍有价值：它提醒我们，心智的衰退并不是从退休那一刻才开始的一次性事件，而是一个缓慢的生物学过程，其最早的痕迹或许已经写在身体之中。这些痕迹最终能否被读取、甚至被改写，仍是一个开放的问题，但前行的方向如今已清晰可见。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 7 段，作者为什么强调该研究"是横断面的"？如果改成纵向追踪研究，能额外回答哪些问题、又仍无法回答哪些问题？</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"If the gut is not merely a bystander but part of the machinery that ages the brain, then ... might one day be tested as ways of ..."</span>（If 条件从句 + not merely ... but ... 并列 + 被动语态）的句式，围绕「睡眠」「运动」或「饮食」与健康的关系写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="110" y="42" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 引入：中年健忘引出"大脑独立老化"之问</text>
+
+          <rect x="110" y="94" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 背景：脑龄可测，"显老"关联更差记忆与情绪</text>
+
+          <rect x="110" y="146" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 方法：近 1500 人静息态扫描，构建大脑老化指数</text>
+
+          <rect x="110" y="198" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 发现：指数越高，工作记忆与执行功能越差</text>
+
+          <rect x="110" y="250" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 菌群线索：肠道细菌与代谢物随大脑年龄变化</text>
+
+          <rect x="110" y="302" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 专家引语：生物学信号或提前数十年可检出</text>
+
+          <rect x="110" y="354" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 局限：横断面设计无法确立因果，证据仅一组</text>
+
+          <rect x="110" y="406" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 意义：针对菌群的干预或可保护记忆与情绪</text>
+
+          <rect x="110" y="458" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 结语：衰退是缓慢过程，痕迹或已写在身体里</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象引入 → 研究背景 → 方法设计 → 核心发现 → 菌群线索 → 专家引语 → 研究局限 → 意义启示 → 总结升华」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：UCLA Health / eBioMedicine / ScienceDaily 公开资料（2026-10-05 整理）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
