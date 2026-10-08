@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 同样的 300 卡路里，为何身体反应不同：一项随机对照试验把"营养配比"与"加工本身"分开</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Nutrition · 人与自我 / 营养 / 代谢 / 神经科学</div>
+  <h1>同样的 300 卡路里，为何身体反应不同：一项随机对照试验把"营养配比"与"加工本身"分开</h1>
+  <div class="deck">Two meals were matched within one per cent on every nutrient — yet a randomized crossover trial found they behaved differently in the body and the brain, hinting that how food is made may matter as much as what it contains</div>
+  <div class="byline"><span><b>来源</b> Nature Metabolism（2026 年 10 月 5 日）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-08</span><span><b>难度</b> 难</span><span><b>词数</b> 约 515 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-08.jpg" alt="超加工食品与身体代谢、大脑奖赏回路（配图）">
+    <figcaption>配图：NOVA 食品加工分类（未加工 / 加工配料 / 加工食品 / 超加工食品）——本文研究据此界定"超加工餐"（图片来源：Science News Explores，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>长久以来，营养学的默认前提是：只要 calories、脂肪、碳水、蛋白质相当，两餐在体内就该"表现一致"。但 2026 年 10 月 5 日发表在《自然·代谢》（Nature Metabolism）上的一项随机对照交叉试验，把这个前提本身变成了一根被研究的变量。美国弗吉尼亚理工大学生物医学研究所 DiFeliceantonio 实验室（第一作者 Zach Hutelin）招募了 57 名 18—45 岁的健康成年人，让受试者在不同日子里分别吃下"同样的 300 卡"——一份超加工餐、一份最低限度加工餐，两者在碳水、脂肪、蛋白质、热量、水分、盐与重量上被校准到相差不超过约 1%，连营养标签都几乎一模一样。结果令人意外：代谢的每一项指标都出现了差异；超加工餐带来更强的胰岛素反应、让血糖略高且持续略久、并让身体在消耗更多能量时反而燃烧更少的碳水。更耐人寻味的是，在另一天的脑成像中，受试者看到两类营养相当的食物图片时，大脑奖赏回路（腹侧纹状体、伏隔核）的反应差异，竟与餐后碳水燃烧的差异"同向同步"。本文循"预设前提—实验设计—代谢发现—大脑证据—意义—争议与局限—结论"的链条，追问一个正在重塑营养科学的问题：决定健康的，也许不只是食物里有什么，还有它被怎样制造出来。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-08.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.708">Nutrition science tends to assume that two meals supplying the same calories, fat, carbohydrate and protein will behave much the same way inside the body.</span> <span class="s" data-t="9.708" data-e="19.645">A tightly controlled new experiment suggests that this tidy equation leaves out a variable that may <span class="kw" data-tip="v. 要紧；有重大影响（熟词僻义：n. 事情、物质）">matter</span> enormously: how heavily the food itself has been processed.</span></span></div>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.645" data-e="35.408">Published on 5 October 2026 in Nature Metabolism, the study was led by Alexandra DiFeliceantonio's laboratory at Virginia Tech's Fralin Biomedical Research Institute, with doctoral researcher Zach Hutelin as first author.</span> <span class="s" data-t="35.408" data-e="48.118">Rather than surveying diets in the wild, the team ran a <span class="kw" data-tip="n. 交叉试验（同一批受试者先后接受两种处理，互为对照）">crossover</span> trial in which 57 healthy adults aged 18 to 45 each ate a minimally processed meal and an <span class="kw" data-tip="adj. 超加工的（NOVA 分类中指经重度工业加工、含多种添加剂的食品）">ultraprocessed</span> one on separate days.</span> <span class="s" data-t="48.118" data-e="53.632">Thirty-two completed both the metabolic sessions and a further round of brain imaging.</span></span></div>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="53.632" data-e="67.053">The meals were engineered to be as alike as possible, with carbohydrate, fat, protein, calories, water, salt and weight all <span class="kw" data-tip="v. 使保持（某种状态）（熟词僻义：握住、举行）">held</span> equal to within about 1 per cent, so that their labels would look virtually identical.</span> <span class="s" data-t="67.053" data-e="82.053">The ultraprocessed version combined a bite of peanut-butter-and-jelly sandwich, deli turkey, veggie chips, a cookie, cereal and instant mashed potatoes; the minimally processed plate offered banana, dried cranberries, cheese and egg.</span></span></div>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="82.053" data-e="91.919">To capture metabolism, participants arrived after <span class="kw" data-tip="v. 禁食（熟词僻义：adj. 快的、adv. 迅速地）">fasting</span> overnight and lay inside a sealed, airtight chamber that measures how much energy the body expends.</span> <span class="s" data-t="91.919" data-e="103.566">Blood was drawn immediately after eating and six more times over the next three hours, tracking <span class="kw" data-tip="n. 胰岛素（调节血糖的关键激素）">insulin</span>, blood sugar, energy expenditure and the rate at which the body burned <span class="kw" data-tip="n. 碳水化合物；糖类">carbohydrate</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="103.566" data-e="108.355">The results startled the researchers: every <span class="kw" data-tip="adj. 新陈代谢的；代谢的（名词为 metabolism）">metabolic</span> measure differed.</span> <span class="s" data-t="108.355" data-e="120.342">The ultraprocessed meal triggered a far larger insulin response, left blood sugar slightly higher for slightly longer, and pushed the body to burn less carbohydrate while expending more energy overall.</span></span></div>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="120.342" data-e="131.709">On a separate day the same volunteers viewed photographs of nutritionally matched processed and unprocessed foods inside an MRI scanner, reporting what they would be willing to pay for each.</span> <span class="s" data-t="131.709" data-e="144.145">Differences in how the body had burned carbohydrate after a meal tracked differences in how <span class="kw" data-tip="n. （神经科学）奖赏；犒赏（常见义：报酬、奖励）">reward</span> regions of the brain, including the ventral striatum and <span class="kw" data-tip="n. 伏隔核（奖赏与动机回路的关键节点）">nucleus accumbens</span>, responded to pictures of food.</span></span></div>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="144.145" data-e="153.038">Crucially, participants did not say they would pay more for either kind of food, implying that the effect is not simply a matter of conscious desire.</span> <span class="s" data-t="153.038" data-e="161.697">The work hints instead that processing itself, quite apart from nutrient content, can <span class="kw" data-tip="v. 轻推；悄然推动（此处指不知不觉地使……发生变化）">nudge</span> the body and the brain into different states.</span></span></div>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="161.697" data-e="174.906">The finding speaks to a long-running argument, since ultraprocessed foods now supply more than half of the average American's daily calories, yet the mechanisms linking them to <span class="kw" data-tip="n. 肥胖（症）">obesity</span> and disease remain fiercely debated.</span> <span class="s" data-t="174.906" data-e="186.25">The authors are <span class="kw" data-tip="adj. 坦率的；直言不讳的">candid</span> about the limits of one set of matched 300-calorie meals tested in young, healthy adults, and note that the two meals differed in their protein sources and <span class="kw" data-tip="n. 添加剂；添加物">additives</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="186.25" data-e="198.039">For Carlos Monteiro of the University of São Paulo, whose NOVA classification underpins the field, the brain data are what make the study valuable, because the brain ultimately <span class="kw" data-tip="v. 支配；决定（此处指调控饮食行为）">governs</span> eating.</span> <span class="s" data-t="198.039" data-e="203.737">The broader lesson is that how food is made may be as worth studying as what it contains.</span></span></div>
+
+      <p class="muted">原文出处：本文根据 Nature Metabolism 论文《Metabolic and neural responses to ultraprocessed foods: a randomized, controlled, crossover study》（Zach Hutelin et al.；Virginia Tech, Fralin Biomedical Research Institute；Nature Metabolism, published online 5 October 2026, DOI: 10.1038/s42255-026-01619-4）改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ultraprocessed</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌʌltrəˈprəʊsest/ · 美 /ˌʌltrəˈprɑːsest/</div>
+          <div class="wc-pos"><b>adj.</b> 超加工的（经重度工业加工、含多种添加剂的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>ultraprocessed</b> meal contained far more additives than the fresh one.</div>
+          <div class="wc-tr">那份超加工餐所含的添加剂远多于新鲜餐食。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">crossover</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkrɒsəʊvə(r)/ · 美 /ˈkrɔːsoʊvər/</div>
+          <div class="wc-pos"><b>n./adj.</b> 交叉（试验）；（同一批受试者先后接受两种处理）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In a <b>crossover</b> trial, every volunteer serves as his or her own control.</div>
+          <div class="wc-tr">在交叉试验中，每位受试者都充当自己的对照。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">metabolic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmetəˈbɒlɪk/ · 美 /ˌmetəˈbɑːlɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 新陈代谢的；代谢的（名词 metabolism）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Every <b>metabolic</b> measure differed between the two meals.</div>
+          <div class="wc-tr">两餐之间，几乎每一项代谢指标都不相同。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recruit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈkruːt/ · 美 /rɪˈkruːt/</div>
+          <div class="wc-pos"><b>v.</b> 招募；征募（受试者、员工等）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team <b>recruited</b> 57 healthy adults aged 18 to 45.</div>
+          <div class="wc-tr">研究团队招募了 57 名 18 至 45 岁的健康成年人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">volunteer</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌvɒlənˈtɪə(r)/ · 美 /ˌvɑːlənˈtɪr/</div>
+          <div class="wc-pos"><b>n.</b> 志愿者；<b>v.</b> 自愿参加</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Thirty-two <b>volunteers</b> completed both testing sessions.</div>
+          <div class="wc-tr">三十二名志愿者完成了全部两轮测试。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diet</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈdaɪət/ · 美 /ˈdaɪət/</div>
+          <div class="wc-pos"><b>n.</b> 日常饮食；饮食结构</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Rather than surveying diets in the wild, the team ran a laboratory trial.</div>
+          <div class="wc-tr">团队没有去调查现实中的日常饮食，而是开展了实验室试验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fast</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /fɑːst/ · 美 /fæst/</div>
+          <div class="wc-pos"><b>v.</b> 禁食；斋戒（熟词僻义：<b>adj.</b> 快的 <b>adv.</b> 迅速地）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Participants arrived after <b>fasting</b> overnight.</div>
+          <div class="wc-tr">受试者都是在禁食一整夜之后来到测试现场的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">match</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /mætʃ/ · 美 /mætʃ/</div>
+          <div class="wc-pos"><b>v.</b> 使……（在数量、程度等方面）相配；配对</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The two meals were <b>matched</b> within one per cent on every nutrient.</div>
+          <div class="wc-tr">两餐在每一种营养素上的差异都被控制在 1% 以内。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">airtight</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈeətaɪt/ · 美 /ˈertaɪt/</div>
+          <div class="wc-pos"><b>adj.</b> 密封的；不透气的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They lay inside a sealed, airtight chamber to measure energy use.</div>
+          <div class="wc-tr">他们躺在一个密闭不透气的代谢舱里，以测量能量消耗。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">expenditure</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪkˈspendɪtʃə(r)/ · 美 /ɪkˈspendɪtʃər/</div>
+          <div class="wc-pos"><b>n.</b> 消耗；支出（此处指能量消耗）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The researchers tracked energy <b>expenditure</b> for three hours.</div>
+          <div class="wc-tr">研究者连续三小时追踪能量的消耗情况。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">insulin</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɪnsjəlɪn/ · 美 /ˈɪnsəlɪn/</div>
+          <div class="wc-pos"><b>n.</b> 胰岛素（调节血糖的关键激素）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The ultraprocessed meal provoked a far larger <b>insulin</b> response.</div>
+          <div class="wc-tr">超加工餐引发了强得多的胰岛素反应。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">carbohydrate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkɑːbəʊˈhaɪdreɪt/ · 美 /ˌkɑːrboʊˈhaɪdreɪt/</div>
+          <div class="wc-pos"><b>n.</b> 碳水化合物；糖类</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The body burned less <b>carbohydrate</b> after the processed meal.</div>
+          <div class="wc-tr">吃完超加工餐后，身体燃烧的碳水更少。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reward</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈwɔːd/ · 美 /rɪˈwɔːrd/</div>
+          <div class="wc-pos"><b>n.</b> 奖赏；犒赏（神经科学中指动机—奖赏回路）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The pictures activated <b>reward</b> regions of the brain.</div>
+          <div class="wc-tr">这些图片激活了大脑的奖赏相关脑区。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nucleus accumbens</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈnjuːkliəs əˈkʌmbənz/ · 美 /ˈnuːkliəs əˈkʌmbənz/</div>
+          <div class="wc-pos"><b>n.</b> 伏隔核（奖赏与动机回路的关键节点）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Activity in the <b>nucleus accumbens</b> tracked the metabolic difference.</div>
+          <div class="wc-tr">伏隔核的活跃程度与代谢差异存在关联。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">obesity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əʊˈbiːsəti/ · 美 /oʊˈbiːsəti/</div>
+          <div class="wc-pos"><b>n.</b> 肥胖（症）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The mechanisms linking such foods to <b>obesity</b> are still debated.</div>
+          <div class="wc-tr">这类食物与肥胖之间的关联机制仍存争议。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">additive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈædɪtɪv/ · 美 /ˈædɪtɪv/</div>
+          <div class="wc-pos"><b>n.</b> 添加剂；添加物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The processed meal contained more commercial <b>additives</b>.</div>
+          <div class="wc-tr">那份加工餐含有更多商业化添加剂。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">candid</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkændɪd/ · 美 /ˈkændɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 坦率的；直言不讳的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The authors are <b>candid</b> about the study's limitations.</div>
+          <div class="wc-tr">作者对研究的局限直言不讳。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nudge</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /nʌdʒ/ · 美 /nʌdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 轻推；（悄然地）推动</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Processing may <b>nudge</b> the body into a different state.</div>
+          <div class="wc-tr">加工过程或许会把身体悄然推入另一种状态。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">govern</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɡʌvn/ · 美 /ˈɡʌvərn/</div>
+          <div class="wc-pos"><b>v.</b> 支配；决定；调控</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brain ultimately <b>governs</b> eating behaviour.</div>
+          <div class="wc-tr">大脑最终调控着进食行为。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">matter</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈmætə(r)/ · 美 /ˈmætər/</div>
+          <div class="wc-pos"><b>v.</b> 要紧；有重大影响（熟词僻义：<b>n.</b> 事情、物质）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A variable the equation leaves out may <b>matter</b> enormously.</div>
+          <div class="wc-tr">这个被公式遗漏的变量，也许关系重大。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> 使保持（某种状态）（熟词僻义：握住、举行）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Every nutrient was <b>held</b> equal between the two meals.</div>
+          <div class="wc-tr">两餐之间的每一种营养素都被保持在相同水平。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">rest on a simple assumption</span><span class="zh">建立在一条简单的假设之上</span></li>
+          <li><span class="en">leave out a crucial variable</span><span class="zh">遗漏了一个关键变量</span></li>
+          <li><span class="en">a tightly controlled crossover trial</span><span class="zh">一项控制严格的交叉试验</span></li>
+          <li><span class="en">survey diets in the wild</span><span class="zh">调查现实中的真实饮食</span></li>
+          <li><span class="en">on separate days</span><span class="zh">在不同的日子里（分别进行）</span></li>
+          <li><span class="en">be engineered to be as alike as possible</span><span class="zh">被设计得尽可能相似</span></li>
+          <li><span class="en">held equal to within about 1 per cent</span><span class="zh">被保持在约 1% 的差异之内</span></li>
+          <li><span class="en">arrive after fasting overnight</span><span class="zh">禁食一整夜后抵达</span></li>
+          <li><span class="en">measure how much energy the body expends</span><span class="zh">测量身体消耗了多少能量</span></li>
+          <li><span class="en">the rate at which the body burned carbohydrate</span><span class="zh">身体燃烧碳水化合物的速率</span></li>
+          <li><span class="en">startle the researchers</span><span class="zh">让研究者大为吃惊</span></li>
+          <li><span class="en">expend more energy overall</span><span class="zh">总体上消耗更多能量</span></li>
+          <li><span class="en">be willing to pay for</span><span class="zh">愿意为……付多少钱</span></li>
+          <li><span class="en">apart from nutrient content</span><span class="zh">撇开营养成分不谈</span></li>
+          <li><span class="en">speak to a long-running argument</span><span class="zh">触及一场旷日持久的争论</span></li>
+          <li><span class="en">remain fiercely debated</span><span class="zh">依然争论激烈</span></li>
+          <li><span class="en">how food is made may be as worth studying as what it contains</span><span class="zh">食物如何被制造，或许和它含有什么一样值得研究</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>预设前提：同等营养的两餐在体内就该"表现一致"，但这个等式可能漏掉了"加工"这一变量。</li>
+          <li>研究概况：2026 年 10 月发表于《自然·代谢》，弗吉尼亚理工大学团队做了一项严格控制的交叉试验。</li>
+          <li>实验设计：两餐在全部营养素与重量上校准到 1% 以内，几乎"标签相同"。</li>
+          <li>测量方法：禁食过夜、代谢舱测能量消耗，三小时内七次抽血测胰岛素、血糖与碳水燃烧速率。</li>
+          <li>核心发现：每一项代谢指标都不同；超加工餐胰岛素反应更强、血糖更高更久、燃碳更少而耗能更多。</li>
+          <li>大脑证据：脑成像显示奖赏回路反应差异与餐后碳水燃烧差异同向，二者相互关联。</li>
+          <li>关键细节：受试者并未表示愿为任一类食物多付钱，说明效应不限于主观欲望。</li>
+          <li>争议与局限：超加工食品占美国人日均热量过半，机制仍激烈争论；样本为年轻健康成人、餐食仅一组。</li>
+          <li>结论：蒙泰罗强调大脑数据是亮点；更广义的启示是——食物"如何制作"与"含有什么"同样值得研究。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Rather than surveying diets in the wild, the team ran a crossover trial in which 57 healthy adults aged 18 to 45 each ate a minimally processed meal and an ultraprocessed one on separate days.</div>
+        <div class="row"><b>主干：</b>the team ran a crossover trial（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>rather than 状语：</b>Rather than surveying diets in the wild（"与其去调查现实中的饮食，不如……"，置于句首表取舍）</div>
+        <div class="row"><b>介词 + 定语从句：</b>in which 57 healthy adults ... ate a minimally processed meal and an ultraprocessed one（修饰 a crossover trial；<b>in which = where</b>）</div>
+        <div class="row"><b>后置定语与替代：</b>aged 18 to 45（修饰 adults）；an ultraprocessed one 中 <b>one</b> 替代 meal</div>
+        <div class="row"><b>考点：</b>rather than 表取舍；"介词 + which"定语从句；one 作替代词避免重复；each 作同位语强调"每一个人"</div>
+        <div class="row tr"><b>译文：</b>团队没有去调查现实生活中的真实饮食，而是开展了一项交叉试验：57 名 18 至 45 岁的健康成年人在不同的日子分别吃了一顿最低限度加工餐和一顿超加工餐。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The meals were engineered to be as alike as possible, with carbohydrate, fat, protein, calories, water, salt and weight all held equal to within about 1 per cent, so that their labels would look virtually identical.</div>
+        <div class="row"><b>主干：</b>The meals were engineered to be as alike as possible（被动语态 + as ... as possible）</div>
+        <div class="row"><b>with 复合结构：</b>with carbohydrate, fat, protein, calories, water, salt and weight all held equal to within about 1 per cent（"with + 宾语 + 过去分词"，表伴随；held 为 hold 的过去分词，"使保持"）</div>
+        <div class="row"><b>结果状语从句：</b>so that their labels would look virtually identical（"以至于标签看起来几乎一模一样"）</div>
+        <div class="row"><b>考点：</b>as ... as possible 结构；with 复合结构作状语；so that 引导结果状语从句；hold 作"使保持"的熟词僻义</div>
+        <div class="row tr"><b>译文：</b>这两餐被设计得尽可能相似——碳水、脂肪、蛋白质、热量、水分、盐与重量都被控制在约 1% 的差异之内，以至于它们的营养标签看起来几乎毫无二致。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Differences in how the body had burned carbohydrate after a meal tracked differences in how reward regions of the brain, including the ventral striatum and nucleus accumbens, responded to pictures of food.</div>
+        <div class="row"><b>主干：</b>Differences ... tracked differences（主语 + 谓语 + 宾语，track 此处作"与……对应/同向变化"）</div>
+        <div class="row"><b>介词 + 宾语从句（一）：</b>in how the body had burned carbohydrate after a meal（修饰第一个 Differences）</div>
+        <div class="row"><b>介词 + 宾语从句（二）：</b>in how reward regions of the brain ... responded to pictures of food（修饰第二个 differences）</div>
+        <div class="row"><b>插入成分：</b>including the ventral striatum and nucleus accumbens（对 reward regions 补充举例）</div>
+        <div class="row"><b>考点：</b>how 引导的名词性从句作介词宾语；过去完成时 had burned 表"餐后先行发生"；插入语后置举例</div>
+        <div class="row tr"><b>译文：</b>餐后身体燃烧碳水化合物的差异，与大脑奖赏相关脑区（包括腹侧纹状体和伏隔核）对食物图片的反应差异，呈现出同向的变化。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The finding speaks to a long-running argument, since ultraprocessed foods now supply more than half of the average American's daily calories, yet the mechanisms linking them to obesity and disease remain fiercely debated.</div>
+        <div class="row"><b>主干：</b>The finding speaks to a long-running argument（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>原因状语从句：</b>since ultraprocessed foods now supply more than half of the average American's daily calories（"既然、因为"）</div>
+        <div class="row"><b>yet 并列转折：</b>yet the mechanisms ... remain fiercely debated（与前半句构成对比转折）</div>
+        <div class="row"><b>现在分词作定语：</b>linking them to obesity and disease（修饰 the mechanisms）</div>
+        <div class="row"><b>考点：</b>since 引导原因状语从句；yet 作并列连词表转折；现在分词短语作后置定语；speak to 意为"涉及、印证"</div>
+        <div class="row tr"><b>译文：</b>这一发现触及一场旷日持久的争论：既然超加工食品如今提供了普通美国人每日热量的一半以上，那么把它们与肥胖和疾病联系起来的机制，却仍处在激烈的争论之中。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">For Carlos Monteiro of the University of São Paulo, whose NOVA classification underpins the field, the brain data are what make the study valuable, because the brain ultimately governs eating.</div>
+        <div class="row"><b>主干：</b>the brain data are what make the study valuable（主语 + 系动词 + 表语从句）</div>
+        <div class="row"><b>介词短语作状语：</b>For Carlos Monteiro of the University of São Paulo（"在……看来"，引出评价者）</div>
+        <div class="row"><b>非限制性定语从句：</b>whose NOVA classification underpins the field（修饰 Monteiro）</div>
+        <div class="row"><b>表语从句：</b>what make the study valuable（what 引导，且在从句中作主语）</div>
+        <div class="row"><b>原因状语从句：</b>because the brain ultimately governs eating</div>
+        <div class="row"><b>考点：</b>whose 引导定语从句；what 引导表语从句并在从句中充当主语；For sb 表"在某人看来"</div>
+        <div class="row tr"><b>译文：</b>在圣保罗大学的卡洛斯·蒙泰罗（其 NOVA 食品分类体系为该领域奠定基础）看来，真正让这项研究有价值的是那些大脑数据，因为归根结底，是大脑在调控进食。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">营养学长期默认一条简单的假设：只要两餐提供相同的热量、脂肪、碳水化合物和蛋白质，它们在体内的作用就应当大体相同。然而一项控制极严的新实验提示，这个整洁的等式漏掉了一个或许关系重大的变量——食物本身被加工的程度。2026 年 10 月 5 日发表在《自然·代谢》上的这项研究，由弗吉尼亚理工大学生物医学研究所的 DiFeliceantonio 实验室领衔，博士研究员 Zach Hutelin 为第一作者。团队没有像通常那样去调查现实生活中的饮食，而是开展了一项严格控制的交叉试验：57 名 18 至 45 岁的健康成年人，在不同的日子里分别吃下一顿"最低限度加工餐"和一顿"超加工餐"；其中 32 人完成了全部的代谢测试与另一轮脑部成像。两餐被设计得尽可能相似——碳水化合物、脂肪、蛋白质、热量、水分、盐与总重量都被控制在约 1% 的差异之内，营养标签几乎一模一样。超加工那顿由一小份花生酱果酱三明治、熟食火鸡、蔬菜脆片、一块饼干、麦片和速食土豆泥组成，而最低限度加工那顿则提供了香蕉片、蔓越莓干、奶酪和鸡蛋。为了测量代谢，受试者禁食一整夜后进入一个密闭不透气的代谢舱，以测量身体消耗了多少能量；进食后立即抽血，并在随后三小时内再抽六次，以追踪胰岛素、血糖、能量消耗以及身体燃烧碳水化合物的速率。结果令研究者大感意外：几乎每一项代谢指标都不相同。超加工餐引发了强得多的胰岛素反应，让血糖略高且持续略久，并促使身体在总体上消耗更多能量的同时，反而燃烧更少的碳水化合物。更耐人寻味的是大脑这一侧：在另一天，同一批志愿者躺在核磁共振扫描仪中观看营养配比相当的加工与未加工食物图片，并报告自己愿意为每种食物付多少钱；结果显示，餐后身体燃烧碳水化合物的差异，与大脑奖赏相关脑区（包括腹侧纹状体和伏隔核）对食物图片的反应差异，呈现出同向的对应关系。关键在于，受试者并未表示愿意为任何一类食物多付钱，这说明效应并不只是主观欲望的问题；研究反而提示，撇开营养成分不谈，加工过程本身就能把身体和大脑悄然推入不同的状态。这一发现触及一场旷日持久的争论：超加工食品如今提供了普通美国人每日热量的一半以上，但把它们与肥胖和疾病联系起来的机制，仍处在激烈争论之中。作者对研究的局限直言不讳：这只是一组被匹配到 300 卡路里的餐食，受试者是年轻健康人群，而且两餐在蛋白质来源和添加剂上也并不完全相同。在圣保罗大学的蒙泰罗看来（其 NOVA 分类体系为该领域奠定基础），真正让这项研究有价值的是那些大脑数据，因为归根结底是大脑在调控进食。更广义的启示或许是：食物"如何被制作"，可能和它"含有什么"一样值得研究。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6 段，作者为什么强调"代谢指标的差异"与"大脑奖赏回路的差异"之间的对应关系？这一对应关系若成立，会如何改变人们对"超加工食品为何让人吃得更多"的解释？</div>
+      <div class="q"><b>仿写题：</b>仿照第 3 段 <span style="font-family:Georgia,serif;font-style:italic">"The meals were engineered to be as alike as possible, with ... all held equal to within about 1 per cent, so that ..."</span>（as ... as possible + with 复合结构 + so that 结果状语从句）的句式，围绕「公平的实验设计」「控制变量」或「标准化流程」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="110" y="42" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 预设：同等营养的两餐"应当"表现一致，或漏掉"加工"变量</text>
+
+          <rect x="110" y="94" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 研究：弗吉尼亚理工大学团队做严格控制的交叉试验</text>
+
+          <rect x="110" y="146" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 设计：两餐营养素与重量校准到 1% 以内，标签几乎相同</text>
+
+          <rect x="110" y="198" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 测量：代谢舱 + 三小时七次抽血，追踪代谢全程</text>
+
+          <rect x="110" y="250" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 发现：代谢指标全不同，胰岛素更强、燃碳更少</text>
+
+          <rect x="110" y="302" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 大脑：奖赏回路反应与代谢差异同向对应</text>
+
+          <rect x="110" y="354" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 关键：受试者并未愿多付钱，效应不限于主观欲望</text>
+
+          <rect x="110" y="406" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 争议与局限：机制仍激烈争论，样本与餐食有限</text>
+
+          <rect x="110" y="458" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 结论：食物"如何制作"与"含有什么"同样值得研究</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「预设前提 → 研究概况 → 实验设计 → 测量方法 → 核心发现 → 大脑证据 → 关键细节 → 争议与局限 → 总结升华」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Metabolism 论文《Metabolic and neural responses to ultraprocessed foods: a randomized, controlled, crossover study》（Hutelin et al., 2026）公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

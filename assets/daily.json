@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-10-08",
+      "en": "A tightly controlled new experiment suggests that this tidy equation leaves out a variable that may matter enormously: how heavily the food itself has been processed.",
+      "zh": "一项控制极严的新实验提示，这个整洁的等式漏掉了一个或许关系重大的变量——食物本身被加工的程度。",
+      "src": "外刊精读 · 超加工食品与身体反应（2026-10-08）",
+      "key": "matter",
+      "keyZh": "要紧；有重大影响（熟词僻义）",
+      "tip": "matter 在此作动词，意为「要紧、关系重大」，而非名词「事情、物质」——典型的熟词僻义。leaves out 意为「遗漏、略去」；冒号之后是对 variable 的解释说明，即「加工的程度」。",
+      "tags": [
+        "营养",
+        "代谢",
+        "神经科学"
+      ]
+    },
+    {
       "date": "2026-10-04",
       "en": "Beneath a thin layer of vegetation, the Arctic holds one of the planet's largest stores of carbon — frozen, quiet, and, until recently, safely sealed away.",
       "zh": "在薄薄一层植被之下，北极封存着地球上最大的碳库之一——它冻结着、静默着，直到不久之前，还被安稳地锁在其中。",
