@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 男过 35 岁、女过 55 岁：一项 10 万人的研究，给男女各建了一座"衰老时钟"</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Demography · 人与社会 / 人口 / 衰老 / 公共卫生</div>
+  <h1>男过 35 岁、女过 55 岁：一项 10 万人的研究，给男女各建了一座"衰老时钟"</h1>
+  <div class="deck">It takes 172 routine clinical tests, pooled across more than 104,000 adults, to reveal how fast a body is ageing — and the answer turns out to differ sharply by sex, with two distinct midlife turning points</div>
+  <div class="byline"><span><b>来源</b> Nature Aging（2026 年 8 月 25 日）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-09</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 477 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-09.jpg" alt="男女两性衰老时钟与两次代谢转折（配图）">
+    <figcaption>配图：男女两性"衰老时钟"的两次代谢转折——男性集中在 35—45 岁、女性集中在 55—65 岁（信息图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>衰老常被想象成一条平滑下滑的曲线，人人都以大致相同的速度老去；但 2026 年 8 月 25 日发表在《自然·衰老》（Nature Aging）上的一项研究，把这条曲线拆成了两条。由中国科学院北京基因组研究所（国家生物信息中心）张维绮、刘光慧、赵国光等领衔的团队，整合中国三个地区共 104,208 名 18—98 岁成年人的 172 项常规临床检测指标——覆盖代谢、免疫、肝肾功能与肿瘤标志物——构建了男女各自的"临床衰老时钟"。结果显示：男性的代谢转折来得早，集中在 35—45 岁，体重指数、甘油三酯与胆固醇显著上升；女性的转折出现在 55—65 岁，与绝经期高度重合，促卵泡激素与促黄体生成素大幅升高，血脂谱同步变差；而男女的生理差异在晚年又逐渐收窄。研究并未止步于描述：某些代谢物与肿瘤标志物被证实会随年龄累积、与加速衰老同步，细胞实验更提示它们或许"主动"推动衰老；而二甲双胍能缓解高糖诱导的内皮衰老、把小鼠从高脂饮食换回正常饮食也能改善肝脏的衰老特征，说明部分损伤并非不可逆。本文循"背景—方法—男女双转折—机制—可逆性—意义—局限"的链条，追问一个正在重塑老年医学的问题：既然衰老可以被常规体检"测量"，那么"何时干预"或许和"是否衰老"同样重要。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-09.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="7.456">Ageing is usually imagined as a single, gradual <span class="kw" data-tip="n. 衰退；下降（此处指身体的缓慢退化）">decline</span> that unfolds at roughly the same pace in every person.</span> <span class="s" data-t="7.456" data-e="16.303">A <span class="kw" data-tip="adj. 大范围的；影响广泛的">sweeping</span> new analysis, however, argues that the body keeps several <span class="kw" data-tip="adj. 截然不同的；各自独立的">distinct</span> clocks, and that they tick at very different speeds in men and women.</span></span></div>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="16.303" data-e="31.632">The work, published on 25 August 2026 in Nature Aging, was led by researchers at the China National Center for Bioinformation and the Chinese Academy of Sciences, with collaborators from several hospitals across the country.</span> <span class="s" data-t="31.632" data-e="47.382">Rather than relying on expensive molecular <span class="kw" data-tip="n. 检测；化验（此处指实验室测定）">assays</span>, the team analysed routine clinical data from 104,208 adults aged 18 to 98, drawn from three centres and covering 172 commonly measured <span class="kw" data-tip="n. 指标；标志">indicators</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="47.382" data-e="59.921">By <span class="kw" data-tip="v. 汇集；汇总（熟词僻义：n. 水池、共用资源）">pooling</span> such measurements across <span class="kw" data-tip="n. 新陈代谢（形容词 metabolic）">metabolism</span>, <span class="kw" data-tip="n. 免疫力；免疫">immunity</span>, liver and kidney function and tumour markers, the researchers built sex-specific clocks capable of <span class="kw" data-tip="v. 估算；估计">estimating</span> a person's biological age.</span> <span class="s" data-t="59.921" data-e="71.419">Each clock performed well within its own sex, but a model trained on men predicted women's ages poorly, and vice versa, hinting that the two sexes age along genuinely different paths.</span></span></div>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="71.419" data-e="77.447">The clearest <span class="kw" data-tip="n. 分歧；分叉；差异">divergence</span> appeared in middle age, when the two <span class="kw" data-tip="n. （发展）轨迹；弹道">trajectories</span> pulled sharply apart.</span> <span class="s" data-t="77.447" data-e="91.763">Men showed a <span class="kw" data-tip="adj. 显著的；明显的">pronounced</span> metabolic transition between the ages of 35 and 45, with body mass index, <span class="kw" data-tip="n. 甘油三酯（血脂的一种）">triglycerides</span> and <span class="kw" data-tip="n. 胆固醇">cholesterol</span> all climbing steeply, a shift the authors describe as a midlife metabolic crisis.</span></span></div>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="91.763" data-e="100.461">Women experienced their own transition considerably later, between 55 and 65, closely overlapping with <span class="kw" data-tip="n. 绝经期；更年期">menopause</span>.</span> <span class="s" data-t="100.461" data-e="113.605">It was marked by sharp rises in follicle-stimulating hormone and luteinising hormone, accompanied by worsening lipid <span class="kw" data-tip="n. （一组数据的）谱；概况（熟词僻义：侧面像、简介）">profiles</span>, yet the physiological gap between the sexes gradually narrowed again in later life.</span></span></div>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="113.605" data-e="124.539">The study did not stop at mere description, for several metabolic factors and tumour-related markers were found to <span class="kw" data-tip="v. 累积；积聚">accumulate</span> with age and to track with accelerated biological ageing.</span> <span class="s" data-t="124.539" data-e="141.709">When the team exposed vascular <span class="kw" data-tip="adj. 内皮的（血管内皮细胞的）">endothelial</span> cells to elevated glucose, lipids, <span class="kw" data-tip="n. 尿酸（代谢废物，过高与痛风相关）">uric acid</span> and the markers CEA and HE4, the cells displayed ageing-related changes, implying that these circulating <span class="kw" data-tip="n. 特征；标志（熟词僻义：签名）">signatures</span> may actively drive ageing rather than merely reflect it.</span></span></div>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="141.709" data-e="145.262">Crucially, some of that damage looked <span class="kw" data-tip="adj. 可逆的；可翻转的">reversible</span>.</span> <span class="s" data-t="145.262" data-e="157.224"><span class="kw" data-tip="n. 二甲双胍（常用降糖药）">Metformin</span>, a common diabetes drug, eased the endothelial ageing caused by high glucose, and simply moving mice from a high-fat diet to a normal one improved several ageing features in the liver.</span></span></div>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="157.224" data-e="163.355">For the authors, the value of the research lies as much in its practicality as in its scale.</span> <span class="s" data-t="163.355" data-e="176.143">Because the clocks rest on tests that hospitals already perform routinely, they could one day let doctors flag accelerated ageing long before disease appears and tailor the moment of <span class="kw" data-tip="n. 干预；介入">intervention</span> to each patient's sex.</span></span></div>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="176.143" data-e="185.434">The authors are careful to note that the analysis is <span class="kw" data-tip="adj. 观察性的（仅观察、不施加干预的）">observational</span>, so it can reveal associations but cannot prove that any single factor causes ageing.</span> <span class="s" data-t="185.434" data-e="197.209">Even so, the two turning points it identifies may mark the moments when preventive medicine has the most to gain, and they reframe the question as not whether we age but when each of us begins to.</span></span></div>
+
+      <p class="muted">原文出处：本文根据 Nature Aging 论文《Sex-specific aging clocks from a large-scale human phenome reveal distinct aging transitions and circulating signatures》（Jiaming Li et al.；China National Center for Bioinformation / 中国科学院动物研究所 / 首都医科大学宣武医院等；Nature Aging, published online 25 August 2026, DOI: 10.1038/s43587-026-01180-5）改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sweeping</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈswiːpɪŋ/ · 美 /ˈswiːpɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 大范围的；影响广泛的；一揽子的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>sweeping</b> new analysis covers more than 100,000 adults.</div>
+          <div class="wc-tr">一项涵盖广泛的新分析覆盖了十万多名成年人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decline</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /dɪˈklaɪn/ · 美 /dɪˈklaɪn/</div>
+          <div class="wc-pos"><b>n.</b> 衰退；下降 <b>v.</b> 下降；婉拒</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Ageing is imagined as a single, gradual <b>decline</b>.</div>
+          <div class="wc-tr">衰老常被想象为一次单一而缓慢的衰退。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">distinct</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /dɪˈstɪŋkt/ · 美 /dɪˈstɪŋkt/</div>
+          <div class="wc-pos"><b>adj.</b> 截然不同的；清楚可辨的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The body keeps several <b>distinct</b> clocks.</div>
+          <div class="wc-tr">人体拥有好几座彼此不同的"时钟"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">assay</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈseɪ/ · 美 /əˈseɪ/</div>
+          <div class="wc-pos"><b>n.</b> 检测；化验；测定</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Rather than relying on costly molecular <b>assays</b>, the team used routine data.</div>
+          <div class="wc-tr">团队没有依赖昂贵的分子检测，而是使用了常规数据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">indicator</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɪndɪkeɪtə(r)/ · 美 /ˈɪndɪkeɪtər/</div>
+          <div class="wc-pos"><b>n.</b> 指标；标志</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The data cover 172 commonly measured <b>indicators</b>.</div>
+          <div class="wc-tr">数据涵盖 172 项常规检测指标。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">metabolism</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /məˈtæbəlɪzəm/ · 美 /məˈtæbəlɪzəm/</div>
+          <div class="wc-pos"><b>n.</b> 新陈代谢（形容词 metabolic）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their clocks pool measures of <b>metabolism</b> and immunity.</div>
+          <div class="wc-tr">他们的时钟汇集了代谢与免疫等各项指标。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">immunity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈmjuːnəti/ · 美 /ɪˈmjuːnəti/</div>
+          <div class="wc-pos"><b>n.</b> 免疫力；免除</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Immunity</b> is among the systems the clocks draw on.</div>
+          <div class="wc-tr">免疫系统也是这些时钟所依据的系统之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">estimate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈestɪmeɪt/ · 美 /ˈestɪmeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 估算；估计 <b>n.</b> 估计（值）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The clocks can <b>estimate</b> a person's biological age.</div>
+          <div class="wc-tr">这些时钟能够估算一个人的生物学年龄。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trajectory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /trəˈdʒektəri/ · 美 /trəˈdʒektəri/</div>
+          <div class="wc-pos"><b>n.</b> （发展）轨迹；弹道</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The two <b>trajectories</b> pulled sharply apart in middle age.</div>
+          <div class="wc-tr">两条轨迹在中年时期急剧分开。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">divergence</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /daɪˈvɜːdʒəns/ · 美 /daɪˈvɜːrdʒəns/</div>
+          <div class="wc-pos"><b>n.</b> 分歧；分叉；差异</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The clearest <b>divergence</b> appeared in middle age.</div>
+          <div class="wc-tr">最明显的分歧出现在中年。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pronounced</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prəˈnaʊnst/ · 美 /prəˈnaʊnst/</div>
+          <div class="wc-pos"><b>adj.</b> 显著的；明显的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Men showed a <b>pronounced</b> metabolic transition between 35 and 45.</div>
+          <div class="wc-tr">男性在 35 至 45 岁之间经历了一次显著的代谢转变。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">triglyceride</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /traɪˈɡlɪsəraɪd/ · 美 /traɪˈɡlɪsəraɪd/</div>
+          <div class="wc-pos"><b>n.</b> 甘油三酯（血脂的一种）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Triglycerides</b> and cholesterol both climbed steeply.</div>
+          <div class="wc-tr">甘油三酯与胆固醇都陡峭上升。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cholesterol</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kəˈlestərɒl/ · 美 /kəˈlestərɔːl/</div>
+          <div class="wc-pos"><b>n.</b> 胆固醇</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Cholesterol</b> rose steeply in the same window.</div>
+          <div class="wc-tr">胆固醇也在同一时期陡升。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">menopause</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmenəpɔːz/ · 美 /ˈmenəpɔːz/</div>
+          <div class="wc-pos"><b>n.</b> 绝经期；更年期</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Women's transition overlapped closely with <b>menopause</b>.</div>
+          <div class="wc-tr">女性的转折与绝经期高度重合。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">endothelial</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌendəˈθiːliəl/ · 美 /ˌendəˈθiːliəl/</div>
+          <div class="wc-pos"><b>adj.</b> 内皮的（血管内皮细胞的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team exposed vascular <b>endothelial</b> cells to elevated glucose.</div>
+          <div class="wc-tr">团队让血管内皮细胞暴露于高浓度葡萄糖中。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reversible</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈvɜːsəbl/ · 美 /rɪˈvɜːrsəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 可逆的；可翻转的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span> Crucially, some of that damage looked <b>reversible</b>.</div>
+          <div class="wc-tr">关键在于，部分损伤看起来是可逆的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">observational</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɒbzəˈveɪʃənl/ · 美 /ˌɑːbzərˈveɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 观察性的（仅观察、不施加干预的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The analysis is <b>observational</b> and cannot prove causation.</div>
+          <div class="wc-tr">该分析属于观察性研究，无法证明因果关系。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intervention</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈvenʃn/ · 美 /ˌɪntərˈvenʃn/</div>
+          <div class="wc-pos"><b>n.</b> 干预；介入</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Doctors could tailor the moment of <b>intervention</b> to each patient's sex.</div>
+          <div class="wc-tr">医生可以根据患者性别来定制干预时机。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pool</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /puːl/ · 美 /puːl/</div>
+          <div class="wc-pos"><b>v.</b> 汇集；汇总（熟词僻义：<b>n.</b> 水池、共用资源）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>By <b>pooling</b> such measurements, the researchers built sex-specific clocks.</div>
+          <div class="wc-tr">通过汇集这些检测数据，研究者构建了性别特异的时钟。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">profile</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈprəʊfaɪl/ · 美 /ˈproʊfaɪl/</div>
+          <div class="wc-pos"><b>n.</b> （一组数据的）谱；概况（熟词僻义：侧面像、简介）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Women's lipid <b>profiles</b> worsened after menopause.</div>
+          <div class="wc-tr">女性绝经后的血脂谱变差了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">signature</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈsɪɡnətʃə(r)/ · 美 /ˈsɪɡnətʃər/</div>
+          <div class="wc-pos"><b>n.</b> 特征；标志（熟词僻义：签名）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These circulating <b>signatures</b> may actively drive ageing.</div>
+          <div class="wc-tr">这些循环中的特征性因子或许在主动推动衰老。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">at roughly the same pace</span><span class="zh">以大致相同的速度</span></li>
+          <li><span class="en">tick at different speeds</span><span class="zh">以不同的速度走动（运转）</span></li>
+          <li><span class="en">rely on expensive molecular assays</span><span class="zh">依赖昂贵的分子检测</span></li>
+          <li><span class="en">be drawn from three centres</span><span class="zh">取自三个研究中心</span></li>
+          <li><span class="en">cover 172 commonly measured indicators</span><span class="zh">涵盖 172 项常规检测指标</span></li>
+          <li><span class="en">build sex-specific clocks</span><span class="zh">构建性别特异的时钟</span></li>
+          <li><span class="en">estimate a person's biological age</span><span class="zh">估算一个人的生物学年龄</span></li>
+          <li><span class="en">age along genuinely different paths</span><span class="zh">沿着截然不同的轨迹衰老</span></li>
+          <li><span class="en">pull sharply apart</span><span class="zh">急剧拉开差距</span></li>
+          <li><span class="en">a pronounced metabolic transition</span><span class="zh">一次显著的代谢转变</span></li>
+          <li><span class="en">overlap closely with menopause</span><span class="zh">与绝经期高度重合</span></li>
+          <li><span class="en">worsening lipid profiles</span><span class="zh">不断恶化的血脂谱</span></li>
+          <li><span class="en">narrow again in later life</span><span class="zh">在晚年再度收窄</span></li>
+          <li><span class="en">accumulate with age</span><span class="zh">随年龄累积</span></li>
+          <li><span class="en">track with accelerated biological ageing</span><span class="zh">与加速衰老同步变化</span></li>
+          <li><span class="en">drive ageing rather than merely reflect it</span><span class="zh">推动衰老，而非仅仅反映衰老</span></li>
+          <li><span class="en">tailor the moment of intervention to each patient's sex</span><span class="zh">按患者性别定制干预时机</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：衰老常被当作一条人人速度相近的单一曲线，而新分析认为身体拥有多座各自的"时钟"，男女走得快慢不同。</li>
+          <li>研究概况：2026 年 8 月 25 日发表于《自然·衰老》，由中科院国家生物信息中心团队领衔，多所医院协作。</li>
+          <li>数据与方法：不依赖昂贵分子检测，而用 104,208 名 18—98 岁成年人的 172 项常规临床指标，构建性别特异的"临床衰老时钟"。</li>
+          <li>关键验证：同一时钟在本性别内表现良好，但用男性模型预测女性年龄会明显失准，反之亦然——说明两性衰老路径确实不同。</li>
+          <li>男性转折：最明显的分歧出现在中年；男性 35—45 岁经历以代谢为核心的转变，体重指数、甘油三酯与胆固醇陡升，作者称之为"中年代谢危机"。</li>
+          <li>女性转折：女性转折显著更晚，集中在 55—65 岁，与绝经期高度重合，促卵泡激素与促黄体生成素升高、血脂谱变差；两性生理差异在晚年又逐渐收窄。</li>
+          <li>机制线索：若干代谢物与肿瘤标志物随年龄累积、与加速衰老同步；细胞实验显示高糖、脂质、尿酸及 CEA、HE4 可诱导血管内皮细胞出现衰老改变，提示这些循环特征或许"主动"推动衰老。</li>
+          <li>可逆性：部分损伤可逆——二甲双胍缓解高糖诱导的内皮衰老；把小鼠从高脂饮食换回正常饮食可改善肝脏衰老特征。</li>
+          <li>意义与局限：研究为观察性、只能显示关联；但因基于医院常规检查，未来或可在大规模人群中标出"加速衰老"，并据性别定制干预时机——问题从"是否衰老"变成"何时开始"。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Rather than relying on expensive molecular assays, the team analysed routine clinical data from 104,208 adults aged 18 to 98, drawn from three centres and covering 172 commonly measured indicators.</div>
+        <div class="row"><b>主干：</b>the team analysed routine clinical data（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>rather than 状语：</b>Rather than relying on expensive molecular assays（"与其依赖……，不如……"，置于句首表取舍）</div>
+        <div class="row"><b>后置定语（一）：</b>aged 18 to 98（过去分词短语修饰 adults）</div>
+        <div class="row"><b>后置定语（二）：</b>drawn from three centres and covering 172 ... indicators（两个并列的分词短语修饰 data）</div>
+        <div class="row"><b>考点：</b>rather than 表取舍；过去分词与现在分词并列作后置定语（drawn 表被动、covering 表主动）</div>
+        <div class="row tr"><b>译文：</b>团队没有依赖昂贵的分子检测，而是分析了来自三个研究中心、涵盖 172 项常规检测指标、18 至 98 岁共 104,208 名成年人的常规临床数据。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Each clock performed well within its own sex, but a model trained on men predicted women's ages poorly, and vice versa, hinting that the two sexes age along genuinely different paths.</div>
+        <div class="row"><b>主干：</b>Each clock performed well ... but a model ... predicted women's ages poorly（并列句，转折）</div>
+        <div class="row"><b>后置定语：</b>trained on men（过去分词短语修饰 a model）</div>
+        <div class="row"><b>插入语：</b>and vice versa（"反之亦然"，补充说明反向同样失准）</div>
+        <div class="row"><b>现在分词作结果状语：</b>hinting that the two sexes age along genuinely different paths（对前半句做出推论）</div>
+        <div class="row"><b>考点：</b>but 连接并列转折；vice versa 的用法；分词短语表伴随/结果；宾语从句 that ...</div>
+        <div class="row tr"><b>译文：</b>每一座时钟在其所属性别内都表现良好，但用男性数据训练出的模型来预测女性的年龄却明显失准，反之亦然——这暗示两性沿着截然不同的轨迹衰老。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Men showed a pronounced metabolic transition between the ages of 35 and 45, with body mass index, triglycerides and cholesterol all climbing steeply, a shift the authors describe as a midlife metabolic crisis.</div>
+        <div class="row"><b>主干：</b>Men showed a pronounced metabolic transition（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>时间状语：</b>between the ages of 35 and 45</div>
+        <div class="row"><b>with 复合结构：</b>with body mass index, triglycerides and cholesterol all climbing steeply（"with + 宾语 + 现在分词"，表伴随）</div>
+        <div class="row"><b>同位语：</b>a shift (that/which) the authors describe as a midlife metabolic crisis（省略关系代词的同位语从句）</div>
+        <div class="row"><b>考点：</b>with 复合结构作状语；现在分词表主动、进行；同位语从句中 describe A as B 结构</div>
+        <div class="row tr"><b>译文：</b>男性在 35 至 45 岁之间经历了一次显著的代谢转变，体重指数、甘油三酯与胆固醇都陡峭上升——作者把这一转变称为"中年代谢危机"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">It was marked by sharp rises in follicle-stimulating hormone and luteinising hormone, accompanied by worsening lipid profiles, yet the physiological gap between the sexes gradually narrowed again in later life.</div>
+        <div class="row"><b>主干：</b>It was marked by sharp rises ... yet the physiological gap ... narrowed again（被动 + 转折并列）</div>
+        <div class="row"><b>被动的施动者：</b>by sharp rises in follicle-stimulating hormone and luteinising hormone</div>
+        <div class="row"><b>过去分词作伴随状语：</b>accompanied by worsening lipid profiles（伴随情况）</div>
+        <div class="row"><b>考点：</b>be marked by"以……为标志"；accompanied by 表伴随；yet 作并列连词表转折</div>
+        <div class="row tr"><b>译文：</b>它的标志是促卵泡激素与促黄体生成素大幅上升，并伴随血脂谱的变差；然而两性之间的生理差异在晚年又逐渐收窄。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">When the team exposed vascular endothelial cells to elevated glucose, lipids, uric acid and the markers CEA and HE4, the cells displayed ageing-related changes, implying that these circulating signatures may actively drive ageing rather than merely reflect it.</div>
+        <div class="row"><b>时间状语从句：</b>When the team exposed vascular endothelial cells to elevated glucose, ...（expose A to B 结构）</div>
+        <div class="row"><b>主干：</b>the cells displayed ageing-related changes（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>现在分词作结果状语：</b>implying that these circulating signatures may actively drive ageing（对前文做出推论）</div>
+        <div class="row"><b>rather than 表取舍：</b>drive ageing rather than merely reflect it（"是推动……而非仅仅反映……"，形成鲜明对比）</div>
+        <div class="row"><b>考点：</b>when 引导时间状语从句；expose A to B；分词短语作结果状语；rather than 连接对比成分</div>
+        <div class="row tr"><b>译文：</b>当团队让血管内皮细胞暴露于高浓度葡萄糖、脂质、尿酸以及标志物 CEA 与 HE4 中时，这些细胞出现了与衰老相关的改变——这意味着这些循环中的特征性因子或许在主动推动衰老，而不只是反映衰老。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">衰老通常被想象成一条平滑下滑的曲线，人人都以大致相同的速度老去；然而一项涵盖广泛的新分析认为，人体其实拥有好几座彼此不同的"时钟"，而且它们在男女身上的走速大不一样。这项研究于 2026 年 8 月 25 日发表在《自然·衰老》上，由中国国家生物信息中心与中国科学院的科研人员领衔，并有多所医院的合作者参与。团队没有依赖昂贵的分子检测，而是分析了来自三个研究中心、18 至 98 岁共 104,208 名成年人的常规临床数据，涵盖 172 项常规检测指标。通过汇集这些跨代谢、免疫、肝肾功能与肿瘤标志物的测量，研究者构建了能够估算一个人"生物学年龄"的性别特异时钟。每一座时钟在其所属性别内都表现良好，但用男性数据训练的模型去预测女性年龄会明显失准，反之亦然——这暗示两性沿着截然不同的轨迹衰老。最明显的分歧出现在中年：男性在 35 至 45 岁之间经历了一次以代谢为核心的显著转变，体重指数、甘油三酯与胆固醇都陡峭上升，作者称之为"中年代谢危机"；女性的转折则显著更晚，集中在 55 至 65 岁，与绝经期高度重合，标志是促卵泡激素与促黄体生成素大幅上升，并伴随血脂谱的变差。有意思的是，两性之间的生理差异在晚年又逐渐收窄。研究并未止步于描述：若干代谢因子与肿瘤相关标志物被证实会随年龄累积、并与加速衰老同步；当团队让血管内皮细胞暴露于高浓度葡萄糖、脂质、尿酸以及标志物 CEA 与 HE4 时，细胞出现了与衰老相关的改变，这提示这些循环中的特征性因子或许在主动推动衰老，而不只是反映衰老。更令人关注的是，部分损伤看起来是可逆的：常用的降糖药二甲双胍能够缓解高糖诱导的内皮衰老，而仅仅把小鼠从高脂饮食换回正常饮食，就能改善肝脏的多项衰老特征。对作者而言，这项研究的价值既在于规模，也在于实用：由于这些时钟依据的是医院本就会做的常规检查，有朝一日它们或许能让医生在疾病出现之前就标出"加速衰老"，并根据患者性别来定制干预时机。当然，作者也谨慎地指出，该分析属于观察性研究，只能揭示关联，无法证明任何单一因素就是衰老的原因。即便如此，它所识别出的这两个转折点，可能正是预防医学收益最大的时刻；更重要的是，它把问题从"我们是否会衰老"，改写为"我们每个人究竟从何时开始"。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 3、4、5 段，作者为什么用"时钟"来比喻生物学年龄？"男性 35—45 岁、女性 55—65 岁"这两个转折点，若被证实为因果关系中的关键节点，会如何改变当下"中老年才开始体检干预"的做法？</div>
+      <div class="q"><b>仿写题：</b>仿照第 5 段 <span style="font-family:Georgia,serif;font-style:italic">"It was marked by sharp rises in ..., accompanied by ..., yet the ... gap ... gradually narrowed again in later life."</span>（be marked by + accompanied by 伴随状语 + yet 转折）的句式，围绕「两个群体的差异随年龄/时间变化」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="110" y="42" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：身体并非一座时钟，男女走速不同</text>
+
+          <rect x="110" y="94" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 研究概况：中科院团队，104,208 人、172 项常规指标</text>
+
+          <rect x="110" y="146" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 方法：汇集常规数据，建性别特异的"临床衰老时钟"</text>
+
+          <rect x="110" y="198" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 男性转折：35—45 岁，代谢指标陡升的"中年危机"</text>
+
+          <rect x="110" y="250" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 女性转折：55—65 岁，与绝经重合，血脂变差</text>
+
+          <rect x="110" y="302" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 机制线索：标志物随龄累积，或"主动"推动衰老</text>
+
+          <rect x="110" y="354" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 可逆性：二甲双胍与饮食调整可改善部分衰老</text>
+
+          <rect x="110" y="406" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 意义：基于常规体检，可按性别定制干预时机</text>
+
+          <rect x="110" y="458" width="500" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 结论：研究仅显示关联，问题转向"何时开始衰老"</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 研究概况 → 方法 → 男性转折 → 女性转折 → 机制线索 → 可逆性 → 意义 → 结论」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Aging 论文《Sex-specific aging clocks from a large-scale human phenome reveal distinct aging transitions and circulating signatures》（Li et al., 2026）公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

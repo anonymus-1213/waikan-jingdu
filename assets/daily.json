@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-10-09",
+      "en": "A sweeping new analysis, however, argues that the body keeps several distinct clocks, and that they tick at very different speeds in men and women.",
+      "zh": "然而一项涵盖广泛的新分析认为，人体拥有好几座彼此不同的「时钟」，而且它们在男女身上的走速大不一样。",
+      "src": "外刊精读 · 衰老时钟与男女差异（2026-10-09）",
+      "key": "distinct",
+      "keyZh": "截然不同的；各自独立的",
+      "tip": "distinct 意为「截然不同的、清楚可辨的」，此处修饰 clocks，强调人体并非只有一座时钟，而是多座互不相同的时钟。sweeping 意为「涵盖广泛的、影响面大的」，常用来形容覆盖面很广的研究或改革；tick 在此以「钟表走动」比喻衰老的速度。",
+      "tags": [
+        "人口",
+        "衰老",
+        "公共卫生"
+      ]
+    },
+    {
       "date": "2026-10-08",
       "en": "A tightly controlled new experiment suggests that this tidy equation leaves out a variable that may matter enormously: how heavily the food itself has been processed.",
       "zh": "一项控制极严的新实验提示，这个整洁的等式漏掉了一个或许关系重大的变量——食物本身被加工的程度。",
