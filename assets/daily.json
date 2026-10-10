@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-10-10",
+      "en": "For poorly instrumented explosive volcanoes, where a single sensor may be the only realistic option, such a tool could buy the hours needed to evacuate.",
+      "zh": "对于那些监测薄弱的爆炸式火山——在那里，一台传感器也许就是唯一现实的选择——这样的工具能够争取到疏散所需的数小时。",
+      "src": "Nature Communications · IPGP / GFZ Potsdam",
+      "key": "buy",
+      "keyZh": "争取到；换来（熟词僻义：购买）",
+      "tip": "buy 的常见义是“购买”，但在书面语中常引申为“（以某种代价）换取、争取到”，宾语多为抽象名词：buy time（争取时间）、buy influence（换取影响力）、buy the hours needed to evacuate（争得疏散所需的数小时）。这句的妙处在于：一台仪器并不能阻止喷发，它唯一能“买”到的，是时间——而时间恰恰是防灾中最昂贵的东西。注意别与 buy into（接受、相信某观念）混淆。",
+      "tags": [
+        "地球科学",
+        "火山",
+        "自然灾害"
+      ]
+    },
+    {
       "date": "2026-10-09",
       "en": "A sweeping new analysis, however, argues that the body keeps several distinct clocks, and that they tick at very different speeds in men and women.",
       "zh": "然而一项涵盖广泛的新分析认为，人体拥有好几座彼此不同的「时钟」，而且它们在男女身上的走速大不一样。",

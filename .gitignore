@@ -5,3 +5,6 @@ desktop.ini
 
 # 构建临时脚本与中间产物
 .openclaw/
+
+# 配图备份（旧版信息图/示意图，仅本地留存）
+assets/images/_backup_infographics/

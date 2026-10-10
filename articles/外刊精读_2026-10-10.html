@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 大地的一次“急动”：一台地震仪如何在火山喷发前数小时拉响警报</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Earth Science · 人与自然 / 地球科学 / 火山 / 自然灾害</div>
+  <h1>大地的一次“急动”：一台地震仪，如何在火山喷发前数小时拉响警报</h1>
+  <div class="deck">A single seismometer, watching a restless volcano from eight kilometres away, has sensed a signal so faint that it is measured in nanometres per second cubed — and flagged almost every eruption for more than a decade</div>
+  <div class="byline"><span><b>来源</b> Nature Communications（2025 年 12 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-10</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 487 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-10.jpg" alt="夜色中喷发的火山，熔岩喷泉与顺坡而下的熔岩流（配图）">
+    <figcaption>配图：夜色中喷发的火山——岩浆自裂隙喷涌成熔岩喷泉，熔岩顺坡流淌，蒸汽羽流升入夜空（场景摄影风格配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>火山很少用所有人都能读懂的语言预告自己的下一步。数十年来，火山学家依靠密集的仪器网络与观测者的经验判断发出预警，但一套简单、自动、能在数小时内给出警报的系统，始终可望而不可即。2025 年 12 月，期刊《自然·通讯》（Nature Communications）刊出的一项研究，给出了一个出人意料地“克制”的答案：只要一台甚宽频带地震仪。研究由巴黎地球物理研究所（IPGP）与德国地球科学研究中心（GFZ，波茨坦）的团队完成，他们把这套系统命名为“jerk（急动）”——在物理学中，它指加速度随时间的变化率，而非加速度本身。仪器被安置在法属留尼汪岛富尔奈斯火山（Piton de la Fournaise）约 8 公里外一条温度稳定的隧道里，自 2014 年 4 月起持续运行。当岩浆向上挤开岩石、引发地面一次突然的水平“急动”时，系统便将其与 0.1 纳米/立方秒（约为平均背景噪声的两倍）的阈值比对，并用指向火山方位的滤波器确认，随后自动以邮件与电话通知值班科学家，全程无需人工介入。结果相当惊人：在 12 年里，只要台站正常运行，25 次喷发全部触发了警报；其中 92% 在喷发开始前数分钟到 8 小时以上发出，真正可用于行动。当然，它也有边界——两次岩浆直达地表的山顶喷发几乎没有预警时间，另有一次研究记录到 4 次误报，事后被证明是中途停滞的岩浆侵入。团队接下来将在意大利埃特纳火山与印尼默拉皮火山测试该方法。本文循“背景—方案—原理—部署—机制—成效—局限—前景—意义”的链条，追问一个正在改变火山防灾的问题：如果预警可以像听诊器一样简单，我们是否就能把问题从“能不能预测”转向“能提前多久”。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-10.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.416"><span class="kw" data-tip="n. 火山">Volcanoes</span> seldom announce their intentions in a language that everyone can readily read, and forecasting an <span class="kw" data-tip="n. 喷发（动词 erupt）">eruption</span> remains one of the hardest problems in the earth sciences.</span> <span class="s" data-t="10.416" data-e="22.632">For decades volcanologists have relied on dense networks of <span class="kw" data-tip="n. 仪器；器械（此处指监测设备）">instruments</span> and on the careful judgement of observers, yet a simple, automatic warning that works in real time has stayed stubbornly out of reach.</span></span></div>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="22.632" data-e="34.195">A team from the Paris Institute of Earth Physics and the German Research Centre for Geosciences has now proposed a strikingly different answer, built not on complexity but on restraint.</span> <span class="s" data-t="34.195" data-e="44.263">Their system, described in Nature Communications in December 2025, listens for a signal so <span class="kw" data-tip="adj. 微弱的；隐约的">faint</span> that it is measured in nanometres per second cubed.</span></span></div>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="44.263" data-e="54.066">The method is named <span class="kw" data-tip="n. 急动；加加速度（熟词僻义：猛拉、蠢人）">jerk</span>, a nod to the quantity it tracks, which physicists define as the rate at which <span class="kw" data-tip="n. 加速度（动词 accelerate）">acceleration</span> changes rather than the acceleration itself.</span> <span class="s" data-t="54.066" data-e="64.158">A jerk, in this physical sense, is the <span class="kw" data-tip="adj. 突然的；意外的">sudden</span> sideways lurch of the ground that occurs when rock <span class="kw" data-tip="v. 断裂；破裂（名词同形）">fractures</span> and <span class="kw" data-tip="n. 岩浆（地下熔融的岩石）">magma</span> forces open a fresh path towards the surface.</span></span></div>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="64.158" data-e="77.643">To test the idea, the researchers installed a single very wide-band <span class="kw" data-tip="n. 地震仪（seismology 地震学）">seismometer</span> in a temperature-stable tunnel that <span class="kw" data-tip="v. 容纳；安置（熟词僻义：主人、主持人）">hosts</span> it, roughly eight kilometres from Piton de la Fournaise, one of the most active volcanoes on Earth.</span> <span class="s" data-t="77.643" data-e="83.487">The station sits on the French island of Réunion and has been running since April 2014.</span></span></div>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="83.487" data-e="97.945">The data are processed to strip out the <span class="kw" data-tip="adj. 主导的；占优势的（动词 dominate）">dominant</span> signals of the Earth's tides, after which the system computes horizontal jerk and compares it with a fixed <span class="kw" data-tip="n. 阈值；门槛（临界值）">threshold</span> of 0.1 nanometres per second cubed, twice the average background noise.</span> <span class="s" data-t="97.945" data-e="105.079">A directional filter aimed towards the volcano then decides whether the <span class="kw" data-tip="n. 扰动；干扰">disturbance</span> is meaningful or merely noise.</span></span></div>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="105.079" data-e="114.737">When the threshold is crossed, the system <span class="kw" data-tip="v. 标示；报出（熟词僻义：旗帜）">flags</span> an <span class="kw" data-tip="n. 警报；提示">alert</span>, emailing and telephoning the scientist on duty at the <span class="kw" data-tip="n. 观测台；天文台">observatory</span> without any human <span class="kw" data-tip="n. 干预；介入">intervention</span>.</span> <span class="s" data-t="114.737" data-e="123.092">Over twelve years, whenever the station was <span class="kw" data-tip="adj. 运行中的；可运作的（动词 operate）">operational</span>, such an alert was triggered for every one of the twenty-five eruptions that followed.</span></span></div>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="123.092" data-e="132.105">In 92 per cent of cases the warning proved actionable, arriving anywhere between a few minutes and more than eight hours before the eruption began.</span> <span class="s" data-t="132.105" data-e="145.616">Two summit eruptions sent magma to the surface so directly that the signal arrived almost <span class="kw" data-tip="adv. 同时地（形容词 simultaneous）">simultaneously</span> with the <span class="kw" data-tip="n. 震动；颤动（此处指火山震颤）">tremor</span>, leaving no useful lead time, while four false alarms turned out to mark <span class="kw" data-tip="n. 侵入（岩浆侵入岩层）">intrusions</span> that stalled underground.</span></span></div>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="145.616" data-e="155.197">The authors suggest that this lurch is a blend of ground tilt and horizontal acceleration caused by the fracturing of rock during the final stage of migration.</span> <span class="s" data-t="155.197" data-e="161.5">The team now plans to test the method on Mount Etna in Italy and Mount Merapi in Indonesia.</span></span></div>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="161.5" data-e="171.316">For poorly instrumented explosive volcanoes, where a single sensor may be the only realistic option, such a tool could buy the hours needed to <span class="kw" data-tip="v. 疏散；撤离（名词 evacuation）">evacuate</span>.</span> <span class="s" data-t="171.316" data-e="182.171">The researchers are careful to note that the system cannot say how much magma lies below, or when the next eruption will come; it simply recognises the moment when the rock gives way.</span></span></div>
+
+      <p class="muted">原文出处：本文根据 Nature Communications 论文《Jerk signal recorded during the January 18, 2026, eruption at Piton de la Fournaise》（F. Beauducel, G. Roult, V. Ferrazzini, A. Peltier, P. Jousset, P. Boissier, N. Villeneuve；Institut de Physique du Globe de Paris / Helmholtz Centre for Geosciences (GFZ) Potsdam；Nature Communications, December 2025）改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">eruption</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈrʌpʃn/ · 美 /ɪˈrʌpʃn/</div>
+          <div class="wc-pos"><b>n.</b> 喷发；（疾病、情绪等的）爆发</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Forecasting an <b>eruption</b> remains one of the hardest problems in the earth sciences.</div>
+          <div class="wc-tr">预报火山喷发至今仍是地球科学中最困难的难题之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">instrument</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɪnstrəmənt/ · 美 /ˈɪnstrəmənt/</div>
+          <div class="wc-pos"><b>n.</b> 仪器；器械；工具</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Volcanologists have relied on dense networks of <b>instruments</b>.</div>
+          <div class="wc-tr">火山学家一直依赖密集的仪器网络。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">faint</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /feɪnt/ · 美 /feɪnt/</div>
+          <div class="wc-pos"><b>adj.</b> 微弱的；隐约的 <b>v.</b> 昏厥</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It listens for a signal so <b>faint</b> that it is measured in nanometres per second cubed.</div>
+          <div class="wc-tr">它监听的信号极其微弱，要以“纳米/立方秒”来计量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sudden</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈsʌdn/ · 美 /ˈsʌdn/</div>
+          <div class="wc-pos"><b>adj.</b> 突然的；意外的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A jerk is the <b>sudden</b> sideways lurch of the ground when rock fractures.</div>
+          <div class="wc-tr">“急动”就是岩石断裂时地面突然的横向晃动。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">acceleration</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əkˌseləˈreɪʃn/ · 美 /əkˌseləˈreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 加速度；加速</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Physicists define jerk as the rate at which <b>acceleration</b> changes.</div>
+          <div class="wc-tr">物理学家把“急动”定义为加速度变化的速率。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> 阈值；门槛；临界值</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The system compares the signal with a fixed <b>threshold</b>.</div>
+          <div class="wc-tr">系统把信号与一个固定的阈值作比较。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disturbance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈstɜːbəns/ · 美 /dɪˈstɜːrbəns/</div>
+          <div class="wc-pos"><b>n.</b> 扰动；干扰；骚乱</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A directional filter decides whether the <b>disturbance</b> is meaningful.</div>
+          <div class="wc-tr">一个指向火山方位的滤波器会判断这种扰动是否有意义。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intervention</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈvenʃn/ · 美 /ˌɪntərˈvenʃn/</div>
+          <div class="wc-pos"><b>n.</b> 干预；介入</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The alert reaches the scientist on duty without any human <b>intervention</b>.</div>
+          <div class="wc-tr">警报在没有任何人工干预的情况下送达值班科学家。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">operational</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɒpəˈreɪʃənl/ · 美 /ˌɑːpəˈreɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 运行中的；可运作的；操作的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Whenever the station was <b>operational</b>, an alert was triggered for every eruption.</div>
+          <div class="wc-tr">只要台站处于正常运行状态，每一次喷发都被触发了警报。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">simultaneous</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌsɪmlˈteɪniəs/ · 美 /ˌsaɪmlˈteɪniəs/</div>
+          <div class="wc-pos"><b>adj.</b> 同时的；同时发生的（副词 simultaneously）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In two cases the signal arrived almost <b>simultaneously</b> with the tremor.</div>
+          <div class="wc-tr">有两次，信号与火山震颤几乎同时到达。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dominant</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdɒmɪnənt/ · 美 /ˈdɑːmɪnənt/</div>
+          <div class="wc-pos"><b>adj.</b> 主导的；占优势的；显著的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The data are processed to strip out the <b>dominant</b> signals of the Earth's tides.</div>
+          <div class="wc-tr">数据会先被处理，以剔除地球固体潮这些占主导的信号。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">evacuate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈvækjueɪt/ · 美 /ɪˈvækjueɪt/</div>
+          <div class="wc-pos"><b>v.</b> 疏散；撤离；排空</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Such a tool could buy the hours needed to <b>evacuate</b>.</div>
+          <div class="wc-tr">这样的工具能争取到疏散所需的数小时。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">magma</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmæɡmə/ · 美 /ˈmæɡmə/</div>
+          <div class="wc-pos"><b>n.</b> 岩浆（地下熔融的岩石；喷出地表后称 lava 熔岩）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Magma</b> forces open a fresh path towards the surface.</div>
+          <div class="wc-tr">岩浆强行开辟出一条通往地表的新通道。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">seismometer</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /saɪzˈmɒmɪtə(r)/ · 美 /saɪzˈmɑːmɪtər/</div>
+          <div class="wc-pos"><b>n.</b> 地震仪；测震仪</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team installed a single very wide-band <b>seismometer</b>.</div>
+          <div class="wc-tr">团队安装了一台甚宽频带地震仪。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fracture</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈfræktʃə(r)/ · 美 /ˈfræktʃər/</div>
+          <div class="wc-pos"><b>v.</b> （使）断裂；破裂 <b>n.</b> 裂缝；骨折</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The lurch occurs when rock <b>fractures</b> and magma forces open a path.</div>
+          <div class="wc-tr">当岩石断裂、岩浆强行开路时，这种晃动就会出现。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">observatory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əbˈzɜːvətri/ · 美 /əbˈzɜːrvətɔːri/</div>
+          <div class="wc-pos"><b>n.</b> 观测台；天文台（此处指火山观测站）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The scientist on duty at the <b>observatory</b> receives the alert.</div>
+          <div class="wc-tr">在观测站值班的科学家会收到警报。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intrusion</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈtruːʒn/ · 美 /ɪnˈtruːʒn/</div>
+          <div class="wc-pos"><b>n.</b> （岩浆）侵入；闯入；侵扰</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Four false alarms turned out to mark <b>intrusions</b> that stalled underground.</div>
+          <div class="wc-tr">四次误报，事后被证明是中途停滞于地下的岩浆侵入。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tremor</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈtremə(r)/ · 美 /ˈtremər/</div>
+          <div class="wc-pos"><b>n.</b> 颤动；轻微震动（此处指火山震颤信号）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The signal arrived almost simultaneously with the <b>tremor</b>.</div>
+          <div class="wc-tr">信号与火山震颤几乎同时出现。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">jerk</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /dʒɜːk/ · 美 /dʒɜːrk/</div>
+          <div class="wc-pos"><b>n.</b> 急动；加加速度（加速度的变化率）（熟词僻义：猛拉、蠢人；<b>v.</b> 猛拉）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The method is named <b>jerk</b>, a nod to the quantity it tracks.</div>
+          <div class="wc-tr">该方法被命名为“jerk（急动）”，呼应它所追踪的那个物理量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flag</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /flæɡ/ · 美 /flæɡ/</div>
+          <div class="wc-pos"><b>v.</b> 标示；报出；标记（熟词僻义：<b>n.</b> 旗帜）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>When the threshold is crossed, the system <b>flags</b> an alert.</div>
+          <div class="wc-tr">一旦越过阈值，系统就会报出一则警报。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">host</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊst/ · 美 /hoʊst/</div>
+          <div class="wc-pos"><b>v.</b> 容纳；安置；主办（熟词僻义：<b>n.</b> 主人、主持人、寄主）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A temperature-stable tunnel <b>hosts</b> the seismometer.</div>
+          <div class="wc-tr">一条温度稳定的隧道为这台地震仪提供了容身之所。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">announce one's intentions</span><span class="zh">表明自己的意图</span></li>
+          <li><span class="en">stay stubbornly out of reach</span><span class="zh">始终难以企及</span></li>
+          <li><span class="en">built on restraint</span><span class="zh">以克制／极简为原则</span></li>
+          <li><span class="en">a nod to ...</span><span class="zh">向……致意；呼应……</span></li>
+          <li><span class="en">force open a fresh path</span><span class="zh">强行开辟一条新通道</span></li>
+          <li><span class="en">strip out the dominant signals</span><span class="zh">剔除占主导的信号</span></li>
+          <li><span class="en">twice the average background noise</span><span class="zh">是平均背景噪声的两倍</span></li>
+          <li><span class="en">on duty</span><span class="zh">值班；当班</span></li>
+          <li><span class="en">without any human intervention</span><span class="zh">无需任何人工干预</span></li>
+          <li><span class="en">prove actionable</span><span class="zh">被证明具有可操作性</span></li>
+          <li><span class="en">leave no useful lead time</span><span class="zh">未能留出有效的预警时间</span></li>
+          <li><span class="en">mark intrusions that stalled underground</span><span class="zh">标示出停滞于地下的岩浆侵入</span></li>
+          <li><span class="en">a blend of ground tilt and horizontal acceleration</span><span class="zh">地倾斜与水平加速度的叠加</span></li>
+          <li><span class="en">buy the hours needed to evacuate</span><span class="zh">争取到疏散所需的数小时</span></li>
+          <li><span class="en">the moment when the rock gives way</span><span class="zh">岩石让位（破裂）的那一刻</span></li>
+          <li><span class="en">test the method on Mount Etna</span><span class="zh">在埃特纳火山上测试该方法</span></li>
+          <li><span class="en">be careful to note that ...</span><span class="zh">谨慎地指出……</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：火山极难预报；长期以来预警依赖密集的仪器网络与观测者的经验判断，简单、自动的实时预警始终难以实现。</li>
+          <li>方案：巴黎地球物理研究所（IPGP）与德国地球科学研究中心（GFZ）团队提出一种反其道而行之的答案——2025 年 12 月发表于《自然·通讯》，只监听一个极其微弱的信号。</li>
+          <li>原理：系统名为“jerk（急动）”，指加速度的变化率；当岩石断裂、岩浆挤开新通道时，地面会出现一次突然的横向“急动”。</li>
+          <li>部署：在留尼汪岛富尔奈斯火山约 8 公里外一条温度稳定的隧道中安置一台甚宽频带地震仪，自 2014 年 4 月起持续运行。</li>
+          <li>机制：先剔除地球固体潮等主导信号，再计算水平方向的“急动”，与 0.1 纳米/立方秒（约为平均背景噪声两倍）的阈值比对，并用指向火山方位的滤波器判断。</li>
+          <li>自动化：越过阈值即自动以邮件和电话通知值班科学家，无需人工介入；12 年里只要台站正常，25 次喷发全部触发警报。</li>
+          <li>成效与例外：92% 的警报在喷发前数分钟到 8 小时以上发出、可付诸行动；两次岩浆直达地表的山顶喷发几乎无预警时间，另有 4 次误报对应中途停滞的岩浆侵入。</li>
+          <li>机制解释与前景：作者认为“急动”是岩石破裂所致的地倾斜与水平加速度之叠加；团队将把方法测试于意大利埃特纳火山与印尼默拉皮火山。</li>
+          <li>意义：对监测薄弱的爆炸式火山，一台传感器或许就够了，可为疏散争取宝贵时间；但它无法判断地下岩浆的多少，只识别“岩石让位”的那一刻。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The data are processed to strip out the dominant signals of the Earth's tides, after which the system computes horizontal jerk and compares it with a fixed threshold of 0.1 nanometres per second cubed, twice the average background noise.</div>
+        <div class="row"><b>主干：</b>The data are processed（被动语态：主语 + 谓语）</div>
+        <div class="row"><b>目的状语：</b>to strip out the dominant signals of the Earth's tides（to do 表目的，说明"处理数据"是为了什么）</div>
+        <div class="row"><b>非限制性定语从句：</b>after which the system computes horizontal jerk and compares it with ...（"after + which"引导，which 指代前面整件事）</div>
+        <div class="row"><b>同位语（补充说明）：</b>twice the average background noise（用倍数结构解释 0.1 纳米/立方秒的量级）</div>
+        <div class="row"><b>考点：</b>被动语态 + 不定式表目的；after which 引导的非限制性定语从句；倍数同位语结构</div>
+        <div class="row tr"><b>译文：</b>数据会先被处理，以剔除地球固体潮这些占主导的信号；此后系统计算水平方向的"急动"，并将其与 0.1 纳米/立方秒的固定阈值作比较——这个数值约为平均背景噪声的两倍。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">When the threshold is crossed, the system flags an alert, emailing and telephoning the scientist on duty at the observatory without any human intervention.</div>
+        <div class="row"><b>时间状语从句：</b>When the threshold is crossed（"当……被越过时"）</div>
+        <div class="row"><b>主干：</b>the system flags an alert（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>现在分词作伴随状语：</b>emailing and telephoning the scientist on duty at the observatory（说明报警的具体方式）</div>
+        <div class="row"><b>介词短语作状语：</b>without any human intervention（强调全过程自动化）</div>
+        <div class="row"><b>考点：</b>when 引导时间状语从句；分词短语表伴随动作；on duty 作后置定语修饰 the scientist</div>
+        <div class="row tr"><b>译文：</b>一旦越过阈值，系统就会报出一则警报，通过邮件和电话通知在观测站值班的科学家，全程无需任何人工干预。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Two summit eruptions sent magma to the surface so directly that the signal arrived almost simultaneously with the tremor, leaving no useful lead time, while four false alarms turned out to mark intrusions that stalled underground.</div>
+        <div class="row"><b>主干：</b>Two summit eruptions sent magma to the surface（主语 + 谓语 + 宾语 + 补足语）</div>
+        <div class="row"><b>结果状语从句：</b>so directly that the signal arrived almost simultaneously with the tremor（so ... that ... 结构）</div>
+        <div class="row"><b>现在分词作结果状语：</b>leaving no useful lead time（对前半句的后果做补充）</div>
+        <div class="row"><b>并列转折：</b>while four false alarms turned out to mark intrusions（while 表对比，引出另一面的情况）</div>
+        <div class="row"><b>定语从句：</b>that stalled underground（修饰 intrusions，说明这些侵入并未喷出地表）</div>
+        <div class="row tr"><b>译文：</b>有两次山顶喷发把岩浆如此直接地送抵地表，以至于信号与火山震颤几乎同时出现，没能留出任何有效的预警时间；与此同时，另有 4 次误报，结果是标示了停滞于地下的岩浆侵入。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">For poorly instrumented explosive volcanoes, where a single sensor may be the only realistic option, such a tool could buy the hours needed to evacuate.</div>
+        <div class="row"><b>介词短语作状语：</b>For poorly instrumented explosive volcanoes（"对于监测薄弱的爆炸式火山而言"）</div>
+        <div class="row"><b>非限制性定语从句：</b>where a single sensor may be the only realistic option（where 修饰前面的 volcanoes，说明其处境）</div>
+        <div class="row"><b>主干：</b>such a tool could buy the hours（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>过去分词作后置定语：</b>needed to evacuate（修饰 the hours，"为疏散所需的"）</div>
+        <div class="row"><b>考点：</b>For + 名词置于句首点明对象；where 引导定语从句；buy 在此活用为"争取到、换来"</div>
+        <div class="row tr"><b>译文：</b>对于那些监测薄弱的爆炸式火山而言——在那里，一台传感器也许就是唯一现实的选择——这样的工具能够争取到疏散所需的数小时。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">To test the idea, the researchers installed a single very wide-band seismometer in a temperature-stable tunnel that hosts it, roughly eight kilometres from Piton de la Fournaise, one of the most active volcanoes on Earth.</div>
+        <div class="row"><b>目的状语：</b>To test the idea（"为验证这一构想"）</div>
+        <div class="row"><b>主干：</b>the researchers installed a single very wide-band seismometer（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>定语从句：</b>that hosts it（修饰 tunnel，it 指代 seismometer）</div>
+        <div class="row"><b>同位语：</b>roughly eight kilometres from Piton de la Fournaise, one of the most active volcanoes on Earth（补充说明台站与火山的位置关系）</div>
+        <div class="row"><b>考点：</b>不定式作目的状语；定语从句中代词 it 的指代；同位语层层补充信息</div>
+        <div class="row tr"><b>译文：</b>为验证这一构想，研究者把一台甚宽频带地震仪安置在一条温度稳定的隧道里——那里距富尔奈斯火山约 8 公里，而富尔奈斯是地球上最活跃的火山之一。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">火山很少用所有人都能读懂的语言预告自己的下一步，预报喷发也因此成为地球科学中最困难的难题之一。数十年来，火山学家依靠密集的仪器网络与观测者的经验判断发出预警，但一套简单、自动、能在数小时内给出警报的系统始终可望而不可即。2025 年 12 月，期刊《自然·通讯》刊出的一项研究给出了一个出人意料地"克制"的答案：只需要一台甚宽频带地震仪。研究由巴黎地球物理研究所与德国地球科学研究中心（GFZ，波茨坦）的团队完成，他们把系统命名为"jerk"，即物理学中的"急动"——指的是加速度随时间的变化率，而非加速度本身。其物理含义是：当岩浆向上挤开岩石、开辟通往地表的新通道时，地面会出现一次突然的横向晃动。为验证这一构想，研究者把一台地震仪安置在法属留尼汪岛富尔奈斯火山约 8 公里外一条温度稳定的隧道里，自 2014 年 4 月起持续运行。数据处理时先剔除地球固体潮这类占主导的信号，再计算水平方向的"急动"，与 0.1 纳米/立方秒的固定阈值作比较——这一数值约为平均背景噪声的两倍；随后一个指向火山方位的滤波器会判断这种扰动究竟是有意义的信号还是纯粹的噪声。一旦越过阈值，系统就会自动以邮件和电话通知在观测站值班的科学家，全程无需人工干预。成效相当惊人：在超过十二年的时间里，只要台站处于运行状态，此后发生的 25 次喷发全部都触发了警报；其中 92% 的警报在喷发开始前数分钟到八小时以上发出，真正具备可操作性。当然，这套系统也有清晰的边界。两次山顶喷发把岩浆如此直接地送抵地表，以至于信号与火山震颤几乎同时出现，没能留出任何有效的预警时间；另有 4 次误报，事后发现对应的是停滞于地下的岩浆侵入，而非真正喷发。作者认为，这种"急动"是岩石破裂所引起的地倾斜与水平加速度的叠加；团队接下来将把方法测试于意大利的埃特纳火山与印尼的默拉皮火山。对作者而言，这项研究的意义在于：对于那些监测薄弱的爆炸式火山，一台传感器也许就是唯一现实的选择，而这样的工具能够为疏散争取到宝贵的数小时。但研究者也谨慎地指出，系统无法判断地下究竟储存着多少岩浆，也无法预告下一次喷发何时到来——它只识别"岩石让位"的那一刻。换言之，我们或许仍不能预测火山，但已经能够，比以前更早地听见它。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 5、6、7 段，作者为什么强调这套系统"自动化"且"只需一台仪器"？如果把第 7 段中的"92% 的警报可付诸行动"与"两次几乎无预警时间"并置来看，一个预警系统真正"有用"的标准，究竟应该是覆盖率（不漏报），还是可操作性（提前量足够）？</div>
+      <div class="q"><b>仿写题：</b>仿照第 7 段 <span style="font-family:Georgia,serif;font-style:italic">"Two ... did sth so directly that ..., leaving no useful lead time, while four ... turned out to mark ... that stalled underground."</span>（so ... that 结果状语 + leaving 分词结果 + while 对比并列）的句式，围绕「两个案例结果截然不同」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：火山极难预报，简单实时的自动预警长期缺位</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 方案：IPGP + GFZ 团队提出"jerk"急动预警系统</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 原理：岩浆挤裂岩石，地面出现突然的水平"急动"</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 部署：留尼汪岛一台甚宽频带地震仪，2014 年起运行</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机制：剔除固体潮，比对 0.1 nm/s³ 阈值 + 方位滤波</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 自动化：越阈值即邮件+电话通知值班科学家</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 成效：12 年 25 次喷发全部报警，92% 提前数分钟至 8 小时</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：两次直达喷发几无预警；4 次误报为停滞的侵入</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 前景：将测试于埃特纳与默拉皮，为疏散争取时间</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 方案 → 原理 → 部署 → 机制 → 自动化 → 成效 → 局限 → 前景」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Communications 论文《Jerk signal recorded during the January 18, 2026, eruption at Piton de la Fournaise》（Beauducel et al., 2025；IPGP / GFZ Potsdam）公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
