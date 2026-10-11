@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-10-11",
+      "en": "The broader lesson is that time, deliberately managed, can be treated as a strategic resource rather than a fixed cost, and that rest and performance need not be rivals.",
+      "zh": "更广义的教训是：时间若被有意识地加以管理，可以被当作一种战略资源，而不是一笔固定成本；休息与绩效也未必是彼此对立的两方。",
+      "src": "外刊精读 · 四天工作制与员工福祉（2026-10-11）",
+      "key": "rivals",
+      "keyZh": "对手；对立的两方（形容词 rival 意为竞争的）",
+      "tip": "rivals 在此作名词，本义是「对手、竞争者」，此处引申为「彼此对立、非此即彼的两方」——need not be rivals 即「未必是互相对立的」。deliberately managed 是过去分词短语作后置定语，修饰 time，意为「被有意识地管理的」；rather than a fixed cost 则构成对比。全句主干为 The lesson is that ... and that ...，由两个 that 引导的并列表语从句共同说明「教训」的内容，句式工整，适合背诵。",
+      "tags": [
+        "劳动",
+        "工作制度",
+        "组织行为学"
+      ]
+    },
+    {
       "date": "2026-10-10",
       "en": "For poorly instrumented explosive volcanoes, where a single sensor may be the only realistic option, such a tool could buy the hours needed to evacuate.",
       "zh": "对于那些监测薄弱的爆炸式火山——在那里，一台传感器也许就是唯一现实的选择——这样的工具能够争取到疏散所需的数小时。",

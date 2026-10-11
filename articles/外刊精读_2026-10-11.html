@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 一周少上一天班，产出会掉吗？一项横跨六国、近三千人的试验给出了答案</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Labour &amp; Organisation · 人与社会 / 劳动 / 工作制度 / 组织行为学</div>
+  <h1>一周少上一天班，产出会掉吗？一项横跨六国、近三千人的试验给出了答案</h1>
+  <div class="deck">Across 141 organisations in six countries, an income-preserving four-day week cut burnout and improved health without costing output — yet the gains rested less on the policy itself than on how the work was redesigned</div>
+  <div class="byline"><span><b>来源</b> Nature Human Behaviour（2025 年 7 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-11</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 516 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-11.jpg" alt="明亮的开放式办公室里，几位同事围着长桌用电脑协作讨论的场景照片（配图）">
+    <figcaption>配图：一间明亮的开放式办公室里，几位同事围着长桌用电脑协作、低声讨论——减少无效会议、把时间还给专注工作，正是缩短工时得以不减产的关键（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>长期被视为天经地义的五天工作制，近年正被一组越来越扎实的证据重新审视。人们真正担心的问题其实很朴素：如果每周少上一天班、工资却一分不少，产出会不会跟着缩水，员工会不会只是把五天的压力硬塞进四天？2025 年 7 月，期刊《自然·人类行为》（Nature Human Behaviour）刊出迄今规模最大的一项相关研究。论文由波士顿学院的温凡（Wen Fan）、朱丽叶·肖尔（Juliet Schor）与郭林谷（Guolin Gu），以及爱尔兰都柏林大学的奥拉·凯利（Orla Kelly）合作完成，追踪了澳大利亚、加拿大、爱尔兰、新西兰、英国与美国六国、141 家机构的 2,896 名员工，并设置 12 家维持五天制的对照公司。参与者采用所谓“100:80:100”方案：工资维持 100%，工时降至 80%，产出承诺不减；而在试验正式开始之前，各公司还要用约八周时间重组工作——砍掉不必要的会议、精简例行事务。六个月后的结果显示：员工的职业倦怠下降、工作满意度上升、心理与身体健康均有改善，而这些变化在对照组中并未出现；没有一家公司报告产出下滑，超过三分之一的公司甚至称产出有所提高。研究最耐人寻味的一处发现是：真正起作用的，并不是公司整体少上了多少班，而是员工个人自己的工时减少了多少——个人工时的降幅越大，改善越明显。团队进一步把这一效应归因于三条中介路径：自我评估的工作能力提升、睡眠问题减少、疲劳减轻。当然，研究也有边界：参与企业是自愿加入、规模偏小、且多为英语国家，也并非随机对照试验。作者因此呼吁开展由政府支持、覆盖更广泛行业（尤其是轮班制岗位）的随机试验。本文循“背景—质疑—研究—设计—发现—关键—机制—局限—意义”的链条，追问一个正在改写职场规则的问题：当我们少工作一天，究竟失去的是产出，还是那些本就不该存在的工作？</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-11.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.984">The five-day, forty-hour working week was written into law and habit during the industrial age, and it has quietly set the rhythm of ordinary life ever since.</span> <span class="s" data-t="9.984" data-e="20.632">Yet a growing body of evidence suggests that much of what fills a modern working week is not productive work, but the meetings and interruptions that expand whenever time is <span class="kw" data-tip="adj. 充足的；丰富的">plentiful</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="20.632" data-e="32.092">That suspicion has now been tested in an unusually <span class="kw" data-tip="adj. 严谨的；严格的">rigorous</span> way, by researchers who asked a deceptively simple question: can an organisation cut a full day without cutting its output?</span> <span class="s" data-t="32.092" data-e="42.105">The standard <span class="kw" data-tip="n. 反对意见；异议（动词 object）">objection</span> is that fewer hours mean more pressure, that people would simply cram five days of stress into four, and that their health would suffer rather than improve.</span></span></div>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="42.105" data-e="54.724">An international team led by Wen Fan and Juliet Schor of Boston College, with Orla Kelly of University College Dublin and Guolin Gu, reported the largest such trial to date in Nature Human Behaviour.</span> <span class="s" data-t="54.724" data-e="67.974">It tracked 2,896 employees at 141 organisations across six countries over a six-month trial, alongside twelve control companies that kept the conventional five-day model.</span></span></div>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="67.974" data-e="80.064">Each participating <span class="kw" data-tip="n. 公司；商行（熟词僻义：形容词“坚定的、结实的”）">firm</span> adopted the so-called 100:80:100 <span class="kw" data-tip="n. 方案；公式">formula</span>: full pay for eighty per cent of the previous hours, in exchange for maintaining the previous output.</span> <span class="s" data-t="80.064" data-e="92.366"><span class="kw" data-tip="adv. 关键的是；至关重要的是（形容词 crucial）">Crucially</span>, the organisations did not simply subtract a day; they spent roughly eight weeks beforehand redesigning how work was done, trimming unnecessary meetings and <span class="kw" data-tip="v. 精简；使更高效（原义：使成流线型）">streamlining</span> routine tasks.</span></span></div>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="92.366" data-e="102.419">Workers reported lower <span class="kw" data-tip="n. 职业倦怠（长期压力导致的精疲力竭）">burnout</span>, greater job satisfaction and better mental and physical health, improvements that did not appear among the twelve control companies.</span> <span class="s" data-t="102.419" data-e="111.605">Not one firm reported a loss of productivity, and more than a third said output had actually risen; the pattern <span class="kw" data-tip="v. 成立；仍然适用（熟词僻义：握住、容纳）">held</span> across every country in the trial.</span></span></div>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="111.605" data-e="122.261">Perhaps the most important finding concerns where the benefit came from, because reductions at the level of the company mattered less than reductions at the level of the individual worker.</span> <span class="s" data-t="122.261" data-e="132.776">Those whose own hours fell by eight hours or more gained the most, which suggests that personal control over time, rather than a policy on paper, is the active <span class="kw" data-tip="n. 成分；（成功所需的）要素">ingredient</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="132.776" data-e="144.303">The team traced the gains to three <span class="kw" data-tip="adj. 起中介作用的；居间调停的（动词 mediate）">mediating</span> factors that read like an early-warning list for burnout: a better self-assessed ability to do the job, fewer sleep problems, and reduced <span class="kw" data-tip="n. 疲劳；疲乏">fatigue</span>.</span> <span class="s" data-t="144.303" data-e="153.724">In other words, the benefit did not come from squeezing more effort into fewer hours, but from the rest that let people work more sharply when they were on the clock.</span></span></div>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="153.724" data-e="163.724">The authors are <span class="kw" data-tip="adj. 坦率的；直言不讳的">candid</span> about the limits: the companies volunteered, most were small and based in English-speaking countries, and the design was not a <span class="kw" data-tip="adj. 随机的；随机化的">randomised</span> trial.</span> <span class="s" data-t="163.724" data-e="175.158">They therefore call for government-backed randomised trials, which would test shorter weeks in more varied workplaces, including the shift-based industries on which the current evidence barely <span class="kw" data-tip="v. 依靠；取决于（熟词僻义：名词“休息”）">rests</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="175.158" data-e="185.697">The broader lesson is that time, deliberately managed, can be treated as a strategic resource rather than a fixed cost, and that rest and performance need not be rivals.</span> <span class="s" data-t="185.697" data-e="198.487">Whether the four-day week spreads widely remains uncertain, but the study makes one point hard to dismiss: redesigning work, rather than merely shortening it, is what allows fewer hours to deliver the same results.</span></span></div>
+
+      <p class="muted">原文出处：本文根据 Nature Human Behaviour 论文《Work time reduction via a 4-day workweek finds improvements in workers' well-being》（Wen Fan, Juliet B. Schor, Orla Kelly, Guolin Gu；Boston College / University College Dublin；Nature Human Behaviour, 9(10): 2153–2168, 2025；DOI 10.1038/s41562-025-02259-6）改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">output</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈaʊtpʊt/ · 美 /ˈaʊtpʊt/</div>
+          <div class="wc-pos"><b>n.</b> 产出；产量；输出（此处指工作成果）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Can an organisation cut a full day without cutting its <b>output</b>?</div>
+          <div class="wc-tr">一家机构能否在砍掉一整天工时的同时不减产出？</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">organisation</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌɔːɡənaɪˈzeɪʃn/ · 美 /ˌɔːrɡənəˈzeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 组织；机构（动词 organise）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It tracked 2,896 employees at 141 <b>organisations</b> across six countries.</div>
+          <div class="wc-tr">研究追踪了六国 141 家机构的 2,896 名员工。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">formula</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈfɔːmjələ/ · 美 /ˈfɔːrmjələ/</div>
+          <div class="wc-pos"><b>n.</b> 方案；公式；配方</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each participating firm adopted the so-called 100:80:100 <b>formula</b>.</div>
+          <div class="wc-tr">每家参与公司都采用了所谓的“100:80:100”方案。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consistent</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kənˈsɪstənt/ · 美 /kənˈsɪstənt/</div>
+          <div class="wc-pos"><b>adj.</b> 一致的；前后一贯的；持续的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The pattern held, <b>consistent</b> across every country in the trial.</div>
+          <div class="wc-tr">这一模式在试验的每一个国家中都保持一致。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">remarkable</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈmɑːkəbl/ · 美 /rɪˈmɑːrkəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 引人注目的；显著的；不寻常的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The results were <b>remarkable</b> and remarkably similar across firms.</div>
+          <div class="wc-tr">结果引人注目，且各家公司的表现惊人地相似。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trial</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtraɪəl/ · 美 /ˈtraɪəl/</div>
+          <div class="wc-pos"><b>n.</b> 试验；试行 <b>v.</b> 试验（此处尤指有对照的干预试验）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team reported the largest such <b>trial</b> to date.</div>
+          <div class="wc-tr">该团队报告了迄今规模最大的一次此类试验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conventional</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈvenʃənl/ · 美 /kənˈvenʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 传统的；常规的；因袭的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Twelve control companies kept the <b>conventional</b> five-day model.</div>
+          <div class="wc-tr">十二家对照公司维持着传统的五天工作制。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">productivity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌprɒdʌkˈtɪvəti/ · 美 /ˌprɑːdʌkˈtɪvəti/</div>
+          <div class="wc-pos"><b>n.</b> 生产率；生产力；效率</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Not one firm reported a loss of <b>productivity</b>.</div>
+          <div class="wc-tr">没有任何一家公司报告生产率下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intervention</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈvenʃn/ · 美 /ˌɪntərˈvenʃn/</div>
+          <div class="wc-pos"><b>n.</b> 干预；介入；干预措施</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The authors treat the shorter week as an organisational <b>intervention</b>.</div>
+          <div class="wc-tr">作者把缩短工时视为一种组织层面的干预措施。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fatigue</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /fəˈtiːɡ/ · 美 /fəˈtiːɡ/</div>
+          <div class="wc-pos"><b>n.</b> 疲劳；疲乏 <b>v.</b> 使疲劳</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reduced <b>fatigue</b> was one of the three mediating factors.</div>
+          <div class="wc-tr">疲劳减轻是三个中介因素之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ingredient</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈɡriːdiənt/ · 美 /ɪnˈɡriːdiənt/</div>
+          <div class="wc-pos"><b>n.</b> 成分；（成功的）要素、因素</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Personal control over time is the active <b>ingredient</b>.</div>
+          <div class="wc-tr">对时间的个人掌控力才是真正的关键要素。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">subtract</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səbˈtrækt/ · 美 /səbˈtrækt/</div>
+          <div class="wc-pos"><b>v.</b> 减去；扣除</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The organisations did not simply <b>subtract</b> a day.</div>
+          <div class="wc-tr">这些机构并不是简单地减掉一天。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">burnout</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbɜːnaʊt/ · 美 /ˈbɜːrnaʊt/</div>
+          <div class="wc-pos"><b>n.</b> 职业倦怠；精疲力竭（长期压力所致）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Workers reported lower <b>burnout</b> after the change.</div>
+          <div class="wc-tr">改革之后，员工报告的倦怠水平更低。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">streamline</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈstriːmlaɪn/ · 美 /ˈstriːmlaɪn/</div>
+          <div class="wc-pos"><b>v.</b> 精简；使更高效（原义：使成流线型）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They spent weeks <b>streamlining</b> routine tasks.</div>
+          <div class="wc-tr">他们花了数周时间精简例行事务。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">candid</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkændɪd/ · 美 /ˈkændɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 坦率的；直言不讳的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The authors are <b>candid</b> about the limits of the design.</div>
+          <div class="wc-tr">作者对研究设计的局限性直言不讳。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">randomised</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrændəmaɪzd/ · 美 /ˈrændəmaɪzd/</div>
+          <div class="wc-pos"><b>adj.</b> 随机的；随机化的（动词 randomise）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The design was not a <b>randomised</b> trial.</div>
+          <div class="wc-tr">该研究设计并非随机对照试验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mediating</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmiːdieɪtɪŋ/ · 美 /ˈmiːdieɪtɪŋ/</div>
+          <div class="wc-pos"><b>adj.</b> 起中介作用的；居间调停的（动词 mediate）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The gains were traced to three <b>mediating</b> factors.</div>
+          <div class="wc-tr">这些改善被归因于三个起中介作用的因素。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">self-assessed</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌself əˈsest/ · 美 /ˌself əˈsest/</div>
+          <div class="wc-pos"><b>adj.</b> 自我评估的（由受访者自己打分的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A better <b>self-assessed</b> ability to do the job was one mediator.</div>
+          <div class="wc-tr">自我评估的工作能力提升是其中一个中介因素。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">firm</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /fɜːm/ · 美 /fɜːrm/</div>
+          <div class="wc-pos"><b>n.</b> 公司；商行（熟词僻义：<b>adj.</b> 坚定的、结实的、牢固的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each participating <b>firm</b> adopted the 100:80:100 formula.</div>
+          <div class="wc-tr">每一家参与公司都采用了“100:80:100”方案。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> 成立；仍然适用；保持不变（熟词僻义：握住、容纳、举行）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The pattern <b>held</b> across every country in the trial.</div>
+          <div class="wc-tr">这一模式在试验的每个国家中都成立。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rest</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rest/ · 美 /rest/</div>
+          <div class="wc-pos"><b>v.</b> 依靠；取决于；建立在……之上（熟词僻义：<b>n.</b> 休息；其余）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Shift work is the industry on which the evidence barely <b>rests</b>.</div>
+          <div class="wc-tr">轮班制行业恰恰是现有证据几乎未能覆盖（依赖不足）的领域。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">write sth into law and habit</span><span class="zh">把……写入法律与日常习惯</span></li>
+          <li><span class="en">a growing body of evidence</span><span class="zh">越来越多的证据</span></li>
+          <li><span class="en">put sth to the test</span><span class="zh">对……进行检验</span></li>
+          <li><span class="en">a deceptively simple question</span><span class="zh">一个看似简单、实则不然的问题</span></li>
+          <li><span class="en">cram five days of stress into four</span><span class="zh">把五天的压力硬塞进四天</span></li>
+          <li><span class="en">the largest such trial to date</span><span class="zh">迄今为止规模最大的一次此类试验</span></li>
+          <li><span class="en">in exchange for</span><span class="zh">以换取……</span></li>
+          <li><span class="en">trim unnecessary meetings</span><span class="zh">削减不必要的会议</span></li>
+          <li><span class="en">streamline routine tasks</span><span class="zh">精简例行事务</span></li>
+          <li><span class="en">a loss of productivity</span><span class="zh">生产率的下降</span></li>
+          <li><span class="en">at the level of the individual worker</span><span class="zh">在员工个人层面</span></li>
+          <li><span class="en">a policy on paper</span><span class="zh">纸面上的政策</span></li>
+          <li><span class="en">the active ingredient</span><span class="zh">有效成分；（此处）真正起作用的关键</span></li>
+          <li><span class="en">trace sth to ...</span><span class="zh">把……归因于……</span></li>
+          <li><span class="en">read like an early-warning list</span><span class="zh">读起来像一份预警清单</span></li>
+          <li><span class="en">on the clock</span><span class="zh">在上班时间内；计时工作</span></li>
+          <li><span class="en">be candid about the limits</span><span class="zh">坦率地指出局限</span></li>
+          <li><span class="en">call for government-backed trials</span><span class="zh">呼吁由政府支持的试验</span></li>
+          <li><span class="en">hard to dismiss</span><span class="zh">难以被否定（不予考虑）</span></li>
+          <li><span class="en">need not be rivals</span><span class="zh">未必是彼此对立的两方</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：五天、四十小时工作制诞生于工业时代，早已写入法律与习惯；但现代工作周里有大量时间并非用于真正的生产，而是被会议与打断填满。</li>
+          <li>质疑：研究者提出一个看似简单的问题——能否砍掉整整一天而不减产出；而传统反对意见认为工时越短压力越大，人只会把五天的压力硬塞进四天，健康反而受损。</li>
+          <li>研究：波士顿学院的温凡、朱丽叶·肖尔与郭林谷，联合都柏林大学的奥拉·凯利，在《自然·人类行为》报告迄今规模最大的此类试验，追踪六国 141 家机构的 2,896 名员工，并设 12 家对照公司。</li>
+          <li>设计：公司采用“100:80:100”方案——工资不变、工时降至八成、产出不减；试验前先用约八周重组工作，削减不必要的会议、精简例行事务，而非简单减一天。</li>
+          <li>发现：员工倦怠下降、工作满意度上升、身心更健康，而对照组未出现这些变化；没有一家公司报告产出下滑，超过三分之一称产出反而上升，且这一模式在每个国家都成立。</li>
+          <li>关键：真正起作用的是员工个人工时的减少，而非公司整体平均数的变化——个人工时减少八小时以上者获益最大。</li>
+          <li>机制：改善被归因于三条中介路径——自我评估的工作能力提升、睡眠问题减少、疲劳减轻；收益并非来自把更多努力挤进更短时间，而是来自让人得以休息。</li>
+          <li>局限：参与企业自愿加入、规模偏小、多为英语国家，且不是随机对照试验；作者因此呼吁开展由政府支持、覆盖更广行业（尤其轮班制）的随机试验。</li>
+          <li>意义：时间若被有意识地管理，可成为战略资源而非固定成本，休息与绩效未必对立；真正关键的，是重新设计工作，而不只是把工作缩短。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The standard objection is that fewer hours mean more pressure, that people would simply cram five days of stress into four, and that their health would suffer rather than improve.</div>
+        <div class="row"><b>主干：</b>The standard objection is（主语 + 系动词）</div>
+        <div class="row"><b>表语从句（并列三个）：</b>that fewer hours mean more pressure; that people would simply cram five days of stress into four; that their health would suffer rather than improve（三个 that 从句并列作表语，层层递进地复述反对理由）</div>
+        <div class="row"><b>虚拟语气：</b>would cram / would suffer（用 would 表示想象中的结果）</div>
+        <div class="row"><b>对比结构：</b>suffer rather than improve（rather than 连接两个动作，强调"是受损而非改善"）</div>
+        <div class="row"><b>考点：</b>多个 that 引导的并列表语从句；would 虚拟；rather than 的对比含义</div>
+        <div class="row tr"><b>译文：</b>常见的反对意见是：工时越短压力越大，人们只会把五天的压力硬塞进四天，健康会因此受损而非改善。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Crucially, the organisations did not simply subtract a day; they spent roughly eight weeks beforehand redesigning how work was done, trimming unnecessary meetings and streamlining routine tasks.</div>
+        <div class="row"><b>句首副词：</b>Crucially（"关键在于"；单独作评注性状语，点明全句重点）</div>
+        <div class="row"><b>并列分句一：</b>the organisations did not simply subtract a day（not simply 强调"并非仅仅"）</div>
+        <div class="row"><b>并列分句二：</b>they spent roughly eight weeks beforehand redesigning how work was done（spend + 时间 + doing；how 引导宾语从句）</div>
+        <div class="row"><b>现在分词作伴随状语：</b>trimming unnecessary meetings and streamlining routine tasks（说明"重新设计"的具体做法）</div>
+        <div class="row"><b>考点：</b>分号连接的并列分句；spend time doing；分词短语表伴随；Crucially 的评注用法</div>
+        <div class="row tr"><b>译文：</b>关键在于，这些机构并不是简单地减掉一天；他们在事前花了大约八周时间重新设计工作方式——削减不必要的会议、精简例行事务。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Those whose own hours fell by eight hours or more gained the most, which suggests that personal control over time, rather than a policy on paper, is the active ingredient.</div>
+        <div class="row"><b>主干：</b>Those ... gained the most（主语 + 谓语 + 状语）</div>
+        <div class="row"><b>定语从句：</b>whose own hours fell by eight hours or more（修饰 Those，指工时减少八小时以上的人）</div>
+        <div class="row"><b>非限制性定语从句：</b>which suggests that ...（which 指代前面整件事）</div>
+        <div class="row"><b>宾语从句 + 插入语：</b>that personal control over time, rather than a policy on paper, is the active ingredient（rather than 为插入式对比，分隔主语与系动词）</div>
+        <div class="row"><b>考点：</b>whose 引导定语从句；which 指代整句；rather than 插入语；the active ingredient 的比喻义</div>
+        <div class="row tr"><b>译文：</b>那些自身工时减少八小时及以上的人获益最大，这提示：真正起作用的关键，是对时间的个人掌控力，而不是纸面上的政策。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The team traced the gains to three mediating factors that read like an early-warning list for burnout: a better self-assessed ability to do the job, fewer sleep problems, and reduced fatigue.</div>
+        <div class="row"><b>主干：</b>The team traced the gains to three mediating factors（trace A to B，"把 A 归因于 B"）</div>
+        <div class="row"><b>定语从句：</b>that read like an early-warning list for burnout（修饰 factors，read like 意为"读起来像"）</div>
+        <div class="row"><b>冒号后的并列同位语：</b>a better self-assessed ability to do the job, fewer sleep problems, and reduced fatigue（三项并列，具体解释前面的三个因素）</div>
+        <div class="row"><b>考点：</b>trace ... to ... 的搭配；read like 的比喻用法；冒号引出并列同位成分</div>
+        <div class="row tr"><b>译文：</b>研究团队把改善归因于三个中介因素，它们读起来就像一份倦怠的预警清单：在工作中自我评估的能力提升、睡眠问题减少，以及疲劳减轻。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Whether the four-day week spreads widely remains uncertain, but the study makes one point hard to dismiss: redesigning work, rather than merely shortening it, is what allows fewer hours to deliver the same results.</div>
+        <div class="row"><b>主语从句：</b>Whether the four-day week spreads widely（whether 引导的主语从句置于句首）</div>
+        <div class="row"><b>主干：</b>... remains uncertain（系表结构）</div>
+        <div class="row"><b>转折并列：</b>but the study makes one point hard to dismiss（make + 宾语 + 宾补，hard to dismiss 作补语）</div>
+        <div class="row"><b>冒号后的解释：</b>redesigning work ... is what allows fewer hours to deliver the same results（动名词短语作主语；what 引导表语从句）</div>
+        <div class="row"><b>考点：</b>whether 主语从句；make + 宾语 + 形容词补语；动名词作主语；what 引导的表语从句</div>
+        <div class="row tr"><b>译文：</b>四天工作制能否广泛推广尚不确定，但这项研究提出了一点难以否定：真正让更短的工时产出同样结果的，是重新设计工作，而不只是把工作缩短。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">五天、每周四十小时的工作制，是工业时代被写进法律与习惯的产物，至今仍在悄悄规定着普通生活的节奏；但越来越多的证据表明，现代工作周里被填满的大量时间并非用于真正的生产，而是被会议与打断吞掉了。于是研究者提出一个看似简单、实则尖锐的问题：一家机构能否砍掉整整一天而不牺牲产出？常见的反对意见是：工时越短压力越大，人们只会把五天的压力硬塞进四天，健康会因此受损而非改善。2025 年 7 月，一项迄今规模最大的相关研究给出了答案。论文由波士顿学院的温凡、朱丽叶·肖尔与郭林谷，联合爱尔兰都柏林大学的奥拉·凯利完成，刊于《自然·人类行为》。研究追踪了澳大利亚、加拿大、爱尔兰、新西兰、英国与美国六国、141 家机构的 2,896 名员工，并设置了 12 家维持五天制的对照公司，试验持续六个月。参与公司采用所谓“100:80:100”方案：工资不降、工时降至原来的八成，同时承诺产出不减。关键在于，这些公司并不是简单地减掉一天，而是在试验前用了大约八周时间重新设计工作方式，削减不必要的会议、精简例行事务。六个月后的结果很清晰：员工报告的职业倦怠下降、工作满意度上升、心理与身体健康均改善，而这些变化在对照组中并未出现；没有任何一家公司报告生产率下滑，超过三分之一甚至称产出有所提高，并且这一模式在试验的每一个国家中都成立。研究最耐人寻味之处，是收益究竟从哪里来：原来，公司整体平均工时的减少并不比员工个人工时的减少更要紧——那些自身工时减少八小时及以上的人获益最大，这提示真正起作用的关键是对时间的个人掌控力，而不是纸面上的政策。团队进一步把改善归因于三个中介因素，它们读起来像一份倦怠预警清单：自我评估的工作能力提升、睡眠问题减少，以及疲劳减轻。换言之，收益并非来自把更多努力挤进更短的时间，而是来自让人得以休息，从而在岗时更专注、更高效。当然，作者也坦率指出局限：参与企业是自愿加入的，多数规模偏小、且位于英语国家，研究设计也并非随机对照试验。因此他们呼吁开展由政府支持、覆盖更广泛工作场所的随机试验，尤其是现有证据几乎未能覆盖的轮班制行业。归根结底，这项研究给出的教训是：时间若被有意识地管理，可以成为战略资源而非固定成本，休息与绩效也未必彼此对立。四天工作制能否广泛推广仍不确定，但有一点难以否定——真正让更短工时产出同样结果的，是重新设计工作，而不只是把工作缩短。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>结合第 6、7 两段，作者为什么强调"起作用的是员工个人工时的减少，而非公司整体平均数的下降"？如果把这一发现与"100:80:100"方案放在一起看，一项旨在改善员工福祉的组织改革，真正需要改变的究竟是政策条文，还是每个人每天时间被使用的具体方式？</div>
+      <div class="q"><b>仿写题：</b>仿照第 4 段 <span style="font-family:Georgia,serif;font-style:italic">"Crucially, sb did not simply do A; they spent time doing B, doing C and doing D."</span>（评注副词 + not simply + 分号并列 + 分词伴随）的句式，围绕「某项改变并非只是表面动作，而是伴随一系列具体做法」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：五天工作制源于工业时代，工作周被会议与打断填满</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 质疑：砍一天会不会减产出？"五压力塞进四天"的反对意见</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 研究：Fan/Schor/Kelly/Gu，六国 141 家 2,896 人，12 家对照</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 设计：100:80:100 + 试验前八周重组工作（减会议、精简流程）</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 发现：倦怠降、满意度升、身心更健康；产出不减，多国一致</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 关键：个人工时减少越多，收益越大——重在其"个人层面"</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 机制：三条中介路径——工作能力、睡眠、疲劳</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：自愿参与、偏小、英语国家、非随机；呼吁政府试点</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 意义：时间可作战略资源；关键是"重新设计工作"</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 质疑 → 研究 → 设计 → 发现 → 关键 → 机制 → 局限 → 意义」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Human Behaviour 论文《Work time reduction via a 4-day workweek finds improvements in workers' well-being》（Fan, Schor, Kelly &amp; Gu, 2025；Boston College / University College Dublin）公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
