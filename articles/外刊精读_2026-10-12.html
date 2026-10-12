@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 语言不是一棵树：一项研究说，我们说话时大脑其实在“拼积木”</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Mind &amp; Language · 人与自我 / 语言学 / 认知科学 / 心理语言学</div>
+  <h1>语言不是一棵树，而是一堆积木：一项研究说，我们说话时大脑其实在“拼词块”</h1>
+  <div class="deck">For seventy years the mind has been imagined as a grammar machine that builds sentences like branching trees; a new study argues that much of language rests instead on flat, familiar chunks — and that could narrow the gulf between human speech and animal calls</div>
+  <div class="byline"><span><b>来源</b> Nature Human Behaviour（2026 年 1 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-12</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 528 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-12.jpg" alt="夕阳透窗的房间里，两位交谈者隔着桌子相对而坐、低声交谈的场景照片（配图）">
+    <figcaption>配图：夕阳透窗的房间里，两位交谈者隔桌相对而坐、低声交谈——我们脱口而出的句子，究竟是当场用语法现搭起来，还是由记忆中熟悉的词块拼装而成？（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>七十多年来，语言学家习惯把人的心智想象成一台“语法机器”：先由零散的词组成短语，再层层组合，像树枝一样分叉，最终长成一整句完整的话。这套“层级结构”理论相当优雅，也能解释我们为何能说出从未说过、从未听过的新句子。但有一个细节始终让这幅图景不太安生：英语里最常用的三四个词的组合，往往根本算不上语法单位。像“in the middle of the”或“can I have a”这样的串，被反复使用，却偏偏横切过语法树本该画出的边界；因为无处归类，它们长期被忽视。2026 年 1 月，期刊《自然·人类行为》（Nature Human Behaviour）刊出的一篇论文提出：这些串并非杂音，而是语言在大脑中存储方式的一项基本成分。作者 Yngwie Nielsen 与 Morten Christiansen（奥胡斯大学 / 康奈尔大学）认为，心智表征所依赖的单位，比标准模型所允许的更扁平、更短。为验证这一想法，团队做了四项预注册实验（近 500 名参与者），并分析了两份真实语料：68 人的眼动阅读记录，以及 358 段电话对话录音。结果显示，即使某个串在语法上不是“成分”，只要刚刚见过，人对它的反应就会更快——这种“启动效应”说明它确实进入了心智表征。研究由此挑战了乔姆斯基一脉的生成语法与较新的构式语法；作者更大胆地指出：如果人的语言并不必依赖层级句法的复杂机器，那么人类语言与动物交流之间的鸿沟，也许比想象的要窄得多。本文循“背景—疑难—研究—证据—挑战—启示—边界—收束”的链条，追问一个朴素的问题：我们开口说话时，大脑究竟在搭一棵树，还是在拼一堆积木？</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-12.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.011">For most of the past seventy years, linguists have <span class="kw" data-tip="v. 设想；想象（熟词僻义：名词“图画、照片”）">pictured</span> the human mind as a machine that builds sentences from <span class="kw" data-tip="adj. 嵌套的（一个结构套在另一个结构之中）">nested</span>, tree-like <span class="kw" data-tip="n. 结构；构造；体系">structures</span>.</span> <span class="s" data-t="9.011" data-e="18.934">On this view, words are grouped first into small units, such as noun phrases, then <span class="kw" data-tip="v. 结合；组合（combine A with B）">combined</span> step by step into larger ones until a full sentence <span class="kw" data-tip="v. 出现；显露；（事实）变得明显">emerges</span>.</span> <span class="s" data-t="18.934" data-e="25.803">The theory is elegant, and it explains why we can produce sentences we have never spoken or heard before.</span></span></div>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="25.803" data-e="35.671">Yet one awkward detail has always resisted this picture: the most common three- or four-word <span class="kw" data-tip="n. 序列；一连串（此处指连续出现的词序）">sequences</span> in everyday English are often not units of grammar at all.</span> <span class="s" data-t="35.671" data-e="48.053">Expressions such as &ldquo;in the middle of the&rdquo; or &ldquo;can I have a&rdquo; are used constantly, and they cut across the very boundaries the tree is meant to draw; because they fit no neat category, such <span class="kw" data-tip="n. 一串；一连串（熟词僻义：名词“绳子、弦”）">strings</span> have largely been <span class="kw" data-tip="v. 忽视；不理会；不予考虑">ignored</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="48.053" data-e="57.829">A study published in January in Nature Human Behaviour suggests that these sequences are not mere noise but a basic <span class="kw" data-tip="n. 成分；（成功所需的）要素">ingredient</span> of how language is stored in the mind.</span> <span class="s" data-t="57.829" data-e="70.553">Its authors, Yngwie Nielsen and Morten Christiansen, of Aarhus University and Cornell University, argue that mental <span class="kw" data-tip="n. 表征；表示（心灵如何“呈现”语言知识）">representation</span> <span class="kw" data-tip="v. 依靠；取决于；建立在……之上（熟词僻义：名词“休息、其余”）">rests</span> on flatter, shorter units than the standard model allows.</span></span></div>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="70.553" data-e="81.84">To test the idea, the team ran four <span class="kw" data-tip="adj. 预注册的（研究开始前公开登记假设与方案）">pre-registered</span> experiments in which nearly five hundred participants judged, as fast as they could, whether a string of words formed a natural phrase.</span> <span class="s" data-t="81.84" data-e="93.224">The trick lay in <span class="kw" data-tip="n. 启动效应（先接触某刺激，随后对其反应更快）">priming</span>, a well-studied <span class="kw" data-tip="n. 现象；现象性的事物">phenomenon</span>: having just met a sequence, people respond to it faster the next time, even when the sequence was not a grammatical <span class="kw" data-tip="n. 成分；构成成分（语法上的组成单位）">constituent</span> at all.</span></span></div>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="93.224" data-e="97.709">Two further analyses carried the finding into ordinary life.</span> <span class="s" data-t="97.709" data-e="106.421">One <span class="kw" data-tip="v. 追踪；跟踪记录（此处指逐字记录眼动）">tracked</span> the eye movements of sixty-eight people as they read; the other combed through three hundred and fifty-eight recorded telephone conversations.</span> <span class="s" data-t="106.421" data-e="112.776">Both showed the same pattern, which suggests the effect is not an <span class="kw" data-tip="n. 人为产物；假象（英式拼写，美式 artifact）">artefact</span> of artificial tasks.</span></span></div>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="112.776" data-e="125.263">The results challenge the <span class="kw" data-tip="adj. 生成的（语言学中语法生成句子的路径）">generative</span> tradition associated with Noam Chomsky, and newer constructionist accounts too, since neither explains why strings that break the rules of grammar are handled like familiar patterns.</span> <span class="s" data-t="125.263" data-e="135.0">If the mind really relies on flat, linear chunks, the <span class="kw" data-tip="adj. 复杂的；精心制作的；详尽的">elaborate</span> machinery of <span class="kw" data-tip="adj. 层级的；分层的（一层套一层，如有层级的树）">hierarchical</span> syntax may be doing less work than linguists have long assumed.</span></span></div>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="135.0" data-e="148.197">The implications reach well beyond academic debate: language teachers, for instance, might do better to drill whole useful chunks, such as &ldquo;it turns out that&rdquo;, rather than dissecting every sentence into its parts.</span> <span class="s" data-t="148.197" data-e="155.355">The work also bears on how children acquire their first language, and on how machines that process speech are designed.</span></span></div>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="155.355" data-e="168.382">Most <span class="kw" data-tip="adv. 挑动性地；引人深思地（形容词 provocative）">provocatively</span>, the authors suggest that if human language does not need the complex machinery of hierarchical syntax, the <span class="kw" data-tip="n. 鸿沟；巨大差距">gulf</span> between our language and animal communication may be far narrower than once believed.</span> <span class="s" data-t="168.382" data-e="174.632">The work is confined to English, however, so the claim is a starting point rather than a <span class="kw" data-tip="n. 裁决；定论；最终判断">verdict</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="174.632" data-e="185.303">What the study ultimately offers is a humbler picture of the mind, in which fluent speech grows less from an inner rulebook than from the patient <span class="kw" data-tip="n. 积累；堆积（动词 accumulate）">accumulation</span> of well-worn phrases.</span> <span class="s" data-t="185.303" data-e="190.592">We may speak in trees on paper, but in the mind we seem to build with bricks.</span></span></div>
+
+      <p class="muted">原文出处：本文根据 Nature Human Behaviour 论文《Evidence for the representation of non-hierarchical structures in language》（Yngwie A. Nielsen &amp; Morten H. Christiansen；Aarhus University / Cornell University；Nature Human Behaviour, 10(3): 579–588, 2026；DOI 10.1038/s41562-025-02387-z）改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">structure</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈstrʌktʃə/ · 美 /ˈstrʌktʃər/</div>
+          <div class="wc-pos"><b>n.</b> 结构；构造；体系 <b>v.</b> 组织；构建</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Linguists pictured the mind as a machine that builds sentences from <b>tree-like structures</b>.</div>
+          <div class="wc-tr">语言学家把心智想象成一台用“树状结构”造句的机器。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">combine</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kəmˈbaɪn/ · 美 /kəmˈbaɪn/</div>
+          <div class="wc-pos"><b>v.</b> 结合；组合 <b>n.</b> 联合体（combine A with B）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Words are grouped into small units, then <b>combined</b> step by step into larger ones.</div>
+          <div class="wc-tr">词先被组成小单位，再一步步组合成更大的单位。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">emerge</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪˈmɜːdʒ/ · 美 /ɪˈmɜːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 出现；显露；（事实）变得明显</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Units are combined until a full sentence <b>emerges</b>.</div>
+          <div class="wc-tr">单位不断组合，直到一整句话浮现出来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ignore</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪɡˈnɔː/ · 美 /ɪɡˈnɔːr/</div>
+          <div class="wc-pos"><b>v.</b> 忽视；不理会；不予考虑</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Such strings have largely been <b>ignored</b>.</div>
+          <div class="wc-tr">这类词串在很大程度上一直被忽视。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sequence</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsiːkwəns/ · 美 /ˈsiːkwəns/</div>
+          <div class="wc-pos"><b>n.</b> 序列；一连串 <b>v.</b> 按顺序排列</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The most common three- or four-word <b>sequences</b> are often not units of grammar.</div>
+          <div class="wc-tr">最常用的三四个词的序列，往往并不是语法单位。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">representation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌreprɪzenˈteɪʃn/ · 美 /ˌreprɪzenˈteɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 表征；表示；呈现（心智如何“呈现”语言知识）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Mental <b>representation</b> rests on flatter, shorter units than the standard model allows.</div>
+          <div class="wc-tr">心智表征所依赖的单位，比标准模型所允许的更扁平、更短。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ingredient</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈɡriːdiənt/ · 美 /ɪnˈɡriːdiənt/</div>
+          <div class="wc-pos"><b>n.</b> 成分；（成功的）要素、因素</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These sequences are a basic <b>ingredient</b> of how language is stored in the mind.</div>
+          <div class="wc-tr">这些词串是语言在大脑中存储方式的一项基本成分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">phenomenon</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /fəˈnɒmɪnən/ · 美 /fəˈnɑːmɪnɑːn/</div>
+          <div class="wc-pos"><b>n.</b> 现象（复数 phenomena）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The trick lay in priming, a well-studied <b>phenomenon</b>.</div>
+          <div class="wc-tr">诀窍在于“启动效应”，一种已被充分研究的现象。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">elaborate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈlæbərət/ · 美 /ɪˈlæbərət/</div>
+          <div class="wc-pos"><b>adj.</b> 复杂的；精心制作的；详尽的 <b>v.</b> 详述</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>elaborate</b> machinery of hierarchical syntax may be doing less work than assumed.</div>
+          <div class="wc-tr">层级句法那套复杂的机器，或许并没有人们以为的那样不可少。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">verdict</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈvɜːdɪkt/ · 美 /ˈvɜːrdɪkt/</div>
+          <div class="wc-pos"><b>n.</b> 裁决；定论；最终判断</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The claim is a starting point rather than a <b>verdict</b>.</div>
+          <div class="wc-tr">这一主张是一个起点，而非最终定论。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accumulation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˌkjuːmjəˈleɪʃn/ · 美 /əˌkjuːmjəˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 积累；堆积（动词 accumulate）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Fluent speech grows from the patient <b>accumulation</b> of well-worn phrases.</div>
+          <div class="wc-tr">流利的口语来自对用旧了的短语的耐心积累。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">track</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /træk/ · 美 /træk/</div>
+          <div class="wc-pos"><b>v.</b> 追踪；跟踪记录 <b>n.</b> 足迹；轨迹；小道</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>One analysis <b>tracked</b> the eye movements of sixty-eight people as they read.</div>
+          <div class="wc-tr">其中一项分析追踪了 68 人阅读时的眼动。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nested</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈnestɪd/ · 美 /ˈnestɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 嵌套的（一个结构套在另一个结构之中）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The mind builds sentences from <b>nested</b>, tree-like structures.</div>
+          <div class="wc-tr">心智用嵌套的、树状的结构来造句。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">constituent</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈstɪtjuənt/ · 美 /kənˈstɪtʃuənt/</div>
+          <div class="wc-pos"><b>n.</b> 成分；构成成分（语法上被组合起来的一个单位）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Priming survived even when the sequence was not a grammatical <b>constituent</b>.</div>
+          <div class="wc-tr">即使该词串在语法上不是“成分”，启动效应依然存在。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pre-registered</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌpriː ˈredʒɪstəd/ · 美 /ˌpriː ˈredʒɪstərd/</div>
+          <div class="wc-pos"><b>adj.</b> 预注册的（研究开始前公开登记假设与方法，以减少事后调整）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team ran four <b>pre-registered</b> experiments.</div>
+          <div class="wc-tr">团队开展了四项预注册实验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">artefact</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɑːtɪfækt/ · 美 /ˈɑːrtɪfækt/</div>
+          <div class="wc-pos"><b>n.</b> 人为产物；假象（英式拼写；美式 artifact）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The effect is not an <b>artefact</b> of artificial tasks.</div>
+          <div class="wc-tr">该效应并非人工实验任务带来的假象。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">generative</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdʒenərətɪv/ · 美 /ˈdʒenərətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 生成的（语言学中指用规则“生成”句子的路径）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The results challenge the <b>generative</b> tradition associated with Noam Chomsky.</div>
+          <div class="wc-tr">这些结果挑战了与乔姆斯基相关的生成语法传统。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hierarchical</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌhaɪəˈrɑːkɪkl/ · 美 /ˌhaɪəˈrɑːrkɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 层级的；分层的（一层套一层，如有层级的树）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Human language may not need the complex machinery of <b>hierarchical</b> syntax.</div>
+          <div class="wc-tr">人的语言也许并不需要层级句法那套复杂机器。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gulf</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɡʌlf/ · 美 /ɡʌlf/</div>
+          <div class="wc-pos"><b>n.</b> 鸿沟；巨大差距；（地理）海湾</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>gulf</b> between our language and animal communication may be narrower than believed.</div>
+          <div class="wc-tr">人类语言与动物交流之间的鸿沟，也许比人们以为的要窄。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">priming</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈpraɪmɪŋ/ · 美 /ˈpraɪmɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 启动效应（先接触某刺激，随后对其反应更快）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Having just met a sequence, people respond faster the next time — the <b>priming</b> effect.</div>
+          <div class="wc-tr">刚见过某个词串的人，下一次对它反应更快——这就是启动效应。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">picture</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈpɪktʃə/ · 美 /ˈpɪktʃər/</div>
+          <div class="wc-pos"><b>v.</b> 设想；想象；描绘（熟词僻义：<b>n.</b> 图画、照片）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Linguists have <b>pictured</b> the human mind as a machine that builds sentences.</div>
+          <div class="wc-tr">语言学家一直把人的心智设想成一台造句的机器。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rest</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rest/ · 美 /rest/</div>
+          <div class="wc-pos"><b>v.</b> 依靠；取决于；建立在……之上（熟词僻义：<b>n.</b> 休息；其余）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Mental representation <b>rests</b> on flatter, shorter units.</div>
+          <div class="wc-tr">心智表征所依赖的，是更扁平、更短的单位。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">string</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /strɪŋ/ · 美 /strɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 一串；一连串（熟词僻义：<b>n.</b> 绳子、弦）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Such <b>strings</b> have largely been ignored.</div>
+          <div class="wc-tr">这类词串在很大程度上一直被忽视。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">picture sb/sth as ...</span><span class="zh">把……设想成……</span></li>
+          <li><span class="en">build sentences from nested structures</span><span class="zh">用嵌套的结构造句</span></li>
+          <li><span class="en">step by step</span><span class="zh">一步一步地；逐步</span></li>
+          <li><span class="en">not ... at all</span><span class="zh">根本不……；一点也不……</span></li>
+          <li><span class="en">cut across the boundaries</span><span class="zh">横切过（跨越）边界</span></li>
+          <li><span class="en">fit no neat category</span><span class="zh">不属于任何整齐的类别</span></li>
+          <li><span class="en">a basic ingredient of</span><span class="zh">……的基本成分</span></li>
+          <li><span class="en">rest on</span><span class="zh">依靠；取决于；建立在……之上</span></li>
+          <li><span class="en">as fast as they could</span><span class="zh">尽可能快地</span></li>
+          <li><span class="en">the trick lay in ...</span><span class="zh">诀窍在于……</span></li>
+          <li><span class="en">the next time</span><span class="zh">下一次</span></li>
+          <li><span class="en">carry sth into ordinary life</span><span class="zh">把……带入日常生活</span></li>
+          <li><span class="en">comb through</span><span class="zh">仔细梳理；逐一翻查</span></li>
+          <li><span class="en">an artefact of</span><span class="zh">……带来的（人为）假象</span></li>
+          <li><span class="en">break the rules of grammar</span><span class="zh">违反语法规则</span></li>
+          <li><span class="en">reach beyond academic debate</span><span class="zh">超出学术争论的范围</span></li>
+          <li><span class="en">do better to do sth</span><span class="zh">（更明智的做法）是去做某事</span></li>
+          <li><span class="en">bear on sth</span><span class="zh">与……相关；对……有影响</span></li>
+          <li><span class="en">a starting point rather than a verdict</span><span class="zh">是起点而非定论</span></li>
+          <li><span class="en">build with bricks</span><span class="zh">用砖块搭建（比喻由现成小块拼装）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：七十多年来，语言学家把心智设想成一台“语法机器”——词先组成短语，再层层组合成树状结构，故能生成前所未有的新句子。</li>
+          <li>疑难：可英语里最常用的三四个词的组合，往往并非语法单位；像“in the middle of the”这类词串反复出现，却横切过语法树应有的边界，因无处归类而长期被忽视。</li>
+          <li>研究：《自然·人类行为》1 月论文提出：这些词串不是杂音，而是语言在大脑中存储方式的基本成分；作者 Nielsen 与 Christiansen（奥胡斯大学 / 康奈尔大学）认为心智表征依赖更扁平、更短的单位。</li>
+          <li>实验：团队做四项预注册实验（近 500 人），让被试尽快判断一串词是否为自然短语；诀窍在于“启动效应”——刚见过的词串下次反应更快，即便它并非语法成分。</li>
+          <li>证据：两项额外分析把结论带出实验室——一份是 68 人的眼动阅读记录，一份是 358 段电话对话；两者呈现同样模式，说明该效应并非人工任务的假象。</li>
+          <li>挑战：结果挑战乔姆斯基一脉的生成语法与较新的构式语法，因为二者都无法解释“违规”词串为何被当作熟悉模式来处理；层级句法的复杂机器，或许并没有那么不可或缺。</li>
+          <li>启示：影响超出学术争论——语言教师或许更该整块操练“it turns out that”这类有用词串；研究也关乎儿童如何习得母语，以及语音处理机器的设计。</li>
+          <li>边界：作者更大胆地提出，若人的语言不必依赖层级语法，人类语言与动物交流的鸿沟也许远比想象中窄；但研究仅限英语，这一主张是起点而非定论。</li>
+          <li>收束：这项研究给出一幅更谦逊的心智图景——流利的表达更多地来自对用旧了的短语的耐心积累，而非内心的规则手册；纸面上我们“说树”，心智里却像在用砖块搭建。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Yet one awkward detail has always resisted this picture: the most common three- or four-word sequences in everyday English are often not units of grammar at all.</div>
+        <div class="row"><b>主干：</b>one awkward detail has always resisted this picture（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>冒号后的解释：</b>the most common three- or four-word sequences ... are often not units of grammar at all（说明“这个别扭的细节”究竟是什么）</div>
+        <div class="row"><b>程度状语：</b>at all（与否定连用，意为“根本不、一点也不”，加重语气）</div>
+        <div class="row"><b>考点：</b>Yet 的转折；resist 的引申义“使难以成立、与……相抵触”；冒号引出同位解释；not ... at all 的强调否定</div>
+        <div class="row tr"><b>译文：</b>然而，有一个别扭的细节始终与这幅图景相抵触：日常英语里最常用的三四个词的组合，往往根本不是语法单位。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Expressions such as “in the middle of the” or “can I have a” are used constantly, and they cut across the very boundaries the tree is meant to draw; because they fit no neat category, such strings have largely been ignored.</div>
+        <div class="row"><b>并列分句一：</b>Expressions ... are used constantly（被动语态；constantly 作方式状语）</div>
+        <div class="row"><b>并列分句二：</b>they cut across the very boundaries the tree is meant to draw（cut across 意为“横切、穿过”；the tree is meant to draw 省略关系词的定语从句，修饰 boundaries）</div>
+        <div class="row"><b>very 的强调：</b>the very boundaries（“恰恰是那些边界”，very 作形容词加强限定）</div>
+        <div class="row"><b>分号后的原因状语从句：</b>because they fit no neat category, such strings have largely been ignored</div>
+        <div class="row"><b>考点：</b>分号连接的并列分句；省略关系代词的定语从句；cut across 的搭配；because 引导原因状语从句</div>
+        <div class="row tr"><b>译文：</b>像“in the middle of the”或“can I have a”这样的表达被反复使用，它们恰恰横切过语法树本应划出的那些边界；正因为不属于任何整齐的类别，这类词串在很大程度上一直被忽视。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The trick lay in priming, a well-studied phenomenon: having just met a sequence, people respond to it faster the next time, even when the sequence was not a grammatical constituent at all.</div>
+        <div class="row"><b>主干：</b>The trick lay in priming（lay in 意为“在于”；the trick lay in ... 是“诀窍在于……”的常用句式）</div>
+        <div class="row"><b>同位语：</b>a well-studied phenomenon（对 priming 作补充说明）</div>
+        <div class="row"><b>现在分词作状语：</b>having just met a sequence（先完成、后发生的逻辑，说明前提）</div>
+        <div class="row"><b>让步状语从句：</b>even when the sequence was not a grammatical constituent at all</div>
+        <div class="row"><b>考点：</b>the trick lay in 的固定表达；同位语；完成式分词作状语；even when 引导让步状语从句</div>
+        <div class="row tr"><b>译文：</b>诀窍在于“启动效应”，一种已被充分研究的现象：只要刚刚见过某个词串，人们下一次对它的反应就会更快——即使该词串在语法上根本不是成分。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The results challenge the generative tradition associated with Noam Chomsky, and newer constructionist accounts too, since neither explains why strings that break the rules of grammar are handled like familiar patterns.</div>
+        <div class="row"><b>主干：</b>The results challenge the generative tradition ... and newer constructionist accounts too（challenge 后接两个并列宾语）</div>
+        <div class="row"><b>过去分词作定语：</b>associated with Noam Chomsky（修饰 the generative tradition）</div>
+        <div class="row"><b>原因状语从句：</b>since neither explains why ...（neither 指代前面两个理论，“两者都不”）</div>
+        <div class="row"><b>宾语从句 + 定语从句：</b>why strings that break the rules of grammar are handled like familiar patterns（that 从句修饰 strings；are handled 为被动）</div>
+        <div class="row"><b>考点：</b>并列宾语 + too；分词作后置定语；neither 的指代；why 引导的宾语从句套定语从句</div>
+        <div class="row tr"><b>译文：</b>这些结果挑战了与乔姆斯基相关的生成语法传统，也挑战了较新的构式语法，因为二者都无法解释：为什么违反语法规则的词串，会被当作熟悉的模式来处理。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Most provocatively, the authors suggest that if human language does not need the complex machinery of hierarchical syntax, the gulf between our language and animal communication may be far narrower than once believed.</div>
+        <div class="row"><b>句首评注状语：</b>Most provocatively（“最引人深思的是”，副词短语作评注性状语，统领全句）</div>
+        <div class="row"><b>宾语从句：</b>that ... the gulf ... may be far narrower than once believed</div>
+        <div class="row"><b>条件状语从句（嵌入）：</b>if human language does not need the complex machinery of hierarchical syntax</div>
+        <div class="row"><b>比较结构：</b>far narrower than once believed（than 后接省略形式，相当于 than it was once believed to be）</div>
+        <div class="row"><b>考点：</b>副词作评注性状语；宾语从句套条件从句；far + 比较级；than 后的省略</div>
+        <div class="row tr"><b>译文：</b>最引人深思的是，作者提出：如果人的语言并不需要层级句法那套复杂机器，那么人类语言与动物交流之间的鸿沟，也许远比人们曾经以为的要窄。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">七十多年来，语言学家习惯把人的心智想象成一台“语法机器”：零散的词先被组成短语，再层层组合，像树枝一样分叉，最终长成一整句完整的话。这套“层级结构”理论相当优雅，也解释了人为什么能说出从未说过、从未听过的新句子。但有一个细节始终让这幅图景不太安生：日常英语里最常用的三四个词的组合，往往并不是语法单位。像“in the middle of the”或“can I have a”这样的词串被反复使用，却偏偏横切过语法树本应划出的那些边界；正因为不属于任何整齐的类别，它们长期被忽视。2026 年 1 月，期刊《自然·人类行为》刊出的一篇论文提出：这类词串并不是杂音，而是语言在大脑中存储方式的一项基本成分。作者 Yngwie Nielsen 与 Morten Christiansen（奥胡斯大学 / 康奈尔大学）认为，心智表征所依赖的单位，比标准模型所允许的更扁平、更短。为验证这一想法，团队开展了四项预注册实验，近 500 名参与者被要求尽快判断一串词是否为自然短语；诀窍在于“启动效应”——只要刚刚见过某个词串，人下一次对它的反应就会更快，即便它在语法上根本不是“成分”。随后，两项额外分析把结论带出了实验室：一份追踪了 68 人阅读时的眼动，另一份仔细梳理了 358 段电话对话录音，结果呈现同样的模式，说明这一效应并非人工实验任务带来的假象。这些结果挑战了与乔姆斯基相关的生成语法传统，以及较新的构式语法，因为二者都无法解释：为什么违反语法规则的词串，会被当作熟悉的模式来处理。若心智真的依赖扁平的、线性的词块，那么层级句法那套复杂的机器，或许并没有语言学家长期以来以为的那样不可或缺。影响也远远超出学术争论：语言教师或许更应该整块操练“it turns out that”这类有用词串，而不是把每个句子都拆解成零件；这项研究同样关乎儿童如何习得母语，也关乎处理语音的机器该如何设计。最引人深思的是，作者提出：如果人的语言并不需要层级句法那套复杂机器，那么人类语言与动物交流之间的鸿沟，也许远比人们曾经以为的要窄。当然，研究仅限于英语，因此这一主张是一个起点，而非最终定论。归根结底，这项研究给出一幅更谦逊的心智图景：流利的表达，更多地来自对用旧了的短语的耐心积累，而非内心那本规则手册。纸面上，我们也许在“说一棵树”；但在心智里，我们更像是在用一块块现成的砖，搭起一句句话。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文中第 4、5 两段说，即使某个词串“在语法上不是成分”，人对它仍会产生“启动效应”。作者为什么把这一点视为关键证据？再想一步：如果大脑真的更多依靠“熟悉的词块”而非抽象规则来组句，这对你平时学英语——背规则、做语法题，还是整块记常用表达——会带来怎样的启示？</div>
+      <div class="q"><b>仿写题：</b>仿照第 4 段 <span style="font-family:Georgia,serif;font-style:italic">"The trick lay in X, a well-studied phenomenon: having just done A, people do B faster the next time, even when C."</span>（the trick lay in + 同位语 + 完成式分词状语 + even when 让步）的句式，围绕「某项看似神奇的效果，其实源于一个已被研究过的心理机制」写一个句子。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：语法“树”理论——词组成短语，层层组合，生成新句</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 疑难：最常用的三四词组合，竟都不是语法单位，长期被忽视</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 研究：Nielsen &amp; Christiansen 提出“更扁平、更短”的心智单位</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 实验：四项预注册实验（近 500 人）＋“启动效应”</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 证据：眼动阅读（68 人）＋电话对话（358 段），同一模式</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 挑战：生成语法与构式语法都难以解释；层级句法或非必需</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 启示：教学整块操练；儿童语言习得；语音处理机器设计</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 边界：人和动物的语言鸿沟或更窄；但仅限英语，非定论</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：更谦逊的心智图景——“纸面说树，心智砌砖”</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 疑难 → 研究 → 实验 → 证据 → 挑战 → 启示 → 边界 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Human Behaviour 论文《Evidence for the representation of non-hierarchical structures in language》（Nielsen &amp; Christiansen, 2026；Aarhus University / Cornell University）公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
