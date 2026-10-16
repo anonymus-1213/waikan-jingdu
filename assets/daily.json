@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-10-16",
+      "en": "Feeding a growing population may depend less on growing more food than on growing better food.",
+      "zh": "要养活不断增长的人口，与其说取决于种出更多的粮食，不如说取决于种出更好的粮食。",
+      "src": "外刊精读 · 餐桌上的“隐性饥饿”（2026-10-16）",
+      "key": "growing better food",
+      "keyZh": "种出更好的粮食",
+      "tip": "depend less on A than on B 意为「与其说取决于 A，不如说取决于 B」，是本句的骨架；growing more food 与 growing better food 构成一组对照——前者求「量」，后者求「质」，恰好点出全文主旨：真正的问题不只是种得够不够多，而是每一粒粮食里留下了多少营养。",
+      "tags": [
+        "农业",
+        "粮食安全",
+        "植物科学"
+      ]
+    },
+    {
       "date": "2026-10-11",
       "en": "The broader lesson is that time, deliberately managed, can be treated as a strategic resource rather than a fixed cost, and that rest and performance need not be rivals.",
       "zh": "更广义的教训是：时间若被有意识地加以管理，可以被当作一种战略资源，而不是一笔固定成本；休息与绩效也未必是彼此对立的两方。",

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 餐桌上的“隐性饥饿”：当气候变化偷走粮食里的维生素，基因编辑能把它补回来吗</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Food &amp; Agriculture · 人与自然 / 农业 / 粮食安全 / 植物科学</div>
+  <h1>餐桌上的“隐性饥饿”：当气候变化偷走粮食里的维生素，基因编辑能把它补回来吗</h1>
+  <div class="deck">More than two billion people eat enough calories yet still lack the vitamins and minerals their bodies need — a condition called hidden hunger. As a warming climate quietly drains nutrients from staple crops, scientists argue that precise gene editing must be paired with conventional breeding to keep food both plentiful and nourishing</div>
+  <div class="byline"><span><b>来源</b> Nature（2026 年 6 月 25 日）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-16</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-16.jpg" alt="正午阳光下的麦田与远处农舍的实景照片（配图）">
+    <figcaption>配图：阳光下的麦田一望无际——我们数的是收成有多少吨，却很少问每一粒粮食里到底留下了多少营养（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>衡量饥饿，人们习惯用“热量”这把尺子：只要每天吃够了卡路里，似乎就算吃饱了。但全球有超过 20 亿人，热量其实不缺，身体却长期缺维生素与矿物质——这种看不见的匮乏被称为“隐性饥饿”。它很少出现在饥饿统计里，因为这些人表面不显消瘦，却在日积月累中悄悄损耗健康。问题的一个源头，正是稻米、小麦、玉米、马铃薯、木薯这些主食作物：它们极擅长生产热量，恰因此被广泛种植；而几十年“产量优先”的育种，在把总热量推高的同时，也悄悄拉大了营养的缺口。更麻烦的是，气候变化正在让情况恶化。根特大学与列日大学合作的一项研究推算，在未来气候情景下，小麦籽粒中多种 B 族维生素与矿物质的浓度将明显下降，使营养问题升级为公共卫生问题——高温、干旱与盐碱化不只是让产量变少，还会把营养从收获的籽粒里“夺走”。面对这一局面，2026 年 6 月 25 日《自然》（Nature）刊出的一篇综述追问：科学该如何回应？论文第一作者、根特大学的 Dominique Van Der Straeten 教授与多国专家，考察了基因技术能否在提高作物营养含量的同时，让作物更抗气候胁迫。作者主张，未来农业必须同时满足三项要求：产出足够的粮食、提升营养品质、增强对干旱高温盐碱的抗逆性；只顾其一，往往会拖累另外两项。核心工具是以 CRISPR（基因编辑）为基础的精准育种，它能在极精确的位置改动植物的特定性状，例如提高籽粒累积的维生素与矿物质，或“打开”帮助植物抵御逆境的基因。但作者强调，基因编辑并非“万灵药”：传统育种与其他生物技术同样关键，最大的进步多半来自把多种手段结合起来，并按作物与当地条件量身定制。本文循“背景—结构—压力—研究—论点—工具—边界—紧迫—收束”的链条，追问一个朴素却关键的问题：要喂饱世界，我们究竟该种出“更多”的粮食，还是“更好”的粮食？</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-16.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="7.563">More than two billion people <span class="kw" data-tip="v. 摄入；消耗（食物、能量）；消费">consume</span> enough calories to survive, yet still <span class="kw" data-tip="v. 缺乏；缺少 n. 缺乏；不足">lack</span> the vitamins and minerals their bodies need.</span> <span class="s" data-t="7.563" data-e="19.671">This quiet form of <span class="kw" data-tip="n. 营养不良（营养摄入不足或不均衡）">malnutrition</span>, known as hidden hunger, rarely appears in hunger statistics, because those affected are not visibly starving but merely <span class="kw" data-tip="adj. 营养不足的（under- + nourished，长期营养摄入不够）">undernourished</span> in ways that slowly weaken their health.</span> <span class="s" data-t="19.671" data-e="30.816">For billions of them, the shortfall begins with the <span class="kw" data-tip="adj. 主要的；主食的 n. 主食；主要产品">staple</span> crops — rice, wheat, maize, potatoes and cassava — that <span class="kw" data-tip="v. 提供；供应 n. 供应；供给">supply</span> most of the energy in their daily diets.</span></span></div>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="30.816" data-e="38.366">These staple crops are remarkably <span class="kw" data-tip="adj. 高效的；效率高的（名词 efficiency）">efficient</span> at producing calories, which is precisely why they were <span class="kw" data-tip="v. 采用；采纳；收养">adopted</span> so widely.</span> <span class="s" data-t="38.366" data-e="50.342">Yet decades of <span class="kw" data-tip="n. 育种；动植物的繁殖培育">breeding</span> that prized <span class="kw" data-tip="n. 产量；收益（熟词僻义：常见义为动词“屈服、让步、出产”）">yield</span> above all else raised calorie output while quietly widening the gap in vitamins and minerals, producing a food system that can fill a stomach without nourishing the body.</span></span></div>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="50.342" data-e="56.789">Now climate change is quietly making that problem worse, in ways that are only beginning to be measured.</span> <span class="s" data-t="56.789" data-e="72.066">A companion study jointly led by Ghent University and the University of Liège found that under future climate <span class="kw" data-tip="n. 情景；设想的情形（对未来可能情况的描述）">scenarios</span>, the <span class="kw" data-tip="n. 密度；稠密程度">density</span> of several B-vitamins and minerals in wheat grains will fall sharply, turning a nutritional challenge into a public-health one.</span> <span class="s" data-t="72.066" data-e="81.066">Heat, drought and rising <span class="kw" data-tip="n. 盐度；盐碱化（土壤中盐分过高）">salinity</span> do not merely reduce how much a field produces; they can also <span class="kw" data-tip="v. 剥去；夺走；剥夺（熟词僻义：常见义为名词“窄条、带状物”）">strip</span> nutrients from the harvested grain.</span></span></div>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="81.066" data-e="88.184">Against that backdrop, a review published in Nature in June 2026 asks how science might respond.</span> <span class="s" data-t="88.184" data-e="102.816">Its lead author, Professor Dominique Van Der Straeten of Ghent University, worked with experts from institutions worldwide to examine how genetic technologies could raise the nutrient content of crops while making them tougher against climate <span class="kw" data-tip="n. 胁迫；逆境（熟词僻义：常见义为“压力、紧张”或动词“强调”）">stress</span>.</span></span></div>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="102.816" data-e="115.461">The authors argue that future agriculture has to meet three demands at once: it must produce enough food, improve its nutritional quality, and strengthen crops' <span class="kw" data-tip="n. 韧性；恢复力；抗逆能力">resilience</span> to drought, heat and salinity.</span> <span class="s" data-t="115.461" data-e="122.882">Pursuing any one of these goals in isolation, the authors warn, is likely to undermine progress on the other two.</span></span></div>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="122.882" data-e="132.776">Their central tool is CRISPR-based <span class="kw" data-tip="n. 基因组（一个生物体全部遗传信息的总和）">genome</span> editing, a technique that allows scientists to alter specific plant traits with extraordinary <span class="kw" data-tip="n. 精确；精准（形容词 precise）">precision</span>.</span> <span class="s" data-t="132.776" data-e="140.632">It can raise the vitamins and minerals that a grain <span class="kw" data-tip="v. 积累；积聚（名词 accumulation）">accumulates</span>, or switch on genes that help a plant cope with environmental stress.</span> <span class="s" data-t="140.632" data-e="149.079">Because the edits are so targeted, they can improve nutrition without the long, unpredictable process of crossing thousands of plants.</span></span></div>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="149.079" data-e="156.419">Crucially, however, the authors do not present gene editing as a silver bullet that can solve the problem on its own.</span> <span class="s" data-t="156.419" data-e="170.156"><span class="kw" data-tip="adj. 传统的；常规的（与“新型、非常规”相对）">Conventional</span> breeding and older biotechnological methods, they insist, remain just as important, and the greatest gains are likely to come from combining approaches and tailoring them to particular crops and local conditions.</span></span></div>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="170.156" data-e="176.961">The <span class="kw" data-tip="n. 紧迫性；紧急（形容词 urgent）">urgency</span> of the situation is easy to <span class="kw" data-tip="v. 忽视；没有注意到（over- + look，字面“越过不看”）">overlook</span> from the comfortable distance of a well-stocked supermarket.</span> <span class="s" data-t="176.961" data-e="191.051">With roughly 700 million people still facing caloric hunger and the world committed to ending hunger by 2030, the authors argue that precision breeding should be adopted alongside other technologies rather than delayed by debate.</span></span></div>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="191.051" data-e="201.461">What the review ultimately proposes is a shift in how we measure success: not merely how many tonnes a field yields, but how much <span class="kw" data-tip="n. 营养；滋养（动词 nourish）">nourishment</span> a single grain can deliver.</span> <span class="s" data-t="201.461" data-e="207.474">Feeding a growing population may depend less on growing more food than on growing better food.</span></span></div>
+
+      <p class="muted">原文出处：本文根据 Nature 综述论文《Genetic technologies to enhance crop nutritional value under climate change》（Dominique Van Der Straeten 等；Ghent University 及国际合作机构；Nature, 2026-06-25；DOI 10.1038/s41586-026-10593-6）及配套研究（Cao et al., Advanced Science, 2026）公开资料改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consume</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kənˈsjuːm/ · 美 /kənˈsuːm/</div>
+          <div class="wc-pos"><b>v.</b> 摄入；消耗；消费（名词 consumption）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Two billion people <b>consume</b> enough calories to survive, yet still lack essential nutrients.</div>
+          <div class="wc-tr">20 亿人摄入的热量足以维生，却仍缺乏必需的营养。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lack</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /læk/ · 美 /læk/</div>
+          <div class="wc-pos"><b>v.</b> 缺乏；缺少 <b>n.</b> 缺乏；不足（be lacking in）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They <b>lack</b> the vitamins and minerals their bodies need.</div>
+          <div class="wc-tr">他们的身体缺乏所需的维生素与矿物质。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">supply</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səˈplaɪ/ · 美 /səˈplaɪ/</div>
+          <div class="wc-pos"><b>v.</b> 提供；供应 <b>n.</b> 供应；供给（supply A with B）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Staple crops <b>supply</b> most of the energy in their daily diets.</div>
+          <div class="wc-tr">主食作物提供了他们日常饮食中的大部分能量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">adopt</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈdɒpt/ · 美 /əˈdɑːpt/</div>
+          <div class="wc-pos"><b>v.</b> 采用；采纳；收养（名词 adoption）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These crops are efficient at producing calories, which is why they were <b>adopted</b> so widely.</div>
+          <div class="wc-tr">这些作物生产热量的效率极高，这正是它们被广泛采用的原因。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">efficient</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪˈfɪʃnt/ · 美 /ɪˈfɪʃnt/</div>
+          <div class="wc-pos"><b>adj.</b> 高效的；效率高的（名词 efficiency）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These staple crops are remarkably <b>efficient</b> at producing calories.</div>
+          <div class="wc-tr">这些主食作物在生产热量方面效率惊人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">staple</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsteɪpl/ · 美 /ˈsteɪpl/</div>
+          <div class="wc-pos"><b>adj.</b> 主要的；主食的 <b>n.</b> 主食；主要产品</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The shortfall begins with the <b>staple</b> crops such as rice and wheat.</div>
+          <div class="wc-tr">这一缺口始于稻米、小麦等主食作物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">breeding</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbriːdɪŋ/ · 美 /ˈbriːdɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 育种；繁育（动词 breed）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Decades of <b>breeding</b> that prized yield above all else widened the gap in nutrients.</div>
+          <div class="wc-tr">几十年“产量至上”的育种，拉大了营养上的差距。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">density</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdensəti/ · 美 /ˈdensəti/</div>
+          <div class="wc-pos"><b>n.</b> 密度；稠密程度（形容词 dense）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>density</b> of several B-vitamins and minerals in wheat grains will fall sharply.</div>
+          <div class="wc-tr">小麦籽粒中几种 B 族维生素与矿物质的浓度将大幅下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scenario</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səˈnɑːriəʊ/ · 美 /səˈnærioʊ/</div>
+          <div class="wc-pos"><b>n.</b> 情景；设想的情形；剧情梗概</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Under future climate <b>scenarios</b>, nutrient density in grain will decline.</div>
+          <div class="wc-tr">在未来气候情景下，籽粒中的营养密度将会下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">precision</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɪˈsɪʒn/ · 美 /prɪˈsɪʒn/</div>
+          <div class="wc-pos"><b>n.</b> 精确；精准（形容词 precise）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Genome editing alters specific plant traits with extraordinary <b>precision</b>.</div>
+          <div class="wc-tr">基因编辑能以极高的精确度改动植物的特定性状。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accumulate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈkjuːmjəleɪt/ · 美 /əˈkjuːmjəleɪt/</div>
+          <div class="wc-pos"><b>v.</b> 积累；积聚（名词 accumulation）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It can raise the levels of vitamins and minerals that a grain <b>accumulates</b>.</div>
+          <div class="wc-tr">它可以提高籽粒所积累的维生素与矿物质含量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conventional</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈvenʃənl/ · 美 /kənˈvenʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 传统的；常规的；因循守旧的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Conventional</b> breeding and older biotechnological methods remain just as important.</div>
+          <div class="wc-tr">传统育种与较早的生物技术同样重要。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">urgency</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɜːdʒənsi/ · 美 /ˈɜːrdʒənsi/</div>
+          <div class="wc-pos"><b>n.</b> 紧迫性；紧急（形容词 urgent）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>urgency</b> of the situation is easy to overlook.</div>
+          <div class="wc-tr">这一局面的紧迫性很容易被忽视。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">overlook</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌəʊvəˈlʊk/ · 美 /ˌoʊvərˈlʊk/</div>
+          <div class="wc-pos"><b>v.</b> 忽视；没有注意到；（位置）俯瞰</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The urgency is easy to <b>overlook</b> from a well-stocked supermarket.</div>
+          <div class="wc-tr">在物资充足的超市里，这种紧迫性很容易被忽视。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nourishment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈnʌrɪʃmənt/ · 美 /ˈnɜːrɪʃmənt/</div>
+          <div class="wc-pos"><b>n.</b> 营养；滋养（动词 nourish）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Success should be measured by how much <b>nourishment</b> a single grain can deliver.</div>
+          <div class="wc-tr">衡量成功，应看一粒粮食能带来多少营养。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">malnutrition</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmælnjuˈtrɪʃn/ · 美 /ˌmælnuˈtrɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 营养不良（mal- 表“坏、不良” + nutrition 营养）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>This quiet form of <b>malnutrition</b> is known as hidden hunger.</div>
+          <div class="wc-tr">这种悄无声息的营养不良被称为“隐性饥饿”。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">undernourished</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌʌndəˈnʌrɪʃt/ · 美 /ˌʌndərˈnɜːrɪʃt/</div>
+          <div class="wc-pos"><b>adj.</b> 营养不足的（under- + nourished 长期营养摄入不够）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Those affected are not visibly starving but merely <b>undernourished</b>.</div>
+          <div class="wc-tr">受影响的人并非肉眼可见的饥饿，只是长期营养不足。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">salinity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /səˈlɪnəti/ · 美 /səˈlɪnəti/</div>
+          <div class="wc-pos"><b>n.</b> 盐度；盐碱化（形容词 saline 含盐的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Heat, drought and rising <b>salinity</b> reduce how much a field produces.</div>
+          <div class="wc-tr">高温、干旱与日益严重的盐碱化，会降低田地的产量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">resilience</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈzɪliəns/ · 美 /rɪˈzɪliəns/</div>
+          <div class="wc-pos"><b>n.</b> 韧性；恢复力；抗逆能力（形容词 resilient）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Agriculture must strengthen crops' <b>resilience</b> to drought, heat and salinity.</div>
+          <div class="wc-tr">农业必须增强作物对干旱、高温和盐碱的抗逆性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">genome</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdʒiːnəʊm/ · 美 /ˈdʒiːnoʊm/</div>
+          <div class="wc-pos"><b>n.</b> 基因组（一个生物体全部遗传信息的总和）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their central tool is CRISPR-based <b>genome</b> editing.</div>
+          <div class="wc-tr">他们的核心工具，是以 CRISPR 为基础的基因组编辑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">yield</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /jiːld/ · 美 /jiːld/</div>
+          <div class="wc-pos"><b>n.</b> 产量；收益（熟词僻义：常见义为动词“屈服、让步、出产”）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Decades of breeding prized <b>yield</b> above all else.</div>
+          <div class="wc-tr">几十年的育种把“产量”看得高于一切。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stress</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /stres/ · 美 /stres/</div>
+          <div class="wc-pos"><b>n.</b> 胁迫；逆境（熟词僻义：常见义为“压力、紧张”或动词“强调”）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Genes that help a plant cope with environmental <b>stress</b>.</div>
+          <div class="wc-tr">帮助植物应对环境胁迫的基因。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">strip</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /strɪp/ · 美 /strɪp/</div>
+          <div class="wc-pos"><b>v.</b> 剥去；夺走；剥夺（熟词僻义：常见义为名词“窄条、带状物”）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They can also <b>strip</b> nutrients from the grain that is harvested.</div>
+          <div class="wc-tr">它们还会把营养从收获的籽粒里夺走。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">hidden hunger</span><span class="zh">隐性饥饿（热量够却缺微量营养素）</span></li>
+          <li><span class="en">supply most of the energy in one's diet</span><span class="zh">提供日常饮食中的大部分能量</span></li>
+          <li><span class="en">prize sth above all else</span><span class="zh">把……看得高于一切</span></li>
+          <li><span class="en">widen the gap in</span><span class="zh">拉大……方面的差距</span></li>
+          <li><span class="en">fill a stomach without nourishing the body</span><span class="zh">填饱肚子却养不好身体</span></li>
+          <li><span class="en">under future climate scenarios</span><span class="zh">在未来气候情景下</span></li>
+          <li><span class="en">turn A into B</span><span class="zh">把 A 变成 B</span></li>
+          <li><span class="en">strip nutrients from</span><span class="zh">夺走/剥离……中的养分</span></li>
+          <li><span class="en">against that backdrop</span><span class="zh">在这样的背景下</span></li>
+          <li><span class="en">meet three demands at once</span><span class="zh">同时满足三项要求</span></li>
+          <li><span class="en">in isolation</span><span class="zh">孤立地；单独地</span></li>
+          <li><span class="en">undermine progress on</span><span class="zh">损害……方面的进展</span></li>
+          <li><span class="en">with extraordinary precision</span><span class="zh">以极高的精确度</span></li>
+          <li><span class="en">switch on genes</span><span class="zh">开启基因（使其表达）</span></li>
+          <li><span class="en">cope with environmental stress</span><span class="zh">应对环境胁迫</span></li>
+          <li><span class="en">a silver bullet</span><span class="zh">万灵药；一招制胜的良方</span></li>
+          <li><span class="en">tailor sth to sth</span><span class="zh">使……适合……；量身定制</span></li>
+          <li><span class="en">be committed to doing sth</span><span class="zh">致力于做某事</span></li>
+          <li><span class="en">alongside other technologies</span><span class="zh">与其他技术并行（一起）</span></li>
+          <li><span class="en">depend less on A than on B</span><span class="zh">与其说取决于 A，不如说取决于 B</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：全球逾 20 亿人热量充足却缺乏维生素与矿物质——这种“隐性饥饿”不易见于饥饿统计，因为它不显消瘦，只悄悄损耗健康。</li>
+          <li>结构：缺口始于稻米、小麦、玉米、马铃薯、木薯等主食作物；它们极擅长生产热量，也因此被广泛种植。</li>
+          <li>压力：气候变暖使问题恶化——根特大学与列日大学的研究发现未来小麦籽粒的 B 族维生素与矿物质浓度将明显下降；高温、干旱、盐碱化还会把营养从籽粒中夺走。</li>
+          <li>研究：2026 年 6 月《自然》刊出综述，第一作者根特大学 Van Der Straeten 教授与多国专家，考察基因技术能否在提高作物营养的同时增强其气候抗逆性。</li>
+          <li>论点：未来农业须同时满足三项要求——产出足够粮食、提升营养品质、增强抗旱抗热抗盐能力；只顾其一往往拖累另外两项。</li>
+          <li>工具：核心是以 CRISPR 为基础的基因组编辑，能极精确地改动植物性状，提高籽粒累积的维生素矿物质，或开启抗逆基因，且无需漫长不可控的杂交过程。</li>
+          <li>边界：基因编辑并非“万灵药”；传统育种与其他生物技术同样关键，最大进步多来自多种手段结合、并按作物与当地条件量身定制。</li>
+          <li>紧迫：在物资充足的超市里，这种紧迫性容易被忽视；但全球约 7 亿人仍面临热量饥饿，且世界承诺 2030 年消除饥饿，精准育种宜与其他技术并行而非被争论耽搁。</li>
+          <li>收束：综述主张转变衡量成功的标准——不只看一亩地打多少吨，更看一粒粮食能带来多少营养；要喂饱世界，或许不在于种得更多，而在于种得更好。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Yet decades of breeding that prized yield above all else raised calorie output while quietly widening the gap in vitamins and minerals, producing a food system that can fill a stomach without nourishing the body.</div>
+        <div class="row"><b>主干：</b>decades of breeding ... raised calorie output（主语 + 谓语 + 宾语）</div>
+        <div class="row"><b>定语从句：</b>that prized yield above all else（修饰 breeding，“把产量看得高于一切”的育种）</div>
+        <div class="row"><b>while 引导的时间/伴随状语：</b>while quietly widening the gap in vitamins and minerals（一边推高热量，一边悄悄拉大营养差距）</div>
+        <div class="row"><b>现在分词作结果状语：</b>producing a food system ...（修饰整句，说明最终造成的结果）</div>
+        <div class="row"><b>定语从句：</b>that can fill a stomach without nourishing the body（修饰 food system；without doing 作否定补充）</div>
+        <div class="row"><b>考点：</b>定语从句；while 表同时发生；分词作结果状语；without doing 的否定补充</div>
+        <div class="row tr"><b>译文：</b>然而，几十年“产量至上”的育种在推高热量产出的同时，也悄悄拉大了维生素与矿物质上的差距，最终造就了一个能填饱肚子、却养不好依赖它生存的身体的粮食体系。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A companion study jointly led by Ghent University and the University of Liège found that under future climate scenarios, the density of several B-vitamins and minerals in wheat grains will fall sharply, turning a nutritional challenge into a public-health one.</div>
+        <div class="row"><b>主干：</b>A companion study ... found that ...（主语 + 谓语 + 宾语从句）</div>
+        <div class="row"><b>过去分词作定语：</b>jointly led by Ghent University and the University of Liège（修饰 study，说明由谁联合主导）</div>
+        <div class="row"><b>宾语从句：</b>that ... the density of several B-vitamins and minerals ... will fall sharply（介词短语 under future climate scenarios 作状语前置）</div>
+        <div class="row"><b>现在分词作结果状语：</b>turning a nutritional challenge into a public-health one（one 指代 challenge，避免重复）</div>
+        <div class="row"><b>考点：</b>分词作后置定语；宾语从句中的状语前置；turn A into B；one 的替代用法</div>
+        <div class="row tr"><b>译文：</b>由根特大学与列日大学联合主导的一项配套研究发现：在未来气候情景下，小麦籽粒中多种 B 族维生素与矿物质的浓度将大幅下降，把一个营养问题变成了公共卫生问题。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The authors argue that future agriculture has to meet three demands at once: it must produce enough food, improve its nutritional quality, and strengthen crops' resilience to drought, heat and salinity.</div>
+        <div class="row"><b>主干：</b>The authors argue that ...（主句 + 宾语从句）</div>
+        <div class="row"><b>宾语从句主干：</b>future agriculture has to meet three demands at once（at once 意为“同时”）</div>
+        <div class="row"><b>冒号后的同列三项：</b>it must produce enough food, improve its nutritional quality, and strengthen crops' resilience ...（三个并列谓语，共用情态动词 must）</div>
+        <div class="row"><b>介词短语作定语：</b>to drought, heat and salinity（修饰 resilience，表示“对……的抗逆性”）</div>
+        <div class="row"><b>考点：</b>宾语从句；冒号引出并列说明；并列谓语共用 must；at once 的“同时”义；resilience to 的搭配</div>
+        <div class="row tr"><b>译文：</b>作者主张，未来农业必须同时满足三项要求：产出足够的粮食、提升其营养品质、增强作物对干旱、高温与盐碱的抗逆能力。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Conventional breeding and older biotechnological methods, they insist, remain just as important, and the greatest gains are likely to come from combining several approaches and tailoring them to particular crops and local growing conditions.</div>
+        <div class="row"><b>主语 + 插入语：</b>Conventional breeding and older biotechnological methods, they insist（they insist 为插入语，主语实为前面的并列名词）</div>
+        <div class="row"><b>并列分句一：</b>... remain just as important（remain 作系动词，just as important 作表语）</div>
+        <div class="row"><b>并列分句二：</b>the greatest gains are likely to come from combining ... and tailoring ...（两个动名词并列作 from 的宾语）</div>
+        <div class="row"><b>固定搭配：</b>tailor sth to sth（使……适合……）</div>
+        <div class="row"><b>考点：</b>插入语；并列句；动名词作介词宾语；tailor ... to ... 的搭配；just as + 形容词</div>
+        <div class="row tr"><b>译文：</b>他们强调，传统育种与较早的生物技术同样重要；最大的进步很可能来自把若干方法结合起来，并针对特定作物与当地种植条件量体裁衣。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">With roughly 700 million people still facing caloric hunger and the world committed to ending hunger by 2030, the authors argue that precision breeding should be adopted alongside other technologies rather than delayed by debate.</div>
+        <div class="row"><b>with 复合结构作状语：</b>With roughly 700 million people still facing caloric hunger and the world committed to ending hunger by 2030（“with + 宾语 + 分词”，表示背景或伴随）</div>
+        <div class="row"><b>主句：</b>the authors argue that ...（主句 + 宾语从句）</div>
+        <div class="row"><b>宾语从句中的被动：</b>precision breeding should be adopted alongside other technologies（情态动词 + 被动语态）</div>
+        <div class="row"><b>rather than 的取舍：</b>rather than delayed by debate（与其被争论耽搁，不如……）</div>
+        <div class="row"><b>考点：</b>with 复合结构；宾语从句；should be adopted 的被动；rather than 连接并列成分表取舍</div>
+        <div class="row tr"><b>译文：</b>在仍有约 7 亿人面临热量饥饿、而世界又承诺到 2030 年消除饥饿的背景下，作者主张，精准育种应当与其他技术并行采用，而不是被无休止的争论耽搁。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">衡量饥饿，人们习惯用“热量”这把尺子：只要每天摄入足够的卡路里，似乎就算吃饱了。可全球有超过 20 亿人，热量其实不缺，身体却长期缺乏必需的维生素与矿物质——这种看不见的匮乏，被称为“隐性饥饿”。它很少出现在饥饿统计里，因为受影响的人并非肉眼可见的消瘦，只是长期营养不足，在日积月累中悄悄损耗健康。问题的源头之一，正是稻米、小麦、玉米、马铃薯、木薯这些主食作物：它们极擅长生产热量，恰恰因此被广泛种植；而几十年“产量至上”的育种，在把总热量不断推高的同时，也悄悄拉大了营养上的缺口，最终造就了一个能填饱肚子、却养不好身体的粮食体系。更麻烦的是，气候变化正在让情况恶化。由根特大学与列日大学联合主导的一项配套研究推算，在未来气候情景下，小麦籽粒中多种 B 族维生素与矿物质的浓度将大幅下降，把营养问题升级为公共卫生问题；高温、干旱与日益严重的盐碱化，不仅让田地产量变少，还会把营养从收获的籽粒中夺走。面对这样的局面，2026 年 6 月 25 日《自然》刊出的一篇综述追问：科学究竟该如何回应？论文第一作者、根特大学的 Dominique Van Der Straeten 教授与多国专家一道，考察了基因技术能否在提高作物营养含量的同时，让作物更抗气候胁迫。作者主张，未来农业必须同时满足三项要求：产出足够的粮食、提升其营养品质、增强对干旱高温盐碱的抗逆能力；只顾其中一项，往往会拖累另外两项。其核心工具，是以 CRISPR 为基础的基因组编辑：它能在极精确的位置改动植物的特定性状，比如提高籽粒所累积的维生素与矿物质，或“打开”帮助植物抵御逆境的基因，而且不必经历漫长、结果难料的杂交过程。但作者强调，基因编辑并非“万灵药”：传统育种与较早的生物技术同样关键，最大的进步多半来自把多种手段结合起来，并针对特定作物与当地种植条件量身定制。文章也提醒我们留意紧迫性——在物资充足的超市里，这种紧迫感很容易被忽视；可全球仍有约 7 亿人面临热量饥饿，而世界已承诺 2030 年消除饥饿，精准育种理当与其他技术并行采用，而不是被无休止的争论耽搁。归根结底，这篇综述主张转变我们衡量成功的标准：不只看一亩地能打多少吨粮食，更要看一粒粮食能带来多少营养。要喂饱不断增长的世界人口，或许不在于种出“更多”的粮食，而在于种出“更好”的粮食。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文中第 2 段说，几十年“产量至上”的育种“在推高热量产出的同时悄悄拉大了营养缺口”。作者为什么要把“产量”与“营养”放在一起对比？再想一步：如果你是政策制定者，面对“2030 年消除饥饿”的目标，你会更愿意把资源投给基因编辑这类精准育种，还是投给传统育种和改善饮食结构？请结合文中的“三重挑战”说明理由。</div>
+      <div class="q"><b>仿写题：</b>仿照第 5 段 <span style="font-family:Georgia,serif;font-style:italic">"X has to meet three demands at once: it must A, B, and C. Pursuing any one of these goals in isolation, ..., is likely to undermine progress on the other two."</span>（has to meet three demands at once + 冒号列举 + in isolation + undermine）的句式，围绕「一项改革需要同时兼顾的几重目标」写一个段落。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：逾 20 亿人“热量够、营养缺”的隐性饥饿</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 结构：主食作物擅长产热量；“产量至上”育种拉大营养缺口</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 压力：气候变化使作物营养密度下降，营养问题升级为公共卫生问题</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 研究：2026《自然》综述——Van Der Straeten 与多国专家</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 论点：农业须同时做到“产量足、营养好、抗逆强”</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 工具：CRISPR 基因组编辑，精准提高营养、开启抗逆基因</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 边界：并非“万灵药”，须与传统育种等多种手段结合</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 紧迫：约 7 亿人仍受热量饥饿困扰，2030 年目标不宜被争论耽搁</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：转变衡量标准——与其种“更多”，不如种“更好”</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 结构 → 压力 → 研究 → 论点 → 工具 → 边界 → 紧迫 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature 综述《Genetic technologies to enhance crop nutritional value under climate change》（Van Der Straeten et al., 2026；Ghent University 及国际合作机构）公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
