@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 给太阳能电池镀一层“特氟龙”：27% 的效率，如何换来 1200 小时不衰减</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Energy &amp; Materials · 人与自然 / 能源 / 材料科学 / 气候变化</div>
+  <h1>给太阳能电池镀一层“特氟龙”：27% 的效率，如何换来 1200 小时不衰减</h1>
+  <div class="deck">Perovskite solar cells are cheap, printable and nearly as efficient as silicon, yet the chemistry that makes them work also makes them fall apart. A film one molecule thick, modelled on the coating of a non-stick pan, now keeps one of them running at full power for 1,200 hours</div>
+  <div class="byline"><span><b>来源</b> Nature Photonics（2025 年 11 月 7 日）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-17</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-17.jpg" alt="户外太阳能电池板阵列的实景照片（配图）">
+    <figcaption>配图：阳光下成排的太阳能电池板——决定一块电池能用多少年的，往往不是它吸收光的能力，而是层与层相接的那道缝（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>过去十年，太阳能成了能源转型里最成功的故事之一：组件价格一路下探，新增装机年年刷新纪录。但这个故事有个物理上的“主角”始终没变——高纯度硅。它提纯耗能、质地刚硬、只能装在平整的屋顶和支架上。于是人们的目光转向了另一类材料：钙钛矿。这类晶态化合物可以用“墨水”印刷，能做成柔性薄膜，实验室效率从 2009 年的不足 4% 一路追到 27% 以上，几乎逼平硅电池。可它有个致命短板：短命。在光照和高温下，晶体里的离子会游走，表面缺陷不断增殖，上方各层还会与它反应，于是最好的一批早期器件在几百小时内就衰减了五分之一——而商用组件必须撑过二十五年。2025 年 11 月，《自然·光子学》（Nature Photonics）刊出一项研究，把问题定位在一个此前被相对忽视的位置：不是钙钛矿“体内”，而是它与上方电子传输层相接的那道界面。柏林亥姆霍兹中心（HZB）的 Antonio Abate 团队与第一作者李桂香（现为东南大学教授），联合中国、意大利、瑞士、德国的伙伴，用一种名为七氟丁酸钠的小分子在这道缝里铺了一层“近乎单分子”的膜。它的头部咬住表面裸露的铅原子，含氟的尾部朝外，化学性质类似不粘锅涂层——Abate 干脆称之为“特氟龙效应”。结果是效率 27.02%（认证 26.96%），最大功率点连续光照 1200 小时零衰减，85℃ 老化 1800 小时仍保留 92%。本文循“背景—瓶颈—定位—方案—机制—数据—意义—边界—收束”的链条，追问一个工程学上朴素的问题：一种材料的命运，究竟由它本身决定，还是由它的“接缝”决定？</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-17.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="13.603">Solar power has become the cheapest source of new electricity, yet the material at the heart of almost every panel — highly purified silicon — remains expensive to <span class="kw" data-tip="v. 提纯；精炼（把物质中的杂质去掉）">refine</span>, heavy to ship and too <span class="kw" data-tip="adj. 坚硬的；不可弯曲的">rigid</span> to bend around a curve.</span> <span class="s" data-t="13.603" data-e="26.669">That is why attention has turned to perovskites, <span class="kw" data-tip="adj. 结晶的；晶状的（名词 crystal）">crystalline</span> compounds that can be printed from ink onto flexible film and whose efficiency has climbed from under 4 per cent in 2009 to 27 per cent today.</span></span></div>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="26.669" data-e="33.763">The problem is that the chemistry which makes perovskites such efficient <span class="kw" data-tip="v. 捕获；收集（光能、能量）——熟词僻义：常见义为“收割、收获”">harvesters</span> of light also makes them <span class="kw" data-tip="adj. 脆弱的；易损坏的">fragile</span>.</span> <span class="s" data-t="33.763" data-e="47.274">Under heat and <span class="kw" data-tip="n. 光照；照明（动词 illuminate）">illumination</span>, ions wander through the crystal, <span class="kw" data-tip="n. 缺陷；瑕疵（此处指晶格中的不完美之处）">defects</span> multiply at its surfaces, and the layers above begin to react with it, so that the best early devices lost a fifth of their output in a few hundred hours.</span></span></div>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="47.274" data-e="55.474">A study in Nature Photonics in November 2025 describes a way of closing that weakness with a film one molecule thick.</span> <span class="s" data-t="55.474" data-e="69.474">It was led by Antonio Abate at the Helmholtz-Zentrum Berlin, with Guixiang Li, now a professor at Southeast University in Nanjing, as first author, and drew on partners in China, Italy, Switzerland and Germany.</span></span></div>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="69.474" data-e="82.447">Their diagnosis was that the decisive damage happens not inside the perovskite but at its upper surface, where the crystal meets the electron-selective layer of carbon-60 molecules that carries charge to the electrode.</span> <span class="s" data-t="82.447" data-e="93.184">That <span class="kw" data-tip="n. 界面；接合处（两种材料相接的地方）">junction</span> is studded with defects, and the C60 above it tends to <span class="kw" data-tip="v. 结块；聚成一团">clump</span> when warm, leaving gaps through which ions escape and the metal contact can attack the crystal beneath.</span></span></div>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="93.184" data-e="105.513">The team's <span class="kw" data-tip="n. 补救办法；疗法（动词“纠正、补救”）">remedy</span> is a short molecule called sodium heptafluorobutyrate, whose head <span class="kw" data-tip="v. 结合；附着（bind to sth）">binds</span> to exposed lead atoms while its fluorinated tail, much like a non-stick pan's coating, turns outward.</span> <span class="s" data-t="105.513" data-e="111.197">Applied in solution, it settles into an almost continuous monomolecular layer.</span> <span class="s" data-t="111.197" data-e="116.763">Abate describes the effect simply: it is, he says, rather like Teflon.</span></span></div>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="116.763" data-e="119.618">The coating does more than <span class="kw" data-tip="v. 排斥；驱开（repel water 拒水）">repel</span> water.</span> <span class="s" data-t="119.618" data-e="132.408">It also raises the energy needed to create a defect, tunes the surface's work function so that charge leaves more readily, and induces the C60 above it to pack into a denser film that shuts off ion migration.</span></span></div>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="132.408" data-e="145.998">The resulting cells reached a power-conversion efficiency of 27.02 per cent, <span class="kw" data-tip="adj. 经认证的；有证书的（动词 certify）">certified</span> at 26.96 per cent, with a one-square-centimetre device still delivering 25.95 per cent.</span> <span class="s" data-t="145.998" data-e="159.697">More striking is their <span class="kw" data-tip="n. 耐久性；耐力（动词 endure）">endurance</span>: after 1,200 hours of continuous illumination at maximum power, they had lost none of their initial output, whereas unprotected cells shed 20 per cent in 300 hours.</span> <span class="s" data-t="159.697" data-e="172.893"><span class="kw" data-tip="v. 使老化；做老化测试——熟词僻义：常见义为名词“年龄”、动词“变老”（指人）">Aged</span> at 85 °C for 1,800 hours they <span class="kw" data-tip="v. 保持；保留（retain 强调“没有失去”）">retained</span> 92 per cent, and 94 per cent after 200 cycles between −40 °C and +85 °C.</span></span></div>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="172.893" data-e="182.987">Those figures matter because the inverted <span class="kw" data-tip="n. 结构；构造（此处指器件的层叠设计）">architecture</span> used here <span class="kw" data-tip="n. 叠层；层叠结构——熟词僻义：常见义为“草垛、一堆”">stacks</span> naturally onto silicon, the route most manufacturers expect towards cells above 30 per cent.</span> <span class="s" data-t="182.987" data-e="195.026">Yet 1,200 hours is roughly a year outdoors, not the quarter-century a commercial <span class="kw" data-tip="n. 组件；模块（光伏组件）">module</span> must survive, and questions of lead content, scale-up and real-weather behaviour remain open.</span></span></div>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="195.026" data-e="203.513">What the study really shows is that the fate of a promising material can <span class="kw" data-tip="v. 取决于；系于（hinge on sth）">hinge</span> on the seams between its layers rather than on the material itself.</span> <span class="s" data-t="203.513" data-e="210.711">Solar power's next leap may come less from discovering new crystals than from learning to <span class="kw" data-tip="v. 封住；密封">seal</span> the ones we already have.</span></span></div>
+
+      <p class="muted">原文出处：本文根据 Nature Photonics 论文《Stabilizing high-efficiency perovskite solar cells via strategic interfacial contact engineering》（Guixiang Li, Zuhong Zhang, Benjamin Agyei-Tuffour, Luyan Wu 等；通讯作者 Antonio Abate，Helmholtz-Zentrum Berlin；Nature Photonics, Vol. 20, 2026-01, pp. 55–62；线上发表 2025-11-07；DOI 10.1038/s41566-025-01791-1）及亥姆霍兹柏林中心（HZB）新闻稿公开资料改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">refine</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈfaɪn/ · 美 /rɪˈfaɪn/</div>
+          <div class="wc-pos"><b>v.</b> 提纯；精炼；改进（名词 refinement）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Highly purified silicon remains expensive to <b>refine</b>.</div>
+          <div class="wc-tr">高纯度硅的提纯成本依然很高。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rigid</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈrɪdʒɪd/ · 美 /ˈrɪdʒɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 坚硬的；不可弯曲的；僵化的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Silicon is too <b>rigid</b> to wrap around a curve.</div>
+          <div class="wc-tr">硅太硬，无法贴合曲面。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">crystalline</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkrɪstəlaɪn/ · 美 /ˈkrɪstəlɪn/</div>
+          <div class="wc-pos"><b>adj.</b> 结晶的；晶状的（名词 crystal 晶体）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Perovskites are <b>crystalline</b> compounds that can be printed from ink.</div>
+          <div class="wc-tr">钙钛矿是可以用墨水印刷的晶态化合物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">harvest</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈhɑːvɪst/ · 美 /ˈhɑːrvɪst/</div>
+          <div class="wc-pos"><b>v.</b> 捕获；收集（光能、能量）<b>n.</b> 收获<br><span style="color:#9c2f16">常见义：收割庄稼</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Perovskites are efficient <b>harvesters</b> of light.</div>
+          <div class="wc-tr">钙钛矿是高效的光能捕获者。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fragile</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfrædʒaɪl/ · 美 /ˈfrædʒl/</div>
+          <div class="wc-pos"><b>adj.</b> 脆弱的；易碎的（名词 fragility）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The chemistry that makes perovskites efficient also makes them <b>fragile</b>.</div>
+          <div class="wc-tr">让钙钛矿高效的那套化学，也让它们变得脆弱。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">illumination</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˌluːmɪˈneɪʃn/ · 美 /ɪˌluːmɪˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 光照；照明；阐明（动词 illuminate）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>After 1,200 hours of continuous <b>illumination</b>, the cells lost none of their output.</div>
+          <div class="wc-tr">连续光照 1200 小时后，这些电池没有损失任何输出。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">defect</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdiːfekt/ · 美 /ˈdiːfekt/</div>
+          <div class="wc-pos"><b>n.</b> 缺陷；瑕疵（此处指晶格中的不完美之处）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Defects</b> multiply at the crystal's surfaces under heat.</div>
+          <div class="wc-tr">在高温下，晶体表面的缺陷会不断增殖。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">junction</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdʒʌŋkʃn/ · 美 /ˈdʒʌŋkʃn/</div>
+          <div class="wc-pos"><b>n.</b> 界面；接合处（两种材料相接的地方）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That <b>junction</b> is studded with defects.</div>
+          <div class="wc-tr">那道界面布满缺陷。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">clump</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /klʌmp/ · 美 /klʌmp/</div>
+          <div class="wc-pos"><b>v.</b> 结块；聚成一团 <b>n.</b> 丛；簇</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The C60 layer tends to <b>clump</b> when warm.</div>
+          <div class="wc-tr">C60 层在受热时容易结块。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">remedy</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈremədi/ · 美 /ˈremədi/</div>
+          <div class="wc-pos"><b>n.</b> 补救办法；疗法 <b>v.</b> 纠正；补救</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team's <b>remedy</b> is a short fluorinated molecule.</div>
+          <div class="wc-tr">该团队的补救办法是一种短链含氟分子。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bind</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /baɪnd/ · 美 /baɪnd/</div>
+          <div class="wc-pos"><b>v.</b> 结合；附着；捆绑（bind to sth）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Its head <b>binds</b> to exposed lead atoms on the surface.</div>
+          <div class="wc-tr">它的一端与表面裸露的铅原子结合。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">repel</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈpel/ · 美 /rɪˈpel/</div>
+          <div class="wc-pos"><b>v.</b> 排斥；驱开；使厌恶（repel water 拒水）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The coating does more than <b>repel</b> water.</div>
+          <div class="wc-tr">这层膜不只是拒水。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">certified</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsɜːtɪfaɪd/ · 美 /ˈsɜːrtɪfaɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 经认证的（动词 certify 证明、核发证书）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It reached 27.02 per cent, <b>certified</b> at 26.96 per cent.</div>
+          <div class="wc-tr">效率达 27.02%，认证值为 26.96%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">endurance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈdjʊərəns/ · 美 /ɪnˈdʊrəns/</div>
+          <div class="wc-pos"><b>n.</b> 耐久性；耐力（动词 endure 忍受、持续）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>More striking is their <b>endurance</b> under continuous light.</div>
+          <div class="wc-tr">更引人注目的是它们在连续光照下的耐久性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">age</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /eɪdʒ/ · 美 /eɪdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 使老化；做老化测试<br><span style="color:#9c2f16">常见义：n. 年龄；v.（人）变老</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Aged</b> at 85 °C for 1,800 hours, they retained 92 per cent.</div>
+          <div class="wc-tr">在 85℃ 下老化 1800 小时后，它们仍保留 92%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">retain</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈteɪn/ · 美 /rɪˈteɪn/</div>
+          <div class="wc-pos"><b>v.</b> 保持；保留（强调“没有失去”）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The devices <b>retained</b> 92 per cent of their initial efficiency.</div>
+          <div class="wc-tr">这些器件保留了 92% 的初始效率。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">architecture</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɑːkɪtektʃə/ · 美 /ˈɑːrkɪtektʃər/</div>
+          <div class="wc-pos"><b>n.</b> 结构；构造；建筑（此处指器件的层叠设计）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The inverted <b>architecture</b> stacks naturally onto silicon.</div>
+          <div class="wc-tr">这种反式结构可以自然地叠在硅电池之上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stack</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /stæk/ · 美 /stæk/</div>
+          <div class="wc-pos"><b>v.</b> 叠放；层叠 <b>n.</b> 叠层结构<br><span style="color:#9c2f16">常见义：n. 草垛；一大堆</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>This architecture <b>stacks</b> naturally onto silicon.</div>
+          <div class="wc-tr">这种结构可以自然地与硅叠合。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">module</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdjuːl/ · 美 /ˈmɑːdʒuːl/</div>
+          <div class="wc-pos"><b>n.</b> 组件；模块（光伏组件即成品电池板）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A commercial <b>module</b> must survive a quarter of a century.</div>
+          <div class="wc-tr">商用组件必须撑过二十五年。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">seal</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /siːl/ · 美 /siːl/</div>
+          <div class="wc-pos"><b>v.</b> 封住；密封 <b>n.</b> 封条；印章</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The next leap may come from learning to <b>seal</b> the crystals we already have.</div>
+          <div class="wc-tr">下一次跃迁或许来自学会把我们已有的晶体封好。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">at the heart of</span><span class="zh">在……的核心</span></li>
+          <li><span class="en">be expensive to refine</span><span class="zh">提纯成本高昂</span></li>
+          <li><span class="en">turn one's attention to</span><span class="zh">把注意力转向</span></li>
+          <li><span class="en">print from ink onto flexible film</span><span class="zh">用墨水印刷到柔性薄膜上</span></li>
+          <li><span class="en">climb from A to B</span><span class="zh">从 A 一路攀升到 B</span></li>
+          <li><span class="en">wander through the crystal</span><span class="zh">在晶体中游走</span></li>
+          <li><span class="en">lose a fifth of one's output</span><span class="zh">损失五分之一的输出</span></li>
+          <li><span class="en">roughly one molecule thick</span><span class="zh">约一个分子厚</span></li>
+          <li><span class="en">draw on partners</span><span class="zh">借助／联合合作伙伴</span></li>
+          <li><span class="en">be studded with defects</span><span class="zh">布满缺陷</span></li>
+          <li><span class="en">leave gaps through which ...</span><span class="zh">留下可供……通过的缝隙</span></li>
+          <li><span class="en">bind to</span><span class="zh">与……结合；附着于</span></li>
+          <li><span class="en">turn outward</span><span class="zh">朝外（伸展）</span></li>
+          <li><span class="en">settle into a layer</span><span class="zh">自行铺成一层</span></li>
+          <li><span class="en">do more than repel water</span><span class="zh">不只是拒水</span></li>
+          <li><span class="en">pack into a denser film</span><span class="zh">排列成更致密的膜</span></li>
+          <li><span class="en">shut off ion migration</span><span class="zh">阻断离子迁移</span></li>
+          <li><span class="en">hinge on</span><span class="zh">取决于；系于</span></li>
+          <li><span class="en">remain open</span><span class="zh">（问题）仍悬而未决</span></li>
+          <li><span class="en">come less from A than from B</span><span class="zh">与其说来自 A，不如说来自 B</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：太阳能已是许多地区最便宜的新增电力，但核心材料高纯度硅提纯贵、运输重、质地硬；钙钛矿可印刷、可柔性，效率从 4% 追到 27%。</li>
+          <li>瓶颈：让钙钛矿高效的那套化学也让其脆弱——热与光下离子游走、表面缺陷增殖，早期器件几百小时就衰减五分之一。</li>
+          <li>研究：2025 年 11 月《自然·光子学》，Abate（HZB）团队与第一作者李桂香（东南大学），联合中意瑞德伙伴，用“一个分子厚”的膜封住弱点。</li>
+          <li>定位：致命损伤不在钙钛矿体内，而在与 C60 电子选择层相接的上界面——界面布满缺陷，C60 受热结块留缝，离子外逃、金属侵入。</li>
+          <li>方案：七氟丁酸钠——头部咬住裸露铅原子，含氟尾部朝外，形似不粘锅涂层；溶液涂布后自铺成近连续单分子膜。</li>
+          <li>机制：不止拒水——提高成缺陷所需能量、调节表面功函数利于电荷输出、促使 C60 更致密以阻断离子迁移。</li>
+          <li>数据：效率 27.02%（认证 26.96%），1 cm² 器件 25.95%；最大功率点连续光照 1200 小时零衰减（对照 300 小时损失 20%）；85℃/1800 小时保留 92%；200 次冷热循环保留 94%。</li>
+          <li>意义与边界：反式结构可叠在硅上，是突破 30% 的现实路线；但 1200 小时仅约一年户外，远不及商用 25 年，含铅、放大、真实天气仍待解。</li>
+          <li>收束：材料的命运可能取决于层与层之间的“接缝”；太阳能的下一跃，或在于封好已有的晶体，而非发现新的晶体。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Under heat and illumination, ions wander through the crystal, defects multiply at its surfaces, and the layers above begin to react with it, so that the best early devices lost a fifth of their output within a few hundred hours.</div>
+        <div class="row"><b>主干：</b>三个并列分句 —— ions wander ...（离子游走）, defects multiply ...（缺陷增殖）, the layers begin to react ...（上层开始反应）</div>
+        <div class="row"><b>介词短语作状语：</b>Under heat and illumination（在高温与光照下，交代三个动作发生的条件）</div>
+        <div class="row"><b>so that 引导结果状语从句：</b>the best early devices lost a fifth of their output（“以至于”，说明前面三重退化的最终后果）</div>
+        <div class="row"><b>注意：</b>so that 在此表“结果”而非“目的”，因为前文是已发生的事实而非意愿</div>
+        <div class="row"><b>考点：</b>三项并列谓语；so that 结果状语从句；a fifth of 表分数；within + 时间段</div>
+        <div class="row tr"><b>译文：</b>在高温与光照下，离子在晶体中游走，表面缺陷不断增殖，上方的各层也开始与之发生反应；以至于早期最好的器件在几百小时内就损失了五分之一的输出。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Their diagnosis was that the decisive damage happens not inside the perovskite but at its upper surface, where the crystal meets the electron-selective layer of carbon-60 molecules that carries charge towards the electrode.</div>
+        <div class="row"><b>主干：</b>Their diagnosis was that ...（主语 + 系动词 + 表语从句）</div>
+        <div class="row"><b>not ... but ... 并列：</b>not inside the perovskite but at its upper surface（否定前者、肯定后者，把“体内”与“表面”对立起来）</div>
+        <div class="row"><b>关系副词 where 引导定语从句：</b>where the crystal meets the electron-selective layer（修饰 upper surface，说明“表面”具体是与谁相接之处）</div>
+        <div class="row"><b>that 引导定语从句：</b>that carries charge towards the electrode（修饰 layer of carbon-60 molecules，注意谓语用单数 carries，先行词是 layer）</div>
+        <div class="row"><b>考点：</b>表语从句；not ... but ...；where 定语从句；定语从句谓语与先行词一致</div>
+        <div class="row tr"><b>译文：</b>他们的判断是：决定性的损伤并不发生在钙钛矿内部，而发生在它的上表面——也就是晶体与那层由碳六十分子构成、负责把电荷送往电极的电子选择层相接的地方。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">It also raises the energy needed to create a defect, tunes the surface's electronic work function so that charge leaves more readily, and induces the C60 above it to pack into a denser film that shuts off ion migration.</div>
+        <div class="row"><b>主干：</b>It raises ..., tunes ..., and induces ...（三个并列谓语，主语 It 指上文的 coating）</div>
+        <div class="row"><b>过去分词作后置定语：</b>the energy needed to create a defect（“形成缺陷所需的能量”）</div>
+        <div class="row"><b>so that 引导目的/结果状语：</b>so that charge leaves more readily（使电荷更容易离开）</div>
+        <div class="row"><b>induce sb/sth to do sth：</b>induce the C60 to pack into a denser film（促使 C60 排列成更致密的膜）</div>
+        <div class="row"><b>that 引导定语从句：</b>that shuts off ion migration（修饰 film，说明致密化的作用）</div>
+        <div class="row"><b>考点：</b>三项并列谓语；分词作定语；so that 状语；induce ... to do；定语从句</div>
+        <div class="row tr"><b>译文：</b>它还提高了形成缺陷所需的能量，调节了表面的电子功函数使电荷更容易逸出，并促使上方的 C60 排列成更致密的薄膜，从而阻断离子的迁移。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">More striking is their endurance: after 1,200 hours of continuous illumination at maximum power, they had lost none of their initial output, whereas unprotected cells shed 20 per cent in 300 hours.</div>
+        <div class="row"><b>主干：</b>More striking is their endurance（完全倒装：表语 + 系动词 + 主语，强调“更惊人的是耐久性”）</div>
+        <div class="row"><b>冒号后的解释：</b>after 1,200 hours ..., they had lost none of their initial output（用具体数据支撑“耐久”）</div>
+        <div class="row"><b>过去完成时：</b>had lost（以 1200 小时为参照点，回看此前的累计损失）</div>
+        <div class="row"><b>whereas 引导对比从句：</b>unprotected cells shed 20 per cent in 300 hours（与前者形成强对比）</div>
+        <div class="row"><b>考点：</b>完全倒装；冒号引出解释；过去完成时；whereas 对比；shed 的“脱落、损失”义</div>
+        <div class="row tr"><b>译文：</b>更引人注目的是它们的耐久性：在最大功率点连续光照 1200 小时后，它们没有损失任何初始输出；而未加保护的电池在 300 小时内就衰减了 20%。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Yet 1,200 hours is roughly a year outdoors, not the quarter-century a commercial module must survive, and questions of lead content, scale-up and behaviour in real weather remain open.</div>
+        <div class="row"><b>主干：</b>两个并列分句 —— 1,200 hours is ... a year outdoors（判断）, questions ... remain open（结论）</div>
+        <div class="row"><b>同位语式否定补充：</b>not the quarter-century ...（用否定短语修正前面的“一年”，把实验室时长与商用要求并置）</div>
+        <div class="row"><b>省略关系词的定语从句：</b>the quarter-century (that) a commercial module must survive（survive 此处为及物动词，“经历……而存活”）</div>
+        <div class="row"><b>remain open：</b>“仍悬而未决”，是学术写作中引出局限的常用表达</div>
+        <div class="row"><b>考点：</b>并列句；省略关系词；survive 的及物用法；remain + 形容词</div>
+        <div class="row tr"><b>译文：</b>然而 1200 小时大约只相当于户外一年，而不是商用组件必须撑过的二十五年；含铅问题、大面积放大以及在真实天气下的表现，依然是悬而未决的问题。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">过去十几年，太阳能是能源转型中最成功的故事之一：组件价格一路下探，新增装机年年刷新纪录。但这个故事里有个物理上的“主角”始终没换——高纯度硅。它提纯耗能、质地刚硬、只能装在平整的屋顶与支架上。于是人们的目光转向钙钛矿：这类晶态化合物可以用“墨水”印刷到柔性薄膜上，制备温度低、成本低，实验室效率从 2009 年的不足 4% 一路追到 27% 以上，几乎逼平硅电池。可它有个致命短板——短命。让钙钛矿高效捕获光的那套化学，同时也让它脆弱：在光照与高温下，离子在晶格中游走，表面缺陷不断增殖，上方各层还会与它发生反应；于是早期最好的一批器件在几百小时内就损失了五分之一的输出，而商用组件必须撑过二十五年。2025 年 11 月，《自然·光子学》刊出一项研究，把问题定位在一个此前被相对忽视的位置。研究由柏林亥姆霍兹中心（HZB）的 Antonio Abate 牵头，第一作者李桂香（Guixiang Li，现为南京东南大学教授），合作者来自中国、意大利、瑞士与德国，包括洛桑联邦理工学院（EPFL）与帝国理工学院。他们的诊断是：决定性的损伤并不发生在钙钛矿“体内”，而发生在它与上方电子选择层相接的那道界面——那层由碳六十（C60）分子构成，负责把电荷送往电极。这个界面布满缺陷，而 C60 在受热时容易结块，留下缝隙；离子从缝隙中逃逸，金属接触层也能穿过缝隙侵蚀下方的晶体。团队的补救办法是一种名为七氟丁酸钠的小分子：它的一端咬住表面裸露的铅原子，另一端是含氟的“尾巴”，化学性质类似不粘锅涂层，朝外伸展；以溶液形式涂布后，它会自行铺成一层近乎连续的单分子膜。Abate 把这个效果形容得很简单：就像特氟龙。这层膜的作用不止拒水——它还提高了形成缺陷所需的能量，调节表面电子功函数使电荷更易逸出，并促使上方的 C60 排列得更致密、更均匀，从而阻断离子迁移。数据相当亮眼：转换效率 27.02%（认证值 26.96%），一平方厘米器件仍有 25.95%；在最大功率点连续光照 1200 小时后零衰减，而未加保护的对照电池 300 小时就衰减 20%；85℃ 老化 1800 小时仍保留 92%，在 −40℃ 至 85℃ 之间循环 200 次后保留 94%。这些数字之所以重要，是因为这里采用的反式（p–i–n）结构可以自然地叠在硅电池之上——这正是多数厂商期望突破 30% 效率的现实路线。但作者也把边界说得很清楚：1200 小时大约只相当于户外一年，远不是商用组件要撑过的二十五年；含铅问题、大面积放大以及在真实天气（紫外、湿度、机械应力）下的表现，依然是悬而未决的课题。归根结底，这项研究真正说明的是：一种有前途的材料，其命运可能取决于层与层之间的“接缝”，而不只取决于材料本身。太阳能的下一次跃迁，或许更多来自学会把已有的晶体封好，而不是发现新的晶体。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文中说，钙钛矿“让光转成电”的能力与它“容易坏”的脆弱性，来自同一套化学性质。请结合第 2 段与第 6 段，说明研究人员为什么不去改造钙钛矿本身，而选择在它与 C60 之间加一层膜？再想一步：这种“不换材料、只改界面”的思路，在生活或工程中还能找到哪些类似的例子（例如防锈涂层、隔热膜、防水透气面料）？它相对“换材料”有什么优势与代价？</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"Yet 1,200 hours is roughly a year outdoors, not the quarter-century a commercial module must survive, and questions of X, Y and Z remain open."</span>（Yet + 数据对比 + not + 更高标准 + and questions of ... remain open）的句式，为一项你熟悉的技术成果写一句“肯定成绩、同时点明局限”的评价。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：硅贵、重、硬；钙钛矿可印刷、可柔性，效率已追至 27%</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 瓶颈：同一套化学既让它高效，也让它在光热下迅速衰变</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 研究：2025-11《自然·光子学》Abate（HZB）团队 + 李桂香</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 定位：损伤不在体内，而在钙钛矿与 C60 相接的上界面</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 方案：七氟丁酸钠铺一层“特氟龙式”单分子膜</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 机制：提高缺陷形成能、调节功函数、逼 C60 致密排列</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 数据：27.02% / 1200 h 零衰减 / 85℃ 1800 h 保留 92%</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 意义与边界：可叠硅破 30%，但 1200 h ≠ 商用的 25 年</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：材料的命运取决于“接缝”，而非材料本身</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 瓶颈 → 研究 → 定位 → 方案 → 机制 → 数据 → 意义与边界 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Photonics《Stabilizing high-efficiency perovskite solar cells via strategic interfacial contact engineering》（Li, Zhang, Agyei-Tuffour, Wu et al.；通讯作者 Antonio Abate, Helmholtz-Zentrum Berlin；2025-11-07 线上发表）及 HZB 新闻稿公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
