@@ -2,6 +2,20 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-10-18",
+   "en": "The study's contribution is to move the question from how much the world consumes to how well that consumption fits the disease it is meant to treat.",
+   "zh": "这项研究的贡献，是把问题从“世界用了多少”改写为“这些用量与它要治的病有多匹配”。",
+   "src": "外刊精读 · 抗生素的“用多”与“用不上”（2026-10-18）",
+   "key": "fits the disease",
+   "keyZh": "与要治的病相匹配（fit 此处为“契合、对得上”，不是“合身”）",
+   "tip": "move the question from A to B 是学术写作里“重新定义议题”的常用句式：不直接反驳旧问题，而是把它换成另一个更准确的问题。fit 在这里是熟词僻义——常见义“（衣服）合身、合适”，此处指“用药与病情对得上”。be meant to do 表示“本来是为了做”，暗含“本意与结果”的对照。",
+   "tags": [
+    "公共卫生",
+    "抗生素耐药",
+    "全球健康"
+   ]
+  },
+  {
    "date": "2026-10-17",
    "en": "Solar power's next leap may come less from discovering new crystals than from learning to seal the ones we already have.",
    "zh": "太阳能的下一次跃迁，或许更多来自学会把我们已经拥有的晶体封好，而不是去发现新的晶体。",

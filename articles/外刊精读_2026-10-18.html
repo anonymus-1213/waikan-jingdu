@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 99% 的国家在过度使用强效抗生素，一半国家却拿不到“最后的药”</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Public Health · 人与社会 / 公共卫生 / 传染病 / 抗生素耐药</div>
+  <h1>99% 的国家在过度使用强效抗生素，一半国家却拿不到“最后的药”</h1>
+  <div class="deck">Antibiotics are not simply overused; they are misallocated. A framework that estimates how much of each type of drug 186 countries actually need finds near-universal overuse of broad-spectrum medicines alongside a shortage of the last-resort ones</div>
+  <div class="byline"><span><b>来源</b> The Lancet Public Health（2026 年 7 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-18</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 535 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-18.jpg" alt="药房货架上成排药品的实景照片（配图）">
+    <figcaption>配图：医院药房里成排的药品——同样一盒抗生素，在不同国家可能意味着“用过头”，也可能意味着“根本拿不到”（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>抗生素是现代医学的地基：没有它，一台阑尾手术、一次化疗、一次分娩都可能变成赌博。可这块地基正在被自己的成功蛀空——用的人越多，细菌越会躲。过去十年，全球公共卫生界应对耐药的思路几乎只有一句口号：少开一点。这句话没错，但它把一个更麻烦的问题盖住了。2026 年 7 月，《柳叶刀·公共卫生》（The Lancet Public Health）刊出一项由伦敦城市圣乔治大学（City St George's, University of London）与牛津大学团队完成的研究，第一作者为艾斯林·库克（Aislinn Cook），由惠康基金会（Wellcome Trust）资助。他们没有去统计“各国用了多少抗生素”，而是第一次给每个国家算出了一把尺子：按你的感染负担和耐药状况，你“应该”用多少、用哪几类。这把尺子借用了世卫组织的 AWaRe 三级分类——可用类（Access）、慎用类（Watch）、备用类（Reserve）。结果是一幅远比“过量”更复杂的图景：72% 的国家总用量超标，99% 过度使用慎用类，60% 仍在开世卫组织认为不该常规使用的药；同时 42% 的可用类用量不足，52% 的备用类用量不足。也就是说，同一个世界里，有人吃多了，有人吃不上。研究的结论并不激烈，却很难做到：把政策目标从“减少用量”改成“让用量与病情匹配”。本文按“背景—悖论—研究—方法—标尺—错配—倒挂—对策—收束”的链条展开，并把三个熟词僻义（course / drift / bill）嵌进了论证里。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-18.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.129">Modern medicine rests on a quiet <span class="kw" data-tip="n. 假定；想当然的设定（动词 assume）">assumption</span>: that a <span class="kw" data-tip="adj. 例行的；常规的（routine infection 普通感染）">routine</span> infection can be cured with a cheap pill, and that surgery and childbirth will stay survivable because of it.</span> <span class="s" data-t="10.129" data-e="21.735">That assumption is <span class="kw" data-tip="v. 侵蚀；逐步削弱（名词 erosion 侵蚀）">eroding</span>, since bacterial <span class="kw" data-tip="n. 耐药性；抵抗力（此处指细菌对抗生素的抵抗）">resistance</span> was <span class="kw" data-tip="v. 与……相关（be associated with 与……有关联）">associated</span> with 4.71 million deaths in 2021 and directly responsible for 1.14 million of them.</span></span></div>
+      <p class="para-tr">现代医学建立在一个不声张的假设之上：一次普通的感染，吃一片便宜的药就能治好；外科手术与分娩之所以还有活路，也全靠它。这个假设正在被侵蚀——2021 年，细菌耐药与 471 万例死亡相关，其中 114 万例直接由耐药造成。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="21.735" data-e="29.684">The <span class="kw" data-tip="adj. 本能的；不经思考的（reflex response 条件反射式的反应）">reflex</span> response is a slogan, prescribe fewer antibiotics, but the <span class="kw" data-tip="n. 算术；计算的逻辑——此处指“这笔账怎么算”">arithmetic</span> behind it is muddier than it sounds.</span> <span class="s" data-t="29.684" data-e="40.0">The world is not using too much of one thing; it is using too much of the wrong antibiotics and too little of the right ones, a double failure a July study set out to measure.</span></span></div>
+      <p class="para-tr">最省事的回应是一句口号：少开抗生素。但这句口号背后的账，比听起来要糊涂。世界并不是把同一样东西用多了；它把不该多用的药用得太多，把该用的药用得太少——这种双重失灵，正是 7 月一项研究要测量的东西。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.0" data-e="48.882">The work was led by Aislinn Cook of City St George's, University of London, with colleagues at Oxford and funding from the Wellcome Trust.</span> <span class="s" data-t="48.882" data-e="63.368">Rather than counting how many antibiotics countries consume, the team asked how many they would need if every bacterial infection were treated properly, across 186 countries holding 99.8 per cent of the world's population.</span></span></div>
+      <p class="para-tr">该研究由伦敦城市圣乔治大学的艾斯林·库克领衔，合作者来自牛津大学，由惠康基金会资助。团队没有去数各国消耗掉多少抗生素，而是问：如果每一种细菌感染都得到恰当治疗，各国需要多少？研究覆盖 186 个国家、领地和地区，占全球人口的 99.8%。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="63.368" data-e="76.434">Its <span class="kw" data-tip="n. 衡量的尺度、标准（原义为“码尺”）">yardstick</span> was the World Health Organization's AWaRe ladder, which sorts antibiotics into Access drugs for common infections, Watch drugs that are broader and more powerful, and Reserve drugs kept as a last line.</span> <span class="s" data-t="76.434" data-e="89.301">Countries were sorted into <span class="kw" data-tip="n. 同类；同侪（peer group 同类组）">peer</span> groups sharing infection burdens, resistance patterns, income and health-system capacity, and within each group those using least and losing fewest patients became the <span class="kw" data-tip="n. 基准；参照标准（benchmark against which ... 用以衡量……的标准）">benchmark</span>.</span></span></div>
+      <p class="para-tr">他们的尺子是世卫组织的 AWaRe 阶梯：把抗生素分为可用类（常见感染的一线药）、慎用类（更广谱、更强效）与备用类（留到最后的防线）。各国按感染负担、耐药格局、收入水平与卫生系统能力被划入同类组；在每个组里，用量最少、因感染死亡最少的国家成为基准。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="89.301" data-e="103.195">On that basis the authors estimated that the world needed roughly 43 billion days of antibiotic therapy in 2019, about one <span class="kw" data-tip="n. 疗程——熟词僻义：常见义为“课程；路线、航向”">course</span> per person per year, of which 77 per cent should come from the Access <span class="kw" data-tip="n. 层级；等级（the Access tier 可用类这一层）">tier</span>.</span> <span class="s" data-t="103.195" data-e="114.25">That lends quantitative support to the target agreed at the United Nations in 2024, which asks that 70 per cent of antibiotic use be Access drugs by 2030.</span></span></div>
+      <p class="para-tr">在此基础上，作者估算出 2019 年全球约需 430 亿个抗生素治疗日，大致相当于每人每年一个疗程，其中 77% 应来自可用类。这为 2024 年联合国确定的目标提供了量化支持：到 2030 年，至少 70% 的抗生素使用应为可用类。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="114.25" data-e="118.355">The comparison with reality is where the argument <span class="kw" data-tip="v. 变得锋利、更清晰（此处指论证更有力）">sharpens</span>.</span> <span class="s" data-t="118.355" data-e="135.566">Among 67 countries with usable consumption data, 72 per cent used more antibiotics in total than their infection burden <span class="kw" data-tip="v. 证明……正当、合理（justify the need 说明需求合理）">justified</span>, 99 per cent <span class="kw" data-tip="v. 过度使用（overuse 也可作名词，指过度使用）">overused</span> Watch drugs, and 60 per cent still <span class="kw" data-tip="v. 开处方；开药（prescribe antibiotics 开抗生素）">prescribed</span> medicines the WHO calls unfit for routine use.</span> <span class="s" data-t="135.566" data-e="146.868">Meanwhile 42 per cent used too few Access drugs and 52 per cent too little Reserve, so patients with the hardest infections may be denied the drugs most likely to save them.</span></span></div>
+      <p class="para-tr">与现实一对照，论证就锋利起来。在有可用用量数据的 67 个国家中，72% 的总用量超出了其感染负担所能证明的合理水平，99% 过度使用慎用类，60% 仍在开世卫组织认为不适合常规使用的药。与此同时，42% 的可用类用量偏低，52% 的备用类用量不足——最难治的感染患者，可能恰恰拿不到最可能救命的药。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="146.868" data-e="149.961">There is an <span class="kw" data-tip="n. 倒置；颠倒（此处指用量与需求的方向相反）">inversion</span> at the heart of the picture.</span> <span class="s" data-t="149.961" data-e="162.461">Rich countries consume by far the most Watch and Reserve antibiotics, yet more than 80 per cent of the world's <span class="kw" data-tip="adj. 最优的；最理想的（optimum 最适条件）">optimal</span> need for them sits in poorer countries, where infection and resistance burdens are heaviest.</span></span></div>
+      <p class="para-tr">图景的核心处有一处倒置。高收入国家消耗的慎用类与备用类远远最多，但全球对这两类药物最优需求的八成以上，落在更贫穷的国家——那里感染与耐药的负担最重。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="162.461" data-e="170.724">Because primary care accounts for about 90 per cent of human antibiotic use, <span class="kw" data-tip="n. 合理用药管理；（资源的）负责任管理">stewardship</span> must pull in two directions at once.</span> <span class="s" data-t="170.724" data-e="185.314">Overprescribing of <span class="kw" data-tip="adj. 广谱的（能同时作用于多种细菌）">broad-spectrum</span> drugs has to fall where a narrow one would do, while supply of quality-assured Access and Reserve drugs has to rise, which means <span class="kw" data-tip="n. 采购（动词 procure 取得、采购）">procurement</span>, affordability and locally set targets rather than global exhortation.</span></span></div>
+      <p class="para-tr">由于初级诊疗约占人类抗生素使用量的 90%，合理用药管理必须同时朝两个方向用力。在窄谱药就够用的地方，广谱药的过度处方必须降下来；而有质量保证的可用类用药、以及应对耐药病例的备用类用药，供应必须提上去——这靠的是采购、可负担性和因地制宜的目标，而不是在全球层面空喊。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="185.314" data-e="187.816">None of this will feel dramatic.</span> <span class="s" data-t="187.816" data-e="197.737">Resistance has no single outbreak to photograph, only a slow <span class="kw" data-tip="n. 缓慢的变动、走向——熟词僻义：常见义为“漂流、漂移”">drift</span> in the share of infections that refuse to clear, and its <span class="kw" data-tip="n. 账单——此处引申为“代价、要付的账”">bill</span> is settled in ordinary wards.</span> <span class="s" data-t="197.737" data-e="206.289">The study's contribution is to move the question from how much the world consumes to how well that consumption <span class="kw" data-tip="v. 与……相配；契合（此处指“用对药”）">fits</span> the disease it is meant to treat.</span></span></div>
+      <p class="para-tr">这一切都不会显得戏剧化。耐药没有一个可以拍下来的暴发现场，只有“迟迟不退的感染”所占比例缓慢上移；而它的账单，是在一间间普通病房里结清的。这项研究的贡献，是把问题从“世界用了多少”改写为“这些用量与它要治的病有多匹配”。</p>
+
+      <p class="muted">原文出处：本文根据 The Lancet Public Health 论文《Estimating optimal levels of WHO Access, Watch, Reserve (AWaRe) antibiotic use in 186 countries, territories, and areas on the basis of clinical infection and resistance burden》（Cook A, Cooper B, Thorn M, et al.；第一作者 Aislinn Cook，City St George's, University of London；合作单位 University of Oxford；Wellcome Trust 资助；Lancet Public Health, 2026;11(8):e476–e486；DOI 10.1016/S2468-2667(26)00103-9）及期刊新闻稿公开资料改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">assumption</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈsʌmpʃn/ · 美 /əˈsʌmpʃn/</div>
+          <div class="wc-pos"><b>n.</b> 假定；想当然的设定（动词 assume）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Modern medicine rests on a quiet <b>assumption</b>.</div>
+          <div class="wc-tr">现代医学建立在一个不声张的假设之上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">routine</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ruːˈtiːn/ · 美 /ruːˈtiːn/</div>
+          <div class="wc-pos"><b>adj.</b> 例行的；常规的 <b>n.</b> 惯例；日常程序</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>routine</b> infection can be cured with a cheap pill.</div>
+          <div class="wc-tr">一次普通的感染，一片便宜的药就能治好。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">resistance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈzɪstəns/ · 美 /rɪˈzɪstəns/</div>
+          <div class="wc-pos"><b>n.</b> 耐药性；抵抗力；反抗（动词 resist）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bacterial <b>resistance</b> was associated with 4.71 million deaths in 2021.</div>
+          <div class="wc-tr">2021 年，细菌耐药与 471 万例死亡相关。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">erode</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪˈrəʊd/ · 美 /ɪˈroʊd/</div>
+          <div class="wc-pos"><b>v.</b> 侵蚀；逐步削弱（名词 erosion）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That assumption is <b>eroding</b>.</div>
+          <div class="wc-tr">这个假设正在被一点点侵蚀。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">associated</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈsəʊʃieɪtɪd/ · 美 /əˈsoʊʃieɪtɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 相关的（be associated with 与……有关联；动词 associate）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The deaths were <b>associated</b> with resistance, not always caused by it.</div>
+          <div class="wc-tr">这些死亡与耐药相关，但不总是由耐药直接造成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arithmetic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈrɪθmətɪk/ · 美 /əˈrɪθmətɪk/</div>
+          <div class="wc-pos"><b>n.</b> 算术；计算的逻辑（此处指“这笔账怎么算”）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>arithmetic</b> behind the slogan is muddier than it sounds.</div>
+          <div class="wc-tr">这句口号背后的账，比听起来要糊涂。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">yardstick</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈjɑːdstɪk/ · 美 /ˈjɑːrdstɪk/</div>
+          <div class="wc-pos"><b>n.</b> 衡量的尺度、标准（原义为“码尺”）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Its <b>yardstick</b> was the WHO's AWaRe ladder.</div>
+          <div class="wc-tr">他们的尺子，是世卫组织的 AWaRe 阶梯。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">peer</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /pɪə/ · 美 /pɪr/</div>
+          <div class="wc-pos"><b>n.</b> 同类；同侪（peer group 同类组）<b>v.</b> 凝视</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Countries were sorted into <b>peer</b> groups.</div>
+          <div class="wc-tr">各国被划入同类组。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">benchmark</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbentʃmɑːk/ · 美 /ˈbentʃmɑːrk/</div>
+          <div class="wc-pos"><b>n.</b> 基准；参照标准 <b>v.</b> 以……为基准衡量</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The lowest-use countries became the <b>benchmark</b>.</div>
+          <div class="wc-tr">用量最低的那批国家成了基准。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">course</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /kɔːs/ · 美 /kɔːrs/</div>
+          <div class="wc-pos"><b>n.</b> 疗程；一整个用药周期<br><span style="color:#9c2f16">常见义：课程；（行进的）路线、航向</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>About one <b>course</b> of antibiotics per person per year.</div>
+          <div class="wc-tr">大约每人每年一个疗程。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tier</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /tɪə/ · 美 /tɪr/</div>
+          <div class="wc-pos"><b>n.</b> 层级；等级（the Access tier 可用类这一层）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>77 per cent should come from the Access <b>tier</b>.</div>
+          <div class="wc-tr">其中 77% 应来自可用类这一层。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">justify</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈdʒʌstɪfaɪ/ · 美 /ˈdʒʌstɪfaɪ/</div>
+          <div class="wc-pos"><b>v.</b> 证明……正当、合理（名词 justification）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They used more than their infection burden <b>justified</b>.</div>
+          <div class="wc-tr">他们的用量超出了感染负担所能证明的合理水平。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">overuse</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌəʊvəˈjuːz/ · 美 /ˌoʊvərˈjuːz/</div>
+          <div class="wc-pos"><b>v.</b> 过度使用 <b>n.</b> 过度使用（反义 underuse）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>99 per cent <b>overused</b> Watch drugs.</div>
+          <div class="wc-tr">99% 的国家过度使用慎用类药品。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prescribe</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɪˈskraɪb/ · 美 /prɪˈskraɪb/</div>
+          <div class="wc-pos"><b>v.</b> 开处方；开（药）；规定（名词 prescription）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>60 per cent still <b>prescribed</b> medicines the WHO calls unfit for routine use.</div>
+          <div class="wc-tr">60% 仍在开世卫组织认为不适合常规使用的药。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inversion</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈvɜːʃn/ · 美 /ɪnˈvɜːrʒn/</div>
+          <div class="wc-pos"><b>n.</b> 倒置；颠倒（动词 invert 使反转）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is an <b>inversion</b> at the heart of the picture.</div>
+          <div class="wc-tr">图景的核心处有一处倒置。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">optimal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɒptɪməl/ · 美 /ˈɑːptɪməl/</div>
+          <div class="wc-pos"><b>adj.</b> 最优的；最理想的（名词 optimum 最适条件）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>80 per cent of the world's <b>optimal</b> need sits in poorer countries.</div>
+          <div class="wc-tr">全球最优需求的八成，落在更贫穷的国家。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stewardship</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈstjuːədʃɪp/ · 美 /ˈstuːərdʃɪp/</div>
+          <div class="wc-pos"><b>n.</b> 合理用药管理；（资源的）负责任管理（steward 管家）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Stewardship</b> must pull in two directions at once.</div>
+          <div class="wc-tr">合理用药管理必须同时朝两个方向用力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">broad-spectrum</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌbrɔːd ˈspektrəm/ · 美 /ˌbrɔːd ˈspektrəm/</div>
+          <div class="wc-pos"><b>adj.</b> 广谱的（能同时作用于多种细菌；反义 narrow-spectrum 窄谱）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Broad-spectrum</b> drugs are overprescribed where a narrow one would do.</div>
+          <div class="wc-tr">窄谱药就够用的地方，广谱药却被过度处方。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">procurement</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /prəˈkjʊəmənt/ · 美 /prəˈkjʊrmənt/</div>
+          <div class="wc-pos"><b>n.</b> 采购（动词 procure 取得、采购）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It comes down to <b>procurement</b> and affordability.</div>
+          <div class="wc-tr">归根结底要靠采购与可负担性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">drift</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /drɪft/ · 美 /drɪft/</div>
+          <div class="wc-pos"><b>n.</b> 缓慢的变动、走向 <b>v.</b> 漂移；不知不觉地趋向<br><span style="color:#9c2f16">常见义：漂流（在水面或空中被带走）</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Only a slow <b>drift</b> in the share of infections that refuse to clear.</div>
+          <div class="wc-tr">只有“迟迟不退的感染”所占比例在缓慢上移。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bill</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /bɪl/ · 美 /bɪl/</div>
+          <div class="wc-pos"><b>n.</b> 账单；代价；要付的账<br><span style="color:#9c2f16">常见义：账单、钞票；也可指“议案”</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Its <b>bill</b> is settled in ordinary wards.</div>
+          <div class="wc-tr">它的账单，是在一间间普通病房里结清的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fit</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /fɪt/ · 美 /fɪt/</div>
+          <div class="wc-pos"><b>v.</b> 与……相配；契合（此处指“用药对得上病”）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>How well consumption <b>fits</b> the disease it is meant to treat.</div>
+          <div class="wc-tr">这些用量与它要治的病有多匹配。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">rest on an assumption</span><span class="zh">建立在某个假设之上</span></li>
+          <li><span class="en">be associated with</span><span class="zh">与……相关（不等于因果）</span></li>
+          <li><span class="en">be directly responsible for</span><span class="zh">直接导致；直接造成</span></li>
+          <li><span class="en">set out to do sth</span><span class="zh">着手做；旨在做</span></li>
+          <li><span class="en">sort sth into A, B and C</span><span class="zh">把……分成 A、B、C 几类</span></li>
+          <li><span class="en">keep sth as a last line</span><span class="zh">把……留作最后防线</span></li>
+          <li><span class="en">on that basis</span><span class="zh">在此基础上</span></li>
+          <li><span class="en">lend support to</span><span class="zh">为……提供（证据）支持</span></li>
+          <li><span class="en">be justified by</span><span class="zh">由……证明其合理</span></li>
+          <li><span class="en">unfit for routine use</span><span class="zh">不适合常规使用</span></li>
+          <li><span class="en">at the heart of</span><span class="zh">在……的核心</span></li>
+          <li><span class="en">by far the most</span><span class="zh">远远最多（修饰最高级）</span></li>
+          <li><span class="en">account for</span><span class="zh">占（比例）；解释</span></li>
+          <li><span class="en">pull in two directions</span><span class="zh">朝两个方向用力</span></li>
+          <li><span class="en">at once</span><span class="zh">同时；立刻</span></li>
+          <li><span class="en">quality-assured</span><span class="zh">质量有保证的</span></li>
+          <li><span class="en">locally set targets</span><span class="zh">因地制宜设定的目标</span></li>
+          <li><span class="en">refuse to clear</span><span class="zh">（感染）迟迟不退</span></li>
+          <li><span class="en">be meant to do</span><span class="zh">旨在做；本来是为了做</span></li>
+          <li><span class="en">move A from X to Y</span><span class="zh">把 A 从 X 转向 Y</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：现代医学默认“普通感染吃片便宜药就好”，而这个默认正在被耐药侵蚀——2021 年 471 万例死亡与耐药相关，114 万例直接归因。</li>
+          <li>悖论：喊“少开抗生素”容易，算账难；世界不是单一地用多了，而是把错的用多了、对的用少了。</li>
+          <li>研究：2026 年 7 月《柳叶刀·公共卫生》，库克（伦敦城市圣乔治大学）与牛津团队，惠康基金会资助，覆盖 186 个国家。</li>
+          <li>方法：以世卫 AWaRe 三级分类为尺；按感染负担、耐药、收入、卫生系统分组，组内“用量最少、死亡最少”者为基准。</li>
+          <li>标尺：2019 年全球约需 430 亿治疗日（≈人均一疗程/年），其中 77% 应为可用类，印证联合国“2030 年 70%”目标。</li>
+          <li>错配：67 国有用量数据，72% 总量超标、99% 慎用类过量、60% 仍在开不该常规用的药；同时 42% 可用类不足、52% 备用类不足。</li>
+          <li>倒挂：高收入国家用得最多，但八成以上的“最优需求”在低收入国家——最需要最后防线的人最难拿到。</li>
+          <li>对策：初级诊疗占九成用量，故须双向发力——降广谱过度处方，同时提升可用类与备用类的可及性，靠采购、可负担、本地目标。</li>
+          <li>收束：耐药没有可拍摄的暴发，只有比例的缓慢上移；研究把问题从“用了多少”改为“用得对不对”。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Modern medicine rests on a quiet assumption: that a routine infection can be cured with a cheap pill, and that surgery and childbirth will stay survivable because of it.</div>
+        <div class="row"><b>主干：</b>Modern medicine rests on a quiet assumption（主语 + 谓语 + 介词宾语）</div>
+        <div class="row"><b>冒号后的同位语：</b>两个 that 引导的同位语从句并列，解释 assumption 的具体内容</div>
+        <div class="row"><b>并列结构：</b>that a routine infection can be cured ..., and that surgery and childbirth will stay survivable ...（两个 that 都不能省，因为它们引导的是同位语而非宾语）</div>
+        <div class="row"><b>because of it：</b>it 指代前一分句所述的“便宜药能治好感染”，即整个假设本身</div>
+        <div class="row"><b>考点：</b>同位语从句；that 的并列；代词指代；rest on 的比喻用法</div>
+        <div class="row tr"><b>译文：</b>现代医学建立在一个不声张的假设之上：一次普通的感染，吃一片便宜的药就能治好；外科手术与分娩之所以还有活路，也全靠它。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The world is not using too much of one thing; it is using too much of the wrong antibiotics and too little of the right ones, a double failure a July study set out to measure.</div>
+        <div class="row"><b>主干：</b>两个分号并列的分句，第二句用 not ... but 的隐含逻辑修正第一句</div>
+        <div class="row"><b>too much of / too little of：</b>两个量词短语对举，把“过量”与“不足”并置在同一句里</div>
+        <div class="row"><b>同位语：</b>a double failure（概括前面“错的多、对得少”），后接省略关系词的定语从句 (that) a July study set out to measure</div>
+        <div class="row"><b>set out to do：</b>“着手做、旨在做”，常用于描述研究目的</div>
+        <div class="row"><b>考点：</b>分号并列；量词短语对举；同位语；省略关系词的定语从句</div>
+        <div class="row tr"><b>译文：</b>世界并不是把同一样东西用多了；它把不该多用的药用得太多，把该用的药用得太少——这种双重失灵，正是 7 月一项研究要测量的东西。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Countries were sorted into peer groups sharing infection burdens, resistance patterns, income and health-system capacity, and within each group those using least and losing fewest patients became the benchmark.</div>
+        <div class="row"><b>主干：</b>两个并列分句 —— Countries were sorted into peer groups（被动）, those ... became the benchmark（主动）</div>
+        <div class="row"><b>现在分词作后置定语：</b>sharing infection burdens, resistance patterns, income and health-system capacity（修饰 peer groups，说明“同类”同在哪里）</div>
+        <div class="row"><b>代词 those + 分词：</b>those using least and losing fewest patients（“用量最少、失去病人最少的那批国家”）</div>
+        <div class="row"><b>介词短语作状语：</b>within each group（在每个组内部，限定比较范围）</div>
+        <div class="row"><b>考点：</b>被动语态；分词作定语；those + 分词；within 引导的范围状语</div>
+        <div class="row tr"><b>译文：</b>各国按感染负担、耐药格局、收入水平与卫生系统能力被划入同类组；在每个组里，用量最少、因感染失去病人最少的那批国家成为基准。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Among 67 countries with usable consumption data, 72 per cent used more antibiotics in total than their infection burden justified, 99 per cent overused Watch drugs, and 60 per cent still prescribed medicines the WHO calls unfit for routine use.</div>
+        <div class="row"><b>主干：</b>三个并列分句共享同一个状语 Among 67 countries with usable consumption data</div>
+        <div class="row"><b>比较结构：</b>more ... than their infection burden justified（“超出其感染负担所能证明的合理量”，than 后是省略了主语的从句）</div>
+        <div class="row"><b>省略关系词的定语从句：</b>medicines (that) the WHO calls unfit for routine use（call sth adj. 认为……如何）</div>
+        <div class="row"><b>数字作主语：</b>72 per cent / 99 per cent / 60 per cent 分别作三个分句的主语，是数据类报道的典型写法</div>
+        <div class="row"><b>考点：</b>三项并列；more ... than 比较从句；call sth adj.；数据作主语</div>
+        <div class="row tr"><b>译文：</b>在有可用用量数据的 67 个国家中，72% 的总用量超出了其感染负担所能证明的合理水平，99% 过度使用慎用类药品，60% 仍在开世卫组织认为不适合常规使用的药。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Overprescribing of broad-spectrum drugs has to fall where a narrow one would do, while supply of quality-assured Access and Reserve drugs has to rise, which means procurement, affordability and locally set targets rather than global exhortation.</div>
+        <div class="row"><b>主干：</b>Overprescribing ... has to fall ..., while supply ... has to rise（while 表对比，两个主语一降一升）</div>
+        <div class="row"><b>where 引导地点/情形状语从句：</b>where a narrow one would do（“在窄谱药就够用的地方”，one 代指 drug）</div>
+        <div class="row"><b>which 引导非限制性定语从句：</b>which means ...（指代前面“一降一升”这件事，进而给出实现路径）</div>
+        <div class="row"><b>rather than：</b>procurement, affordability and locally set targets rather than global exhortation（肯定前者、否定后者）</div>
+        <div class="row"><b>考点：</b>while 对比；where 状语从句；which 指代整句；rather than；名词化表达</div>
+        <div class="row tr"><b>译文：</b>在窄谱药就够用的地方，广谱药的过度处方必须降下来；与此同时，有质量保证的可用类与备用类药品的供应必须提上去——这意味着要靠采购、可负担性与因地制宜的目标，而不是在全球层面空喊。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">抗生素是现代医学最不显眼、也最不可替代的地基。一次肺炎、一台阑尾手术、一次化疗、一次分娩，之所以能被当作“常规操作”，都因为背后有一整套能压住细菌的药物。可这套地基正在被自己的成功蛀空：用得越多、越随意，细菌被筛选出的耐药性就越强。2021 年，细菌耐药与 471 万例死亡相关，其中 114 万例直接由耐药造成；有模型预测，若不改变现状，2025 至 2050 年间直接死于耐药的人数可能达到 3900 万。面对这样的数字，全球公共卫生界的反应长期停留在一句口号上：少开抗生素。口号没错，但它把问题简化成了一道减法题，掩盖了一个更麻烦的事实——世界并不是把同一样东西用多了，而是把不该多用的药用得太多、把该用的药用得太少。2026 年 7 月，《柳叶刀·公共卫生》刊出一项研究，试图把这道减法题改成一道匹配题。研究由伦敦城市圣乔治大学的艾斯林·库克领衔，合作者来自牛津大学，由惠康基金会资助，覆盖 186 个国家、领地和地区，占全球人口的 99.8%。团队的做法与以往不同：过去的研究大多统计“各国用了多少抗生素”，这一次，他们先算“各国应该用多少”。尺子借用了世卫组织的 AWaRe 三级分类——可用类（常见感染的一线药，耐药风险最低）、慎用类（更广谱、更强效，通常作为二线）、备用类（对付几乎耐药一切的最后防线）。研究者按感染负担、耐药格局、收入水平与卫生系统能力把国家分成“同类组”，再以组内用量最少、因感染死亡最少的国家为基准，推算出每个国家在三类药上各自的最优用量。结论有两半。第一半是总量：2019 年全球大约需要 430 亿个抗生素治疗日，相当于每人每年一个疗程，其中 77% 应来自可用类——这恰好为 2024 年联合国提出的“2030 年至少 70% 为可用类”提供了量化依据，说明这个目标并不激进。第二半才是真正刺眼的部分：在 67 个有可用用量数据的国家里，72% 的总用量超出其感染负担所能证明的合理水平，99% 过度使用慎用类，60% 仍在开世卫组织认为不适合常规使用的药；与此同时，42% 的可用类用量偏低，52% 的备用类用量不足。也就是说，同一个世界里，一部分人吃进了本不该吃的强效药，另一部分人——往往是最需要的人——拿不到最后那道防线。研究者还指出一处倒置：高收入国家消耗的慎用类与备用类远远最多，但全球对这两类药物最优需求的八成以上，落在感染与耐药负担最重的低收入国家。由于初级诊疗占人类抗生素使用量的九成，作者主张合理用药管理必须双向发力：在窄谱药够用的地方压掉广谱药的过度处方，同时把有质量保证的可用类与备用类的供应提上来；而这件事靠的是采购、可负担性与因地制宜的国家目标，不是全球层面的空喊。这项研究真正改变的，是提问方式。耐药没有一场可以拍摄的暴发，只有“迟迟不退的感染”所占比例缓慢上移，账单在一间间普通病房里结清。把“用了多少”换成“用得对不对”，看起来只是措辞的调整，实则决定了未来十年各国的抗生素政策是把力气花在“省”上，还是花在“配对”上。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文中提到一个“倒置”：高收入国家用得最多，最优需求却在低收入国家。请结合第 6、7 段，说明为什么“减少用量”这一条政策在富国与穷国会指向完全不同的行动。再想一步：如果把“抗生素”换成“疫苗”或“胰岛素”，这种“用多”与“用不上”并存的结构是否同样存在？公共卫生政策为什么很难用一句“多用/少用”来概括？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"The study's contribution is to move the question from how much X to how well X fits Y."</span>（把问题从“数量”转向“匹配度”）的句式，就一个你熟悉的公共议题（如作业量、屏幕时间、城市绿地）写一句“重新定义问题”的评价。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：便宜药治好普通感染，这个假设正被耐药侵蚀</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 悖论：不是“用多了”，而是“错的用多、对的用少”</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 研究：2026-07《柳叶刀·公共卫生》库克 + 牛津，186 国</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 方法：AWaRe 三级为尺，同类组内“用量最少者”为基准</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 标尺：430 亿治疗日、77% 应为可用类，印证 70% 目标</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 错配：72% 总量超标、99% 慎用类过量、60% 开不该开的药</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 倒挂：富国用得最多，八成最优需求却在穷国</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 对策：一降一升，靠采购、可负担性与本地目标</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：问题从“用了多少”改为“用得对不对”</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 悖论 → 研究 → 方法 → 标尺 → 错配 → 倒挂 → 对策 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：The Lancet Public Health《Estimating optimal levels of WHO Access, Watch, Reserve (AWaRe) antibiotic use in 186 countries, territories, and areas on the basis of clinical infection and resistance burden》（Cook A, Cooper B, Thorn M, et al.；2026;11(8):e476–e486；DOI 10.1016/S2468-2667(26)00103-9）及期刊新闻稿公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
