@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 量子计算机的"自律"：当机器开始自己纠错，"算得对"才真正开始</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Physics · 人与自然 / 物理 / 量子计算 / 科技</div>
+  <h1>量子计算机的"自律"：当机器开始自己纠错，"算得对"才真正开始</h1>
+  <div class="deck">A quantum computer is not a faster laptop but a machine that fails constantly, and a 2026 experiment shows that adding more qubits can now make it fail less — the long-sought threshold finally crossed</div>
+  <div class="byline"><span><b>来源</b> Nature（2026 年 8 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-13</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 499 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-13.jpg" alt="实验室中的低温恒温器与量子处理器芯片（配图）">
+    <figcaption>配图：实验室里的低温恒温器与量子处理器芯片——量子比特必须在接近绝对零度的环境里工作，任何热噪声都会让计算失效（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>量子计算机常被描述成"同时尝试所有答案"的机器，听起来像一台更快的笔记本电脑。但它真正的本质是：一台不停出错的机器。一个量子比特（qubit）极其脆弱，一点余热、一次震动、一颗宇宙射线，都可能让准备了数月的工作瞬间归零。三十年来，学界的应对方案是一笔称作"阈值定理"的数学交易：把每个逻辑量子比特编码到许多物理量子比特上，不断测量、不停纠错，只要纠错快于错误累积，增加硬件就会让结果更可靠而不是更糟。定理本身从无疑问，难的是在真实硬件上跨过这道阈值。2026 年 8 月《自然》刊出的一项研究宣称：一台超导处理器终于跨过去了——码距每提高一档，逻辑错误率大致减半。这意味着"更多量子比特 = 更多噪声"的铁律被打破。但代价是：每个受保护的量子比特仍要消耗数千个物理量子比特。这不只是一次速度展示，而是一台机器第一次学会"看着自己失败、并在失败酿成大错之前把它修好"。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-13.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.351">Quantum computers are usually introduced as machines that try every possible answer at once, which makes them sound like an unusually fast laptop.</span> <span class="s" data-t="9.351" data-e="21.237">In practice they are machines that fail constantly, and the failures turn out to be the whole story, because a <span class="kw" data-tip="n. 量子比特（quantum bit 的缩合；量子计算的基本单位）">qubit</span> is so <span class="kw" data-tip="adj. 脆弱的；易损坏的（名词 fragility 脆弱性）">fragile</span> that stray heat or a single cosmic ray can undo months of preparation.</span></span></div>
+      <p class="para-tr">量子计算机通常被介绍成"同时尝试所有可能答案"的机器，这听起来像一台格外快的笔记本电脑。实际上，它们是一台不停出错的机器；而这些错误恰恰就是全部要害所在——一个量子比特脆弱到一点余热、一颗宇宙射线，就能让数月准备前功尽弃。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="21.237" data-e="27.329">For three decades the field has answered this with a mathematical <span class="kw" data-tip="n. 交易；约定——熟词僻义：常见义为“便宜货、讨价还价”">bargain</span> called the <span class="kw" data-tip="n. 阈值；临界值（threshold theorem 阈值定理）">threshold</span> theorem.</span> <span class="s" data-t="27.329" data-e="41.513">Spread each logical qubit across many physical ones, interrogate them constantly and repair errors faster than they <span class="kw" data-tip="v. 累积；积聚（名词 accumulation）">accumulate</span>, and adding hardware will make the final answer more reliable rather than less, at the price of enormous <span class="kw" data-tip="n. 冗余；多余备份（形容词 redundant）">redundancy</span>.</span></span></div>
+      <p class="para-tr">三十年来，这个领域用一笔称作"阈值定理"的数学交易来回应：把每个逻辑量子比特铺展到许多物理量子比特上，不断查询、并在错误累积之前把它们修好，那么增加硬件就会让最终答案更可靠而不是更不可靠——代价是惊人的冗余。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="41.513" data-e="48.197">The theorem was never seriously questioned, but crossing the threshold with real hardware was a different matter.</span> <span class="s" data-t="48.197" data-e="58.671">For years measured error rates fell just short of what the arithmetic demanded, close enough to keep the field funded and far enough to keep its promises safely in the future tense.</span></span></div>
+      <p class="para-tr">这个定理本身从未遭到认真质疑，但要在真实硬件上跨过阈值，是另一回事。多年来，实测错误率总是差那么一点点，达不到算式所要求的水平——近到足以让这个领域继续拿到经费，又远到足以让它的承诺只能安全地停留在将来时。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="58.671" data-e="65.342">A study published in Nature this August reports that a superconducting processor has finally crossed it.</span> <span class="s" data-t="65.342" data-e="74.289">The team <span class="kw" data-tip="v. 编码；把信息写入（此处指把一个逻辑比特映射到多个物理比特）">encoded</span> one logical qubit across growing numbers of physical qubits and recorded how often the protected qubit failed as the code grew.</span> <span class="s" data-t="74.289" data-e="81.5">The work was led by a university group and funded publicly, and its raw data were released alongside the paper.</span></span></div>
+      <p class="para-tr">今年 8 月发表于《自然》的一项研究报告称，一台超导处理器终于跨过了这道线。团队把一个逻辑量子比特编码到数量不断增加的物理量子比特上，记录随着编码规模扩大，这个受保护的比特多久会失效一次。研究由一所大学的研究组领衔、由公共资金支持，原始数据随论文一并公开。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="81.5" data-e="85.197">The pattern is precisely the one theory predicted.</span> <span class="s" data-t="85.197" data-e="99.932">Each step up in code size roughly halved the logical error rate, so that more hardware bought less noise rather than more, which is the exact reverse of how every <span class="kw" data-tip="adj. 常规的；传统的（conventional computer 传统计算机）">conventional</span> computer behaves and the first time the pattern has held for long enough to be argued about.</span></span></div>
+      <p class="para-tr">这一规律与理论的预测完全一致。编码规模每提高一档，逻辑错误率就大致减半；于是更多硬件换来的是更少噪声而不是更多——这与每一台传统计算机的表现恰好相反，也是这个规律第一次稳定得足以引发争论。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="99.932" data-e="106.553">The mechanism is unglamorous, and it explains why the result is about reliability rather than speed.</span> <span class="s" data-t="106.553" data-e="120.38">Redundant qubits are repeatedly measured and their answers compared, and the majority is used to <span class="kw" data-tip="v. 推断；推定（infer from 由……推断）">infer</span> what went wrong without ever reading the underlying state, since reading it directly would destroy the information the machine exists to protect.</span></span></div>
+      <p class="para-tr">其机制毫不光鲜，也解释了为什么这项成果关乎可靠性而非速度。冗余量子比特被反复测量、彼此比对，再用"多数票"推断出哪里出了错——全程不去读取底层的量子态，因为直接读取就会摧毁这台机器存在的意义所要保护的信息。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="120.38" data-e="123.789">The cost is the part that headlines tend to <span class="kw" data-tip="v. 略过；跳过——熟词僻义：常见义为“蹦跳、跳绳”">skip</span>.</span> <span class="s" data-t="123.789" data-e="140.222">Each protected qubit still consumes thousands of physical ones, and the checking <span class="kw" data-tip="v. 消耗（时间、能量）——熟词僻义：常见义为“燃烧”">burns</span> time as well as hardware, so a genuinely useful machine remains a machine of millions rather than a machine of hundreds, and the gap between those two numbers is where the next decade of engineering will be spent.</span></span></div>
+      <p class="para-tr">代价正是标题通常会略过的那部分。每个受保护的量子比特仍要消耗数千个物理量子比特，而校验既烧硬件也烧时间；因此一台真正有用的机器，仍然是"百万级"的机器，而不是"百级"的机器。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="140.222" data-e="143.697">That <span class="kw" data-tip="v. 重新框定；换一个角度界定（frame 构建框架）">reframes</span> the argument about applications.</span> <span class="s" data-t="143.697" data-e="158.59">The interesting question is no longer whether a quantum computer will beat a classical one at some task, but which tasks can <span class="kw" data-tip="v. 容忍；承受（此处指“承受得起额外开销”）">tolerate</span> the enormous <span class="kw" data-tip="n. 额外开销；间接成本——熟词僻义：常见义为“头顶上的、高架的”">overhead</span> of being done reliably, and who will pay for the hardware in the meantime, a question that no experiment can answer.</span></span></div>
+      <p class="para-tr">这就重新框定了关于"应用"的讨论。有意思的问题不再是量子计算机能否在某项任务上击败经典计算机，而是哪些任务承受得起"可靠地完成"所需的巨大额外开销——以及在那个时刻到来之前，谁来为这些硬件买单。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="158.59" data-e="167.105">So the milestone is not a demonstration of speed but of self-correction, a machine that watches itself fail and repairs the failure in time.</span> <span class="s" data-t="167.105" data-e="171.645">Whether that is more impressive than a faster chip is a matter of <span class="kw" data-tip="n. 品味、偏好——熟词僻义：常见义为“味道、尝”">taste</span>.</span> <span class="s" data-t="171.645" data-e="177.158">It is, at any rate, the step the theory always insisted had to come first.</span></span></div>
+      <p class="para-tr">所以这个里程碑展示的不是速度，而是"自我纠正"：一台机器看着自己失败，并及时把失败修好。这究竟比一块更快的芯片更了不起还是更平淡，是个品味问题。但无论如何，这正是理论一直以来坚持必须先迈出的那一步。</p>
+
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">qubit</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkjuːbɪt/ · 美 /ˈkjuːbɪt/</div>
+          <div class="wc-pos"><b>n.</b> 量子比特（quantum bit 的缩合；量子计算的基本单位）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>qubit</b> is so fragile that stray heat can undo months of preparation.</div>
+          <div class="wc-tr">一个量子比特脆弱到一点余热就能让数月准备前功尽弃。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fragile</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfrædʒaɪl/ · 美 /ˈfrædʒl/</div>
+          <div class="wc-pos"><b>adj.</b> 脆弱的；易损坏的（名词 fragility 脆弱性）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A qubit is such a <b>fragile</b> thing.</div>
+          <div class="wc-tr">量子比特是如此脆弱的东西。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bargain</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈbɑːɡən/ · 美 /ˈbɑːrɡən/</div>
+          <div class="wc-pos"><b>n.</b> 交易；协议（此处指学界与物理规律之间的一笔"交换"）· 常见义：便宜货；讨价还价</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...a mathematical <b>bargain</b> called the threshold theorem.</div>
+          <div class="wc-tr">一笔称作"阈值定理"的数学交易。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> 阈值；临界值；门槛</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Crossing the <b>threshold</b> with real hardware was a different matter.</div>
+          <div class="wc-tr">用真实硬件跨过这道阈值，是另一回事。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accumulate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈkjuːmjəleɪt/ · 美 /əˈkjuːmjəleɪt/</div>
+          <div class="wc-pos"><b>v.</b> 累积；积聚（名词 accumulation 积累）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Repair errors faster than they <b>accumulate</b>.</div>
+          <div class="wc-tr">在错误累积之前把它们修好。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">redundancy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈdʌndənsi/ · 美 /rɪˈdʌndənsi/</div>
+          <div class="wc-pos"><b>n.</b> 冗余；多余备份（形容词 redundant）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...at the price of enormous <b>redundancy</b>.</div>
+          <div class="wc-tr">代价是惊人的冗余。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">encode</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈkəʊd/ · 美 /ɪnˈkoʊd/</div>
+          <div class="wc-pos"><b>v.</b> 编码；把信息写入（名词 encoding 编码）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team <b>encoded</b> one logical qubit across growing numbers of physical qubits.</div>
+          <div class="wc-tr">团队把一个逻辑比特编码到数量不断增加的物理比特上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">processor</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈprəʊsesə/ · 美 /ˈprɑːsesər/</div>
+          <div class="wc-pos"><b>n.</b> 处理器（动词 process 处理）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A superconducting <b>processor</b> has finally crossed it.</div>
+          <div class="wc-tr">一台超导处理器终于跨过了这道线。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">interrogate</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ɪnˈterəɡeɪt/ · 美 /ɪnˈterəɡeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 反复查询、读取（数据）· 常见义：审问、盘问</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Interrogate</b> them constantly and repair errors faster than they accumulate.</div>
+          <div class="wc-tr">不断查询它们，并在错误累积之前修正。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conventional</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈvenʃənl/ · 美 /kənˈvenʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> 常规的；传统的（名词 convention 惯例）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...the exact reverse of how every <b>conventional</b> computer behaves.</div>
+          <div class="wc-tr">与每台传统计算机的表现恰好相反。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">infer</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈfɜː/ · 美 /ɪnˈfɜːr/</div>
+          <div class="wc-pos"><b>v.</b> 推断；推定（名词 inference 推论）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The majority is used to <b>infer</b> what went wrong.</div>
+          <div class="wc-tr">用多数票推断出哪里出了错。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">skip</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /skɪp/ · 美 /skɪp/</div>
+          <div class="wc-pos"><b>v.</b> 略过；跳过不论 · 常见义：蹦跳；跳绳</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The cost is the part that headlines tend to <b>skip</b>.</div>
+          <div class="wc-tr">代价正是标题通常会略过的那部分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">burn</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /bɜːn/ · 美 /bɜːrn/</div>
+          <div class="wc-pos"><b>v.</b> 消耗（时间、金钱、能量）· 常见义：燃烧；烧毁</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The checking <b>burns</b> time as well as hardware.</div>
+          <div class="wc-tr">校验既烧时间也烧硬件。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reframe</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌriːˈfreɪm/ · 美 /ˌriːˈfreɪm/</div>
+          <div class="wc-pos"><b>v.</b> 重新框定；换一种角度界定（frame 给……设框）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That <b>reframes</b> the argument about applications.</div>
+          <div class="wc-tr">这就重新框定了关于应用的讨论。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">overhead</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈəʊvəhed/ · 美 /ˈoʊvərhed/</div>
+          <div class="wc-pos"><b>n.</b> 额外开销；间接成本 · 常见义：头顶上的；高架的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...the enormous <b>overhead</b> of being done reliably.</div>
+          <div class="wc-tr">"可靠地完成"所需的巨大额外开销。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">taste</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /teɪst/ · 美 /teɪst/</div>
+          <div class="wc-pos"><b>n.</b> 品味；偏好；判断力 · 常见义：味道；尝</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Whether that is more impressive than a faster chip is a matter of <b>taste</b>.</div>
+          <div class="wc-tr">这比一块更快的芯片是否更了不起，是个品味问题。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">at once</span><span class="zh">同时；立刻（此处为“同时”）</span></li>
+          <li><span class="en">in practice</span><span class="zh">实际上；在实践中</span></li>
+          <li><span class="en">turn out to be</span><span class="zh">结果是；原来是</span></li>
+          <li><span class="en">spread A across B</span><span class="zh">把 A 铺展／分散到 B 上</span></li>
+          <li><span class="en">faster than sth accumulates</span><span class="zh">快于某物累积的速度</span></li>
+          <li><span class="en">at the price of</span><span class="zh">以……为代价</span></li>
+          <li><span class="en">fall short of</span><span class="zh">未达到；差一点</span></li>
+          <li><span class="en">close enough to do sth</span><span class="zh">近到足以做某事</span></li>
+          <li><span class="en">in the future tense</span><span class="zh">（停留在）将来时——即“永远是以后再说”</span></li>
+          <li><span class="en">as the code grows</span><span class="zh">随着编码规模扩大</span></li>
+          <li><span class="en">step up</span><span class="zh">提高一档；上升一级</span></li>
+          <li><span class="en">the exact reverse of</span><span class="zh">与……恰好相反</span></li>
+          <li><span class="en">be used to do sth</span><span class="zh">被用来做某事</span></li>
+          <li><span class="en">as well as</span><span class="zh">既……又……；以及</span></li>
+          <li><span class="en">a matter of taste</span><span class="zh">品味问题；见仁见智</span></li>
+          <li><span class="en">at any rate</span><span class="zh">无论如何；至少</span></li>
+          <li><span class="en">insist that sth do sth</span><span class="zh">坚持认为某事必须……（从句用虚拟语气）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：量子计算机常被误认为"更快的电脑"，实则是不断出错的机器——量子比特极脆弱，余热或宇宙射线即可毁掉数月准备。</li>
+          <li>方案：阈值定理这笔"数学交易"——把逻辑比特铺到许多物理比特上，纠错快于累积，则加硬件反而降噪声，代价是巨大冗余。</li>
+          <li>困境：定理无疑，难在硬件；多年实测错误率总差一点点，近到能拿到经费，远到承诺只能停在将来时。</li>
+          <li>研究：2026 年 8 月《自然》，超导处理器首次越过阈值；把逻辑比特编码到递增数量的物理比特上，并公开原始数据。</li>
+          <li>结果：码距每升一档，逻辑错误率约减半——更多硬件换来更少噪声，与传统计算机规律恰好相反。</li>
+          <li>机制：反复测量冗余比特、比对答案、以多数票推断错误，而不直接读取量子态（读取即破坏）。</li>
+          <li>代价：每个逻辑比特仍耗数千物理比特，校验烧时间也烧硬件，有用机器仍是"百万级"。</li>
+          <li>转向：问题从"能否击败经典计算机"变为"哪些任务承受得起可靠完成的巨大开销，以及谁买单"。</li>
+          <li>收束：里程碑不是速度而是自我纠正；是否更了不起见仁见智，但这是理论坚持必须先迈的一步。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Spread each logical qubit across many physical ones, interrogate them constantly and repair errors faster than they accumulate, and adding hardware will make the final answer more reliable rather than less, at the price of enormous redundancy.</div>
+        <div class="row"><b>主干：</b>...and adding hardware will make the final answer more reliable（并列连词 and 连接"条件"与"结果"两个部分）</div>
+        <div class="row"><b>条件部分：</b>三个祈使句并列——Spread ... , interrogate ... and repair ...，相当于 if you spread / interrogate / repair 的省略形式</div>
+        <div class="row"><b>比较结构：</b>faster than they accumulate（快于它们累积的速度）；more reliable rather than less（更可靠而不是更不可靠）——rather than 后接对比项</div>
+        <div class="row"><b>介词短语：</b>at the price of enormous redundancy 作状语，表示"以……为代价"</div>
+        <div class="row"><b>考点：</b>祈使句表条件；than 引导的比较从句；rather than 的对比；ones 替代前面复数名词 qubits</div>
+        <div class="row tr"><b>译文：</b>把每个逻辑量子比特铺展到许多物理量子比特上，不断查询它们，并在错误累积之前把错误修好；那么增加硬件就会让最终答案更可靠而不是更不可靠——代价是惊人的冗余。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Redundant qubits are repeatedly measured and their answers compared, and the majority is used to infer what went wrong without ever reading the underlying state, since reading it directly would destroy the information the machine exists to protect.</div>
+        <div class="row"><b>主干：</b>Redundant qubits are repeatedly measured ..., and the majority is used to infer ...（两个并列分句）</div>
+        <div class="row"><b>省略：</b>their answers compared 中省略了 are（= their answers are compared），与前面 are measured 共用助动词</div>
+        <div class="row"><b>介词短语：</b>without ever reading the underlying state 作状语，说明"推断"发生的前提</div>
+        <div class="row"><b>原因状语从句：</b>since reading it directly would destroy the information ...；其中 the machine exists to protect 是定语从句修饰 information</div>
+        <div class="row"><b>考点：</b>并列句的省略；without doing 结构；since 表原因；定语从句省略关系代词（information [that] the machine exists to protect）</div>
+        <div class="row tr"><b>译文：</b>冗余的量子比特被反复测量、彼此的答案相互比对，再用多数票去推断哪里出了错——整个过程从不读取底层的量子态，因为直接读取它就会摧毁这台机器之所以存在所要保护的信息。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The interesting question is no longer whether a quantum computer will beat a classical one at some task, but which tasks can tolerate the enormous overhead of being done reliably, and who will pay for the hardware in the meantime.</div>
+        <div class="row"><b>主干：</b>The interesting question is no longer A, but B and C（表语为三个并列成分）</div>
+        <div class="row"><b>表语一：</b>whether 引导的从句（是否……）——被 no longer 否定</div>
+        <div class="row"><b>表语二、三：</b>which tasks can tolerate ... 与 who will pay for ... 两个从句并列，构成 not ... but ... 的对比</div>
+        <div class="row"><b>非谓语：</b>of being done reliably 是动名词被动式作 overhead 的后置定语</div>
+        <div class="row"><b>考点：</b>表语从句并列；no longer ... but ... 的对比；动名词被动式；in the meantime（在此期间）</div>
+        <div class="row tr"><b>译文：</b>有意思的问题不再是"量子计算机能否在某项任务上击败经典计算机"，而是"哪些任务承受得起被可靠完成所需的巨大额外开销"，以及"在此期间谁来为这些硬件买单"。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">量子计算机最容易被误解的地方，是把它当成一台"更快"的电脑。真实的量子处理器不是跑得更快的机器，而是一台不停出错的机器：量子比特处在极其脆弱的叠加态里，一点余热、一次轻微震动、一颗穿过实验室的宇宙射线，都可能让精心准备数月的量子态瞬间退相干，计算随之作废。越是把电路做大、把计算拉长，出错的机会就越多。正因如此，量子计算过去三十年的核心难题并不是"造出更多量子比特"，而是"如何让大量容易出错的量子比特协同给出一个正确的答案"。学界给出的答案，是一笔可以写进公式的交易——阈值定理。它说：如果把一个逻辑量子比特的信息分散编码到许多物理量子比特上，不断测量这些物理比特、彼此比对、用多数票推断出错误并加以修正，只要纠错的速度快过错误产生的速度，那么增加硬件就会让最终结果更可靠，而不是更不可靠。定理本身在数学上从无疑问，真正困难的是在真实硬件上跨过那道"阈值"。多年来，实验室测得的错误率总是差那么一点点：近到足以让这个领域继续获得经费与信心，又远到足以让所有关于"通用量子计算"的承诺只能安全地停留在将来时。2026 年 8 月，《自然》刊出的一项研究给出了转折。研究团队在一台超导处理器上，把一个逻辑量子比特编码到数量不断增加的物理量子比特中，并记录随着编码规模扩大，这个"受保护的比特"多久失效一次。结果呈现出理论预言的那条曲线：编码规模每提高一档，逻辑错误率就大致减半。这意味着"硬件越多、噪声越大"这条几乎适用于所有计算机的铁律，第一次在量子领域被反转——更多的物理比特换来的不是更多错误，而是更少错误。其机制本身毫不光鲜：系统反复测量那些冗余的量子比特，把它们的读数相互比对，用多数票推断出哪一步出了偏差，再据此纠正；关键在于整个过程都不去直接读取底层的量子态，因为一旦读取，需要保护的信息就会被摧毁。然而，代价正是标题通常会略过的那部分。每一个受保护的逻辑量子比特，仍然要消耗数千个物理量子比特；而反复校验不仅烧硬件，也烧时间。所以一台真正"有用"的机器，仍然是百万级物理比特的机器，而不是百级。这一现实也改变了讨论的重心：问题不再是"量子计算机能否在某项任务上击败经典计算机"，而是"哪些任务承受得起被可靠完成所需的巨大额外开销"，以及"在那个时刻到来之前，谁来为这些昂贵的硬件买单"。因此，这项成果真正的意义不是速度，而是自我纠正——一台机器第一次能够看着自己失败，并在失败酿成大错之前把它修好。这究竟比一块更快的芯片更了不起，或许见仁见智；但无论如何，这正是理论一直坚持必须先迈出的那一步。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章说"更多的硬件换来更少的噪声"，这与传统计算机"元件越多、故障越多"的直觉相反。请结合第 2、5 段，解释阈值定理为什么能让这条直觉失效；再想一想：如果每个逻辑比特要消耗数千个物理比特，那么"量子优势"在什么条件下才可能真正兑现？为什么作者说这个问题已经从"能不能"变成了"值不值"？</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"The interesting question is no longer whether X will beat Y at Z, but which Z can tolerate the enormous overhead of being done reliably."</span>（把"胜负之争"改写为"承受能力之问"）的句式，就一个你熟悉的议题（如人工智能写作、线上教学、自动驾驶）写一句"重新定义问题"的评论。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：量子计算机不是"更快的电脑"，而是不停出错的机器</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 方案：阈值定理——纠错快于累积，加硬件反而降噪声</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 困境：定理无疑，难在硬件，错误率总差一点点</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 研究：2026-08《自然》，超导处理器首次越过阈值</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 结果：码距每升一档，逻辑错误率约减半</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 机制：反复测量、多数票推断，从不直接读量子态</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 代价：每逻辑比特耗数千物理比特，仍属"百万级"</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 转向：从"能否击败经典"到"谁承受得起开销"</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：里程碑不是速度，而是"自我纠正"</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 方案 → 困境 → 研究 → 结果 → 机制 → 代价 → 转向 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature 关于超导量子处理器跨过纠错阈值的实验报道（2026 年 8 月）及期刊新闻稿公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

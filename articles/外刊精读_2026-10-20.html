@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 同一段审讯录像，为什么有人显得更可疑</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Law &amp; Justice · 人与社会 / 司法心理 / 可信度 / 神经多样性</div>
+  <h1>同一段审讯录像，为什么有人显得更可疑</h1>
+  <div class="deck">Australian psychologists showed identical mock police interviews to autistic and non-autistic observers, and found that credibility is decided less by what a suspect says than by how far his behaviour strays from the script</div>
+  <div class="byline"><span><b>来源</b> Law and Human Behavior（2026 年 9 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-20</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-20.jpg" alt="警察局审讯室内对坐交谈的场景照片（配图）">
+    <figcaption>配图：审讯室里的两个人隔着桌子对坐，一个人的沉默与迟疑，往往被另一个人当作答案（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>法庭有一台从未校准过的“测谎仪”，它不在设备清单上，而是人眼。被告是否直视问话者、回答有没有停顿、声音是否平稳——这些全被当作诚实的证据；反过来，躲开目光、开口迟疑、把一句玩笑话按字面回答，就被读成“心虚”。问题是，这台仪器测的从来不是真假，而是“像不像”。2026 年 9 月，美国心理学会期刊《法律与人类行为》（Law and Human Behavior）刊出澳大利亚弗林德斯大学（Flinders University）尼尔·布鲁尔（Neil Brewer）团队的研究，合著者包括卡门·卢卡斯、凯蒂·洛戈斯、罗宾·扬与临床心理学家阿莉扎·林（Alliyza Lim），DOI 10.1037/lhb0000679。他们做了一个极为干净的实验：让自闭症与非自闭症观察者观看同一批模拟审讯录像——嫌疑人因“黑客入侵”指控被问话——再给“可疑程度、可信度、有罪程度”打分。结论比任何一方的预想都更难堪：自闭症男性嫌疑人确实被判得更可疑，说话迟疑越明显越吃亏；但观察者自己是否自闭症毫无影响，所谓“双重共情”假说不成立；真正预测打分的，是“期待违背”——嫌疑人的表现偏离了人们心中“嫌疑人该有的样子”。换句话说，审讯者抓到的不是谎言，是不合剧本。本文按“人眼测谎—测的是从众—研究来历—实验设计—两个假说—结果—真正变量—执法代价—收束”的链条展开，并把三个熟词僻义（read / court / tell）嵌进论证。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-20.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.995">Every courtroom runs on a silent instrument that nobody has ever <span class="kw" data-tip="v. 校准；标定（calibrate an instrument 校准仪器）">calibrated</span>: the impression a judge, a juror or an interviewer forms of how a person behaves while being questioned.</span> <span class="s" data-t="10.995" data-e="23.026">A suspect who meets the interviewer's eyes, answers without pausing and keeps his voice level is <span class="kw" data-tip="v. 被理解为；被解读为——熟词僻义：常见义为“阅读”">read</span> as honest, while one who hesitates, looks away or takes a question too literally is read as <span class="kw" data-tip="adj. 躲闪的；回避的（evade 回避）">evasive</span>.</span> <span class="s" data-t="23.026" data-e="30.013">That impression then hardens into evidence about character, although it is evidence about nothing of the kind.</span></span></div>
+      <p class="para-tr">每间法庭都靠一台从未有人校准过的无声仪器运转：法官、陪审员或审讯者对“一个人被问话时表现如何”所形成的印象。一个与问话者目光相接、回答不打磕、声音平稳的嫌疑人，会被理解为诚实；而一个迟疑、移开视线、把问题照字面回答的人，会被理解为躲闪。这个印象随后固化为关于品性的证据——尽管它根本不是那类证据。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="30.013" data-e="37.697">The difficulty is that <span class="kw" data-tip="n. 举止；仪态（英式拼写，美式 demeanor）">demeanour</span> is a poor <span class="kw" data-tip="n. 替代指标；代理变量（a proxy for sth 用以代替某物的指标）">proxy</span> for guilt, because what it measures is <span class="kw" data-tip="n. 从众；顺应（动词 conform 遵从）">conformity</span> rather than truthfulness.</span> <span class="s" data-t="37.697" data-e="49.368">Once a suspect's speech <span class="kw" data-tip="v. 偏离；背离（depart from the norm 偏离常规）">departs</span> from what an interviewer expects a truthful person to sound like, the <span class="kw" data-tip="n. 偏离；背离（此处与动词同形）">departure</span> itself becomes the finding, and the distance between being odd and being guilty closes.</span></span></div>
+      <p class="para-tr">难点在于，举止是一个很差的“有罪指标”，因为它测的是从众，而不是诚实。一旦嫌疑人的说话方式偏离了审讯者心中“诚实的人该有的样子”，这种偏离本身就变成了结论，而“古怪”与“有罪”之间的距离便合拢了。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="49.368" data-e="61.368">The clearest account of how that distance closes comes from Flinders University, where Neil Brewer and colleagues have spent years asking how autistic adults cope once they are drawn into the criminal justice system.</span> <span class="s" data-t="61.368" data-e="70.711">Their new paper arrives as courts in several countries are being urged to treat communication difference as a reasonable <span class="kw" data-tip="n. 调整；变通安排（reasonable adjustment 合理便利）">adjustment</span> rather than a warning sign.</span></span></div>
+      <p class="para-tr">关于这段距离如何合拢，最清楚的解释来自阿德莱德的弗林德斯大学：尼尔·布鲁尔与四位同事多年来一直在追问，自闭症成年人一旦被卷入刑事司法程序，究竟会遭遇什么。他们的新论文 9 月发表于《法律与人类行为》，而此时此刻，多国法庭正被呼吁把沟通方式上的差异视为一种合理便利，而不是危险信号。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="70.711" data-e="86.774">Two experiments sit at its centre, both using recorded mock police interviews: autistic and non-autistic observers watched chatroom users questioned about an <span class="kw" data-tip="n. 指控；控告（动词 accuse 指控）">accusation</span> of computer hacking, then rated each suspect for suspiciousness, credibility and guilt.</span></span></div>
+      <p class="para-tr">论文的核心是两项实验，两者都使用了录制好的模拟警务审讯：自闭症与非自闭症观察者观看聊天室用户因“黑客入侵”指控被问话的录像，随后为每位嫌疑人的可疑程度、可信度与有罪程度打分。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="86.774" data-e="97.632">The suspects had been chosen for differing sharply on two behaviours that separate autistic from non-autistic interviewees: difficulty with <span class="kw" data-tip="adj. 比喻性的；非字面的（figurative language 比喻性语言）">figurative</span> language, and speech <span class="kw" data-tip="n. 迟疑；停顿（动词 hesitate 犹豫）">hesitation</span>.</span> <span class="s" data-t="97.632" data-e="111.0">Experiment one <span class="kw" data-tip="v. 招募；征集（recruit participants 招募被试）">recruited</span> 212 autistic and 215 non-autistic observers, experiment two 125 of each, and the footage varied so that some suspects paused far more than others.</span></span></div>
+      <p class="para-tr">这些嫌疑人是被特意挑选的，因为他们在两种“区分自闭症与非自闭症受访者”的行为上差异悬殊：理解比喻性语言的困难，以及言语上的迟疑。实验一招募了 212 名自闭症观察者与 215 名非自闭症观察者，实验二各 125 名；录像也做了处理，让部分嫌疑人的停顿明显多于其他人。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="111.0" data-e="118.829">Showing <span class="kw" data-tip="adj. 完全相同的（identical twins 同卵双胞胎）">identical</span> recordings to people with and without a diagnosis let the team test two <span class="kw" data-tip="adj. 相互竞争的；对立的（rival explanations 彼此竞争的解释）">rival</span> explanations at once.</span> <span class="s" data-t="118.829" data-e="133.908">The first holds that autistic suspects are <span class="kw" data-tip="v. 惩罚；使处于不利地位（名词 penalty 处罚）">penalised</span> for behaving in ways observers find unusual; the second, known as the double empathy <span class="kw" data-tip="n. 假说；假设（复数 hypotheses）">hypothesis</span>, holds that people interpret intent most accurately when the suspect shares their <span class="kw" data-tip="adj. 诊断上的（diagnostic status 诊断状态）">diagnostic</span> status.</span> <span class="s" data-t="133.908" data-e="150.553">Neither survived <span class="kw" data-tip="adj. 完好无损的（survive intact 完好地留存下来）">intact</span>: autistic male suspects were rated more harshly than non-autistic ones, and autistic suspects whose hesitation was more <span class="kw" data-tip="adj. 明显的；显著的（pronounced effect 显著效应）">pronounced</span> drew harsher judgments still, yet the observers' own diagnostic status made no measurable difference to the <span class="kw" data-tip="n. 裁决；判定（陪审团的裁断）">verdicts</span> they reached.</span></span></div>
+      <p class="para-tr">把完全相同的录像放给“有诊断”与“无诊断”的人看，使团队能一次检验两种相互竞争的解释。第一种认为，自闭症嫌疑人仅仅因为举止在观察者眼中“不寻常”就被扣分；第二种是“双重共情”假说，认为当嫌疑人与观察者具有相同诊断状态时，人们最能准确解读其意图。两种解释都没能完好存活：自闭症男性嫌疑人比非自闭症嫌疑人被判得更严厉，而迟疑更明显的自闭症嫌疑人被判得还要严厉；然而观察者自身的诊断状态，对他们最终作出的判断没有任何可测量的影响。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="150.553" data-e="158.434">What did predict the ratings was expectancy violation: the degree to which a suspect failed to behave as a suspect should.</span> <span class="s" data-t="158.434" data-e="170.803">It held for autistic and non-autistic interviewees alike, pointing to a social <span class="kw" data-tip="n. 机制；作用机理（social mechanism 社会机制）">mechanism</span> rather than a clinical one: interviewers and jurors do not detect <span class="kw" data-tip="n. 欺骗；隐瞒（动词 deceive 欺骗）">deception</span>, they detect departures from a script.</span></span></div>
+      <p class="para-tr">真正能预测打分的，是“期待违背”——即嫌疑人的表现偏离“嫌疑人应有的样子”的程度。这一效应在自闭症与非自闭症受访者身上同样成立，说明起作用的是社会机制而非临床机制：审讯者与陪审员察觉到的并不是欺骗，而是对剧本的偏离。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="170.803" data-e="179.75">For policing the implication is awkward: the behaviours that reliably mark autistic speech are precisely the ones officers are trained to notice.</span> <span class="s" data-t="179.75" data-e="192.566">Pauses, flat <span class="kw" data-tip="n. 语调；声调（intonation pattern 语调模式）">intonation</span> and literal answers belong to the ordinary grammar of a condition, not to the repertoire of <span class="kw" data-tip="n. 隐瞒；掩饰（动词 conceal 隐藏）">concealment</span>, and <span class="kw" data-tip="n. 调查人员；侦查员（动词 investigate 调查）">investigators</span> who rely on them <span class="kw" data-tip="v. 招致；引来（坏事）——熟词僻义：常见义为“法庭、球场”">court</span> error exactly where the stakes are highest.</span></span></div>
+      <p class="para-tr">对警务而言，这一含义很尴尬：最能标记自闭症言语特征的行为，恰恰是警员被训练去留意的那些。停顿、平直语调与字面回答，属于某种病症的日常语法，而不属于隐瞒的手段；依赖这些信号的侦查人员，恰恰在代价最高的地方招致错误。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="192.566" data-e="198.697">None of this asks suspects to perform normality, which would be both unfair and impossible.</span> <span class="s" data-t="198.697" data-e="208.553">It asks courts to weigh what was said rather than how smoothly it was delivered, and to admit that <span class="kw" data-tip="v. 分辨；区分——熟词僻义：常见义为“告诉、讲述”">telling</span> a nervous man from a guilty one is not a sense the law possesses.</span></span></div>
+      <p class="para-tr">所有这些都不是要求嫌疑人去表演“正常”，那既不公平也不可能。它要求法庭去权衡“说了什么”，而不是“说得多顺”；并要求法庭承认：分辨一个紧张的人与一个有罪的人，并不是法律真正拥有的一种感官。</p>
+
+      <p class="muted">原文出处：本文根据 Law and Human Behavior 论文《How Behavioral Differences Between Autistic and Nonautistic Suspects in Forensic Interviews Affect Observers' Evaluations: Evidence for Expectancy Violations Theory but Not the Double Empathy Hypothesis》（Brewer N, Lucas CA, Logos K, Young RL, Lim A；Flinders University, College of Human Sciences and Culture；Law and Human Behavior, 2026 年 9 月 21 日线上先发；DOI 10.1037/lhb0000679；CC BY 4.0 开放获取）及弗林德斯大学新闻稿公开资料改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">calibrate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkælɪbreɪt/ · 美 /ˈkælɪbreɪt/</div>
+          <div class="wc-pos"><b>v.</b> 校准；标定（仪器）；调整（标准）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An instrument that nobody has ever <b>calibrated</b>.</div>
+          <div class="wc-tr">一台从未有人校准过的仪器。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">impression</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪmˈpreʃn/ · 美 /ɪmˈpreʃn/</div>
+          <div class="wc-pos"><b>n.</b> 印象；观感（动词 impress 使留下印象）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>impression</b> a juror forms of how a person behaves.</div>
+          <div class="wc-tr">陪审员对一个人举止所形成的印象。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">read</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /riːd/ · 美 /riːd/</div>
+          <div class="wc-pos"><b>v.</b> 理解为；解读为；判断<br><span style="color:#9c2f16">常见义：阅读；朗读</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>He is <b>read</b> as honest, while the other is read as evasive.</div>
+          <div class="wc-tr">他被理解为诚实，而另一个人被理解为躲闪。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">evasive</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪˈveɪsɪv/ · 美 /ɪˈveɪsɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 躲闪的；回避的（动词 evade 逃避）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>One who looks away is read as <b>evasive</b>.</div>
+          <div class="wc-tr">移开视线的人，会被理解为心虚躲闪。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">demeanour</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪˈmiːnə/ · 美 /dɪˈmiːnər/</div>
+          <div class="wc-pos"><b>n.</b> 举止；仪态（美式拼作 demeanor）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Demeanour</b> is a poor proxy for guilt.</div>
+          <div class="wc-tr">举止是一个很差的有罪指标。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">proxy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈprɒksi/ · 美 /ˈprɑːksi/</div>
+          <div class="wc-pos"><b>n.</b> 替代指标；代理变量；代理人</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A poor <b>proxy</b> for guilt.</div>
+          <div class="wc-tr">一个有罪与否的糟糕替代指标。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conformity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈfɔːməti/ · 美 /kənˈfɔːrməti/</div>
+          <div class="wc-pos"><b>n.</b> 从众；顺应；一致性（动词 conform 遵从）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It measures <b>conformity</b> rather than truthfulness.</div>
+          <div class="wc-tr">它测的是从众，而不是诚实。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">depart</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈpɑːt/ · 美 /dɪˈpɑːrt/</div>
+          <div class="wc-pos"><b>v.</b> 偏离；背离（depart from the norm 偏离常规）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Speech that <b>departs</b> from what an interviewer expects.</div>
+          <div class="wc-tr">偏离了审讯者预期的说话方式。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">adjustment</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈdʒʌstmənt/ · 美 /əˈdʒʌstmənt/</div>
+          <div class="wc-pos"><b>n.</b> 调整；变通安排（reasonable adjustment 合理便利）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Treat communication difference as a reasonable <b>adjustment</b>.</div>
+          <div class="wc-tr">把沟通差异视为一种合理便利。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accusation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌækjuˈzeɪʃn/ · 美 /ˌækjuˈzeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 指控；控告（动词 accuse 指控）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Questioned about an <b>accusation</b> of computer hacking.</div>
+          <div class="wc-tr">因一项黑客入侵的指控而被问话。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">figurative</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈfɪɡərətɪv/ · 美 /ˈfɪɡjərətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 比喻性的；非字面的（反义 literal 字面的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Difficulty with <b>figurative</b> language.</div>
+          <div class="wc-tr">理解比喻性语言的困难。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hesitation</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌhezɪˈteɪʃn/ · 美 /ˌhezɪˈteɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 迟疑；停顿（动词 hesitate 犹豫）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Speech <b>hesitation</b> separates the two groups.</div>
+          <div class="wc-tr">言语迟疑把两个群体区分开来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recruit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈkruːt/ · 美 /rɪˈkruːt/</div>
+          <div class="wc-pos"><b>v.</b> 招募；征集（被试、成员）<b>n.</b> 新成员</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Experiment one <b>recruited</b> 212 autistic observers.</div>
+          <div class="wc-tr">实验一招募了 212 名自闭症观察者。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">identical</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /aɪˈdentɪkl/ · 美 /aɪˈdentɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 完全相同的；同一的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Identical</b> recordings were shown to both groups.</div>
+          <div class="wc-tr">两组人看的是完全相同的录像。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rival</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈraɪvl/ · 美 /ˈraɪvl/</div>
+          <div class="wc-pos"><b>adj.</b> 相互竞争的；对立的 <b>n.</b> 对手</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Two <b>rival</b> explanations were tested at once.</div>
+          <div class="wc-tr">两种相互竞争的解释被同时检验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">penalise</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈpiːnəlaɪz/ · 美 /ˈpiːnəlaɪz/</div>
+          <div class="wc-pos"><b>v.</b> 惩罚；使处于不利地位（名词 penalty 处罚）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Penalised simply for behaving unusually.</div>
+          <div class="wc-tr">仅仅因为举止不寻常就被扣分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hypothesis</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /haɪˈpɒθəsɪs/ · 美 /haɪˈpɑːθəsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 假说；假设（复数 hypotheses）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The double empathy <b>hypothesis</b> was not supported.</div>
+          <div class="wc-tr">“双重共情”假说未获支持。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pronounced</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prəˈnaʊnst/ · 美 /prəˈnaʊnst/</div>
+          <div class="wc-pos"><b>adj.</b> 明显的；显著的（动词 pronounce 发音；宣布）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Suspects whose hesitation was more <b>pronounced</b>.</div>
+          <div class="wc-tr">迟疑更明显的那些嫌疑人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">verdict</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈvɜːdɪkt/ · 美 /ˈvɜːrdɪkt/</div>
+          <div class="wc-pos"><b>n.</b> 裁决；判定；（观察者作出的）结论</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>verdicts</b> the observers reached.</div>
+          <div class="wc-tr">观察者最终作出的那些判断。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mechanism</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmekənɪzəm/ · 美 /ˈmekənɪzəm/</div>
+          <div class="wc-pos"><b>n.</b> 机制；作用机理</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It points to a social <b>mechanism</b>, not a clinical one.</div>
+          <div class="wc-tr">它指向社会机制，而不是临床机制。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">deception</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈsepʃn/ · 美 /dɪˈsepʃn/</div>
+          <div class="wc-pos"><b>n.</b> 欺骗；隐瞒（动词 deceive 欺骗）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Jurors do not detect <b>deception</b>; they detect departures.</div>
+          <div class="wc-tr">陪审员察觉的不是欺骗，而是偏离。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intonation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈneɪʃn/ · 美 /ˌɪntəˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 语调；声调（flat intonation 平直语调）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Pauses and flat <b>intonation</b> are the grammar of a condition.</div>
+          <div class="wc-tr">停顿与平直语调，是某种病症的语法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">concealment</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈsiːlmənt/ · 美 /kənˈsiːlmənt/</div>
+          <div class="wc-pos"><b>n.</b> 隐瞒；掩饰（动词 conceal 隐藏）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>These are not the repertoire of <b>concealment</b>.</div>
+          <div class="wc-tr">这些并不属于隐瞒的手段。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">court</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /kɔːt/ · 美 /kɔːrt/</div>
+          <div class="wc-pos"><b>v.</b> 招致；引来（坏事）；博取（好感）<br><span style="color:#9c2f16">常见义：法庭；球场；宫廷</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Investigators who rely on such signals <b>court</b> error.</div>
+          <div class="wc-tr">依赖这类信号的侦查人员，是在招致错误。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tell</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /tel/ · 美 /tel/</div>
+          <div class="wc-pos"><b>v.</b> 分辨；区分（tell A from B）<br><span style="color:#9c2f16">常见义：告诉；讲述</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Telling</b> a nervous man from a guilty one.</div>
+          <div class="wc-tr">分辨一个紧张的人和一个有罪的人。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">run on</span><span class="zh">依靠……运转；以……为动力</span></li>
+          <li><span class="en">form an impression of sb</span><span class="zh">对某人形成观感</span></li>
+          <li><span class="en">meet sb's eyes</span><span class="zh">与某人对视</span></li>
+          <li><span class="en">look away</span><span class="zh">移开视线</span></li>
+          <li><span class="en">take sth literally</span><span class="zh">把……按字面理解</span></li>
+          <li><span class="en">harden into</span><span class="zh">固化为；变成</span></li>
+          <li><span class="en">a proxy for</span><span class="zh">……的替代指标</span></li>
+          <li><span class="en">depart from</span><span class="zh">偏离；背离</span></li>
+          <li><span class="en">the distance between A and B</span><span class="zh">A 与 B 之间的距离</span></li>
+          <li><span class="en">be drawn into</span><span class="zh">被卷入</span></li>
+          <li><span class="en">be urged to do</span><span class="zh">被呼吁去做</span></li>
+          <li><span class="en">rate sb for sth</span><span class="zh">就某方面给某人打分</span></li>
+          <li><span class="en">differ sharply on</span><span class="zh">在……上差异悬殊</span></li>
+          <li><span class="en">at once</span><span class="zh">同时；一次性地</span></li>
+          <li><span class="en">hold that …</span><span class="zh">（观点）认为……</span></li>
+          <li><span class="en">survive intact</span><span class="zh">完好无损地留存</span></li>
+          <li><span class="en">make no difference to</span><span class="zh">对……没有影响</span></li>
+          <li><span class="en">point to</span><span class="zh">指向；说明</span></li>
+          <li><span class="en">be trained to notice</span><span class="zh">被训练去留意</span></li>
+          <li><span class="en">the stakes are highest</span><span class="zh">代价最高的时候</span></li>
+          <li><span class="en">weigh A rather than B</span><span class="zh">权衡 A 而不是 B</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：法庭依靠“人的印象”判断真假——对视、不迟疑、声音平稳被视为诚实，反之被视为躲闪。</li>
+          <li>论点一：举止测的是从众而非诚实；一旦说话方式偏离预期，“偏离”本身就成了结论。</li>
+          <li>研究来历：弗林德斯大学布鲁尔团队研究自闭症成年人进入刑事程序后的处境，论文 9 月发于《法律与人类行为》。</li>
+          <li>设计：让自闭症与非自闭症观察者观看同一批模拟审讯录像（黑客指控），就可疑度、可信度、有罪度打分。</li>
+          <li>取样：嫌疑人按“比喻理解困难”和“言语迟疑”高低挑选；实验一 212/215 人，实验二各 125 人。</li>
+          <li>两个假说与结果：自闭症男性被判更可疑、迟疑越明显越吃亏；但观察者自身诊断状态无影响，“双重共情”不成立。</li>
+          <li>真正变量：预测打分的是“期待违背”，且对两类受访者同样成立——抓到的不是谎言，是不合剧本。</li>
+          <li>执法代价：最能标记自闭症言语的行为，恰是警员被训练去留意的；依赖它们会在代价最高处招致错误。</li>
+          <li>收束：不是要求嫌疑人表演正常，而是要求法庭衡量“说了什么”而非“说得多顺”。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">A suspect who meets the interviewer's eyes, answers without pausing and keeps his voice level is read as honest, while one who hesitates, looks away or takes a question too literally is read as evasive.</div>
+        <div class="row"><b>主干：</b>A suspect ... is read as honest, while one ... is read as evasive（while 表对比，两个被动分句对照）</div>
+        <div class="row"><b>定语从句：</b>who meets ..., answers ... and keeps ...（三个并列谓语共用一个先行词 suspect，注意最后一个谓语 keeps 前没有 who，属共用关系代词）</div>
+        <div class="row"><b>代词 one：</b>one who hesitates（= a suspect who hesitates，避免重复 suspect）</div>
+        <div class="row"><b>read as：</b>“被理解为/被解读为”，此处 read 不是“阅读”，而是“判断、解读”</div>
+        <div class="row"><b>考点：</b>while 对比；定语从句中关系代词共用；one 指代；read as 的被动结构</div>
+        <div class="row tr"><b>译文：</b>一个与问话者目光相接、回答不打磕、声音平稳的嫌疑人，会被理解为诚实；而一个迟疑、移开视线、把问题照字面回答的人，会被理解为躲闪。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Once a suspect's speech departs from what an interviewer expects a truthful person to sound like, the departure itself becomes the finding, and the distance between being odd and being guilty closes.</div>
+        <div class="row"><b>主干：</b>the departure becomes the finding, and the distance ... closes（两个并列分句，由 once 引导的时间/条件状语从句修饰整句）</div>
+        <div class="row"><b>名词性从句：</b>what an interviewer expects a truthful person to sound like（作 departs from 的宾语；expect sb to do sth 结构被嵌入从句）</div>
+        <div class="row"><b>词性转换：</b>depart（动词）→ the departure（名词）→ 同一句中复用，形成“一动作、一实体”的呼应</div>
+        <div class="row"><b>介词短语作定语：</b>between being odd and being guilty（两个动名词并列，抽象化“古怪”与“有罪”两种状态）</div>
+        <div class="row"><b>考点：</b>once 引导状语从句；what 从句作介词宾语；expect sb to do；动名词并列</div>
+        <div class="row tr"><b>译文：</b>一旦嫌疑人的说话方式偏离了审讯者心中“诚实的人该有的样子”，这种偏离本身就变成了结论，而“古怪”与“有罪”之间的距离便悄悄合拢了。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The first holds that autistic suspects are penalised simply for behaving in ways observers find unusual; the second, known as the double empathy hypothesis, holds that people interpret intent most accurately when the suspect shares their diagnostic status.</div>
+        <div class="row"><b>主干：</b>The first holds that ..., the second ... holds that ...（两个分句以分号并列，结构对称）</div>
+        <div class="row"><b>插入语：</b>known as the double empathy hypothesis（过去分词短语作后置定语，插在主语 the second 与谓语 holds 之间）</div>
+        <div class="row"><b>宾语从句：</b>两个 that 从句分别作 holds 的宾语，说明两种解释的内容</div>
+        <div class="row"><b>介词短语作原因状语：</b>for behaving in ways observers find unusual（ways 后省略了 in which / that，是定语从句的常见省略）</div>
+        <div class="row"><b>考点：</b>分号并列；过去分词插入语；that 宾语从句；ways 后定语从句的省略</div>
+        <div class="row tr"><b>译文：</b>第一种认为，自闭症嫌疑人仅仅因为举止在观察者眼中“不寻常”就被扣分；第二种被称为“双重共情”假说，认为当嫌疑人与观察者具有相同诊断状态时，人们最能准确解读其意图。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Autistic male suspects were rated more harshly than non-autistic ones, and autistic suspects whose hesitation was more pronounced drew harsher judgments still, yet the observers' own diagnostic status made no measurable difference to the verdicts they reached.</div>
+        <div class="row"><b>主干：</b>三个分句层层转折：were rated ... , drew ... , yet ... made no difference（and 递进 + yet 转折）</div>
+        <div class="row"><b>比较结构：</b>more harshly than non-autistic ones（ones 代指 suspects）；harsher judgments still（still 表示“更加”，程度递进）</div>
+        <div class="row"><b>定语从句：</b>whose hesitation was more pronounced（修饰 autistic suspects）；the verdicts (that) they reached（省略关系代词）</div>
+        <div class="row"><b>逻辑张力：</b>前两分句说“判得更严厉”，第三分句说“观察者自身身份无影响”，共同否定了“同类更能理解同类”的假设</div>
+        <div class="row"><b>考点：</b>三项并列与转折；比较级 + still；whose 定语从句；省略关系代词</div>
+        <div class="row tr"><b>译文：</b>自闭症男性嫌疑人比非自闭症嫌疑人被判得更严厉，而迟疑更明显的自闭症嫌疑人被判得还要严厉；然而观察者自身的诊断状态，对他们最终作出的判断没有任何可测量的影响。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Pauses, flat intonation and literal answers belong to the ordinary grammar of a condition, not to the repertoire of concealment, and investigators who rely on them court error exactly where the stakes are highest.</div>
+        <div class="row"><b>主干：</b>Pauses, flat intonation and literal answers belong to ..., not to ..., and investigators ... court error（并列主语 + 两个并列谓语）</div>
+        <div class="row"><b>否定并列：</b>belong to A, not to B（省略了重复的动词 belong，用 not to 直接否定）</div>
+        <div class="row"><b>定语从句：</b>who rely on them（them 指前面三种言语特征）</div>
+        <div class="row"><b>court 的僻义：</b>此处为动词“招致（坏事）”，与“法庭”无关，属典型的熟词僻义</div>
+        <div class="row"><b>考点：</b>并列主语的谓语共用；省略式否定并列；where 引导定语从句；熟词僻义</div>
+        <div class="row tr"><b>译文：</b>停顿、平直语调与字面回答，属于某种病症的日常语法，而不属于隐瞒的手段；依赖这些信号的侦查人员，恰恰在代价最高的地方招致错误。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">法庭里有一台从未被校准过的测谎仪，它不在设备清单上，而是人的眼睛。被告是否与问话者对视、回答时有没有停顿、声音是否平稳，这些琐碎的举止被当成诚实的证据；反过来，移开视线、开口迟疑、把一句玩笑话按字面回答，就被读成心虚。问题在于，这台仪器测量的对象从来不是真假，而是“像不像”：一个人越接近我们心中“诚实者”的表演脚本，就越容易被相信；越偏离，就越容易被判为可疑。2026 年 9 月，美国心理学会期刊《法律与人类行为》刊出澳大利亚弗林德斯大学尼尔·布鲁尔团队的一项研究，合著者包括卡门·卢卡斯、凯蒂·洛戈斯、罗宾·扬与临床心理学家阿莉扎·林（DOI 10.1037/lhb0000679），把这个模糊的直觉变成了可以数的东西。研究设计极为干净：让自闭症与非自闭症的观察者观看同一批录制好的模拟警务审讯，录像中的聊天室用户因“黑客入侵”的指控被问话，观察者随后就嫌疑人的可疑程度、可信度与有罪程度打分。这些嫌疑人是按两种行为被特意挑选的——理解比喻性语言的困难，以及言语上的迟疑——因为这两点最能区分自闭症与非自闭症受访者。实验一招募了 212 名自闭症与 215 名非自闭症观察者，实验二各 125 名，且录像被处理成有的嫌疑人停顿明显更多。由于同一段录像被放给“有诊断”与“无诊断”两类人看，团队得以同时检验两种相互竞争的解释：一种认为自闭症嫌疑人仅仅因为举止“不寻常”就被扣分；另一种是被广泛引用的“双重共情”假说，认为人们只有在与嫌疑人共享诊断状态时，才最能准确解读对方的意图。结果两边都没能站住。自闭症男性嫌疑人确实比非自闭症嫌疑人被判得更严厉，且迟疑越明显，判得越重；但观察者自己是否自闭症，对他们最终给出的判断没有任何可测量的影响，所谓“同类更懂同类”并未出现。真正能预测打分的变量是“期待违背”：嫌疑人的表现偏离了人们心中“嫌疑人该有的样子”的程度。这一效应在自闭症与非自闭症受访者身上同样成立，说明驱动判断的是社会机制，而不是临床机制——审讯者与陪审员察觉到的并不是欺骗，而是对剧本的偏离。这个结论对执法有直接代价：最能标记自闭症言语特征的行为，恰恰是警员被训练去留意的那些；停顿、平直语调与字面回答属于某种病症的日常语法，并不属于隐瞒的手段，依赖它们的人会在代价最高的地方招致错误。论文因此并不是在要求嫌疑人去表演“正常”，那既不公平也不可能；它要求法庭把注意力从“说得多顺”挪到“说了什么”，并承认一个不太体面的事实：分辨紧张的人与有罪的人，并不是法律真正拥有的一种感官。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章指出，观察者真正在测的是“期待违背”，而不是欺骗。请结合第 2、7 段，说明为什么这一机制会让“无辜但不像”的人比“有罪但很像”的人更危险。再想一步：如果庭审现场改由书面笔录与录音取代当庭问答，这种偏差会消失、被削弱，还是换个形式继续存在？为什么？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"It asks courts to weigh what was said rather than how smoothly it was delivered."</span>（把评价标准从“表现形式”转到“实质内容”）的句式，就一个你熟悉的评价场景（如面试、课堂发言、演讲比赛）写一句“换一把尺子”的主张。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：法庭靠“人的印象”判断真假，对视与平稳被当作诚实</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 论点：举止测的是从众而非诚实，偏离本身成了结论</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 来历：弗林德斯大学布鲁尔团队，2026-09《法律与人类行为》</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 设计：两类观察者看同一批模拟审讯录像，三维打分</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 取样：按“比喻理解困难 / 迟疑”高低挑选，实验一 212+215</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 结果：自闭症男性与明显迟疑者被判更严；“双重共情”不成立</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 变量：真正预测打分的是“期待违背”——抓到的是不合剧本</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 代价：警员被训练留意的信号，恰是病症的日常语法</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：衡量“说了什么”，而非“说得多顺”</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 论点 → 来历 → 设计 → 取样 → 结果 → 变量 → 代价 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Law and Human Behavior《How Behavioral Differences Between Autistic and Nonautistic Suspects in Forensic Interviews Affect Observers' Evaluations: Evidence for Expectancy Violations Theory but Not the Double Empathy Hypothesis》（Brewer N, Lucas CA, Logos K, Young RL, Lim A；2026 年 9 月 21 日线上先发；DOI 10.1037/lhb0000679；CC BY 4.0）及弗林德斯大学新闻稿公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

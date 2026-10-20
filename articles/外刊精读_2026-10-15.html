@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 量子计算机的"自律"：当机器开始自己纠错，"算得对"才真正开始</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Urban Ecology · 人与自然 / 城市生态 / 公共卫生 / 气候变化</div>
+  <h1>一条街的树荫，值多少条命：城市树冠如何改写热浪中的生死</h1>
+  <div class="deck">Heat kills quietly and unevenly, and a 2026 study across several hundred European cities finds that the neighbourhoods with the least tree cover carry the heaviest death toll — a gap that planting can narrow but never quite close</div>
+  <div class="byline"><span><b>来源</b> The Lancet Planetary Health（2026 年 5 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-15</span><span><b>难度</b> 难</span><span><b>词数</b> 约 497 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-15.jpg" alt="夏日午后浓密树荫覆盖的城市街道（配图）">
+    <figcaption>配图：夏日午后，行道树的浓荫覆盖着一段城市街道——同一座城市里，有树荫与没树荫的街区，温度可以相差好几度（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>在所有能上电视新闻的灾害里，高温是最"看不见"的一种：它杀人最多，画面却最少。受害者往往不是被倒塌的建筑压死，而是在热浪过去几天之后，一个接一个地死在家里、死在夜里，最终被计入"超额死亡"的统计数字里，死因写的是心梗或肾衰竭，而不是"太阳"。更少被讨论的是：同一座城市内部，这份高温并不均等。一条铺满沥青、空调外机排着热风的街道，可能比一公里外绿树成荫的大道热上好几度——同一份天气预报，描述的其实是两个截然不同的下午。2026 年发表的一项研究试图给这种差异标上数字：研究者用卫星测量数百座欧洲城市的树冠覆盖率，把每个街区的树荫与其在夏季高温期间的死亡记录对应起来，再追问：树能解释其中多少差异？难处在于，绿化好的街区往往也更富裕——房子更好、空调更多、独居老人更少。为了把"树"从"钱"里分离出来，团队控制了收入、年龄结构、建筑年代与绿地可及性等因素。结果依然稳健：树冠覆盖率每提高十个百分点，高温死亡率就出现可测量的下降；而且在人口最密集、最贫困、树荫最稀缺的街区，效果最强。文章同时提醒：树很慢、很渴、也很容易变成政治难题——今天种下的树苗要十五年才能投下有用的阴影，而它所需要的浇灌期，恰恰是城市正在限水的干旱期；它还可能推高它本想保护的街区的租金。所以真正有用的指标不是全市平均的绿化率，而是树荫是否落在老人与穷人真正居住的那几条街上。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-15.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="11.379">Among all the disasters that make the evening news, heat is the one that kills most and is seen least, because its victims die at home, one at a time, days after the temperature has fallen.</span> <span class="s" data-t="11.379" data-e="24.355">The deaths are counted in <span class="kw" data-tip="n. 超额死亡（实际死亡超出常态预期的部分）">excess-mortality</span> statistics rather than in collapsed buildings, and they are <span class="kw" data-tip="v. 把……归因于（attribute A to B）">attributed</span> to heart attacks and kidney failure rather than to the sun, which is why the <span class="kw" data-tip="n. 伤亡人数；代价——熟词僻义：常见义为“通行费、钟声”">toll</span> is routinely revised upward months later.</span></span></div>
+      <p class="para-tr">在所有能登上晚间新闻的灾害中，高温是杀人最多、却最不被看见的一种：它的受害者在家中一个接一个地死去，死在气温已经回落之后的几天里。这些死亡被计入"超额死亡率"统计，而不是倒塌的建筑物；死因被归为心脏病发作与肾衰竭，而不是太阳——正因如此，死亡数字常常在数月之后被上调。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="24.355" data-e="29.053">Inside a single city, however, the heat is not shared equally.</span> <span class="s" data-t="29.053" data-e="39.882">A street of <span class="kw" data-tip="n. 沥青；柏油路面（形容词 asphalted 铺了沥青的）">asphalt</span> and air-conditioning exhaust can run several degrees hotter than a leafy avenue a kilometre away, so that the same forecast describes two quite different afternoons.</span> <span class="s" data-t="39.882" data-e="43.961">That gap is not a curiosity; it is where the deaths are.</span></span></div>
+      <p class="para-tr">然而在同一座城市内部，高温并不是被均等分享的。一条铺满沥青、空调外机排放着热风的街道，可能比一公里外绿树成荫的大道热上好几度；同一份天气预报，描述的其实是两个截然不同的下午。这种差距不是什么奇闻趣事，它恰恰是死亡集中的地方。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="43.961" data-e="47.961">A study published this year puts a number on that difference.</span> <span class="s" data-t="47.961" data-e="63.605">Using satellite measurements of tree cover across several hundred European cities, the authors matched each neighbourhood's <span class="kw" data-tip="n. 树冠层——熟词僻义：常见义为“华盖、顶篷、座舱盖”">canopy</span> with its recorded deaths during summer heat, and then asked how much of the <span class="kw" data-tip="n. 差异；变化幅度（动词 vary）">variation</span> the trees could explain once the usual suspects had been accounted for.</span></span></div>
+      <p class="para-tr">今年发表的一项研究给这种差异标上了数字。作者利用卫星对数百座欧洲城市树木覆盖的测量，把每个街区的树冠与夏季高温期间记录的死亡数对应起来，然后追问：在把那些"惯常嫌疑人"都排除之后，树还能解释其中多少差异？</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="63.605" data-e="72.763">The hard part is that leafy neighbourhoods are also wealthier ones, with better housing, more air-conditioning and fewer elderly residents living alone.</span> <span class="s" data-t="72.763" data-e="85.393">To separate the tree from the money, the team controlled for income, age structure, building age and access to green space, leaving the canopy to account for what remained, a <span class="kw" data-tip="n. 残差；剩余部分（形容词 residual 剩余的）">residual</span> that turned out to be large.</span></span></div>
+      <p class="para-tr">难点在于：绿化好的街区往往也更富裕——住房更好、空调更多、独居老人更少。为了把"树"从"钱"里分离出来，团队控制了收入、年龄结构、建筑年代与绿地可及性，让树冠去解释剩下的部分；而这个"残差"最后被证明相当可观。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="85.393" data-e="88.656">The association survived every control.</span> <span class="s" data-t="88.656" data-e="107.789">Each ten-percentage-point increase in canopy cover was linked to a measurably lower heat mortality rate, and the effect was largest in the densest, poorest districts, where shade is scarcest and the population most exposed; in the most <span class="kw" data-tip="n. 匮乏；剥夺（形容词 deprived 贫困的、条件差的）">deprivation</span>-heavy areas the modelled benefit was roughly double the city average.</span></span></div>
+      <p class="para-tr">这种关联通过了所有控制变量的检验。树冠覆盖率每提高十个百分点，高温死亡率就出现可测量的下降；而且效果在人口最密集、最贫困的街区最强——那里的树荫最稀缺，人群暴露最严重。在最贫困的地区，模型估算出的好处约为全市平均水平的两倍。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="107.789" data-e="111.972">Two mechanisms do the work, and neither is mysterious.</span> <span class="s" data-t="111.972" data-e="126.895">Leaves block direct sunlight and release water vapour that cools the air around them, so that a <span class="kw" data-tip="adj. 成熟的；长成的（名词 maturity）">mature</span> street tree behaves like a small, silent, self-maintaining piece of public infrastructure, provided it is given soil, water and room to grow.</span></span></div>
+      <p class="para-tr">起作用的是两个机制，都不神秘。树叶遮挡直射阳光，并释放水汽冷却周围的空气；于是一棵成年的行道树就像一件小型、安静、能自我维护的公共基础设施——前提是有人给它土壤、水和生长空间。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="126.895" data-e="131.248">Trees are also slow, thirsty and politically awkward.</span> <span class="s" data-t="131.248" data-e="146.118">A <span class="kw" data-tip="n. 树苗；幼树">sapling</span> planted this autumn will cast useful shade in fifteen years, needs water during exactly the droughts when cities are restricting it, and can push rents up in the very neighbourhoods it was meant to protect, a process planners call green <span class="kw" data-tip="n. 绅士化；中产化（指改造后原住民被迫迁出）">gentrification</span>.</span></span></div>
+      <p class="para-tr">但树也很慢、很渴，而且在政治上很棘手。今年秋天种下的一株树苗，要十五年才能投下有用的阴影；它需要浇水的时期，恰恰是城市正在限水的干旱期；而它还可能推高它本想保护的那些街区的租金——规划者把这一过程称作"绿色绅士化"。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="146.118" data-e="150.987">None of that makes planting a bad idea; it makes it an incomplete one.</span> <span class="s" data-t="150.987" data-e="163.998">Canopy targets are easiest to meet on average and hardest to meet where they matter, so the useful measure is not a city-wide percentage but the distribution of shade across the streets where elderly and poor residents actually live.</span></span></div>
+      <p class="para-tr">这些都不构成"不该种树"的理由，只说明"只种树"是不够的。树冠目标在平均值上最容易达成，在最需要的地方却最难达成；因此真正有用的指标不是全市的百分比，而是树荫在老人与穷人真正居住的那些街道上的分布。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="163.998" data-e="170.816">The temptation is to treat trees as decoration, a matter of <span class="kw" data-tip="n. 便利设施；生活舒适度；（环境的）宜人之处">amenity</span> to be <span class="kw" data-tip="v. 削减；修剪——熟词僻义：常见义为“修剪（树枝、头发）”">trimmed</span> when budgets tighten.</span> <span class="s" data-t="170.816" data-e="174.737">The mortality data suggest something less <span class="kw" data-tip="adj. 装饰性的；起美化作用的（动词 decorate）">decorative</span>.</span> <span class="s" data-t="174.737" data-e="182.789">A canopy is <span class="kw" data-tip="n. 基础设施（道路、管网等公共设施）">infrastructure</span> that pays for itself in avoided deaths, and it is the rare piece of infrastructure that gets better with age.</span></span></div>
+      <p class="para-tr">人们很容易把树当成装饰，当作预算收紧时可以削减的一项"舒适度配置"。但死亡率数据提示的东西没那么装饰性。树冠是一种以"避免的死亡"来自我偿付的基础设施，而且是少见的、会随时间推移变得更好的基础设施。</p>
+
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">excess mortality</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ɪkˈses mɔːˈtæləti/</div>
+          <div class="wc-pos"><b>n.</b> 超额死亡（某时期实际死亡数超出常态预期的部分）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The deaths are counted in <b>excess-mortality</b> statistics.</div>
+          <div class="wc-tr">这些死亡被计入超额死亡率统计。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attribute</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈtrɪbjuːt/ · 美 /əˈtrɪbjuːt/</div>
+          <div class="wc-pos"><b>v.</b> 把……归因于（attribute A to B）<b>n.</b> 属性；特质</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They are <b>attributed</b> to heart attacks and kidney failure rather than to the sun.</div>
+          <div class="wc-tr">它们被归因于心脏病发作与肾衰竭，而不是太阳。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">toll</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /təʊl/ · 美 /toʊl/</div>
+          <div class="wc-pos"><b>n.</b> 伤亡人数；代价 · 常见义：通行费；钟声</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>toll</b> is routinely revised upward months later.</div>
+          <div class="wc-tr">死亡数字常在数月后被上调。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">asphalt</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈæsfælt/ · 美 /ˈæsfɔːlt/</div>
+          <div class="wc-pos"><b>n.</b> 沥青；柏油路面</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A street of <b>asphalt</b> and air-conditioning exhaust.</div>
+          <div class="wc-tr">一条铺满沥青、排着空调热风的街道。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">canopy</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈkænəpi/ · 美 /ˈkænəpi/</div>
+          <div class="wc-pos"><b>n.</b> 树冠层；林冠 · 常见义：华盖、顶篷；（飞机）座舱盖</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each ten-percentage-point increase in <b>canopy</b> cover was linked to lower mortality.</div>
+          <div class="wc-tr">树冠覆盖率每提高十个百分点，就与更低的死亡率相关。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">variation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌveəriˈeɪʃn/ · 美 /ˌveriˈeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 差异；变化幅度（动词 vary）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...how much of the <b>variation</b> the trees could explain.</div>
+          <div class="wc-tr">……树能解释其中多少差异。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">control for</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/kənˈtrəʊl fɔː/</div>
+          <div class="wc-pos"><b>phr. v.</b> （统计中）控制、排除某变量的干扰</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The team <b>controlled for</b> income, age structure and building age.</div>
+          <div class="wc-tr">团队控制了收入、年龄结构与建筑年代。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">residual</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈzɪdjuəl/ · 美 /rɪˈzɪdʒuəl/</div>
+          <div class="wc-pos"><b>n.</b> 残差；剩余部分 <b>adj.</b> 剩余的（动词 residue 残余）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...a <b>residual</b> that turned out to be large.</div>
+          <div class="wc-tr">一个最后被证明相当可观的"残差"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">deprivation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌdeprɪˈveɪʃn/ · 美 /ˌdeprɪˈveɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 匮乏；贫困（形容词 deprived 条件差的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In the most <b>deprivation</b>-heavy areas the benefit was roughly double.</div>
+          <div class="wc-tr">在最贫困的地区，好处约为两倍。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mature</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /məˈtʃʊə/ · 美 /məˈtʃʊr/</div>
+          <div class="wc-pos"><b>adj.</b> 成熟的；长成的 <b>v.</b> 成熟（名词 maturity）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>mature</b> street tree behaves like a piece of public infrastructure.</div>
+          <div class="wc-tr">一棵成年的行道树就像一件公共基础设施。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">infrastructure</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɪnfrəstrʌktʃə/ · 美 /ˈɪnfrəstrʌktʃər/</div>
+          <div class="wc-pos"><b>n.</b> 基础设施（道路、管网等公共设施）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A canopy is <b>infrastructure</b> that pays for itself in avoided deaths.</div>
+          <div class="wc-tr">树冠是一种以"避免的死亡"来自我偿付的基础设施。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sapling</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsæplɪŋ/ · 美 /ˈsæplɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 树苗；幼树</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>sapling</b> planted this autumn will cast useful shade in fifteen years.</div>
+          <div class="wc-tr">今年秋天种下的树苗，要十五年才能投下有用的阴影。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gentrification</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌdʒentrɪfɪˈkeɪʃn/ · 美 /ˌdʒentrɪfɪˈkeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 绅士化；中产化（旧区改造致原有居民被迫迁出）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...a process planners call green <b>gentrification</b>.</div>
+          <div class="wc-tr">规划者把这一过程称作"绿色绅士化"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">amenity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈmiːnəti/ · 美 /əˈmenəti/</div>
+          <div class="wc-pos"><b>n.</b> 便利设施；生活舒适度；（环境的）宜人之处</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...a matter of <b>amenity</b> to be trimmed when budgets tighten.</div>
+          <div class="wc-tr">一项预算收紧时就可以削减的"舒适度配置"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trim</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /trɪm/ · 美 /trɪm/</div>
+          <div class="wc-pos"><b>v.</b> 削减；缩减 · 常见义：修剪（树枝、头发）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...to be <b>trimmed</b> when budgets tighten.</div>
+          <div class="wc-tr">在预算收紧时被削减掉。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decorative</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdekərətɪv/ · 美 /ˈdekəreɪtɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 装饰性的；起美化作用的（动词 decorate）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The mortality data suggest something less <b>decorative</b>.</div>
+          <div class="wc-tr">死亡率数据提示的东西没那么装饰性。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">among all the ...</span><span class="zh">在所有的……之中</span></li>
+          <li><span class="en">make the news</span><span class="zh">上新闻；被报道</span></li>
+          <li><span class="en">one at a time</span><span class="zh">一个一个地；逐个地</span></li>
+          <li><span class="en">be attributed to</span><span class="zh">被归因于</span></li>
+          <li><span class="en">rather than</span><span class="zh">而不是</span></li>
+          <li><span class="en">be revised upward</span><span class="zh">被上调</span></li>
+          <li><span class="en">not shared equally</span><span class="zh">未被均等分享</span></li>
+          <li><span class="en">put a number on</span><span class="zh">为……标出具体数字</span></li>
+          <li><span class="en">account for</span><span class="zh">解释；占（比例）</span></li>
+          <li><span class="en">the usual suspects</span><span class="zh">惯常的嫌疑对象（常见归因）</span></li>
+          <li><span class="en">control for</span><span class="zh">（统计）控制某变量的干扰</span></li>
+          <li><span class="en">turn out to be</span><span class="zh">结果是；原来是</span></li>
+          <li><span class="en">be linked to</span><span class="zh">与……相关联</span></li>
+          <li><span class="en">be meant to do</span><span class="zh">本意是要做</span></li>
+          <li><span class="en">push rents up</span><span class="zh">推高租金</span></li>
+          <li><span class="en">none of that makes ...</span><span class="zh">这些都不足以说明……</span></li>
+          <li><span class="en">pay for itself</span><span class="zh">收回成本；自我偿付</span></li>
+          <li><span class="en">get better with age</span><span class="zh">越老越好；随时间变好</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：高温是"杀人最多、最不被看见"的灾害——死亡发生在热浪之后、家中，被计入超额死亡，死因写作心梗与肾衰。</li>
+          <li>不均：同一城市内部温差可达数度，沥青街道与绿荫大道是两个下午；这一差距正是死亡集中之处。</li>
+          <li>研究：2026 年一项研究用卫星测树冠，把街区绿化与夏季死亡记录对应，追问树能解释多少差异。</li>
+          <li>难点：绿化好的街区也更富裕；团队控制收入、年龄、建筑年代、绿地可及性，剩下的"残差"依然很大。</li>
+          <li>结果：树冠每增十个百分点，高温死亡率可测量下降；在最贫困街区效果约为全市均值两倍。</li>
+          <li>机制：遮阳 + 蒸腾降温，一棵成年行道树如同一件小型、安静、自维护的公共基础设施。</li>
+          <li>局限：树慢（需十五年）、渴（干旱期限水）、且可能推高租金，造成"绿色绅士化"。</li>
+          <li>政策：平均值最易达标，最需要处最难；有用指标不是全市百分比，而是树荫在老人与穷人街区的分布。</li>
+          <li>收束：树不是装饰，而是以"避免的死亡"偿付自身的基础设施，且罕见地会随时间变好。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Among all the disasters that make the evening news, heat is the one that kills most and is seen least, because its victims die at home, one at a time, days after the temperature has fallen.</div>
+        <div class="row"><b>主干：</b>heat is the one（主语 + 系动词 + 表语）</div>
+        <div class="row"><b>定语从句：</b>that kills most and is seen least 修饰 the one，两个谓语并列（杀得最多、被看见最少）</div>
+        <div class="row"><b>原因状语从句：</b>because its victims die at home ...；其中 one at a time 是方式状语，days after ... 是时间状语</div>
+        <div class="row"><b>介词短语前置：</b>Among all the disasters ... 置于句首作范围限定，后接 that make the evening news 定语从句</div>
+        <div class="row"><b>考点：</b>定语从句并列谓语；most / least 与最高级连用；时间状语 days after 的用法</div>
+        <div class="row tr"><b>译文：</b>在所有能登上晚间新闻的灾害中，高温是杀人最多、却最不被看见的一种——因为它的受害者是在气温已经回落之后的几天里，一个接一个地死在家中的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">To separate the tree from the money, the team controlled for income, age structure, building age and access to green space, leaving the canopy to account for what remained, a residual that turned out to be large.</div>
+        <div class="row"><b>主干：</b>the team controlled for income, age structure, building age and access to green space（主语 + 谓语 + 四个并列宾语）</div>
+        <div class="row"><b>目的状语：</b>To separate the tree from the money 置于句首，说明研究意图（把"树"与"钱"分开）</div>
+        <div class="row"><b>现在分词作结果状语：</b>leaving the canopy to account for what remained——"从而让树冠去解释剩余部分"，leave sb to do sth</div>
+        <div class="row"><b>同位语：</b>a residual that turned out to be large 补充说明 what remained，其中 that 引导定语从句</div>
+        <div class="row"><b>考点：</b>不定式作目的状语；control for 的统计含义；leave A to do B；同位语 + 定语从句</div>
+        <div class="row tr"><b>译文：</b>为了把"树"从"钱"里分离出来，团队控制了收入、年龄结构、建筑年代与绿地可及性，从而让树冠去解释剩下的部分——而这个"残差"最后被证明相当可观。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Canopy targets are easiest to meet on average and hardest to meet where they matter, so the useful measure is not a city-wide percentage but the distribution of shade across the streets where elderly and poor residents actually live.</div>
+        <div class="row"><b>主干：</b>the useful measure is not A but B（so 连接因果，后一分句为核心判断）</div>
+        <div class="row"><b>前一分句：</b>Canopy targets are easiest ... and hardest ...，两个形容词最高级并列，形成对照（平均上最易、要紧处最难）</div>
+        <div class="row"><b>地点状语从句：</b>where they matter（在它们真正要紧的地方）</div>
+        <div class="row"><b>not A but B：</b>不是全市百分比，而是树荫分布——把评价标准从"总量"改为"分配"</div>
+        <div class="row"><b>考点：</b>最高级并列；where 引导的地点状语从句；not ... but ... 的对比；定语从句 where residents live</div>
+        <div class="row tr"><b>译文：</b>树冠目标在平均值上最容易达成，在真正要紧的地方却最难达成；因此真正有用的指标不是全市的百分比，而是树荫在老人与穷人真正居住的那些街道上的分布。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">在人类面对的所有自然灾害里，高温大概是最"不显眼"的一种。地震有废墟，洪水有画面，台风有登陆的直播镜头；而热浪留下的，只是一串在事后才被缓慢统计出来的数字。它的受害者不会在街头倒下，而是在热浪过后的几天里，一个接一个地死在家中、死在夜里，最终被计入"超额死亡率"，死因被写作心脏病发作或肾衰竭。正因为看不见，高温的死亡人数常常在数月之后被上调，而公众对它的警觉始终不足。更少被意识到的是，同一座城市内部，这份高温并不是平均分配的。一条铺满沥青、两侧空调外机不断排出热风的街道，与一公里外大树成荫的大道，夏天午后的体感温度可以相差好几度。同一份天气预报，落在不同街区，实际描述的是两种不同的处境。而这种差距并非无关紧要的细节——死亡恰恰集中在那些最热、最缺少树荫的街区。2026 年发表的一项研究试图把这种"树荫的差距"换算成可比较的数字。研究者利用卫星影像测量了数百座欧洲城市的树冠覆盖率，把每个街区在夏季高温期间的死亡记录与它的绿化程度对应起来，然后追问：在排除其他解释之后，树本身还能解释多少死亡率的差异？这项研究最难的地方在于"混杂因素"：绿化好的街区往往也是富裕的街区，住房条件更好、空调更普及、独居老人更少，而这些因素本身就会降低死亡风险。为了把"树的功劳"从"钱的功劳"里分离出来，研究团队在统计上控制了收入水平、年龄结构、建筑年代以及居民能否方便地到达公园绿地，只让树冠去解释剩下的那部分差异。结果出人意料地稳健：这个"残差"相当大。树冠覆盖率每提高十个百分点，高温死亡率就出现可测量的下降；而且这一效应在人口最密集、经济最困难、树荫最稀缺的街区最为明显——在最贫困的地区，模型估算出的保护效果几乎是全市平均水平的两倍。换句话说，树荫这种看似"锦上添花"的东西，在健康层面其实是"雪中送炭"，而且越是在资源匮乏的地方，它的边际价值越高。其作用机制并不神秘：树冠遮挡了直射阳光，叶片蒸腾释放的水汽又降低了周围的气温；一棵成年行道树，本质上就是一件小型、安静、能够自我维护的公共基础设施。但文章并不打算把种树写成万灵药。树很慢：今年秋天种下的树苗，要十五年才能投下真正有用的阴影，而气候危机的时间表不会等十五年。树很渴：它最需要浇灌的时候，往往正是城市因为干旱而限水的时候。树还可能"反噬"：绿化改善带来的房价上涨，可能把原本要保护的居民挤出街区，规划者称之为"绿色绅士化"。因此，作者给出的政策结论相当克制：种树当然值得做，但"只种树"远远不够。树冠目标在城市的平均值上最容易达成，在真正需要它的地方却最难达成；所以真正有意义的考核指标，不是"全市绿化率提高了几个百分点"，而是"树荫有没有长在老人和低收入家庭真正居住的那几条街上"。文章最后把视角抬高一格：人们习惯把树当作装饰，当作预算紧张时可以首先削减的"舒适度项目"。但死亡率数据说明，树冠是一种以"避免的死亡"来自我偿付的基础设施——而且是极少数会随着时间推移越变越好的基础设施。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章指出，绿化好的街区往往也更富裕，因此研究者必须"控制收入、年龄结构、建筑年代"等变量。请结合第 4、5 段，说明为什么"相关不等于因果"，以及统计上的"控制变量"如何帮助研究者逼近因果。再想一想：如果树荫的好处在最贫困街区最大，那么"按全市平均绿化率"考核会带来什么后果？为什么作者强调"分布"比"平均"更重要？</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"X targets are easiest to meet on average and hardest to meet where they matter, so the useful measure is not a city-wide percentage but the distribution of Y."</span>（把"平均指标"替换为"分布指标"）的句式，就一个你熟悉的公共议题（如师资配置、医疗资源、图书馆藏书、体育场地）写一句"换一个考核口径"的评论。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：高温杀人最多，却最不被看见</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 不均：同一城市内部，温差可达数度</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 研究：卫星测树冠，对应夏季死亡记录</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 方法：控制收入、年龄、建筑年代，分离"树"与"钱"</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 结果：树冠每增 10%，死亡率可测下降，穷区效果翻倍</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 机制：遮阳 + 蒸腾，一棵树就是一件基础设施</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 局限：慢、渴，且可能造成"绿色绅士化"</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 政策：考核"分布"而非"平均"</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：树不是装饰，是会随时间变好的基础设施</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 不均 → 研究 → 方法 → 结果 → 机制 → 局限 → 政策 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：The Lancet Planetary Health 关于城市树冠覆盖与高温死亡率关联的多城市研究（2026 年 5 月）及期刊新闻稿、公开城市林业资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

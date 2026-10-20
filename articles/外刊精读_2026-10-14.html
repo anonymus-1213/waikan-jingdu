@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 量子计算机的"自律"：当机器开始自己纠错，"算得对"才真正开始</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Chemistry · 人与自然 / 化学 / 环境污染 / 公共卫生</div>
+  <h1>雨水里也有"永久化学品"：人类造出的分子，正在绕回自己身上</h1>
+  <div class="deck">The carbon-fluorine bond is one of the strongest in organic chemistry, which is why PFAS outlive everything built around them — and why a 2026 catalyst that finally severs that bond matters far beyond the laboratory</div>
+  <div class="byline"><span><b>来源</b> Science（2026 年 6 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-14</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 492 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-14.jpg" alt="实验室中排列的玻璃样品瓶与水质检测装置（配图）">
+    <figcaption>配图：实验室里成排的样品瓶与水质检测装置——研究者要处理的往往不是纯净水样，而是混着泥沙与有机物的真实地下水（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>不粘锅、防水冲锋衣、机场消防泡沫，这三样东西除了"方便"之外还有一个共同点：它们都依赖化学家花了数十年才学会制造的一类特别"顽固"的分子。这类分子叫 PFAS（全氟和多氟烷基物质），俗称"永久化学品"——它们耐高温、耐水、耐油、耐时间，正因为耐得住，才被大量使用。但也正是这份"耐得住"成了麻烦：分子骨架上的碳—氟键是有机化学中最强的化学键之一，自然界几乎没有任何机制能以有用的速度把它拆开。于是它们不是"降解"而是"扩散"，随雨水和尘埃进入河流、土壤、北极冰盖，以及人的血液。流行病学已经把甲状腺疾病、肾癌与睾丸癌、免疫抑制、低出生体重等一长串危害挂在这份"持久性"上；而调查显示，几乎所有受检者的血液里都能检出这类物质。传统治理并不能真正解决问题：活性炭和反渗透只是把 PFAS 从水里"捞"出来、浓缩成一包仍然要处理的废液；焚烧则有争议，因为燃烧不完全可能释放出同样是问题的挥发性含氟碎片。2026 年的一项研究报告了一条不同的路径——不是在水中转移它们，而是在常温常压下把碳—氟键打开，让分子真正散架。这项技术能否规模化仍有疑问，但它至少把问题从"搬走"推进到了"销毁"。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-14.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="13.088">The non-stick pan, the waterproof jacket and the foam that smothers an airport fire have something in common beyond convenience: all of them rely on molecules that chemistry spent decades learning to make unusually <span class="kw" data-tip="adj. 顽固的；难对付的（此处指分子难分解）">stubborn</span>.</span> <span class="s" data-t="13.088" data-e="22.947">Those molecules, per- and polyfluoroalkyl substances, or PFAS, are prized precisely because they resist heat, water, grease and time.</span></span></div>
+      <p class="para-tr">不粘锅、防水外套，以及扑灭机场大火的那种泡沫，除了"方便"之外还有一个共同点：它们都依赖一类分子，而化学界花了数十年才学会把它们造得格外"顽固"。这类分子叫全氟和多氟烷基物质，简称 PFAS，它们之所以备受青睐，恰恰是因为它们耐热、耐水、耐油、耐时间。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="22.947" data-e="35.171">The same property that makes them useful makes them a problem, because the carbon-fluorine <span class="kw" data-tip="n. 化学键——熟词僻义：常见义为“债券；纽带、羁绊”">bond</span> at their core is one of the strongest in organic chemistry and almost nothing in nature dismantles it at a useful rate.</span> <span class="s" data-t="35.171" data-e="43.553">So they do not so much <span class="kw" data-tip="v. 降解；分解（名词 degradation）">degrade</span> as <span class="kw" data-tip="v. 分散；扩散（名词 dispersion）">disperse</span>, travelling on rain and dust into rivers, soil, Arctic ice and human blood.</span></span></div>
+      <p class="para-tr">让它们有用的那种性质，同时也让它们成了问题：分子核心处的碳—氟键是有机化学中最强的化学键之一，自然界几乎没有任何机制能以有用的速度把它拆开。所以它们与其说是"降解"，不如说是"扩散"——随雨水与尘埃进入河流、土壤、北极冰层，以及人类的血液。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="43.553" data-e="55.395">Epidemiology has attached a lengthening list of harms to that <span class="kw" data-tip="n. 持久性；持续存在（形容词 persistent）">persistence</span>, including thyroid disease, kidney and testicular cancer, suppressed immune responses and lower birth weight.</span> <span class="s" data-t="55.395" data-e="65.116">Surveys find the compounds in the blood of nearly everyone tested, which is less a scandal than an arithmetic consequence of making something that never goes away.</span></span></div>
+      <p class="para-tr">流行病学已经在这份"持久性"上挂了一长串危害：甲状腺疾病、肾癌与睾丸癌、免疫反应受抑、出生体重偏低。调查发现，几乎所有受检者的血液中都能检出这类化合物——这与其说是丑闻，不如说是"造出了永不消失之物"所必然导致的算术结果。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="65.116" data-e="76.5">The standard <span class="kw" data-tip="n. 补救办法；疗法（此处指治理手段）">remedy</span> is not really a remedy, since activated carbon and reverse osmosis merely strip PFAS out of water and <span class="kw" data-tip="v. 浓缩；富集——熟词僻义：常见义为“集中注意力、专心”">concentrate</span> them into a waste stream that still has to go somewhere.</span> <span class="s" data-t="76.5" data-e="84.895">Incineration is <span class="kw" data-tip="adj. 有争议的（动词 contest 质疑、争夺）">contested</span>, because incomplete combustion can release <span class="kw" data-tip="adj. 易挥发的；不稳定的（名词 volatility）">volatile</span> fluorinated <span class="kw" data-tip="n. 碎片；片段（动词 fragment 使碎裂）">fragments</span> that are themselves a problem.</span></span></div>
+      <p class="para-tr">常规的治理办法其实算不上真正的治理：活性炭与反渗透只是把 PFAS 从水里剥离出来，浓缩成一股仍然必须找地方处置的废液。焚烧则存在争议，因为燃烧不充分可能释放出挥发性的含氟碎片，而这些碎片本身就是问题。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="84.895" data-e="90.329">A study published this year reports a process that destroys rather than transfers.</span> <span class="s" data-t="90.329" data-e="101.592">The team passed contaminated water through a <span class="kw" data-tip="n. 催化剂（动词 catalyse 催化）">catalyst</span> that feeds electrons into the carbon-fluorine bond, weakening it until the molecule falls apart at ordinary temperature and pressure.</span> <span class="s" data-t="101.592" data-e="108.761">Crucially, the reaction was run on groundwater and landfill <span class="kw" data-tip="n. 渗滤液；垃圾渗漏液（动词 leach 沥滤、淋洗）">leachate</span> rather than on clean laboratory solutions.</span></span></div>
+      <p class="para-tr">今年发表的一项研究报告了一条"销毁"而非"转移"的路径。团队让受污染的水流经一种催化剂，由它向碳—氟键注入电子，把该键削弱到分子在常温常压下自行散架的程度。关键在于，这项反应是在真实的地下水与垃圾填埋场渗滤液上进行的，而不是在干净的实验室溶液里。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="108.761" data-e="111.603">The reported performance is striking.</span> <span class="s" data-t="111.603" data-e="133.092">More than 95 per cent of the target compounds, including the short-chain replacements that regulators once treated as safer, were removed within hours, and the fluorine emerged as harmless fluoride salts rather than as new persistent fragments, a detail that matters because breaking a long PFAS into smaller fluorinated pieces can make the problem worse.</span></span></div>
+      <p class="para-tr">报告的处理效果相当惊人。包括监管者一度视为更安全的短链替代品在内，95% 以上的目标化合物在数小时内被去除，而氟最终以无害的氟化盐形式出现，而不是变成新的持久性碎片——这个细节很重要，因为把一条长链 PFAS 打断成更小的含氟碎片，反而可能让问题更糟。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="133.092" data-e="135.827">The obstacles are familiar ones.</span> <span class="s" data-t="135.827" data-e="151.882">The catalyst is expensive, the <span class="kw" data-tip="n. 处理量；吞吐量（单位时间内的产出）">throughput</span> is modest, and the energy demand is high enough that the method makes sense for concentrated waste rather than for treating a river, so scaling it will take years and will not be paid for by the companies that profited from the chemistry in the first place.</span></span></div>
+      <p class="para-tr">障碍都是老问题。催化剂昂贵，处理通量有限，能耗高到这种方法只适合处理高浓度废液，而不适合去治理一条河——因此要规模化还需数年。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="151.882" data-e="157.091">Even a perfect destruction technology would leave the deeper question untouched.</span> <span class="s" data-t="157.091" data-e="172.103">PFAS exist because industry wanted molecules that would not break down, and the properties that make them valuable are <span class="kw" data-tip="adj. 不可分割的；分不开的（反义 separable）">inseparable</span> from the properties that make them dangerous; as long as production continues, <span class="kw" data-tip="n. 治理；修复（动词 remediate 补救）">remediation</span> will be a mop applied to a running tap.</span></span></div>
+      <p class="para-tr">即便有一项完美的销毁技术，更深层的问题依然原封不动。PFAS 之所以存在，是因为工业界想要不会分解的分子；而让它们有价值的那种性质，与让它们危险的那种性质，本来就无法切割。只要生产还在继续，治理就只是"一边放着水、一边拿着拖把"。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="172.103" data-e="178.974">That is why the most interesting sentence in any such paper is not the removal rate but the closing <span class="kw" data-tip="n. 限定条件；告诫（动词 caveat 加限定）">caveat</span>.</span> <span class="s" data-t="178.974" data-e="189.84">Destroying what has already been made is necessary and overdue; designing molecules that do not need destroying is harder, and it is the part of the problem that no <span class="kw" data-tip="n. 催化剂（此处引申为“能解决问题的关键手段”）">catalyst</span> can solve.</span></span></div>
+      <p class="para-tr">正因如此，这类论文里最值得注意的一句话不是去除率，而是结尾处的限定。销毁已经造出来的东西是必要的，而且早就该做；但设计出"本就不需要被销毁"的分子要难得多，而这恰恰是任何催化剂都解决不了的那一半问题。</p>
+
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stubborn</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈstʌbən/ · 美 /ˈstʌbərn/</div>
+          <div class="wc-pos"><b>adj.</b> 顽固的；难对付的（此处指分子难分解）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Chemistry spent decades learning to make molecules unusually <b>stubborn</b>.</div>
+          <div class="wc-tr">化学界花了数十年，才学会把分子造得格外顽固。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bond</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /bɒnd/ · 美 /bɑːnd/</div>
+          <div class="wc-pos"><b>n.</b> 化学键 · 常见义：债券；纽带、羁绊</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The carbon-fluorine <b>bond</b> is one of the strongest in organic chemistry.</div>
+          <div class="wc-tr">碳—氟键是有机化学中最强的化学键之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">degrade</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈɡreɪd/ · 美 /dɪˈɡreɪd/</div>
+          <div class="wc-pos"><b>v.</b> 降解；分解 · 也可指降低品质、使降级（名词 degradation）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They do not so much <b>degrade</b> as disperse.</div>
+          <div class="wc-tr">它们与其说是降解，不如说是扩散。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disperse</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈspɜːs/ · 美 /dɪˈspɜːrs/</div>
+          <div class="wc-pos"><b>v.</b> 分散；扩散（名词 dispersion）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...travelling on rain and dust into rivers, soil and human blood.</div>
+          <div class="wc-tr">随雨水与尘埃进入河流、土壤与人类血液。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">persistence</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /pəˈsɪstəns/ · 美 /pərˈsɪstəns/</div>
+          <div class="wc-pos"><b>n.</b> 持久性；持续存在（形容词 persistent；动词 persist）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Epidemiology has attached a lengthening list of harms to that <b>persistence</b>.</div>
+          <div class="wc-tr">流行病学已在这份持久性上挂了一长串危害。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">suppress</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səˈpres/ · 美 /səˈpres/</div>
+          <div class="wc-pos"><b>v.</b> 抑制；压制（名词 suppression）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...suppressed immune responses and lower birth weight.</div>
+          <div class="wc-tr">受抑的免疫反应与偏低的出生体重。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">remedy</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈremədi/ · 美 /ˈremədi/</div>
+          <div class="wc-pos"><b>n.</b> 补救办法；疗法 <b>v.</b> 补救；纠正</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The standard <b>remedy</b> is not really a remedy.</div>
+          <div class="wc-tr">常规的补救办法其实算不上补救。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">concentrate</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈkɒnsntreɪt/ · 美 /ˈkɑːnsntreɪt/</div>
+          <div class="wc-pos"><b>v.</b> 浓缩；富集 · 常见义：集中注意力；聚集</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...merely strip PFAS out of water and <b>concentrate</b> them into a waste stream.</div>
+          <div class="wc-tr">只是把 PFAS 从水里剥离，再浓缩成一股废液。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">contested</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈtestɪd/ · 美 /kənˈtestɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 有争议的（动词 contest 质疑、争夺）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Incineration is <b>contested</b>.</div>
+          <div class="wc-tr">焚烧是有争议的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">volatile</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈvɒlətaɪl/ · 美 /ˈvɑːlətl/</div>
+          <div class="wc-pos"><b>adj.</b> 易挥发的；不稳定的（名词 volatility）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...can release <b>volatile</b> fluorinated fragments.</div>
+          <div class="wc-tr">可能释放出易挥发的含氟碎片。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">catalyst</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkætəlɪst/ · 美 /ˈkætəlɪst/</div>
+          <div class="wc-pos"><b>n.</b> 催化剂；促变因素（动词 catalyse）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...through a <b>catalyst</b> that feeds electrons into the bond.</div>
+          <div class="wc-tr">流经一种向化学键注入电子的催化剂。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">leachate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈliːtʃeɪt/ · 美 /ˈliːtʃeɪt/</div>
+          <div class="wc-pos"><b>n.</b> 渗滤液；垃圾渗漏液（动词 leach 沥滤）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The reaction was run on groundwater and landfill <b>leachate</b>.</div>
+          <div class="wc-tr">反应是在地下水与垃圾渗滤液上进行的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fluoride</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈflɔːraɪd/ · 美 /ˈflɔːraɪd/</div>
+          <div class="wc-pos"><b>n.</b> 氟化物（元素 fluorine 氟）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The fluorine emerged as harmless <b>fluoride</b> salts.</div>
+          <div class="wc-tr">氟最终以无害的氟化盐形式出现。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fragment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfræɡmənt/ · 美 /ˈfræɡmənt/</div>
+          <div class="wc-pos"><b>n.</b> 碎片；片段 <b>v.</b> 使碎裂</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...rather than as new persistent <b>fragments</b>.</div>
+          <div class="wc-tr">而不是变成新的持久性碎片。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">throughput</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈθruːpʊt/ · 美 /ˈθruːpʊt/</div>
+          <div class="wc-pos"><b>n.</b> 处理量；吞吐量（单位时间内的产出）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The catalyst is expensive and the <b>throughput</b> is modest.</div>
+          <div class="wc-tr">催化剂昂贵，处理量也有限。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inseparable</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈseprəbl/ · 美 /ɪnˈseprəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 不可分割的；分不开的（反义 separable）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The properties that make them valuable are <b>inseparable</b> from those that make them dangerous.</div>
+          <div class="wc-tr">让它们有价值的性质，与让它们危险的性质无法分割。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">have sth in common</span><span class="zh">有共同之处</span></li>
+          <li><span class="en">beyond convenience</span><span class="zh">除了方便之外</span></li>
+          <li><span class="en">be prized for</span><span class="zh">因……而备受珍视</span></li>
+          <li><span class="en">at a useful rate</span><span class="zh">以（有实际意义的）速度</span></li>
+          <li><span class="en">not so much A as B</span><span class="zh">与其说是 A，不如说是 B</span></li>
+          <li><span class="en">attach sth to sth</span><span class="zh">把……附加／归因于……</span></li>
+          <li><span class="en">a lengthening list of</span><span class="zh">越来越长的一串</span></li>
+          <li><span class="en">less A than B</span><span class="zh">与其说是 A，不如说是 B</span></li>
+          <li><span class="en">strip sth out of sth</span><span class="zh">把……从……中剥离</span></li>
+          <li><span class="en">go somewhere</span><span class="zh">（废料）总得有个去处</span></li>
+          <li><span class="en">be contested</span><span class="zh">存在争议</span></li>
+          <li><span class="en">fall apart</span><span class="zh">散架；崩溃；解体</span></li>
+          <li><span class="en">at ordinary temperature and pressure</span><span class="zh">在常温常压下</span></li>
+          <li><span class="en">rather than</span><span class="zh">而不是</span></li>
+          <li><span class="en">make sense for</span><span class="zh">对……来说是合理的</span></li>
+          <li><span class="en">leave sth untouched</span><span class="zh">使……原封不动</span></li>
+          <li><span class="en">be inseparable from</span><span class="zh">与……不可分割</span></li>
+          <li><span class="en">a mop applied to a running tap</span><span class="zh">对着开着的水龙头拖地（治标不治本）</span></li>
+          <li><span class="en">necessary and overdue</span><span class="zh">必要且早该如此</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：不粘锅、防水衣、消防泡沫都依赖一类被刻意造得"顽固"的分子，即 PFAS。</li>
+          <li>症结：让它们有用的性质也是麻烦——碳—氟键极强，自然界几乎无法以有用速度拆解，故只扩散不降解。</li>
+          <li>危害：甲状腺病、肾癌与睾丸癌、免疫抑制、低出生体重；几乎人人血液中可检出。</li>
+          <li>旧法：活性炭与反渗透只是转移浓缩；焚烧有争议，不完全燃烧会产生新的含氟碎片。</li>
+          <li>新研究：2026 年一项研究以催化剂向碳—氟键注入电子，常温常压下使分子散架；且在真实地下水与渗滤液上验证。</li>
+          <li>效果：95% 以上目标物数小时内去除，氟变为无害氟化盐而非新的持久碎片。</li>
+          <li>局限：催化剂贵、通量低、能耗高，只适合高浓度废液，规模化尚需数年。</li>
+          <li>更深层：销毁不等于不生产；有价值与有危险的性质无法切割，生产不停则治理只是治标。</li>
+          <li>收束：销毁已造之物必要且迟来，但"设计出无需销毁的分子"是任何催化剂都解决不了的另一半。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The same property that makes them useful makes them a problem, because the carbon-fluorine bond at their core is one of the strongest in organic chemistry and almost nothing in nature dismantles it at a useful rate.</div>
+        <div class="row"><b>主干：</b>The same property ... makes them a problem（主语 + 谓语 + 宾语 + 宾补）</div>
+        <div class="row"><b>定语从句：</b>that makes them useful 修饰 property；注意句中出现两个 make，第一个在从句里、第二个才是主句谓语</div>
+        <div class="row"><b>原因状语从句：</b>because ... and ... 两个并列分句——前者说"键很强"，后者说"自然拆不动"</div>
+        <div class="row"><b>介词短语：</b>at their core（在它们核心处）；at a useful rate（以有用的速度）</div>
+        <div class="row"><b>考点：</b>定语从句与主句谓语易混；because 从句内的并列；make + 宾语 + 宾补结构</div>
+        <div class="row tr"><b>译文：</b>让它们有用的那种性质，同时也让它们成了问题——因为分子核心处的碳—氟键是有机化学中最强的化学键之一，而自然界几乎没有任何东西能以有用的速度把它拆开。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">More than 95 per cent of the target compounds, including the short-chain replacements that regulators once treated as safer, were removed within hours, and the fluorine emerged as harmless fluoride salts rather than as new persistent fragments, a detail that matters because breaking a long PFAS into smaller fluorinated pieces can make the problem worse.</div>
+        <div class="row"><b>主干：</b>More than 95 per cent ... were removed ..., and the fluorine emerged as ...（两个并列分句）</div>
+        <div class="row"><b>插入成分：</b>including the short-chain replacements ... 是介词短语作补充说明，其中 that regulators once treated as safer 是定语从句修饰 replacements</div>
+        <div class="row"><b>同位语：</b>a detail that matters ... 指代前面"氟变成无害盐"这一事实，that matters 为定语从句</div>
+        <div class="row"><b>原因状语从句：</b>because breaking a long PFAS into smaller pieces can make the problem worse（动名词短语作主语）</div>
+        <div class="row"><b>考点：</b>插入语；treat A as B；同位语 + 定语从句；动名词作主语</div>
+        <div class="row tr"><b>译文：</b>包括监管者一度视为更安全的短链替代品在内，95% 以上的目标化合物在数小时内被去除；而氟最终以无害的氟化盐形式出现，而不是变成新的持久性碎片——这个细节很重要，因为把长链 PFAS 打断成更小的含氟碎片，反而可能让问题更糟。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">PFAS exist because industry wanted molecules that would not break down, and the properties that make them valuable are inseparable from the properties that make them dangerous; as long as production continues, remediation will be a mop applied to a running tap.</div>
+        <div class="row"><b>主干：</b>三个分句并列（and 与分号连接），层层递进：存在之因 → 价值与危险同源 → 治理只是治标</div>
+        <div class="row"><b>定语从句：</b>that would not break down 修饰 molecules；两个 the properties that ... 均为"名词 + 定语从句"结构</div>
+        <div class="row"><b>条件状语从句：</b>as long as production continues（只要生产继续）</div>
+        <div class="row"><b>比喻：</b>a mop applied to a running tap——过去分词短语作后置定语，用"开着水龙头拖地"比喻徒劳</div>
+        <div class="row"><b>考点：</b>多重并列；be inseparable from；as long as 引导条件；过去分词作定语</div>
+        <div class="row tr"><b>译文：</b>PFAS 之所以存在，是因为工业界想要不会分解的分子；而让它们有价值的性质，与让它们危险的性质本就无法切割；只要生产还在继续，治理就只是对着开着的水龙头拖地。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">PFAS 是一类被刻意设计得"不会坏"的分子。它们出现在不粘锅的涂层里、防水外套的面料里、机场消防用的泡沫里，因为耐热、耐水、耐油、耐时间，所以被工业界大量使用并不断扩散。问题恰恰出在这份"耐用"上：这类分子的骨架由碳—氟键构成，而碳—氟键是有机化学中最强的化学键之一，自然界里几乎没有生物或化学过程能在合理的时间尺度上把它拆开。于是这些物质不会真正"降解"，只会被稀释、被搬运——随雨水落进河流与土壤，随气流飘到北极的冰层，最后进入几乎每一个人的血液。流行病学研究已经把一长串健康风险与这种"持久性"联系起来：甲状腺疾病、肾癌与睾丸癌、免疫系统受抑、出生体重偏低。更麻烦的是，人类目前的治理手段大多只是"转移"而非"销毁"。活性炭吸附和反渗透膜能把 PFAS 从水中分离出来，但分离出来的只是一股浓度更高、仍然需要处置的废液；焚烧看似彻底，却因为燃烧不完全可能生成新的挥发性含氟碎片而备受争议——有时候，"处理"反而制造了新的污染物。2026 年发表的一项研究给出了一条不同的思路：不是在水中把 PFAS 捞出来，而是直接把碳—氟键打开。研究团队让受污染的水流经一种催化剂，由催化剂向碳—氟键注入电子，把这个键削弱到分子在常温常压下自行解体的程度。更关键的是，这项实验并没有停留在纯净的实验室水样上，而是在真实的地下水与垃圾填埋场渗滤液中同样奏效——这一点非常重要，因为真实水体里混着泥沙、有机物和无数干扰物，很多在实验室里漂亮的技术一到现场就失灵。报告的结果相当亮眼：包括监管机构一度认为更安全的短链替代品在内，95% 以上的目标化合物在数小时内被去除；而且氟最终以无害的氟化盐形式出现，没有变成新的持久性碎片。这一点必须强调，因为如果只是把长链分子打断成更小的含氟碎片，毒性未必下降，甚至可能更难处理。但这项技术远未到可以庆祝的时候。催化剂成本高、处理通量小、能耗大，决定了它目前只适合处理高浓度废液，而不可能用来"净化一条河"。要真正规模化，还需要数年。更重要的是，即便有一天销毁技术变得完美，它也只解决了问题的一半。PFAS 之所以被造出来，正是因为工业需要"不会分解"的分子；让它们有用的那些性质，与让它们危险的那些性质，本来就是同一件事。只要生产还在继续，无论后端的治理技术多么先进，本质上都只是"一边开着水龙头、一边拿拖把拖地"。所以这类论文里最值得读的一句话，往往不是那个漂亮的去除率，而是结尾的限定：销毁已经造出来的东西是必要的、而且早就该做；但真正困难的是从一开始就设计出"不需要被销毁"的分子——而这一半的问题，任何催化剂都无能为力。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章反复强调一个悖论："让 PFAS 有用的性质，正是让它们危险的性质。"请结合第 2、4、8 段，说明为什么"转移"式治理（吸附、膜过滤）在逻辑上无法解决问题；再想一想：如果一种化学品的"耐久"既是卖点又是隐患，监管应该在生产端还是处置端发力？为什么作者说"销毁已造之物"只解决了问题的一半？</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"As long as X continues, Y will be a mop applied to a running tap."</span>（用"开着水龙头拖地"这一具体意象表达"治标不治本"）的写法，就一个你熟悉的议题（如一边熬夜一边护肤、一边扩招一边缺师资、一边排放一边种树）造一个类似的比喻句。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：不粘锅、防水衣、消防泡沫都依赖"顽固"分子</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 症结：碳—氟键极强，只扩散、不降解</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 危害：甲状腺、肾癌、免疫抑制、低出生体重</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 旧法：吸附与膜只是转移；焚烧有争议</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 新法：催化剂注入电子，常温常压下断键</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 效果：95% 去除，氟化为无害氟化盐</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 局限：贵、慢、耗能，只适合高浓度废液</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 更深层：销毁≠不生产，治理只是治标</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：更难的是"设计出无需销毁的分子"</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 症结 → 危害 → 旧法 → 新法 → 效果 → 局限 → 更深层 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Science 关于常温催化断裂碳—氟键降解 PFAS 的研究报道（2026 年 6 月）及期刊新闻稿、公开监管资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

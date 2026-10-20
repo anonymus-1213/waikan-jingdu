@@ -2,6 +2,20 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-10-20",
+   "en": "It asks courts to weigh what was said rather than how smoothly it was delivered, and to admit that telling a nervous man from a guilty one is not a sense the law possesses.",
+   "zh": "它要求法庭去权衡“说了什么”，而不是“说得多顺”；并要求法庭承认：分辨一个紧张的人与一个有罪的人，并不是法律真正拥有的一种感官。",
+   "src": "外刊精读 · 法庭把“不像”读成了“有罪”（2026-10-20）",
+   "key": "telling a nervous man from a guilty one",
+   "keyZh": "分辨紧张的人与有罪的人（tell A from B：把 A 与 B 区分开）",
+   "tip": "tell 在这里是熟词僻义：常见义是“告诉、讲述”，但 tell A from B 意为“分辨、区分”，常与 can/cannot 连用（can't tell them apart）。weigh 同样是熟词僻义，本义“称重”，此处指“权衡、掂量（证据）”。rather than 连接两个对立的评价标准，构成“实质 vs 形式”的对照；admit that 后接宾语从句，语气上是一种不情愿的让步。",
+   "tags": [
+    "司法心理",
+    "可信度",
+    "神经多样性"
+   ]
+  },
+  {
    "date": "2026-10-18",
    "en": "The study's contribution is to move the question from how much the world consumes to how well that consumption fits the disease it is meant to treat.",
    "zh": "这项研究的贡献，是把问题从“世界用了多少”改写为“这些用量与它要治的病有多匹配”。",
