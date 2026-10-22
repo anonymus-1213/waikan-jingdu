@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 为什么那些画面你记得清清楚楚</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Mind &amp; Memory · 人与自我 / 认知神经科学 / 情绪 / 记忆</div>
+  <h1>为什么那些画面你记得清清楚楚</h1>
+  <div class="deck">A Chicago team scanned people watching films and listening to stories, then asked them to retell what they had seen — and found that emotion does not flag memories so much as it temporarily reconnects the whole brain</div>
+  <div class="byline"><span><b>来源</b> Nature Human Behaviour（2026 年 2 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-22</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 515 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-22.jpg" alt="观众在黑暗的电影院中观看银幕的实景照片（配图）">
+    <figcaption>配图：影厅里被银幕照亮的观众侧影，同一束光落在几十张表情各异的脸上（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>同一场电影看完，一周后你能复述的往往只是其中几个镜头：一句突然的争吵、一个猝不及防的消息、一次几乎是生理性的惊吓。为什么正是这些时刻被留住，而其余的情节像退潮一样退去？过去二十年，神经科学对这个问题给过一个相当简单的答案：杏仁核在情绪唤起时"加粗"了记忆的笔画，海马体负责把这件事写进去。2026 年 2 月，《自然·人类行为》（Nature Human Behaviour）第 10 卷第 2 期 370—383 页刊出芝加哥大学心理学系帕克（Jadyn S. Park）、戈拉普迪（Kruthi Gollapudi）、柯瑾（Jin Ke，现于耶鲁）、阿姆斯特丹自由大学瑙（Matthias Nau）、南加州大学帕帕斯（Ioannis Pappas）与通讯作者梁元昌（Yuan Chang Leong）的研究（DOI 10.1038/s41562-025-02315-1），题目是《情绪唤起通过大规模脑网络的功能整合增强叙事记忆》。他们把三批公开的 fMRI 数据拼成一个更大的样本，让被试观看影片片段、聆听故事，然后用自己的话复述；再用图论、文本分析与瞳孔测量，把"情绪有多强"与"脑网络有多团结"分开测量。结论是：情绪并不只是给某些脑区"加亮"，而是让平时各管一段的脑网络短暂地连成一片；这种"整合"越是充分，随后的复述越准确，而且它本身就是情绪的"中介通道"。本文按"现象—旧解释的局限—方法—三项测量—发现—机制—边界与含义—收束"的链条展开，并把三个熟词僻义（flag / score / even）嵌进论证。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-22.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="13.097">Ask anyone to describe a film they saw last year and they will <span class="kw" data-tip="v. 生动地描述；让……重现（conjure up 使浮现）">conjure</span> up a handful of scenes: an argument that flared without warning, a diagnosis delivered across a kitchen table, a hand that would not stop shaking.</span> <span class="s" data-t="13.097" data-e="20.039">Everything else — the drive to the airport, the subplot about the brother, most of the dialogue — has quietly gone.</span></span></div>
+      <p class="para-tr">随便找个人，请他描述去年看过的一部电影，他会唤起寥寥几个画面：一场毫无预兆爆发的争吵，一张在厨房餐桌上被告知诊断结果的餐桌，一只止不住发抖的手。其余一切——去机场的路上、关于哥哥的那条支线、大部分对白——都已悄然退场。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="20.039" data-e="33.559">For two decades the standard account has been usefully simple — emotional arousal, routed through the <span class="kw" data-tip="n. 杏仁核（脑内处理恐惧与情绪的关键结构）">amygdala</span>, is said to <span class="kw" data-tip="v. 标记；给……做记号——熟词僻义：常见义为“旗帜、国旗”">flag</span> certain moments as important, and the hippocampus then obliges by writing them down more firmly.</span> <span class="s" data-t="33.559" data-e="42.672">The picture is tidy, and it is also too local, because it treats memory as something done to a few structures rather than as an act of the whole brain.</span></span></div>
+      <p class="para-tr">二十年来，标准解释一直简单而好用——据说情绪唤起经由杏仁核，给某些时刻"打上标记"、标示其重要，海马体随即"配合"，把它们写得更牢。这幅图景很整齐，也过于局部，因为它把记忆当作发生在少数结构上的某种操作，而不是整个大脑的一种行为。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="42.672" data-e="63.797">A study in Nature Human Behaviour takes the harder route, pooling three independent fMRI datasets gathered at different sites, in which participants watched film clips or listened to stories, and later recalled what they had seen in their own words — and its authors chose a design that sacrifices control for something closer to ordinary experience.</span></span></div>
+      <p class="para-tr">《自然·人类行为》上的一项研究走了更难的那条路：它汇总了三套独立 fMRI 数据集，而这些数据采集自不同机构，被试在其中观看影片片段或聆听故事，随后用自己的话回忆所见内容——作者选择的设计牺牲了控制力，换来的是更接近日常经验的东西。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="63.797" data-e="70.799">The difficulty is knowing which moments were emotional in the first place, since no two viewers <span class="kw" data-tip="v. 打分；评分——熟词僻义：常见义为“二十、得分（名词）”">score</span> a scene alike.</span> <span class="s" data-t="70.799" data-e="84.319">So the team measured arousal three ways: participants' own ratings, a large language model's appraisal of each moment in the narrative, and pupil <span class="kw" data-tip="n. 扩张；瞳孔放大（dilate 扩张）">dilation</span>, which the body cannot control and which tracks arousal in real time.</span></span></div>
+      <p class="para-tr">困难在于，首先得知道哪些时刻算"情绪性的"，因为没有两位观众会给同一场景打同样的分。于是团队用三种方式测量唤起：被试自己的评分、一个大语言模型对叙事中每个时刻的判断，以及瞳孔扩张——身体无法控制、能实时反映唤起程度的指标。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="84.319" data-e="102.728">All three measures converged: during arousing passages the brain shifted into what the authors call an integrated state, in which functional modules that usually keep to themselves — vision, language, attention, bodily sensation — began exchanging information, so that the boundaries between them blurred.</span> <span class="s" data-t="102.728" data-e="106.711">The stronger the arousal, the more <span class="kw" data-tip="n. 内聚力；团结程度（cohesive 有凝聚力的）">cohesion</span> the network displayed.</span></span></div>
+      <p class="para-tr">三种测量指向同一处：在唤起强烈的片段中，大脑转入作者所称的"整合状态"：平时各守其位的功能模块——视觉、语言、注意、身体感觉——开始交换信息，模块之间的边界随之模糊。唤起越强，网络表现出的内聚力越大。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="106.711" data-e="123.008">The consequence was not cosmetic. When participants later retold the narrative, the fidelity of their recall tracked the cohesion recorded during viewing, and statistical models showed that integration carried the influence of arousal rather than merely accompanying it.</span> <span class="s" data-t="123.008" data-e="125.482">Emotional moments were not simply tagged.</span> <span class="s" data-t="125.482" data-e="131.397">For a few seconds the brain was operating as a single system, and that system did the remembering.</span></span></div>
+      <p class="para-tr">这一结果的后果并非表面文章。当被试后来复述叙事时，其回忆的保真度与观看时记录到的内聚力同步变化；统计模型显示，整合承载了唤起的影响，而不仅仅是与之伴随。情绪时刻并不只是被"打上标签"。在那几秒里，大脑作为一个单一系统运转，而完成记忆的正是这个系统。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="131.397" data-e="153.247">The finding sits uneasily with a tidy <span class="kw" data-tip="n. 说法；解释；（动词）说明、记账">account</span>, for if arousal works by dissolving the walls between networks, then the same mechanism plausibly explains the other side of emotional memory: why a humiliation from years ago can <span class="kw" data-tip="v. 返回；再度浮现（recurrence 复发）">recur</span> uninvited, complete with the colour of the room and the tone of a voice, while a hundred uneventful afternoons have gone for good.</span></span></div>
+      <p class="para-tr">这一发现与一套整齐的说法并不相容，因为如果唤起的作用方式是"溶解"网络之间的墙，那么同一机制很可能也解释了情绪记忆的另一面：为什么多年前的一次羞辱会不请自来地重现，连房间的颜色与某个人的语调都在，而一百个平淡的下午却永远消失了。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="153.247" data-e="156.808">The practical implication is <span class="kw" data-tip="adj. 令人不安的；后果严重的——熟词僻义：常见义为“负担、承担”">burdensome</span> in both directions.</span> <span class="s" data-t="156.808" data-e="163.99">If integration can be raised, teaching might <span class="kw" data-tip="v. 有意利用；利用（hone in on）；为……服务">leverage</span> it, by placing key material where attention and feeling <span class="kw" data-tip="v. 同时发生；重合（coincide with 与……一致）">coincide</span>.</span> <span class="s" data-t="163.99" data-e="174.191">If it can be lowered, clinicians might one day ease the hold of intrusive memories in trauma, not by deleting them but by loosening the network that binds them together.</span></span></div>
+      <p class="para-tr">其实践含义在两个方向上都不轻松。如果整合可以被提高，教学或许能借力于此，把关键内容放在"注意力"与"感受"重合的位置上。如果整合可以被降低，临床医生或许终有一天能减轻创伤中侵入性记忆的束缚——不是删除它们，而是放松那个把它们绑在一起的网络。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="174.191" data-e="185.779">What the study ultimately suggests is that emotion is less a <span class="kw" data-tip="n. 高亮笔；强调标记（highlight 突出）">highlighter</span> than a conductor, and that memory is less a filing cabinet than an orchestra that sounds different every time it plays.</span> <span class="s" data-t="185.779" data-e="191.513">The scenes we keep are the ones during which the whole brain, briefly, agreed to play together.</span></span></div>
+      <p class="para-tr">这项研究最终提示的是：情绪更像一位指挥，而不是一支高亮笔；记忆更像一支每次演奏都略有不同的乐队，而不是一只档案柜。我们留住的那些画面，正是整个大脑短暂地"一致同意合奏"的时刻。</p>
+
+      <p class="muted">原文出处：本文据 Nature Human Behaviour 第 10 卷第 2 期（2026 年 2 月）370—383 页论文《Emotional arousal enhances narrative memories through functional integration of large-scale brain networks》（Jadyn S. Park, Kruthi Gollapudi, Jin Ke, Matthias Nau, Ioannis Pappas, Yuan Chang Leong；University of Chicago / Vrije Universiteit Amsterdam / University of Southern California；DOI 10.1038/s41562-025-02315-1）公开摘要与芝加哥大学新闻稿改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conjure</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkʌndʒə/ · 美 /ˈkɑːndʒər/</div>
+          <div class="wc-pos"><b>v.</b> 唤起；使浮现（conjure up 使在脑海中浮现）；变戏法</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They will <b>conjure</b> up a handful of scenes.</div>
+          <div class="wc-tr">他们会唤起寥寥几个画面。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flare</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /fleə/ · 美 /fler/</div>
+          <div class="wc-pos"><b>v.</b> （火、情绪）骤然爆发；flare up 突然加剧 <b>n.</b> 闪光信号</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An argument that <b>flared</b> without warning.</div>
+          <div class="wc-tr">一场毫无预兆爆发的争吵。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diagnosis</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdaɪəɡˈnəʊsɪs/ · 美 /ˌdaɪəɡˈnoʊsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 诊断；诊断结果（复数 diagnoses；动词 diagnose）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>diagnosis</b> delivered across a kitchen table.</div>
+          <div class="wc-tr">一张在厨房餐桌上被告知的诊断结果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">subplot</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsʌbplɒt/ · 美 /ˈsʌbplɑːt/</div>
+          <div class="wc-pos"><b>n.</b> （电影、戏剧、小说的）次要情节；副线</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>subplot</b> about the brother has quietly gone.</div>
+          <div class="wc-tr">关于哥哥的那条支线已悄然退场。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arousal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈraʊzl/ · 美 /əˈraʊzl/</div>
+          <div class="wc-pos"><b>n.</b> 唤起；激活（情绪或生理上的兴奋程度；动词 arouse）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Emotional <b>arousal</b> is said to flag certain moments.</div>
+          <div class="wc-tr">据说情绪唤起会给某些时刻打上标记。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">amygdala</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈmɪɡdələ/ · 美 /əˈmɪɡdələ/</div>
+          <div class="wc-pos"><b>n.</b> 杏仁核（脑内处理恐惧与情绪的关键结构）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Arousal routed through the <b>amygdala</b>.</div>
+          <div class="wc-tr">经由杏仁核传导的唤起。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flag</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /flæɡ/ · 美 /flæɡ/</div>
+          <div class="wc-pos"><b>v.</b> 标记；给……做记号（引起注意）<br><span style="color:#9c2f16">常见义：旗帜；国旗（名词）</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Arousal works to <b>flag</b> certain moments as important.</div>
+          <div class="wc-tr">唤起的作用是把某些时刻标记为重要。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hippocampus</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌhɪpəˈkæmpəs/ · 美 /ˌhɪpəˈkæmpəs/</div>
+          <div class="wc-pos"><b>n.</b> 海马体（与情景记忆的形成和巩固密切相关的脑结构）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>hippocampus</b> then writes them down more firmly.</div>
+          <div class="wc-tr">海马体随即把它们更牢固地写下来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">oblige</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈblaɪdʒ/ · 美 /əˈblaɪdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 施恩于；帮忙；使负有义务（be obliged to 不得不）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The hippocampus then <b>obliges</b> by writing them down.</div>
+          <div class="wc-tr">海马体随即"配合"，把它们写下来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pool</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /puːl/ · 美 /puːl/</div>
+          <div class="wc-pos"><b>v.</b> 汇总；合并（资源、数据）<b>n.</b> 水池；共用资源</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Its authors <b>pooled</b> three independent datasets.</div>
+          <div class="wc-tr">作者汇总了三套独立数据集。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">score</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /skɔː/ · 美 /skɔːr/</div>
+          <div class="wc-pos"><b>v.</b> 打分；评分<br><span style="color:#9c2f16">常见义：得分；二十（名词）</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>No two viewers <b>score</b> a scene alike.</div>
+          <div class="wc-tr">没有两位观众会给同一场景打同样的分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">appraisal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈpreɪzl/ · 美 /əˈpreɪzl/</div>
+          <div class="wc-pos"><b>n.</b> 评估；判断（动词 appraise 估价、评价）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A language model's <b>appraisal</b> of each moment.</div>
+          <div class="wc-tr">一个语言模型对每个时刻的判断。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dilation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /daɪˈleɪʃn/ · 美 /daɪˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 扩张；瞳孔放大（动词 dilate）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Pupil <b>dilation</b> tracks arousal in real time.</div>
+          <div class="wc-tr">瞳孔扩张能实时反映唤起程度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">converge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈvɜːdʒ/ · 美 /kənˈvɜːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 汇聚；趋于一致（converging evidence 趋同证据）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>All three measures <b>converged</b>.</div>
+          <div class="wc-tr">三种测量指向同一处。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">module</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdjuːl/ · 美 /ˈmɑːdʒuːl/</div>
+          <div class="wc-pos"><b>n.</b> 模块；组件（functional module 功能模块）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Modules that usually keep to themselves.</div>
+          <div class="wc-tr">平时各守其位的模块。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cohesion</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kəʊˈhiːʒn/ · 美 /koʊˈhiːʒn/</div>
+          <div class="wc-pos"><b>n.</b> 内聚力；团结程度（cohesive 有凝聚力的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The stronger the arousal, the more <b>cohesion</b> the network displayed.</div>
+          <div class="wc-tr">唤起越强，网络的内聚力越大。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cosmetic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kɒzˈmetɪk/ · 美 /kɑːzˈmetɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 表面的；装饰性的（not cosmetic 实在的，非做样子的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The consequence was not <b>cosmetic</b>.</div>
+          <div class="wc-tr">这一后果并非表面文章。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fidelity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /fɪˈdeləti/ · 美 /fɪˈdeləti/</div>
+          <div class="wc-pos"><b>n.</b> 保真度；忠实程度（high-fidelity 高保真）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>fidelity</b> of their recall tracked cohesion.</div>
+          <div class="wc-tr">其回忆的保真度与内聚力同步变化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recur</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈkɜː/ · 美 /rɪˈkɜːr/</div>
+          <div class="wc-pos"><b>v.</b> 再度出现；反复发生（recurrence 复发）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A humiliation that can <b>recur</b> uninvited.</div>
+          <div class="wc-tr">一次会不请自来地重现的羞辱。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">highlighter</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈhaɪlaɪtə/ · 美 /ˈhaɪlaɪtər/</div>
+          <div class="wc-pos"><b>n.</b> 高亮笔；荧光笔（动词 highlight 突出）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Emotion is less a <b>highlighter</b> than a conductor.</div>
+          <div class="wc-tr">情绪更像一位指挥，而不是一支高亮笔。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">conjure up</span><span class="zh">使在脑海中浮现；唤起</span></li>
+          <li><span class="en">a handful of</span><span class="zh">寥寥几个；少许</span></li>
+          <li><span class="en">without warning</span><span class="zh">毫无预兆地</span></li>
+          <li><span class="en">for two decades</span><span class="zh">二十年来</span></li>
+          <li><span class="en">the standard account</span><span class="zh">主流的（标准）解释</span></li>
+          <li><span class="en">be said to do sth</span><span class="zh">据说会做某事</span></li>
+          <li><span class="en">take the harder route</span><span class="zh">选择更艰难的路</span></li>
+          <li><span class="en">in one's own words</span><span class="zh">用自己的话</span></li>
+          <li><span class="en">at different sites</span><span class="zh">在不同（研究）机构</span></li>
+          <li><span class="en">in the first place</span><span class="zh">首先；一开始</span></li>
+          <li><span class="en">no two ... alike</span><span class="zh">没有两个……是一样的</span></li>
+          <li><span class="en">in real time</span><span class="zh">实时地</span></li>
+          <li><span class="en">keep to themselves</span><span class="zh">各守其位；不与他人来往</span></li>
+          <li><span class="en">so that</span><span class="zh">以便；结果（引导结果状语从句）</span></li>
+          <li><span class="en">rather than</span><span class="zh">而不是</span></li>
+          <li><span class="en">sit uneasily with</span><span class="zh">与……并不相容；格格不入</span></li>
+          <li><span class="en">the other side of</span><span class="zh">……的另一面</span></li>
+          <li><span class="en">complete with</span><span class="zh">连……也一并带着</span></li>
+          <li><span class="en">for good</span><span class="zh">永远地；一劳永逸地</span></li>
+          <li><span class="en">in both directions</span><span class="zh">在两个方向上</span></li>
+          <li><span class="en">the hold of sth</span><span class="zh">……的控制（束缚）</span></li>
+          <li><span class="en">less A than B</span><span class="zh">与其说是 A，不如说是 B</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>现象：我们记得住的总是少数几个"有情绪"的画面，其余细节悄然流失。</li>
+          <li>旧解释的局限：杏仁核"标记"＋海马体"写牢"的说法清晰但过于局部，忘掉了全脑。</li>
+          <li>新研究的方法：汇总三套公开 fMRI 数据集，被试看片、听故事后用自己的话复述。</li>
+          <li>第三个难题与三种测量：主观评分、大语言模型判断、瞳孔扩张，三路验证唤起程度。</li>
+          <li>核心发现：唤起时大脑进入"整合状态"，功能模块之间边界模糊、内聚力上升。</li>
+          <li>因果链条：复述的保真度随观看时的内聚力变化，整合"承载"而非"伴随"唤起的作用。</li>
+          <li>机制的另一面：同一"溶墙"机制可解释创伤记忆的侵入性重现。</li>
+          <li>双向含义：提高整合可服务教学，降低整合或可松动创伤记忆的束缚。</li>
+          <li>收束：情绪不是高亮笔而是指挥，记忆不是档案柜而是每次演奏都不同的乐队。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Emotional arousal, routed through the amygdala, is said to flag certain moments as important, and the hippocampus then obliges by writing them down more firmly.</div>
+        <div class="row"><b>主干：</b>Emotional arousal ... is said to flag ... and the hippocampus obliges ...（由 and 连接的两个并列分句）</div>
+        <div class="row"><b>过去分词短语作插入语：</b>routed through the amygdala（相当于 which is routed through the amygdala，补充说明唤起的"通道"）</div>
+        <div class="row"><b>被动 + 不定式：</b>is said to flag（"据说会……"，是学术写作中引述流行观点、同时与之保持距离的常见句式）</div>
+        <div class="row"><b>flag sth as adj.：</b>把某事标记为……；by doing 表方式；them 指代 certain moments</div>
+        <div class="row"><b>考点：</b>分词插入语；be said to；flag ... as ...；by + 动名词表手段</div>
+        <div class="row tr"><b>译文：</b>据说，经由杏仁核传导的情绪唤起会给某些时刻"打上标记"，标示其重要性，海马体随即"配合"，把它们更牢固地写下来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Its authors pooled three independent fMRI datasets gathered at different sites, in which participants watched film clips or listened to stories, and later recalled what they had seen in their own words — a design that sacrifices control for something closer to ordinary experience.</div>
+        <div class="row"><b>主干：</b>Its authors pooled three independent datasets（主句），破折号后为对整个设计的同位语评价</div>
+        <div class="row"><b>过去分词作后置定语：</b>gathered at different sites（修饰 datasets）；in which 引导定语从句，修饰 datasets，内含 watched / listened / recalled 三个并列谓语</div>
+        <div class="row"><b>同位语：</b>a design that sacrifices control for something closer to ordinary experience（that 从句修饰 design；sacrifice A for B"为 B 舍弃 A"）</div>
+        <div class="row"><b>时态线索：</b>watched / listened 与 later recalled 用过去时，与主句的 pooled 区分"数据采集"与"数据汇总"两个层次</div>
+        <div class="row"><b>考点：</b>分词后置定语；in which 定语从句；sacrifice A for B；破折号同位语</div>
+        <div class="row tr"><b>译文：</b>作者汇总了在不同机构采集的三套独立 fMRI 数据集，被试在其中观看影片片段或聆听故事，随后用自己的话回忆所见内容——这一设计牺牲了控制力，换来的是更接近日常经验的东西。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">So the team measured arousal three ways: participants' own ratings, a large language model's appraisal of each moment in the narrative, and pupil dilation, which the body cannot control and which tracks arousal in real time.</div>
+        <div class="row"><b>主干：</b>the team measured arousal（主句）；冒号后为 three ways 的三项并列列举</div>
+        <div class="row"><b>并列结构：</b>ratings / appraisal / dilation 三项并列，注意第三项前有 and，且前两项用逗号隔开（A, B, and C 的列举格式）</div>
+        <div class="row"><b>非限制性定语从句（双）：</b>which the body cannot control and which tracks arousal（两个 which 从句并列修饰 pupil dilation，第二个不可省略）</div>
+        <div class="row"><b>逻辑关系：</b>斜体处隐含"为什么选它"——因为它不受意志控制，所以比自我报告更客观</div>
+        <div class="row"><b>考点：</b>冒号列举；非限制性定语从句并列；in real time；measure sth + 方式状语</div>
+        <div class="row tr"><b>译文：</b>于是团队用三种方式测量唤起：被试自己的评分、一个大语言模型对叙事中每个时刻的判断，以及瞳孔扩张——身体无法控制、能实时反映唤起程度的指标。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">During arousing passages the brain shifted into what the authors call an integrated state, in which functional modules that usually keep to themselves — vision, language, attention, bodily sensation — began exchanging information, so that the boundaries between them blurred.</div>
+        <div class="row"><b>主干：</b>the brain shifted into what the authors call an integrated state（what 引导宾语从句，作 into 的宾语）</div>
+        <div class="row"><b>嵌套从句：</b>in which functional modules ... began exchanging information（定语从句修饰 state；其中 modules 后又有 that usually keep to themselves 定语从句）</div>
+        <div class="row"><b>破折号插入：</b>vision, language, attention, bodily sensation（对 modules 的具体列举，插在定语从句之后，阅读时先跳过）</div>
+        <div class="row"><b>结果状语从句：</b>so that the boundaries between them blurred（so that 在此表"结果"而非"目的"，判断依据是 blur 描绘的是既成状态）</div>
+        <div class="row"><b>考点：</b>what 宾语从句；in which 定语从句；定语从句嵌套；so that 表结果；begin doing</div>
+        <div class="row tr"><b>译文：</b>在唤起强烈的片段中，大脑转入作者所称的"整合状态"：平时各守其位的功能模块——视觉、语言、注意、身体感觉——开始交换信息，模块之间的边界随之模糊。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">When participants later retold the narrative, the fidelity of their recall tracked the cohesion recorded during viewing, and statistical models showed that integration carried the influence of arousal rather than merely accompanying it.</div>
+        <div class="row"><b>主干：</b>the fidelity tracked the cohesion ... and statistical models showed that ...（两个并列分句）</div>
+        <div class="row"><b>时间状语从句：</b>When participants later retold the narrative（later 指"观看之后稍晚"，与主句 tracked 呼应）</div>
+        <div class="row"><b>过去分词作后置定语：</b>recorded during viewing（修饰 cohesion，相当于 which was recorded）</div>
+        <div class="row"><b>宾语从句 + 比较对照：</b>that integration carried the influence of arousal rather than merely accompanying it（rather than 后接动名词，与 carried 平行；"承载"vs"仅仅伴随"是判断因果中介的关键用词）</div>
+        <div class="row"><b>考点：</b>when 时间状语从句；分词后置定语；宾语从句；rather than 的平行结构；track 作动词表示"与……同步变化"</div>
+        <div class="row tr"><b>译文：</b>当被试后来复述叙事时，其回忆的保真度与观看时记录到的内聚力同步变化；统计模型显示，整合承载了唤起的影响，而不仅仅是与之伴随。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">我们为什么会记住某些画面，却忘掉其余一切？过去二十年，认知神经科学给出的解释简单而好用：情绪唤起经由杏仁核，给少数关键时刻"打上标记"，海马体则负责把这些时刻写得更牢。这套说法把记忆看成发生在几个脑结构里的局部操作，清楚，却漏掉了整个大脑。2026 年 2 月，《自然·人类行为》第 10 卷第 2 期刊出芝加哥大学心理学系帕克、戈拉普迪、柯瑾与通讯作者梁元昌，以及阿姆斯特丹自由大学瑙、南加州大学帕帕斯的研究论文，题目是《情绪唤起通过大规模脑网络的功能整合增强叙事记忆》。他们的思路与众不同：不再用单词或静态照片刺激被试，而是把钱德勒式的研究搬到更接近生活的场景里——让人们观看影片片段、聆听故事，然后用自己的话把情节复述出来。更有意思的是数据来源：团队没有从头做一项实验，而是把三个机构在不同时间、用不同范式采集的三套 fMRI 数据集汇总起来，形成一个更大的样本，并通过统计手段把"数据来自哪家机构"这一变量控制住。这带来一个方法上的难题：怎么知道哪些时刻在情绪上确实强烈？毕竟，同一场戏，有人心跳加速，有人毫无波动。团队用了三条互相独立的证据来交叉验证：被试自己给出的主观评分；一个大语言模型对叙事中每一刻的情绪强度所做的判断；以及瞳孔扩张这一生理指标——它不受意志控制，能在毫秒尺度上实时反映唤起水平。三者指向同一个答案。观看唤起强烈的片段时，大脑并不是某几个区域"亮起来"，而是进入了一种"整合状态"：通常各自为政的功能模块，如视觉、语言、注意和身体感觉，开始密集交换信息，模块之间的边界变得模糊，整个网络的"内聚力"明显上升；唤起越强，这种整合越彻底。接下来是关键的一步。当被试事后复述故事时，回忆的准确程度与他们观看时的大脑整合程度同步升降。更重要的是，统计建模显示，整合并不是唤起"顺带带来的副产品"，而是唤起影响记忆的真实通道——换句话说，真正把画面写进去的，是整个网络短暂地作为一个系统运转的那段时间。这一发现还顺手推开了另一扇门。如果唤起的作用是"溶解"网络之间的墙，那么创伤后应激中那些不请自来、细致到连房间光线和语调都完整保留的侵入性记忆，也就不再神秘：它们是被一次极端整合牢牢焊在一起的。由此可以设想两个方向的应用：教学中把关键内容放在"注意力"与"感受"恰好重合的位置，或许能借整合之力；临床上若能适度降低整合，也许能在不删除记忆的前提下，松动那些记忆的束缚。文章最后收束于一个比喻：情绪不是一支给重点画线的高亮笔，而是一位指挥；记忆也不是一只分门别类的档案柜，而是一支每次演奏都略有不同的乐队。我们留住的那几个画面，正是整个大脑短暂地同意"合奏"的时刻。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 2 段说旧解释"过于局部"，第 5、6 段则用"整合"替代"标记"。请结合第 6 段斜体句，说明作者为什么强调 integration "carried" the influence of arousal rather than "merely accompanying" it——这两个词在科学论证中分别承担什么作用？如果换成"伴随"，结论会弱化到什么程度？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"emotion is less a highlighter than a conductor, and memory is less a filing cabinet than an orchestra that sounds different every time it plays"</span>（用两次 less A than B 构成双比喻、并以具体物象作比）的句式，就"笔记"与"学习"的关系写一句你自己的双比喻。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现象：我们只记得少数"有情绪"的画面，其余悄然流失</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 旧解释：杏仁核"标记"＋海马体"写牢"，清楚但过于局部</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 方法：汇总三套公开 fMRI 数据，看片听故事后自由复述</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 测量：主观评分＋大模型判断＋瞳孔扩张，三路交叉验证</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 发现：唤起时进入"整合状态"，模块边界模糊、内聚力上升</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 因果：回忆保真度随整合上升；整合"承载"而非"伴随"唤起</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 另一面：同一"溶墙"机制解释创伤记忆的侵入性重现</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 双向含义：提高整合服务教学；降低整合松动创伤束缚</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：情绪是指挥而非高亮笔，记忆是乐队而非档案柜</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「现象 → 旧解释局限 → 方法 → 三种测量 → 核心发现 → 因果链条 → 机制另一面 → 双向含义 → 收束」递进展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Human Behaviour《Emotional arousal enhances narrative memories through functional integration of large-scale brain networks》（Park J.S., Gollapudi K., Ke J., Nau M., Pappas I., Leong Y.C.；2026 年 2 月，10(2):370–383；DOI 10.1038/s41562-025-02315-1）公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

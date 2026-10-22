@@ -2,6 +2,19 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-10-22",
+   "en": "What the study ultimately suggests is that emotion is less a highlighter than a conductor, and that memory is less a filing cabinet than an orchestra that sounds different every time it plays.",
+   "zh": "这项研究最终提示的是：情绪更像一位指挥，而不是一支高亮笔；记忆更像一支每次演奏都略有不同的乐队，而不是一只档案柜。",
+   "src": "外刊精读 · 情绪与记忆的神经机制（2026-10-22）",
+   "key": "conductor",
+   "keyZh": "指挥（乐队指挥）；也指导体、列车员",
+   "tip": "less A than B 是「与其说是 A，不如说是 B」的对照句式；本句连用两次，把抽象机制换成「高亮笔 vs 指挥」「档案柜 vs 乐队」两组具体物象。写作时可借「双比喻对照」把观点形象化。",
+   "tags": [
+    "认知科学",
+    "心理学"
+   ]
+  },
+  {
    "date": "2026-10-20",
    "en": "It asks courts to weigh what was said rather than how smoothly it was delivered, and to admit that telling a nervous man from a guilty one is not a sense the law possesses.",
    "zh": "它要求法庭去权衡“说了什么”，而不是“说得多顺”；并要求法庭承认：分辨一个紧张的人与一个有罪的人，并不是法律真正拥有的一种感官。",
