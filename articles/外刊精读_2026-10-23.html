@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 一句最便宜的处方，证据有多硬</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Sport Science · 人与自我 / 运动医学 / 心理健康 / 循证医学</div>
+  <h1>“去跑跑步吧”：一句最便宜的处方，证据有多硬</h1>
+  <div class="deck">A review of 218 trials found that exercise eases depression, with walking and jogging ahead of the rest — and then graded its own certainty as low, for reasons that say a lot about how we test treatments patients must perform themselves</div>
+  <div class="byline"><span><b>来源</b> The BMJ（2024 年 2 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-23</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 523 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-23.jpg" alt="清晨公园小径上跑步的人的实景照片（配图）">
+    <figcaption>配图：清晨的公园小径上，一个人独自跑过树影与晨光（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>“多运动”大概是医生能开出的最便宜的一句话。它不用排队、不用付费、副作用极小，而且过去十年里，越来越多的试验确实显示：运动能缓解抑郁。但便宜不等于可靠。2024 年 2 月，《英国医学杂志》（The BMJ）刊出昆士兰大学心理学家迈克尔·诺特尔（Michael Noetel）与十七位同事的一项网络荟萃分析（network meta-analysis），汇总 218 项随机试验、495 个治疗组、14,170 名达到重度抑郁临床阈值的被试，把每一种运动与心理治疗、抗抑郁药、常规照护和安慰剂片逐一比较。结果很漂亮：步行或慢跑的效果量最大（−0.62），其次是瑜伽（−0.55）、力量训练（−0.49）、混合有氧（−0.43）、太极或气功（−0.42），而且效果与处方强度成比例——像剂量一样。然而文章最值得读的一句在后面：作者用标准工具给自己的结论评级，步行或慢跑只有“低可信度”，其余更低，因为 218 项试验里只有 1 项达到 Cochrane 的“低偏倚风险”。原因不是马虎，而是结构性的：药可以给糖片、可以双盲，跑步不能——没有人能对“自己在跑步”这件事设盲，而报名参加运动试验的人，几乎都抱着“它会有用”的期待。本文按“日常建议—指南的空白—研究设计—结果排序—剂量—自我评级—盲法困境—实践含义—收束”展开，并把三个熟词僻义（arm / blind / read）嵌进论证。读懂这一篇，就读懂了循证医学里最难缠的一类问题：当治疗本身就是病人的行为时，我们究竟能证明什么。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-23.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="13.377">Ask a <span class="kw" data-tip="n. 精神科医生（psychiatry 精神病学）">psychiatrist</span> what to do about a patient who cannot sleep, cannot <span class="kw" data-tip="v. 集中（注意力）；专心（concentrate on）">concentrate</span> and no longer enjoys anything, and the answer will usually contain a sentence that sounds almost too simple to matter: get some exercise.</span> <span class="s" data-t="13.377" data-e="22.829">The advice is free, easy to follow and, according to a growing stack of trials, genuinely effective — which is exactly why it deserves a closer look.</span></span></div>
+      <p class="para-tr">去问一位精神科医生，一个睡不着、无法集中注意力、对任何事都不再感到兴趣的病人该怎么办，答案里通常会出现一句听起来简单到不值一提的话：多运动。这个建议不花钱、容易执行，而且按照越来越多试验的说法，确实有效——正因如此，它才值得我们凑近了看。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="22.829" data-e="31.525">Clinical <span class="kw" data-tip="n. 指南；指导原则（guidelines 指导方针）">guidelines</span> in Britain, Australia and the United States already recommend physical activity as part of treatment for depression.</span> <span class="s" data-t="31.525" data-e="41.461">None of them, however, has ever agreed on what should be prescribed, how often, or at what <span class="kw" data-tip="n. 强度；剧烈程度（intense 强烈的）">intensity</span>, which leaves doctors <span class="kw" data-tip="v. 即兴发挥；临时应付（improvisation 即兴）">improvising</span> and patients guessing.</span></span></div>
+      <p class="para-tr">英国、澳大利亚和美国的临床指南，都已经把体力活动列为抑郁症治疗的一部分。然而，它们从未就“该开什么、多久一次、强度多大”达成一致，于是医生只能临场发挥，病人只能靠猜。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="41.461" data-e="49.316">A network <span class="kw" data-tip="n. 荟萃分析（把多项研究的数据合并再分析）">meta-analysis</span> published in the British Medical Journal in February 2024 set out to settle the question.</span> <span class="s" data-t="49.316" data-e="73.447">Michael Noetel, a psychologist at the University of Queensland, and seventeen colleagues pooled 218 <span class="kw" data-tip="adj. 随机的（randomised controlled trial 随机对照试验）">randomised</span> trials, containing 495 treatment <span class="kw" data-tip="n. （试验的）治疗组、分组——熟词僻义：常见义为“手臂”">arms</span> and 14,170 participants who met the clinical <span class="kw" data-tip="n. 阈值；门槛（clinical threshold 临床阈值）">threshold</span> for major depression, and weighed every form of exercise against <span class="kw" data-tip="n. 心理治疗（psychotherapy 心理疗法）">psychotherapy</span>, <span class="kw" data-tip="n. 抗抑郁药（antidepressant 抗抑郁的）">antidepressants</span>, usual care and <span class="kw" data-tip="n. 安慰剂（placebo tablet 安慰剂片）">placebo</span> tablets.</span></span></div>
+      <p class="para-tr">2024 年 2 月，《英国医学杂志》刊出的一项网络荟萃分析，正是要解决这个问题。昆士兰大学心理学家迈克尔·诺特尔与十七位同事汇总了 218 项随机试验，其中包含 495 个治疗组、14,170 名达到重度抑郁临床阈值的被试，把每一种运动形式与心理治疗、抗抑郁药、常规照护和安慰剂片逐一对照称量。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="73.447" data-e="93.921">Walking or jogging came out strongest, with an effect size of −0.62 against active controls, followed by yoga at −0.55, strength training at −0.49, mixed aerobic exercise at −0.43 and tai chi or qigong at −0.42.</span> <span class="s" data-t="93.921" data-e="104.579">More revealing than the ranking was the pattern beneath it: across almost every <span class="kw" data-tip="n. 形式；方式（治疗、运动的方式）">modality</span> the benefit rose with the intensity prescribed, as though the body were answering a dose.</span></span></div>
+      <p class="para-tr">步行或慢跑效果最强，相对于积极对照组的效应量为 −0.62；其后依次是瑜伽 −0.55、力量训练 −0.49、混合有氧运动 −0.43、太极或气功 −0.42。比排名更能说明问题的，是排名背后那条规律：几乎在每一种运动形式里，收益都随处方强度上升，仿佛身体在回应一个剂量。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="104.579" data-e="111.461"><span class="kw" data-tip="v. 解读；理解为——熟词僻义：常见义为“阅读”">Read</span> plainly, those numbers put exercise in the same <span class="kw" data-tip="n. 联盟；等级（in the same league as 与……同一水平）">league</span> as the treatments it is usually offered alongside.</span> <span class="s" data-t="111.461" data-e="122.566">Yoga and strength training also proved the easiest to keep up, a detail that matters rather than decorates, because a therapy <span class="kw" data-tip="v. 放弃；抛弃（abandonment 遗弃）">abandoned</span> by half its participants delivers very little.</span></span></div>
+      <p class="para-tr">直白地解读，这些数字把运动放到了与它通常并列使用的那些疗法同一水平上。瑜伽与力量训练还被证明是最容易坚持的，这个细节不是装饰而是要害：一种有一半参与者中途放弃的疗法，能起的作用非常有限。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="122.566" data-e="126.853">Then comes the sentence that most coverage of the paper left out.</span> <span class="s" data-t="126.853" data-e="141.498">The authors graded the <span class="kw" data-tip="n. 确定性；把握程度（certain 确定的）">certainty</span> of their own findings with a standard <span class="kw" data-tip="n. 工具；量表（测量或评估用的工具）">instrument</span>, and it came out low for walking or jogging and very low for everything else, because only one of the 218 trials met Cochrane's criteria for a low risk of <span class="kw" data-tip="n. 偏倚；偏差（bias 偏见、偏差）">bias</span>.</span></span></div>
+      <p class="para-tr">接下来是大多数报道都略过的一句话。作者用一个标准工具给自己的结论评定确定性，结果是：步行或慢跑“低”，其余“极低”——因为 218 项试验中，只有一项达到了 Cochrane 的“低偏倚风险”标准。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="141.498" data-e="144.921">The obstacle is <span class="kw" data-tip="adj. 结构性的；体制层面的（structure 结构）">structural</span> rather than careless.</span> <span class="s" data-t="144.921" data-e="157.829">A drug trial can hand one group a sugar pill and keep both patients and <span class="kw" data-tip="n. 评估者；评定员（assess 评估）">assessors</span> in the dark, whereas nobody can be <span class="kw" data-tip="v. 设盲；使（受试者或评估者）不知情——熟词僻义：常见义为“使失明”">blinded</span> to the act of jogging, and volunteers for such studies almost always arrive hoping it will work.</span></span></div>
+      <p class="para-tr">这个障碍是结构性的，而不是因为研究者粗心。药物试验可以给一组人糖片，让病人和评估者都蒙在鼓里；可是没有人能对“自己在慢跑”这件事设盲，而报名参加这类研究的人，几乎都是抱着“它会有效”的期待来的。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="157.829" data-e="167.697"><span class="kw" data-tip="n. 期待；预期（expect 期待）">Expectancy</span> of that kind <span class="kw" data-tip="v. 抬高；使膨胀（inflate 充气、膨胀）">inflates</span> every self-reported <span class="kw" data-tip="n. 结果；结局（outcome 结果）">outcome</span>, and it cannot easily be removed when the treatment is something a patient must do rather than swallow.</span> <span class="s" data-t="167.697" data-e="177.711">Nor is it obvious what a fair comparison would look like, since the control condition in many of these trials was ordinary care rather than an equally demanding alternative.</span> <span class="s" data-t="177.711" data-e="184.566">What the field calls evidence, in other words, is a stack of trials that could not have been designed any other way.</span></span></div>
+      <p class="para-tr">这一类期待会抬高所有自报的结果，而当治疗是病人必须去做、而不是吞下去的事情时，这种期待很难被剔除。公平的对照该长什么样，也并不显然：这些试验里，对照条件往往是常规照护，而不是一种同样费力的替代活动。换言之，这个领域所称的“证据”，是一摞在设计上别无选择的试验。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="184.566" data-e="188.737">None of this makes the advice wrong; it makes it unfinished.</span> <span class="s" data-t="188.737" data-e="203.316">Exercise appears to be a real treatment for depression whose dose is still unknown, and the honest message for a patient lies somewhere between the <span class="kw" data-tip="adj. 得意洋洋的；大获全胜的（triumph 胜利）">triumphant</span> headline and the <span class="kw" data-tip="adj. 冷嘲的；认为一切都不值得相信的（cynicism 犬儒主义）">cynical</span> <span class="kw" data-tip="n. 否定；不予理会（dismiss 驳回、打发）">dismissal</span>: this is worth trying, and we are still learning how much of it works.</span></span></div>
+      <p class="para-tr">这一切并不能说明那句建议是错的，只能说明它还没写完。运动看来确实是一种真实的抑郁症疗法，只是它的剂量仍属未知；对病人最诚实的说法，既不在一味欢呼的标题里，也不在冷嘲的否定里，而是介于两者之间：值得一试，而它到底有多大用处，我们仍在学习。</p>
+
+      <p class="muted">原文出处：本文据 The BMJ 2024 年 2 月 14 日刊论文《Effect of exercise for depression: systematic review and network meta-analysis of randomised controlled trials》（Michael Noetel, Taren Sanders, Daniel Gallardo-Gómez, Paul Taylor, Borja del Pozo Cruz 等；University of Queensland / Australian Catholic University 等；BMJ 2024;384:e075847；DOI 10.1136/bmj-2023-075847）公开摘要与作者结论改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">psychiatrist</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /saɪˈkaɪətrɪst/ · 美 /saɪˈkaɪətrɪst/</div>
+          <div class="wc-pos"><b>n.</b> 精神科医生；精神病学家（psychiatry 精神病学；psychologist 心理师，注意区分）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Ask a <b>psychiatrist</b> what to do about such a patient.</div>
+          <div class="wc-tr">去问一位精神科医生，这样的病人该怎么办。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">concentrate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈkɒnsntreɪt/ · 美 /ˈkɑːnsntreɪt/</div>
+          <div class="wc-pos"><b>v.</b> 集中（注意力）；专心；<b>n.</b> 浓缩物</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A patient who cannot sleep and cannot <b>concentrate</b>.</div>
+          <div class="wc-tr">一个睡不着、也无法集中注意力的病人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">guideline</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɡaɪdlaɪn/ · 美 /ˈɡaɪdlaɪn/</div>
+          <div class="wc-pos"><b>n.</b> 指导方针；临床指南（常用复数 guidelines）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Clinical <b>guidelines</b> already recommend physical activity.</div>
+          <div class="wc-tr">临床指南已经推荐体力活动。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intensity</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪnˈtensəti/ · 美 /ɪnˈtensəti/</div>
+          <div class="wc-pos"><b>n.</b> 强度；剧烈程度（intense 强烈的；intensive 密集的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They never agreed at what <b>intensity</b>.</div>
+          <div class="wc-tr">他们从未就强度达成一致。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">improvise</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɪmprəvaɪz/ · 美 /ˈɪmprəvaɪz/</div>
+          <div class="wc-pos"><b>v.</b> 即兴创作；临时应付（improvisation 即兴）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Which leaves doctors <b>improvising</b> and patients guessing.</div>
+          <div class="wc-tr">这使医生只能临场发挥，病人只能靠猜。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">meta-analysis</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmetə əˈnæləsɪs/ · 美 /ˌmetə əˈnæləsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 荟萃分析（把多项独立研究的数据合并后再作统计）；network meta-analysis 网络荟萃分析</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A network <b>meta-analysis</b> set out to settle the question.</div>
+          <div class="wc-tr">一项网络荟萃分析想要解决这个问题。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">randomised</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrændəmaɪzd/ · 美 /ˈrændəmaɪzd/</div>
+          <div class="wc-pos"><b>adj.</b> 随机分组的（randomise 随机化；randomised controlled trial 随机对照试验）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They pooled 218 <b>randomised</b> trials.</div>
+          <div class="wc-tr">他们汇总了 218 项随机试验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arm</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ɑːm/ · 美 /ɑːrm/</div>
+          <div class="wc-pos"><b>n.</b> （试验的）治疗组、分组<br><span style="color:#9c2f16">常见义：手臂；武器（复数 arms）</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>495 treatment <b>arms</b> and 14,170 participants.</div>
+          <div class="wc-tr">495 个治疗组与 14,170 名被试。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> 门槛；阈值；临界值（meet the threshold 达到阈值）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Participants who met the clinical <b>threshold</b> for major depression.</div>
+          <div class="wc-tr">达到重度抑郁临床阈值的被试。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">placebo</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /pləˈsiːbəʊ/ · 美 /pləˈsiːboʊ/</div>
+          <div class="wc-pos"><b>n.</b> 安慰剂（无药理作用、仅作对照的制剂）；placebo effect 安慰剂效应</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Weighed against usual care and <b>placebo</b> tablets.</div>
+          <div class="wc-tr">与常规照护和安慰剂片对照称量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">modality</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /məʊˈdæləti/ · 美 /moʊˈdæləti/</div>
+          <div class="wc-pos"><b>n.</b> 方式；形式（尤指治疗、运动或感觉的形式）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Across almost every <b>modality</b> the benefit rose.</div>
+          <div class="wc-tr">几乎在每一种运动形式里，收益都在上升。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">league</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /liːɡ/ · 美 /liːɡ/</div>
+          <div class="wc-pos"><b>n.</b> 联盟；等级、水平（in the same league as 与……同一水平；out of one's league 高攀不上）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Exercise sits in the same <b>league</b> as those treatments.</div>
+          <div class="wc-tr">运动与那些疗法处于同一水平。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">read</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /riːd/ · 美 /riːd/</div>
+          <div class="wc-pos"><b>v.</b> 解读；理解为（read the data as… 把数据理解为……）<br><span style="color:#9c2f16">常见义：阅读；朗读</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Read</b> plainly, those numbers put exercise in the same league.</div>
+          <div class="wc-tr">直白地解读，这些数字把运动放到了同一水平上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">abandon</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈbændən/ · 美 /əˈbændən/</div>
+          <div class="wc-pos"><b>v.</b> 放弃；中途丢下（abandon a trial 中途退出试验）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A therapy <b>abandoned</b> by half its participants delivers very little.</div>
+          <div class="wc-tr">有一半参与者放弃的疗法，作用非常有限。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">certainty</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈsɜːtnti/ · 美 /ˈsɜːrtnti/</div>
+          <div class="wc-pos"><b>n.</b> 确定性；把握（grade the certainty of evidence 评定证据确定性）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The authors graded the <b>certainty</b> of their own findings.</div>
+          <div class="wc-tr">作者给自己的结论评定了确定性。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">instrument</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɪnstrəmənt/ · 美 /ˈɪnstrəmənt/</div>
+          <div class="wc-pos"><b>n.</b> 工具；量表、评定工具；乐器；仪器</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Graded with a standard <b>instrument</b>.</div>
+          <div class="wc-tr">用一个标准工具评定。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bias</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbaɪəs/ · 美 /ˈbaɪəs/</div>
+          <div class="wc-pos"><b>n.</b> 偏倚；偏差；偏见（risk of bias 偏倚风险）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Only one trial met the criteria for low risk of <b>bias</b>.</div>
+          <div class="wc-tr">只有一项试验达到低偏倚风险标准。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">structural</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈstrʌktʃərəl/ · 美 /ˈstrʌktʃərəl/</div>
+          <div class="wc-pos"><b>adj.</b> 结构性的；体制层面的（指问题源于制度设计而非个人失误）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The obstacle is <b>structural</b> rather than careless.</div>
+          <div class="wc-tr">这个障碍是结构性的，而非粗心所致。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">blind</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /blaɪnd/ · 美 /blaɪnd/</div>
+          <div class="wc-pos"><b>v.</b> 设盲；使（受试者或评估者）不知分组<br><span style="color:#9c2f16">常见义：使失明；瞎的（形容词）</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nobody can be <b>blinded</b> to the act of jogging.</div>
+          <div class="wc-tr">没有人能对“自己在慢跑”这件事设盲。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">expectancy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪkˈspektənsi/ · 美 /ɪkˈspektənsi/</div>
+          <div class="wc-pos"><b>n.</b> 期待；预期（expectancy effect 期待效应，与 placebo effect 相近）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Expectancy</b> of that kind inflates every self-reported outcome.</div>
+          <div class="wc-tr">这类期待会抬高所有自报的结果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inflate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈfleɪt/ · 美 /ɪnˈfleɪt/</div>
+          <div class="wc-pos"><b>v.</b> 使膨胀；抬高（数字、价格）；夸大</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It <b>inflates</b> every self-reported outcome.</div>
+          <div class="wc-tr">它会抬高每一项自报结果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outcome</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈaʊtkʌm/ · 美 /ˈaʊtkʌm/</div>
+          <div class="wc-pos"><b>n.</b> 结果；结局（临床研究中指测量指标的结果）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Every self-reported <b>outcome</b> is affected.</div>
+          <div class="wc-tr">每一项自报结果都受影响。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dismissal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪsˈmɪsl/ · 美 /dɪsˈmɪsl/</div>
+          <div class="wc-pos"><b>n.</b> 否定；不予考虑；解雇（dismiss 驳回、打发）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Somewhere between the headline and the <b>dismissal</b>.</div>
+          <div class="wc-tr">介于欢呼的标题与冷嘲的否定之间。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">ask sb what to do about sth</span><span class="zh">就某事问某人该怎么办；就……向某人请教</span></li>
+          <li><span class="en">too ... to matter</span><span class="zh">太……以至于不值一提</span></li>
+          <li><span class="en">a growing stack of</span><span class="zh">越来越多的（一摞）</span></li>
+          <li><span class="en">as part of</span><span class="zh">作为……的一部分</span></li>
+          <li><span class="en">agree on</span><span class="zh">就……达成一致</span></li>
+          <li><span class="en">at what intensity</span><span class="zh">以什么强度</span></li>
+          <li><span class="en">set out to do sth</span><span class="zh">着手做某事；旨在做某事</span></li>
+          <li><span class="en">weigh A against B</span><span class="zh">把 A 与 B 对照权衡</span></li>
+          <li><span class="en">meet the threshold for</span><span class="zh">达到……的阈值（标准）</span></li>
+          <li><span class="en">come out strongest</span><span class="zh">（比较中）表现最强、排名最前</span></li>
+          <li><span class="en">effect size</span><span class="zh">效应量（衡量干预效果大小的统计量）</span></li>
+          <li><span class="en">against active controls</span><span class="zh">相对于积极对照组</span></li>
+          <li><span class="en">in the same league as</span><span class="zh">与……处于同一水平</span></li>
+          <li><span class="en">keep up</span><span class="zh">坚持；保持（不中断）</span></li>
+          <li><span class="en">leave out</span><span class="zh">省略；略去不提</span></li>
+          <li><span class="en">risk of bias</span><span class="zh">偏倚风险</span></li>
+          <li><span class="en">keep sb in the dark</span><span class="zh">让某人蒙在鼓里</span></li>
+          <li><span class="en">be blinded to sth</span><span class="zh">对某事设盲、不知情</span></li>
+          <li><span class="en">nor is it obvious</span><span class="zh">……也并不显然（nor 引起部分倒装）</span></li>
+          <li><span class="en">in other words</span><span class="zh">换言之</span></li>
+          <li><span class="en">somewhere between A and B</span><span class="zh">介于 A 与 B 之间的某处</span></li>
+          <li><span class="en">none of this makes ... wrong</span><span class="zh">这一切并不能说明……是错的</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>日常建议：“多运动”是精神科最便宜的一句话，简单到不值一提，却确实有效。</li>
+          <li>指南的空白：三国指南都推荐运动，却从未说清开什么、多久一次、多大强度。</li>
+          <li>研究设计：BMJ 网络荟萃分析，218 项随机试验、495 个治疗组、14,170 名重度抑郁被试。</li>
+          <li>结果排序：步行/慢跑 −0.62 居首，其后瑜伽、力量、混合有氧、太极；效果随强度上升。</li>
+          <li>解读：效应量可与药疗、心理治疗并列；瑜伽与力量训练最易坚持，依从性即疗效。</li>
+          <li>转折：作者自评确定性——步行/慢跑“低”，其余“极低”，218 项里仅 1 项低偏倚风险。</li>
+          <li>盲法困境：药可给糖片、可双盲，跑步不可；报名者本就抱着“会有效”的期待。</li>
+          <li>替代解释：期待抬高自报结果，且公平对照难寻——对照多为常规照护而非同等费力活动。</li>
+          <li>收束：建议不错，只是未完成；剂量未知，结论应在欢呼与否定之间。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Michael Noetel, a psychologist at the University of Queensland, and seventeen colleagues pooled 218 randomised trials, containing 495 treatment arms and 14,170 participants who met the clinical threshold for major depression, and weighed every form of exercise against psychotherapy, antidepressants, usual care and placebo tablets.</div>
+        <div class="row"><b>主干：</b>Michael Noetel ... and seventeen colleagues pooled 218 randomised trials ... and weighed every form of exercise against ...（两个并列谓语 pooled / weighed）</div>
+        <div class="row"><b>同位语：</b>a psychologist at the University of Queensland（说明第一主语身份，插在主语与谓语之间，阅读时先跳过）</div>
+        <div class="row"><b>分词短语：</b>containing 495 treatment arms and 14,170 participants（现在分词作后置定语，修饰 trials；内含 who 引导的定语从句修饰 participants）</div>
+        <div class="row"><b>搭配：</b>weigh A against B"把 A 与 B 对照权衡"；arm 在此为"治疗组"，非"手臂"</div>
+        <div class="row"><b>考点：</b>同位语插入；分词后置定语；定语从句嵌套；weigh A against B；并列谓语</div>
+        <div class="row tr"><b>译文：</b>昆士兰大学心理学家迈克尔·诺特尔与十七位同事汇总了 218 项随机试验——其中包含 495 个治疗组、14,170 名达到重度抑郁临床阈值的被试——并把每一种运动形式与心理治疗、抗抑郁药、常规照护和安慰剂片逐一对照称量。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Walking or jogging came out strongest, with an effect size of −0.62 against active controls, followed by yoga at −0.55, strength training at −0.49, mixed aerobic exercise at −0.43 and tai chi or qigong at −0.42.</div>
+        <div class="row"><b>主干：</b>Walking or jogging came out strongest（主句；come out + 形容词，表示"结果是……、排名……"）</div>
+        <div class="row"><b>with 复合结构：</b>with an effect size of −0.62 against active controls（补充说明"最强"的具体数值与比较基准）</div>
+        <div class="row"><b>过去分词短语：</b>followed by yoga at −0.55 ...（"其后依次是……"，是学术写作列举排序的固定套路，at 后接数值）</div>
+        <div class="row"><b>列举格式：</b>A, B, C, D and E 五项并列，注意每项后都用 at + 数字保持结构对称</div>
+        <div class="row"><b>考点：</b>come out + adj.；with 复合结构；followed by 表顺序；并列列举的结构对称</div>
+        <div class="row tr"><b>译文：</b>步行或慢跑结果最强，相对于积极对照组的效应量为 −0.62；其后依次是瑜伽 −0.55、力量训练 −0.49、混合有氧运动 −0.43、太极或气功 −0.42。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The authors graded the certainty of their own findings with a standard instrument, and it came out low for walking or jogging and very low for everything else, because only one of the 218 trials met Cochrane's criteria for a low risk of bias.</div>
+        <div class="row"><b>主干：</b>The authors graded the certainty ... and it came out low ...（并列分句，it 指代的是"确定性评级结果"而不是 findings）</div>
+        <div class="row"><b>原因状语从句：</b>because only one of the 218 trials met Cochrane's criteria（说明"为何只有低"——这是全篇的转折支点）</div>
+        <div class="row"><b>介词短语作状语：</b>for a low risk of bias（修饰 criteria，"达到……的标准"；risk of bias 是循证医学固定术语）</div>
+        <div class="row"><b>语气提示：</b>their own findings（"他们自己的"）暗示作者主动给自己降级，是学术诚实的标志，也是本文论点的关键</div>
+        <div class="row"><b>考点：</b>并列分句与代词指代；because 原因从句；meet criteria for；grade 作动词表"评级"</div>
+        <div class="row tr"><b>译文：</b>作者用一个标准工具为自己的结论评定确定性，结果是：步行或慢跑为"低"，其余各项为"极低"——因为 218 项试验中只有一项达到了 Cochrane 的"低偏倚风险"标准。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A drug trial can hand one group a sugar pill and keep both patients and assessors in the dark, whereas nobody can be blinded to the act of jogging, and volunteers for such studies almost always arrive hoping it will work.</div>
+        <div class="row"><b>主干：</b>A drug trial can hand ... and keep ..., whereas nobody can be blinded ..., and volunteers ... arrive ...（whereas 连接前后两个对比分句）</div>
+        <div class="row"><b>双宾结构：</b>hand one group a sugar pill（hand sb sth 给某人某物；one group 为"一组人"）</div>
+        <div class="row"><b>对比连词：</b>whereas"而、然而"，用于引出与前半句形成结构对照的事实，比 but 更书面</div>
+        <div class="row"><b>分词作伴随状语：</b>hoping it will work（说明 volunteers 到来时的心理状态；it 指"运动这件事"）</div>
+        <div class="row"><b>考点：</b>hand sb sth 双宾；keep sb in the dark；whereas 对比；be blinded to；现在分词作伴随状语</div>
+        <div class="row tr"><b>译文：</b>药物试验可以给一组人糖片，让病人和评估者都蒙在鼓里；可是没有人能对"自己在慢跑"这件事设盲，而报名参加这类研究的人，几乎都抱着"它会有效"的期待而来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Nor is it obvious what a fair comparison would look like, since the control condition in many of these trials was ordinary care rather than an equally demanding alternative.</div>
+        <div class="row"><b>主干：</b>Nor is it obvious what a fair comparison would look like（nor 置于句首引起完全倒装，形式主语 it，真正主语是 what 从句）</div>
+        <div class="row"><b>倒装还原：</b>It is not obvious either what ... would look like（"……也并不显然"）</div>
+        <div class="row"><b>原因状语从句：</b>since the control condition ... was ordinary care rather than an equally demanding alternative（since 表"因为"，语气比 because 轻，常引出双方已知的理由）</div>
+        <div class="row"><b>rather than：</b>连接两个名词短语，表示"而不是"，此处对比"常规照护"与"同等费力的替代活动"——点出对照设计的先天不足</div>
+        <div class="row"><b>考点：</b>nor 引起的倒装；形式主语 it + 主语从句；since 原因从句；rather than 的平行结构</div>
+        <div class="row tr"><b>译文：</b>公平的对照究竟该是什么样子，也并不显然——因为这些试验中的对照条件往往是常规照护，而不是一种同样费力的替代活动。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">“多运动”大概是医生能说出的最便宜的一句话。它不需要排队、不需要付费、副作用极小，而且过去十年里，越来越多的试验确实显示运动能缓解抑郁。问题是，便宜的东西往往没人认真追究：临床指南推荐了运动，却从未说清该开什么、多久一次、强度多大，于是医生只能临场发挥，病人只能靠猜。2024 年 2 月，《英国医学杂志》刊出昆士兰大学心理学家迈克尔·诺特尔与十七位同事的网络荟萃分析，试图把这个空白填上。他们汇总了 218 项随机试验、495 个治疗组、14,170 名达到重度抑郁临床阈值的被试，把每一种运动形式与心理治疗、抗抑郁药、常规照护和安慰剂片放进同一张对照表里称量。结果相当漂亮：步行或慢跑居首，效应量 −0.62；瑜伽 −0.55；力量训练 −0.49；混合有氧 −0.43；太极或气功 −0.42。更值得注意的是排名背后的规律——几乎在每一种运动形式里，收益都随处方强度上升，身体像是在回应一个剂量。按字面解读，运动已经站到了与药物、心理治疗同一水平的位置上；而瑜伽与力量训练还额外赢在"留得住人"，因为一种有一半参与者中途放弃的疗法，能起的作用非常有限。文章到这里本可以收尾，但作者自己踩了刹车：他们用标准工具给结论评定确定性，步行或慢跑只得到"低"，其余各项"极低"，原因是 218 项试验中只有一项达到 Cochrane 的"低偏倚风险"标准。这并不是因为研究者马虎，而是结构性的困难。药物试验可以给一组人糖片，让病人和评估者都蒙在鼓里；可是没有人能对"自己在慢跑"这件事设盲，而报名参加运动研究的人，几乎都是抱着"它会有效"的期待来的。这种期待会抬高所有自报的情绪评分，而治疗又恰恰是病人必须亲自去做、而不是吞下去的事，因此很难把它剔除干净。公平的对照同样难找：这些试验里的对照条件往往是常规照护，而不是一种同等费力的替代活动。换言之，这个领域所称的"证据"，是一摞在现有条件下别无选择、只能如此设计的试验。所以正确的结论既不是欢呼，也不是冷嘲。运动看来确实是一种真实的抑郁症疗法，只是它的剂量仍属未知，机制与最优组合也待厘清。对病人最诚实的说法，是介于两者之间的那一句：值得一试，而它究竟有多大用处，我们仍在学习。对政策制定者而言，这也提示了一件事——把一句免费的建议写进指南很容易，把它的证据等级提上去，却需要一种连"设盲"都做不到的研究设计，而后者才是真正昂贵的工作。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 4 段说"效果随强度上升，仿佛身体在回应一个剂量"，第 6 段却说整体证据确定性只有"低"甚至"极低"。这两句话矛盾吗？请从"效应量"与"证据确定性"分别衡量什么出发，说明为什么一项研究可以同时给出漂亮的数字和很弱的结论。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"None of this makes the advice wrong; it makes it unfinished."</span>（用"否定 + 分号 + 递进改判"的句式，把一个流行判断从"对错"层面挪到"完成度"层面），就"早起"或"多读书"这类流行建议写一句你自己的改判句。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现象：一句“多运动”，免费、好执行，据说还真的有效</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 空白：指南都推荐运动，却说不清开什么、多频繁、多强</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 设计：218 项试验 / 495 组 / 14,170 人，逐一对照称量</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 排序：步行−0.62 &gt; 瑜伽 &gt; 力量 &gt; 有氧 &gt; 太极；随强度上升</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 解读：与药疗、心理治疗同档；易坚持者才留得住疗效</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 转折：作者自评确定性只有“低 / 极低”，218 项仅 1 项低偏倚</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 困境：药能设盲，跑步不能；报名者本就带着期待而来</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 替代解释：期待抬高自报结果；公平对照难寻，只能如此设计</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：建议不是错的，只是没写完；剂量未知，结论在中间</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「日常建议 → 指南空白 → 研究设计 → 结果排序 → 解读 → 自我降级 → 盲法困境 → 替代解释 → 收束」递进展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：The BMJ《Effect of exercise for depression: systematic review and network meta-analysis of randomised controlled trials》（Noetel M. 等；2024-02-14，384:e075847；DOI 10.1136/bmj-2023-075847）公开摘要与结论整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

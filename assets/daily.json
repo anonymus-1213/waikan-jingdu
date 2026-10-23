@@ -1,327 +1,340 @@
 {
- "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
- "sentences": [
-  {
-   "date": "2026-10-22",
-   "en": "What the study ultimately suggests is that emotion is less a highlighter than a conductor, and that memory is less a filing cabinet than an orchestra that sounds different every time it plays.",
-   "zh": "这项研究最终提示的是：情绪更像一位指挥，而不是一支高亮笔；记忆更像一支每次演奏都略有不同的乐队，而不是一只档案柜。",
-   "src": "外刊精读 · 情绪与记忆的神经机制（2026-10-22）",
-   "key": "conductor",
-   "keyZh": "指挥（乐队指挥）；也指导体、列车员",
-   "tip": "less A than B 是「与其说是 A，不如说是 B」的对照句式；本句连用两次，把抽象机制换成「高亮笔 vs 指挥」「档案柜 vs 乐队」两组具体物象。写作时可借「双比喻对照」把观点形象化。",
-   "tags": [
-    "认知科学",
-    "心理学"
-   ]
-  },
-  {
-   "date": "2026-10-20",
-   "en": "It asks courts to weigh what was said rather than how smoothly it was delivered, and to admit that telling a nervous man from a guilty one is not a sense the law possesses.",
-   "zh": "它要求法庭去权衡“说了什么”，而不是“说得多顺”；并要求法庭承认：分辨一个紧张的人与一个有罪的人，并不是法律真正拥有的一种感官。",
-   "src": "外刊精读 · 法庭把“不像”读成了“有罪”（2026-10-20）",
-   "key": "telling a nervous man from a guilty one",
-   "keyZh": "分辨紧张的人与有罪的人（tell A from B：把 A 与 B 区分开）",
-   "tip": "tell 在这里是熟词僻义：常见义是“告诉、讲述”，但 tell A from B 意为“分辨、区分”，常与 can/cannot 连用（can't tell them apart）。weigh 同样是熟词僻义，本义“称重”，此处指“权衡、掂量（证据）”。rather than 连接两个对立的评价标准，构成“实质 vs 形式”的对照；admit that 后接宾语从句，语气上是一种不情愿的让步。",
-   "tags": [
-    "司法心理",
-    "可信度",
-    "神经多样性"
-   ]
-  },
-  {
-   "date": "2026-10-18",
-   "en": "The study's contribution is to move the question from how much the world consumes to how well that consumption fits the disease it is meant to treat.",
-   "zh": "这项研究的贡献，是把问题从“世界用了多少”改写为“这些用量与它要治的病有多匹配”。",
-   "src": "外刊精读 · 抗生素的“用多”与“用不上”（2026-10-18）",
-   "key": "fits the disease",
-   "keyZh": "与要治的病相匹配（fit 此处为“契合、对得上”，不是“合身”）",
-   "tip": "move the question from A to B 是学术写作里“重新定义议题”的常用句式：不直接反驳旧问题，而是把它换成另一个更准确的问题。fit 在这里是熟词僻义——常见义“（衣服）合身、合适”，此处指“用药与病情对得上”。be meant to do 表示“本来是为了做”，暗含“本意与结果”的对照。",
-   "tags": [
-    "公共卫生",
-    "抗生素耐药",
-    "全球健康"
-   ]
-  },
-  {
-   "date": "2026-10-17",
-   "en": "Solar power's next leap may come less from discovering new crystals than from learning to seal the ones we already have.",
-   "zh": "太阳能的下一次跃迁，或许更多来自学会把我们已经拥有的晶体封好，而不是去发现新的晶体。",
-   "src": "外刊精读 · 给太阳能电池镀一层“特氟龙”（2026-10-17）",
-   "key": "seal",
-   "keyZh": "封住；密封（此处指把材料层与层之间的界面封好）",
-   "tip": "本句用 come less from A than from B（与其说来自 A，不如说来自 B）做取舍式对比：A 是“发现新晶体”，B 是“封好已有的晶体”。seal 在这里不只是“密封容器”，而是工程意义上的“把界面封住、阻断离子迁移与外界侵蚀”。注意 the ones 是代词，回指前面的 crystals；already have 作后置定语，暗含“不必另寻新材料”的态度。",
-   "tags": [
-    "能源",
-    "材料科学",
-    "科技"
-   ]
-  },
-  {
-   "date": "2026-10-16",
-   "en": "Feeding a growing population may depend less on growing more food than on growing better food.",
-   "zh": "要养活不断增长的人口，与其说取决于种出更多的粮食，不如说取决于种出更好的粮食。",
-   "src": "外刊精读 · 餐桌上的“隐性饥饿”（2026-10-16）",
-   "key": "growing better food",
-   "keyZh": "种出更好的粮食",
-   "tip": "depend less on A than on B 意为「与其说取决于 A，不如说取决于 B」，是本句的骨架；growing more food 与 growing better food 构成一组对照——前者求「量」，后者求「质」，恰好点出全文主旨：真正的问题不只是种得够不够多，而是每一粒粮食里留下了多少营养。",
-   "tags": [
-    "农业",
-    "粮食安全",
-    "植物科学"
-   ]
-  },
-  {
-   "date": "2026-10-15",
-   "en": "Canopy targets are easiest to meet on average and hardest to meet where they matter, so the useful measure is not a city-wide percentage but the distribution of shade across the streets where elderly and poor residents actually live.",
-   "zh": "树冠目标在平均值上最容易达成，在真正要紧的地方却最难达成；因此真正有用的指标不是全市的百分比，而是树荫在老人与穷人真正居住的那些街道上的分布。",
-   "src": "外刊精读 · 一条街的树荫（2026-10-15）",
-   "key": "where they matter",
-   "keyZh": "在真正要紧的地方",
-   "tip": "matter 在此是动词「要紧、重要」，不是名词「事情」。全句用 not A but B 把评价口径从「平均」换成「分布」，是本篇的论点句。",
-   "tags": [
-    "城市生态",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-10-14",
-   "en": "PFAS exist because industry wanted molecules that would not break down, and the properties that make them valuable are inseparable from the properties that make them dangerous.",
-   "zh": "PFAS 之所以存在，是因为工业界想要不会分解的分子；而让它们有价值的性质，与让它们危险的性质本就无法切割。",
-   "src": "外刊精读 · 永久化学品（2026-10-14）",
-   "key": "inseparable from",
-   "keyZh": "与……不可分割",
-   "tip": "break down 在此是「分解」，不是「出故障」。两个 the properties that... 结构并列，句子靠 inseparable 一词把「有用」与「有害」焊死在一起。",
-   "tags": [
-    "环境化学",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-10-13",
-   "en": "Each step up in code size roughly halved the logical error rate, so that more hardware bought less noise rather than more, which is the exact reverse of how every conventional computer behaves.",
-   "zh": "编码规模每提高一档，逻辑错误率就大致减半；于是更多硬件换来的是更少噪声而不是更多——这与每一台传统计算机的表现恰好相反。",
-   "src": "外刊精读 · 量子纠错（2026-10-13）",
-   "key": "the exact reverse of",
-   "keyZh": "与……恰好相反",
-   "tip": "step up 是「提高一档」；bought 在此是 buy 的比喻用法「换来」。rather than 后接对比项，the exact reverse of 则把这种反差推到「恰好相反」。",
-   "tags": [
-    "物理",
-    "量子计算"
-   ]
-  },
-  {
-   "date": "2026-10-12",
-   "en": "We may speak in trees on paper, but in the mind we seem to build with bricks.",
-   "zh": "纸面上，我们也许在“说一棵树”；但在心智里，我们更像是在用一块块现成的砖，搭起一句句话。",
-   "src": "外刊精读 · 语言不是一棵树（2026-10-12）",
-   "key": "build with bricks",
-   "keyZh": "用砖块搭建（比喻由现成的小块拼装）",
-   "tip": "speak in trees 与 build with bricks 是一组对照比喻：前者指「按语法层级（树状结构）组句」的理论图景，后者指「用记忆中熟悉的词块逐块拼装」的实际情况。介词 in 与 with 都表「用……的方式/材料」。全句用 may ... but ... 构成让步转折，点出全文主旨：语言也许比我们以为的更「扁平」。",
-   "tags": [
-    "语言学",
-    "认知科学",
-    "心理科学"
-   ]
-  },
-  {
-   "date": "2026-10-11",
-   "en": "The broader lesson is that time, deliberately managed, can be treated as a strategic resource rather than a fixed cost, and that rest and performance need not be rivals.",
-   "zh": "更广义的教训是：时间若被有意识地加以管理，可以被当作一种战略资源，而不是一笔固定成本；休息与绩效也未必是彼此对立的两方。",
-   "src": "外刊精读 · 四天工作制与员工福祉（2026-10-11）",
-   "key": "rivals",
-   "keyZh": "对手；对立的两方（形容词 rival 意为竞争的）",
-   "tip": "rivals 在此作名词，本义是「对手、竞争者」，此处引申为「彼此对立、非此即彼的两方」——need not be rivals 即「未必是互相对立的」。deliberately managed 是过去分词短语作后置定语，修饰 time，意为「被有意识地管理的」；rather than a fixed cost 则构成对比。全句主干为 The lesson is that ... and that ...，由两个 that 引导的并列表语从句共同说明「教训」的内容，句式工整，适合背诵。",
-   "tags": [
-    "劳动",
-    "工作制度",
-    "组织行为学"
-   ]
-  },
-  {
-   "date": "2026-10-10",
-   "en": "For poorly instrumented explosive volcanoes, where a single sensor may be the only realistic option, such a tool could buy the hours needed to evacuate.",
-   "zh": "对于那些监测薄弱的爆炸式火山——在那里，一台传感器也许就是唯一现实的选择——这样的工具能够争取到疏散所需的数小时。",
-   "src": "Nature Communications · IPGP / GFZ Potsdam",
-   "key": "buy",
-   "keyZh": "争取到；换来（熟词僻义：购买）",
-   "tip": "buy 的常见义是“购买”，但在书面语中常引申为“（以某种代价）换取、争取到”，宾语多为抽象名词：buy time（争取时间）、buy influence（换取影响力）、buy the hours needed to evacuate（争得疏散所需的数小时）。这句的妙处在于：一台仪器并不能阻止喷发，它唯一能“买”到的，是时间——而时间恰恰是防灾中最昂贵的东西。注意别与 buy into（接受、相信某观念）混淆。",
-   "tags": [
-    "地球科学",
-    "火山",
-    "自然灾害"
-   ]
-  },
-  {
-   "date": "2026-10-09",
-   "en": "A sweeping new analysis, however, argues that the body keeps several distinct clocks, and that they tick at very different speeds in men and women.",
-   "zh": "然而一项涵盖广泛的新分析认为，人体拥有好几座彼此不同的「时钟」，而且它们在男女身上的走速大不一样。",
-   "src": "外刊精读 · 衰老时钟与男女差异（2026-10-09）",
-   "key": "distinct",
-   "keyZh": "截然不同的；各自独立的",
-   "tip": "distinct 意为「截然不同的、清楚可辨的」，此处修饰 clocks，强调人体并非只有一座时钟，而是多座互不相同的时钟。sweeping 意为「涵盖广泛的、影响面大的」，常用来形容覆盖面很广的研究或改革；tick 在此以「钟表走动」比喻衰老的速度。",
-   "tags": [
-    "人口",
-    "衰老",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-10-08",
-   "en": "A tightly controlled new experiment suggests that this tidy equation leaves out a variable that may matter enormously: how heavily the food itself has been processed.",
-   "zh": "一项控制极严的新实验提示，这个整洁的等式漏掉了一个或许关系重大的变量——食物本身被加工的程度。",
-   "src": "外刊精读 · 超加工食品与身体反应（2026-10-08）",
-   "key": "matter",
-   "keyZh": "要紧；有重大影响（熟词僻义）",
-   "tip": "matter 在此作动词，意为「要紧、关系重大」，而非名词「事情、物质」——典型的熟词僻义。leaves out 意为「遗漏、略去」；冒号之后是对 variable 的解释说明，即「加工的程度」。",
-   "tags": [
-    "营养",
-    "代谢",
-    "神经科学"
-   ]
-  },
-  {
-   "date": "2026-10-06",
-   "en": "A society that lets its most capable citizens rise, whatever family they were born into, is not merely a fairer place to live but also, the data suggest, a more inventive one.",
-   "zh": "一个能让最有能力的公民无论出身何种家庭都能向上流动的社会，不仅更公平宜居；数据表明，它也更具创造力。",
-   "src": "外刊精读 · 社会流动与创新（2026-10-06）",
-   "key": "whatever family they were born into",
-   "keyZh": "无论出生于何种家庭（让步状语从句，插入主谓之间）",
-   "tip": "whatever 引导让步状语从句，插在主句主语与谓语之间，起「无论怎样都成立」的强调作用；not merely ... but also ... 构成递进并列。",
-   "tags": [
-    "经济",
-    "社会流动"
-   ]
-  },
-  {
-   "date": "2026-10-05",
-   "en": "Brain aging doesn't suddenly begin when we get older, but the biological signals may be detectable decades earlier.",
-   "zh": "大脑老化并非在我们变老的那一刻才突然开始；它的生物学信号，也许早在几十年前就已经可以被察觉。",
-   "src": "eBioMedicine · UCLA Health",
-   "key": "detectable",
-   "keyZh": "可察觉的；可检测到的",
-   "tip": "detectable 由动词 detect（察觉、检测）加 -able 构成，表示'能够被察觉的'。注意它与 sensible（可感知的）、perceptible 近义，但 detectable 更强调借助仪器或方法'检测得出'，常用于科研语境——如 detectable levels（可检测到的水平）、no detectable trace（检测不到的痕迹）。这里是'熟词僻义'的反向提醒：detect 最常见的搭配是 detect a problem / detect a change，书面语中却常用来指机器、实验对微弱信号的捕捉。",
-   "tags": [
-    "健康",
-    "神经科学",
-    "微生物组"
-   ]
-  },
-  {
-   "date": "2026-10-04",
-   "en": "Beneath a thin layer of vegetation, the Arctic holds one of the planet's largest stores of carbon — frozen, quiet, and, until recently, safely sealed away.",
-   "zh": "在薄薄一层植被之下，北极封存着地球上最大的碳库之一——它冻结着、静默着，直到不久之前，还被安稳地锁在其中。",
-   "src": "外刊精读 · 冻土苏醒（2026-10-04）",
-   "key": "seal away",
-   "keyZh": "封存；把…锁藏起来",
-   "tip": "「stores of carbon」中 store 是熟词僻义（n. 储存量），不是「商店」；hold 在此意为「容纳、拥有」。",
-   "tags": [
-    "气候",
-    "生态"
-   ]
-  },
-  {
-   "date": "2026-10-03",
-   "en": "A study reconciling 50 satellite estimates finds the two ice sheets lost 11,309 billion tonnes of ice between 1979 and 2023 — a loss that has lifted global sea level by about three centimetres.",
-   "zh": "一项把约 50 份卫星估测「对账」的研究发现，1979 至 2023 年间两大冰盖共流失 11,309 亿吨冰，使全球海平面上升约三厘米。",
-   "src": "外刊精读 · 格陵兰与南极冰盖（2026-10-03）",
-   "key": "reconcile",
-   "keyZh": "使一致；对账（熟词僻义）",
-   "tip": "reconcile 常见义为「和解」，此处指把相互不一致的数据「调和、对账」成一个统一记录。",
-   "tags": [
-    "气候",
-    "卫星观测"
-   ]
-  },
-  {
-   "date": "2026-10-02",
-   "en": "Wheat, barley, cattle and sheep crossed Eurasia into northwest China roughly 4,000 years ago — yet left no detectable trace of the western farmers who first domesticated them.",
-   "zh": "约四千年前，小麦、大麦、牛与羊跨越欧亚大陆传入中国西北——却没有留下任何可检测到的、最早驯化它们的西方农耕人群的痕迹。",
-   "src": "外刊精读 · 麦子西来，人未东迁（2026-10-02）",
-   "key": "detectable",
-   "keyZh": "可检测到的；可察觉的",
-   "tip": "破折号后的 yet 是「然而」，构成强烈的对比：作物来了，人却没来。leave no trace of 是固定表达「不留痕迹」。",
-   "tags": [
-    "考古",
-    "古基因组"
-   ]
-  },
-  {
-   "date": "2026-10-01",
-   "en": "The brain does not simply file memories away while we sleep; it replays them, in fast, rhythmic bursts, deciding which to keep and which to let fade.",
-   "zh": "大脑在我们睡眠时并非只是把记忆归档了事——它会以快速而有节律的爆发式活动重放这些记忆，决定哪些该留下、哪些任其消褪。",
-   "src": "外刊精读 · 记忆与睡眠（2026-10-01）",
-   "key": "file away",
-   "keyZh": "把…归档保存",
-   "tip": "file away 字面是「归档」，此处与 replays（重放）形成对照，强调记忆不是被动存放而是主动加工。",
-   "tags": [
-    "神经科学",
-    "学习"
-   ]
-  },
-  {
-   "date": "2026-09-30",
-   "en": "For a generation raised on glowing screens, the paper book can look like a technology whose day is done.",
-   "zh": "对在屏幕前长大的一代而言，纸质书看起来可能像是一项早已过时的技术。",
-   "src": "外刊精读 · 屏幕之困（2026-09-29）",
-   "key": "whose day is done",
-   "keyZh": "…的时代已经结束",
-   "tip": "此句以「过时之物」的成见开篇，随后用 Yet 转折引出研究结论，是议论文「先立靶、再反驳」的经典开头。",
-   "tags": [
-    "教育",
-    "认知科学"
-   ]
-  },
-  {
-   "date": "2026-09-29",
-   "en": "What looks like a simple choice — paper or screen — turns out to shape not only what we understand but how deeply we think.",
-   "zh": "看似简单的选择——读纸还是读屏——原来不仅影响我们理解了什么，更影响我们思考得有多深。",
-   "src": "外刊精读 · 阅读的媒介（2026-09-29）",
-   "key": "turn out to",
-   "keyZh": "结果是；原来是",
-   "tip": "not only A but B 结构中，B 往往是作者真正想强调的重点（此处为 how deeply we think）。",
-   "tags": [
-    "教育",
-    "认知科学"
-   ]
-  },
-  {
-   "date": "2026-09-28",
-   "en": "Cities that plant trees for shade today are, in effect, writing a public-health policy for the century to come.",
-   "zh": "今天为遮荫而植树的城市，实际上是在为未来一百年拟定一份公共卫生政策。",
-   "src": "外刊精读 · 城市与热浪（2026-09-28）",
-   "key": "in effect",
-   "keyZh": "实际上；事实上",
-   "tip": "in effect 是高频插入语，用「换句话说」的语气把具体行为提升到政策高度。",
-   "tags": [
-    "城市",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-09-27",
-   "en": "The most striking finding is not that the machines can write, but that readers so often cannot tell — and, worse, do not much care.",
-   "zh": "最引人注目的发现不是机器会写作，而是读者常常分辨不出——更糟的是，他们并不太在意。",
-   "src": "外刊精读 · 人工智能与写作（2026-09-27）",
-   "key": "tell",
-   "keyZh": "分辨；辨别（熟词僻义）",
-   "tip": "tell 在此不是「告诉」而是「分辨」（tell A from B）。破折号后递进加重了批评语气。",
-   "tags": [
-    "科技",
-    "人工智能"
-   ]
-  },
-  {
-   "date": "2026-10-21",
-   "en": "A toll can be shown to work; it cannot be shown to work miracles, and the distance between those claims is what measurement exists to mark.",
-   "zh": "收费可以被证明有效；它不能被证明有奇效，而这两种说法之间的距离，正是测量存在的意义。",
-   "src": "外刊精读 · 城市政策与拥堵收费（2026-10-21）",
-   "key": "mark",
-   "keyZh": "标示；划出（界线）",
-   "tip": "两个分句以分号对照「work / work miracles」，最后用 what measurement exists to mark 收束：mark 在此不是「做记号」，而是「标定、划出界线」。写作时可套用「A can be shown to X; it cannot be shown to Y」的让步句式。",
-   "tags": [
-    "城市",
-    "公共政策"
-   ]
-  }
- ]
+  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
+  "sentences": [
+    {
+      "date": "2026-10-23",
+      "en": "None of this makes the advice wrong; it makes it unfinished.",
+      "zh": "这一切并不能说明那句建议是错的，只能说明它还没写完。",
+      "src": "外刊精读 · 运动处方的证据等级（2026-10-23）",
+      "key": "unfinished",
+      "keyZh": "未完成的；还没写完的",
+      "tip": "「None of this makes A wrong; it makes A unfinished.」先用否定替对方卸下“对错”之争，再用分号把判断改到“完成度”维度——这是学术写作里极省力的一种让步式反驳。仿写：None of this makes the plan wrong; it makes it untested.",
+      "tags": [
+        "循证医学",
+        "心理健康"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "en": "What the study ultimately suggests is that emotion is less a highlighter than a conductor, and that memory is less a filing cabinet than an orchestra that sounds different every time it plays.",
+      "zh": "这项研究最终提示的是：情绪更像一位指挥，而不是一支高亮笔；记忆更像一支每次演奏都略有不同的乐队，而不是一只档案柜。",
+      "src": "外刊精读 · 情绪与记忆的神经机制（2026-10-22）",
+      "key": "conductor",
+      "keyZh": "指挥（乐队指挥）；也指导体、列车员",
+      "tip": "less A than B 是「与其说是 A，不如说是 B」的对照句式；本句连用两次，把抽象机制换成「高亮笔 vs 指挥」「档案柜 vs 乐队」两组具体物象。写作时可借「双比喻对照」把观点形象化。",
+      "tags": [
+        "认知科学",
+        "心理学"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "en": "It asks courts to weigh what was said rather than how smoothly it was delivered, and to admit that telling a nervous man from a guilty one is not a sense the law possesses.",
+      "zh": "它要求法庭去权衡“说了什么”，而不是“说得多顺”；并要求法庭承认：分辨一个紧张的人与一个有罪的人，并不是法律真正拥有的一种感官。",
+      "src": "外刊精读 · 法庭把“不像”读成了“有罪”（2026-10-20）",
+      "key": "telling a nervous man from a guilty one",
+      "keyZh": "分辨紧张的人与有罪的人（tell A from B：把 A 与 B 区分开）",
+      "tip": "tell 在这里是熟词僻义：常见义是“告诉、讲述”，但 tell A from B 意为“分辨、区分”，常与 can/cannot 连用（can't tell them apart）。weigh 同样是熟词僻义，本义“称重”，此处指“权衡、掂量（证据）”。rather than 连接两个对立的评价标准，构成“实质 vs 形式”的对照；admit that 后接宾语从句，语气上是一种不情愿的让步。",
+      "tags": [
+        "司法心理",
+        "可信度",
+        "神经多样性"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "en": "The study's contribution is to move the question from how much the world consumes to how well that consumption fits the disease it is meant to treat.",
+      "zh": "这项研究的贡献，是把问题从“世界用了多少”改写为“这些用量与它要治的病有多匹配”。",
+      "src": "外刊精读 · 抗生素的“用多”与“用不上”（2026-10-18）",
+      "key": "fits the disease",
+      "keyZh": "与要治的病相匹配（fit 此处为“契合、对得上”，不是“合身”）",
+      "tip": "move the question from A to B 是学术写作里“重新定义议题”的常用句式：不直接反驳旧问题，而是把它换成另一个更准确的问题。fit 在这里是熟词僻义——常见义“（衣服）合身、合适”，此处指“用药与病情对得上”。be meant to do 表示“本来是为了做”，暗含“本意与结果”的对照。",
+      "tags": [
+        "公共卫生",
+        "抗生素耐药",
+        "全球健康"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "en": "Solar power's next leap may come less from discovering new crystals than from learning to seal the ones we already have.",
+      "zh": "太阳能的下一次跃迁，或许更多来自学会把我们已经拥有的晶体封好，而不是去发现新的晶体。",
+      "src": "外刊精读 · 给太阳能电池镀一层“特氟龙”（2026-10-17）",
+      "key": "seal",
+      "keyZh": "封住；密封（此处指把材料层与层之间的界面封好）",
+      "tip": "本句用 come less from A than from B（与其说来自 A，不如说来自 B）做取舍式对比：A 是“发现新晶体”，B 是“封好已有的晶体”。seal 在这里不只是“密封容器”，而是工程意义上的“把界面封住、阻断离子迁移与外界侵蚀”。注意 the ones 是代词，回指前面的 crystals；already have 作后置定语，暗含“不必另寻新材料”的态度。",
+      "tags": [
+        "能源",
+        "材料科学",
+        "科技"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "en": "Feeding a growing population may depend less on growing more food than on growing better food.",
+      "zh": "要养活不断增长的人口，与其说取决于种出更多的粮食，不如说取决于种出更好的粮食。",
+      "src": "外刊精读 · 餐桌上的“隐性饥饿”（2026-10-16）",
+      "key": "growing better food",
+      "keyZh": "种出更好的粮食",
+      "tip": "depend less on A than on B 意为「与其说取决于 A，不如说取决于 B」，是本句的骨架；growing more food 与 growing better food 构成一组对照——前者求「量」，后者求「质」，恰好点出全文主旨：真正的问题不只是种得够不够多，而是每一粒粮食里留下了多少营养。",
+      "tags": [
+        "农业",
+        "粮食安全",
+        "植物科学"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "en": "Canopy targets are easiest to meet on average and hardest to meet where they matter, so the useful measure is not a city-wide percentage but the distribution of shade across the streets where elderly and poor residents actually live.",
+      "zh": "树冠目标在平均值上最容易达成，在真正要紧的地方却最难达成；因此真正有用的指标不是全市的百分比，而是树荫在老人与穷人真正居住的那些街道上的分布。",
+      "src": "外刊精读 · 一条街的树荫（2026-10-15）",
+      "key": "where they matter",
+      "keyZh": "在真正要紧的地方",
+      "tip": "matter 在此是动词「要紧、重要」，不是名词「事情」。全句用 not A but B 把评价口径从「平均」换成「分布」，是本篇的论点句。",
+      "tags": [
+        "城市生态",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "en": "PFAS exist because industry wanted molecules that would not break down, and the properties that make them valuable are inseparable from the properties that make them dangerous.",
+      "zh": "PFAS 之所以存在，是因为工业界想要不会分解的分子；而让它们有价值的性质，与让它们危险的性质本就无法切割。",
+      "src": "外刊精读 · 永久化学品（2026-10-14）",
+      "key": "inseparable from",
+      "keyZh": "与……不可分割",
+      "tip": "break down 在此是「分解」，不是「出故障」。两个 the properties that... 结构并列，句子靠 inseparable 一词把「有用」与「有害」焊死在一起。",
+      "tags": [
+        "环境化学",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "en": "Each step up in code size roughly halved the logical error rate, so that more hardware bought less noise rather than more, which is the exact reverse of how every conventional computer behaves.",
+      "zh": "编码规模每提高一档，逻辑错误率就大致减半；于是更多硬件换来的是更少噪声而不是更多——这与每一台传统计算机的表现恰好相反。",
+      "src": "外刊精读 · 量子纠错（2026-10-13）",
+      "key": "the exact reverse of",
+      "keyZh": "与……恰好相反",
+      "tip": "step up 是「提高一档」；bought 在此是 buy 的比喻用法「换来」。rather than 后接对比项，the exact reverse of 则把这种反差推到「恰好相反」。",
+      "tags": [
+        "物理",
+        "量子计算"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "en": "We may speak in trees on paper, but in the mind we seem to build with bricks.",
+      "zh": "纸面上，我们也许在“说一棵树”；但在心智里，我们更像是在用一块块现成的砖，搭起一句句话。",
+      "src": "外刊精读 · 语言不是一棵树（2026-10-12）",
+      "key": "build with bricks",
+      "keyZh": "用砖块搭建（比喻由现成的小块拼装）",
+      "tip": "speak in trees 与 build with bricks 是一组对照比喻：前者指「按语法层级（树状结构）组句」的理论图景，后者指「用记忆中熟悉的词块逐块拼装」的实际情况。介词 in 与 with 都表「用……的方式/材料」。全句用 may ... but ... 构成让步转折，点出全文主旨：语言也许比我们以为的更「扁平」。",
+      "tags": [
+        "语言学",
+        "认知科学",
+        "心理科学"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "en": "The broader lesson is that time, deliberately managed, can be treated as a strategic resource rather than a fixed cost, and that rest and performance need not be rivals.",
+      "zh": "更广义的教训是：时间若被有意识地加以管理，可以被当作一种战略资源，而不是一笔固定成本；休息与绩效也未必是彼此对立的两方。",
+      "src": "外刊精读 · 四天工作制与员工福祉（2026-10-11）",
+      "key": "rivals",
+      "keyZh": "对手；对立的两方（形容词 rival 意为竞争的）",
+      "tip": "rivals 在此作名词，本义是「对手、竞争者」，此处引申为「彼此对立、非此即彼的两方」——need not be rivals 即「未必是互相对立的」。deliberately managed 是过去分词短语作后置定语，修饰 time，意为「被有意识地管理的」；rather than a fixed cost 则构成对比。全句主干为 The lesson is that ... and that ...，由两个 that 引导的并列表语从句共同说明「教训」的内容，句式工整，适合背诵。",
+      "tags": [
+        "劳动",
+        "工作制度",
+        "组织行为学"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "en": "For poorly instrumented explosive volcanoes, where a single sensor may be the only realistic option, such a tool could buy the hours needed to evacuate.",
+      "zh": "对于那些监测薄弱的爆炸式火山——在那里，一台传感器也许就是唯一现实的选择——这样的工具能够争取到疏散所需的数小时。",
+      "src": "Nature Communications · IPGP / GFZ Potsdam",
+      "key": "buy",
+      "keyZh": "争取到；换来（熟词僻义：购买）",
+      "tip": "buy 的常见义是“购买”，但在书面语中常引申为“（以某种代价）换取、争取到”，宾语多为抽象名词：buy time（争取时间）、buy influence（换取影响力）、buy the hours needed to evacuate（争得疏散所需的数小时）。这句的妙处在于：一台仪器并不能阻止喷发，它唯一能“买”到的，是时间——而时间恰恰是防灾中最昂贵的东西。注意别与 buy into（接受、相信某观念）混淆。",
+      "tags": [
+        "地球科学",
+        "火山",
+        "自然灾害"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "en": "A sweeping new analysis, however, argues that the body keeps several distinct clocks, and that they tick at very different speeds in men and women.",
+      "zh": "然而一项涵盖广泛的新分析认为，人体拥有好几座彼此不同的「时钟」，而且它们在男女身上的走速大不一样。",
+      "src": "外刊精读 · 衰老时钟与男女差异（2026-10-09）",
+      "key": "distinct",
+      "keyZh": "截然不同的；各自独立的",
+      "tip": "distinct 意为「截然不同的、清楚可辨的」，此处修饰 clocks，强调人体并非只有一座时钟，而是多座互不相同的时钟。sweeping 意为「涵盖广泛的、影响面大的」，常用来形容覆盖面很广的研究或改革；tick 在此以「钟表走动」比喻衰老的速度。",
+      "tags": [
+        "人口",
+        "衰老",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "en": "A tightly controlled new experiment suggests that this tidy equation leaves out a variable that may matter enormously: how heavily the food itself has been processed.",
+      "zh": "一项控制极严的新实验提示，这个整洁的等式漏掉了一个或许关系重大的变量——食物本身被加工的程度。",
+      "src": "外刊精读 · 超加工食品与身体反应（2026-10-08）",
+      "key": "matter",
+      "keyZh": "要紧；有重大影响（熟词僻义）",
+      "tip": "matter 在此作动词，意为「要紧、关系重大」，而非名词「事情、物质」——典型的熟词僻义。leaves out 意为「遗漏、略去」；冒号之后是对 variable 的解释说明，即「加工的程度」。",
+      "tags": [
+        "营养",
+        "代谢",
+        "神经科学"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "en": "A society that lets its most capable citizens rise, whatever family they were born into, is not merely a fairer place to live but also, the data suggest, a more inventive one.",
+      "zh": "一个能让最有能力的公民无论出身何种家庭都能向上流动的社会，不仅更公平宜居；数据表明，它也更具创造力。",
+      "src": "外刊精读 · 社会流动与创新（2026-10-06）",
+      "key": "whatever family they were born into",
+      "keyZh": "无论出生于何种家庭（让步状语从句，插入主谓之间）",
+      "tip": "whatever 引导让步状语从句，插在主句主语与谓语之间，起「无论怎样都成立」的强调作用；not merely ... but also ... 构成递进并列。",
+      "tags": [
+        "经济",
+        "社会流动"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "en": "Brain aging doesn't suddenly begin when we get older, but the biological signals may be detectable decades earlier.",
+      "zh": "大脑老化并非在我们变老的那一刻才突然开始；它的生物学信号，也许早在几十年前就已经可以被察觉。",
+      "src": "eBioMedicine · UCLA Health",
+      "key": "detectable",
+      "keyZh": "可察觉的；可检测到的",
+      "tip": "detectable 由动词 detect（察觉、检测）加 -able 构成，表示'能够被察觉的'。注意它与 sensible（可感知的）、perceptible 近义，但 detectable 更强调借助仪器或方法'检测得出'，常用于科研语境——如 detectable levels（可检测到的水平）、no detectable trace（检测不到的痕迹）。这里是'熟词僻义'的反向提醒：detect 最常见的搭配是 detect a problem / detect a change，书面语中却常用来指机器、实验对微弱信号的捕捉。",
+      "tags": [
+        "健康",
+        "神经科学",
+        "微生物组"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "en": "Beneath a thin layer of vegetation, the Arctic holds one of the planet's largest stores of carbon — frozen, quiet, and, until recently, safely sealed away.",
+      "zh": "在薄薄一层植被之下，北极封存着地球上最大的碳库之一——它冻结着、静默着，直到不久之前，还被安稳地锁在其中。",
+      "src": "外刊精读 · 冻土苏醒（2026-10-04）",
+      "key": "seal away",
+      "keyZh": "封存；把…锁藏起来",
+      "tip": "「stores of carbon」中 store 是熟词僻义（n. 储存量），不是「商店」；hold 在此意为「容纳、拥有」。",
+      "tags": [
+        "气候",
+        "生态"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "en": "A study reconciling 50 satellite estimates finds the two ice sheets lost 11,309 billion tonnes of ice between 1979 and 2023 — a loss that has lifted global sea level by about three centimetres.",
+      "zh": "一项把约 50 份卫星估测「对账」的研究发现，1979 至 2023 年间两大冰盖共流失 11,309 亿吨冰，使全球海平面上升约三厘米。",
+      "src": "外刊精读 · 格陵兰与南极冰盖（2026-10-03）",
+      "key": "reconcile",
+      "keyZh": "使一致；对账（熟词僻义）",
+      "tip": "reconcile 常见义为「和解」，此处指把相互不一致的数据「调和、对账」成一个统一记录。",
+      "tags": [
+        "气候",
+        "卫星观测"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "en": "Wheat, barley, cattle and sheep crossed Eurasia into northwest China roughly 4,000 years ago — yet left no detectable trace of the western farmers who first domesticated them.",
+      "zh": "约四千年前，小麦、大麦、牛与羊跨越欧亚大陆传入中国西北——却没有留下任何可检测到的、最早驯化它们的西方农耕人群的痕迹。",
+      "src": "外刊精读 · 麦子西来，人未东迁（2026-10-02）",
+      "key": "detectable",
+      "keyZh": "可检测到的；可察觉的",
+      "tip": "破折号后的 yet 是「然而」，构成强烈的对比：作物来了，人却没来。leave no trace of 是固定表达「不留痕迹」。",
+      "tags": [
+        "考古",
+        "古基因组"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "en": "The brain does not simply file memories away while we sleep; it replays them, in fast, rhythmic bursts, deciding which to keep and which to let fade.",
+      "zh": "大脑在我们睡眠时并非只是把记忆归档了事——它会以快速而有节律的爆发式活动重放这些记忆，决定哪些该留下、哪些任其消褪。",
+      "src": "外刊精读 · 记忆与睡眠（2026-10-01）",
+      "key": "file away",
+      "keyZh": "把…归档保存",
+      "tip": "file away 字面是「归档」，此处与 replays（重放）形成对照，强调记忆不是被动存放而是主动加工。",
+      "tags": [
+        "神经科学",
+        "学习"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "en": "For a generation raised on glowing screens, the paper book can look like a technology whose day is done.",
+      "zh": "对在屏幕前长大的一代而言，纸质书看起来可能像是一项早已过时的技术。",
+      "src": "外刊精读 · 屏幕之困（2026-09-29）",
+      "key": "whose day is done",
+      "keyZh": "…的时代已经结束",
+      "tip": "此句以「过时之物」的成见开篇，随后用 Yet 转折引出研究结论，是议论文「先立靶、再反驳」的经典开头。",
+      "tags": [
+        "教育",
+        "认知科学"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "en": "What looks like a simple choice — paper or screen — turns out to shape not only what we understand but how deeply we think.",
+      "zh": "看似简单的选择——读纸还是读屏——原来不仅影响我们理解了什么，更影响我们思考得有多深。",
+      "src": "外刊精读 · 阅读的媒介（2026-09-29）",
+      "key": "turn out to",
+      "keyZh": "结果是；原来是",
+      "tip": "not only A but B 结构中，B 往往是作者真正想强调的重点（此处为 how deeply we think）。",
+      "tags": [
+        "教育",
+        "认知科学"
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "en": "Cities that plant trees for shade today are, in effect, writing a public-health policy for the century to come.",
+      "zh": "今天为遮荫而植树的城市，实际上是在为未来一百年拟定一份公共卫生政策。",
+      "src": "外刊精读 · 城市与热浪（2026-09-28）",
+      "key": "in effect",
+      "keyZh": "实际上；事实上",
+      "tip": "in effect 是高频插入语，用「换句话说」的语气把具体行为提升到政策高度。",
+      "tags": [
+        "城市",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-09-27",
+      "en": "The most striking finding is not that the machines can write, but that readers so often cannot tell — and, worse, do not much care.",
+      "zh": "最引人注目的发现不是机器会写作，而是读者常常分辨不出——更糟的是，他们并不太在意。",
+      "src": "外刊精读 · 人工智能与写作（2026-09-27）",
+      "key": "tell",
+      "keyZh": "分辨；辨别（熟词僻义）",
+      "tip": "tell 在此不是「告诉」而是「分辨」（tell A from B）。破折号后递进加重了批评语气。",
+      "tags": [
+        "科技",
+        "人工智能"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "en": "A toll can be shown to work; it cannot be shown to work miracles, and the distance between those claims is what measurement exists to mark.",
+      "zh": "收费可以被证明有效；它不能被证明有奇效，而这两种说法之间的距离，正是测量存在的意义。",
+      "src": "外刊精读 · 城市政策与拥堵收费（2026-10-21）",
+      "key": "mark",
+      "keyZh": "标示；划出（界线）",
+      "tip": "两个分句以分号对照「work / work miracles」，最后用 what measurement exists to mark 收束：mark 在此不是「做记号」，而是「标定、划出界线」。写作时可套用「A can be shown to X; it cannot be shown to Y」的让步句式。",
+      "tags": [
+        "城市",
+        "公共政策"
+      ]
+    }
+  ]
 }
