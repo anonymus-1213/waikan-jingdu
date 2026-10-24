@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 伤口好了，痛还在</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Pain Science · 人与自我 / 疼痛医学 / 神经科学 / 临床转化</div>
+  <h1>伤口好了，痛还在：一条“脊髓—脑—脊髓”回路如何把疼痛留在身体里</h1>
+  <div class="deck">A Stanford team traced a loop that runs from the spinal cord into the brain and back again, and found that switching off any single node of it erases lasting hypersensitivity while leaving ordinary protective pain untouched</div>
+  <div class="byline"><span><b>来源</b> Nature（2026 年 4 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-24</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-24.jpg" alt="清晨湿漉漉的街道上，一位穿深灰大衣的老年男子边走边按住后腰的实景照片（配图）">
+    <figcaption>配图：清晨刚下过雨的老街上，一位穿深灰大衣的男子停下脚步，一手按住后腰——那种伤已好、痛还在的姿势（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>扭伤的脚踝早就消肿了，组织也长回去了，可疼痛偏偏不肯走——这是医学里最难解释、也最难治的一类问题。长期以来，研究者知道“慢性化”的开关藏在脑干：延髓头端腹内侧区（RVM）里有一批投射到脊髓的神经元，它们能放大也能压低身体上报的信号。但一个关键环节始终空白：来自脚踝的损伤信号，究竟沿着哪条路爬上来，才终于抵达这些“下行”细胞？2026 年 4 月 1 日，斯坦福大学生物系王倩、陈晓科团队在《自然》（Nature）发表《Deconstruction of a spino-brain–spinal cord circuit that drives chronic pain》，用小鼠给出了答案：脊髓 → 丘脑腹后外侧核与丘脑后复合体 → 初级躯体感觉皮层 → 外侧上丘 → 携带 μ 阿片受体的 RVM 神经元 → 回到脊髓，一条完整的闭环。他们的实验设计出一个极干净的对照：在健康小鼠身上，关掉这条回路的任何一个节点，几乎不改变正常痛觉——该躲的针还是躲；而在神经损伤或炎症的模型里，关掉同一个节点，机械性痛觉过敏被抹掉，阈值回到正常。反过来也成立：在健康小鼠身上反复激活任意一个节点，就足以“安装”一段持久的痛觉过敏，而单次激活不行。这意味着慢性疼痛不是急性疼痛被调大了音量，而是一条大多时候闲置、被损伤“征召”之后自己响个不停的独立回路。本文按“临床困惑—已知与未知—研究登场—回路走向—健康对照—损伤模型—反向实验—细胞身份—旧说修正—收束”展开，并把三个熟词僻义（silence / recruit / fire）埋进论证里。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-24.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.405">A sprained ankle heals, the swelling goes down and the tissue knits back together, yet for millions of people the ache refuses to leave.</span> <span class="s" data-t="8.405" data-e="18.737">Medicine has long suspected that the stubborn half of <span class="kw" data-tip="adj. 慢性的；长期的（chronic pain 慢性疼痛；chronic disease 慢性病）">chronic</span> pain lives not in the injured limb but in a nervous system that keeps <span class="kw" data-tip="v. 反复排练；在心里默演（rehearsal 排练）">rehearsing</span> an injury long after the danger has passed.</span></span></div>
+      <p class="para-tr">扭伤的脚踝会痊愈，肿胀会消退，组织会重新长回去，可对数百万人来说，那份酸痛就是不肯离开。医学界早就怀疑，慢性疼痛中那“顽固的一半”并不住在受伤的肢体里，而住在一个危险早已过去、却仍在反复排练那次损伤的神经系统里。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.737" data-e="31.274">Two decades of work have pointed to a cluster of cells in the rostral ventromedial <span class="kw" data-tip="n. 髓质（延髓 medulla oblongata 的简称）">medulla</span>, a brainstem slab whose neurons project to the spinal cord and can either <span class="kw" data-tip="v. 抑制；减弱（damp 使潮湿、使沮丧）">dampen</span> or <span class="kw" data-tip="v. 放大；增强（amplification 放大）">amplify</span> what the body reports.</span> <span class="s" data-t="31.274" data-e="37.553">What nobody could establish was how a signal from an injured paw ever reached those descending cells.</span></span></div>
+      <p class="para-tr">二十年的研究把目光指向延髓头端腹内侧区（RVM）里的一群细胞——那是脑干上的一块组织，其神经元向下投射到脊髓，既能压低、也能放大身体上报的信号。可没人能说清：来自受伤爪子的一个信号，究竟是怎么抵达这些“下行”细胞的。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="37.553" data-e="51.447">A study published in Nature on 1 April 2026 by Qian Wang and Xiaoke Chen of Stanford University supplies one, having traced in mice a loop that leaves the spinal cord, climbs into the brain and returns.</span> <span class="s" data-t="51.447" data-e="64.0">It runs from the cord to two thalamic <span class="kw" data-tip="n. 中继站、中转环节（原义“接力赛；转播”，此处指信号的中转核团）">relays</span>, on to the primary somatosensory cortex, then to the lateral superior colliculus, and finally onto medullary neurons carrying the mu-opioid receptor.</span></span></div>
+      <p class="para-tr">2026 年 4 月 1 日，斯坦福大学王倩与陈晓科在《自然》上发表的一项研究给出了答案：他们在小鼠体内追踪到了一条完整的闭环——从脊髓出发，爬上大脑，再回到脊髓。它从脊髓走到丘脑的两个中转核团，接着到初级躯体感觉皮层，再到外侧上丘，最后落在携带 μ 阿片受体的延髓神经元上。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="64.0" data-e="69.513">The experiments turn on a clean contrast between healthy animals and injured ones.</span> <span class="s" data-t="69.513" data-e="81.182"><span class="kw" data-tip="v. 使（神经元、基因）沉默、关闭——熟词僻义：常见义为“使安静；寂静”">Silencing</span> any single node in a healthy mouse changed almost nothing, and the animal still withdrew from a sharp prod at a normal <span class="kw" data-tip="n. 阈值；临界值（pain threshold 痛阈）">threshold</span>; ordinary protective pain does not need it at all.</span></span></div>
+      <p class="para-tr">支撑这张图的实验，建立在一个极其干净的对照之上：健康小鼠与受伤小鼠。在健康小鼠身上关掉回路的任何一个节点，几乎什么也没改变——它仍会在正常阈值上躲开尖锐的刺探，可见正常的保护性疼痛根本不需要这条回路。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="81.182" data-e="91.329">In mice with damaged nerves or inflamed tissue, the same <span class="kw" data-tip="n. 干预；介入（intervene 干预）">intervention</span> <span class="kw" data-tip="v. 抹去；消除（eraser 橡皮）">erased</span> mechanical hypersensitivity, so that a light touch stopped registering as painful.</span> <span class="s" data-t="91.329" data-e="99.724">The effect held even during morphine <span class="kw" data-tip="n. 耐受性（身体对药物反应减弱）；容忍">tolerance</span>, a detail of practical interest to anyone who has watched a standard <span class="kw" data-tip="n. 镇痛药（analgesia 镇痛）">analgesic</span> fail.</span></span></div>
+      <p class="para-tr">而在神经受损或组织发炎的小鼠身上，同样的干预抹掉了机械性痛觉过敏——轻微的触碰不再被登记为疼痛。这个效果在吗啡耐受的状态下依然成立；对任何见过标准镇痛药失效的人来说，这个细节很实际。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="99.724" data-e="111.763">The reverse experiment is the more striking one: activating a node repeatedly in healthy animals installed a lasting hypersensitivity to touch and cold, and the guarded behaviour of persistent pain.</span> <span class="s" data-t="111.763" data-e="119.132">A single burst did none of this, so the chronic state appears to be built through repetition rather than switched on at once.</span> <span class="s" data-t="119.132" data-e="127.919">Chronic pain, on this account, is not acute pain turned up; it is a separate loop that sits largely <span class="kw" data-tip="adj. 闲置的；空转的（idle 空闲的）">idle</span> until injury <span class="kw" data-tip="v. 征召；募集（使某类细胞、神经元被调动起来）——熟词僻义：常见义为“招募（人）”">recruits</span> it.</span></span></div>
+      <p class="para-tr">反向实验更惊人：在健康动物身上反复激活某个节点，就“安装”出了一段对触碰与寒冷的持久过敏，连同慢性疼痛特有的那种戒备行为。单次激活则毫无效果——可见慢性状态是靠重复堆出来的，而不是一次性打开的。照此说来，慢性疼痛并不是急性疼痛被调大了音量，而是一条大多时候闲置、被损伤征召后才启动的独立回路。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="127.919" data-e="139.75">The medullary cells at its centre are <span class="kw" data-tip="adj. 抑制性的（inhibit 抑制；inhibitory neuron 抑制性神经元）">inhibitory</span>, make up two-thirds of the neurons projecting from that region to the cord and carry functional mu-opioid receptors, exactly where morphine acts.</span> <span class="s" data-t="139.75" data-e="150.579">That cuts both ways: it explains why <span class="kw" data-tip="n. 阿片类药物（如吗啡、芬太尼）">opioids</span> quiet chronic pain, and hints at why they exact so broad a price elsewhere, where the same receptor governs reward and breathing.</span></span></div>
+      <p class="para-tr">位于回路中心的那群延髓细胞是抑制性的，约占该区域向脊髓投射神经元的整整三分之二，并携带功能性的 μ 阿片受体——吗啡正是在这里起作用。这一点是双刃的：它既解释了阿片类为什么能压下慢性疼痛，也暗示了它们为何要在大脑别处索取如此广泛的代价——同一个受体还管着奖赏与呼吸。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="150.579" data-e="158.224">The result also complicates the tidy story in which stimulating these brainstem centres is supposed to suppress pain.</span> <span class="s" data-t="158.224" data-e="169.077">Whether the system helps or hurts seems to depend on which of its cell types is <span class="kw" data-tip="v. （神经元）放电、发出冲动——熟词僻义：常见义为“开火；着火”">firing</span>, which is less a contradiction than a reminder that the brainstem is a <span class="kw" data-tip="n. 交换机、总机（switch 开关 + board 板）">switchboard</span> rather than a volume knob.</span></span></div>
+      <p class="para-tr">这个结果还让一个教科书讲了多年的整洁故事变得复杂：按旧说，刺激这些脑干中枢应当是“压制”疼痛的。看来这套系统是帮忙还是添乱，取决于此刻放电的是哪一类细胞——这不算矛盾，只是提醒我们：脑干是一块交换机，而不是一个音量旋钮。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="169.077" data-e="180.842">None of this amounts to a treatment yet: the work was in mice, the switches were genetic rather than pharmacological, and circuits that look decisive in a rodent often stall before reaching a clinic.</span> <span class="s" data-t="180.842" data-e="192.079">What the study offers is a map with named stations, and the division of labour that drug hunters have lacked: one set of cells for the pain that protects you, another for the pain that will not stop.</span></span></div>
+      <p class="para-tr">这一切还谈不上是一种疗法：工作是在小鼠身上做的，开关是基因手段而不是药物手段，而在啮齿类身上看来决定性的回路，往往在通往临床的路上就停住了。这项研究提供的是一张标好了站点的地图，以及药物研发者一直缺少的那种分工：一组细胞负责保护你的痛，另一组负责停不下来的痛。</p>
+
+      <p class="muted">原文出处：本文据 Nature 2026 年 4 月 1 日刊论文《Deconstruction of a spino-brain–spinal cord circuit that drives chronic pain》（Qian Wang, Joo Han Lee, Gregory Nachtrab, Yuan Yuan, Lei Yuan, Wei Qi, Manuel A. Mohr, Jing Xiong, Mark A. Horowitz, Xiaoke Chen；Stanford University；DOI 10.1038/s41586-026-10296-y；PMID 41922770）公开摘要与作者结论改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chronic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkrɒnɪk/ · 美 /ˈkrɑːnɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 慢性的；长期的；积习难改的（chronic pain 慢性疼痛；chronic shortage 长期短缺）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The stubborn half of <b>chronic</b> pain lives elsewhere.</div>
+          <div class="wc-tr">慢性疼痛中顽固的那一半，住在别处。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">swelling</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈswelɪŋ/ · 美 /ˈswelɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 肿胀；肿块（swell 膨胀、肿起）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>swelling</b> goes down and the tissue knits back together.</div>
+          <div class="wc-tr">肿胀消退，组织重新长回去。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stubborn</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈstʌbən/ · 美 /ˈstʌbərn/</div>
+          <div class="wc-pos"><b>adj.</b> 顽固的；难去除的；固执的（stubborn stain 难洗的污渍）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>stubborn</b> half of chronic pain.</div>
+          <div class="wc-tr">慢性疼痛中顽固的那一半。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rehearse</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈhɜːs/ · 美 /rɪˈhɜːrs/</div>
+          <div class="wc-pos"><b>v.</b> 排练；在心里反复默演（rehearsal 排练；此处喻神经系统反复“重放”损伤）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A nervous system that goes on <b>rehearsing</b> an injury.</div>
+          <div class="wc-tr">一个仍在反复排练那次损伤的神经系统。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dampen</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdæmpən/ · 美 /ˈdæmpən/</div>
+          <div class="wc-pos"><b>v.</b> 抑制；减弱；使潮湿（dampen enthusiasm 打击热情）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Neurons that can either <b>dampen</b> or amplify what the body reports.</div>
+          <div class="wc-tr">这些神经元既能压低、也能放大身体上报的信号。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">amplify</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈæmplɪfaɪ/ · 美 /ˈæmplɪfaɪ/</div>
+          <div class="wc-pos"><b>v.</b> 放大；增强；详述（amplifier 放大器；amplification 放大）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Signals can be <b>amplified</b> on the way up.</div>
+          <div class="wc-tr">信号在上行的路上会被放大。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">medulla</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /meˈdʌlə/ · 美 /məˈdʌlə/</div>
+          <div class="wc-pos"><b>n.</b> 髓质；（延）髓（rostral ventromedial medulla 延髓头端腹内侧区，缩写 RVM）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A cluster of cells in the rostral ventromedial <b>medulla</b>.</div>
+          <div class="wc-tr">延髓头端腹内侧区里的一群细胞。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">relay</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈriːleɪ/ · 美 /ˈriːleɪ/</div>
+          <div class="wc-pos"><b>n.</b> 中继站、中转环节（神经解剖中指传递信号的核团）；接力赛；转播</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It runs from the cord to two thalamic <b>relays</b>.</div>
+          <div class="wc-tr">它从脊髓走到丘脑的两个中转核团。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> 阈值；门槛；临界点（pain threshold 痛阈；below the threshold 未达门槛）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It withdrew from a sharp prod at a normal <b>threshold</b>.</div>
+          <div class="wc-tr">它在正常阈值上躲开了尖锐的刺探。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intervention</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈvenʃn/ · 美 /ˌɪntərˈvenʃn/</div>
+          <div class="wc-pos"><b>n.</b> 干预；介入（实验中的“处理手段”）；干涉</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The same <b>intervention</b> erased mechanical hypersensitivity.</div>
+          <div class="wc-tr">同样的干预抹掉了机械性痛觉过敏。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">erase</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪˈreɪz/ · 美 /ɪˈreɪs/</div>
+          <div class="wc-pos"><b>v.</b> 消除；抹去；（从记忆中）抹掉（eraser 橡皮）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Silencing the loop <b>erased</b> the hypersensitivity.</div>
+          <div class="wc-tr">关掉这条回路，痛觉过敏被抹去了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">silence</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈsaɪləns/ · 美 /ˈsaɪləns/</div>
+          <div class="wc-pos"><b>v.</b> 使（神经元、基因）沉默、关闭<br><span style="color:#9c2f16">常见义：使安静；n. 寂静、沉默</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Silencing</b> any single node of the loop changed almost nothing.</div>
+          <div class="wc-tr">关掉回路中的任何一个节点，几乎什么也没改变。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recruit</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rɪˈkruːt/ · 美 /rɪˈkruːt/</div>
+          <div class="wc-pos"><b>v.</b> 征召；募集（使某类细胞、神经元或通路被调动起来）<br><span style="color:#9c2f16">常见义：招募（员工、成员）</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A loop that sits idle until injury <b>recruits</b> it.</div>
+          <div class="wc-tr">一条闲置的回路，直到被损伤征召。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fire</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈfaɪə/ · 美 /ˈfaɪər/</div>
+          <div class="wc-pos"><b>v.</b> （神经元）放电、发出冲动；<br><span style="color:#9c2f16">常见义：开火；着火；n. 火</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It depends on which of its cell types is <b>firing</b>.</div>
+          <div class="wc-tr">这取决于此刻放电的是哪一类细胞。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inhibitory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈhɪbɪtəri/ · 美 /ɪnˈhɪbətɔːri/</div>
+          <div class="wc-pos"><b>adj.</b> 抑制性的（inhibitory neuron 抑制性神经元；inhibit 抑制）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The medullary cells are <b>inhibitory</b>.</div>
+          <div class="wc-tr">这些延髓细胞是抑制性的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">opioid</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈəʊpiɔɪd/ · 美 /ˈoʊpiɔɪd/</div>
+          <div class="wc-pos"><b>n.</b> 阿片类药物；<b>adj.</b> 阿片类的（mu-opioid receptor μ 阿片受体）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Neurons that carry the mu-<b>opioid</b> receptor.</div>
+          <div class="wc-tr">携带 μ 阿片受体的神经元。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">analgesic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌænlˈdʒiːzɪk/ · 美 /ˌænlˈdʒiːzɪk/</div>
+          <div class="wc-pos"><b>n.</b> 镇痛药；<b>adj.</b> 止痛的（analgesia 痛觉缺失）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Anyone who has watched a standard <b>analgesic</b> stop working.</div>
+          <div class="wc-tr">任何见过标准镇痛药失效的人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tolerance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtɒlərəns/ · 美 /ˈtɑːlərəns/</div>
+          <div class="wc-pos"><b>n.</b> 耐受性（长期用药后反应减弱）；容忍、宽容</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The effect held even during morphine <b>tolerance</b>.</div>
+          <div class="wc-tr">这个效果在吗啡耐受时依然成立。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">switchboard</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈswɪtʃbɔːd/ · 美 /ˈswɪtʃbɔːrd/</div>
+          <div class="wc-pos"><b>n.</b> 交换机、总机（喻指把信号分配给不同线路的枢纽）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The brainstem is a <b>switchboard</b> rather than a volume knob.</div>
+          <div class="wc-tr">脑干是一块交换机，而不是一个音量旋钮。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">idle</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈaɪdl/ · 美 /ˈaɪdl/</div>
+          <div class="wc-pos"><b>adj.</b> 闲置的；空转的（idle engine 怠速的发动机）；懒散的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A loop that sits largely <b>idle</b>.</div>
+          <div class="wc-tr">一条大部分时间闲置的回路。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stall</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /stɔːl/ · 美 /stɔːl/</div>
+          <div class="wc-pos"><b>v.</b> 停滞；熄火；拖延（stall on the way to a clinic 在通往临床的路上卡住）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Circuits that look decisive in a rodent often <b>stall</b> on the way to a clinic.</div>
+          <div class="wc-tr">在啮齿类身上看似决定性的回路，常常在通往临床的路上停住。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">knit back together</span><span class="zh">（组织）重新长合、愈合</span></li>
+          <li><span class="en">refuse to leave</span><span class="zh">就是不肯离开、迟迟不退</span></li>
+          <li><span class="en">long suspected that ...</span><span class="zh">长期以来怀疑……</span></li>
+          <li><span class="en">project down to</span><span class="zh">（神经）向下投射到……</span></li>
+          <li><span class="en">either ... or ...</span><span class="zh">要么……要么……；既能……也能……</span></li>
+          <li><span class="en">in the first place</span><span class="zh">一开始；究竟（用于追问根源）</span></li>
+          <li><span class="en">turn on a contrast</span><span class="zh">（论证）系于一个对照之上</span></li>
+          <li><span class="en">at a normal threshold</span><span class="zh">在正常阈值上</span></li>
+          <li><span class="en">not ... at all</span><span class="zh">根本不……</span></li>
+          <li><span class="en">register as painful</span><span class="zh">被登记、识别为疼痛</span></li>
+          <li><span class="en">the effect held</span><span class="zh">（效果）依然成立、保持有效</span></li>
+          <li><span class="en">of practical interest to</span><span class="zh">对……有实际意义</span></li>
+          <li><span class="en">on this account</span><span class="zh">照此说来；据此</span></li>
+          <li><span class="en">turn up</span><span class="zh">调高（音量）；此处喻“把疼痛调大”</span></li>
+          <li><span class="en">cut both ways</span><span class="zh">有利也有弊；双刃</span></li>
+          <li><span class="en">exact a price</span><span class="zh">索取代价（exact 作动词：强行索取）</span></li>
+          <li><span class="en">depend on</span><span class="zh">取决于</span></li>
+          <li><span class="en">less A than B</span><span class="zh">与其说是 A，不如说是 B</span></li>
+          <li><span class="en">amount to</span><span class="zh">等同于；算得上是</span></li>
+          <li><span class="en">on the way to a clinic</span><span class="zh">在走向临床应用的路上</span></li>
+          <li><span class="en">a division of labour</span><span class="zh">分工</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>临床困惑：脚踝早好了，痛却不肯走——顽固的那一半不在伤处，在神经系统。</li>
+          <li>已知与未知：RVM 的下行神经元能放大或压低疼痛，但损伤信号如何抵达它们无人知晓。</li>
+          <li>研究登场：斯坦福团队 2026 年 4 月在 Nature 追踪出完整闭环，并交代各站顺序。</li>
+          <li>健康对照：关掉任一节点，健康鼠正常痛觉几乎不变——保护性疼痛不靠这条回路。</li>
+          <li>损伤模型：同样干预抹掉机械性痛觉过敏，阈值回归正常，且在吗啡耐受时仍有效。</li>
+          <li>反向实验：反复（而非单次）激活即可“安装”持久过敏，说明慢性化靠重复堆出来。</li>
+          <li>核心判断：慢性疼痛不是急性疼痛被调大，而是一条被损伤征召后自己响的独立回路。</li>
+          <li>细胞身份：回路中心的抑制性延髓细胞占三分之二，带 μ 阿片受体——阿片作用之处。</li>
+          <li>收束：小鼠实验，离疗法尚远；价值在于一张标好站点的地图与“分工”这一新思路。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Medicine has long suspected that the stubborn half of chronic pain lives not in the injured limb but in a nervous system that keeps rehearsing an injury long after the danger has passed.</div>
+        <div class="row"><b>主干：</b>Medicine has long suspected that ...（that 引导宾语从句作 suspected 的宾语）</div>
+        <div class="row"><b>从句主干：</b>the stubborn half of chronic pain lives not in A but in B（not ... but ... 的对比结构，把“痛在哪里”一刀切开）</div>
+        <div class="row"><b>定语从句：</b>that keeps rehearsing an injury（修饰 a nervous system；keep doing 表示“不停地做某事”）</div>
+        <div class="row"><b>时间状语：</b>long after the danger has passed（long after 强化“危险早已过去”，与“仍在排练”形成时间上的反差）</div>
+        <div class="row"><b>考点：</b>宾语从句；not ... but ... 对比；keep doing；long after 引导时间状语从句</div>
+        <div class="row tr"><b>译文：</b>医学界早就怀疑，慢性疼痛中那顽固的一半并不住在受伤的肢体里，而住在一个危险早已过去、却仍在反复排练那次损伤的神经系统里。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Two decades of work have pointed to a cluster of cells in the rostral ventromedial medulla, a brainstem slab whose neurons project to the spinal cord and can either dampen or amplify what the body reports.</div>
+        <div class="row"><b>主干：</b>Two decades of work have pointed to a cluster of cells（point to 此处不是“指向”，而是“把矛头/注意力引向”）</div>
+        <div class="row"><b>同位语：</b>a slab of brainstem（解释 medulla 是什么，学术写作常用同位语给专业名词“降维”）</div>
+        <div class="row"><b>定语从句：</b>whose neurons project down to the spinal cord and can either dampen or amplify ...（whose 引导，两个并列谓语 project / can dampen or amplify）</div>
+        <div class="row"><b>宾语从句：</b>what the body reports（作 dampen / amplify 的共同宾语，“身体所上报的东西”）</div>
+        <div class="row"><b>考点：</b>point to 的引申义；同位语解释；whose 定语从句；either ... or ... 的并列；what 名词性从句</div>
+        <div class="row tr"><b>译文：</b>二十年的研究把目光引向延髓头端腹内侧区里的一群细胞——那是脑干上的一块组织，其神经元向下投射到脊髓，既能压低、也能放大身体上报的信号。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A study published in Nature on 1 April 2026 by Qian Wang and Xiaoke Chen of Stanford University supplies one, having traced in mice a loop that leaves the spinal cord, climbs into the brain and returns.</div>
+        <div class="row"><b>主干：</b>A study ... supplies one（one 代指前文的 an answer，避免重复，是英文里极常见的替代）</div>
+        <div class="row"><b>后置修饰：</b>published in Nature ... by Qian Wang and Xiaoke Chen（过去分词短语作定语，把“何时、何刊、何人”全塞进主语后面）</div>
+        <div class="row"><b>分词状语：</b>having traced ... a loop（完成式分词作状语，强调“先追踪成图，才给出答案”的先后关系）</div>
+        <div class="row"><b>定语从句：</b>that leaves the spinal cord, climbs into the brain and returns（三个并列谓语动词，形成“出—上—回”的空间动线）</div>
+        <div class="row"><b>考点：</b>one 的替代用法；多重后置定语；having done 作状语表先后；并列谓语</div>
+        <div class="row tr"><b>译文：</b>2026 年 4 月 1 日，斯坦福大学王倩与陈晓科在《自然》上发表的一项研究，就给出了这样一个答案：他们在小鼠体内追踪出了一条完整的闭环——它离开脊髓，爬上大脑，再返回原位。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The reverse experiment is the more striking one: activating a node repeatedly in healthy animals installed a lasting hypersensitivity to touch and cold, and the guarded behaviour of persistent pain.</div>
+        <div class="row"><b>主干：</b>activating a node repeatedly ... installed a lasting hypersensitivity（动名词短语作主语，谓语用单数 installed）</div>
+        <div class="row"><b>冒号：</b>冒号后是对 the reverse experiment 的具体展开，学术写作里“先给判断、再给细节”的标准动作</div>
+        <div class="row"><b>并列宾语：</b>and the guarded behaviour of persistent pain（与 hypersensitivity 并列作 installed 的宾语，“连同伴随而来的戒备行为”）</div>
+        <div class="row"><b>后置定语：</b>a lasting hypersensitivity to touch and cold（to 短语限定“对什么过敏”，是 hypersensitivity 的固定搭配）</div>
+        <div class="row"><b>考点：</b>动名词作主语的主谓一致；冒号展开；并列宾语；of 短语作后置定语</div>
+        <div class="row tr"><b>译文：</b>反向实验更惊人：在健康动物身上反复激活某个节点，就“安装”出了一段对触碰与寒冷的持久过敏，连同慢性疼痛特有的那种戒备行为。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Whether the system helps or hurts seems to depend on which of its cell types is firing, which is less a contradiction than a reminder that the brainstem is a switchboard rather than a volume knob.</div>
+        <div class="row"><b>主干：</b>Whether the system helps or hurts seems to depend on ...（whether 引导主语从句，谓语 seems 用单数）</div>
+        <div class="row"><b>宾语从句：</b>which of its cell types is firing（作 depend on 的宾语；“its”指这套系统）</div>
+        <div class="row"><b>非限制性定语从句：</b>, which is less a contradiction than a reminder（which 指代前面整件事；less A than B = 与其说是 A，不如说是 B）</div>
+        <div class="row"><b>同位语从句：</b>that the brainstem is a switchboard rather than a volume knob（解释 reminder 的内容；rather than 对比两个喻体，收束全篇比喻）</div>
+        <div class="row"><b>考点：</b>whether 主语从句；介词后接宾语从句；which 指代整句；less A than B；rather than</div>
+        <div class="row tr"><b>译文：</b>这套系统是帮忙还是添乱，似乎取决于此刻放电的是哪一类细胞——这不算矛盾，只是提醒我们：脑干是一块交换机，而不是一个音量旋钮。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">有些疼痛不讲道理。脚踝扭了，肿胀消了，组织也长回去了，可痛就是不走；伤口早已愈合，警报却一直响着。这类“超出伤处、超出病程”的痛，是医学里最难解释也最难治的一块。长期以来，研究者知道答案的一半藏在脑干：延髓头端腹内侧区（RVM）里有一批神经元，它们向下投射到脊髓，既能压低、也能放大身体上报的信号，因此被视为“疼痛慢性化”的嫌疑犯。可嫌疑犯有了，作案路线却没有——来自受伤部位的信号，究竟怎样一路向上，最后落到这些“下行”细胞上？2026 年 4 月 1 日，斯坦福大学生物系的王倩与陈晓科团队在《自然》上给出了答案。他们用病毒工具与遗传学手段，在小鼠体内一段一段地倒推，最终拼出一条完整的闭环：脊髓 → 丘脑腹后外侧核与丘脑后复合体 → 初级躯体感觉皮层 → 外侧上丘 → 携带 μ 阿片受体的 RVM 神经元 → 回到脊髓。值得注意的是，它不是一个方向上行的“报警线”，而是一条把上行与下行接成一个圈的回路：信号上去，又从皮层经上丘拐回脑干，再压回脊髓。真正让人信服的是那个对照。在健康小鼠身上，关掉回路的任何一个节点，正常痛觉几乎毫发无损——尖锐的刺探照样躲，阈值不变，说明“保护你不把手放在热锅上”的那套机制并不依赖它。但在神经损伤或组织发炎的小鼠身上，关掉同一个节点，机械性痛觉过敏就被抹平了：轻触不再被登记为疼痛，阈值回到正常。效果甚至在吗啡耐受的状态下依然成立，这对临床是个不小的暗示。反过来做实验，结论更硬：在健康小鼠身上反复激活任意一个节点，就足以“安装”出一段对触碰和寒冷的持久过敏，连同慢性疼痛典型的戒备行为；而单次激活什么也做不出来。慢性状态是靠重复一点点堆起来的，不是一次性打开的开关。由此作者提出全文最锋利的一句判断：慢性疼痛不是急性疼痛被调大了音量，而是一条大多时候闲置、被损伤“征召”之后自己响个不停的独立回路。回路中心的细胞也交代得清楚：它们是抑制性的，约占该区域向脊髓投射神经元的整整三分之二，并携带功能性的 μ 阿片受体——正是吗啡作用的地方。这一点是双刃的：它解释了阿片类为什么能压下慢性疼痛，也暗示了它们为何要在大脑别处索取那么广的代价，因为同一个受体还管着奖赏、呼吸与消化。文章最后还顺手修正了一条教科书旧说：过去认为刺激脑干这些中枢是“压制”疼痛的，如今看来，是帮忙还是添乱取决于此刻放电的是哪一类细胞——脑干更像一块交换机，而不是一个音量旋钮。当然，这一切还谈不上疗法：实验在小鼠身上，开关是基因手段而非药物，而在啮齿类身上看似决定性的回路，往往在通往临床的路上就停住了。但它给出的东西已经很值钱：一张标好站点的地图，以及一种此前缺失的分工思路——一组细胞负责保护你的痛，另一组负责停不下来的痛。对药物研发者来说，知道该瞄准哪里，本身就是走了很远。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 4、5 段说，关掉这条回路“正常痛觉几乎不变，痛觉过敏却被抹掉”。如果一个机制只在病理状态下起作用、在正常状态下几乎沉默，这对药物研发意味着什么好处，又埋着什么风险？请结合第 9 段“在小鼠身上决定性、到临床却停住”的提醒，谈谈你对“好靶点”与“好药”之间距离的理解。</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段 <span style="font-family:Georgia,serif;font-style:italic">"which is less a contradiction than a reminder that the brainstem is a switchboard rather than a volume knob."</span>（用 less A than B 把一个“看似矛盾”重新定性为“一个提醒”，再用 rather than 收一个具体比喻），就“人工智能既提高效率又制造焦虑”写一句你自己的定性句。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 困惑：伤已愈、痛不走；顽固的一半住在神经系统里</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 空白：RVM 下行神经元能放大或压低疼痛，路却不明</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 登场：Nature 2026-04-01，斯坦福追踪出完整闭环</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 走向：脊髓→丘脑双核→S1→外侧上丘→RVM→脊髓</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 健康对照：关任一节点，正常痛觉几乎不受影响</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 损伤模型：痛觉过敏被抹平，吗啡耐受时仍有效</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 反向实验：反复激活可“安装”持久过敏，单次不行</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 细胞身份：抑制性、占三分之二、带 μ 阿片受体</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：小鼠离疗法尚远；价值在“地图 + 分工”</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「临床困惑 → 已知与未知 → 研究登场 → 回路走向 → 健康对照 → 损伤模型 → 反向实验 → 细胞身份 → 收束」递进展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature《Deconstruction of a spino-brain–spinal cord circuit that drives chronic pain》（Wang Q. 等；2026-04-01；DOI 10.1038/s41586-026-10296-y）公开摘要与结论整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

@@ -2,6 +2,19 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-10-24",
+      "en": "Chronic pain, on this account, is not acute pain turned up; it is a separate loop that sits largely idle until injury recruits it.",
+      "zh": "照此说来，慢性疼痛并不是急性疼痛被调大了音量，而是一条大多时候闲置、被损伤征召后才启动的独立回路。",
+      "src": "外刊精读 · 慢性疼痛的神经环路（2026-10-24）",
+      "key": "recruit",
+      "keyZh": "征召；募集（使某类细胞、通路被调动起来）",
+      "tip": "「A is not B turned up; it is a separate X」先用否定打掉“同一件事被放大”的直觉，再用分号给出一个更准确的替代模型。recruit 在此不是“招人”，而是神经科学里的“征召”——一条闲置回路被损伤调动起来。仿写：Loneliness is not solitude turned up; it is a separate signal that sits idle until the right silence recruits it.",
+      "tags": [
+        "神经科学",
+        "疼痛医学"
+      ]
+    },
+    {
       "date": "2026-10-23",
       "en": "None of this makes the advice wrong; it makes it unfinished.",
       "zh": "这一切并不能说明那句建议是错的，只能说明它还没写完。",
