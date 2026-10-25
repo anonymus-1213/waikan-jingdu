@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 同一屋檐下的两个少年</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Behavioural Genetics · 人与自我 / 青少年心理 / 行为遗传学 / 公共卫生</div>
+  <h1>同一屋檐下的两个少年：把屏幕时间放进“双胞胎对照”，关联就缩水了</h1>
+  <div class="deck">A Swedish team followed 21,797 twins for up to thirteen years. The link between heavy interactive screen use and later anxiety looked strong between families, and shrank sharply once identical twins were compared with each other</div>
+  <div class="byline"><span><b>来源</b> Nature Human Behaviour（2026 年 10 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-25</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-25.jpg" alt="四名青少年并排坐在户外台阶上，各自低头盯着手里手机的实景照片（配图）">
+    <figcaption>配图：四个少年并排坐在台阶上，谁也不看谁，各自低头盯着手里的手机——这项研究要统计的，正是这样的时长（图片来源：Texas A&amp;M Stories 新闻配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>“孩子刷手机刷出焦虑”，这句话每隔几年就上一次头条，也每隔几年就有地方据此出台禁令。但支撑它的证据一直有点尴尬：相关性真实、可重复，却不算强；更麻烦的是，观察性研究比较的是不同家庭的孩子，而家庭之间几乎在所有要紧的方面都不同——本身就焦虑的父母，可能既对孩子用设备管得更松，又把一种容易焦虑的气质传了下去。于是屏幕和症状一起出现，却未必谁造成了谁。2026 年 10 月 12 日，瑞典卡罗林斯卡学院（Karolinska Institutet）的 Tong Gong、Lu Yi 团队在《自然·人类行为》（Nature Human Behaviour）发表了一项专为拆开这团乱麻而设计的研究：他们追踪了 21,797 名瑞典双胞胎，从 9 岁一路随访到 24 岁（数据收集始于 2004 年，最长随访 13 年），并且把每一项比较都在双胞胎对内重做一遍——同一对双胞胎共享一个家庭，若是同卵，还共享全部基因，因此家庭层面的遗传与教养被“压平”了。结果是：在家庭与家庭之间，每天刷互动类屏幕超过 6 小时的 15 岁少年，后来被记录焦虑或抑郁诊断、或拿到抗抑郁药处方的风险约高三倍；可一旦换到双胞胎对内比较，这个数字掉了 57%–59%，横断面关联更是从 0.20–0.38 缩到 0.02–0.21，多数在校正后不再显著。作者因此给了一个克制的结论：关联是真的，但其中相当一部分是“共同的家庭”贡献的。本文按“公共争论—方法难题—研究设计—家庭之间的读数—双胞胎对内的读数—落差里是什么—反向与窗口—局限—收束”展开，并把三个熟词僻义（screen / raw / power）埋进论证里。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-25.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="7.405">Few debates about the young produce as many headlines, and as little agreement, as what screens do to their minds.</span> <span class="s" data-t="7.405" data-e="14.645">The <span class="kw" data-tip="n. 相关性；关联（correlate 相关）">correlations</span> are real and repeatable, but nobody has settled how much of them belongs to the screens themselves.</span></span></div>
+      <p class="para-tr">关于年轻人，很少有哪个话题像“屏幕上的那几个小时对他们的头脑做了什么”一样，既产出那么多头条，又达成那么少的共识。相关性是真实的、可重复的，但没有人说清其中有多少真的归因于屏幕本身。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="14.645" data-e="24.105">Part of the difficulty is structural: observational studies compare children from different <span class="kw" data-tip="n. 家庭；一户人家（householder 户主）">households</span>, and households differ in nearly everything that matters.</span> <span class="s" data-t="24.105" data-e="35.314">Anxious parents may keep looser rules about devices and also pass on a <span class="kw" data-tip="n. 气质；性情（先天倾向，区别于 character 品格）">temperament</span> that makes anxiety more likely, so that screen and symptom arrive together without either causing the other.</span></span></div>
+      <p class="para-tr">困难有一部分是结构性的：观察性研究比较的是不同家庭的孩子，而家庭之间几乎在所有要紧的方面都不相同。本身就焦虑的父母，可能既对电子设备管得更松，又把一种更容易焦虑的气质传了下去——于是屏幕和症状一起出现，却不是其中任何一个造成了另一个。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="35.314" data-e="45.197">On 12 October 2026, a team at the Karolinska Institutet published in <em>Nature Human Behaviour</em> a study built to pull those strands apart.</span> <span class="s" data-t="45.197" data-e="58.616">Tong Gong, Lu Yi and their colleagues followed 21,797 Swedish twins from a <span class="kw" data-tip="n. 队列（流行病学：同一时期纳入、长期随访的一组人）">cohort</span> recruited in 2004, surveying them at nine, fifteen, eighteen and twenty-four.</span> <span class="s" data-t="58.616" data-e="67.276">Their <span class="kw" data-tip="adj. 决定性的；起决定作用的（decide 决定）">decisive</span> move was to repeat each comparison inside pairs of twins, who share a household and, when <span class="kw" data-tip="adj. 同卵的（identical twins 同卵双胞胎）；完全相同的">identical</span>, every gene.</span></span></div>
+      <p class="para-tr">2026 年 10 月 12 日，斯德哥尔摩卡罗林斯卡学院的一个团队在《自然·人类行为》上发表了一项专为拆开这些线索而设计的研究。Tong Gong、Lu Yi 与同事追踪了一个 2004 年开始招募的队列中的 21,797 名瑞典双胞胎，在 9 岁、15 岁、18 岁和 24 岁四个时点做了调查。他们决定性的做法，是把每一项比较都在双胞胎对内重做一遍——同一对双胞胎共享一个家庭，若是同卵，还共享全部基因。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="67.276" data-e="71.947">Between one family and the next, the results look like the headlines.</span> <span class="s" data-t="71.947" data-e="88.827">Fifteen-year-olds who spent over six hours a day on <span class="kw" data-tip="adj. 互动式的（聊天、游戏、浏览等有来有往的活动）">interactive</span> screens, that is chatting, gaming and browsing rather than watching, were about three times as likely to acquire a recorded diagnosis of anxiety or depression, or a <span class="kw" data-tip="n. 处方；药方（prescribe 开药）">prescription</span> for antidepressants, as those under two hours.</span> <span class="s" data-t="88.827" data-e="98.618">Daily gaming at nine carried a <span class="kw" data-tip="n. 风险比（hazard ratio，生存分析中两组风险之比）">hazard ratio</span> of 1.38, and 1.56 among boys, while <span class="kw" data-tip="adj. 被动的（passive viewing 被动观看，如看视频）">passive</span> viewing was not reliably linked to anything.</span></span></div>
+      <p class="para-tr">在家庭与家庭之间比较，结果看起来和头条一模一样。每天花在互动类屏幕上超过六小时（指聊天、游戏和浏览，而不是看视频）的 15 岁少年，被记录下焦虑或抑郁<span class="kw" data-tip="n. 诊断（diagnose 诊断）">诊断</span>、或拿到抗抑郁药处方的可能性，大约是不超过两小时者的三倍。9 岁时每天打游戏的风险比为 1.38，男孩为 1.56；而被动的观看与任何结局都没有可靠关联。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="98.618" data-e="111.116">Compared within pairs, the picture contracts: the hazard ratio for the heaviest users fell by 57 to 59 per cent, to 1.65, and did not <span class="kw" data-tip="v. 经得起（检验）；在……之后仍然存在——此处指“经得起多重校正”">survive</span> correction for the many tests run.</span> <span class="s" data-t="111.116" data-e="124.722">Associations at fifteen that ranged from 0.20 to 0.38 dropped to between 0.02 and 0.21 among identical twins, an <span class="kw" data-tip="n. 衰减；减弱（attenuate 使变弱）">attenuation</span> of 32 to 95 per cent.</span></span></div>
+      <p class="para-tr">换到双胞胎对内比较，画面就收缩了：使用最多的那一组，风险比下降 57% 到 59%，降到 1.65，而这一数字没能通过团队所做大量检验的多重校正。15 岁时的关联在全样本中处于 0.20 到 0.38，在同卵双胞胎对内则降到 0.02 到 0.21 之间，衰减了 32% 到 95%。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="124.722" data-e="134.145">What sits in that gap is what families supply: shared genes <span class="kw" data-tip="v. 使偏向；使倾斜（本义“倾斜”，此处指提高某种结果的概率）">tilt</span> some children toward both heavy use and worry, and a shared upbringing pushes the same way.</span> <span class="s" data-t="134.145" data-e="142.066">That is not a verdict that screens are harmless; it is a warning that the <span class="kw" data-tip="adj. 未经校正的；未处理的——熟词僻义：常见义为“生的；未煮熟的”">raw</span> association overstates what a device does on its own.</span></span></div>
+      <p class="para-tr">落在这一落差里的，正是家庭提供的那一部分：共享的基因让一些孩子既偏向重度使用、也偏向担忧，而共享的教养把两者往同一个方向推。这并不等于宣判“屏幕无害”，而是提醒：未经校正的关联，夸大了设备单独起到的作用。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="142.066" data-e="154.169">The data also run backwards: adolescents who reported more anxiety at fifteen went on to spend slightly more time on interactive screens at eighteen, an <span class="kw" data-tip="n. 比值比（odds ratio，OR；衡量暴露与结局关联强度的指标）">odds ratio</span> of 1.04.</span> <span class="s" data-t="154.169" data-e="162.592">Screen time at nine predicted nothing measurable at fifteen, which places the sensitive window in the middle teens, not childhood.</span></span></div>
+      <p class="para-tr">数据还会稍微倒着走：15 岁时报告更多焦虑的青少年，到 18 岁时在互动类屏幕上花的时间略多一些，比值比为 1.04。而 9 岁的屏幕时间对 15 岁的症状没有任何可测量的预测力——这提示敏感窗口在青春期中段，而不在童年。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="162.592" data-e="179.224">The limits are as instructive as the findings: these children grew up before algorithmic feeds, self-reported hours are a <span class="kw" data-tip="adj. 粗糙的；未精细加工的（crude estimate 粗略估计）">crude</span> instrument, the scales that <span class="kw" data-tip="v. 筛查；筛检——熟词僻义：常见义为“屏幕；遮挡”">screen</span> for anxiety are blunter still, and response rates fell from 73 per cent at fifteen to 27 at twenty-four.</span> <span class="s" data-t="179.224" data-e="190.671">Nor does a within-pair comparison guarantee precision, since only a limited number of pairs differed enough to be informative, leaving the study short of the <span class="kw" data-tip="n. 统计功效；检验力——熟词僻义：常见义为“力量；权力”">power</span> to rule out a small real effect.</span></span></div>
+      <p class="para-tr">局限和发现一样有教益：这些孩子成长在算法推荐无处不在之前，自报的时长是一件粗糙的仪器，用来筛查焦虑的量表更钝，而随访应答率从 15 岁的 73% 掉到 24 岁的 27%。双胞胎对内比较也不能保证精确——真正有差异、能提供信息的对子数量有限，研究因此缺少排除“存在一个小的真实效应”的统计功效。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="190.671" data-e="200.789">The study does not close the argument so much as change its shape, from whether screens are good or bad to which activities, in which circumstances, hurt which children.</span> <span class="s" data-t="200.789" data-e="208.671">A rule measured in hours will miss that distinction, while the cases that matter most are exactly the ones a household can still reach.</span></span></div>
+      <p class="para-tr">所以这项研究与其说结束了争论，不如说改变了它的形状：从“屏幕是好是坏”，变成“哪些活动、在什么情境下、让哪一类孩子更糟”。只按小时数制定的规则会错过这个区别；而最要紧的那些情形，恰恰是一个家庭仍能触及的。</p>
+
+      <p class="muted">原文出处：本文据 Nature Human Behaviour 2026 年 10 月 12 日刊论文《Recreational screen use and internalizing problems from preadolescence to young adulthood in a longitudinal twin cohort with co-twin comparison》（Tong Gong, Emma Frans, Anna Ohlis, Shuyang Yao, Ruyue Zhang, Anders Nilsson, Yasmina Molero, Miriam A. Mosing, Isabell Brikell, Henrik Larsson, Paul Lichtenstein, Lisa B. Thorell, Patrik K.E. Magnusson, Ralf Kuja-Halkola；Karolinska Institutet 等；DOI 10.1038/s41562-026-02607-0）公开摘要与结果部分改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">correlation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkɒrəˈleɪʃn/ · 美 /ˌkɔːrəˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 相关性；关联；相关程度（correlate 相互关联）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>correlations</b> are real and repeatable.</div>
+          <div class="wc-tr">这些相关性是真实的，也是可重复的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">structural</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈstrʌktʃərəl/ · 美 /ˈstrʌktʃərəl/</div>
+          <div class="wc-pos"><b>adj.</b> 结构性的；结构上的（此处指“问题出在研究设计本身”）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Part of the difficulty is <b>structural</b>.</div>
+          <div class="wc-tr">困难有一部分是结构性的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">household</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈhaʊshəʊld/ · 美 /ˈhaʊshoʊld/</div>
+          <div class="wc-pos"><b>n.</b> 家庭；一户人家；<b>adj.</b> 家用的（household chores 家务）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Children from different <b>households</b> differ in nearly everything that matters.</div>
+          <div class="wc-tr">不同家庭的孩子，在几乎所有要紧的方面都不相同。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">temperament</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈtemprəmənt/ · 美 /ˈtemprəmənt/</div>
+          <div class="wc-pos"><b>n.</b> 气质；性情（偏先天的情绪反应倾向，与后天养成的 character 相对）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Parents pass on a <b>temperament</b> that makes anxiety more likely.</div>
+          <div class="wc-tr">父母传下一种更容易焦虑的气质。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cohort</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkəʊhɔːt/ · 美 /ˈkoʊhɔːrt/</div>
+          <div class="wc-pos"><b>n.</b> 队列（流行病学：同一时期纳入、被长期随访的一组人）；同届群体</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>21,797 twins from a <b>cohort</b> recruited in 2004.</div>
+          <div class="wc-tr">来自一个 2004 年开始招募的队列的 21,797 名双胞胎。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decisive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈsaɪsɪv/ · 美 /dɪˈsaɪsɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 决定性的；关键的；果断的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their <b>decisive</b> move was to repeat each comparison inside pairs.</div>
+          <div class="wc-tr">他们决定性的做法，是把每项比较都在双胞胎对内重做一遍。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">identical</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /aɪˈdentɪkl/ · 美 /aɪˈdentɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 完全相同的；<b>（生物学）同卵的</b>（identical twins 同卵双胞胎；fraternal twins 异卵双胞胎）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Identical twins share a household and every gene.</div>
+          <div class="wc-tr">同卵双胞胎共享一个家庭，也共享全部基因。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">interactive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntərˈæktɪv/ · 美 /ˌɪntərˈæktɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 互动式的；交互的（此处指聊天、游戏、浏览等有来有往的活动）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Over six hours a day on <b>interactive</b> screens.</div>
+          <div class="wc-tr">每天在互动类屏幕上超过六小时。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">passive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈpæsɪv/ · 美 /ˈpæsɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 被动的；消极的（passive viewing 被动观看，如看视频）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Passive</b> viewing was not reliably linked to anything.</div>
+          <div class="wc-tr">被动观看与任何结局都没有可靠关联。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diagnosis</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdaɪəɡˈnəʊsɪs/ · 美 /ˌdaɪəɡˈnoʊsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 诊断；诊断结论（复数 diagnoses；diagnose 诊断）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A recorded <b>diagnosis</b> of anxiety or depression.</div>
+          <div class="wc-tr">被记录下来的焦虑或抑郁诊断。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prescription</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɪˈskrɪpʃn/ · 美 /prɪˈskrɪpʃn/</div>
+          <div class="wc-pos"><b>n.</b> 处方；药方；开药（prescribe 开处方）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>prescription</b> for antidepressants.</div>
+          <div class="wc-tr">一张抗抑郁药的处方。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hazard ratio</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˈhæzəd ˈreɪʃiəʊ/</div>
+          <div class="wc-pos"><b>n.</b> 风险比（生存分析中两组“瞬时风险”之比；大于 1 表示风险更高）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Daily gaming at nine carried a <b>hazard ratio</b> of 1.38.</div>
+          <div class="wc-tr">9 岁时每天打游戏，风险比为 1.38。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">odds ratio</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ɒdz ˈreɪʃiəʊ/</div>
+          <div class="wc-pos"><b>n.</b> 比值比（OR）；衡量暴露与结局关联强度的常用指标</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An <b>odds ratio</b> of 1.04 that is small but not nothing.</div>
+          <div class="wc-tr">1.04 的比值比——很小，却也不是零。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attenuation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˌtenjuˈeɪʃn/ · 美 /əˌtenjuˈeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 衰减；减弱（attenuate 使变弱；统计中特指控制混杂后效应变小）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An <b>attenuation</b> of 32 to 95 per cent.</div>
+          <div class="wc-tr">衰减达 32% 到 95%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tilt</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /tɪlt/ · 美 /tɪlt/</div>
+          <div class="wc-pos"><b>v.</b> （使）倾斜；<b>使偏向</b>、提高某结果的概率（tilt the balance 打破平衡）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Shared genes <b>tilt</b> some children toward both heavy use and worry.</div>
+          <div class="wc-tr">共享的基因让一些孩子既偏向重度使用，也偏向担忧。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">crude</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kruːd/ · 美 /kruːd/</div>
+          <div class="wc-pos"><b>adj.</b> 粗糙的；粗略的；未加工的（crude oil 原油；crude estimate 粗略估计）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Self-reported hours are a <b>crude</b> instrument.</div>
+          <div class="wc-tr">自报的时长是一件粗糙的仪器。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">precision</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɪˈsɪʒn/ · 美 /prɪˈsɪʒn/</div>
+          <div class="wc-pos"><b>n.</b> 精确（度）；精密（precise 精确的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nor does a within-pair comparison guarantee <b>precision</b>.</div>
+          <div class="wc-tr">双胞胎对内比较也不能保证精确。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">screen</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /skriːn/ · 美 /skriːn/</div>
+          <div class="wc-pos"><b>v.</b> 筛查；筛检（疾病、症状）；甄别<br><span style="color:#9c2f16">常见义：n. 屏幕；帘；v. 遮挡</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The scales that <b>screen</b> for anxiety are blunter still.</div>
+          <div class="wc-tr">用来筛查焦虑的量表还要更钝。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">raw</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rɔː/ · 美 /rɔː/</div>
+          <div class="wc-pos"><b>adj.</b> 未经校正的；未处理过的（raw data 原始数据；raw association 未校正的关联）<br><span style="color:#9c2f16">常见义：生的；未煮熟的</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>raw</b> association overstates what a device does on its own.</div>
+          <div class="wc-tr">未经校正的关联，夸大了设备单独起到的作用。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">power</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈpaʊə/ · 美 /ˈpaʊər/</div>
+          <div class="wc-pos"><b>n.</b> 统计功效；检验力（样本量不足以检出真实效应时称 underpowered）<br><span style="color:#9c2f16">常见义：力量；权力；电力</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The study is short of the <b>power</b> to rule out a small real effect.</div>
+          <div class="wc-tr">这项研究缺少排除“存在小的真实效应”的统计功效。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">produce headlines</span><span class="zh">制造头条、成为新闻</span></li>
+          <li><span class="en">as little agreement as ...</span><span class="zh">共识少得像……（as ... as 的否定对照）</span></li>
+          <li><span class="en">belong to</span><span class="zh">归属于；应归因于</span></li>
+          <li><span class="en">differ in everything that matters</span><span class="zh">在所有要紧的方面都不同</span></li>
+          <li><span class="en">keep looser rules about</span><span class="zh">对……立规矩更宽松</span></li>
+          <li><span class="en">pass on a temperament</span><span class="zh">把某种气质传下去</span></li>
+          <li><span class="en">arrive together</span><span class="zh">同时出现、结伴而来</span></li>
+          <li><span class="en">pull the strands apart</span><span class="zh">把缠绕的线索一根根拆开</span></li>
+          <li><span class="en">repeat a comparison inside pairs</span><span class="zh">在（双胞胎）对内重做比较</span></li>
+          <li><span class="en">between one family and the next</span><span class="zh">在家庭与家庭之间（对比）</span></li>
+          <li><span class="en">be linked to</span><span class="zh">与……有关联</span></li>
+          <li><span class="en">carry a hazard ratio of</span><span class="zh">风险比为……</span></li>
+          <li><span class="en">survive correction for</span><span class="zh">经得起对……的校正</span></li>
+          <li><span class="en">range from ... to ...</span><span class="zh">从……到……不等</span></li>
+          <li><span class="en">shrink by ... per cent</span><span class="zh">缩小、下降……个百分点</span></li>
+          <li><span class="en">sit in the gap</span><span class="zh">落在（两个数字的）落差里</span></li>
+          <li><span class="en">tilt ... toward</span><span class="zh">使……偏向于</span></li>
+          <li><span class="en">run backwards</span><span class="zh">（因果）倒着走、反向成立</span></li>
+          <li><span class="en">predict nothing measurable</span><span class="zh">预测不出任何可测量的东西</span></li>
+          <li><span class="en">leave sb short of</span><span class="zh">使某人缺少……</span></li>
+          <li><span class="en">rule out</span><span class="zh">排除（可能性）</span></li>
+          <li><span class="en">leave sb worse off</span><span class="zh">使某人的处境更糟</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>公共争论：屏幕与青少年焦虑的相关性真实可重复，但归因始终说不清。</li>
+          <li>方法难题：观察性研究比较的是不同家庭，而家庭在基因与教养上全面不同。</li>
+          <li>研究登场：卡罗林斯卡 2026-10-12，21,797 名瑞典双胞胎，9—24 岁四轮随访。</li>
+          <li>核心设计：把每项比较放进双胞胎对内重做，家庭层面的遗传与环境被“压平”。</li>
+          <li>家庭之间：每天 6 小时以上互动类屏幕，临床结局风险约三倍；被动观看无关联。</li>
+          <li>双胞胎对内：风险比降 57%–59%，横断面系数从 0.20–0.38 缩到 0.02–0.21。</li>
+          <li>落差是什么：共享基因与共享教养——即“家庭”本身，而非设备单独作用。</li>
+          <li>反向与窗口：症状也能预测后来的使用；9 岁的屏幕预测不了 15 岁，窗口在青春期中段。</li>
+          <li>局限与收束：队列早于算法时代、自报粗糙、功效不足；问题应改为“哪种活动、哪类孩子”。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Anxious parents may keep looser rules about devices and also pass on a temperament that makes anxiety more likely, so that screen and symptom arrive together without either causing the other.</div>
+        <div class="row"><b>主干：</b>Anxious parents may keep ... and also pass on ...（两个并列谓语，主语都是 Anxious parents）</div>
+        <div class="row"><b>定语从句：</b>that makes anxiety more likely（修饰 a temperament，说明“这种气质”的作用）</div>
+        <div class="row"><b>结果状语从句：</b>so that screen and symptom arrive together（so that 引出前两个动作共同造成的后果）</div>
+        <div class="row"><b>独立主格 / 介词短语：</b>without either causing the other（either 指 screen 与 symptom 二者；“谁也没造成谁”）</div>
+        <div class="row"><b>考点：</b>并列谓语；that 定语从句；so that 结果状语；either ... the other 的指代</div>
+        <div class="row tr"><b>译文：</b>本身就焦虑的父母，可能既对电子设备管得更松，又把一种更容易焦虑的气质传了下去——于是屏幕和症状一起出现，却不是其中任何一个造成了另一个。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Their decisive move was to repeat each comparison inside pairs of twins, who share a household and, when identical, every gene.</div>
+        <div class="row"><b>主干：</b>Their decisive move was to repeat each comparison（不定式作表语，说明“做法是什么”）</div>
+        <div class="row"><b>地点状语：</b>inside pairs of twins（不是“在双胞胎之间”，而是“在每一对双胞胎内部”，这一介词决定了全文的因果解读）</div>
+        <div class="row"><b>非限制性定语从句：</b>who share a household and ... every gene（补充说明为什么对内比较有效）</div>
+        <div class="row"><b>插入的省略结构：</b>when identical = when they are identical（状语从句省略主语与 be 动词）</div>
+        <div class="row"><b>考点：</b>不定式作表语；inside / between 的语义差别；非限制性定语从句；状语从句的省略</div>
+        <div class="row tr"><b>译文：</b>他们决定性的做法，是把每一项比较都在双胞胎对内重做一遍——同一对双胞胎共享一个家庭，若是同卵，还共享全部基因。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Fifteen-year-olds who spent over six hours a day on interactive screens, that is chatting, gaming and browsing rather than watching, were about three times as likely to acquire a recorded diagnosis of anxiety or depression, or a prescription for antidepressants, as those under two hours.</div>
+        <div class="row"><b>主干：</b>Fifteen-year-olds ... were about three times as likely to acquire ... as those under two hours（倍数 + as ... as 的比较结构，比较对象在句末才出现）</div>
+        <div class="row"><b>定语从句：</b>who spent over six hours a day on interactive screens（修饰主语，长达十余词，把主谓隔开）</div>
+        <div class="row"><b>插入语：</b>that is chatting, gaming and browsing rather than watching（that is = 也就是说，用 rather than 界定“互动”与“被动”的分界）</div>
+        <div class="row"><b>并列宾语：</b>a recorded diagnosis ... , or a prescription for antidepressants（两种临床结局并列，都作 acquire 的宾语）</div>
+        <div class="row"><b>考点：</b>倍数比较结构；定语从句后置造成的主谓分离；插入语；rather than 的排除义</div>
+        <div class="row tr"><b>译文：</b>每天花在互动类屏幕上超过六小时（指聊天、游戏和浏览，而不是看视频）的 15 岁少年，被记录下焦虑或抑郁诊断、或拿到抗抑郁药处方的可能性，大约是不超过两小时者的三倍。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Compared within pairs, the picture contracts: the hazard ratio for the heaviest users fell by 57 to 59 per cent, to 1.65, and did not survive correction for the many tests run.</div>
+        <div class="row"><b>状语：</b>Compared within pairs（过去分词短语作状语，暗含“如果换一种比较方式”，是全文的转折开关）</div>
+        <div class="row"><b>主干：</b>the hazard ratio ... fell ... and did not survive correction（一个主语带两个并列谓语，先降、再失效）</div>
+        <div class="row"><b>介词短语：</b>to 1.65（to 表示“降到”，与 fell by 57 to 59 per cent 的“降幅”区分开：一个是幅度，一个是终点）</div>
+        <div class="row"><b>定语从句：</b>the team ran（修饰 the many tests，省略了关系代词 that/which）</div>
+        <div class="row"><b>考点：</b>过去分词作状语；fall by 与 fall to 的区别；并列谓语；定语从句省略关系词</div>
+        <div class="row tr"><b>译文：</b>换到双胞胎对内比较，画面就收缩了：使用最多的那一组，风险比下降 57% 到 59%，降到 1.65，而这一数字没能通过团队所做大量检验的多重校正。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Nor does a within-pair comparison guarantee precision, since only a limited number of pairs differed enough to be informative, leaving the study short of the power to rule out a small real effect.</div>
+        <div class="row"><b>主干：</b>Nor does a within-pair comparison guarantee precision（否定词 Nor 置于句首引起部分倒装：助动词 does 提前）</div>
+        <div class="row"><b>原因状语从句：</b>since only a limited number of pairs differed enough to be informative（“够格提供信息”的对子太少，即有效样本有限）</div>
+        <div class="row"><b>结果状语：</b>leaving the study short of the power ...（现在分词作结果状语，主语是整个前半句所述的情况）</div>
+        <div class="row"><b>不定式作定语：</b>the power to rule out a small real effect（什么样的“功效”：排除一个小的真实效应）</div>
+        <div class="row"><b>考点：</b>Nor 引起的倒装；since 原因从句；分词作结果状语；be short of；不定式作后置定语</div>
+        <div class="row tr"><b>译文：</b>双胞胎对内比较也不能保证精确——真正有差异、能提供信息的对子数量有限，研究因此缺少排除“存在一个小的真实效应”的统计功效。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">每隔几年，“孩子刷手机会不会刷出焦虑”就会重新上一次头条，随后往往跟着某一地、某一国的禁令。可这条新闻底下的证据一直有点尴尬：相关性是真实的、能重复的，但强度只是“中等”；更要命的是，几乎全部证据都来自观察性研究，而观察性研究比较的是不同家庭的孩子。家庭与家庭之间，差别大到几乎覆盖一切要紧的变量——收入、教养方式、父母的情绪状态、甚至父母自己的基因。一个本身焦虑的父亲，可能既懒得管孩子几点放下手机，也把一份容易焦虑的气质传了下去。这样一来，屏幕和症状当然会同时出现，却未必是谁造成了谁。这就是流行病学里最古老也最难缠的敌人：混杂。要对付它，最干净的办法不是把样本做得更大，而是找一个能“自动匹配”家庭条件的比较方式——同卵双胞胎。2026 年 10 月 12 日，瑞典卡罗林斯卡学院的 Tong Gong、Lu Yi 团队在《自然·人类行为》上给出了这样一份答卷。他们用的是瑞典儿童青少年双胞胎研究（CATSS）这个全国队列，21,797 名双胞胎，数据收集始于 2004 年，最长随访 13 年；9 岁由父母评估，15 岁、18 岁、24 岁自我报告。结局不只靠问卷，还链接了国家患者登记与处方登记，因此“焦虑或抑郁的诊断”“抗抑郁药的配药记录”都是硬指标。研究方法的核心动作只有一个：把每一项比较，都在双胞胎对内重做一遍。同一对双胞胎共享一个家庭；如果是同卵，还共享全部基因。于是家庭层面的一切——基因、教养、阶层、家庭氛围——都被“压平”，剩下的差异才更接近屏幕本身。结果分两层，恰好相反。第一层是按常规读法，在家庭与家庭之间比较：15 岁时每天在互动类屏幕（聊天、游戏、浏览，而非看视频）上超过六小时的孩子，后来被记录下焦虑或抑郁诊断、或拿到抗抑郁药处方的风险约为对照的三倍（工作日风险比 3.37，周末 2.30）；9 岁时每天打游戏的风险比为 1.38，男孩更高，达 1.56。而“被动观看”这一类——看电视、看视频——几乎没有可靠关联。这一层结果，和媒体标题完全吻合。第二层是换到双胞胎对内比较，画面立刻收缩：最重那组的风险比掉了 57% 到 59%，降到 1.65，而这个数字没能通过多重比较校正；15 岁时的横断面关联，全样本为 0.20 到 0.38，在同卵双胞胎对内只剩 0.02 到 0.21，衰减 32% 到 95%；跨年龄的关联同样缩水 28% 到 58%。换句话说，那些被反复引用的“倍数”，有相当一部分属于家庭，而不是属于设备。作者对此的表述相当克制：这不是判决“屏幕无害”，而是提醒“未校正的关联夸大了设备单独的作用”。文章还补充了两点容易被忽略的细节。其一是方向：15 岁症状更多的人，18 岁时在互动类屏幕上花的时间也略多（比值比 1.04），说明箭头至少有一小段是反着指的。其二是时间窗：9 岁的屏幕使用对 15 岁的症状没有任何可测量的预测力，敏感期看起来落在青春期中段，而不是童年。当然，这项研究也有清楚的边界。这些孩子成长于 2004 年之后，那时智能手机与算法推荐尚未普及，因此结论能否平移到今天要打个问号；自报时长本身就是粗糙的测量；“互动”与“被动”的二分只是近似；应答率从 15 岁的 73% 一路掉到 24 岁的 27%；而真正有差异、能提供信息的双胞胎对子数量有限，研究缺乏足够的统计功效去排除一个“小的真实效应”。所以它更像一次校准，而不是一次终结。它把问题从“屏幕是好是坏”，改写成“哪些活动、在什么情境下、让哪一类孩子更糟”。对家长和政策制定者来说，这个转向很实际：只按小时数立规矩，会错过真正危险的部分——深夜独自刷、以及已经在挣扎的孩子；而这两件事，恰恰是一个家庭还够得着的。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 4、5 段给出两组数字：家庭之间，风险比约 3；双胞胎对内，降到 1.65 且校正后不显著。请用“混杂（confounding）”这个概念，解释为什么同一批数据会给出两个答案；再结合第 8 段的三条局限，说明“关联缩水”为什么不能直接等同于“屏幕无害”。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"The study does not close the argument so much as change its shape, from whether screens are good or bad to which activities, in which circumstances, leave which children worse off."</span>（用 not ... so much as ... 把“终结问题”改写成“改写问题”，再用 from ... to ... 完成从二元到三维的转换），就“人工智能究竟让学习变好还是变坏”写一句你自己的定性句。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 争论：相关真实可重复，归因却始终说不清</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 难题：比较不同家庭＝把基因与教养一起比进去</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 设计：21,797 对瑞典双胞胎，9—24 岁四轮随访</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 家庭之间：6 小时以上 → 临床风险约 ×3（读数①）</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">5 · 双胞胎对内：风险比降 57%–59%（读数②）</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 落差：共享基因 + 共享教养，即“家庭”在起作用</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 反向：症状也能预测使用；敏感窗口在青春期中段</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 局限：早于算法时代、自报粗糙、功效不足</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：从“好或坏”改为“哪种活动、哪类孩子”</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">红＝家庭间读数（关联强）　蓝＝双胞胎内读数（关联缩水）　二者之差即“家庭”的份额</text>
+        </svg>
+        <figcaption>全文共 9 段，按「争论 → 难题 → 设计 → 家庭间读数 → 双胞胎内读数 → 落差 → 反向与窗口 → 局限 → 收束」递进展开；第 4、5 段是同一批数据的两种读法。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Human Behaviour《Recreational screen use and internalizing problems from preadolescence to young adulthood in a longitudinal twin cohort with co-twin comparison》（Gong T. 等；2026-10-12；DOI 10.1038/s41562-026-02607-0）公开摘要与结果整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 span class="s" data-t data-e 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

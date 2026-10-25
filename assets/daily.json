@@ -2,6 +2,19 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-10-25",
+      "en": "That is not a verdict that screens are harmless; it is a warning that the raw association overstates what a device does on its own.",
+      "zh": "这并不等于宣判“屏幕无害”，而是提醒：未经校正的关联，夸大了设备单独起到的作用。",
+      "src": "外刊精读 · 屏幕与青少年焦虑的双胞胎研究（2026-10-25）",
+      "key": "raw",
+      "keyZh": "未经校正的；未处理过的（raw data 原始数据）",
+      "tip": "「That is not a verdict that A; it is a warning that B」用“不是判决、而是提醒”把一个结论从断言降级为警示，语气立刻变得克制可信。raw 在此不是“生的”，而是统计里的“未校正”——同一个词在数据语境中换了一层意思。仿写：That is not a verdict that the app is useless; it is a warning that the raw download count overstates what a download means.",
+      "tags": [
+        "青少年心理",
+        "行为遗传学"
+      ]
+    },
+    {
       "date": "2026-10-24",
       "en": "Chronic pain, on this account, is not acute pain turned up; it is a separate loop that sits largely idle until injury recruits it.",
       "zh": "照此说来，慢性疼痛并不是急性疼痛被调大了音量，而是一条大多时候闲置、被损伤征召后才启动的独立回路。",
