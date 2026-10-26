@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 夜里的八秒</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Environmental Health · 人与自然 / 环境健康 / 流行病学 / 睡眠</div>
+  <h1>夜里的八秒：噪声怎样从窗口走进血管，又为什么始终算不清它害了多少人</h1>
+  <div class="deck">A 26-study meta-regression puts the cardiovascular toll of transport noise somewhere between one and sixteen per cent per ten decibels, depending on the statistical framework it is read with — while a sleep laboratory watches the damage happen in under half a minute</div>
+  <div class="byline"><span><b>来源</b> J Exposure Sci Environ Epidemiol（2026）/ Communications Medicine（2026）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-26</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 520 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-26.jpg" alt="一栋住着上千户的板式高层居民楼正对繁忙高架公路的实景照片（配图）">
+    <figcaption>配图：一栋住着上千户的板式高层，正对一条昼夜不歇的高架主干道，卡车贴着楼下碾过去——论文要计算的，正是这排窗户后面的人在几十年里多出了多少心血管风险（图片来源：The Curious Uptowner 新闻配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>有一种污染，你看不见，也闻不到，而且受害者本人往往是最后一个知道的：因为噪声对身体的伤害，大部分发生在夜里，发生在你睡着、并且第二天完全不记得的那些瞬间。流行病学为此争论了二十年，结论一直停在"有关联，但幅度到底多大说不清"的尴尬位置。2026 年，一个由 Elia Gonzato 领衔的国际团队在《暴露科学与环境流行病学杂志》（Journal of Exposure Science and Environmental Epidemiology）上做了一件很少被同行做的事：他们把同一批 26 项研究的证据，用两套统计学办法各算了一遍。结果同一批铁路数据，在传统元回归下给出"每 10 分贝风险上升 1%"（RR 1.01），在"证据负担"（burden of proof）框架下却给出 1.16——相差十六倍。这不是笔误，而是方法论的分歧：一套按样本精度加权、任由异质性把曲线拉平，另一套则主动剔除离群值、给不合理的曲线形状"罚款"，再把无法解释的差异留在模型里。更麻烦的是，两套办法下都稳健的配对只有两组，而且作者自己把证据强度评为"弱"。于是这篇文章的张力就出现在这里：数字小得可以忽略，方向却一致得无法否认；而公共卫生从来不按个人风险做决策，它算的是"小风险 × 近乎全民的暴露"。同一年，哥德堡大学声环境实验室的 12 名志愿者在隔声公寓里睡了五个晚上，整夜被 120 次 45–65 分贝的交通噪声事件打断：皮层觉醒成倍增加，睡眠深度指标在每次事件后不到半分钟就上升，清晨的血里乳酸、亮氨酸、丙酮全部升高。而这一切，睡者本人毫无记忆。更耐人寻味的是，研究者加入连续粉红噪声当作"掩蔽"，成功把这些代谢物送回基线，却完全没有改善任何人对睡眠的主观评价——身体留着收据，头脑把它撕了。本文按"夜里的八秒—旧指南—两套算法—小数字—方法之争—小风险的乘法—机制实验—血液证据—收束"展开，并把三个熟词僻义（figure / hold / margin）嵌进论证。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-26.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.024">At three in the morning a city is not silent but merely quieter, and what remains is exactly the part of the <span class="kw" data-tip="adj. 声音的；声学的（acoustics 声学）">acoustic</span> world a bedroom window was never built to stop.</span> <span class="s" data-t="10.024" data-e="18.961">A lorry braking beneath the window can break a night's sleep for eight seconds and leave no memory behind, which is why the harm is so easy to <span class="kw" data-tip="v. 不以为然；不予理会（dismiss a concern 把担忧轻轻放过）">dismiss</span>.</span></span></div>
+      <p class="para-tr">凌晨三点的城市不是安静，只是更轻一些；而剩下的那些声音，恰恰是卧室窗户从来就不是用来挡住的那一部分。一辆卡车在窗下刹车，能把一个人的一夜睡意打断八秒钟，却不留下任何记忆——这正是这种伤害如此容易被忽略的原因。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.961" data-e="31.224">For two decades <span class="kw" data-tip="n. 流行病学家（epidemiology 流行病学）">epidemiologists</span> have asked whether that interruption, repeated night after night, raises the risk of heart attack and stroke, and the answer has always depended on how the question was <span class="kw" data-tip="v. 构建；框定（frame a question 把问题这样提出来）">framed</span>.</span> <span class="s" data-t="31.224" data-e="41.513">The World Health Organization's 2018 guidelines rested on evidence that stopped in 2015, so Elia Gonzato's team set out to rebuild those curves.</span></span></div>
+      <p class="para-tr">二十年来，流行病学家一直在问：这种一夜接一夜的打断，会不会提高心脏病发作与卒中的风险；而答案始终取决于问题是怎么提的。世界卫生组织 2018 年的指南所依据的证据停在 2015 年，于是埃莉亚·贡扎托（Elia Gonzato）的团队着手把这些曲线重建一遍。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="41.513" data-e="54.868">Their review, published in the <em>Journal of Exposure Science and Environmental Epidemiology</em>, <span class="kw" data-tip="v. 汇总；合并（把多项研究的数据并成一组）">pooled</span> 26 studies of long-term road, rail and aircraft noise against heart attack, ischaemic heart disease and stroke.</span> <span class="s" data-t="54.868" data-e="66.985">Crucially, it <span class="kw" data-tip="v. 推导；得出（derive a curve 推出曲线）">derived</span> the curves twice: once by conventional inverse-variance <span class="kw" data-tip="n. 元回归（对多项研究的结果再做回归）">meta-regression</span>, and once by a burden-of-proof framework that <span class="kw" data-tip="v. 剔除；修剪（trim outliers 剔掉离群值）">trims</span> <span class="kw" data-tip="n. 离群值；异常值（远离其余数据点的观测）">outliers</span> and penalises <span class="kw" data-tip="adj. 难以置信的；不合理的（与 plausible 反义）">implausible</span> shapes.</span></span></div>
+      <p class="para-tr">他们的系统综述发表在《暴露科学与环境流行病学杂志》上，汇总了 26 项关于长期暴露于道路、铁路与航空噪声，与心脏病发作、缺血性心脏病和卒中之间关系的研究。关键在于，他们把曲线推导了两遍：一遍用常规的逆方差元回归，一遍用一种"证据负担"框架——它会剔除离群值，并对不合理的曲线形状施加惩罚。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="66.985" data-e="78.039">The conventional <span class="kw" data-tip="n. 数字；数据——熟词僻义：常见义为“人物；身材；图形”">figures</span> came out almost impossibly small, with road traffic noise lifting the risk of stroke by a relative one per cent for every ten decibels of day-evening-night level.</span> <span class="s" data-t="78.039" data-e="86.895">Only two pairings, road noise with stroke and rail noise with heart attack, <span class="kw" data-tip="v. 成立；依然有效——熟词僻义：常见义为“握住；举行”">held</span> under both methods, and even those were graded weak evidence.</span></span></div>
+      <p class="para-tr">用常规方法算出来的数字小到几乎不可能：道路交通噪声每升高 10 分贝的昼夜等效声级，卒中风险相对上升 1%。只有两组配对——道路噪声与卒中、铁路噪声与心脏病发作——在两种方法下都成立，而即便是这两组，也被评为"弱证据"。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="86.895" data-e="98.368">The distance between the two sets of numbers is a lesson in method rather than a rounding error, since identical railway data yield a risk ratio of 1.01 under conventional pooling.</span> <span class="s" data-t="98.368" data-e="107.987">Rebuilt with trimming and shape <span class="kw" data-tip="n. 约束；限制条件（shape constraint 对曲线形状的约束）">constraints</span>, the same data give 1.16, a <span class="kw" data-tip="n. 差额；幅度——熟词僻义：常见义为“页边空白；利润率”">margin</span> wide enough to change what a city is willing to spend on a wall.</span></span></div>
+      <p class="para-tr">两组数字之间的距离，是一堂方法论的课，而不是四舍五入的误差：同一批铁路数据，常规合并给出 1.01 的风险比；换成带剔除与形状约束的重建方式，同一批数据给出 1.16。这个差距大到足以改变一座城市愿意为一堵墙花多少钱。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="107.987" data-e="117.671">Weak evidence is not the same as no effect; it means the direction is <span class="kw" data-tip="adj. 一致的；前后相符的（consistent with 与……相符）">consistent</span> while the size remains uncertain, and size is what a budget is written in.</span> <span class="s" data-t="117.671" data-e="129.432">A relative risk of 1.05 looks negligible until it is multiplied by the share of a population above the <span class="kw" data-tip="n. 阈值；临界值（above the threshold 超过临界值）">threshold</span>, which is why <span class="kw" data-tip="adj. 可归因的（attribute A to B 把 A 归因于 B）">attributable</span> burden is so sensitive to the decimal.</span></span></div>
+      <p class="para-tr">"弱证据"不等于"没有效应"；它的意思是方向一致，而幅度仍然说不准——而预算恰恰是按幅度写的。1.05 的相对风险看起来可以忽略，直到它乘以生活在阈值以上的那部分人口；这也是为什么归因负担的算术对一个小数点如此敏感。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="129.432" data-e="140.145">The Global Burden of Disease study nonetheless still leaves transport noise out of its risk list, largely because <span class="kw" data-tip="n. 暴露-反应（关系）：剂量与健康结局之间的对应曲线">exposure-response</span> functions have never been stable enough to defend.</span> <span class="s" data-t="140.145" data-e="154.171">The biology, by contrast, is uncomfortably concrete: in a <span class="kw" data-tip="adj. 隔声的（soundproof 使隔音）">soundproofed</span> laboratory in Gothenburg, twelve volunteers slept five nights each while 120 noise events were played at 45 to 65 decibels.</span></span></div>
+      <p class="para-tr">然而全球疾病负担研究至今仍把交通噪声排除在风险清单之外，主要就是因为暴露-反应函数从来没有稳定到可以在会议桌上为之辩护。相比之下，生物学证据却具体得令人不安：在哥德堡一间隔声实验室里，12 名志愿者每人睡五夜，其间播放 120 次噪声事件，声级在 45 到 65 分贝之间。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="154.171" data-e="167.169">Traffic noise multiplied <span class="kw" data-tip="adj. 皮层的；大脑皮质的（cortex 皮层）">cortical</span> <span class="kw" data-tip="n. 觉醒；唤醒（睡眠中短暂的皮层激活，本人常不记得）">arousals</span>, and a finer measure of sleep depth rose within half a minute of each event and <span class="kw" data-tip="v. 随……而变；成比例变化（scale with loudness 随声级而增大）">scaled</span> with its loudness, <span class="kw" data-tip="v. 暴露；泄露（betray a state 把某种状态泄露出来）">betraying</span> a nervous system registering what the sleepers never recalled.</span> <span class="s" data-t="167.169" data-e="179.513">Blood drawn at dawn showed lactate, leucine and acetone all elevated, and continuous pink noise at 45 decibels returned them to <span class="kw" data-tip="n. 基线；基准水平（return to baseline 回到基线）">baseline</span> without improving how anyone said they had slept.</span></span></div>
+      <p class="para-tr">交通噪声让皮层觉醒成倍增加；一个更精细的睡眠深度指标在每次事件后不到半分钟内升高，并随声级增大而升高——这暴露出一个仍在登记的神经系统，尽管睡者本人毫无记忆。天亮时抽的血显示乳酸、亮氨酸和丙酮全部升高；而 45 分贝的连续粉红噪声把它们送回了基线，却丝毫没有改善任何人对自己睡眠的评价。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="179.513" data-e="189.237">That is the study's most troubling result: the body keeps the receipt even when the mind tears it up, so a night nobody remembers is not a night that cost nothing.</span> <span class="s" data-t="189.237" data-e="200.197">The uncertainty in the decimal is no argument for waiting, but a reason to measure night-time noise on its own and to treat a window as what it has quietly become: medical equipment.</span></span></div>
+      <p class="para-tr">这是这项研究最令人不安的结果：身体留着收据，哪怕头脑把它撕了——所以一个没人记得的夜晚，并不是一个没有代价的夜晚。因此，那个小数上的不确定，不是等待的理由，而是把夜间噪声单独测量的理由，也是把那扇窗当成它已经悄悄变成的东西的理由：一件医疗设备。</p>
+
+      <p class="muted">原文出处：本文据 Journal of Exposure Science and Environmental Epidemiology 2026 年第 36 卷 998–1012 页论文《Exposure-response relationship between transportation noise and cardiovascular disease outcomes: a systematic review and meta-regression analysis》（Elia Gonzato, Tessa M. I. Haverkate, Susanne Breitner-Busch, Anette Kocbach Bølling, Gunn Marit Aasvang, Michael Brauer, Vanessa Garcia, Sandra Spearman, Brecht Devleesschauwer, Juanita A. Haagsma, Periklis Charalampous；DOI 10.1038/s41370-026-00856-9）与 Communications Medicine 2026 年第 6 卷 114 号论文《Pink noise reduces impact of traffic noise on sleep and the blood metabolome: a cross-over pilot study》（Vincens N. 等，哥德堡大学；DOI 10.1038/s43856-026-01380-5）公开摘要与结果部分改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">acoustic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈkuːstɪk/ · 美 /əˈkuːstɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 声音的；声学的；听觉的（acoustic world 声音的世界；acoustic environment 声环境）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The part of the <b>acoustic</b> world a window was never built to stop.</div>
+          <div class="wc-tr">窗户从来就不是用来挡住的那部分声音世界。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dismiss</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /dɪsˈmɪs/ · 美 /dɪsˈmɪs/</div>
+          <div class="wc-pos"><b>v.</b> 不予理会；认为……不重要；解雇；驳回（dismiss a risk 把某种风险轻轻放过）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That is why the harm is so easy to <b>dismiss</b>.</div>
+          <div class="wc-tr">这就是为什么这种伤害如此容易被忽略。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">epidemiologist</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌepɪdiːmiˈɒlədʒɪst/ · 美 /ˌepɪdiːmiˈɑːlədʒɪst/</div>
+          <div class="wc-pos"><b>n.</b> 流行病学家（epidemiology 流行病学；epidemic 流行病）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>For two decades <b>epidemiologists</b> have asked whether that interruption raises the risk.</div>
+          <div class="wc-tr">二十年来，流行病学家一直在追问这种打断是否提高了风险。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">frame</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /freɪm/ · 美 /freɪm/</div>
+          <div class="wc-pos"><b>v.</b> 构建；框定（一个问题怎么提出来）；<b>n.</b> 框架<br>此处 frame a question 指“问题的提法本身决定了答案”</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The answer has always depended on how the question was <b>framed</b>.</div>
+          <div class="wc-tr">答案始终取决于问题是怎么提的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pool</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /puːl/ · 美 /puːl/</div>
+          <div class="wc-pos"><b>v.</b> 汇总；合并（把多项研究或数据并成一组）<br><b>n.</b> 水池；共同资源（talent pool 人才库）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their review <b>pooled</b> 26 studies of long-term noise exposure.</div>
+          <div class="wc-tr">他们的综述汇总了 26 项长期噪声暴露研究。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">derive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈraɪv/ · 美 /dɪˈraɪv/</div>
+          <div class="wc-pos"><b>v.</b> 推导；得出；源自（derive A from B 从 B 推出 A）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Crucially, it <b>derived</b> the curves twice.</div>
+          <div class="wc-tr">关键在于，他们把曲线推导了两遍。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">meta-regression</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˈmetə rɪˈɡreʃn/</div>
+          <div class="wc-pos"><b>n.</b> 元回归（在多项研究的结果之上再做回归，用来拟合剂量-反应曲线）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Once by conventional inverse-variance <b>meta-regression</b>.</div>
+          <div class="wc-tr">一遍用常规的逆方差元回归。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trim</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /trɪm/ · 美 /trɪm/</div>
+          <div class="wc-pos"><b>v.</b> 剔除；修剪（统计学中 trim outliers 指在拟合前去掉极端值）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A framework that <b>trims</b> outliers and penalises implausible shapes.</div>
+          <div class="wc-tr">一个会剔除离群值、惩罚不合理曲线形状的框架。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outlier</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈaʊtlaɪə/ · 美 /ˈaʊtlaɪər/</div>
+          <div class="wc-pos"><b>n.</b> 离群值；异常值；局外人（远离其余观测的个别数据点）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The framework trims <b>outliers</b> before fitting the curve.</div>
+          <div class="wc-tr">该框架在拟合曲线前先剔除离群值。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">implausible</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪmˈplɔːzəbl/ · 美 /ɪmˈplɔːzəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 难以置信的；不合理的（plausible 看似合理的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It penalises <b>implausible</b> shapes.</div>
+          <div class="wc-tr">它对不合理的曲线形状施加惩罚。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">grade</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɡreɪd/ · 美 /ɡreɪd/</div>
+          <div class="wc-pos"><b>v.</b> 评级；分级（grade evidence as weak 把证据评为弱）<br><b>n.</b> 等级；年级</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Even those were <b>graded</b> weak evidence.</div>
+          <div class="wc-tr">即便是这两组，也被评为弱证据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">constraint</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈstreɪnt/ · 美 /kənˈstreɪnt/</div>
+          <div class="wc-pos"><b>n.</b> 约束；限制条件（shape constraint 对曲线形状的约束）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Rebuilt with trimming and shape <b>constraints</b>.</div>
+          <div class="wc-tr">换用剔除与形状约束重建之后。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consistent</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kənˈsɪstənt/ · 美 /kənˈsɪstənt/</div>
+          <div class="wc-pos"><b>adj.</b> 一致的；前后相符的；持续的（be consistent with 与……相符）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It means the direction is <b>consistent</b> while the size remains uncertain.</div>
+          <div class="wc-tr">它的意思是方向一致，而幅度仍不确定。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> 阈值；临界值；门槛（above the threshold 超过临界值）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The share of a population living above the <b>threshold</b>.</div>
+          <div class="wc-tr">生活在阈值以上的那部分人口。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attributable</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈtrɪbjətəbl/ · 美 /əˈtrɪbjətəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 可归因的（attributable burden 可归因于某暴露的疾病负担；attribute A to B 把 A 归于 B）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That is why <b>attributable</b> burden is so sensitive to the decimal.</div>
+          <div class="wc-tr">这就是为什么归因负担对一个小数点如此敏感。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">exposure-response</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ɪkˈspəʊʒə rɪˈspɒns/</div>
+          <div class="wc-pos"><b>n.</b> 暴露-反应（关系）：环境暴露水平与健康结局之间的对应曲线，是制定限值的核心依据</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Exposure-response</b> functions have never been stable enough to defend.</div>
+          <div class="wc-tr">暴露-反应函数从来没有稳定到可以为之辩护。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">soundproofed</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsaʊndpruːft/ · 美 /ˈsaʊndpruːft/</div>
+          <div class="wc-pos"><b>adj.</b> 隔声的；隔音的（soundproof 使隔音；proof 此处为“防……的”后缀，如 waterproof）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In a <b>soundproofed</b> laboratory in Gothenburg.</div>
+          <div class="wc-tr">在哥德堡一间隔声实验室里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cortical</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɔːtɪkl/ · 美 /ˈkɔːrtɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 皮层的；大脑皮质的（cortex 皮层；cortical arousal 皮层觉醒）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Traffic noise multiplied <b>cortical</b> arousals.</div>
+          <div class="wc-tr">交通噪声让皮层觉醒成倍增加。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arousal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈraʊzl/ · 美 /əˈraʊzl/</div>
+          <div class="wc-pos"><b>n.</b> 觉醒；唤醒（睡眠中持续数秒的皮层激活，本人往往完全不觉察）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Noise multiplied cortical <b>arousals</b> across the night.</div>
+          <div class="wc-tr">噪声让整夜的皮层觉醒成倍增加。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scale</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /skeɪl/ · 美 /skeɪl/</div>
+          <div class="wc-pos"><b>v.</b> 随……而变；成比例增加（scale with 与……同步增长）<br><b>n.</b> 规模；刻度</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sleep depth rose within half a minute and <b>scaled</b> with loudness.</div>
+          <div class="wc-tr">睡眠深度在半分钟内升高，并随声级增大而升高。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">betray</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /bɪˈtreɪ/ · 美 /bɪˈtreɪ/</div>
+          <div class="wc-pos"><b>v.</b> 暴露；泄露（某种状态）；背叛（betray a nervous system 把神经系统的状态泄露出来）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Betraying</b> a nervous system registering what the sleepers never recalled.</div>
+          <div class="wc-tr">暴露出一个仍在登记的神经系统，尽管睡者本人毫无记忆。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">baseline</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbeɪslaɪn/ · 美 /ˈbeɪslaɪn/</div>
+          <div class="wc-pos"><b>n.</b> 基线；基准水平（return to baseline 回到基线；对照条件下的水平）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Continuous pink noise returned them to <b>baseline</b>.</div>
+          <div class="wc-tr">连续粉红噪声把它们送回了基线。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">figure</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈfɪɡə/ · 美 /ˈfɪɡjər/</div>
+          <div class="wc-pos"><b>n.</b> 数字；数据（the figures 指统计出来的数值）<br><span style="color:#9c2f16">常见义：人物；身材；图形；图表</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The conventional <b>figures</b> came out almost impossibly small.</div>
+          <div class="wc-tr">用常规方法算出来的数字小到几乎不可能。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> 成立；依然有效（结论经得起检验、没有被推翻）<br><span style="color:#9c2f16">常见义：握住；举行；容纳</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Only two pairings <b>held</b> under both methods.</div>
+          <div class="wc-tr">只有两组配对在两种方法下都成立。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">margin</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈmɑːdʒɪn/ · 美 /ˈmɑːrdʒɪn/</div>
+          <div class="wc-pos"><b>n.</b> 差额；幅度（两个数字之间的距离）<br><span style="color:#9c2f16">常见义：页边空白；利润率；边缘</span></div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>margin</b> wide enough to change what a city will spend.</div>
+          <div class="wc-tr">这个差距大到足以改变一座城市愿意花多少钱。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">at three in the morning</span><span class="zh">凌晨三点</span></li>
+          <li><span class="en">not silent but merely quieter</span><span class="zh">不是安静，只是更轻</span></li>
+          <li><span class="en">be built to stop</span><span class="zh">被造出来专门用来阻隔</span></li>
+          <li><span class="en">break a night's sleep</span><span class="zh">打断一夜的睡眠</span></li>
+          <li><span class="en">leave no memory behind</span><span class="zh">不留下任何记忆</span></li>
+          <li><span class="en">night after night</span><span class="zh">一夜接一夜地</span></li>
+          <li><span class="en">depend on how the question is framed</span><span class="zh">取决于问题怎么提</span></li>
+          <li><span class="en">rest on evidence</span><span class="zh">建立在证据之上</span></li>
+          <li><span class="en">set out to do</span><span class="zh">着手去做；开始做</span></li>
+          <li><span class="en">pool 26 studies</span><span class="zh">汇总 26 项研究</span></li>
+          <li><span class="en">derive the curves twice</span><span class="zh">把曲线推导两遍</span></li>
+          <li><span class="en">trim outliers</span><span class="zh">剔除离群值</span></li>
+          <li><span class="en">come out small</span><span class="zh">（数字）算出来很小</span></li>
+          <li><span class="en">hold under both methods</span><span class="zh">在两种方法下都成立</span></li>
+          <li><span class="en">be graded weak evidence</span><span class="zh">被评为弱证据</span></li>
+          <li><span class="en">a lesson in method</span><span class="zh">一堂方法论上的课</span></li>
+          <li><span class="en">a margin wide enough to ...</span><span class="zh">差距大到足以……</span></li>
+          <li><span class="en">be written in</span><span class="zh">用……写成的（指预算）</span></li>
+          <li><span class="en">be multiplied by</span><span class="zh">乘以；再乘上</span></li>
+          <li><span class="en">leave ... out of</span><span class="zh">把……排除在外</span></li>
+          <li><span class="en">by contrast</span><span class="zh">相比之下</span></li>
+          <li><span class="en">within half a minute of</span><span class="zh">在……之后半分钟内</span></li>
+          <li><span class="en">scale with</span><span class="zh">随……而变化</span></li>
+          <li><span class="en">return to baseline</span><span class="zh">回到基线水平</span></li>
+          <li><span class="en">be no argument for waiting</span><span class="zh">不是坐等不动的理由</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>开场：凌晨的城市只是更轻；卡车刹车的八秒不留记忆，所以伤害最容易被忽略。</li>
+          <li>旧账：二十年的追问取决于问题怎么提；世卫 2018 指南的证据停在 2015 年。</li>
+          <li>方法：26 项研究，同一批数据用传统元回归与"证据负担"框架各算一遍。</li>
+          <li>传统结果：每 10 分贝卒中风险 ×1.01，小到几乎不可能；只有两组配对稳健，且评为弱证据。</li>
+          <li>方法之争：同一批铁路数据，1.01 与 1.16 的差距不是误差，而是加权与剔除方式的差异。</li>
+          <li>为什么仍要紧：弱证据≠无效应；小风险乘以近乎全民的暴露，才是政策真正在算的账。</li>
+          <li>机制登场：GBD 至今不收交通噪声；而哥德堡的隔声实验室给出 12 人 5 夜 120 次事件。</li>
+          <li>生理证据：皮层觉醒成倍增、睡眠深度半分钟内随声级上升、血中三种代谢物升高。</li>
+          <li>收束：掩蔽噪声修好了血液指标却修不好主观感受——身体留着收据，所以窗是医疗设备。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">A lorry braking beneath the window can break a night's sleep for eight seconds and leave no memory behind, which is why the harm is so easy to dismiss.</div>
+        <div class="row"><b>主干：</b>A lorry ... can break ... and leave ...（can 后带两个并列动词，主语是 A lorry）</div>
+        <div class="row"><b>后置定语：</b>braking beneath the window（现在分词短语修饰 a lorry，交代场景，比定语从句更紧凑）</div>
+        <div class="row"><b>非限制性定语从句：</b>which is why the harm is so easy to dismiss（which 指代前面整件事：打断八秒且不留记忆）</div>
+        <div class="row"><b>表语从句：</b>why the harm is so easy to dismiss（作 is 的表语；easy to dismiss 是“容易被忽略”的双重被动意味）</div>
+        <div class="row"><b>考点：</b>现在分词作后置定语；并列谓语；which 指代整句；why 引导表语从句</div>
+        <div class="row tr"><b>译文：</b>一辆卡车在窗下刹车，能把一个人的一夜睡意打断八秒钟，却不留下任何记忆——这正是这种伤害如此容易被忽略的原因。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">For two decades epidemiologists have asked whether that interruption, repeated night after night, raises the risk of heart attack and stroke, and the answer has always depended on how the question was framed.</div>
+        <div class="row"><b>主干：</b>epidemiologists have asked ... and the answer has depended ...（and 连接两个并列分句，时态都是现在完成时）</div>
+        <div class="row"><b>宾语从句：</b>whether that interruption ... raises the risk（whether 引导，作 asked 的宾语；主语与谓语被插入语隔开）</div>
+        <div class="row"><b>插入语：</b>repeated night after night（过去分词短语，相当于 which is repeated，起强调频率的作用）</div>
+        <div class="row"><b>介词宾语从句：</b>how the question was framed（作 on 的宾语，把“答案”归因于“提法”）</div>
+        <div class="row"><b>考点：</b>whether 宾语从句；过去分词插入语造成的主谓分离；depend on + 从句；frame 的熟词僻义</div>
+        <div class="row tr"><b>译文：</b>二十年来，流行病学家一直在问：这种一夜接一夜的打断，会不会提高心脏病发作与卒中的风险；而答案始终取决于问题是怎么提的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Crucially, it derived the curves twice: once by conventional inverse-variance meta-regression, and once by a burden-of-proof framework that trims outliers and penalises implausible shapes.</div>
+        <div class="row"><b>主干：</b>it derived the curves twice（冒号前的总述，冒号后是对 twice 的具体交代）</div>
+        <div class="row"><b>并列方式状语：</b>once by ... , and once by ...（once ... and once ... 是“一次……另一次……”的对照结构）</div>
+        <div class="row"><b>定语从句：</b>that trims outliers and penalises implausible shapes（修饰 framework，两个并列谓语说明这套框架“主动做了什么”）</div>
+        <div class="row"><b>词法难点：</b>inverse-variance（逆方差，按精度加权）；burden of proof 原为法律术语“举证责任”，此处指“证据负担”评估框架</div>
+        <div class="row"><b>考点：</b>冒号的总分结构；once ... and once ...；that 定语从句中的并列谓语；专业复合名词的拆解</div>
+        <div class="row tr"><b>译文：</b>关键在于，他们把曲线推导了两遍：一遍用常规的逆方差元回归，一遍用一种“证据负担”框架——它会剔除离群值，并对不合理的曲线形状施加惩罚。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A relative risk of 1.05 looks negligible until it is multiplied by the share of a population above the threshold, which is why attributable burden is so sensitive to the decimal.</div>
+        <div class="row"><b>主干：</b>A relative risk of 1.05 looks negligible（主系表结构，先给出“看着可以忽略”的判断）</div>
+        <div class="row"><b>时间状语从句：</b>until it is multiplied by the share of a population（until 在此不是“直到”而是“除非／在……之前”，构成转折）</div>
+        <div class="row"><b>后置定语：</b>above the threshold（修饰 population，即“暴露超过限值的那部分人”）</div>
+        <div class="row"><b>非限制性定语从句：</b>which is why ...（which 指代“乘以人口份额”这个动作，引出结论）</div>
+        <div class="row"><b>考点：</b>until 的否定式语义；被动语态 be multiplied by；which 指代前文动作；attributable burden 的术语含义</div>
+        <div class="row tr"><b>译文：</b>1.05 的相对风险看起来可以忽略，直到它乘以生活在阈值以上的那部分人口；这也是为什么归因负担的算术对一个小数点如此敏感。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Traffic noise multiplied cortical arousals, and a finer measure of sleep depth rose within half a minute of each event and scaled with its loudness, betraying a nervous system registering what the sleepers never recalled.</div>
+        <div class="row"><b>主干：</b>Traffic noise multiplied cortical arousals, and a finer measure ... rose ... and scaled ...（and 连接两个分句，第二分句内部又有两个并列谓语）</div>
+        <div class="row"><b>时间状语：</b>within half a minute of each event（within ... of 表示“在……之后……之内”，是“多快”的关键证据）</div>
+        <div class="row"><b>现在分词作结果状语：</b>betraying a nervous system（主语是前面整件事：指标随声级上升，于是“暴露”了神经系统的状态）</div>
+        <div class="row"><b>现在分词作后置定语：</b>registering what the sleepers never recalled（修饰 a nervous system；what 从句作 registering 的宾语）</div>
+        <div class="row"><b>考点：</b>并列谓语的多层嵌套；within ... of 的时间含义；分词作结果状语与后置定语的区别；betray 的熟词僻义</div>
+        <div class="row tr"><b>译文：</b>交通噪声让皮层觉醒成倍增加；一个更精细的睡眠深度指标在每次事件后不到半分钟内升高，并随声级增大而升高——这暴露出一个仍在登记的神经系统，尽管睡者本人毫无记忆。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">有些污染你看得见——烟囱、污水、雾霾；有些你看不见，却每天都在承受，而且受害者往往是最后一个知道的。噪声属于后者，理由很朴素：它对身体最要紧的那部分伤害，发生在夜里，发生在你睡着、并且第二天完全不记得的那些瞬间。一辆卡车在卧室窗下刹车，能把一夜的睡意打断八秒钟，事后再问，当事人只会说"睡得还行"。这种"没有记忆的伤害"，正是它在公共卫生议程上被排在空气污染之后的原因。2026 年，一个由 Elia Gonzato 领衔、成员来自荷兰、德国、挪威、加拿大等国机构（含乌得勒支大学、德国联邦环境署、挪威公共卫生研究所、不列颠哥伦比亚大学等）的团队，在《暴露科学与环境流行病学杂志》上系统清理了这笔旧账。他们从六个数据库加谷歌学术检索到 1339 条记录，最终纳入 26 项关于长期暴露于道路、铁路、航空噪声与心脏病发作、缺血性心脏病、卒中的研究，把暴露-反应曲线重新推导了一遍。真正有意思的地方在于，他们把同一批证据算了两遍。第一遍用流行病学的标准做法——逆方差加权的元回归，按每项研究的精度给权重，用自然三次样条拟合剂量-反应曲线。结果小得让人怀疑仪器：道路交通噪声每升高 10 分贝（昼夜等效声级），卒中风险相对上升约 1%（RR 1.01，95%CI 1.00–1.02），心肌梗死 1.02，航空噪声与缺血性卒中 1.05。第二遍换成"证据负担"（burden of proof）框架：先自动剔除离群研究，再对曲线施加"单调、凹向下"的形状约束（不合理的形状会被惩罚），并把无法用协变量解释的研究间异质性直接留在模型里。于是同一批铁路数据，心肌梗死的风险比从 1.01 变成 1.16（95%UI 1.07–1.26）；道路噪声与卒中从 1.01 变成 1.05；道路噪声与心肌梗死变成 1.10，但不确定区间宽到 0.79–1.56。作者的态度相当克制：12 组风险-结局配对里，只有 4 组拿到"两星"（风险升高 0–15%，弱证据），5 组一星，其余连可靠估计都谈不上；两种方法下都稳健的只有两组——道路噪声与卒中、铁路噪声与心肌梗死——证据强度都被评为"弱"。这就是本文真正的张力所在。一个 1.01，一个 1.16，相差十六倍；如果只看前者，任何一座城市都不会愿意为隔音窗拨款；如果只看后者，隔音窗立刻成了性价比极高的公共卫生干预。而这两个数字来自同一批论文。作者自己的判断是：BoP 的曲线更平滑、更保守、更稳健，也更适合拿去做疾病负担评估；传统的逆方差合并则容易被异质性和个别大样本研究拉平。换句话说，"噪声到底多伤心脏"这个问题，目前没有一个可以写进法规的确定答案。可这并不意味着什么都做不了。公共卫生从来不按个人风险做决策，它算的是"小风险 × 近乎全民的暴露"：1.05 的相对风险听起来可以忽略，但乘以住在限值以上的人口，就是一个国家级的归因负担。也正因为暴露-反应函数不够稳，全球疾病负担研究（GBD）至今仍没把交通噪声列进风险清单——一个荒诞的循环：因为数字不稳所以不算，因为不算所以更没人去把它做稳。流行病学给不出确定答案的地方，实验室给出了另一半。同一年，哥德堡大学声环境实验室的团队在《通讯·医学》上报告了一项交叉试验：12 名健康志愿者（21–29 岁）在一间高保真模拟公寓里各睡五夜，其中四夜随机接受四种条件——安静、整夜 120 次交通噪声事件（45–65 分贝）、45 分贝连续粉红噪声、以及两者叠加。结果是：交通噪声让皮层觉醒成倍增加；一个比传统判读更敏感的睡眠深度指标，在每次噪声事件开始后 27–30 秒达到峰值，并且峰值随声级单调上升——剂量-反应清清楚楚。清晨抽血做代谢组学，乳酸、亮氨酸、丙酮全部升高，这正是"大脑被迫换燃料"的代谢签名：睡眠被打碎，糖酵解上升、酮体生成增加、支链氨基酸利用受损，而这几条通路都与胰岛素抵抗和长期心血管代谢风险相连。更值得玩味的是干预的那一半：连续粉红噪声成功掩蔽了大部分生理扰动，把三种代谢物送回基线，却完全没有改善任何人对睡眠的主观评价，甚至让听觉疲劳变差。身体留着收据，头脑把它撕了。所以这篇文章最后落到一个很小的结论上，却很难反驳：那个小数上的不确定，不是"再等等"的理由，而是"把夜间噪声单独测"的理由。因为白天与夜间的等效声级可以完全一样，伤害却差出很远；也因为那扇窗，早就不是建筑材料，而是一件没人给它开处方的医疗设备。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 4、5 段给出同一批数据的两种读数：传统元回归是 1.01，证据负担框架是 1.16。请说明这两种方法的差异具体落在哪三个技术动作上（加权、剔除、形状约束），并解释为什么作者仍然把两组稳健配对的证据评为"弱"。再结合第 6 段，说明"弱证据"为什么不能成为"不采取措施"的理由。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"The uncertainty in the decimal is no argument for waiting, but a reason to measure night-time noise on its own and to treat a window as what it has quietly become: medical equipment."</span>（用 is no argument for ... but a reason to ... 把"不作为的借口"翻转成"行动的理由"，再用冒号给出一个出人意料的重新定义），就"人工智能对入门岗位的影响仍不确定"写一句你自己的定性句。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 开场：凌晨的城市不是安静，只是更轻</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 旧账：二十年争论，取决于问题怎么提</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 方法：26 项研究，同一批数据算两遍</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 传统法：每 10 dB，卒中 ×1.01（读数①）</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">5 · 证据负担法：同样数据给出 ×1.16（读数②）</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 为什么仍要紧：小风险 × 近乎全民的暴露</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 机制：12 人 × 5 夜 × 120 次噪声事件</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 血液：乳酸 / 亮氨酸 / 丙酮升高，掩蔽可逆</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：不确定不是等待的理由，而是分夜测量</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">红＝流行病学的两套读数（同一批证据）　蓝＝实验室的机制证据　上下两半在一处汇合：小数字 × 大人口</text>
+        </svg>
+        <figcaption>全文共 9 段，按「场景 → 旧指南 → 双算法 → 传统读数 → 证据负担读数 → 小风险的乘法 → 机制实验 → 血液证据 → 收束」递进；第 4、5 段是同一批数据的两套算法，第 7、8 段是流行病学给不出的那半个答案。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Journal of Exposure Science and Environmental Epidemiology《Exposure-response relationship between transportation noise and cardiovascular disease outcomes: a systematic review and meta-regression analysis》（Gonzato E. 等；2026；DOI 10.1038/s41370-026-00856-9）与 Communications Medicine《Pink noise reduces impact of traffic noise on sleep and the blood metabolome: a cross-over pilot study》（Vincens N. 等；2026；DOI 10.1038/s43856-026-01380-5）公开摘要与结果整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 span class="s" data-t data-e 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
