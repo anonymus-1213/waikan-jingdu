@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 四年吃掉三十年</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Global Health · 人与社会 / 公共卫生 / 免疫规划 / 全球健康</div>
+  <h1>四年吃掉三十年：麻疹回来时，缺的从来不是疫苗</h1>
+  <div class="deck">A 204-country analysis in Nature Medicine estimates that measles cases among the under-fives rose forty per cent in four years, and that one infant in five never received a first dose — numbers that are modelled rather than counted, and all the more damning for it</div>
+  <div class="byline"><span><b>来源</b> Nature Medicine（2026-10-21）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-27</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 510 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-27.jpg" alt="一名被大人抱在怀里的婴儿直视镜头、另一双手正伸向婴儿手臂的实景照片（配图）">
+    <figcaption>配图：一名被大人抱在怀里的婴儿直视镜头，另一双手正伸过来——接种台前的那一刻。2023 年，全球约有 2370 万名婴儿连第一针麻疹疫苗都没有等到（图片来源：Wikimedia Commons，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>麻疹是一种很奇怪的存在：它的疫苗 1963 年就有了，便宜、安全、一针就见效，两针几乎终身免疫；可它至今仍是全球五岁以下儿童死于"本可预防疾病"的头号原因之一。更奇怪的是它的传播力——在免疫薄弱的地方，一个病人平均能传染给 18 个人，而且病毒在病人离开房间两小时后依然悬浮在空气里。这两个数字放在一起，意味着麻疹从来不是一个"技术问题"，而是一道"物流问题"：只要最后一公里的接种系统出现裂缝，它就会立刻回来。2026 年 10 月 21 日，《自然·医学》上线了一份迄今最完整的账本：全球疾病负担研究（GBD）2023 的麻疹协作组，由昆士兰大学弗雷泽研究所的本·萨托里乌斯（Benn Sartorius）领衔，覆盖 204 个国家和地区，时间跨度 1990 至 2023 年，只算五岁以下的儿童。结论冷得刺人：1990 到 2019 年，发病率降了约八成、死亡率降了约九成，这是公共卫生史上最安静的一次胜利；然后曲线掉头，2023 年估算有 1560 万例病例、11.8 万例死亡，比 2019 年分别高出四成和一成二。第一剂疫苗覆盖率从 2019 年的 83.6% 滑到 81.0%，约 2370 万名婴儿——全球每五个里有一个——连第一针都没打上。撒哈拉以南非洲占了漏种的一半，南亚占五分之一；而同一时期，澳大拉西亚的第二剂覆盖率做到了 96%，是全球最高。这篇文章真正的锋利之处，不在于它把责任推给新冠，而在于它说了两件彼此别扭的话：第一，所有数字都不是"数"出来的，而是"算"出来的——它们是从监测数据、入户调查和生命登记里拼出来的模型估计，所以数据最差的地方，最依赖建模，也最不确定；第二，恰恰因为如此，这份报告才更值得读，因为一个连病例都数不清的国家，也数不清自己死了多少人。作者没有说"疫情毁了三十年"，只说"反弹与接种体系被冲击在时间上吻合"——这是一个诚实的流行病学家能说到的极限。而全文最后落在一句几乎像格言的话上：麻疹不需要新疫苗、新分子、新思路，它只需要那条送货的最后一公里，能扛过一次震荡。四年的事实证明，最后一公里永远是最先断、最后接上的那一段。本文按"传播力—这份账本—三十年的胜利—四年的回头—地理的不均—平均数的陷阱—模型的自白—算术的意义—收束"展开，并把三个熟词僻义（slip / bear / model）嵌进论证。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-27.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.205">Measles needs no crowd, only a room, and it stays infectious there for two hours after the child who brought it has gone home.</span> <span class="s" data-t="8.205" data-e="20.056">Where immunity is low, a single case can generate as many as eighteen more, which is why one unvaccinated child in a waiting room is enough to start an <span class="kw" data-tip="n. 暴发；突然流行（outbreak of measles 麻疹暴发）">outbreak</span> that runs for months.</span></span></div>
+      <p class="para-tr">麻疹不需要人群，只需要一个房间；而且把病毒带进来的那个孩子回家两小时之后，房间里依然有传染性。在免疫水平低的地方，一个病例最多能生出十八个新病例——这就是为什么候诊室里一个没接种的孩子，就足以点燃一场持续数月的暴发。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="20.056" data-e="35.099">On 21 October 2026, the GBD 2023 Measles Collaborators, led by Benn Sartorius of the University of Queensland's Frazer Institute, published the most complete <span class="kw" data-tip="n. 评估；清点（make an assessment of 对……作出评估）">assessment</span> yet of what that <span class="kw" data-tip="n. 传播力；可传播性（transmit 传播 → transmissible 可传播的）">transmissibility</span> has cost in <em>Nature Medicine</em>.</span> <span class="s" data-t="35.099" data-e="47.862">Their analysis covers 204 countries and territories between 1990 and 2023, and it estimates cases, deaths and the width of the <span class="kw" data-tip="n. 免疫力；免疫（immunity gap 免疫空白）">immunity</span> gap in children under five rather than counting any of them.</span></span></div>
+      <p class="para-tr">2026 年 10 月 21 日，由昆士兰大学弗雷泽研究所的本·萨托里乌斯（Benn Sartorius）领衔的"全球疾病负担 2023 麻疹协作组"，在《自然·医学》上发表了迄今最完整的一份评估，清算这种传播力究竟让人类付出了什么。他们的分析覆盖 1990 至 2023 年间的 204 个国家和地区，估算的是五岁以下儿童的病例数、死亡数与免疫空白的宽度——而不是把它们一例一例数出来。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="47.862" data-e="58.737">For three decades the story was one of public health's quietest triumphs: <span class="kw" data-tip="n. 发病率（incident 事件 → incidence 发生频率）">incidence</span> among young children fell by roughly eighty per cent and <span class="kw" data-tip="n. 死亡率（mortal 会死的 → mortality 死亡）">mortality</span> by about ninety.</span> <span class="s" data-t="58.737" data-e="70.979">First-dose <span class="kw" data-tip="n. 覆盖率（cover 覆盖 → coverage 覆盖范围）">coverage</span> climbed from 67.2 per cent to 83.6 per cent, and second-dose coverage from 14.4 per cent to 68.4 per cent, as <span class="kw" data-tip="adj. 常规的；例行的（routine immunisation 常规免疫接种）">routine</span> <span class="kw" data-tip="n. 免疫接种（immunise 使免疫；英式拼写，美式 immunization）">immunisation</span> reached places that had never had it.</span></span></div>
+      <p class="para-tr">三十年间，这是公共卫生最安静的一次胜利：幼儿发病率下降约八成，死亡率下降约九成。第一剂覆盖率从 67.2% 升到 83.6%，第二剂从 14.4% 升到 68.4%——常规免疫接种抵达了那些从来没有过它的地方。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="70.979" data-e="83.677">Then the curve turned, and by 2023 the collaborators estimate 15.6 million cases and 118,000 deaths in children under five, forty per cent more cases and twelve per cent more deaths than in 2019.</span> <span class="s" data-t="83.677" data-e="93.575">First-dose coverage had <span class="kw" data-tip="v. 小幅下滑；悄悄变差——熟词僻义：常见义为“滑倒；溜走”">slipped</span> to 81.0 per cent, and an estimated 23.7 million <span class="kw" data-tip="n. 婴儿（通常指一岁以内；此处泛指婴幼儿）">infants</span>, about one in five worldwide, had received no first dose at all.</span></span></div>
+      <p class="para-tr">然后曲线掉头了：到 2023 年，协作组估算五岁以下儿童中有 1560 万例病例、11.8 万例死亡——比 2019 年病例多四成、死亡多一成二。第一剂覆盖率已滑到 81.0%，而约 2370 万名婴儿，也就是全球每五个里有一个，连第一针都没有打上。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="93.575" data-e="106.924">The missed doses are not spread evenly: sub-Saharan Africa <span class="kw" data-tip="v. 承担；承受（负担）——熟词僻义：常见义为“熊；忍受”">bears</span> half of them and South Asia a fifth, while Australasia ended the period with the highest second-dose coverage of any region, at 96 per cent.</span></span></div>
+      <p class="para-tr">漏掉的剂次分布并不均匀：撒哈拉以南非洲承担了其中一半，南亚承担了五分之一；而同一时期结束时，澳大拉西亚的第二剂覆盖率是所有地区里最高的，达到 96%。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="106.924" data-e="120.078">Measles is unforgiving of averages, because protection has to be continuous rather than merely high: a national figure of 92 per cent can <span class="kw" data-tip="v. 掩盖；隐瞒（conceal a fact 把事实盖住）">conceal</span> a <span class="kw" data-tip="n. 区；县（行政区域单位，比 city 小）">district</span> at 75, and the virus will find that district.</span> <span class="s" data-t="120.078" data-e="133.167">The pandemic explains the timing better than the pattern, since coverage had begun to <span class="kw" data-tip="v. 停滞；卡住不动（talks stalled 谈判陷入停滞）">stall</span> before 2020 and has kept <span class="kw" data-tip="v. 侵蚀；逐步削弱（erode confidence 一点点磨掉信心）">eroding</span> in wealthy countries where <span class="kw" data-tip="n. 犹豫；迟疑（vaccine hesitancy 疫苗犹豫）">hesitancy</span>, not access, is the binding <span class="kw" data-tip="n. 限制因素；约束（binding constraint 起决定作用的约束条件）">constraint</span>.</span></span></div>
+      <p class="para-tr">麻疹对平均数毫不宽容，因为保护必须是连续的，而不仅仅是"高"的：一个 92% 的全国数字，可以盖住某个只有 75% 的区县，而病毒一定会找到那个区县。疫情能解释时间点，却解释不了分布格局——因为在 2020 年之前，覆盖率就已经开始停滞；而在那些"犹豫"而非"可及性"才是关键约束的富裕国家，它一直在被一点点磨薄。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="133.167" data-e="135.316">None of these figures is a count.</span> <span class="s" data-t="135.316" data-e="147.949">Each is a <span class="kw" data-tip="v. 建模估算——熟词僻义：常见义为“模型；模特”">modelled</span> estimate stitched together from <span class="kw" data-tip="n. 监测；监视（surveillance system 监测系统）">surveillance</span>, household surveys and vital records, so the places with the weakest data lean hardest on modelling and carry the least certainty.</span> <span class="s" data-t="147.949" data-e="157.195">The study shows that the rebound coincided with the disruption of immunisation programmes; it cannot show that the disruption alone caused it.</span></span></div>
+      <p class="para-tr">这些数字里没有一个是被"数"出来的。每一个都是用监测数据、入户调查和生命登记拼起来的建模估计；所以数据最薄弱的地方，对建模的依赖最深，所携带的确定性也最少。这项研究说明的是：这轮反弹与免疫规划被打断在时间上是吻合的；它无法说明的是：仅仅是这种打断造成了反弹。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="157.195" data-e="170.805">Modelling is not a weaker form of knowing when the alternative is not knowing at all, and here the direction of the error is unusually clear: a country that cannot count its cases cannot count its dead either.</span> <span class="s" data-t="170.805" data-e="182.461">Two doses are estimated to have <span class="kw" data-tip="v. 避免；防止（avert a death 避免一例死亡）">averted</span> nearly 59 million deaths between 2000 and 2024, the strongest claim the paper makes and the one most easily lost if coverage keeps sliding.</span></span></div>
+      <p class="para-tr">当"不知道"是唯一的替代方案时，建模并不是一种更弱的"知道"；而在这里，误差的方向异常清楚：一个连病例都数不清的国家，也数不清自己死了多少人。据估算，2000 至 2024 年间，两剂疫苗避免了近 5900 万例死亡——这是全文最有力的论断，也是最容易随着覆盖率继续下滑而被一笔勾销的论断。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="182.461" data-e="192.945">What is striking is that measles never demanded a new vaccine, a new molecule or a new idea; it demanded that the last mile of a delivery system survive a shock.</span> <span class="s" data-t="192.945" data-e="201.671">Four years have shown that the last mile breaks first and mends slowest, and that a virus this efficient does not wait for the repair.</span></span></div>
+      <p class="para-tr">真正扎人的是：麻疹从来没有要求过一种新疫苗、一个新分子或者一个新想法；它要求的，只是那条送货的最后一公里，能扛过一次震荡。四年的事实已经说明，最后一公里总是最先断、最后接上；而一个效率这么高的病毒，不会等人类修好它。</p>
+
+      <p class="muted">原文出处：本文据 Nature Medicine 2026 年 10 月 21 日在线发表论文《Global and regional burden of measles and vaccine coverage among children under 5 years, 1990–2023: a Global Burden of Disease Study》（GBD 2023 Measles Collaborators；第一作者 Benn Sartorius，昆士兰大学弗雷泽研究所；合作者含 Jon Mosser、Ashley Harris、Christopher J. L. Murray 等，美国华盛顿大学健康测量与评估研究所 IHME；DOI 10.1038/s41591-026-04661-7）公开摘要、结果与新闻稿改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outbreak</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈaʊtbreɪk/ · 美 /ˈaʊtbreɪk/</div>
+          <div class="wc-pos"><b>n.</b> （疾病、战争等的）暴发；突然流行（an outbreak of measles 麻疹暴发；a cholera outbreak 霍乱疫情）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>One unvaccinated child is enough to start an <b>outbreak</b> that runs for months.</div>
+          <div class="wc-tr">一个未接种的孩子，就足以点燃一场持续数月的暴发。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">assessment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈsesmənt/ · 美 /əˈsesmənt/</div>
+          <div class="wc-pos"><b>n.</b> 评估；清点；判断（make an assessment of 对……作出评估；risk assessment 风险评估）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They published the most complete <b>assessment</b> yet of that cost.</div>
+          <div class="wc-tr">他们发表了迄今关于这项代价最完整的一份评估。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">transmissibility</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /trænzˌmɪsəˈbɪləti/ · 美 /trænzˌmɪsəˈbɪləti/</div>
+          <div class="wc-pos"><b>n.</b> 传播力；可传播性（transmit 传播 → transmissible 可传播的 → transmissibility 传播力）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The paper measures what that <b>transmissibility</b> has cost.</div>
+          <div class="wc-tr">这篇论文清算的正是这种传播力带来的代价。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">immunity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈmjuːnəti/ · 美 /ɪˈmjuːnəti/</div>
+          <div class="wc-pos"><b>n.</b> 免疫力；豁免（immunity gap 免疫空白；herd immunity 群体免疫）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Where <b>immunity</b> is low, a single case can generate eighteen more.</div>
+          <div class="wc-tr">在免疫水平低的地方，一个病例能生出十八个新病例。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">incidence</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɪnsɪdəns/ · 美 /ˈɪnsɪdəns/</div>
+          <div class="wc-pos"><b>n.</b> 发病率；发生频率（the incidence of measles 麻疹发病率）<br>辨析：incidence 发病率 / prevalence 患病率 / mortality 死亡率</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Incidence</b> among young children fell by roughly eighty per cent.</div>
+          <div class="wc-tr">幼儿发病率下降了大约八成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mortality</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /mɔːˈtæləti/ · 美 /mɔːrˈtæləti/</div>
+          <div class="wc-pos"><b>n.</b> 死亡率；必死性（infant mortality 婴儿死亡率）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Mortality</b> fell by about ninety per cent.</div>
+          <div class="wc-tr">死亡率下降了约九成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">coverage</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkʌvərɪdʒ/ · 美 /ˈkʌvərɪdʒ/</div>
+          <div class="wc-pos"><b>n.</b> 覆盖率；覆盖范围；（新闻）报道（vaccination coverage 接种覆盖率）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>First-dose <b>coverage</b> had slipped to 81.0 per cent.</div>
+          <div class="wc-tr">第一剂覆盖率已滑到 81.0%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">routine</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ruːˈtiːn/ · 美 /ruːˈtiːn/</div>
+          <div class="wc-pos"><b>adj.</b> 常规的；例行的（routine immunisation 常规免疫接种）<br><b>n.</b> 惯例；日常程序</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Routine</b> immunisation reached places that had never had it.</div>
+          <div class="wc-tr">常规免疫接种抵达了那些从来没有过它的地方。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">immunisation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪmjunaɪˈzeɪʃn/ · 美 /ˌɪmjənəˈzeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 免疫接种（英式拼写 -isation，美式 immunization；动词 immunise / immunize）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The rebound coincided with the disruption of <b>immunisation</b> programmes.</div>
+          <div class="wc-tr">这轮反弹与免疫规划被打断在时间上吻合。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">slip</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /slɪp/ · 美 /slɪp/</div>
+          <div class="wc-pos"><b>v.</b> （数字、水平）小幅下滑；悄悄变差<br>常见义：滑倒；溜走；滑落（slip on ice）<br>此处 slip to 81% 强调"不是暴跌，而是无声地掉下去"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>First-dose coverage had <b>slipped</b> to 81.0 per cent.</div>
+          <div class="wc-tr">第一剂覆盖率已经悄悄滑到了 81.0%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">infant</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɪnfənt/ · 美 /ˈɪnfənt/</div>
+          <div class="wc-pos"><b>n.</b> 婴儿（严格指一岁以内）；<b>adj.</b> 婴儿的；初创的（infant industry 幼稚产业）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An estimated 23.7 million <b>infants</b> had received no first dose at all.</div>
+          <div class="wc-tr">约 2370 万名婴儿连第一针都没有打上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bear</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /beə(r)/ · 美 /ber/</div>
+          <div class="wc-pos"><b>v.</b> 承担；承受（负担、代价）<br>常见义：熊；忍受；生育（bear a child）<br>此处 bear half of them ＝ 承担其中一半（bear the burden 承担负担）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sub-Saharan Africa <b>bears</b> half of them.</div>
+          <div class="wc-tr">撒哈拉以南非洲承担了其中一半。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conceal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈsiːl/ · 美 /kənˈsiːl/</div>
+          <div class="wc-pos"><b>v.</b> 掩盖；隐瞒；遮住（conceal the truth 隐瞒真相）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A national figure of 92 per cent can <b>conceal</b> a district at 75.</div>
+          <div class="wc-tr">一个 92% 的全国数字，可以盖住某个只有 75% 的区县。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">district</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈdɪstrɪkt/ · 美 /ˈdɪstrɪkt/</div>
+          <div class="wc-pos"><b>n.</b> 区；县；地区（行政或地理单位，比 city 小、比 village 大）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The virus will find that <b>district</b>.</div>
+          <div class="wc-tr">病毒一定会找到那个区县。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stall</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /stɔːl/ · 美 /stɔːl/</div>
+          <div class="wc-pos"><b>v.</b> 停滞；卡住不动（talks stalled 谈判陷入停滞）<br><b>n.</b> 摊位；熄火</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Coverage had begun to <b>stall</b> before 2020.</div>
+          <div class="wc-tr">覆盖率在 2020 年之前就已经开始停滞。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">erode</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪˈrəʊd/ · 美 /ɪˈroʊd/</div>
+          <div class="wc-pos"><b>v.</b> 侵蚀；逐步削弱（erode confidence 一点点磨掉信心；erosion 侵蚀）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Coverage has kept <b>eroding</b> in wealthy countries.</div>
+          <div class="wc-tr">覆盖率在富裕国家一直在被一点点磨薄。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hesitancy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈhezɪtənsi/ · 美 /ˈhezɪtənsi/</div>
+          <div class="wc-pos"><b>n.</b> 犹豫；迟疑（vaccine hesitancy 疫苗犹豫，WHO 列为全球健康十大威胁之一）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In wealthy countries <b>hesitancy</b>, not access, is the binding constraint.</div>
+          <div class="wc-tr">在富裕国家，起决定作用的约束是"犹豫"，而不是"打不到"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">constraint</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈstreɪnt/ · 美 /kənˈstreɪnt/</div>
+          <div class="wc-pos"><b>n.</b> 限制；约束条件（binding constraint 起决定作用的约束；time constraints 时间限制）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Hesitancy is the binding <b>constraint</b>.</div>
+          <div class="wc-tr">犹豫才是那个起决定作用的约束条件。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">model</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈmɒdl/ · 美 /ˈmɑːdl/</div>
+          <div class="wc-pos"><b>v.</b> 建模估算；用模型推算（modelled estimate 建模估计值）<br>常见义：模型；模特；模范；<b>adj.</b> 模范的<br>此处被动式 be modelled 强调"算出来"而非"数出来"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each is a <b>modelled</b> estimate stitched together from several sources.</div>
+          <div class="wc-tr">每一个都是由若干来源拼起来的建模估计值。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">surveillance</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /sɜːˈveɪləns/ · 美 /sɜːrˈveɪləns/</div>
+          <div class="wc-pos"><b>n.</b> 监测；监视（disease surveillance 疾病监测；under surveillance 处于监视之下）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The estimates are stitched together from <b>surveillance</b>, surveys and vital records.</div>
+          <div class="wc-tr">这些估计值由监测数据、调查与生命登记拼接而成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">avert</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈvɜːt/ · 美 /əˈvɜːrt/</div>
+          <div class="wc-pos"><b>v.</b> 避免；防止（avert a death 避免一例死亡；avert a crisis 化解危机）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Two doses are estimated to have <b>averted</b> nearly 59 million deaths.</div>
+          <div class="wc-tr">据估算，两剂疫苗避免了近 5900 万例死亡。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">need no crowd</span><span class="zh">不需要人群（也能传播）</span></li>
+          <li><span class="en">stay infectious for two hours</span><span class="zh">保持传染性两小时</span></li>
+          <li><span class="en">as many as eighteen more</span><span class="zh">多达十八个新病例</span></li>
+          <li><span class="en">be enough to start an outbreak</span><span class="zh">足以引发一场暴发</span></li>
+          <li><span class="en">the most complete assessment yet</span><span class="zh">迄今最完整的一份评估</span></li>
+          <li><span class="en">the width of the immunity gap</span><span class="zh">免疫空白的宽度</span></li>
+          <li><span class="en">rather than counting them</span><span class="zh">而不是把它们逐一数清</span></li>
+          <li><span class="en">one of public health's quietest triumphs</span><span class="zh">公共卫生最安静的一次胜利</span></li>
+          <li><span class="en">climb from ... to ...</span><span class="zh">从……升到……</span></li>
+          <li><span class="en">then the curve turned</span><span class="zh">然后曲线掉头了</span></li>
+          <li><span class="en">forty per cent more than ...</span><span class="zh">比……多四成</span></li>
+          <li><span class="en">receive no first dose at all</span><span class="zh">连第一针都没打上</span></li>
+          <li><span class="en">be spread evenly</span><span class="zh">分布均匀</span></li>
+          <li><span class="en">be unforgiving of averages</span><span class="zh">对平均数毫不宽容</span></li>
+          <li><span class="en">continuous rather than merely high</span><span class="zh">是连续的，而不仅仅是很高</span></li>
+          <li><span class="en">explain the timing but not the pattern</span><span class="zh">解释了时间点，却解释不了格局</span></li>
+          <li><span class="en">the binding constraint</span><span class="zh">起决定作用的约束条件</span></li>
+          <li><span class="en">stitch together from</span><span class="zh">由……拼凑而成</span></li>
+          <li><span class="en">lean hardest on</span><span class="zh">最依赖……</span></li>
+          <li><span class="en">coincide with</span><span class="zh">与……同时发生；吻合</span></li>
+          <li><span class="en">a weaker form of knowing</span><span class="zh">一种更弱的"知道"</span></li>
+          <li><span class="en">keep sliding</span><span class="zh">持续下滑</span></li>
+          <li><span class="en">the last mile</span><span class="zh">最后一公里（配送/服务的末端环节）</span></li>
+          <li><span class="en">survive a shock</span><span class="zh">扛过一次冲击</span></li>
+          <li><span class="en">break first and mend slowest</span><span class="zh">最先断、最后接上</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>开篇：麻疹不需要人群，只需要一个房间；一个病例最多生出十八个，候诊室里的一个孩子就能点燃数月暴发。</li>
+          <li>这份账本：GBD 2023 麻疹协作组，204 个国家与地区，1990–2023，只算五岁以下；估算而非清点。</li>
+          <li>三十年的胜利：发病率降八成、死亡率降九成；一剂覆盖率 67.2%→83.6%，二剂 14.4%→68.4%。</li>
+          <li>四年的回头：2023 年 1560 万例、11.8 万死，比 2019 年多四成与一成二；一剂覆盖率滑到 81%，2370 万婴儿零剂次。</li>
+          <li>地理的不均：撒哈拉以南非洲占漏种一半、南亚五分之一；澳大拉西亚二剂覆盖率达 96%，全球最高。</li>
+          <li>平均数的陷阱：92% 的全国数字可以盖住 75% 的区县；疫情解释时间点，解释不了格局；富裕国家的约束是"犹豫"而非"可及"。</li>
+          <li>模型的自白：没有一个数字是"数"出来的，全由监测、调查、生命登记拼成；最弱的数据最依赖建模，也最不确定；相关不等于因果。</li>
+          <li>算术的意义：当"不知道"是唯一替代方案时，建模不是更弱的知道；连病例都数不清的国家也数不清死亡；两剂疫苗 24 年避免近 5900 万死。</li>
+          <li>收束：麻疹不需要新疫苗、新分子、新想法，只需要最后一公里扛过震荡；而最后一公里总是最先断、最后接上。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Measles needs no crowd, only a room, and it stays infectious there for two hours after the child who brought it has gone home.</div>
+        <div class="row"><b>主干：</b>Measles needs no crowd ... and it stays infectious ...（and 连接两个并列分句；第二分句主语 it 指 measles / the virus）</div>
+        <div class="row"><b>省略结构：</b>only a room（= it needs only a room，承前省略主语与谓语，构成"不需要 A，只需要 B"的对照）</div>
+        <div class="row"><b>时间状语从句：</b>after the child ... has gone home（after 引导；从句用现在完成时，强调"人走了"这个已经完成的状态）</div>
+        <div class="row"><b>定语从句：</b>who brought it（修饰 the child；it 指麻疹病毒，而不是房间）</div>
+        <div class="row"><b>考点：</b>并列分句 + 承前省略；after 从句中用现在完成时；两个代词 it 的不同指代</div>
+        <div class="row tr"><b>译文：</b>麻疹不需要人群，只需要一个房间；而且把病毒带进来的那个孩子回家两小时之后，房间里依然有传染性。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Their analysis covers 204 countries and territories between 1990 and 2023, and it estimates cases, deaths and the width of the immunity gap in children under five rather than counting any of them.</div>
+        <div class="row"><b>主干：</b>Their analysis covers ..., and it estimates ...（两个并列分句，第二分句的 it 指 their analysis）</div>
+        <div class="row"><b>介词短语作定语：</b>in children under five（修饰 cases, deaths, the width of the immunity gap 三项，是"哪一个人群"的限定）</div>
+        <div class="row"><b>比较结构：</b>rather than counting any of them（rather than 后接动名词，与前面的 estimates 形成"估算"对"清点"的方法对照）</div>
+        <div class="row"><b>词法：</b>the width of the immunity gap 把抽象的"免疫空白"量化成"宽度"，是学术写作里常见的隐喻式量化</div>
+        <div class="row"><b>考点：</b>并列分句；in + 人群作后置定语；rather than 前后形式一致；estimate 与 count 的语义对立</div>
+        <div class="row tr"><b>译文：</b>他们的分析覆盖 1990 至 2023 年间的 204 个国家和地区，估算的是五岁以下儿童的病例数、死亡数与免疫空白的宽度——而不是把它们一例一例数出来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Measles is unforgiving of averages, because protection has to be continuous rather than merely high: a national figure of 92 per cent can conceal a district at 75, and the virus will find that district.</div>
+        <div class="row"><b>主干：</b>Measles is unforgiving of averages（主系表；unforgiving of 是"对……毫不宽容"的固定搭配）</div>
+        <div class="row"><b>原因状语从句：</b>because protection has to be continuous rather than merely high（rather than 连接两个形容词，否定"高就够了"）</div>
+        <div class="row"><b>冒号后的解释：</b>a national figure ... can conceal ..., and the virus will find that district（用"平均数 vs 区县"的具体场景解释前半句的抽象判断）</div>
+        <div class="row"><b>修辞：</b>will find 用将来时把病毒写成有意志的猎手，是全段最有力的一处拟人</div>
+        <div class="row"><b>考点：</b>be unforgiving of 搭配；rather than 的否定含义；冒号的分解释功能；情态动词 will 表"必然"</div>
+        <div class="row tr"><b>译文：</b>麻疹对平均数毫不宽容，因为保护必须是连续的，而不仅仅是"高"的：一个 92% 的全国数字，可以盖住某个只有 75% 的区县，而病毒一定会找到那个区县。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Each is a modelled estimate stitched together from surveillance, household surveys and vital records, so the places with the weakest data lean hardest on modelling and carry the least certainty.</div>
+        <div class="row"><b>主干：</b>Each is a modelled estimate ..., so the places ... lean ... and carry ...（so 连接因果，后半句有两个并列谓语）</div>
+        <div class="row"><b>过去分词作后置定语：</b>stitched together from ...（修饰 estimate，相当于 which is stitched together，交代"拼"这个动作）</div>
+        <div class="row"><b>结果分句：</b>the places with the weakest data lean hardest on modelling（with 短语作后置定语；lean on 是"依赖"，hardest 是副词最高级）</div>
+        <div class="row"><b>反讽结构：</b>lean hardest ... carry the least（"最依赖"与"最不确定"并列，构成本段的核心张力）</div>
+        <div class="row"><b>考点：</b>分词作后置定语；so 引导结果；副词最高级 the hardest / the least；model 的熟词僻义（此处 modelled 为"建模"）</div>
+        <div class="row tr"><b>译文：</b>每一个都是用监测数据、入户调查和生命登记拼起来的建模估计；所以数据最薄弱的地方，对建模的依赖最深，所携带的确定性也最少。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Modelling is not a weaker form of knowing when the alternative is not knowing at all, and here the direction of the error is unusually clear: a country that cannot count its cases cannot count its dead either.</div>
+        <div class="row"><b>主干：</b>Modelling is not a weaker form of knowing ..., and here the direction ... is unusually clear（and 连接两个并列分句）</div>
+        <div class="row"><b>时间/条件状语从句：</b>when the alternative is not knowing at all（when 在此接近"当……时／既然"，为前半句的判断设定前提）</div>
+        <div class="row"><b>冒号后的同位解释：</b>a country that cannot count its cases cannot count its dead either（用"数不清病例就数不清死亡"来解释"误差方向清楚"）</div>
+        <div class="row"><b>词法：</b>a weaker form of knowing 把"知道"名词化，是学术议论中提升抽象度的常用手法；either 用于否定句末表"也"</div>
+        <div class="row"><b>考点：</b>动名词 knowing 作介词宾语；when 从句的隐含条件义；冒号的解释功能；否定句末的 either</div>
+        <div class="row tr"><b>译文：</b>当"不知道"是唯一的替代方案时，建模并不是一种更弱的"知道"；而在这里，误差的方向异常清楚：一个连病例都数不清的国家，也数不清自己死了多少人。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">有些疾病会消失，不是因为人类战胜了它，而是因为人类把它"忘了"——麻疹恰好相反：人类既没有战胜它，也没有忘记它，只是在一个不设防的四年里，让它重新找到了入口。麻疹是已知传染性最强的病毒之一。它不需要拥挤，只需要一个房间；病人离开两小时后，病毒仍悬浮在空气里；在免疫薄弱的地方，一个病例最多能传染给十八个人。这三个事实叠在一起，意味着它从来不是一道医学难题，而是一道物流难题：疫苗 1963 年就有了，便宜、安全、两针近乎终身有效，问题只在于那一针能不能送到孩子手臂上。</p>
+      <p class="zh-sum">2026 年 10 月 21 日，《自然·医学》在线发表了全球疾病负担研究（GBD 2023）麻疹协作组的分析，第一作者是昆士兰大学弗雷泽研究所的本·萨托里乌斯（Benn Sartorius），合作者包括华盛顿大学健康测量与评估研究所（IHME）的 Jon Mosser、Ashley Harris、Christopher J. L. Murray 等。研究覆盖 204 个国家和地区，时间跨度 1990 至 2023 年，对象是五岁以下儿童，指标是发病、死亡、伤残调整寿命年（DALYs）以及含麻疹成分疫苗第一剂（MCV1）与第二剂（MCV2）的覆盖率。</p>
+      <p class="zh-sum">结论分两半，前一半是庆功，后一半是警报。1990 到 2019 年，全球幼儿麻疹发病率下降约八成，死亡率下降约九成，这是公共卫生史上最不喧哗、也最了不起的成就之一；MCV1 覆盖率从 67.2% 升到 83.6%，MCV2 从 14.4% 升到 68.4%。然后曲线掉头。2023 年，协作组估算五岁以下儿童中有 1560 万例病例和 11.8 万例死亡，相比 2019 年的 1110 万例，病例增加四成、死亡增加一成二。MCV1 覆盖率在 2019 年见顶后停滞并小幅回落至 81.0%；MCV2 虽继续升至 71.4%，但两者都远低于世界卫生组织"免疫议程 2030"设定的 90% 目标。</p>
+      <p class="zh-sum">更刺人的是分母背后的分布。2023 年约有 2370 万名婴儿没有接种第一剂，相当于全球每五个婴儿里有一个；撒哈拉以南非洲占了漏种剂次的一半，南亚占五分之一。撒哈拉以南非洲同时也是整个研究期内麻疹死亡率最高的地区——这意味着风险与漏种在同一个地方叠加，而不是相互抵消。反向的例子同样清楚：澳大拉西亚在这一时期结束时，第二剂覆盖率达到 96%，为全球各地区最高。</p>
+      <p class="zh-sum">这篇文章最有教学价值的地方，是它对"平均数"的警惕。麻疹对平均数毫不宽容，因为保护必须是连续的，而不只是"高"的：一个 92% 的全国覆盖率，完全可以掩盖某个只有 75% 的区县，而病毒不需要全国，它只需要那个区县。作者也没有把账全记在新冠头上：疫情解释了时间点，却解释不了格局——覆盖率在 2020 年之前就已开始停滞，而在一些富裕国家，制约因素早已从"打不到"变成"不想打"，即所谓的"疫苗犹豫"（vaccine hesitancy）。在美国，幼儿园儿童的麻腮风疫苗覆盖率已从约 95% 降到 92.4%，豁免率升到 4.2%，州与州之间从 98.9% 到 75.2% 相差二十多个百分点。</p>
+      <p class="zh-sum">而全文最诚实的一段，是它对自身方法的自白。这份报告里的每一个数字都不是"数"出来的，而是"算"出来的：由监测系统、入户调查和生命登记三类数据拼接、建模、外推得到的估计值。数据越薄弱的地方，对模型的依赖越深，携带的不确定性也越大。作者明确写道：研究显示这轮反弹与免疫规划被打断在时间上吻合，但无法证明仅仅是这种打断造成了反弹——这是相关性能够说到的极限，也是一个诚实的流行病学家应有的克制。</p>
+      <p class="zh-sum">但克制不等于无所作为。文章随后给出了一个很硬的推论：当"不知道"是唯一的替代方案时，建模并不是一种更弱的"知道"；而且这里误差的方向异常清楚——一个连病例都数不清的国家，也数不清自己死了多少人。换句话说，漏掉的不是数字，是尸体。与此同时，正面证据同样具体：据估算，2000 至 2024 年间，含麻疹成分疫苗避免了近 5900 万例死亡。这是全文最有力的一句话，也是最容易随着覆盖率继续下滑而被一笔勾销的一句话。</p>
+      <p class="zh-sum">所以这篇文章最后落在一个几乎像格言的判断上：麻疹从来没有要求过一种新疫苗、一个新分子或者一个新理论；它要求的，只是那条送货的最后一公里，能够扛过一次震荡。四年的事实已经证明，最后一公里永远是最先断、最后接上的那一段；而一个效率这么高的病毒，不会等人类把它修好。对读者而言，这篇文章真正的训练点不在词汇，而在阅读姿态：面对一组"四成""一成二""2370 万"这样惊人的数字，先问它是数出来的还是算出来的，再问误差可能偏向哪一边，最后才决定要不要相信它——这套顺序，比任何一个数字都更值得带走。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 6 段说"麻疹对平均数毫不宽容"，第 7 段又说"这些数字里没有一个是被数出来的"。请说明这两句话分别指向哪两种不同的不确定性（空间分布的不确定 / 估计方法的不确定），并解释作者为什么在第 8 段仍然认为这份"算出来的"报告比"不知道"更有价值。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"What is striking is that measles never demanded a new vaccine, a new molecule or a new idea; it demanded that the last mile of a delivery system survive a shock."</span>（先用 never demanded 连排三个否定项，再用分号翻转到 it demanded，把宏大问题压缩成一个极具体的环节），就"'双减'之后，减负真正需要的不是新政策，而是课堂上的最后一公里"写一句你自己的定性句。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="garr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 传播力：一个房间、两小时、一传十八</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 账本：204 个国家 × 34 年 × 五岁以下</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 三十年：发病率 −80%，死亡率 −90%（胜）</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 四年：病例 +40%，死亡 +12%，1/5 零剂次（败）</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 分布：非洲一半、南亚五分之一、澳大拉西亚 96%</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 陷阱：92% 盖住 75%；约束从"打不到"变"不想打"</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">7 · 自白：全是建模估算，只能证明相关</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">8 · 算术：不知道是唯一替代；24 年避免 5900 万死</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：缺的不是疫苗，是扛得住震荡的最后一公里</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">绿＝三十年的胜利　红＝四年的回头与分布的不均　蓝＝方法上的自白与算术</text>
+        </svg>
+        <figcaption>全文共 9 段，按「传播力 → 账本 → 三十年的胜利 → 四年的回头 → 分布 → 平均数的陷阱 → 模型的自白 → 算术的意义 → 收束」递进；第 3、4 段构成全文最核心的一组对照，第 7、8 段则是对这份报告自身可信度的两级校准。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Medicine《Global and regional burden of measles and vaccine coverage among children under 5 years, 1990–2023: a Global Burden of Disease Study》（GBD 2023 Measles Collaborators；Sartorius B. 等；2026-10-21；DOI 10.1038/s41591-026-04661-7）公开摘要、结果部分与昆士兰大学新闻稿整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 span class="s" data-t data-e 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

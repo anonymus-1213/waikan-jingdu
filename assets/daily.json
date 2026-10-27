@@ -2,6 +2,19 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-10-27",
+   "en": "Measles is unforgiving of averages, because protection has to be continuous rather than merely high: a national figure of 92 per cent can conceal a district at 75, and the virus will find that district.",
+   "zh": "麻疹对平均数毫不宽容，因为保护必须是连续的，而不仅仅是“高”的：一个 92% 的全国数字，可以盖住某个只有 75% 的区县，而病毒一定会找到那个区县。",
+   "src": "外刊精读 · 全球健康与麻疹疫苗（2026-10-27）",
+   "key": "conceal",
+   "keyZh": "掩盖；遮住（不让看见）",
+   "tip": "先记住 unforgiving of 这个搭配——“对……毫不宽容”，比 doesn't forgive 更有判断力。中间用 rather than 否掉“高就够了”的直觉，冒号后立刻给一个具体场景（92% 盖住 75%）。最后 will find 把病毒写成有意志的猎手：情态动词 will 在此表“必然”，不是将来。写作时可套用“A is unforgiving of B: [具体场景], and [主语] will find [它]”。",
+   "tags": [
+    "公共卫生",
+    "全球健康"
+   ]
+  },
+  {
    "date": "2026-10-26",
    "en": "The body keeps the receipt even when the mind tears it up, so a night nobody remembers is not a night that cost nothing.",
    "zh": "身体留着收据，哪怕头脑把它撕了——所以一个没人记得的夜晚，并不是一个没有代价的夜晚。",
