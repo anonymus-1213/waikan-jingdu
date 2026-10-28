@@ -43,15 +43,15 @@
   },
   {
    "date": "2026-10-24",
-   "en": "Chronic pain, on this account, is not acute pain turned up; it is a separate loop that sits largely idle until injury recruits it.",
-   "zh": "照此说来，慢性疼痛并不是急性疼痛被调大了音量，而是一条大多时候闲置、被损伤征召后才启动的独立回路。",
-   "src": "外刊精读 · 慢性疼痛的神经环路（2026-10-24）",
-   "key": "recruit",
-   "keyZh": "征召；募集（使某类细胞、通路被调动起来）",
-   "tip": "「A is not B turned up; it is a separate X」先用否定打掉“同一件事被放大”的直觉，再用分号给出一个更准确的替代模型。recruit 在此不是“招人”，而是神经科学里的“征召”——一条闲置回路被损伤调动起来。仿写：Loneliness is not solitude turned up; it is a separate signal that sits idle until the right silence recruits it.",
+   "en": "The question is not whether artificial intelligence will take the desk jobs, but whether a society still keeps a door open for the young people who would rather work with their hands.",
+   "zh": "问题不是人工智能会不会拿走那些坐办公室的岗位，而是一个社会是否还给那些更愿意用手干活的年轻人留着一扇门。",
+   "src": "外刊精读 · 九十个人抢四个学徒位（2026-10-24）",
+   "key": "would rather",
+   "keyZh": "宁愿；更愿意（后接动词原形）",
+   "tip": "would rather do sth 表示主观偏好，比 prefer to 更有‘自己的选择’的意味；与 had better（建议）不同，它不带劝告。全句用 not whether ... but whether ... 把讨论从‘技术会不会’移到‘社会留不留’，两个 whether 从句并列作表语——这是议论文里把话题重心搬走的标准句式。仿写：The question is not whether screens will replace books, but whether a school still keeps a quiet hour for the ones who would rather read on paper.",
    "tags": [
-    "神经科学",
-    "疼痛医学"
+    "职业教育",
+    "自动化"
    ]
   },
   {
@@ -82,16 +82,15 @@
   },
   {
    "date": "2026-10-20",
-   "en": "It asks courts to weigh what was said rather than how smoothly it was delivered, and to admit that telling a nervous man from a guilty one is not a sense the law possesses.",
-   "zh": "它要求法庭去权衡“说了什么”，而不是“说得多顺”；并要求法庭承认：分辨一个紧张的人与一个有罪的人，并不是法律真正拥有的一种感官。",
-   "src": "外刊精读 · 法庭把“不像”读成了“有罪”（2026-10-20）",
-   "key": "telling a nervous man from a guilty one",
-   "keyZh": "分辨紧张的人与有罪的人（tell A from B：把 A 与 B 区分开）",
-   "tip": "tell 在这里是熟词僻义：常见义是“告诉、讲述”，但 tell A from B 意为“分辨、区分”，常与 can/cannot 连用（can't tell them apart）。weigh 同样是熟词僻义，本义“称重”，此处指“权衡、掂量（证据）”。rather than 连接两个对立的评价标准，构成“实质 vs 形式”的对照；admit that 后接宾语从句，语气上是一种不情愿的让步。",
+   "en": "A market is not revived by the crowd it draws on opening day but by the door it keeps open afterwards.",
+   "zh": "一座市场不是被开张那天的热闹救活的，而是被此后一直开着的那扇门救活的。",
+   "src": "外刊精读 · 五万人来了，摊位却少了（2026-10-20）",
+   "key": "revive",
+   "keyZh": "使复兴；重新活起来",
+   "tip": "「not by A but by B」把两个判据并排：A 是 opening day 的那一刻热闹，B 是 afterwards 的长期开放。crowd 与 door 押头韵，draw（吸引）与 keep open（保持开着）一动一静。revive 与 restore 常被混用：restore 是修回原样，revive 是重新活过来——修好一座建筑不等于让它活起来。仿写：A library is not revived by the day it opens but by the hour it stays open when nobody is watching.",
    "tags": [
-    "司法心理",
-    "可信度",
-    "神经多样性"
+    "城市更新",
+    "公共空间"
    ]
   },
   {
