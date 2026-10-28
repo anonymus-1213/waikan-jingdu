@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 把猪装进人体</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Transplant Medicine · 人与社会 / 器官移植 / 异种移植 / 生物伦理</div>
+  <h1>把猪装进人体：十来次尝试之后，异种移植还差什么</h1>
+  <div class="deck">A decade of gene-edited pigs and a handful of dying patients have proved that a pig organ can work; what nobody has proved is how long it works, or who should get it</div>
+  <div class="byline"><span><b>来源</b> NEJM（2022-05 / 2022-06）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-28</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 525 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-28.jpg" alt="手术室里移植团队在无影灯下操作腹腔镜器械的实景照片（配图）">
+    <figcaption>配图：无影灯下的移植手术间——三个人围着同一块屏幕，两人手扶腹腔镜器械，第三个人的背影几乎占满画面（图片来源：UAB Medicine 公开新闻照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>器官移植有一道算了几十年的账：全球每年有资格上等待名单的人远多于能够等到器官的人。以美国为例，名单上常年挂着一万多名肝病患者、十万名左右的肾病患者，而每天大约有十七个人在等待中死去；能最终等到移植的，只有名单上的三分之一。这道账算不平，是因为供体不是"生产"出来的，而是别人死后"让"出来的——它的上限由别人的死亡决定。于是过去三十年，外科医生一直在试另一条路：把另一个物种变成供应源。猪几乎是唯一候选：器官尺寸接近，生理机能也足够相似，能让一个病人多活几个小时。真正把这件事拦住的是一个糖分子——猪细胞表面带着人类抗体一眼就能认出的抗原，于是移植器官在几分钟内被摧毁，这叫超急性排斥。基因编辑把这道墙拆得很聪明：敲掉制造这种糖的猪基因，再转入若干人源基因去压住补体与凝血，猪的器官就能熬过第一个小时。2021 与 2022 年，纽约大学朗格尼与阿拉巴马大学的两支团队把这样的猪肾接到脑死亡受者身上，看着它连续排尿数日——这是学界追了六十年才拿到的概念验证。然后是心脏。2022 年 1 月，马里兰大学的团队把一颗"十基因编辑"猪心移植进一位五十七岁的垂危病人胸腔，他被四家移植中心拒绝过，术后心脏正常工作，他活了六十天。六十天可以读成胜利，也可以读成警告，而尸检支持后一种读法：移植物不是被基因编辑专门防范的那种急性抗体攻击毁掉的，而是心肌水肿、细胞坏死，几乎看不到典型排斥的痕迹——后续分析把矛头指向了猪体内的巨细胞病毒。换句话说，那堵墙并没有被拆掉，只是从免疫学挪到了病毒学；在病毒学里，编辑一个基因组能帮的忙小得多。这篇文章真正想追问的，是比"能不能"更难的一层：这些手术全都走"同情用药"通道，一次一个病人，没有对照组，也没有公认的成功标准，于是成功与失败的证据重量几乎相等；而病例又是选择性发表的——四天就失败的写进病例报告，撑了四个月的开发布会。全文由此收在一个反直觉的判断上：这个领域需要的不是又一个"第一例"，而是"第二例"——一项监管者事先批准、多位病人接受同一批猪、同一个方案的正式试验，让失败可以被"计数"，而不是被"讲述"。本文按"供体缺口—为什么是猪—糖分子与基因编辑—脑死亡验证—猪心六十天—尸检的反转—证据的重量—发表的偏倚—同意之难—第二例"展开，并把三个熟词僻义（complement / clear / protocol）嵌进论证。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-28.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.958">More than a hundred thousand Americans are waiting for a kidney, a heart or a liver, and the list grows faster than the supply of donors ever can.</span> <span class="s" data-t="8.958" data-e="17.671">Seventeen of them die every day while waiting, which is why surgeons have spent thirty years trying to turn another species into a supply line.</span></span></div>
+      <p class="para-tr">十万多名美国人正在等待一颗肾、一颗心或者一个肝，而名单变长的速度，永远快过供体增加的速度。其中每天约有十七人在等待中死去——这就是为什么外科医生花了三十年，想把另一个物种变成一条供应线。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="17.671" data-e="26.803">The obvious <span class="kw" data-tip="n. 候选者；候选人（the obvious candidate 显而易见的人选）">candidate</span> has always been the pig, whose organs are roughly the right size and whose <span class="kw" data-tip="n. 生理机能；生理学（physiology 生理学 → physiological 生理的）">physiology</span> is close enough to ours to keep a patient alive.</span> <span class="s" data-t="26.803" data-e="40.066">What stopped it was not size but a single sugar: pig cells carry a molecule that human <span class="kw" data-tip="n. 抗体（anti- 抗 + body 体；antigen 抗原）">antibodies</span> recognise on sight, so a transplanted organ is destroyed within minutes in a reaction known as hyperacute <span class="kw" data-tip="n. 排斥（反应）（reject 拒绝 → rejection 排斥；immune rejection 免疫排斥）">rejection</span>.</span></span></div>
+      <p class="para-tr">显而易见的人选一直是猪：器官尺寸大致相当，生理机能也和我们接近到足以让病人活下去。拦住它的不是尺寸，而是一个糖分子——猪细胞表面带着一种人类抗体一眼就能认出的分子，于是被移植的器官在几分钟内就被摧毁，这种反应叫超急性排斥。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.066" data-e="51.406">Gene editing removed that obstacle with unusual precision, by deleting the pig genes that build the offending sugars and adding human genes that hold <span class="kw" data-tip="n. 补体（免疫系统中的一组血浆蛋白）——熟词僻义：常见义为“补充；赞美”">complement</span> and coagulation in check.</span> <span class="s" data-t="51.406" data-e="64.816">In 2021 and 2022, teams at NYU Langone and in Alabama attached edited kidneys to brain-dead patients and watched them make urine for days, a proof of principle the field had chased for sixty years.</span></span></div>
+      <p class="para-tr">基因编辑以罕见的精度搬掉了这块障碍：删掉制造那种"惹事"糖分子的猪基因，再转入若干人源基因，把补体与凝血压住。2021 与 2022 年，纽约大学朗格尼医学中心与阿拉巴马大学的团队把经过编辑的猪肾接到脑死亡受者身上，看着它连续排尿数日——这是这个领域追了六十年的原理性验证。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="64.816" data-e="72.553">Then came the heart, and with it the first real test of whether a pig organ could support a conscious man for weeks rather than hours.</span> <span class="s" data-t="72.553" data-e="85.051">In January 2022 a Maryland team transplanted a ten-gene pig heart into a fifty-seven-year-old who had been turned down by four transplant programmes; the graft worked, and he lived sixty days.</span></span></div>
+      <p class="para-tr">然后是心脏——随之而来的是第一次真正的检验：猪的器官能不能支撑一个清醒的人度过几周，而不是几个小时。2022 年 1 月，马里兰大学的团队把一颗"十基因编辑"的猪心移植进一位五十七岁病人的胸腔，他此前被四家移植中心拒绝；移植物工作正常，他活了六十天。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="85.051" data-e="91.671">Those sixty days can be read as a triumph or as a warning, and the <span class="kw" data-tip="n. 尸检；尸体解剖（autopsy report 尸检报告）">autopsy</span> supported the second reading.</span> <span class="s" data-t="91.671" data-e="105.539">The graft was not destroyed by the acute antibody attack that editing was designed to prevent, but by swelling and cell death in the muscle, with no sign of the usual rejection, and later analyses pointed to a pig virus in the tissue.</span> <span class="s" data-t="105.539" data-e="113.461">The barrier had not been removed but moved, from immunology into virology, where editing a genome helps far less.</span></span></div>
+      <p class="para-tr">这六十天可以读成一场胜利，也可以读成一次警告，而尸检支持后一种读法。毁掉移植物的，并不是基因编辑专门防范的那种急性抗体攻击，而是心肌的水肿与细胞死亡——几乎看不到任何典型排斥的痕迹；后续分析把矛头指向了组织里的一种猪病毒。那堵墙并没有被拆掉，只是被挪走了：从免疫学挪进了病毒学，而在病毒学里，编辑一个基因组能帮的忙要小得多。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="113.461" data-e="120.842">This is why the field's favourite number, a handful of patients kept alive for weeks, tells us less than it appears to.</span> <span class="s" data-t="120.842" data-e="132.816">Each operation was performed under <span class="kw" data-tip="adj. 出于同情（怜悯）的（compassionate-use 同情用药：危重病人无药可用时的特殊通道）">compassionate</span>-use rules, on one patient, with no control group and no agreed definition of success, so a good outcome and a bad one carry almost the same weight.</span></span></div>
+      <p class="para-tr">这就是为什么这个领域最爱引用的那个数字——少数几位被维持了几周的病人——能告诉我们的比它看上去要少。每一台手术都是按"同情用药"规则做的，一次一个病人，没有对照组，也没有公认的成功定义；于是一个好结果和一个坏结果，在证据上几乎等重。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="132.816" data-e="142.327">The cases are also published selectively, because a graft that fails in four days is a case report while one that holds for four months is a press conference.</span></span></div>
+      <p class="para-tr">这些病例还是被选择性发表的：四天就失败的移植物是一篇病例报告，而撑了四个月的那一个，是一场新闻发布会。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="142.327" data-e="147.842">None of this makes the attempts unethical, but it does make consent unusually hard.</span> <span class="s" data-t="147.842" data-e="160.25">A man who is dying and has been <span class="kw" data-tip="v. 取消资格；使不合格（disqualify sb from 取消某人……的资格）">disqualified</span> from the waiting list is not choosing between a pig organ and a human one; he is choosing between a small chance and none, which is when people overestimate the small chance.</span></span></div>
+      <p class="para-tr">这些都不让尝试本身变得不道德，但它确实让"知情同意"变得异常困难。一个濒死、且已被取消等待资格的人，并不是在"猪的器官"和"人的器官"之间做选择；他是在"一线小机会"和"什么都没有"之间做选择——而这恰恰是人最容易高估那线小机会的时刻。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="160.25" data-e="175.079">The likeliest way forward is therefore not another first but a second: a trial that regulators have already <span class="kw" data-tip="v. 正式批准；放行（clear a trial / a drug 批准一项试验或药物）——熟词僻义：常见义为“清除；清空；晴朗的”">cleared</span>, in which several patients receive the same organ from the same <span class="kw" data-tip="n. 畜群；（同一来源的）一群动物（a herd of pigs 一群猪）">herd</span> under the same <span class="kw" data-tip="n. 试验方案；研究规程——熟词僻义：常见义为“协议；礼仪”">protocol</span>, so that failure can be counted rather than narrated.</span> <span class="s" data-t="175.079" data-e="187.303">Until then, xenotransplantation will remain what cardiac surgery was in 1967, a series of brave isolated attempts whose real gift is not the survivor but the error left behind.</span></span></div>
+      <p class="para-tr">所以最可能的出路不是又一个"第一例"，而是"第二例"：一项监管者事先批准的正式试验，让多位病人接受来自同一批猪、按同一套方案移植的器官，这样失败才能被"计数"，而不是被"讲述"。在此之前，异种移植仍将停留在 1967 年心脏外科的位置上——一连串勇敢而孤立的尝试，它真正的礼物不是那个活下来的人，而是被留下的那个错误。</p>
+
+      <p class="muted">原文出处：本文据 The New England Journal of Medicine 2022 年 5 月 18 日《Results of Two Cases of Pig-to-Human Kidney Xenotransplantation》（Montgomery R. A. 等，纽约大学朗格尼移植研究所；NEJM 2022;386:1889–1898；DOI 10.1056/NEJMoa2120238）与 2022 年 6 月 22 日《Genetically Modified Porcine-to-Human Cardiac Xenotransplantation》（Griffith B. P. 等，马里兰大学医学院；NEJM 2022;387:35–44；DOI 10.1056/NEJMoa2201422）的公开摘要、结果与随访分析改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">supply</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səˈplaɪ/ · 美 /səˈplaɪ/</div>
+          <div class="wc-pos"><b>n.</b> 供给；供应量（the supply of donors 供体的供给）<br><b>v.</b> 供应；提供</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The list grows faster than the <b>supply</b> of donors ever can.</div>
+          <div class="wc-tr">名单变长的速度，永远快过供体供给所能达到的速度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">candidate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈkændɪdət/ · 美 /ˈkændɪdeɪt/</div>
+          <div class="wc-pos"><b>n.</b> 候选者；候选人；（合适的）对象（the obvious candidate 显而易见的人选；a candidate for surgery 手术候选人）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The obvious <b>candidate</b> has always been the pig.</div>
+          <div class="wc-tr">显而易见的人选一直是猪。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">physiology</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌfɪziˈɒlədʒi/ · 美 /ˌfɪziˈɑːlədʒi/</div>
+          <div class="wc-pos"><b>n.</b> 生理机能；生理学（physio- 自然 + -logy 学科；physiological 生理的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Its <b>physiology</b> is close enough to ours to keep a patient alive.</div>
+          <div class="wc-tr">它的生理机能和我们足够接近，能让病人活下来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">antibody</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈæntibɒdi/ · 美 /ˈæntibɑːdi/</div>
+          <div class="wc-pos"><b>n.</b> 抗体（anti- 对抗 + body 体；antigen 抗原；antibiotic 抗生素）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Human <b>antibodies</b> recognise the molecule on sight.</div>
+          <div class="wc-tr">人类抗体一眼就能认出这个分子。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rejection</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈdʒekʃn/ · 美 /rɪˈdʒekʃn/</div>
+          <div class="wc-pos"><b>n.</b> 排斥（反应）；（申请等的）拒绝（immune rejection 免疫排斥；organ rejection 器官排斥）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The organ is destroyed in minutes in a reaction known as hyperacute <b>rejection</b>.</div>
+          <div class="wc-tr">器官在几分钟内就被摧毁，这种反应叫超急性排斥。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">complement</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈkɒmplɪment/ · 美 /ˈkɑːmplɪment/</div>
+          <div class="wc-pos"><b>n.</b> 补体（免疫系统中一组参与溶解靶细胞的血浆蛋白）<br>常见义：补充物；补充；<b>v.</b> 补充；与……相配（complement each other 互补）<br>注意与 compliment（赞美）拼写区分——只差一个字母，意思完全不同</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Human genes that hold <b>complement</b> and coagulation in check.</div>
+          <div class="wc-tr">转入的人源基因把补体与凝血"压住"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">coagulation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kəʊˌæɡjuˈleɪʃn/ · 美 /koʊˌæɡjuˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 凝血；凝结（coagulate 使凝固；coagulation cascade 凝血级联）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Human genes keep complement and <b>coagulation</b> in check.</div>
+          <div class="wc-tr">人源基因把补体与凝血都控制住。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hyperacute</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌhaɪpərəˈkjuːt/ · 美 /ˌhaɪpərəˈkjuːt/</div>
+          <div class="wc-pos"><b>adj.</b> 超急性的（hyper- 过度 + acute 急性的；医学分级：hyperacute 超急性 → acute 急性 → chronic 慢性）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A reaction known as <b>hyperacute</b> rejection.</div>
+          <div class="wc-tr">一种被称为"超急性排斥"的反应。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">graft</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɡrɑːft/ · 美 /ɡræft/</div>
+          <div class="wc-pos"><b>n.</b> 移植物；移植器官（xenograft 异种移植物；allograft 同种异体移植物）<br><b>v.</b> 移植；嫁接<br>另有"贪污、贿赂"义（political graft），阅读中需按语境判断</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>graft</b> worked, and he lived sixty days.</div>
+          <div class="wc-tr">移植物工作正常，他活了六十天。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">autopsy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɔːtɒpsi/ · 美 /ˈɔːtɑːpsi/</div>
+          <div class="wc-pos"><b>n.</b> 尸检；尸体解剖（perform an autopsy 进行尸检；autopsy findings 尸检所见）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>autopsy</b> supported the second reading.</div>
+          <div class="wc-tr">尸检支持后一种读法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">swelling</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈswelɪŋ/ · 美 /ˈswelɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> 肿胀；水肿（brain swelling 脑水肿）<br><b>v.</b> swell 膨胀；增多（the list swelled 名单变长）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The graft failed through <b>swelling</b> and cell death in the muscle.</div>
+          <div class="wc-tr">移植物是因心肌水肿与细胞死亡而衰竭的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">virology</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /vaɪˈrɒlədʒi/ · 美 /vaɪˈrɑːlədʒi/</div>
+          <div class="wc-pos"><b>n.</b> 病毒学（virus 病毒 + -logy 学科；immunology 免疫学；bacteriology 细菌学）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The barrier moved from immunology into <b>virology</b>.</div>
+          <div class="wc-tr">那堵墙从免疫学挪进了病毒学。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">compassionate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəmˈpæʃənət/ · 美 /kəmˈpæʃənət/</div>
+          <div class="wc-pos"><b>adj.</b> 富于同情心的；（用药/试验）出于同情的（compassionate use 同情用药；compassionate leave 丧假、事假）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each operation was performed under <b>compassionate</b>-use rules.</div>
+          <div class="wc-tr">每一台手术都是按"同情用药"规则做的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">control group</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">对照组（control 在此不是"控制"，而是"对照"）</div>
+          <div class="wc-pos"><b>n.</b> 对照组（a randomised controlled trial 随机对照试验）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>One patient, with no <b>control group</b> and no agreed definition of success.</div>
+          <div class="wc-tr">一个病人，没有对照组，也没有公认的成功定义。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disqualify</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪsˈkwɒlɪfaɪ/ · 美 /dɪsˈkwɑːlɪfaɪ/</div>
+          <div class="wc-pos"><b>v.</b> 取消资格；使不合格（disqualify sb from 取消某人……的资格；be disqualified from the waiting list 被从等待名单上除名）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A man who has been <b>disqualified</b> from the waiting list.</div>
+          <div class="wc-tr">一个已被取消等待资格的人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">overestimate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌəʊvərˈestɪmeɪt/ · 美 /ˌoʊvərˈestɪmeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 高估（over- 过度 + estimate 估计；反义 underestimate 低估）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Which is exactly when people <b>overestimate</b> the small chance.</div>
+          <div class="wc-tr">而这恰恰是人最容易高估那线小机会的时刻。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">clear</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /klɪə(r)/ · 美 /klɪr/</div>
+          <div class="wc-pos"><b>v.</b> 正式批准；放行；（经审查后）准许（clear a trial 批准一项试验；clear a drug for use 批准药物上市；clear customs 通关）<br>常见义：清除；清空；<b>adj.</b> 清楚的；晴朗的<br>此处 cleared 与"清除"无关，是监管口径的"放行"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A trial that regulators have already <b>cleared</b>.</div>
+          <div class="wc-tr">一项监管者已经批准的试验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">herd</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /hɜːd/ · 美 /hɜːrd/</div>
+          <div class="wc-pos"><b>n.</b> 畜群；（同一来源、同一批次的）一群动物（a herd of pigs 一群猪）<br><b>v.</b> 驱赶；聚集<br>衍生：herd immunity 群体免疫</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The same organ from the same <b>herd</b>.</div>
+          <div class="wc-tr">来自同一批猪的同一个（类型的）器官。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">protocol</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈprəʊtəkɒl/ · 美 /ˈproʊtəkɔːl/</div>
+          <div class="wc-pos"><b>n.</b> 试验方案；研究规程（clinical protocol 临床方案；under the same protocol 按同一套方案）<br>常见义：协议；礼仪；外交礼节（the Kyoto Protocol 京都议定书）<br>此处指"写死了每一步怎么做"的研究文件，是"可重复"的前提</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Under the same <b>protocol</b>, so that failure can be counted.</div>
+          <div class="wc-tr">按同一套方案，这样失败才能被计数。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">narrate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /nəˈreɪt/ · 美 /ˈnæreɪt/</div>
+          <div class="wc-pos"><b>v.</b> 讲述；叙述（narrative 叙事；narrator 叙述者）<br>此处 counted rather than narrated ＝ 被"计数"而不是被"讲述"，是全文的方法论口号</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>So that failure can be counted rather than <b>narrated</b>.</div>
+          <div class="wc-tr">这样失败才能被计数，而不是被讲述。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">xenotransplantation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌzenəʊtrænsplɑːnˈteɪʃn/ · 美 /ˌzenoʊtrænsplænˈteɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 异种移植（xeno- 外来的、异种的 + transplantation 移植；同种异体移植 allotransplantation；自体移植 autotransplantation）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Xenotransplantation</b> will remain what cardiac surgery was in 1967.</div>
+          <div class="wc-tr">异种移植仍将停留在 1967 年心脏外科的位置上。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">be waiting for</span><span class="zh">正在等待……（be on the waiting list 在等待名单上）</span></li>
+          <li><span class="en">faster than ... ever can</span><span class="zh">比……所能做到的更快</span></li>
+          <li><span class="en">die while waiting</span><span class="zh">在等待中死去</span></li>
+          <li><span class="en">turn A into B</span><span class="zh">把 A 变成 B</span></li>
+          <li><span class="en">a supply line</span><span class="zh">一条供应线</span></li>
+          <li><span class="en">close enough to ours</span><span class="zh">与我们的足够接近</span></li>
+          <li><span class="en">recognise ... on sight</span><span class="zh">一眼认出……</span></li>
+          <li><span class="en">within minutes</span><span class="zh">在几分钟之内</span></li>
+          <li><span class="en">with unusual precision</span><span class="zh">以罕见的精度</span></li>
+          <li><span class="en">hold ... in check</span><span class="zh">把……控制住、压住</span></li>
+          <li><span class="en">a proof of principle</span><span class="zh">原理性验证（概念验证）</span></li>
+          <li><span class="en">chase ... for sixty years</span><span class="zh">追了六十年</span></li>
+          <li><span class="en">be turned down by</span><span class="zh">被……拒绝</span></li>
+          <li><span class="en">be read as</span><span class="zh">可以被读成、被理解为</span></li>
+          <li><span class="en">point to</span><span class="zh">指向（证据指向……）</span></li>
+          <li><span class="en">not A but B</span><span class="zh">不是 A 而是 B</span></li>
+          <li><span class="en">tell us less than it appears to</span><span class="zh">能告诉我们的比看上去要少</span></li>
+          <li><span class="en">under ... rules</span><span class="zh">按……的规则</span></li>
+          <li><span class="en">carry the same weight</span><span class="zh">分量相同（证据上等重）</span></li>
+          <li><span class="en">be published selectively</span><span class="zh">被选择性发表</span></li>
+          <li><span class="en">a case report</span><span class="zh">病例报告</span></li>
+          <li><span class="en">make consent hard</span><span class="zh">让"知情同意"变得困难</span></li>
+          <li><span class="en">a small chance and none</span><span class="zh">一线小机会与什么都没有</span></li>
+          <li><span class="en">the likeliest way forward</span><span class="zh">最可能的出路</span></li>
+          <li><span class="en">counted rather than narrated</span><span class="zh">被计数，而不是被讲述</span></li>
+          <li><span class="en">the error left behind</span><span class="zh">被留下的那个错误</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>供体缺口：十万人等待、每天十七人死亡；名单变长永远快过供体增加，于是外科医生想把另一个物种变成供应线。</li>
+          <li>为什么是猪：尺寸相当、生理接近；拦住它的不是尺寸，而是一个糖分子——超急性排斥在几分钟内毁掉器官。</li>
+          <li>基因编辑拆墙：删去制造该糖的猪基因、转入人源基因压住补体与凝血；2021–2022 脑死亡受者排尿数日，六十年来的原理性验证。</li>
+          <li>猪心六十天：2022 年 1 月马里兰大学为一位被四家中心拒绝的五十七岁病人移植十基因编辑猪心，功能正常，活了六十天。</li>
+          <li>尸检的反转：不是急性抗体攻击，而是心肌水肿与细胞死亡，几乎无典型排斥；后续分析指向猪病毒——墙从免疫学挪进了病毒学。</li>
+          <li>证据的重量：全部走同情用药，一人一例，无对照组、无公认成功标准，好结果与坏结果几乎等重。</li>
+          <li>发表的偏倚：四天失败＝病例报告，四个月存活＝新闻发布会。</li>
+          <li>同意之难：濒死且被取消资格的人，不是在两种器官间选择，而是在"小机会"与"没有"之间选择——正是最容易高估小机会的时刻。</li>
+          <li>收束：需要的不是"第一例"而是"第二例"——同一批猪、同一方案、多例病人的正式试验；让失败被计数，而不是被讲述。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">What stopped it was not size but a single sugar: pig cells carry a molecule that human antibodies recognise on sight, so a transplanted organ is destroyed within minutes in a reaction known as hyperacute rejection.</div>
+        <div class="row"><b>主干：</b>What stopped it was not size but a single sugar（What 引导主语从句作主语；not ... but ... 连接两个表语）</div>
+        <div class="row"><b>冒号后的解释：</b>pig cells carry a molecule ... , so a transplanted organ is destroyed ...（冒号引出"一个糖分子何以致命"的完整因果链，so 连接结果）</div>
+        <div class="row"><b>定语从句：</b>that human antibodies recognise on sight（修饰 a molecule；recognise 的宾语即先行词，on sight 意为"一看见就"）</div>
+        <div class="row"><b>过去分词短语：</b>known as hyperacute rejection（修饰 a reaction，相当于 which is known as ...，给这个反应命名）</div>
+        <div class="row"><b>考点：</b>What 主语从句；not ... but ... 的平行；so 引导结果分句；分词作后置定语；on sight 固定搭配</div>
+        <div class="row tr"><b>译文：</b>拦住它的不是尺寸，而是一个糖分子：猪细胞表面带着一种人类抗体一眼就能认出的分子，于是被移植的器官在几分钟内就被摧毁，这种反应叫超急性排斥。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Gene editing removed that obstacle with unusual precision, by deleting the pig genes that build the offending sugars and adding human genes that hold complement and coagulation in check.</div>
+        <div class="row"><b>主干：</b>Gene editing removed that obstacle（主谓宾；with unusual precision 作方式状语）</div>
+        <div class="row"><b>by + 动名词：</b>by deleting ... and adding ...（介词 by 后接两个并列动名词，交代"拆墙"的两步：先删、后加）</div>
+        <div class="row"><b>两个定语从句：</b>that build the offending sugars（修饰 the pig genes）／that hold complement and coagulation in check（修饰 human genes）——一删一加，各带一个从句，结构对称</div>
+        <div class="row"><b>词法：</b>offending 在此不是"冒犯的"，而是"惹祸的、造成问题的"；hold ... in check 是"把……控制住"的固定搭配</div>
+        <div class="row"><b>考点：</b>by doing 表方式；并列动名词共享宾语；两个 that 从句的不同先行词；offend 的语境义</div>
+        <div class="row tr"><b>译文：</b>基因编辑以罕见的精度搬掉了这块障碍：删掉制造那种"惹事"糖分子的猪基因，再转入若干人源基因，把补体与凝血压住。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The graft was not destroyed by the acute antibody attack that editing was designed to prevent, but by swelling and cell death in the muscle, with no sign of the usual rejection, and later analyses pointed to a pig virus in the tissue.</div>
+        <div class="row"><b>主干：</b>The graft was not destroyed by A, but by B（被动语态中的 not ... but ... 对照，对照的是"被什么毁掉"）</div>
+        <div class="row"><b>定语从句：</b>that editing was designed to prevent（修饰 the acute antibody attack；prevent 的宾语即先行词，从句中省略）</div>
+        <div class="row"><b>with 复合结构：</b>with no sign of the usual rejection at all（补充说明尸检所见，是"没有典型排斥"这一关键反证）</div>
+        <div class="row"><b>并列分句：</b>and later analyses pointed to a pig virus（point to 意为"指向（某原因）"，是学术写作里的谨慎归因，而非断定）</div>
+        <div class="row"><b>考点：</b>被动语态中的 not ... but ...；定语从句省略宾语；with 短语作伴随/补充说明；point to 的"指向"义</div>
+        <div class="row tr"><b>译文：</b>毁掉移植物的，并不是基因编辑专门防范的那种急性抗体攻击，而是心肌的水肿与细胞死亡——几乎看不到任何典型排斥的痕迹；后续分析把矛头指向了组织里的那种猪病毒。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A man who is dying and has been disqualified from the waiting list is not choosing between a pig organ and a human one; he is choosing between a small chance and none, which is when people overestimate the small chance.</div>
+        <div class="row"><b>主干：</b>A man ... is not choosing between A and B; he is choosing between C and D（分号连接两个对照句，第二句才是作者真正的主张）</div>
+        <div class="row"><b>定语从句：</b>who is dying and has been disqualified from the waiting list（两个并列谓语，交代这个人"既濒死、又已被除名"的双重处境）</div>
+        <div class="row"><b>非限定性定语从句：</b>which is exactly when people overestimate the small chance（which 指代前面整个"在小机会与没有之间选择"的情形；when 引导表语从句）</div>
+        <div class="row"><b>修辞：</b>先用 not ... 否掉读者以为了解的选择（猪器官 vs 人器官），再用分号给出真实的选择（小机会 vs 没有）——否定—更正的论证节奏</div>
+        <div class="row"><b>考点：</b>分号连接对照分句；one 替代 organ；which 指代整句；when 引导表语从句</div>
+        <div class="row tr"><b>译文：</b>一个濒死、且已被取消等待资格的人，并不是在"猪的器官"和"人的器官"之间做选择；他是在"一线小机会"和"什么都没有"之间做选择——而这恰恰是人最容易高估那线小机会的时刻。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The likeliest way forward is therefore not another first but a second: a trial that regulators have already cleared, in which several patients receive the same organ from the same herd under the same protocol, so that failure can be counted rather than narrated.</div>
+        <div class="row"><b>主干：</b>The likeliest way forward is not another first but a second（not ... but ... 对照 first 与 second，两个序数词在此被名词化）</div>
+        <div class="row"><b>冒号后的同位语：</b>a trial ...（用 a trial 具体解释什么叫"第二例"）</div>
+        <div class="row"><b>两个定语从句：</b>that regulators have already cleared（修饰 a trial，clear 在此为"批准"）／in which several patients receive ...（介词 + which 引导，交代试验的内部设计）</div>
+        <div class="row"><b>目的状语从句：</b>so that failure can be counted rather than narrated（so that 引导目的；counted 与 narrated 的对立是全文的方法论口号）</div>
+        <div class="row"><b>考点：</b>first / second 的名词化；冒号的解释功能；that 与 in which 两句并存；so that 引导目的；clear 的熟词僻义</div>
+        <div class="row tr"><b>译文：</b>所以最可能的出路不是又一个"第一例"，而是"第二例"：一项监管者事先批准的正式试验，让多位病人接受来自同一批猪、按同一套方案移植的器官，这样失败才能被"计数"，而不是被"讲述"。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">器官移植最大的敌人不是手术刀，而是算术。全世界每年有资格进入等待名单的人，远远多于能够等到器官的人；以美国为例，名单上常年有一万多名肝病患者和十万名左右的肾病患者，而每天约有十七个人在等待中死亡，最终能等到移植的只有名单上的三分之一。这道账永远算不平，原因很朴素：供体不是"生产"出来的，而是别人死后"让"出来的，它的上限由陌生人的死亡决定。于是过去三十年，外科医生一直在试另一条路——把另一个物种变成供应源。</p>
+      <p class="zh-sum">猪几乎是唯一现实的候选。它的器官尺寸与人相近，生理机能也足够相似，能让一个病人在机器之外多活几个小时；猪繁殖快、可规模化饲养，在生物安全设施里还能做到"洁净级别"的种群。真正拦住异种移植的不是尺寸，而是一个糖分子。猪细胞表面带有一种糖类抗原（半乳糖-α-1,3-半乳糖，简称 α-gal），人类与灵长类在进化中早已丢失合成它的基因，却因此常年带着针对它的抗体。器官一接上血管，抗体立刻结合、补体被激活，几分钟之内血管内皮被摧毁——这就是"超急性排斥"，也是 1960 年代以来所有跨物种移植尝试失败的第一道墙。</p>
+      <p class="zh-sum">基因编辑几乎是"手术式"地拆掉了这道墙。思路有两步：先删——敲掉猪体内负责合成那些"惹事"糖分子的基因（包括 α-gal、Sd(a) 血型抗原与 Neu5Gc）；再加——转入若干人源基因（如 CD46、CD55、CD59、血栓调节蛋白等），把补体与凝血这两套会"误伤"移植物的人类防御系统压住。2022 年 5 月 18 日，《新英格兰医学杂志》发表了纽约大学朗格尼移植研究所 Robert A. Montgomery 团队的论文：他们把敲除了 α-1,3-半乳糖转移酶基因、并带有自体胸腺组织的猪肾，移植到两名脑死亡、靠呼吸机维持循环的受者体内，观察了 54 小时。肾脏在再灌注后立刻开始排尿，肌酐下降，动态 eGFR 上升，54 小时内多次活检都没有出现超急性或抗体介导排斥的迹象。阿拉巴马大学的研究组在同期做了类似的脑死亡试验。对一个追了六十年的领域来说，这是第一次拿到干净的"原理性验证"。</p>
+      <p class="zh-sum">接下来是更严酷的考试：能不能支撑一个清醒的人，而不只是一具靠机器维持的身体？2022 年 1 月 7 日，马里兰大学医学院的 Bartley P. Griffith 与 Muhammad M. Mohiuddin 团队为一位五十七岁的非缺血性心肌病患者移植了一颗来自"十基因编辑"猪的心脏——患者依赖 ECMO 维生，因依从性问题被两家地区性和两家全国性移植中心全部拒绝，已无标准疗法可用。手术后他脱离了 ECMO，移植心脏功能正常，没有明显排斥。第 49 天，移植心脏突然出现舒张期增厚与衰竭；第 60 天，生命支持被撤除。这是异种移植史上第一次让一个清醒的人带着猪的心脏活过两个月。</p>
+      <p class="zh-sum">但这六十天最值得读的部分，是 2022 年 6 月 22 日同一团队在《新英格兰医学杂志》上公布的尸检结果。移植心脏水肿，重量几乎翻倍；组织学上散在心肌细胞坏死、间质水肿、红细胞外渗，却没有微血管血栓——这些发现与典型的排斥反应并不相符。论文当时的措辞很克制：机制仍在研究中。后续对同一移植物的分析，把注意力引向了猪巨细胞病毒（porcine cytomegalovirus）：一种在猪体内通常沉默、但在免疫抑制的人体内可能被激活的病毒。这正是全文最重要的一次认知转折——那堵墙并没有被拆掉，只是被挪走了：从免疫学挪进了病毒学。而在病毒学里，编辑一个基因组能帮的忙要小得多，因为问题不在猪的 DNA，而在猪身上"住着"什么。</p>
+      <p class="zh-sum">从这里开始，文章从科学转向方法论。异种移植领域最爱引用的数字是"某位病人活了多久"，但这类数字能告诉我们的远比看上去少。所有这类手术都走"同情用药"（compassionate use）通道：一次一个病人，没有对照组，没有随机化，甚至没有一个学界公认的"成功"定义——是活过 30 天算成功，还是出院算成功，还是移植物有功能就算成功？在没有共同标准的情况下，一个好结果和一个坏结果在证据上几乎等重。更麻烦的是发表偏倚：四天就失败的移植物，会以一篇病例报告的形式安静地躺在期刊里；而撑了四个月的那一个，会变成一场新闻发布会。公众记住的是后者，学界需要的却是前者——因为失败才告诉你墙在哪里。</p>
+      <p class="zh-sum">这并不意味着这些尝试不道德。恰恰相反，正因为没有更好的选择，尝试才具有正当性。但它确实让"知情同意"变得异常困难。马里兰的病例很典型：病人被四家移植中心拒绝，已被判定不适合常规移植，家属和本人面临的选择并不是"猪的心脏还是人的心脏"，而是"一线极小的机会还是什么也没有"。而这恰恰是行为经济学里最经典的失效场景——在"有"与"无"之间，人会系统性地高估那个"有"的概率，把 1% 读成 10%。论文特别提到，医院做了三次院内评估和一次外部独立精神科评估来确认他的同意能力；这个细节本身就是对上述困境的承认。</p>
+      <p class="zh-sum">所以这篇文章的结论是一个反直觉的判断：这个领域需要的不是又一个"第一例"，而是"第二例"。所谓"第二例"，是一项监管者事先批准（clear）的正式试验：同一批猪、同一套方案（protocol）、若干位病情相近的病人，随访指标事先写死，失败与成功用同一把尺子量。只有到了这一步，失败才能被"计数"（counted），而不是被"讲述"（narrated）；只有到了这一步，"猪的器官能不能用"才会从新闻标题变成一行可以被人引用的生存曲线。目前已有企业在推进这样的临床试验，但这仍是一条需要多年、并且必须先解决病毒筛查与生物安全设施成本的路。</p>
+      <p class="zh-sum">把时间轴拉长，这个场景其实并不陌生。1967 年 12 月，Christiaan Barnard 在开普敦完成第一例人对人心脏移植，病人活了 18 天；此后两三年里，全世界几十个团队各自做了一两例，存活期从几小时到一年多不等，伦理争议、媒体狂欢与同行质疑同时到来。真正让心脏移植变成"一种治疗"的，不是那第一例，而是随后建立起来的患者筛选标准、免疫抑制方案、随访登记与多中心试验。异种移植今天站的位置，非常像 1967 年的心脏外科：技术上刚刚跨过第一道墙，方法上还没有学会怎么把个案变成知识。而对读者来说，这篇文章真正的训练点也许不在词汇，而在阅读姿态：看到"某某活了六十天"这样的句子，先问这一个病例能排除什么、不能排除什么，再问失败的那些病例在哪里——这套追问顺序，比任何一个数字都更值得带走。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 5 段说"那堵墙并没有被拆掉，只是被挪走了"，第 6 段又说这类病例"好结果和坏结果在证据上几乎等重"。请分别说明这两句话否定的是什么（"技术障碍已被清除"的乐观叙事 / "个案可以构成证据"的默认假设），并解释作者为什么在否定之后仍然认为这些尝试是正当的。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"The likeliest way forward is therefore not another first but a second: a trial that regulators have already cleared, in which several patients receive the same organ from the same herd under the same protocol, so that failure can be counted rather than narrated."</span>（先用 not A but B 把"第一例"换成"第二例"，再用冒号给出可执行的定义，最后用 so that 收在"计数 vs 讲述"的对立上），就"乡村教育真正需要的不是又一个支教明星，而是一套能留下来的机制"写一句你自己的判断句。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="garr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 缺口：十万人等待，每天十七人死去</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 为什么是猪：尺寸与生理接近，卡在一个糖分子</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 拆墙：基因编辑 + 脑死亡受者 54 小时排尿（成）</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 猪心：十基因编辑、被四家中心拒绝、活了 60 天（成）</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 反转：尸检无典型排斥，墙从免疫学挪进病毒学（败）</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">6 · 证据：同情用药、一人一例、无对照组 → 好坏等重</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">7 · 偏倚：四天失败＝病例报告，四月存活＝发布会</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 同意：不是"猪或人"，而是"小机会或没有"</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：要的不是"第一例"，而是"第二例"</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#garr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">绿＝技术上的两次突破　红＝反转与处境　蓝＝方法论：证据的重量与发表的偏倚</text>
+        </svg>
+        <figcaption>全文共 9 段，按「缺口 → 为什么是猪 → 拆墙 → 猪心六十天 → 尸检的反转 → 证据的重量 → 发表的偏倚 → 同意之难 → 第二例」递进；第 3、4 段是两次技术突破，第 5 段立刻把它们打折，第 6、7 段则是第二层打折——不是打在技术上，而是打在"我们如何知道"上。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：NEJM《Results of Two Cases of Pig-to-Human Kidney Xenotransplantation》（Montgomery R. A. 等，NYU Langone Transplant Institute，2022-05-18，386:1889–1898，DOI 10.1056/NEJMoa2120238）与《Genetically Modified Porcine-to-Human Cardiac Xenotransplantation》（Griffith B. P. 等，University of Maryland School of Medicine，2022-06-22，387:35–44，DOI 10.1056/NEJMoa2201422）公开摘要、结果部分与随访分析整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 span class="s" data-t data-e 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
