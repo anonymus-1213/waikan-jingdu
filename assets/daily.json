@@ -401,6 +401,19 @@
     "食物浪费",
     "消费习惯"
    ]
+  },
+  {
+   "date": "2026-10-19",
+   "en": "Both claims are true, and neither settles the question, because the choice is not between a mine and no mine but between two kinds of damage whose costs fall on different people and different centuries.",
+   "zh": "两个说法都成立，而两者都终结不了这个问题：因为真正的选择不是“采矿”与“不采矿”，而是两种伤害——它们的代价落在不同的人、不同的世纪身上。",
+   "src": "外刊精读 · 深海采矿与底栖生态（2026-10-19）",
+   "key": "settle",
+   "keyZh": "解决；了结（settle a question 终结一个问题）",
+   "tip": "settle 在此不是“定居”，而是“了结、定论”。句式值得背：not between A and B but between C and D，把二选一的问题替换成“两种代价”的对比；whose 引导定语从句修饰 two kinds of damage，最后落到 people 与 centuries 两个维度，一句话把伦理与时间同时交代完。",
+   "tags": [
+    "深海采矿",
+    "生态"
+   ]
   }
  ]
 }

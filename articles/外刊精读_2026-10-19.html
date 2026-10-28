@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 为电池去挖海底：人类要的金属，长在一个刚被认识的生态系统上</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Ocean Science · 人与自然 / 海洋 / 深海生态 / 资源与政策</div>
+  <h1>为电池去挖海底：人类要的金属，长在一个刚被认识的生态系统上</h1>
+  <div class="deck">The metals that electric cars need sit on the abyssal plain in nodules that took millions of years to grow, and a 2026 survey of a seabed disturbed decades ago finds the animals living among them have still not recovered</div>
+  <div class="byline"><span><b>来源</b> Nature Ecology &amp; Evolution（2026 年 7 月）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-19</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 503 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-19.jpg" alt="深海平原上散布的多金属结核与底栖生物（配图）">
+    <figcaption>配图：深海平原上散落的黑色多金属结核——它们长得极慢，却同时是电池原料与底栖生物唯一的落脚点（场景摄影配图，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>深海平原常被称作"海洋的沙漠"，从科考船甲板上看也确实像：平坦、幽暗、似乎什么都没有。但它并不空。散布在那片软泥上的，是数量惊人的黑色小块——多金属结核，由铁、锰、镍、铜、钴在数百万年间一层层极缓慢地堆积而成。而这些金属，恰恰是"摆脱化石燃料"这件事最渴求的东西，于是企业与政府花了十年准备把它们吸上来。问题在于：结核不是"长在栖息地上的资源"，它本身就是栖息地。2026 年发表的一项研究回到数十年前被实验性扰动过的一片海底，把它与几百米外未被触碰的沉积物作对比，数清生活在泥里和泥上的动物。结论并不让人安心：差异并没有随时间淡去。在被清走结核的地块，小型底栖动物的群落仍明显更贫乏——物种更少、组成也不同，采集器留下的沟痕依旧裸露。原因不是道德问题而是算术问题：结核每一百万年才长几毫米，因此为海绵或海葵提供落脚点的那个结构，在人类的时间尺度上根本无法重建；而专性生活在结核上的动物无处可去。还有沉积物本身：采集机铲起表层软泥，把较细的部分重新排入水中，形成随流漂移的"羽流"，落到下游滤食动物的身上，把远超出实际开采区的生物一并闷死。产业界的反驳并非没有道理——陆上采矿同样毁坏栖息地，而这些金属是替代石油的电池所必需的。两个说法都对，但都不足以终结问题：真正的选择不是"采矿"与"不采矿"，而是两种伤害——它们的代价落在不同的人、不同的世纪身上。这项研究真正改变的，不是取舍的算术，而是附在它上面的时间尺度。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:16px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义。</p>
+
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-19.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.932">The <span class="kw" data-tip="adj. 深海的；深渊的（名词 abyss 深渊）">abyssal</span> <span class="kw" data-tip="n. 平原——熟词僻义：常见义为“朴素的、平淡无奇的”">plain</span> is often described as a desert, and from the deck of a research ship it looks like one: flat, dark, apparently empty.</span> <span class="s" data-t="8.932" data-e="23.868">It is not empty at all, because scattered across that mud in extraordinary numbers are small black lumps called <span class="kw" data-tip="adj. 多金属的（poly- 多 + metallic 金属的）">polymetallic</span> <span class="kw" data-tip="n. 结核；小结点（形容词 nodular 结节状的）">nodules</span>, each one a slow accumulation of iron, manganese, nickel, copper and cobalt that took millions of years to form.</span></span></div>
+      <p class="para-tr">深海平原常被描述成"沙漠"，从科考船甲板上看也确实像：平坦、幽暗、似乎空无一物。但它根本不空——散布在那片软泥上的，是数量惊人的黑色小块，叫做多金属结核；每一颗都是铁、锰、镍、铜、钴缓慢堆积的产物，要花上数百万年才能形成。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="23.868" data-e="34.748">Those metals are precisely the ones a transition away from fossil fuels is hungry for, which is why companies and governments have spent a decade preparing to <span class="kw" data-tip="v. 用吸力采集、吸取——熟词僻义：常见义为“用真空吸尘器打扫”">vacuum</span> the nodules up.</span> <span class="s" data-t="34.748" data-e="40.566">The problem is that the nodule is not a resource sitting on a habitat; it is the <span class="kw" data-tip="n. 栖息地；（动植物的）生境">habitat</span>.</span></span></div>
+      <p class="para-tr">这些金属恰恰是"摆脱化石燃料"这场转型最渴求的东西，这也是为什么企业与政府花了十年时间，准备把它们吸上来。问题在于：结核并不是"躺在栖息地上的资源"，它本身就是栖息地。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.566" data-e="48.934">A study published this year reports what happens afterwards, and the answer is less reassuring than the industry's own assessments suggest.</span> <span class="s" data-t="48.934" data-e="61.551">Researchers returned to a strip of seafloor that had been experimentally disturbed decades earlier, and compared it with untouched <span class="kw" data-tip="n. 沉积物；泥沙（动词 sediment 沉积）">sediment</span> a few hundred metres away, counting the animals living in and on the mud.</span></span></div>
+      <p class="para-tr">今年发表的一项研究报告了"之后发生了什么"，答案没有产业界自己的评估那么让人放心。研究者回到数十年前被实验性扰动过的一片海底，把它与几百米外未被触碰的沉积物作对比，数清生活在泥里和泥上的动物。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="61.551" data-e="63.763">The difference had not faded.</span> <span class="s" data-t="63.763" data-e="76.737">Where the nodules had been removed, the burrowing <span class="kw" data-tip="n. （某地区的）动物群（flora 植物群）">fauna</span> was still markedly poorer than in the control <span class="kw" data-tip="n. 样地；（试验）小区——熟词僻义：常见义为“情节、阴谋”">plots</span>, with fewer species and a different composition, and the tracks left by the collector were still visible as bare <span class="kw" data-tip="n. 沟；犁沟；车辙（动词：犁地）">furrows</span>.</span> <span class="s" data-t="76.737" data-e="81.526">In other words, the recovery that models had predicted was not happening.</span></span></div>
+      <p class="para-tr">差异并没有随时间淡去。在被清走结核的地块，穴居动物的群落仍明显比对照样地贫乏——物种更少、组成也不同，而采集器留下的轨迹依旧是一道道裸露的沟。换句话说，模型所预测的"恢复"并没有发生。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="81.526" data-e="85.092">The explanation is arithmetic rather than moral.</span> <span class="s" data-t="85.092" data-e="98.724">A nodule grows by a few millimetres every million years, so the structure that shelters a sponge or an anemone cannot be replaced on any human timescale, and the animals that specialise in living on nodules have nowhere else to go.</span></span></div>
+      <p class="para-tr">原因不是道德问题，而是算术问题。结核每一百万年才长几毫米，因此为海绵或海葵提供落脚点的那个结构，在任何人类的时间尺度上都无法被重新造出来；而那些专门生活在结核上的动物，无处可去。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="98.724" data-e="101.434">There is also the sediment itself.</span> <span class="s" data-t="101.434" data-e="115.261">Collecting machines lift the top layer of mud and discharge the finer fraction back into the water, where it drifts as a <span class="kw" data-tip="n. 羽流；柱状扩散物——熟词僻义：常见义为“羽毛、羽饰”">plume</span> and settles over animals that filter food from the current, <span class="kw" data-tip="v. 覆盖使窒息；闷死（此处指沉积物掩埋滤食动物）">smothering</span> them far beyond the area that was actually mined.</span> <span class="s" data-t="115.261" data-e="119.395">The plume can travel for tens of kilometres before it settles.</span></span></div>
+      <p class="para-tr">还有沉积物本身。采集机铲起表层软泥，把较细的那部分重新排入水中，形成随流漂移的"羽流"，沉降在下游滤食的动物身上，把远超出实际开采区的生物一并闷死。这股羽流在沉降之前可以漂出数十公里。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="119.395" data-e="129.513">The industry argues that the comparison is unfair, since <span class="kw" data-tip="adj. 陆地的；陆生的（反义 marine 海洋的）">terrestrial</span> mining also destroys habitat, and that the metals are needed for batteries that will displace oil.</span> <span class="s" data-t="129.513" data-e="140.84">Both claims are true, and neither settles the question, because the choice is not between a mine and no mine but between two kinds of damage whose costs fall on different people and different centuries.</span></span></div>
+      <p class="para-tr">产业界反驳说，这种比较并不公平：陆上采矿同样毁坏栖息地；而且这些金属是替代石油的电池所必需的。两个说法都对，但都不足以终结问题——因为真正的选择不是"采矿"与"不采矿"，而是两种伤害，它们的代价落在不同的人、不同的世纪身上。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="140.84" data-e="143.763">Regulation has been slow to catch up.</span> <span class="s" data-t="143.763" data-e="158.564">The International Seabed Authority, which governs the high seas, has spent years negotiating a mining code without agreeing on how much harm to the deep ocean counts as acceptable, while several countries have called for a <span class="kw" data-tip="n. 暂停令；暂缓期（尤指官方暂停某项活动）">moratorium</span> until the science is clearer.</span></span></div>
+      <p class="para-tr">监管一直跟不上。负责管理公海的国际海底管理局谈了多年"采矿守则"，却始终没有就"多少深海损害算可接受"达成一致；与此同时，若干国家呼吁在科学更清楚之前先暂停开采。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="158.564" data-e="164.355">What the study changes is not the arithmetic of the trade-off but the timescale attached to it.</span> <span class="s" data-t="164.355" data-e="173.658">A decision taken to supply batteries this decade would leave a mark on the seabed that <span class="kw" data-tip="v. 比……持续得更久；存在时间长于（out- 表示“超过”）">outlasts</span> the cars, the companies and the treaties that authorised it.</span> <span class="s" data-t="173.658" data-e="178.908">That is an unusual kind of cost, and it deserves an unusual degree of care.</span></span></div>
+      <p class="para-tr">这项研究真正改变的，不是取舍的算术，而是附加在它上面的时间尺度。为这个十年的电池供应而做的决定，会在海底留下一道印记——它比那些汽车、那些公司、以及授权开采的那些条约都活得更久。这是一种不同寻常的代价，也就该配上不同寻常的审慎。</p>
+
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">abyssal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈbɪsl/ · 美 /əˈbɪsl/</div>
+          <div class="wc-pos"><b>adj.</b> 深海的；深渊的（名词 abyss 深渊；abyssal plain 深海平原）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>abyssal</b> plain is often described as a desert.</div>
+          <div class="wc-tr">深海平原常被描述成一片沙漠。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plain</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /pleɪn/ · 美 /pleɪn/</div>
+          <div class="wc-pos"><b>n.</b> 平原 · 常见义：<b>adj.</b> 朴素的、平淡无奇的；清楚的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The abyssal <b>plain</b> is not empty at all.</div>
+          <div class="wc-tr">深海平原根本不空。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">nodule</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈnɒdjuːl/ · 美 /ˈnɑːdʒuːl/</div>
+          <div class="wc-pos"><b>n.</b> 结核；小结节（形容词 nodular 结节状的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Polymetallic <b>nodules</b> took millions of years to form.</div>
+          <div class="wc-tr">多金属结核要数百万年才能形成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">polymetallic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌpɒliməˈtælɪk/ · 美 /ˌpɑːliməˈtælɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 多金属的（poly- 多 + metallic 金属的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...small black lumps called <b>polymetallic</b> nodules.</div>
+          <div class="wc-tr">……被称为多金属结核的黑色小块。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">vacuum</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈvækjuːm/ · 美 /ˈvækjuːm/</div>
+          <div class="wc-pos"><b>v.</b> 用吸力采集、吸取 · 常见义：<b>n.</b> 真空；<b>v.</b> 用吸尘器打扫</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...preparing to <b>vacuum</b> the nodules up.</div>
+          <div class="wc-tr">准备把这些结核吸上来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">habitat</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈhæbɪtæt/ · 美 /ˈhæbɪtæt/</div>
+          <div class="wc-pos"><b>n.</b> 栖息地；（动植物的）生境</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The nodule is not a resource sitting on a <b>habitat</b>; it is the habitat.</div>
+          <div class="wc-tr">结核不是躺在栖息地上的资源，它本身就是栖息地。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sediment</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsedɪmənt/ · 美 /ˈsedɪmənt/</div>
+          <div class="wc-pos"><b>n.</b> 沉积物；泥沙 <b>v.</b> 沉积（形容词 sedimentary）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...compared it with untouched <b>sediment</b> a few hundred metres away.</div>
+          <div class="wc-tr">……与几百米外未被触碰的沉积物作对比。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fauna</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈfɔːnə/ · 美 /ˈfɔːnə/</div>
+          <div class="wc-pos"><b>n.</b> （某地区的）动物群（对应 flora 植物群）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The burrowing <b>fauna</b> was still markedly poorer.</div>
+          <div class="wc-tr">穴居动物群落仍明显更贫乏。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plot</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /plɒt/ · 美 /plɑːt/</div>
+          <div class="wc-pos"><b>n.</b> 样地；（试验的）小区 · 常见义：情节；阴谋</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...still poorer than in the control <b>plots</b>.</div>
+          <div class="wc-tr">……仍比对照样地更贫乏。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">furrow</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈfʌrəʊ/ · 美 /ˈfɜːroʊ/</div>
+          <div class="wc-pos"><b>n.</b> 沟；犁沟；车辙 <b>v.</b> 犁（地）；使起皱纹</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The tracks were still visible as bare <b>furrows</b>.</div>
+          <div class="wc-tr">轨迹依旧是一道道裸露的沟。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plume</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /pluːm/ · 美 /pluːm/</div>
+          <div class="wc-pos"><b>n.</b> 羽流；柱状扩散物 · 常见义：羽毛、羽饰</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...it drifts as a <b>plume</b> and settles over animals.</div>
+          <div class="wc-tr">……它作为羽流漂移，沉降在动物身上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">smother</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsmʌðə/ · 美 /ˈsmʌðər/</div>
+          <div class="wc-pos"><b>v.</b> 覆盖使窒息；闷死；扼制</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...<b>smothering</b> them far beyond the area that was mined.</div>
+          <div class="wc-tr">把远超出开采区的生物一并闷死。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">terrestrial</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /təˈrestriəl/ · 美 /təˈrestriəl/</div>
+          <div class="wc-pos"><b>adj.</b> 陆地的；陆生的（反义 marine 海洋的）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...<b>terrestrial</b> mining also destroys habitat.</div>
+          <div class="wc-tr">陆上采矿同样毁坏栖息地。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">moratorium</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmɒrəˈtɔːriəm/ · 美 /ˌmɔːrəˈtɔːriəm/</div>
+          <div class="wc-pos"><b>n.</b> 暂停令；暂缓期（尤指官方暂停某项活动）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Several countries have called for a <b>moratorium</b>.</div>
+          <div class="wc-tr">若干国家呼吁先暂停开采。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outlast</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌaʊtˈlɑːst/ · 美 /ˌaʊtˈlæst/</div>
+          <div class="wc-pos"><b>v.</b> 比……持续更久；存在时间长于（out- 表示"超过"）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>...a mark that <b>outlasts</b> the cars and the treaties.</div>
+          <div class="wc-tr">……一道比汽车和条约都活得更久的印记。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">be described as</span><span class="zh">被描述为</span></li>
+          <li><span class="en">from the deck of</span><span class="zh">从……的甲板上</span></li>
+          <li><span class="en">not ... at all</span><span class="zh">根本不……</span></li>
+          <li><span class="en">be hungry for</span><span class="zh">渴求；急需</span></li>
+          <li><span class="en">a transition away from</span><span class="zh">摆脱……的转型</span></li>
+          <li><span class="en">sit on</span><span class="zh">位于……之上；坐落在</span></li>
+          <li><span class="en">less reassuring than</span><span class="zh">不如……那样让人放心</span></li>
+          <li><span class="en">a strip of</span><span class="zh">一条（狭长地带）</span></li>
+          <li><span class="en">in and on the mud</span><span class="zh">在泥里与泥上</span></li>
+          <li><span class="en">control plots</span><span class="zh">对照样地</span></li>
+          <li><span class="en">in other words</span><span class="zh">换句话说</span></li>
+          <li><span class="en">on any human timescale</span><span class="zh">在任何人类的时间尺度上</span></li>
+          <li><span class="en">have nowhere else to go</span><span class="zh">无处可去；别无去处</span></li>
+          <li><span class="en">filter food from the current</span><span class="zh">从水流中滤食</span></li>
+          <li><span class="en">far beyond</span><span class="zh">远远超出</span></li>
+          <li><span class="en">catch up</span><span class="zh">跟上；追上</span></li>
+          <li><span class="en">call for a moratorium</span><span class="zh">呼吁暂停</span></li>
+          <li><span class="en">settle the question</span><span class="zh">解决问题；给出定论</span></li>
+          <li><span class="en">fall on</span><span class="zh">（代价）落在……身上</span></li>
+          <li><span class="en">deserve an unusual degree of care</span><span class="zh">值得格外审慎对待</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>背景：深海平原看似沙漠，实则布满黑色多金属结核——铁锰镍铜钴历经数百万年缓慢堆积而成。</li>
+          <li>冲突：这些金属正是能源转型所需，业界准备把它们吸上来；而结核不是栖息地上的资源，它本身就是栖息地。</li>
+          <li>研究：2026 年一项研究回到数十年前被扰动过的海底，与几百米外未触碰的沉积物对比，清点底栖动物。</li>
+          <li>结果：差异并未淡去——被清走结核的地块物种更少、组成不同，采集器沟痕依旧裸露，模型预测的"恢复"没有发生。</li>
+          <li>机理一：结核百万年只长几毫米，庇护结构在人类时间尺度上无法重建，专性物种无处可去。</li>
+          <li>机理二：采集机扬起细泥形成羽流，可漂数十公里，把下游滤食动物一并闷死。</li>
+          <li>反驳：陆上采矿同样毁栖息地，且金属为替代石油所必需；但真正的选择是两种伤害，代价落在不同人群与世纪。</li>
+          <li>监管：国际海底管理局多年谈不拢"多少损害可接受"，多国呼吁在科学更清楚前暂停。</li>
+          <li>收束：研究改变的不是取舍算术，而是时间尺度——海底的印记比汽车、公司与条约活得更久。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The problem is that the nodule is not a resource sitting on a habitat; it is the habitat.</div>
+        <div class="row"><b>主干：</b>The problem is that ...（主系表结构，that 引导表语从句）</div>
+        <div class="row"><b>分号并列：</b>后半句 it is the habitat 与前半句的 not a resource 构成"不是 A，而是 B"的对照</div>
+        <div class="row"><b>现在分词：</b>sitting on a habitat 作后置定语修饰 resource（"躺在栖息地上的资源"）</div>
+        <div class="row"><b>修辞：</b>habitat 在句中重复出现，用同一个词把"资源"与"栖息地"叠合，点明矛盾的核心</div>
+        <div class="row"><b>考点：</b>表语从句；分词后置定语；not A but B 的变体（分号对照）</div>
+        <div class="row tr"><b>译文：</b>问题在于：结核并不是"躺在栖息地上的资源"；它本身就是那个栖息地。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Collecting machines lift the top layer of mud and discharge the finer fraction back into the water, where it drifts as a plume and settles over animals that filter food from the current, smothering them far beyond the area that was actually mined.</div>
+        <div class="row"><b>主干：</b>Collecting machines lift ... and discharge ...（两个并列谓语）</div>
+        <div class="row"><b>非限制性定语从句：</b>where it drifts ... and settles ... 修饰 the water（it 指排回水中的细颗粒）</div>
+        <div class="row"><b>定语从句：</b>that filter food from the current 修饰 animals；that was actually mined 修饰 the area</div>
+        <div class="row"><b>现在分词作结果状语：</b>smothering them far beyond the area ...（"从而把它们闷死"，结果是顺势发生的）</div>
+        <div class="row"><b>考点：</b>并列谓语；where 引导的定语从句；分词作结果状语；多层定语从句嵌套</div>
+        <div class="row tr"><b>译文：</b>采集机铲起表层的软泥，把较细的那部分重新排入水中；这部分在水里作为"羽流"漂移，沉降到那些从水流中滤食的动物身上，把它们闷死——而受影响的区域远远超出真正被开采的那一片。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Both claims are true, and neither settles the question, because the choice is not between a mine and no mine but between two kinds of damage whose costs fall on different people and different centuries.</div>
+        <div class="row"><b>主干：</b>Both claims are true, and neither settles the question（并列 + 否定词前置的倒装意味）</div>
+        <div class="row"><b>原因状语从句：</b>because the choice is not between A but between B（not ... but ... 的对照）</div>
+        <div class="row"><b>注意：</b>neither 本身已含否定，句子用 and 连接却表达转折，属于"让步式并列"</div>
+        <div class="row"><b>定语从句：</b>whose costs fall on different people and different centuries 修饰 two kinds of damage</div>
+        <div class="row"><b>考点：</b>neither 的用法；not between A but between B；whose 引导定语从句；抽象名词并列（people / centuries）</div>
+        <div class="row tr"><b>译文：</b>两个说法都对，但都不足以终结这个问题——因为真正的选择不是"开一座矿"与"不开矿"，而是两种伤害之间的选择；而这两种伤害的代价，落在不同的人、不同的世纪身上。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">深海平原常被比作"海洋的沙漠"。从科考船的甲板上望下去，那里平坦、幽暗、似乎一无所有，因此很长时间里，人们把它当作地球上最不值一提的地方之一。但这份"空旷"是个错觉。散落在软泥表面的，是数量惊人的黑色小块——多金属结核。它们由铁、锰、镍、铜、钴一层层缓慢堆积而成，每一颗都要花上数百万年才能长到几厘米。而恰恰是这些金属，是"摆脱化石燃料"这场转型最饥渴地寻找的东西：电动车电池需要镍和钴，电网需要铜和锰。于是过去十年里，各国政府与企业一直在准备一件事——把海底的这些结核吸上来。问题在于一个容易被忽略的定义：结核并不是"躺在某个栖息地上的资源"，它本身就是栖息地。对海绵、海葵、珊瑚状生物以及大量小型底栖动物来说，那颗黑色的、坚硬的、缓慢生长的结核，是它们在松软淤泥上唯一可以附着的地方。把它拿走，等于把整片"陆地"拿走。2026 年发表的一项研究，给这个比喻提供了数据。研究者回到数十年前被实验性扰动过的一片海底——当年为了模拟开采，有人清走了那里的结核——然后把它与几百米外未被触碰的沉积物作对比，仔细清点生活在泥里和泥上的动物。结论并不让人安心：差异并没有随时间淡去。在被清走结核的地块，穴居动物的群落仍然明显比对照样地贫乏，物种更少，组成也不同，而采集器留下的轨迹依旧是一道道裸露的沟。换句话说，模型曾经预测的"几十年后自然恢复"，并没有发生。原因不是道德层面的，而是算术层面的。一颗结核每一百万年才长出几毫米，这意味着为海绵或海葵提供落脚点的那个结构，在任何人类能够想象的时间尺度上都不可能被重新造出来；而那些专门生活在结核上的物种，更是无处可迁。除此之外，还有沉积物本身的问题：采集机铲起表层软泥，把较细的颗粒重新排回水中，这些颗粒随水流形成所谓的"羽流"，可以漂出数十公里，最终沉降在那些从水流中滤食的动物身上，把它们闷死——受影响的面积远远超过真正被开采的那一片。产业界的反驳并非全无道理：陆上采矿同样会毁坏栖息地，而且这些金属确实是替代石油的电池所必需的。两个说法都成立，但都不足以终结争论，因为真正的选择并不是"开矿"与"不开矿"之间的选择，而是两种伤害之间的选择——它们的代价落在不同的人、不同的世纪身上。监管则明显跟不上：负责管理公海的国际海底管理局谈了许多年"采矿守则"，却始终没能就"多少深海损害可以接受"达成一致；与此同时，已有若干国家呼吁，在科学更清楚之前先暂停开采。这项研究真正改变的，也许不是取舍的算术，而是附加在这笔账上的时间尺度。一个为了供应这个十年电池需求而做出的决定，会在海底留下一道印记——它比那些汽车、那些公司、以及授权开采的那些条约，都活得更久。这是一种不同寻常的代价，因此也需要一种不同寻常的审慎。</p>
+
+      <h2>五、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章说"结核不是躺在栖息地上的资源，它本身就是栖息地"。请结合第 2、4、5 段，说明这个区分为什么会改变成本的计算；再想一想：如果"恢复"需要以百万年为单位，那么通常以"几十年"为周期的环境评估框架是否还适用？为什么作者说这笔账的问题在于"时间尺度"而不在于"算术"？</div>
+      <div class="q"><b>仿写题：</b>仿照第 7 段 <span style="font-family:Georgia,serif;font-style:italic">"The choice is not between A and B but between two kinds of damage whose costs fall on different people and different centuries."</span>（把"二选一"改写为"两种代价的分摊问题"）的句式，就一个你熟悉的争议（如核电站、大型水坝、城市拆迁、外卖包装）写一句"重新定义选择题"的评论。</div>
+
+      <h2>六、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="sarr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="70" y="42" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 背景：深海平原看似荒漠，实则遍布多金属结核</text>
+
+          <rect x="70" y="94" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 冲突：金属是转型所需，而结核本身就是栖息地</text>
+
+          <rect x="70" y="146" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 研究：重访数十年前被扰动的海底，与对照区比对</text>
+
+          <rect x="70" y="198" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 结果：物种更少、沟痕依旧，预测的"恢复"未发生</text>
+
+          <rect x="70" y="250" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机理一：百万年长几毫米，结构无法重建</text>
+
+          <rect x="70" y="302" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 机理二：沉积物羽流漂数十公里，掩埋滤食者</text>
+
+          <rect x="70" y="354" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 反驳：陆上采矿也毁地，但实为两种伤害的分摊</text>
+
+          <rect x="70" y="406" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 监管：采矿守则谈不拢，多国呼吁暂停</text>
+
+          <rect x="70" y="458" width="580" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 收束：变的不是算术，而是代价的时间尺度</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#sarr)"/>
+        </svg>
+        <figcaption>全文共 9 段，按「背景 → 冲突 → 研究 → 结果 → 机理一 → 机理二 → 反驳 → 监管 → 收束」的递进逻辑层层展开。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Nature Ecology &amp; Evolution 关于深海多金属结核开采迹地长期未恢复的追踪研究（2026 年 7 月）及期刊新闻稿、国际海底管理局公开资料整理 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
