@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 把课堂变成闯关：提分的不是"想学"，而是"在做"</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Learning Science · 人与自我 / 教育 / 学习科学 / 教育技术</div>
+  <h1>把课堂变成闯关：提分的不是"想学"，而是"在做"</h1>
+  <div class="deck">Two 2026 experiments on gamified classrooms lead to the same narrow gate: enjoyment has to become behaviour before it can become a score</div>
+  <div class="byline"><span><b>来源</b> Frontiers in Education（2026-10-26）／BMC Psychology（2026-10）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-29</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-29.jpg" alt="小学科学课堂上两名戴护目镜的孩子围着锥形瓶做实验、兴奋叫出声的实景照片（配图）">
+    <figcaption>配图：一间普通小学的科学教室里，两个孩子戴着护目镜盯住刚倒进锥形瓶的液体，表情比分数更能说明问题——游戏化课程真正想买到的，就是这种"非做不可"的状态（图片来源：实景照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>这是教育技术最容易被讲成广告的一类研究：把课堂改成闯关，把积分、关卡、限时任务装进四十分钟，然后宣布"孩子更爱学了"。2026 年 10 月 26 日，Frontiers in Education 发表了一项在中国广东汕尾一所公立小学做的整班随机对照试验：六个五年级班、269 名学生，八次科学课，21 个游戏元素占了 70% 的课时。两个月后，游戏化班的科学素养测验从 53.8 升到 66.9，常规班从 55.8 升到 60.8——校正起点后是 67.4 对 60.4，差距大得不像是偶然。到这里，故事还只是一个漂亮的"有效"。真正有意思的是接下来的结构方程模型：研究者把"游戏→心理状态→行为→分数"这条链拆开，发现只经过"课堂投入"的路径显著，经过"动机再投入"的路径虽然显著却小到 0.007，而只经过"动机"的路径，置信区间跨过了零——也就是说，"想学"本身并不足以换来分数，它必须先变成"在做"。教学条件只解释了动机 2.2% 的方差，这个数字几乎是在提醒：游戏能买到的动机，本来就不多。第二项研究把问题推得更远。BMC Psychology 上的三臂试验给 174 名五年级学生上数学课：配 AI 同伴的游戏化、不配 AI 的游戏化、传统讲授。AI 版显著降低了数学焦虑、提高了内在动机与能力感，但对成绩的增益只有 d = 0.19，不显著；两个游戏化组都仍然胜过讲授。两项研究放在一起，指向一个不太讨喜的判断：技术最擅长改变的是课堂的情绪气候，最难改变的是产生分数的那个行为。全文按"课堂现场—理论链条—试验设计—结果—中介分析—机制解释—AI 对照—局限—教师落点"展开，并把三个熟词僻义（modest / carry / translate）嵌进论证本身。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-29.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="4.828">On a Thursday afternoon in Shanwei, Guangdong, fifth-graders are cracking an acid-base code, racing a cardboard bridge against a stopwatch and working out whose fingerprint is on the glass.</span> <span class="s" data-t="4.828" data-e="8.66">It looks like a science club that has given up on teaching; it is a <span class="kw" data-tip="n. 课程体系；全部课程（curriculum 课程 → curricular 课程的；the national curriculum 国家课程）">curriculum</span> built to teach, with 70 per cent of eight sessions spent inside a game.</span></span></div>
+      <p class="para-tr">在广东汕尾的一个周四下午，五年级学生正在破解一组酸碱密码、让纸板桥和秒表赛跑，还要查出玻璃杯上留下的指纹是谁的。看上去像是一个已经放弃教学的科技兴趣班；实际上这是一套为"教"而设计的课程——八次课里，70% 的时间待在游戏里。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="8.66" data-e="11.623">The design rests on a claim that has always been <span class="kw" data-tip="adj. 别扭的；令人尴尬的；（因难处理而）不好办的（an awkward question 不好回答的问题）">awkward</span> for enthusiasts: game elements teach nothing by themselves.</span> <span class="s" data-t="11.623" data-e="16.042">What they do, in the theory of gamified learning, is alter a pupil's state of mind, which alters behaviour, which alters the score — a chain that can come apart at any link.</span> <span class="s" data-t="16.042" data-e="19.771">That first link had long looked <span class="kw" data-tip="adj. （数量、程度）不大的；有限的——熟词僻义：常见义为“谦虚的”。a modest effect 不大的效应">modest</span>, so the question was never whether games excite children but whether the excitement reaches the exam paper.</span></span></div>
+      <p class="para-tr">这套设计依据的是一个让热衷者一直有点别扭的命题：游戏元素本身不教任何东西。在游戏化学习理论里，它们做的是改变学生的心理状态，心理状态改变行为，行为再改变分数——一条任何一环都可能松掉的链条。而第一环早就显得不大：真正的疑问从来不是游戏能不能让孩子兴奋，而是这份兴奋能不能走到试卷上。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="19.771" data-e="25.136">A trial in Frontiers in Education on 26 October tested that question in one public primary school, assigning six <span class="kw" data-tip="adj. 完整无损的；未被拆开的（intact classes 原封不动的行政班；keep sth intact 使保持原样）">intact</span> fifth-grade classes, 269 pupils in all, to the gamified programme or to ordinary teaching.</span> <span class="s" data-t="25.136" data-e="29.759">Its twenty-one game elements were mapped onto the four <span class="kw" data-tip="n. 领域；范畴（the cognitive domain 认知领域；domain knowledge 领域知识）">domains</span> of the national science curriculum, so the course could be defended to a head teacher as easily as enjoyed by a child.</span></span></div>
+      <p class="para-tr">10 月 26 日发表于《Frontiers in Education》的一项试验，在一所公立小学里检验了这个问题：六个完整的五年级班、共 269 名学生，以整班为单位被分到游戏化课程或常规教学。它的 21 个游戏元素被逐一对应到国家科学课程标准的四个领域，所以这门课既能向校长交代，也能被孩子喜欢。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="29.759" data-e="32.288">After two months the ordinary classes had moved from 55.8 to 60.8 on a test of scientific literacy.</span> <span class="s" data-t="32.288" data-e="35.941">The gamified classes, which began lower, finished at 66.9 — an <span class="kw" data-tip="adj. 校正后的；调整过的（adjusted mean 校正均值；adjust for age 对年龄做校正）">adjusted</span> post-test mean of 67.4 against 60.4, a gap the <span class="kw" data-tip="n. 基线；起点水平（baseline data 基线数据；at baseline 在基线时）">baseline</span> cannot explain.</span></span></div>
+      <p class="para-tr">两个月后，常规班在科学素养测验上从 55.8 分升到 60.8 分。起点更低的游戏化班则到了 66.9 分——校正后的后测均值为 67.4 对 60.4，这个差距无法用起点不同来解释。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="35.941" data-e="42.787">The authors then took the chain apart: the route through classroom <span class="kw" data-tip="n. 投入；参与度（student engagement 学生投入；engagement 也指“订婚”“交战”，此处为教育学术语）">engagement</span> alone was significant, the route through motivation and then engagement was significant but tiny at 0.007, and the route through motivation alone had a confidence interval that crossed zero.</span> <span class="s" data-t="42.787" data-e="46.21">Teaching condition explained 2.2 per cent of the <span class="kw" data-tip="n. 方差；差异程度（variance 统计学名词；explain the variance 解释方差）">variance</span> in motivation: enough to be real, too little to <span class="kw" data-tip="v. 承载；撑起；使成立——熟词僻义：常见义为“携带”。carry a gain 撑起一份增益">carry</span> a thirteen-point gain.</span></span></div>
+      <p class="para-tr">作者随后把这条链拆开：只经过"课堂投入"的路径显著；经过"动机—投入"的较长路径显著，但效应小到只有 0.007；而只经过"动机"的路径，置信区间跨过了零。教学条件只解释了动机 2.2% 的方差：真实，但远不足以独自撑起 13 分的提升。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="46.21" data-e="52.928">Enjoyment, on this evidence, is not the active ingredient but the <span class="kw" data-tip="n. 原料；原材料（raw materials 原材料；raw data 原始数据）">raw material</span>: a child who wants to learn but never raises a hand, never argues with a partner and never revisits a wrong answer has changed in a way that questionnaires detect and examiners do not.</span> <span class="s" data-t="52.928" data-e="55.125">Motivation has to be <span class="kw" data-tip="v. 转化；变为——熟词僻义：常见义为“翻译”。translate into 转化为">translated</span> into behaviour before it can be translated into marks.</span></span></div>
+      <p class="para-tr">"好玩"在这份证据里不是有效成分，而是原料：一个想学却从不举手、从不和同伴争论、也从不回头看错题的孩子，改变的地方是问卷能测到、阅卷人测不到的。动机必须先被转化成为行为，才可能被转化成分数。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="55.125" data-e="62.277">A second experiment, in BMC Psychology, <span class="kw" data-tip="v. 把……单独分离出来考察（isolate a variable 单独考察一个变量；isolated 孤立的）">isolates</span> the layer schools are now being sold: 174 fifth-graders took one of three mathematics courses — with an AI <span class="kw" data-tip="n. 同伴；伙伴（a travelling companion 旅伴；companion 也指“手册”，如 gardener's companion）">companion</span>, without one, or lectured — and the AI version lowered anxiety while adding almost nothing on top of gamification.</span> <span class="s" data-t="62.277" data-e="66.033">The difference was d = 0.19, not significant; both gamified groups still beat the lecture, which is what matters to a school buying nothing at all.</span></span></div>
+      <p class="para-tr">《BMC Psychology》上的第二项实验，单独考察了学校正在被推销的那一层：174 名五年级学生上三种数学课之一——配 AI 同伴的游戏化课、不配 AI 的游戏化课、传统讲授——结果 AI 版明显降低了焦虑，但在游戏化之上几乎没有增加成绩。差值为 d = 0.19，不显著；而两个游戏化组都仍然胜过讲授，这对一所"什么都不买"的学校才是关键。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="66.033" data-e="71.269">Neither study is a <span class="kw" data-tip="n. 定论；裁决（reach a verdict 作出裁决；the verdict is still out 尚无定论）">verdict</span> on screens: classes rather than children were <span class="kw" data-tip="v. 随机分组（randomise participants 随机分配受试者；randomised controlled trial 随机对照试验）">randomised</span>, motivation and engagement were measured on the same afternoon, and nobody checked whether the gains survived the summer.</span> <span class="s" data-t="71.269" data-e="75.663">What they establish is narrower and more useful — a well-built game reliably changes the climate of a classroom, and unreliably changes the behaviour that produces a score.</span></span></div>
+      <p class="para-tr">两项研究都不是对屏幕的判决：随机分组分的是班而不是学生，动机与投入是在同一个下午测的，也没有人检验这些收益能不能熬过暑假。它们确立的东西更窄、也更有用——一堂设计良好的游戏课能可靠地改变课堂的气候，却不能可靠地改变那个产生分数的行为。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="75.663" data-e="80.618">For a teacher the implication is almost <span class="kw" data-tip="adj. 平淡的；乏味的；日常的（a mundane task 琐碎的工作；mundane details 日常细节）">mundane</span>: a game is a door, not a room; points and time pressure will get a class through it, but only argument, error and reflection will keep them there.</span></span></div>
+      <p class="para-tr">对教师来说，结论近乎平淡：游戏是一扇门，不是一个房间；积分和时间压力能把一个班带进来，但只有争论、出错和反思，才能让他们留得够久、学到东西。</p>
+
+      <p class="muted">原文出处：本文据 Li, Y., Gu, Y., He, W., Zheng, L. &amp; Liu, W.《The influence mechanism of gamified teaching on primary school students' scientific literacy: an empirical analysis based on structural equation modeling》，Frontiers in Education 11:1899547（2026-10-26，DOI 10.3389/feduc.2026.1899547）；以及 Shao, J., Jinming, J. &amp; Tang, S.《The effects of an AI-supported gamified learning program on elementary students' mathematics anxiety, learning motivation, and achievement》，BMC Psychology（2026，DOI 10.1186/s40359-026-05367-8）公开摘要与结果改写整理，供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">enthusiast</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈθjuːziæst/ · 美 /ɪnˈθuːziæst/</div>
+          <div class="wc-pos"><b>n.</b> 热衷者；爱好者（a fitness enthusiast 健身爱好者；enthusiasm 热情；enthusiastic 热情的）<br>此处指"相信游戏化有效的人"，作者用 awkward for enthusiasts 暗示这个命题对他们有点难堪</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The design rests on a claim that has always been awkward for <b>enthusiasts</b>.</div>
+          <div class="wc-tr">这套设计依据的是一个让热衷者一直有点别扭的命题。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">awkward</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɔːkwəd/ · 美 /ˈɔːkwərd/</div>
+          <div class="wc-pos"><b>adj.</b> 别扭的；令人尴尬的；不好处理的（an awkward silence 尴尬的沉默；an awkward question 不好回答的问题；awkwardly 笨拙地）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A claim that has always been <b>awkward</b> for enthusiasts.</div>
+          <div class="wc-tr">一个让热衷者一直有点别扭的命题。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">modest</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈmɒdɪst/ · 美 /ˈmɑːdɪst/</div>
+          <div class="wc-pos"><b>adj.</b> （数量、程度、规模）不大的；有限的<br>常见义：谦虚的；朴素的（be modest about sth 对某事很谦虚）<br>学术语境高频：a modest effect / modest gains 不大的效应、有限的收益</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That first link had long looked <b>modest</b>.</div>
+          <div class="wc-tr">而第一环（游戏→心理状态）早就显得不大。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">alter</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɔːltə/ · 美 /ˈɔːltər/</div>
+          <div class="wc-pos"><b>v.</b> 改变；改动（alter behaviour 改变行为；alter the course of sth 改变……的进程）<br><b>n.</b> alteration 改动；alter 与 change 的区别：alter 多指局部调整，change 可指彻底替换</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What they do is <b>alter</b> a pupil's state of mind, which alters behaviour.</div>
+          <div class="wc-tr">它做的是改变学生的心理状态，而心理状态改变行为。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intact</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈtækt/ · 美 /ɪnˈtækt/</div>
+          <div class="wc-pos"><b>adj.</b> 完整无损的；原封不动的（keep sth intact 使保持原样；intact classes 原封不动的行政班）<br>研究方法里指"不打散原有班级"，因此只能整班随机</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Six <b>intact</b> fifth-grade classes, 269 pupils in all.</div>
+          <div class="wc-tr">六个完整的五年级班，共 269 名学生。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">assign</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈsaɪn/ · 美 /əˈsaɪn/</div>
+          <div class="wc-pos"><b>v.</b> 分配；分派；（把受试者）分到某组（assign sb to sth 把某人分到……；assign homework 布置作业）<br><b>n.</b> assignment 任务；分配</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Assigning</b> six intact classes to the gamified programme or to ordinary teaching.</div>
+          <div class="wc-tr">把六个完整班级分到游戏化课程或常规教学。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">domain</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dəˈmeɪn/ · 美 /doʊˈmeɪn/</div>
+          <div class="wc-pos"><b>n.</b> 领域；范畴；（互联网）域名（the public domain 公有领域；domain knowledge 领域知识）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Mapped onto the four <b>domains</b> of the national science curriculum.</div>
+          <div class="wc-tr">被逐一对应到国家科学课程标准的四个领域。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">curriculum</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kəˈrɪkjələm/ · 美 /kəˈrɪkjələm/</div>
+          <div class="wc-pos"><b>n.</b> 课程体系；全部课程（the national curriculum 国家课程；curriculum standards 课程标准；复数 curricula 或 curriculums）<br><b>adj.</b> curricular 课程的；extracurricular 课外的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is a <b>curriculum</b> built to teach, not a club that has given up.</div>
+          <div class="wc-tr">它是一套为"教"而设计的课程，而不是一个已经放弃的社团。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">baseline</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbeɪslaɪn/ · 美 /ˈbeɪslaɪn/</div>
+          <div class="wc-pos"><b>n.</b> 基线；起点水平（baseline data 基线数据；at baseline 在基线时；baseline test 前测）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A gap the <b>baseline</b> cannot explain.</div>
+          <div class="wc-tr">一个无法用起点水平解释的差距。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">adjusted</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈdʒʌstɪd/ · 美 /əˈdʒʌstɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 校正后的；调整过的（adjusted mean 校正均值；adjust for age 对年龄做校正；adjust to 适应）<br>统计里指"扣掉起点差异等干扰后的数值"，比原始均值更公平</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An <b>adjusted</b> post-test mean of 67.4 against 60.4.</div>
+          <div class="wc-tr">校正后的后测均值为 67.4，对 60.4。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">engagement</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈɡeɪdʒmənt/ · 美 /ɪnˈɡeɪdʒmənt/</div>
+          <div class="wc-pos"><b>n.</b> 投入；参与度（student engagement 学生投入；classroom engagement 课堂参与）<br>其他常见义：订婚；雇用；交战（rules of engagement 交战规则）<br><b>v.</b> engage 使参与；engage with 与……互动</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The route through classroom <b>engagement</b> alone was significant.</div>
+          <div class="wc-tr">只经过"课堂投入"的那条路径是显著的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">variance</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈveəriəns/ · 美 /ˈveriəns/</div>
+          <div class="wc-pos"><b>n.</b> 方差；（数据的）差异程度（explain the variance 解释方差；analysis of variance 方差分析 ANOVA）<br>常用短语：at variance with 与……不一致<br><b>adj.</b> variable 多变的；<b>v.</b> vary 变化</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Teaching condition explained 2.2 per cent of the <b>variance</b> in motivation.</div>
+          <div class="wc-tr">教学条件只解释了动机 2.2% 的方差。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">confidence interval</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɒnfɪdəns ˈɪntəvl/ · 美 /ˈkɑːnfɪdəns ˈɪntərvl/</div>
+          <div class="wc-pos"><b>n.</b> 置信区间（缩写 CI；95% CI 指"重复抽样时约 95% 的区间会包含真值"）<br>关键读法：区间<b>跨过零</b>（crossed zero）＝ 该效应可能与零无异，即"不显著"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The route through motivation alone had a <b>confidence interval</b> that crossed zero.</div>
+          <div class="wc-tr">只经过"动机"的路径，置信区间跨过了零（即不显著）。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">carry</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈkæri/ · 美 /ˈkæri/</div>
+          <div class="wc-pos"><b>v.</b> 承载；支撑；使（结论）成立（carry a gain 撑起一份增益；carry weight 有分量；carry the argument 使论证站得住）<br>常见义：携带；运送；刊登（carry a story 登载一篇报道）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Too little to <b>carry</b> a thirteen-point gain.</div>
+          <div class="wc-tr">远不足以独自撑起 13 分的提升。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">raw material</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɔː məˈtɪəriəl/ · 美 /rɔː məˈtɪriəl/</div>
+          <div class="wc-pos"><b>n.</b> 原料；原材料（the raw materials of industry 工业原料；raw data 原始数据；raw 生的、未加工的）<br>此处把"好玩"比作原料而非成品，是全段比喻的支点</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Enjoyment is not the active ingredient but the <b>raw material</b>.</div>
+          <div class="wc-tr">"好玩"不是有效成分，而是原料。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">translate</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /trænzˈleɪt/ · 美 /ˈtreɪnzleɪt/</div>
+          <div class="wc-pos"><b>v.</b> 转化；使变成（translate into 转化为；translate ideas into policy 把想法变成政策）<br>常见义：翻译（translate A into B 把 A 译成 B）——本文正是借用"翻译"与"转化"的双关<br><b>n.</b> translation 翻译；转化</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Motivation has to be <b>translated</b> into behaviour before it can be translated into marks.</div>
+          <div class="wc-tr">动机必须先转化为行为，才可能转化为分数。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">companion</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kəmˈpæniən/ · 美 /kəmˈpæniən/</div>
+          <div class="wc-pos"><b>n.</b> 同伴；伙伴（a travelling companion 旅伴；a companion volume 配套卷）<br><b>n.</b> company 陪伴；公司；companionship 陪伴关系</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Gamified with an AI <b>companion</b>, gamified without one, or lectured.</div>
+          <div class="wc-tr">配 AI 同伴的游戏化课、不配 AI 的游戏化课，或传统讲授。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">isolate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈaɪsəleɪt/ · 美 /ˈaɪsəleɪt/</div>
+          <div class="wc-pos"><b>v.</b> 单独分离出来（考察）；（使）隔离（isolate a variable 单独考察一个变量；be isolated from 与……隔离）<br><b>n.</b> isolation 隔离；isolationism 孤立主义</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A second experiment <b>isolates</b> the layer schools are now being sold.</div>
+          <div class="wc-tr">第二项实验单独考察了学校正在被推销的那一层。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">verdict</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈvɜːdɪkt/ · 美 /ˈvɜːrdɪkt/</div>
+          <div class="wc-pos"><b>n.</b> （陪审团的）裁决；定论（reach a verdict 作出裁决；the verdict is still out 尚无定论）<br>此处说"两项研究都不是对屏幕的判决"，即不能据此给技术定罪或免责</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Neither study is a <b>verdict</b> on screens.</div>
+          <div class="wc-tr">两项研究都不是对屏幕的判决。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">randomise</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrændəmaɪz/ · 美 /ˈrændəmaɪz/</div>
+          <div class="wc-pos"><b>v.</b> 随机分组；随机分配（randomised controlled trial 随机对照试验 RCT；英式 -ise，美式 -ize）<br><b>adj.</b> random 随机的；<b>n.</b> randomisation 随机化</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Classes rather than children were <b>randomised</b>.</div>
+          <div class="wc-tr">随机分组分的是班，而不是学生。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mundane</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /mʌnˈdeɪn/ · 美 /mʌnˈdeɪn/</div>
+          <div class="wc-pos"><b>adj.</b> 平淡的；乏味的；日常的（a mundane task 琐碎的工作；mundane details 日常细节）<br>常与 exotic（新奇的）对举，此处"结论近乎平淡"是刻意的降调</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>For a teacher the implication is almost <b>mundane</b>.</div>
+          <div class="wc-tr">对教师来说，这个含义近乎平淡。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">rest on a claim</span><span class="zh">建立在一个论断之上</span></li>
+          <li><span class="en">by themselves</span><span class="zh">单靠自身；本身</span></li>
+          <li><span class="en">state of mind</span><span class="zh">心理状态；心态</span></li>
+          <li><span class="en">come apart</span><span class="zh">散架；瓦解</span></li>
+          <li><span class="en">at any link</span><span class="zh">在任何一个环节</span></li>
+          <li><span class="en">reach the exam paper</span><span class="zh">落到试卷上（产生实际成绩）</span></li>
+          <li><span class="en">in all</span><span class="zh">总共；合计</span></li>
+          <li><span class="en">be mapped onto</span><span class="zh">被对应到；被映射到</span></li>
+          <li><span class="en">be defended to sb</span><span class="zh">向某人交代得过去、站得住</span></li>
+          <li><span class="en">move from A to B</span><span class="zh">从 A 升/变到 B</span></li>
+          <li><span class="en">a gap the baseline cannot explain</span><span class="zh">起点解释不了的差距</span></li>
+          <li><span class="en">take sth apart</span><span class="zh">拆开；拆解分析</span></li>
+          <li><span class="en">the route through</span><span class="zh">经由……的路径</span></li>
+          <li><span class="en">cross zero</span><span class="zh">（置信区间）跨过零，即不显著</span></li>
+          <li><span class="en">be sold (on sth)</span><span class="zh">被推销；（对某事）被说服</span></li>
+          <li><span class="en">on top of</span><span class="zh">在……之上（额外叠加）</span></li>
+          <li><span class="en">not significant</span><span class="zh">（统计上）不显著</span></li>
+          <li><span class="en">matter to sb</span><span class="zh">对某人重要</span></li>
+          <li><span class="en">at all</span><span class="zh">（否定句）根本；一点儿</span></li>
+          <li><span class="en">be candid about</span><span class="zh">对……坦率</span></li>
+          <li><span class="en">survive the summer</span><span class="zh">熬过暑假（指效果能否保持）</span></li>
+          <li><span class="en">keep sb there</span><span class="zh">把人留在那里</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>课堂现场：汕尾五年级的科学课把 70% 课时装进游戏，看上去像放弃教学，实为精心设计的课程。</li>
+          <li>理论链条：游戏元素本身不教东西，它先改心理状态，再改行为，最后才改分数——任何一环都可能断。</li>
+          <li>试验设计：六个完整班级、269 人以整班随机分组，21 个游戏元素逐一对应国家课标四个领域。</li>
+          <li>结果：常规班 +5.0，游戏化班 +13.2；校正起点后 67.4 对 60.4，差距无法用起点解释。</li>
+          <li>中介分析：只有"投入"路径显著，"动机→投入"链极小（0.007），"仅动机"路径区间跨零；教学条件只解释动机 2.2% 的方差。</li>
+          <li>机制解释："好玩"是原料不是有效成分；问卷测得到的改变，阅卷人测不到。</li>
+          <li>AI 对照：174 人三臂试验中，AI 同伴显著降焦虑、提动机，但对成绩只多 d = 0.19（不显著）；两个游戏化组都胜过讲授。</li>
+          <li>局限与判断：整班随机、同时测量、无延时测；游戏可靠地改课堂气候，不可靠地改产生分数的行为。</li>
+          <li>教师落点：游戏是门不是房间；积分能把人带进来，争论、出错与反思才能让人留下来。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">What they do, in the theory of gamified learning, is alter a pupil's state of mind, which alters behaviour, which alters the score — a chain that can come apart at any link.</div>
+        <div class="row"><b>主干：</b>What they do ... is alter ...（主语从句 + is + 动词原形作表语，构成"他们所做的是改变……"）</div>
+        <div class="row"><b>插入语：</b>in the theory of gamified learning（介词短语插在主谓之间，交代理论出处，读时先跳过）</div>
+        <div class="row"><b>两个非限制性定语从句：</b>which alters behaviour, which alters the score（前一个 which 指 state of mind，后一个指 behaviour，形成"多米诺"式递推）</div>
+        <div class="row"><b>破折号同位语：</b>a chain that can come apart at any link（把前面三级递推概括成"一条链"，并用 that 从句点出"任何一环都可能断"）</div>
+        <div class="row"><b>考点：</b>what 引导主语从句；is 后接动词原形（do 的强调结构）；which 的指代判断；破折号同位语</div>
+        <div class="row tr"><b>译文：</b>在游戏化学习理论里，它们做的是改变学生的心理状态，心理状态改变行为，行为再改变分数——一条任何一环都可能松掉的链条。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The gamified classes, which began lower, finished at 66.9 — an adjusted post-test mean of 67.4 against 60.4, a gap the baseline cannot explain.</div>
+        <div class="row"><b>主干：</b>The gamified classes ... finished at 66.9（主谓 + 介词短语表结果）</div>
+        <div class="row"><b>非限制性定语从句：</b>which began lower（补充说明起点更低，为"增幅更大"埋伏笔）</div>
+        <div class="row"><b>破折号补充：</b>an adjusted post-test mean of 67.4 against 60.4（用校正均值替代原始分，against 表"对比"，是学术写作的固定说法）</div>
+        <div class="row"><b>同位语 + 省略定语从句：</b>a gap (that) the baseline cannot explain（gap 后省略关系代词，因为它在从句中作宾语）</div>
+        <div class="row"><b>考点：</b>against 表对比；mean 在此为"均值"而非"意思"；省略关系代词；数字密集句的断句</div>
+        <div class="row tr"><b>译文：</b>起点更低的游戏化班则到了 66.9 分——校正后的后测均值为 67.4 对 60.4，这个差距无法用起点不同来解释。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The authors then took the chain apart: the route through classroom engagement alone was significant, the route through motivation and then engagement was significant but tiny at 0.007, and the route through motivation alone had a confidence interval that crossed zero.</div>
+        <div class="row"><b>主干：</b>The authors ... took the chain apart（主谓宾 + apart 作宾补，"拆开"）</div>
+        <div class="row"><b>冒号后的三项并列：</b>the route ... was significant, the route ... was significant but tiny, and the route ... had a confidence interval（三个分句同构，唯一变化是"经过哪一环"，形成对照实验的写法）</div>
+        <div class="row"><b>关键修饰：</b>alone（仅仅）、at 0.007（效应量）、that crossed zero（定语从句，说明"不显著"的判据）</div>
+        <div class="row"><b>阅读策略：</b>这种"同一句式换变量"的并列，只要抓住三条路的差别（engagement / motivation→engagement / motivation），数字可以后读</div>
+        <div class="row"><b>考点：</b>take sth apart 的搭配；三项并列中的省略；cross zero 的统计含义；alone 的位置与语义</div>
+        <div class="row tr"><b>译文：</b>作者随后把这条链拆开：只经过"课堂投入"的路径显著；经过"动机—投入"的较长路径显著，但效应小到只有 0.007；而只经过"动机"的路径，置信区间跨过了零。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A second experiment, in BMC Psychology, isolates the layer schools are now being sold: 174 fifth-graders took one of three mathematics courses — with an AI companion, without one, or lectured — and the AI version lowered anxiety while adding almost nothing on top of gamification.</div>
+        <div class="row"><b>主干：</b>A second experiment ... isolates the layer（主谓宾；isolate 在此意为"单独拎出来考察"）</div>
+        <div class="row"><b>省略关系词的定语从句：</b>the layer (that) schools are now being sold（layer 后省略 that；be sold 为被动进行时，字面"正被卖给学校"，暗指教育技术市场）</div>
+        <div class="row"><b>冒号后的证据：</b>174 fifth-graders took one of three courses（用具体人数与分组支撑前面的判断）</div>
+        <div class="row"><b>破折号列举 + while 转折：</b>— with an AI companion, without one, or lectured — 说明三种条件；while adding almost nothing 表让步对比，"情绪改善明显，成绩增益几乎为零"</div>
+        <div class="row"><b>考点：</b>省略关系代词；被动进行时的修辞色彩；one 的替代（without one = without an AI companion）；while 表对比</div>
+        <div class="row tr"><b>译文：</b>《BMC Psychology》上的第二项实验，单独考察了学校正在被推销的那一层：174 名五年级学生上三种数学课之一——配 AI 同伴、不配 AI，或传统讲授——结果 AI 版降低了焦虑，但在游戏化之上几乎没有增加成绩。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Neither study is a verdict on screens: classes rather than children were randomised, motivation and engagement were measured on the same afternoon, and nobody checked whether the gains survived the summer.</div>
+        <div class="row"><b>主干：</b>Neither study is a verdict on screens（主系表；neither 置于句首，全句已是否定，不再加 not）</div>
+        <div class="row"><b>冒号后的三条限制：</b>classes rather than children were randomised / ... were measured on the same afternoon / nobody checked whether ...（三条并列，分别指向随机单位、测量时点、追踪时长）</div>
+        <div class="row"><b>rather than 的对比：</b>classes rather than children（分的是班而非个人，因此班内学生不独立，统计上更保守也更脆弱）</div>
+        <div class="row"><b>宾语从句：</b>whether the gains survived the summer（survive 在此为"保持、延续下来"，不是"幸存"）</div>
+        <div class="row"><b>考点：</b>neither 的倒装与否定；rather than 的平行；被动语态并列；survive 的引申义；冒号列举</div>
+        <div class="row tr"><b>译文：</b>两项研究都不是对屏幕的判决：随机分组分的是班而不是学生，动机与投入是在同一个下午测的，也没有人检验这些收益能不能熬过暑假。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">这篇文章从一个很容易被拍成宣传片的场景开始。广东汕尾的一所公立小学里，五年级学生正在破解一组"酸碱密码"，让纸板桥和秒表赛跑，还要从玻璃杯上找到那枚指纹的主人。看上去像是一个已经放弃教学的科技社团，实际上这是一套为"教"而设计的课程：八次课，每次五十分钟，其中 70% 的时间被安排在游戏里，二十一个游戏元素一个不缺，从积分、关卡、稀有度，到限时压力、竞争与合作、谜题与叙事。研究者做的第一件事，是把这些元素逐一对应到国家科学课程标准的四个领域——科学观念、科学思维、探究实践、态度责任——因为只有这样，这门课才能同时向孩子和校长交代。</p>
+      <p class="zh-sum">这套设计背后有一个让游戏化热衷者多少有点别扭的命题：游戏元素本身并不教任何东西。按照 Landers 的游戏化学习理论，游戏属性不会直接提高成绩，它先改变学习者的心理状态，心理状态改变行为，行为才改变结果。这是一条三环的链，任何一环都可能悄悄松掉。此前的大量元分析已经发现第一环并不牢：游戏化对动机的平均效应只是"不大"（modest），而且常常换不来学习成绩。所以真正的问题从来不是"游戏能不能让孩子兴奋"——这一点几乎不用证明——而是"这份兴奋能不能走到试卷上"。</p>
+      <p class="zh-sum">2026 年 10 月 26 日，Frontiers in Education 发表了一项针对这个问题的整班随机对照试验。研究在一所公立小学进行，六个完整的五年级班、最初 269 名学生，以整班为单位被随机分到游戏化课程或常规教学，最后有 240 人（每组 120 人）的数据完整可用。之所以按班而不是按人随机，是学校要求保留行政班，作者也坦承这削弱了因果推断的强度。干预持续两个月，八次课，每次五十分钟，游戏化元素在其中活跃 280 分钟，占全部 400 分钟的 70%，平均每节课 35 分钟；最"重"的几节课——破解酸碱密码、变异生存战、消失的指纹——达到 40 分钟。</p>
+      <p class="zh-sum">结果相当漂亮。常规班在科学素养测验上从 55.833 升到 60.838，涨了约 5 分，这是任何学校都会满意的进步；游戏化班起点略低（53.758），却一路升到 66.921，涨了 13 分以上。以起点为协变量的协方差分析给出的校正后测均值是 67.362 对 60.396，组间差异依然高度显著，整个模型解释了后测成绩 40.7% 的方差。作者也谨慎地提到，基线的小幅不平衡与"回归均值"的可能性不能完全排除，但几组统计结果方向一致，很难用"起点低所以涨得多"来解释全部。</p>
+      <p class="zh-sum">真正有价值的部分在下一步：作者把这条链拆开了。游戏化教学对后测成绩仍有 0.381 的直接效应，加入间接路径后总效应为 0.451；但三条间接路径的表现完全不同。只经过"课堂投入"的那条显著（95% 置信区间 0.015 到 0.095，不含零）；经过"动机→投入"的链条也显著，但效应量只有 0.007，小到几乎没有实际意义；而只经过"动机"的那条，估计值 0.020，置信区间从 −0.001 到 0.042，跨过了零——不显著。用一句更直白的话说：想学，本身不换来分数；想学必须先变成在课堂上真的动手、真的争论、真的改错。研究还给了另一个冷静的数字：教学条件只解释了动机 2.2% 的方差。这与元分析里"游戏化的动机效应本来就不大"的结论一致，也解释了为什么"孩子很喜欢"常常无法兑现成"考得更好"。</p>
+      <p class="zh-sum">研究者随后逐一排除了几种解释。第一种是测量不足：动机是用"科学职业抱负量表"和"创造性自我效能感量表"合成了一个指标，能捕捉到的只是动机的一小片。第二种是剂量不够：八次课、两个月，可能不足以让动机独立于行为稳定下来。第三种、也是他们认为最可能的一种：这是真实存在的机制——游戏化带来的动机提升，必须被转化成持续的课堂参与，才可能具有教育意义。此外，他们还检查了"限时压力""强制选择"这类挑战性机制会不会引发挫败感，结果显示无聊、焦虑、走神等题项均低于量表中点，正面情绪题项得分较高，课程记录里也没有学生放弃的记录。</p>
+      <p class="zh-sum">第二项研究把镜头推到了学校正在花钱购买的那一层。发表在 BMC Psychology 上的三臂试验由马来西亚理科大学的 Jiawei Shao 团队与国内研究者合作完成，174 名中国五年级学生按个体随机分为三组：配 AI 同伴的游戏化数学课（AI-GILP）、不配 AI 的游戏化课（GILP）、传统讲授。设计上的讲究在于，它没有拿"新技术"去对比"什么都没有"，而是把游戏化固定住，只让 AI 这一层发生变化。两周干预，四周后延时后测。情绪与动机上的结果很鲜明：AI 组的数学焦虑显著更低、学习动机显著更高，偏 eta 方分别为 0.208 和 0.184，在教育研究里属于不小的效应；而且增益集中在"内在动机"和"能力感"两个维度，而不是"努力/重要性"——也就是说，AI 同伴并没有让孩子更用力，而是让他们更相信自己能行、更愿意学。</p>
+      <p class="zh-sum">但成绩是另一回事。两个游戏化组都显著优于传统讲授，说明游戏化本身确实带来了学业收益；而 AI 组相对"只有游戏化"的那一组，成绩差异只有 d = 0.19，未达显著。研究者对此相当克制：他们明确指出，系统并没有"读出"孩子的情绪，它监测的只是错误频率、停留时间、连续不活动和求助次数这些可观察指标；所谓心理需求支持、情绪调节等机制也没有被直接检验。换句话说，这项实验能证明的是"整套 AI 包"改善了课堂的情绪气候，而不能证明 AI 真的理解了孩子的焦虑。</p>
+      <p class="zh-sum">把两项研究放在一起，会得到一个不太讨喜但很有用的判断。游戏化能改分数，但改分数的不是"好玩"本身，而是好玩所撬动的行为；AI 能改情绪，但在这项研究的时间尺度里，它没有把情绪兑换成成绩。技术最擅长改变的，是课堂的气候——孩子愿不愿意开口、敢不敢试错、觉不觉得自己能行；技术最难改变的，是那个真正产生分数的行为——反复练习、主动回忆、把错误找出来重做。这也解释了为什么教育技术产品总是先赢在"学生喜欢"，再卡在"成绩没动"。</p>
+      <p class="zh-sum">两项研究的局限也值得记住。整班随机意味着班内学生不独立，统计上更脆弱；动机与投入是在干预结束后同一个时点测的，"动机先于投入"这一时序来自理论而非数据，反向或互为因果的模型无法排除；投入量表的验证性因素分析拟合并不理想，所以只能使用总分；干预只有八周，没有延时后测，无法判断收益能否留住；样本来自一座三线城市的单所学校，结论应当被理解为"情境内的证据"，而不是普适规律。作者自己的措辞也很谨慎：他们提供的是"统计路径上的证据"，而不是"时间上因果的证明"。</p>
+      <p class="zh-sum">对教师而言，落点近乎平淡，却可以直接用。第一，游戏是门，不是房间。积分、关卡、限时能解决"愿不愿意进来"，但进门之后必须有别的东西接手：小组争论、公开出错、把错题讲给别人听、把游戏里的经验复盘成概念。第二，把"动机"当成中间变量而不是终点。学生说"这节课好玩"是好消息，但不是成果；要追问的是"他在这节课里做了什么在别的课上不会做的事"。第三，警惕把技术当成捷径。AI 能迅速降低焦虑、提高能力感，这部分价值真实存在，但如果预算只能买一样东西，先买"让每个孩子都必须动手"的课堂设计，通常比买一套系统更划算。全文最后那句比喻可以记住：游戏是一扇门，不是一个房间；能把人带进来的东西，未必能让人留下来。</p>
+
+      <h2>五、主旨题（四选一）</h2>
+      <div class="q"><b>Which of the following best captures the article's main argument?</b><br>
+      A. Gamified science lessons raise test scores mainly because they make pupils enjoy the subject more than ordinary lessons do.<br>
+      B. Because the gamified classes caught up from a lower baseline, the reported gain of more than thirteen points is an artefact of regression to the mean.<br>
+      C. The score gain is real, but it runs through what pupils do in class rather than through how much they say they want to learn, so enjoyment is a means rather than the mechanism.<br>
+      D. Since neither study randomised individual pupils, nothing can be concluded about whether games change learning at all.</div>
+      <div class="q"><b>答案：</b>C。 <b>解析：</b>A 把"动机"当成了主通道，而文中"只经过动机"的路径置信区间跨过零（−0.001 到 0.042），教学条件对动机的解释力也只有 2.2%，撑不起十三分的增益——这正是全文要反驳的直觉。B 借用了作者自己承认的局限（起点更低），但文章明确说校正后 67.4 对 60.4 的差距"无法用起点解释"，中介分析也给出了显著的直接与间接路径，因此不是回归均值。D 把"整班随机"这一局限推到"什么都推不出"，文章结尾对它的处理恰恰相反：结论更窄也更可用——可靠地改变课堂气候，不可靠地改变产生分数的行为。C 同时容纳了"分数真的涨了"与"涨的原因不是想学"两层，并用 means / mechanism 的区分复述了原料与有效成分之别，与第 6、8 段的落点一致。</div>
+
+      <h2>六、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 5 段说"只经过动机的路径"置信区间跨过了零，第 6 段却说"好玩是原料而不是有效成分"。请说明这两处判断之间的关系（前者是统计上的不显著，后者是对机制的解释），并解释为什么作者仍然认为游戏化"有效"，而不是自相矛盾。</div>
+      <div class="q"><b>仿写题：</b>仿照第 6 段 <span style="font-family:Georgia,serif;font-style:italic">"Enjoyment, on this evidence, is not the active ingredient but the raw material: a child who wants to learn but never raises a hand ... has changed in a way that questionnaires detect and examiners do not."</span>（先用"不是 A 而是 B"下判断，再用冒号引出一个具体反例，最后用"某人测得到、某人测不到"的对照收尾），就"把点赞当成认可"写一句你自己的判断句。</div>
+
+      <h2>七、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现场：汕尾五年级的科学课，70% 课时在游戏里</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">2 · 理论链条：游戏→心理状态→行为→分数，任一环可断</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">3 · 设计：6 个整班、269 人随机，21 个元素对齐课标</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 结果：+5.0 对 +13.2；校正后 67.4 对 60.4</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 拆链：仅"投入"显著；"仅动机"跨零；条件只解释 2.2%</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">6 · 机制："好玩"是原料，问卷测得到、阅卷人测不到</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">7 · 对照：AI 降焦虑显著，成绩只多 d = 0.19（不显著）</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">8 · 局限与判断：可靠改气候，不可靠改行为</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">9 · 落点：游戏是门不是房间，留下来靠争论与反思</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">红＝问题与核心判断　绿＝结果与证据　蓝＝设计、理论与对照</text>
+        </svg>
+        <figcaption>全文共 9 段，按「现场 → 理论链条 → 试验设计 → 结果 → 拆链 → 机制 → AI 对照 → 局限 → 教师落点」递进；第 2 段先立起三环链，第 4 段给"有效"，第 5 段立刻把"有效"拆成三条路径，这是全文的转折；第 7 段的 AI 对照把结论从"游戏化"推到"教育技术"更一般的位置。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Li, Y., Gu, Y., He, W., Zheng, L. &amp; Liu, W.《The influence mechanism of gamified teaching on primary school students' scientific literacy: an empirical analysis based on structural equation modeling》，Frontiers in Education 11:1899547（2026-10-26）｜ Shao, J., Jinming, J. &amp; Tang, S.《The effects of an AI-supported gamified learning program on elementary students' mathematics anxiety, learning motivation, and achievement》，BMC Psychology（2026） ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
