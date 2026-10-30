@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 一千个人飞去英国最北端织毛衣：这门老手艺卖的已经不是毛衣</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Craft &amp; Place · 人与社会 / 文化 / 非物质文化遗产 / 地方经济</div>
+  <h1>一千个人飞去英国最北端织毛衣：这门老手艺卖的已经不是毛衣</h1>
+  <div class="deck">A 2026 study from Aberdeen follows Shetland knitting from household skill to global festival, and finds that what visitors pay for now is the hour, not the garment</div>
+  <div class="byline"><span><b>来源</b> Journal of Tourism and Cultural Change（2026-03-15）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-30</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-30.jpg" alt="社区活动室里几位女性围坐织毛衣、木针与毛线在手的实景照片（配图）">
+    <figcaption>配图：一间社区活动室里，几位织者各自低头数针，毛线团搁在桌角——设得兰卖给游客的，正是这样一小时里手的动作（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>这不是一篇"非遗很美、要保护"的文章，而是一篇算账的文章。设得兰群岛在英国最北端，人口不到两万三，一年却有近一千人从美国、日本、新西兰专程飞来，参加九月末的"羊毛周"（Shetland Wool Week）：学纺线、学染色、学提花、去农场看长毛的羊。他们买的不是毛衣——毛衣在网上就能下单——他们买的是"亲手做"的那几个小时。2026 年 3 月，《Journal of Tourism and Cultural Change》刊出阿伯丁大学三位研究者的论文，作者在岛上做田野、同时跟踪网络社区，把这个转变命名为"从产品到过程"：针织曾经是岛上的现金来源，如今是岛上的旅游理由。文章更有价值的部分是它不肯只讲好消息：设得兰之外大量仿制品借"authentic"这个词做生意；邮轮一次靠岸四千人，有店铺专门为这班船开门；本地旅游机构明确说，他们宁愿这门生意小一点，也不想它变大；也有岛民认为羊毛周"是给外来人办的"。全文的结构是"现场—历史—转折—研究—机制—规模—真实性—两种旅游—判断"，并在最后给出一个克制但站得住的结论：遗产没有救活一座岛的经济，它救活的是一门手艺"还有人需要"这件事。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-30.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.721">Every autumn, nearly a thousand fly to a small group of islands in the North Atlantic, between Scotland and Norway, in order to knit.</span> <span class="s" data-t="8.721" data-e="17.88">They pay for classes in village halls and queue to be photographed beside the sheep that grew the fleece, which makes little sense if what they wanted was a sweater.</span></span></div>
+      <p class="para-tr">每年秋天，将近一千人飞到北大西洋上一小片群岛——位于苏格兰与挪威之间——目的只是织毛衣。他们花钱在乡村礼堂里上课，排队和长毛的那只羊合影，而羊毛就长在那只羊身上。如果他们想要的只是一件毛衣，这一切都说不通。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="17.88" data-e="28.461">For three centuries knitting was not a <span class="kw" data-tip="n. 消遣；娱乐（a favourite pastime 最喜欢的消遣；pastime 与 hobby 近义，但更强调“打发时间”）">pastime</span> but a source of cash for women, who sold lace shawls and jumpers to <span class="kw" data-tip="n. 商人；批发商（a wool merchant 羊毛商；merchant 也作形容词，如 merchant ship 商船）">merchants</span> and, at the height of the <span class="kw" data-tip="n. 生意；行业；贸易——熟词僻义：此处 the trade 指“这门行业”，passing trade 指“过路客的生意”。常见义为“贸易、交换”">trade</span>, to shops in New York.</span> <span class="s" data-t="28.461" data-e="36.697">The patterns were <span class="kw" data-tip="v. 把……视为；保存为——熟词僻义：常见义为“握住、举行”。be held as 被视为；hold that 认为">held</span> as <span class="kw" data-tip="adj. 默会的；心照不宣的（tacit knowledge 默会知识，指难以言传、只能在做中学的知识）">tacit</span> knowledge, passed from mother to daughter, until each district had stitches a neighbour could <span class="kw" data-tip="v. 读懂；辨认出——熟词僻义：此处不是“阅读文字”，而是“看懂针法纹样”。read a face 看懂表情">read</span> at a glance.</span></span></div>
+      <p class="para-tr">三百年来，针织在这里不是消遣，而是女性的现金来源：她们把蕾丝披肩和厚毛衣卖给商人，在行业最兴旺的时候还卖到纽约的店铺。花样被当作默会知识，从母亲传到女儿，直到每个地区都有了邻村一眼就能读懂的针法。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="36.697" data-e="44.039">Machine knitting, cheap imports and the departure of young women left the skills with a shrinking <span class="kw" data-tip="n. 圈子；一批人——熟词僻义：常见义为“圆圈”。a circle of friends 朋友圈；a shrinking circle 越来越小的一批人">circle</span> of older hands.</span> <span class="s" data-t="44.039" data-e="54.408">What <span class="kw" data-tip="v. 使复苏；重新流行（revive a tradition 复兴一项传统；revival 复兴；revive 也指“苏醒”）">revived</span> them was not a <span class="kw" data-tip="n. 补贴；补助金（government subsidy 政府补贴；subsidise 补贴）">subsidy</span> but the internet, which turned a local tradition into a global conversation carried on through blogs and photographs of half-finished work.</span></span></div>
+      <p class="para-tr">机器织造、廉价进口货，加上年轻女性的离岛，让这门手艺只剩下越来越小的一批年长的手。让它活过来的不是补贴，而是互联网——它把一项地方传统变成了一场全球对话，靠博客和半成品照片维持着。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="54.408" data-e="65.461">A study in the Journal of Tourism and Cultural Change, by three researchers at the University of Aberdeen, spent time on the islands and in the online communities to see what followed.</span> <span class="s" data-t="65.461" data-e="74.842">Their conclusion is that knitting is better understood not as a <span class="kw" data-tip="n. 遗物；遗迹（a relic of the past 过去的遗物；relics 文物）">relic</span> being preserved but as a living tradition that has changed as quickly as the economy around it.</span></span></div>
+      <p class="para-tr">《Journal of Tourism and Cultural Change》上的一项研究由阿伯丁大学的三位研究者完成，他们在岛上、也在那些网络社区里待了一段时间，看接下来发生了什么。他们的结论是：把针织理解为一件正在被保存的遗物，不如把它理解为一项活的传统——它变化的速度，和周围的经济一样快。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="74.842" data-e="84.671">The decisive shift is in what a visitor now buys: the islands once sold knitwear as a product, whereas the festival sells the hour in which you learn to make it.</span> <span class="s" data-t="84.671" data-e="90.987">The value has moved from the <span class="kw" data-tip="n. 衣服；服装（a garment 一件衣服；garment industry 服装业；比 clothes 更正式，常用于单件）">garment</span> to the making, and the price is paid for attention rather than wool.</span></span></div>
+      <p class="para-tr">决定性的转变在于游客现在买的是什么：这些岛曾经把针织品当产品卖，而节庆卖的是"你学着把它做出来的那一小时"。价值从衣服移到了制作，付钱买的是专注，而不是羊毛。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="90.987" data-e="102.553">Wool Week, held for the seventeenth time this autumn, draws about a thousand visitors from the United States, Japan and New Zealand, while twenty-two thousand subscribe to its newsletter.</span> <span class="s" data-t="102.553" data-e="114.103">Because it falls at the end of the season, when light and visitors are draining away, the money arrives when the islands need it, and spreads through community halls and <span class="kw" data-tip="n. （苏格兰）小农场；佃农小块地（croft 苏格兰高地与岛屿的小农地；crofter 小农场主）">crofts</span> rather than pooling in one <span class="kw" data-tip="n. 场地；举办场所（a venue for the concert 音乐会场地；change the venue 更换场地）">venue</span>.</span></span></div>
+      <p class="para-tr">"羊毛周"今年办到第十七届，吸引约一千名来自美国、日本和新西兰的访客，而订阅它通讯的有两万两千人。由于它落在季末——光线和游客都在退去的时候——这笔钱来得正是岛上需要它的时候，而且它散进社区礼堂和小农场，而不是汇集到一个场地里。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="114.103" data-e="127.474">Recognition as <span class="kw" data-tip="adj. 无形的；触摸不到的（intangible cultural heritage 非物质文化遗产，UNESCO 术语；tangible 有形的）">intangible</span> cultural <span class="kw" data-tip="n. 遗产（cultural heritage 文化遗产；inherit 继承；heir 继承人）">heritage</span> has turned the word authentic into a selling point, and it has a narrow definition: wool grown and spun on the islands, worked in patterns local knitters recognise at once.</span> <span class="s" data-t="127.474" data-e="135.618"><span class="kw" data-tip="n. 复制品；仿制品（a reproduction of the painting 这幅画的复制品；reproduce 复制；繁殖）">Reproductions</span> made elsewhere, and now digital copies of the patterns themselves, <span class="kw" data-tip="v. 削弱；冲击（undercut a claim 削弱一个说法；undercut prices 以低价抢生意）">undercut</span> that claim while borrowing its language.</span></span></div>
+      <p class="para-tr">被认定为非物质文化遗产，让"authentic（地道）"这个词变成卖点，而它在这里的定义很窄：羊毛在岛上长出来、在岛上纺成线，织的是本地织者一眼认得的纹样。别处做的仿制品，以及如今花样本身的数字复制件，一边借用这套说法，一边在削弱它。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="135.618" data-e="142.513">The sharper tension is between the small tourism the festival built and the mass tourism the islands now attract.</span> <span class="s" data-t="142.513" data-e="153.209">Creative tourism depends on small groups and local tutors, whereas cruise ships carrying four thousand passengers need neither, and shops have opened to catch the passing <span class="kw" data-tip="n. 生意；客流——熟词僻义：passing trade 指“过路客带来的生意”，不是“贸易”。do a roaring trade 生意兴隆">trade</span>.</span> <span class="s" data-t="153.209" data-e="161.25">Some islanders see it as an event for incomers, and the tourism agency says it would rather keep this trade small than watch it grow.</span></span></div>
+      <p class="para-tr">更尖锐的张力，出现在节庆亲手做起来的小规模旅游与这座岛如今招来的大众旅游之间。创意旅游靠的是小团体和本地导师，而载着四千名乘客的邮轮两样都不需要；已经有店铺专门为接这拨过路客而开门。一些岛民认为这个节庆是"给外来人办的"，旅游机构则说，他们宁愿这门生意小一点，也不想看着它变大。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="161.25" data-e="172.445">VisitShetland is <span class="kw" data-tip="adj. 坦率的；直言不讳的（be candid about sth 对某事坦率；candour 坦率）">candid</span> that knitting is the most important part of the visitor economy and equally candid that it is not the most important industry, since fishing and oil still <span class="kw" data-tip="v. 占主导地位；支配（dominate the market 主导市场；dominant 主导的；dominance 支配地位）">dominate</span>.</span> <span class="s" data-t="172.445" data-e="183.961">That is the honest measure of what heritage can do: it did not rescue an economy, it restored a skill's usefulness, and gave young islanders a reason to ask their grandmothers how a stitch was made.</span></span></div>
+      <p class="para-tr">设得兰旅游局很坦率：针织现在是访客经济中最重要的部分；他们同样坦率地说，它不是岛上最重要的产业——渔业和石油仍然占主导。这才是衡量遗产能做什么的诚实尺度：它没有救活一个经济体，它恢复了一门手艺的用处，并且让年轻的岛民有了一个理由，去问自己的祖母某一针是怎么织的。</p>
+
+      <p class="muted">原文出处：本文据 Catherine Wallace, Claire Wallace &amp; Stephanie Garrison《Knitting together: the revival of knitting as Intangible Cultural Heritage through digital resources and its contributions to tourism》，Journal of Tourism and Cultural Change 24(4):1–14（2026-03-15，DOI 10.1080/14766825.2026.2642736，University of Aberdeen）公开摘要与结论改写整理；羊毛周规模、邮轮与旅游局表述均引自该文及公开报道，仅供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pastime</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈpɑːstaɪm/ · 美 /ˈpæstaɪm/</div>
+          <div class="wc-pos"><b>n.</b> 消遣；娱乐（a favourite pastime 最喜欢的消遣；national pastime 国民消遣）<br>与 hobby 的区别：hobby 偏"爱好项目"，pastime 更强调"打发时间的方式"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Knitting was not a <b>pastime</b> here but a source of cash.</div>
+          <div class="wc-tr">针织在这里不是消遣，而是现金来源。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tacit</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈtæsɪt/ · 美 /ˈtæsɪt/</div>
+          <div class="wc-pos"><b>adj.</b> 默会的；心照不宣的（tacit knowledge 默会知识——只能在做中学、难以写成文字的知识；a tacit agreement 默契）<br>本文用它点明：花样没有图纸，长在人的手上和眼里</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The patterns were held as <b>tacit</b> knowledge, passed from mother to daughter.</div>
+          <div class="wc-tr">花样被当作默会知识，从母亲传到女儿。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">merchant</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈmɜːtʃənt/ · 美 /ˈmɜːrtʃənt/</div>
+          <div class="wc-pos"><b>n.</b> 商人；批发商（a wool merchant 羊毛商；merchant bank 商业银行）<br><b>adj.</b> 商业的；海运的（merchant ship 商船；merchant navy 商船队）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Women sold lace shawls and jumpers to <b>merchants</b>.</div>
+          <div class="wc-tr">女性把蕾丝披肩和厚毛衣卖给商人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trade</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /treɪd/ · 美 /treɪd/</div>
+          <div class="wc-pos"><b>n.</b> 行业；生意；客流（the wool trade 羊毛业；passing trade 过路客的生意；do a roaring trade 生意兴隆）<br>常见义：贸易；交换（trade with 与……通商；trade A for B 以 A 换 B）<br>本文两处都用"生意/行业"义，不指国与国之间的贸易</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>At the height of the <b>trade</b>, they sold to shops in New York.</div>
+          <div class="wc-tr">在行业最兴旺的时候，她们把货卖到纽约的店铺。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> 把……视为；认为（hold sth as 把某物当作；hold that 主张；be held to be 被认为是）<br>常见义：握住；举行（hold a meeting 开会）；容纳<br>被动式 be held as 在学术文本里常等于 be regarded as</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The patterns were <b>held</b> as tacit knowledge.</div>
+          <div class="wc-tr">这些花样被当作默会知识。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">read</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /riːd/ · 美 /riːd/</div>
+          <div class="wc-pos"><b>v.</b> 看懂；辨认出；解读（read a face 看懂表情；read the room 察言观色；read a stitch 看懂针法）<br>常见义：阅读；朗读<br>本文说"邻村一眼就能读懂针法"，read 的宾语不是文字而是纹样</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each district had stitches a neighbour could <b>read</b> at a glance.</div>
+          <div class="wc-tr">每个地区都有邻村一眼就能读懂的针法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">circle</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈsɜːkl/ · 美 /ˈsɜːrkl/</div>
+          <div class="wc-pos"><b>n.</b> 圈子；一批人（a circle of friends 朋友圈；business circles 商界；a shrinking circle 越来越小的一批人）<br>常见义：圆圈；循环（come full circle 兜了一圈回到原处）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The skills were left with a shrinking <b>circle</b> of older hands.</div>
+          <div class="wc-tr">这门手艺只剩下越来越小的一批年长的手。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">revive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈvaɪv/ · 美 /rɪˈvaɪv/</div>
+          <div class="wc-pos"><b>v.</b> 使复兴；重新流行；（使）苏醒（revive a tradition 复兴一项传统；revive the economy 振兴经济）<br><b>n.</b> revival 复兴；revivalism 复古倾向</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What <b>revived</b> them was not a subsidy but the internet.</div>
+          <div class="wc-tr">让它们活过来的不是补贴，而是互联网。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">subsidy</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsʌbsədi/ · 美 /ˈsʌbsədi/</div>
+          <div class="wc-pos"><b>n.</b> 补贴；补助金（government subsidy 政府补贴；farm subsidies 农业补贴）<br><b>v.</b> subsidise 补贴；<b>adj.</b> subsidised 受补贴的<br>本文把它与"互联网"对举：不是钱救的手艺，是注意力</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Not a <b>subsidy</b> but the internet.</div>
+          <div class="wc-tr">不是补贴，而是互联网。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">relic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrelɪk/ · 美 /ˈrelɪk/</div>
+          <div class="wc-pos"><b>adj.</b> <b>n.</b> 遗物；遗迹；残存物（a relic of the past 过去的遗物；relics of an ancient city 古城遗迹）<br>本文的对照是 relic（死的遗物）与 living tradition（活的传统），一字之差定了全文立场</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Not as a <b>relic</b> being preserved but as a living tradition.</div>
+          <div class="wc-tr">不是一件正在被保存的遗物，而是一项活的传统。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intangible</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈtændʒəbl/ · 美 /ɪnˈtændʒəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 无形的；触摸不到的（intangible cultural heritage 非物质文化遗产，UNESCO 正式术语；intangible assets 无形资产）<br>反义：tangible 有形的；<b>n.</b> intangible 无形资产</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Recognition as <b>intangible</b> cultural heritage turned "authentic" into a selling point.</div>
+          <div class="wc-tr">被认定为非物质文化遗产，让"authentic"变成了卖点。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">heritage</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈherɪtɪdʒ/ · 美 /ˈherɪtɪdʒ/</div>
+          <div class="wc-pos"><b>n.</b> 遗产；传统（cultural heritage 文化遗产；world heritage site 世界遗产地）<br>词根记忆：inherit 继承 → heritage 被继承下来的东西；与 inheritance（继承物、遗赠）近义但更常用于文化语境</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That is the honest measure of what <b>heritage</b> can do.</div>
+          <div class="wc-tr">这才是衡量遗产能做什么的诚实尺度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">garment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɡɑːmənt/ · 美 /ˈɡɑːrmənt/</div>
+          <div class="wc-pos"><b>n.</b> 衣服；服装（一件）（the garment industry 服装业；a wool garment 一件毛织衣物）<br>比 clothes 更正式，通常指单件；服装业固定用 garment，不用 clothes</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The value has moved from the <b>garment</b> to the making.</div>
+          <div class="wc-tr">价值从衣服移到了制作。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">croft</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /krɒft/ · 美 /krɔːft/</div>
+          <div class="wc-pos"><b>n.</b> （苏格兰的）小农场；佃农小块地（a crofting community 小农社区；crofter 小农场主）<br>文化背景词：苏格兰高地与岛屿特有的土地制度，一户人家一小块地，常兼营羊毛与渔业</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The money spreads through community halls and <b>crofts</b>.</div>
+          <div class="wc-tr">这笔钱散进社区礼堂和小农场。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">venue</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈvenjuː/ · 美 /ˈvenjuː/</div>
+          <div class="wc-pos"><b>n.</b> 场地；举办场所（a concert venue 音乐会场地；change the venue 更换场地）<br>新闻高频：venue 强调的是"事情发生的那个地点"，不一定是建筑</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Rather than pooling in one <b>venue</b>.</div>
+          <div class="wc-tr">而不是汇集到一个场地里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reproduction</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌriːprəˈdʌkʃn/ · 美 /ˌriːprəˈdʌkʃn/</div>
+          <div class="wc-pos"><b>n.</b> 复制品；仿制品；繁殖（a reproduction of the painting 这幅画的复制品；reproduction rate 生育率）<br><b>v.</b> reproduce 复制；再现；繁殖；<b>adj.</b> reproductive 生殖的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Reproductions</b> made elsewhere undercut that claim.</div>
+          <div class="wc-tr">别处做的仿制品削弱了那个说法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">undercut</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌʌndəˈkʌt/ · 美 /ˌʌndərˈkʌt/</div>
+          <div class="wc-pos"><b>v.</b> 削弱；破坏（undercut an argument 削弱一个论证）；以低价抢生意（undercut competitors 以低价压过对手）<br>原义是"从下面切掉"，引申为"把根基挖空"——本文正是这个意思</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Copies made elsewhere <b>undercut</b> that claim.</div>
+          <div class="wc-tr">别处做的复制品在挖空这个说法的根基。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">candid</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkændɪd/ · 美 /ˈkændɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 坦率的；直言不讳的（be candid about sth 对某事坦率；a candid interview 一次坦率的访谈）<br><b>n.</b> candour 坦率；注意与 candidate（候选人）区分，二者同源不同义</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>VisitShetland is <b>candid</b> that knitting is not the most important industry.</div>
+          <div class="wc-tr">设得兰旅游局坦率地说，针织并不是最重要的产业。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dominate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈdɒmɪneɪt/ · 美 /ˈdɑːmɪneɪt/</div>
+          <div class="wc-pos"><b>v.</b> 占主导地位；支配（dominate the market 主导市场；a dominant position 主导地位）<br><b>n.</b> dominance 支配地位；<b>adj.</b> dominant 占优势的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Fishing and oil still <b>dominate</b>.</div>
+          <div class="wc-tr">渔业和石油仍然占主导。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">in order to do sth</span><span class="zh">为了做某事</span></li>
+          <li><span class="en">pay for sth</span><span class="zh">为……付费</span></li>
+          <li><span class="en">queue to do sth</span><span class="zh">排队做某事</span></li>
+          <li><span class="en">make sense</span><span class="zh">讲得通；有道理</span></li>
+          <li><span class="en">a source of cash</span><span class="zh">现金来源</span></li>
+          <li><span class="en">at the height of</span><span class="zh">在……的顶峰／最盛时</span></li>
+          <li><span class="en">at a glance</span><span class="zh">一眼；乍看之下</span></li>
+          <li><span class="en">leave sb with sth</span><span class="zh">使某人只剩下……</span></li>
+          <li><span class="en">a circle of</span><span class="zh">一批；一圈（人）</span></li>
+          <li><span class="en">turn A into B</span><span class="zh">把 A 变成 B</span></li>
+          <li><span class="en">carry on</span><span class="zh">继续进行；维持</span></li>
+          <li><span class="en">spend time in/on</span><span class="zh">在……上花时间</span></li>
+          <li><span class="en">be better understood as</span><span class="zh">更应被理解为</span></li>
+          <li><span class="en">the decisive shift</span><span class="zh">决定性的转变</span></li>
+          <li><span class="en">rather than</span><span class="zh">而不是</span></li>
+          <li><span class="en">drain away</span><span class="zh">（逐渐）流失；耗尽</span></li>
+          <li><span class="en">pool in</span><span class="zh">汇集到（一处）</span></li>
+          <li><span class="en">recognition as</span><span class="zh">被认定为……</span></li>
+          <li><span class="en">a selling point</span><span class="zh">卖点；吸引人之处</span></li>
+          <li><span class="en">at once</span><span class="zh">立刻；马上（此处＝一眼就）</span></li>
+          <li><span class="en">catch the passing trade</span><span class="zh">做过路客的生意</span></li>
+          <li><span class="en">would rather A than B</span><span class="zh">宁愿 A 而不愿 B</span></li>
+          <li><span class="en">be candid that…</span><span class="zh">坦率地指出……</span></li>
+          <li><span class="en">be equally candid that…</span><span class="zh">同样坦率地指出……</span></li>
+          <li><span class="en">a measure of</span><span class="zh">衡量……的尺度</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>现场：每年近千人飞到北大西洋的设得兰，只为亲手织；如果只为毛衣，这趟旅行说不通。</li>
+          <li>历史：三百年里针织是岛上女性的现金来源，花样是母女相传的默会知识，各村针法自成一格。</li>
+          <li>低谷与转折：机器织造、廉价进口与人口外流几乎终结这门手艺；救活它的不是补贴，而是互联网。</li>
+          <li>研究：阿伯丁大学团队在岛上与网络社区做田野，结论是针织是"活的传统"，不是被保存的遗物。</li>
+          <li>核心发现：价值从产品（毛衣）转向过程（学做的那一小时），游客为专注付费。</li>
+          <li>规模与时机：羊毛周约一千人到场、两万两千人订阅；它落在季末，钱散进礼堂与小农场而非单一场地。</li>
+          <li>真实性：非遗身份让 authentic 成为卖点，而定义很窄；外地仿制品与数字复制正一边借用一边挖空它。</li>
+          <li>两种旅游：创意旅游靠小团体与本地导师，邮轮靠四千人一次靠岸；岛民与旅游局的反应并不一致。</li>
+          <li>判断：针织是访客经济的顶梁柱，却不是岛上主业；遗产救的不是经济，而是一门手艺的用处。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">They pay for classes in village halls and queue to be photographed beside the sheep that grew the fleece, which makes little sense if what they wanted was a sweater.</div>
+        <div class="row"><b>主干：</b>They pay for classes ... and queue to be photographed ...（两个并列谓语 pay 与 queue，共用主语 They）</div>
+        <div class="row"><b>定语从句：</b>the sheep that grew the fleece（that 指 sheep，字面"长出这身羊毛的羊"，把原料与动物绑在一起）</div>
+        <div class="row"><b>非限制性定语从句：</b>which makes little sense（which 指代前面"付费上课＋排队合影"整件事，而不是 fleece）</div>
+        <div class="row"><b>条件状语从句：</b>if what they wanted was a sweater（从句里再套一个 what 主语从句，形成"如果……的话"的反问）</div>
+        <div class="row"><b>考点：</b>which 指代前句整体；what 引导主语从句；不定式被动 to be photographed；make sense 的否定用法</div>
+        <div class="row tr"><b>译文：</b>他们花钱在乡村礼堂里上课，排队和长毛的那只羊合影——如果他们想要的只是一件毛衣，这一切都说不通。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What revived them was not a subsidy but the internet, which turned a local tradition into a global conversation carried on through blogs and photographs of half-finished work.</div>
+        <div class="row"><b>主干：</b>What revived them was not a subsidy but the internet（what 主语从句 + be + not A but B 表语结构）</div>
+        <div class="row"><b>注意：</b>not ... but ... 连接的是两个名词短语，谓语动词与 but 后的主语一致；此处 was 与 the internet 对应</div>
+        <div class="row"><b>非限制性定语从句：</b>which turned a local tradition into a global conversation（which 指 the internet，turn A into B 是"把 A 变成 B"）</div>
+        <div class="row"><b>过去分词作后置定语：</b>carried on through blogs and photographs（修饰 conversation，"靠博客与照片维持的"对话）</div>
+        <div class="row"><b>考点：</b>what 从句作主语；not...but... 的主谓一致；turn...into...；分词短语作定语</div>
+        <div class="row tr"><b>译文：</b>让它们活过来的不是补贴，而是互联网——它把一项地方传统变成了一场全球对话，靠博客和半成品照片维持着。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The decisive shift is in what a visitor now buys: the islands once sold knitwear as a product, whereas the festival sells the hour in which you learn to make it.</div>
+        <div class="row"><b>主干：</b>The decisive shift is in what a visitor now buys（主系表；in + 宾语从句作表语，表示"转变发生在……上"）</div>
+        <div class="row"><b>冒号的作用：</b>冒号后是对前半句的具体展开，用一个 before/now 对照说明"买的东西变了"</div>
+        <div class="row"><b>whereas 对比：</b>the islands once sold ... whereas the festival sells ...（once 与现在时对举，构成长时段与当下的分层）</div>
+        <div class="row"><b>定语从句：</b>the hour in which you learn to make it（"介词 + which"引导，in which = in the hour；it 指 knitwear）</div>
+        <div class="row"><b>考点：</b>介词后接 what 从句；whereas 表对比；"介词+which"；sell 的双宾语用法（sell sb sth / sell sth as sth）</div>
+        <div class="row tr"><b>译文：</b>决定性的转变在于游客现在买的是什么：这些岛曾经把针织品当产品卖，而节庆卖的是"你学着把它做出来的那一小时"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Creative tourism depends on small groups and local tutors, whereas cruise ships carrying four thousand passengers need neither, and shops have opened to catch their passing trade.</div>
+        <div class="row"><b>主干：</b>Creative tourism depends on ..., whereas cruise ships ... need neither, and shops have opened ...（三个分句由 whereas 与 and 串起）</div>
+        <div class="row"><b>现在分词作定语：</b>cruise ships carrying four thousand passengers（修饰 ships，"载着四千名乘客的"，一个数字就把量级差拉开）</div>
+        <div class="row"><b>neither 的用法：</b>neither 代指前文的小团体与本地导师两者，作 need 的宾语；neither 在此不是"两者都不"的连词，而是代词</div>
+        <div class="row"><b>不定式作目的：</b>to catch their passing trade（"为了接住这拨过路客的生意"，点明商业逻辑）</div>
+        <div class="row"><b>考点：</b>whereas 与 and 的层次；分词定语；neither 的代词用法；不定式表目的</div>
+        <div class="row tr"><b>译文：</b>创意旅游靠的是小团体和本地导师，而载着四千名乘客的邮轮两样都不需要；已经有店铺专门为接这拨过路客而开门。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">That is the honest measure of what heritage can do: it did not rescue an economy, it restored the usefulness of a skill, and gave young islanders a reason to ask their grandmothers how a stitch was made.</div>
+        <div class="row"><b>主干：</b>That is the honest measure（主系表；That 回指上一段旅游局的坦率说法）</div>
+        <div class="row"><b>介词 + 宾语从句：</b>of what heritage can do（"衡量遗产能做什么"，what 在从句中作 do 的宾语）</div>
+        <div class="row"><b>冒号后的三连：</b>it did not rescue an economy / it restored the usefulness of a skill / and (it) gave young islanders a reason（先否定、再肯定、再递进，第三个分句省略主语 it）</div>
+        <div class="row"><b>不定式作定语：</b>a reason to ask ... how a stitch was made（reason 后用不定式；how 从句作 ask 的宾语）</div>
+        <div class="row"><b>考点：</b>what 从句作介词宾语；冒号后的并列与省略；不定式作后置定语；how 引导宾语从句</div>
+        <div class="row tr"><b>译文：</b>这才是衡量遗产能做什么的诚实尺度：它没有救活一个经济体，它恢复了一门手艺的用处，并且让年轻的岛民有了一个理由，去问自己的祖母某一针是怎么织的。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">这篇文章的开头像一篇游记：每年秋天，将近一千人坐飞机到北大西洋上一小片群岛，只为织毛衣。他们花钱在乡村礼堂上课，排队和一只羊合影——因为那块羊毛就长在那只羊身上。作者立刻点出这个场景的悖论：如果他们想要的只是一件毛衣，这一切都不合理。毛衣可以网购，而且更便宜；他们真正的目的地不是"毛线"，而是"做"这件事本身。全文由此展开，讨论一门地方手艺如何在四十年里，从"家庭副业"变成"全球文化消费的对象"。</p>
+      <p class="zh-sum">要理解这个转变，得先回到历史。设得兰群岛在英国最北端，土地贫瘠、气候湿冷，三百年来针织不是消遣，而是女性的现金来源。她们把蕾丝披肩、厚毛衣卖给商人，转手进入苏格兰本土、英格兰，甚至纽约的商店；维多利亚女王有一件设得兰蕾丝披肩，法国时装杂志也报道过这种"遥远群岛上手工做出的蕾丝"。更关键的是知识形态：花样没有图纸，它是默会知识（tacit knowledge），存在人的手指与眼睛里，从母亲传到女儿，从一村传到另一村。这种知识的特点是"只能跟着人走"，所以它既极难被复制，也极容易随人消失。</p>
+      <p class="zh-sum">二十世纪后半段，这门手艺几乎走到尽头。机器织造让手工毛衣失去价格优势，廉价进口货填满市场，年轻女性离岛求学、工作，留下来的是越来越小的一批年长的手。按常规的非遗叙事，接下来应该出现一个拯救者：政府补贴、保护名录、博物馆展柜。但研究者给出的答案是另一个东西——互联网。博客、论坛、社交平台上的成品照与半成品照，把这项地方技艺变成了一场全球对话：一个在东京或亚利桑那的爱好者，可以看着设得兰织者的照片学会一种收针法，也可以把自己的作品发回去。手艺因此获得了新的观众，也获得了新的老师。</p>
+      <p class="zh-sum">2026 年 3 月，《Journal of Tourism and Cultural Change》刊出阿伯丁大学 Catherine Wallace、Claire Wallace 与 Stephanie Garrison 的论文。三位作者的做法是双线的：一边在岛上做田野，访谈织者、商家、农户与旅游机构；一边做网络民族志，跟踪线上的编织社区。他们得出的第一个判断带有理论意味：针织不该被理解为"一件正在被保存的遗物"（a relic being preserved），而应被理解为"一项活的传统"（a living tradition）——它一直在变，变化的速度甚至和周围的经济一样快。这个判断很重要，因为它决定了后面所有的评价标准：如果用"是否原样保存"来衡量，商业化就是污染；如果用"是否还活着"来衡量，商业化可能恰恰是供氧。</p>
+      <p class="zh-sum">第二个判断是全文的核心，也是本站最值得学的一句概括：价值从"产品"移到了"过程"。二十世纪，设得兰卖的是针织品——一件毛衣、一条披肩，价格由羊毛、工时与花色决定。今天，羊毛周卖的是"你学着把它做出来的那一小时"：一堂提花课、一次纺线示范、一趟去农场看羊的行程。游客付的钱，名义上买的是课程与食宿，实质上买的是"在场"——亲手把线绕上针，亲耳听一位七十岁的织者讲她母亲怎么教她。这也解释了为什么他们愿意为一件自己织坏的毛衣付费：他们要的不是成品，而是那段专注。</p>
+      <p class="zh-sum">规模数字支撑了这个判断。羊毛周今年办到第十七届，到场约一千人，来自美国、日本、新西兰等地；而订阅它通讯的有两万两千人——也就是说，全球受众是能亲身到岛上来的人的二十倍。这个"漏斗"结构是理解非遗数字化的关键：线上社区负责培养兴趣、传递技术、维持认同；线下节庆负责把兴趣兑换成机票、住宿与课程费。时间点也不是巧合。羊毛周固定在九月末，正是设得兰旅游季的尾巴，日光变短、客流下滑，这笔收入恰好填进一年中最空的一段。钱的流向同样重要：它散进社区礼堂、小农场、乐手与手艺人手里，而不是汇集到某个会展中心——这让收益分配比"一个大型场馆＋一家运营商"的模式更宽。</p>
+      <p class="zh-sum">但作者没有停在好消息上。文章的第三部分处理三组撕裂。第一组是"地道"（authentic）的定义权。被列入非遗之后，"authentic"变成了卖点，而它在这里有一个很窄的操作性定义：羊毛在岛上长、在岛上纺，织的是本地织者一眼认得的纹样。问题是，设得兰之外一直有仿制品，如今连花样本身都被数字化复制、瞬间传播。仿制品一边借用"authentic"的话术，一边挖空它的根基。这不是设得兰独有的困境，而是所有"变成时尚的手艺"的共同命运：一旦你的价值来自"不可复制"，市场就会用最快的速度证明它可以被复制。</p>
+      <p class="zh-sum">第二组撕裂在两种旅游之间。羊毛周代表的"创意旅游"依赖小团体、本地导师和一条游客可以走进去的供应链——你能见到剪羊毛的人、纺线的人、把线染成苔藓色的人。而邮轮代表的大众旅游依赖的是完全不同的东西：一次靠岸四千人，两小时购物，上船离开。有店铺专门为邮轮到港的那几个小时开门，做的就是"过路客的生意"（passing trade）。这两种旅游对岛屿的要求正好相反：前者要慢、要小、要能对话；后者要快、要大、要能吞吐。研究记录下的反应并不一致：一些岛民认为羊毛周"主要是给外来人办的"，而本地旅游机构的态度相当克制——他们说，宁愿这门生意保持小规模，也不想看着它变大。</p>
+      <p class="zh-sum">最后一组撕裂，也是最容易被忽略的一组，关于"这到底算不算救了这座岛"。设得兰旅游局说得很直白：针织现在是访客经济里最重要的部分，但它不是岛上最重要的产业，渔业和石油仍然占主导。这句话把整篇文章的调子压了下来：非遗旅游的经济体量，撑不起一个地区的主业，它能做的是"补"，不是"替"。不过作者给出了一个更细的正面结果：年轻一代开始对传统针织感兴趣，出现了新的代际交流；年长女性的家务技艺，第一次被当作"专业能力"来尊重——有人付钱来学她们会做的事。这一点在别的手艺复兴案例里也反复出现：真正改变处境的，往往不是收入本身，而是"我这双手值钱了"这件事被公开承认。</p>
+      <p class="zh-sum">把全文收在一句话上：遗产能做的，不是救活一个经济体，而是恢复一门手艺的用处。这个判断之所以站得住，是因为它同时承认了两件事——商业化确实在侵蚀"地道"的边界，但它也确实让年轻人有了一个理由，去问祖母某一针是怎么织的。对读者而言，这篇文章提供的不是结论，而是一套判断工具：看一项传统是否真的活着，不要看它被保存得多完整，要看还有没有人靠做它吃饭、有没有人愿意为学它付钱、以及这门生意最后落进了谁的口袋。</p>
+
+      <h2>五、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. Shetland knitting survived mainly because the government offered generous subsidies to local craftspeople.<br>
+        B. The commercial value of a heritage craft now lies less in the product it makes than in the experience of making it.<br>
+        C. Cruise ships have destroyed the small-scale tourism that island communities spent decades building.<br>
+        D. Intangible cultural heritage should be protected from commercialisation in order to keep it authentic.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文的论点句出现在第 5 段——"价值从衣服移到了制作，付钱买的是专注，而不是羊毛"，前后 8 段都在为它服务（前 4 段铺条件，后 4 段处理代价）。A 与原文相反：第 3 段明确说"让它活过来的不是补贴，而是互联网"。C 把"张力"夸大成"毁灭"：第 8 段只说两种旅游的要求相反、岛民看法不一，且旅游局的态度是"宁愿小、不想大"，并非被摧毁。D 是文章刻意反驳的立场：作者主张用"是否还活着"而非"是否原样保存"来衡量，因此商业化的评价是双面的，不是一概排斥。</div>
+      <div class="q"><b>2. The word "read" in paragraph 2 ("stitches a neighbour could read at a glance") is closest in meaning to ______.</b><br>
+        A. read aloud　B. recognise and interpret　C. study carefully　D. copy exactly
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>此处 read 的宾语是"针法纹样"而不是文字，指一眼就能辨认出这是哪个村的织法，故选"辨认并解读"。A 是 read 的常见义，与纹样不搭；C 的"仔细研究"与 at a glance（一眼）矛盾；D 的"精确复制"是 read 完全不具备的含义，属于用上下文猜测时的过度引申。</div>
+
+      <h2>六、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 7 段说非遗身份让 "authentic" 成了卖点，第 8 段又说岛民与旅游局对扩张并不热心。请解释：为什么"更地道"和"更受欢迎"这两件事在这里会互相拉扯？如果你的家乡也有一门老手艺，你会选择先扩大客流，还是先守住定义？给出你的理由和一条可验证的证据。</div>
+      <div class="q"><b>仿写题：</b>仿照第 5 段 <span style="font-family:Georgia,serif;font-style:italic">"The decisive shift is in what a visitor now buys: the islands once sold knitwear as a product, whereas the festival sells the hour in which you learn to make it."</span>（先用 "The decisive shift is in..." 下判断，再用冒号，用 once ... whereas ... 构成过去与现在的对照），就"人们现在买的不是照片，而是拍照的那次出行"写一句你自己的判断句。</div>
+
+      <h2>七、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 现场：近千人飞去北大西洋织毛衣，若只为毛衣便说不通</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">2 · 历史：三百年的现金来源，花样是母女相传的默会知识</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">3 · 低谷与转折：机器与人口外流之后，救活它的是互联网</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 研究：阿伯丁大学田野＋网络民族志，活的传统非遗物</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 核心：价值从"产品"移到"过程"，为专注付费</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">6 · 规模：千人到场、两万二订阅；季末补位，钱散进村落</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 撕裂一：authentic 被当卖点，仿制品借用其话术</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 撕裂二：小团体创意旅游 对 四千人邮轮过路生意</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">9 · 判断：没救活经济，救活了手艺"还有人需要"</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">红＝问题与核心判断　绿＝结果与证据　蓝＝背景、转折与研究设计</text>
+        </svg>
+        <figcaption>全文共 9 段，按「现场 → 历史 → 低谷与转折 → 研究 → 核心发现 → 规模 → 撕裂一 → 撕裂二 → 判断」递进。第 5 段是论点句，第 7、8 段是全篇最容易被写成宣传稿的地方，作者偏偏在这里拆自己的台；第 9 段用旅游局的一句"坦率"把调子压回来，让结论不至于滑向"非遗旅游万能论"。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Catherine Wallace, Claire Wallace &amp; Stephanie Garrison《Knitting together: the revival of knitting as Intangible Cultural Heritage through digital resources and its contributions to tourism》，Journal of Tourism and Cultural Change 24(4):1–14（2026-03-15，DOI 10.1080/14766825.2026.2642736，University of Aberdeen）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

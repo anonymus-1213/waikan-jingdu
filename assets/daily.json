@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-10-30",
+      "en": "The decisive shift is in what a visitor now buys: the islands once sold knitwear as a product, whereas the festival sells the hour in which you learn to make it.",
+      "zh": "决定性的转变在于游客现在买的是什么：这些岛曾经把针织品当作产品来卖，而节庆卖的是“你学着把它做出来的那一小时”。",
+      "src": "外刊精读 · 一门老手艺的两种价钱（2026-10-30）",
+      "key": "decisive shift",
+      "keyZh": "决定性的转变（the decisive shift in sth 某事上的决定性转变）",
+      "tip": "句子骨架是「The decisive shift is in + 宾语从句」，把“转变”钉在一个具体问题上——买什么。冒号后用 once ... whereas ... 造出前后对照，once 是“曾经”，与后半句的现在时形成时间断层；in which 引导定语从句修饰 the hour，it 回指 knitwear。写作时可套用「The decisive shift is in what people now pay for: X once sold A, whereas Y sells the hour in which you do it.」来写任何“从卖产品到卖体验”的行业变化。",
+      "tags": [
+        "非遗",
+        "地方经济",
+        "手工艺"
+      ]
+    },
+    {
       "date": "2026-10-29",
       "en": "For a teacher the implication is almost mundane: a game is a door, not a room; points and time pressure will get a class through it, but only argument, error and reflection will keep them there.",
       "zh": "对教师而言，结论几乎平淡无奇：游戏是一道门，不是一个房间；积分与时间压力能把一个班带进门，但只有争论、出错与反思才能让他们留下来。",
