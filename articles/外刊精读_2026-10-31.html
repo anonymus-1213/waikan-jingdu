@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 最脏的水，喂最贵的机器：得州想让油田废水去给 AI 降温</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Water &amp; Compute · 人与自然 / 人与社会 / 科技与创新 / 水资源 / 环境政策</div>
+  <h1>最脏的水，喂最贵的机器：得州想让油田废水去给 AI 降温</h1>
+  <div class="deck">A 2026 study from the University of Texas at Austin models what it would take to cool data centres with oilfield wastewater, and finds that the physics works long before the money does</div>
+  <div class="byline"><span><b>来源</b> Water Research（2026-09 在线；UT Austin 2026-10-08 发布）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-10-31</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-10-31.jpg" alt="干旱平原上成排抽油机与远处大型工业建筑的实景照片（配图）">
+    <figcaption>配图：得州西部干旱平原上的抽油机。抽上来的不只是油，还有三到十倍的咸水——如今有人想把它变成给服务器降温的水（图片来源：实景照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>这篇文章的出发点是一个几乎像玩笑的错位：全世界最缺水的地方之一，正在建最耗水的机器；而同一片地下，每天被抽上来的废水多到没人要。得州西部的二叠纪盆地（Permian Basin）每采一桶原油，会连带抽出三到十桶高盐的"产出水"（produced water），业界目前的做法是用卡车拉到远处、高压回注地下。同一时间，AI 数据中心为了给服务器散热，一天要蒸发掉几百万加仑淡水。2026 年 9 月，得克萨斯大学奥斯汀分校机械工程系 Vaibhav Bahadur 团队在《Water Research》发表论文，第一次把这两件事放在同一张账上算：用反渗透或热法把油田水处理成冷却水，技术上成立，能耗账单也小得惊人——即使最耗能的那条路线，也只占数据中心总能耗的一小部分。文章的价值在于它不急着欢呼：作者用一个新指标（SWUI）把"冷却方式、本地盐度、区域水压力、浓盐水去向"四件事捆在一起比较，发现最优解其实不是油田废水，而是微咸地下水＋两级反渗透；真正的拦路虎是钱——回注一桶只要五六十美分，处理到能给别人用要两美元。更要紧的是，处理过的水并没有消灭盐，只是把盐浓缩成一股仍要找出路的浓水；而"让废水变值钱"这件事，反过来又给了油田一个继续开采的理由。全文按"错位—两头算账—研究—技术路线—新指标—最优方案—钱的账—两处漏洞—判断"推进，最后落在一个可迁移的判断上：AI 的用水上限，多半不是工程问题，而是"谁替那笔处置费买单"的问题。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-10-31.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="6.721">On the dry plains of West Texas, two industries are drilling into the same ground for opposite reasons.</span> <span class="s" data-t="6.721" data-e="18.263">One lifts oil from the Permian Basin, bringing three to ten barrels of <span class="kw" data-tip="n. 盐水；浓盐水（brine 指含盐量很高的水，比 salt water 更专业；oilfield brine 油田盐水）">brine</span> up with every barrel of <span class="kw" data-tip="n. 原油——熟词僻义：常见义为形容词“粗略的、未加工的”。crude 单独作名词即“原油”，等于 crude oil">crude</span>; the other builds warehouses of servers that must stay cool where water is already <span class="kw" data-tip="adj. 稀缺的；不足的（scarce resources 稀缺资源；water-scarce region 缺水地区；scarcity 短缺）">scarce</span>.</span></span></div>
+      <p class="para-tr">在得州西部干旱的平原上，两个行业在同一片地里钻井，理由却正好相反。一个从二叠纪盆地抽油，每抽一桶原油就带上来三到十桶盐水；另一个在盖装满服务器的仓库，而这些服务器必须保持低温——就在一个水本来就稀缺的地方。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.263" data-e="26.592">A single large data centre can <span class="kw" data-tip="v. 取用；抽取——熟词僻义：常见义为“画、拉”。draw water 取水；draw power 耗电；power draw 用电量">draw</span> five million gallons a day for <span class="kw" data-tip="adj. 蒸发的（evaporative cooling 蒸发冷却，靠水蒸发带走热量；evaporate 蒸发；evaporation 蒸发过程）">evaporative</span> cooling, about what a town of twenty thousand uses.</span> <span class="s" data-t="26.592" data-e="36.5">In September, as complaints mounted, Texas paused new data-centre <span class="kw" data-tip="n. 许可证；批文（a building permit 建筑许可；作动词时读 /pəˈmɪt/，意为“允许”，重音位置不同）">permits</span> and its attorney general opened an <span class="kw" data-tip="n. 调查；询问（open an inquiry into sth 对某事立案调查；inquire 询问）">inquiry</span> into how facilities spend water.</span></span></div>
+      <p class="para-tr">一座大型数据中心每天可以为蒸发冷却取用五百万加仑水，差不多是两万人口小镇的用水量。今年九月，随着抱怨增多，得州暂停发放新的数据中心许可，州总检察长也对现有设施的用水情况启动了调查。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="36.5" data-e="44.474">The other side of the ledger is larger and less visible: the Permian produces some eight billion gallons of oilfield water a day.</span> <span class="s" data-t="44.474" data-e="55.25">Most of it is trucked long distances and <span class="kw" data-tip="v. 注入；注射（inject water into the ground 把水注入地下；injection 注入；inject funds 注入资金）">injected</span> underground, a route that is costly, linked to earthquakes and, by some estimates, short of <span class="kw" data-tip="n. 孔隙；毛孔（pore space 孔隙空间，指地下岩层里能容纳流体的空隙；the pores of the skin 皮肤毛孔。勿与 pour 倾倒 混淆）">pore</span> space by 2030.</span></span></div>
+      <p class="para-tr">账本的另一边更大，也更不为人见：二叠纪盆地每天产出约八十亿加仑油田水。其中大部分被卡车运到很远的地方，再高压注回地下——这条路线既昂贵，又被认为与地震有关，而且按一些估算，到 2030 年连可以注水的孔隙空间都要用完了。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="55.25" data-e="65.447">A team at the University of Texas at Austin, led by Vaibhav Bahadur, asked whether existing desalination plants could make that water clean enough to cool a server.</span> <span class="s" data-t="65.447" data-e="75.077">Cooling water must carry fewer than five hundred parts per million of <span class="kw" data-tip="adj. 溶解的（dissolved solids 溶解性总固体，水质核心指标；dissolve 溶解；solution 溶液）">dissolved</span> solids, and their answer, published in Water Research, is a <span class="kw" data-tip="adj. 有限度的；有保留的——熟词僻义：常见义为“合格的、有资格的”。a qualified yes 有保留的“是”，即“可以，但有条件”">qualified</span> yes.</span> <span class="s" data-t="75.077" data-e="87.684">They also built an index, Saline Water Utilisation Intensity, which <span class="kw" data-tip="v. 把……归并；捆绑（bundle four factors into one index 把四个因素并成一个指数；bundle 也指“一捆”）">bundles</span> cooling technology, local <span class="kw" data-tip="n. 盐度；含盐量（saline 咸的；high salinity 高盐度；soil salinity 土壤盐碱化）">salinity</span>, the stress already on the regional <span class="kw" data-tip="n. 含水层（aquifer 指可储存并输送地下水的岩层；aqua- 表“水”，-fer 表“携带”）">aquifer</span> and the fate of the leftover brine.</span></span></div>
+      <p class="para-tr">得克萨斯大学奥斯汀分校一支由 Vaibhav Bahadur 带领的团队问了一个很具体的问题：现有的海水淡化装置，能不能把这些水处理到足以给服务器降温？冷却水的溶解性总固体必须低于百万分之五百；他们发表在《Water Research》上的回答是"可以，但有保留"。他们还造了一个指标，叫"咸水利用强度"（SWUI），把冷却技术、本地盐度、区域含水层已经承受的压力，以及剩余浓盐水的去向捆在一起算。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="87.684" data-e="94.671">The two ways of removing salt fail in opposite directions, and the choice between them sets most of the cost.</span> <span class="s" data-t="94.671" data-e="109.932">Reverse <span class="kw" data-tip="n. 渗透；反渗透（reverse osmosis 反渗透，加压让水逆着自然渗透方向穿过半透膜，把盐留下；引申义“潜移默化”）">osmosis</span> pushes water through <span class="kw" data-tip="n. 膜；薄膜（a semi-permeable membrane 半透膜；cell membrane 细胞膜）">membranes</span> cheaply but struggles once the water is saltier than the sea, whereas <span class="kw" data-tip="adj. 热的；热法的（thermal power 火电；thermal desalination 热法淡化；therm- 词根表“热”）">thermal</span> plants boil the water off and <span class="kw" data-tip="v. 冷凝；浓缩（condense vapour into water 把蒸汽冷凝成水；condensed milk 炼乳；勿与 compress 压缩 混淆）">condense</span> the vapour, which handles extreme salinity at the price of fuel and a steady buildup of <span class="kw" data-tip="n. 水垢——熟词僻义：常见义为“规模、刻度、等级”。与锅炉、管道、水同时出现时几乎都指“水垢”；descale 除垢">scale</span>.</span> <span class="s" data-t="109.932" data-e="122.419">Even the hungriest of those routes, the authors calculate, uses only a fraction of what a data centre spends on computing, which <span class="kw" data-tip="v. 处理掉；解决掉（dispose of a problem 解决问题；dispose of waste 处置废物；注意与 disposable“一次性的”区别）">disposes</span> of the usual objection while leaving the question of where the water comes from.</span></span></div>
+      <p class="para-tr">去盐的两条路朝相反的方向失败，而选哪一条，决定了大部分成本。反渗透把水挤过半透膜，便宜，但水一旦比海水还咸就力不从心；热法则把水烧开、再冷凝蒸汽，能对付极端盐度，代价是燃料，以及设备上不断积聚的水垢。作者算过：即使这些路线里最"贪吃"的那一条，耗能也只占数据中心计算开销的一小部分——这就打消了那个常见的反对意见，但"水从哪来"这个问题仍然摆在那里。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="122.419" data-e="133.605">Of three case studies, a proposed facility in Longview scored best, because <span class="kw" data-tip="adj. 微咸的（brackish water 微咸水，盐度介于淡水与海水之间，常见于干旱区内陆）">brackish</span> groundwater treated by two-stage reverse osmosis recovered most of the water at modest cost.</span> <span class="s" data-t="133.605" data-e="142.539">That, not oilfield brine, is the least risky version of the idea, and the one a regulator can permit without an argument about <span class="kw" data-tip="n. 责任；法律义务（accept liability for sth 对某事承担责任；limited liability 有限责任；引申义“拖累”）">liability</span>.</span></span></div>
+      <p class="para-tr">在三个案例中，得州朗维尤（Longview）的一个拟建项目得分最高：它用两级反渗透处理微咸地下水，以不高的成本回收了大部分水。这个方案——而不是油田盐水——才是这套设想里风险最低的版本，也是监管者不必先吵清"出了事谁负责"就能批的版本。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="142.539" data-e="152.539">Money is the harder <span class="kw" data-tip="n. 限制；约束条件（a binding constraint 硬约束；budget constraints 预算限制；constrain 限制）">constraint</span>: burying a barrel costs fifty to seventy-five cents, while treating it for use off the oilfield has been estimated at two dollars.</span> <span class="s" data-t="152.539" data-e="158.566">The <span class="kw" data-tip="n. 算术；这笔账（the arithmetic works 这笔账划得来；do the arithmetic 算一算；新闻里常指“数字上说不说得通”）">arithmetic</span> only works if operators must count the cost of a <span class="kw" data-tip="n. 井；油井——熟词僻义：常见义为副词“好地”、形容词“健康的”。oil well 油井；wellhead 井口；sink a well 钻井">well</span> they can no longer use.</span></span></div>
+      <p class="para-tr">钱是更硬的约束：把一桶水注回地下花五十到七十五美分，而处理到能在油田之外使用，估算成本是两美元。只有当局者必须把"这口井再也注不进去了"的代价算进去，这笔账才划得来。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="158.566" data-e="168.985">Two things are missing from that sum, and the first is the salt itself, since desalination does not destroy it but concentrates it into a <span class="kw" data-tip="n. 废液流；不合格品（reject stream 指处理后剩下的浓盐水／废液；reject 常见义为动词“拒绝”）">reject</span> stream that still needs a home.</span> <span class="s" data-t="168.985" data-e="179.855">The second is subtler: making oilfield water valuable gives operators a reason to keep producing it, an awkward gift to a state now asking how much <span class="kw" data-tip="n. 开采；提取（oil extraction 石油开采；data extraction 数据抽取；extract 提取）">extraction</span> it should permit.</span></span></div>
+      <p class="para-tr">这笔账里漏掉了两样东西。第一样是盐本身：淡化并没有消灭盐，只是把它浓缩成一股仍然需要找出路的浓水。第二样更微妙：让油田水变得值钱，等于给了作业者一个继续开采的理由——对一个正在追问"到底该批多少开采"的州来说，这是份尴尬的礼物。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="179.855" data-e="184.961">None of this has been built, and the paper is a model rather than a working plant.</span> <span class="s" data-t="184.961" data-e="195.066">What it establishes is where the argument now sits: the limit on AI's water use is less engineering than who pays for a <span class="kw" data-tip="n. 处置；处理（waste disposal 废物处置；at sb's disposal 供某人支配；dispose of 处理掉）">disposal</span> that has always been someone else's problem.</span></span></div>
+      <p class="para-tr">这一切都还没有被建起来，那篇论文是模型，不是一座在运行的工厂。它真正确立的，是这场争论现在的位置：AI 用水的上限，与其说是工程问题，不如说是"谁为那笔一直被当成别人麻烦的处置费买单"的问题。</p>
+
+      <p class="muted">原文出处：本文据 Vishnu Sree Shanthanu Katakam, Vaibhav Bahadur 等《System-scale design and analysis of desalination systems for meeting water needs of data centers》，Water Research（2026-09 在线；The University of Texas at Austin，Cockrell School of Engineering 机械工程系 Walker 讲席、Jackson 地球科学学院经济地质局 COMPASS 研究联盟）改写整理；二叠纪产出水量、回注成本、朗维尤案例、SWUI 指标，以及得州暂停新许可与总检察长调查等，均引自该研究与 UT Austin 2026-10-08 新闻稿及公开报道，仅供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">brine</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /braɪn/ · 美 /braɪn/</div>
+          <div class="wc-pos"><b>n.</b> 盐水；浓盐水（oilfield brine 油田盐水；brine shrimp 卤虫）<br>比 salt water 更专业：指含盐量高到可用于工业冷却、腌制或制冷的水</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It brings three to ten barrels of <b>brine</b> up with every barrel of crude.</div>
+          <div class="wc-tr">每抽一桶原油，就带上来三到十桶盐水。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">crude</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /kruːd/ · 美 /kruːd/</div>
+          <div class="wc-pos"><b>n.</b> 原油（＝crude oil，行业里直接说 crude）<br><b>adj.</b> 粗糙的；未加工的；粗鲁的（crude oil 原油；a crude estimate 粗略估计；crude manners 粗鲁的举止）<br>本文取名词义，与 oil 并列出现时可互换</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Every barrel of <b>crude</b> brings up three to ten barrels of brine.</div>
+          <div class="wc-tr">每桶原油都会带上来三到十桶盐水。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scarce</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /skeəs/ · 美 /skers/</div>
+          <div class="wc-pos"><b>adj.</b> 稀缺的；不足的（scarce resources 稀缺资源；water-scarce 缺水的；make oneself scarce 躲开）<br><b>n.</b> scarcity 短缺（water scarcity 水资源短缺）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Servers must stay cool where water is already <b>scarce</b>.</div>
+          <div class="wc-tr">在一个水本来就稀缺的地方，服务器还必须保持低温。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">draw</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /drɔː/ · 美 /drɔː/</div>
+          <div class="wc-pos"><b>v.</b> 取用；抽取；耗费（draw water 取水；draw power 耗电；power draw 用电量；draw a salary 领薪水）<br>常见义：画；拉；吸引（draw a picture 画画；draw a crowd 吸引人群）<br>本文的 draw 宾语是 water，指“从水源取走”，是能耗与水耗报道里的高频用法</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A single large data centre can <b>draw</b> five million gallons a day.</div>
+          <div class="wc-tr">一座大型数据中心一天可以取用五百万加仑水。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">evaporative</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪˈvæpərətɪv/ · 美 /ɪˈvæpəreɪtɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 蒸发的（evaporative cooling 蒸发冷却——让水蒸发带走热量，是数据中心最传统也最耗水的散热方式）<br>evaporate v. 蒸发；evaporation n. 蒸发；vapour n. 蒸汽</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It uses the water for <b>evaporative</b> cooling, not for drinking.</div>
+          <div class="wc-tr">它把这些水用于蒸发冷却，而不是饮用。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">permit</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈpɜːmɪt/ (n.) · /pəˈmɪt/ (v.)</div>
+          <div class="wc-pos"><b>n.</b> 许可证；批文（a building permit 建筑许可；work permit 工作许可）<br><b>v.</b> 允许（permit sb to do sth；weather permitting 天气允许的话）<br>重音位置区分词性：名词重音在前，动词在后</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Texas paused new data-centre <b>permits</b> in September.</div>
+          <div class="wc-tr">得州在九月暂停发放新的数据中心许可。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inquiry</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈkwaɪəri/ · 美 /ˈɪnkwəri/</div>
+          <div class="wc-pos"><b>n.</b> 调查；询问（open an inquiry into sth 对某事立案调查；a public inquiry 公开调查；make inquiries 打听）<br>动词 inquire 询问；形容词 inquisitive 好奇的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The attorney general opened an <b>inquiry</b> into how facilities spend water.</div>
+          <div class="wc-tr">总检察长对设施如何使用水启动了调查。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inject</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈdʒekt/ · 美 /ɪnˈdʒekt/</div>
+          <div class="wc-pos"><b>v.</b> 注入；注射（inject water into the ground 把水注入地下；inject capital 注入资金）<br>injection n. 注入；reject 与 inject 词根同源而方向相反</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Most of the water is <b>injected</b> deep underground.</div>
+          <div class="wc-tr">大部分水被注入地下深处。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pore</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /pɔː/ · 美 /pɔːr/</div>
+          <div class="wc-pos"><b>n.</b> 孔隙；毛孔（pore space 孔隙空间——地下岩层里能容纳流体的空隙，回注水就存在这里；clogged pores 堵塞的毛孔）<br><b>v.</b> pore over sth 潜心研读（≠ pour 倾倒，拼写只差一个字母）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The basin will be short of <b>pore</b> space by 2030.</div>
+          <div class="wc-tr">这个盆地到 2030 年就会缺少可注水的孔隙空间。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dissolved</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈzɒlvd/ · 美 /dɪˈzɑːlvd/</div>
+          <div class="wc-pos"><b>adj.</b> 溶解的（dissolved solids 溶解性总固体，水质核心指标；dissolved oxygen 溶解氧）<br>dissolve v. 溶解；解散（dissolve parliament 解散议会）；solution n. 溶液；解决方案</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Cooling water must carry fewer than 500 ppm of <b>dissolved</b> solids.</div>
+          <div class="wc-tr">冷却水的溶解性总固体必须低于百万分之五百。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">qualified</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈkwɒlɪfaɪd/ · 美 /ˈkwɑːlɪfaɪd/</div>
+          <div class="wc-pos"><b>adj.</b> 有限度的；有保留的（a qualified yes 有条件的“是”；qualified support 有保留的支持）<br>常见义：合格的；有资格的（a qualified teacher 合格教师）<br>对比：a qualified doctor＝有执照的医生；a qualified approval＝打了折扣的批准</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their answer, published in Water Research, is a <b>qualified</b> yes.</div>
+          <div class="wc-tr">他们发表在《Water Research》上的回答是“可以，但有保留”。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bundle</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbʌndl/ · 美 /ˈbʌndl/</div>
+          <div class="wc-pos"><b>v.</b> 把……归并；捆绑销售（bundle several factors into one index 把多个因素并成一个指数；bundle software with hardware 软硬件捆绑）<br><b>n.</b> 一捆；一大堆（a bundle of nerves 极度紧张的人）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The index <b>bundles</b> four things usually counted apart.</div>
+          <div class="wc-tr">这个指标把通常分开计算的四件事捆在一起。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">salinity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /səˈlɪnəti/ · 美 /səˈlɪnəti/</div>
+          <div class="wc-pos"><b>n.</b> 盐度；含盐量（high salinity 高盐度；soil salinity 土壤盐碱化）<br>saline adj. 咸的（saline solution 生理盐水）；salt 是日常词，salinity 是测量术语</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Thermal plants handle extreme <b>salinity</b> at a high energy cost.</div>
+          <div class="wc-tr">热法工厂能对付极端盐度，代价是高昂的能耗。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">aquifer</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈækwɪfə/ · 美 /ˈækwɪfər/</div>
+          <div class="wc-pos"><b>n.</b> 含水层（the Ogallala aquifer 奥加拉拉含水层；aquifer depletion 含水层枯竭）<br>aqua- 表“水”，-fer 表“携带”：能储水、透水的地下岩层，是干旱区最主要的饮用水来源</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The index counts the stress already on the regional <b>aquifer</b>.</div>
+          <div class="wc-tr">这个指标把区域含水层已经承受的压力算了进去。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">osmosis</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɒzˈməʊsɪs/ · 美 /ɑːzˈmoʊsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 渗透；反渗透（reverse osmosis 反渗透——加压让水逆着自然渗透方向穿过半透膜，把盐留下）<br>引申义：潜移默化（learn by osmosis 耳濡目染地学会），是高考语篇里更常见的考法</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reverse <b>osmosis</b> struggles once the water is saltier than the sea.</div>
+          <div class="wc-tr">水一旦比海水还咸，反渗透就力不从心了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">membrane</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmembreɪn/ · 美 /ˈmembreɪn/</div>
+          <div class="wc-pos"><b>n.</b> 膜；薄膜（a semi-permeable membrane 半透膜；cell membrane 细胞膜）<br>记忆：一层薄薄的、有选择性的界面，只让某些分子通过</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reverse osmosis pushes water through <b>membranes</b>.</div>
+          <div class="wc-tr">反渗透让水挤过半透膜。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">thermal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθɜːml/ · 美 /ˈθɜːrml/</div>
+          <div class="wc-pos"><b>adj.</b> 热的；热法的（thermal power 火电；thermal desalination 热法淡化；thermal energy 热能）<br>therm- 词根表“热”：thermometer 温度计；thermos 保温瓶；geothermal 地热的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Thermal</b> plants boil the water off and condense the vapour.</div>
+          <div class="wc-tr">热法工厂把水烧开，再冷凝蒸汽。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">condense</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈdens/ · 美 /kənˈdens/</div>
+          <div class="wc-pos"><b>v.</b> 冷凝；（使）浓缩；压缩（condense vapour into water 把蒸汽冷凝成水；condensed milk 炼乳；condense a report 压缩报告）<br>物理三态链条：evaporate 蒸发 → condense 冷凝 → freeze 凝固</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They boil the water off and <b>condense</b> the vapour.</div>
+          <div class="wc-tr">他们把水烧开，再把蒸汽冷凝下来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scale</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /skeɪl/ · 美 /skeɪl/</div>
+          <div class="wc-pos"><b>n.</b> 水垢；结垢（a buildup of scale 结垢；descale a kettle 给水壶除垢）<br>常见义：规模（on a large scale）；刻度；天平；等级（a scale of 1 to 10）<br>同一篇里两种意思都可能出现，靠语境判断：与锅炉、管道、水同时出现时几乎都是“水垢”</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Thermal plants suffer a steady buildup of <b>scale</b>.</div>
+          <div class="wc-tr">热法工厂会不断结垢。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">brackish</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbrækɪʃ/ · 美 /ˈbrækɪʃ/</div>
+          <div class="wc-pos"><b>adj.</b> 微咸的（brackish water 微咸水，盐度介于淡水与海水之间，常见于干旱区内陆）<br>引申义：令人不快的、杂糅的（a brackish mood 说不清的情绪）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Brackish</b> groundwater treated by two-stage reverse osmosis scored best.</div>
+          <div class="wc-tr">用两级反渗透处理的微咸地下水得分最高。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">liability</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌlaɪəˈbɪləti/ · 美 /ˌlaɪəˈbɪləti/</div>
+          <div class="wc-pos"><b>n.</b> 责任；法律义务；负债（accept liability for sth 对某事承担责任；limited liability 有限责任）<br>引申义：拖累、包袱（He is a liability to the team. 他是团队的负担）<br>liable adj. 负有责任的；易于……的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A regulator can permit it without an argument about <b>liability</b>.</div>
+          <div class="wc-tr">监管者不必先争论责任归属就能批准它。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">constraint</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈstreɪnt/ · 美 /kənˈstreɪnt/</div>
+          <div class="wc-pos"><b>n.</b> 限制；约束条件（a binding constraint 硬约束；budget constraints 预算限制；under constraint 被迫）<br>constrain v. 限制；constrained adj. 拘谨的、勉强的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Money is the harder <b>constraint</b>.</div>
+          <div class="wc-tr">钱是更硬的约束。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arithmetic</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈrɪθmətɪk/ · 美 /əˈrɪθmətɪk/</div>
+          <div class="wc-pos"><b>n.</b> 算术；这笔账（the arithmetic works 这笔账划得来；do the arithmetic 算一下；the arithmetic of the deal 这笔交易的成本账）<br>新闻英语常用 the arithmetic 指“数字上是否说得通”，不是指小学算术课</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>arithmetic</b> only works if operators count the cost of a lost well.</div>
+          <div class="wc-tr">只有把“损失一口井”的代价算进去，这笔账才划得来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">well</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /wel/ · 美 /wel/</div>
+          <div class="wc-pos"><b>n.</b> 井；油井（an oil well 油井；sink a well 钻井；wellhead 井口）<br>常见义：adv. 好地（do well）；adj. 健康的（I'm well.）；int. 好吧<br>本文 a well they can no longer use 指“一口再也注不进去的井”，不是“很好”</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Operators must count the cost of a <b>well</b> they can no longer use.</div>
+          <div class="wc-tr">作业者必须把一口再也用不上的井的代价算进去。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">extraction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪkˈstrækʃn/ · 美 /ɪkˈstrækʃn/</div>
+          <div class="wc-pos"><b>n.</b> 开采；提取（oil extraction 石油开采；water extraction 取水；data extraction 数据抽取）<br>extract v. 提取；n. 提取物（vanilla extract 香草精）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The state is asking how much <b>extraction</b> it should permit.</div>
+          <div class="wc-tr">这个州正在追问：到底该批多少开采。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disposal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈspəʊzl/ · 美 /dɪˈspoʊzl/</div>
+          <div class="wc-pos"><b>n.</b> 处置；处理（waste disposal 废物处置；a disposal site 处置场；at sb's disposal 供某人支配）<br>dispose of sth 处理掉、解决掉（dispose of a problem 解决问题）<br>注意：disposable 是“一次性的”，与“处置”同源但意思偏了</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Who pays for a <b>disposal</b> that has always been someone else's problem?</div>
+          <div class="wc-tr">谁来为那笔一直被当成别人麻烦的处置费买单？</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">for opposite reasons</span><span class="zh">出于相反的理由</span></li>
+          <li><span class="en">bring sth up</span><span class="zh">把……带上来；抽出</span></li>
+          <li><span class="en">keep sth cool</span><span class="zh">使……保持低温</span></li>
+          <li><span class="en">a town of 20,000</span><span class="zh">一座两万人的小镇</span></li>
+          <li><span class="en">open an inquiry into sth</span><span class="zh">对某事立案调查</span></li>
+          <li><span class="en">the other side of the ledger</span><span class="zh">账本的另一边（另一面）</span></li>
+          <li><span class="en">be trucked to</span><span class="zh">被卡车运到</span></li>
+          <li><span class="en">be linked to sth</span><span class="zh">与……有关联</span></li>
+          <li><span class="en">by some estimates</span><span class="zh">据一些估算</span></li>
+          <li><span class="en">be short of sth</span><span class="zh">缺少；不足</span></li>
+          <li><span class="en">clean enough to do sth</span><span class="zh">干净到足以做某事</span></li>
+          <li><span class="en">parts per million</span><span class="zh">百万分之……（ppm）</span></li>
+          <li><span class="en">fail in opposite directions</span><span class="zh">各有各的死穴（朝相反方向失败）</span></li>
+          <li><span class="en">at the price of</span><span class="zh">以……为代价</span></li>
+          <li><span class="en">a buildup of scale</span><span class="zh">水垢的积聚</span></li>
+          <li><span class="en">a fraction of</span><span class="zh">……的一小部分</span></li>
+          <li><span class="en">dispose of sth</span><span class="zh">处理掉；解决掉</span></li>
+          <li><span class="en">score best</span><span class="zh">得分最高</span></li>
+          <li><span class="en">at modest cost</span><span class="zh">以不高的成本</span></li>
+          <li><span class="en">rather than</span><span class="zh">而不是</span></li>
+          <li><span class="en">the arithmetic works</span><span class="zh">这笔账划得来</span></li>
+          <li><span class="en">be missing from sth</span><span class="zh">在……中被漏掉</span></li>
+          <li><span class="en">give sb a reason to do sth</span><span class="zh">给某人一个做某事的理由</span></li>
+          <li><span class="en">a model rather than a working plant</span><span class="zh">是模型而非在运行的工厂</span></li>
+          <li><span class="en">someone else's problem</span><span class="zh">别人的麻烦（外部性）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>错位：得州西部同一片地上，一边抽油带出盐水，一边盖机房需要冷却水。</li>
+          <li>需求端：一座大型数据中心日取水五百万加仑；九月得州暂停新许可，总检察长立案查用水。</li>
+          <li>供给端：二叠纪日产约八十亿加仑油田水，靠远运回注处置，且面临地震风险与空间极限。</li>
+          <li>研究：UT Austin 问"现有淡化装置能否造出冷却水"，答案是"有保留的可以"，并用 SWUI 指标把四项因素合并。</li>
+          <li>技术：反渗透便宜但怕高盐，热法耐高盐但费燃料且结垢；关键发现是最耗能路线也只占计算能耗一小部分。</li>
+          <li>最优解：三个案例中朗维尤（微咸地下水＋两级反渗透）得分最高，且不牵扯油田责任问题。</li>
+          <li>钱的账：回注一桶五六十美分，处理到外用约两美元；只有把"井不能再注"的代价计入才划算。</li>
+          <li>两处漏洞：盐没被消灭，只是变成要找出路的浓水；让废水值钱，反而给了继续开采的理由。</li>
+          <li>判断：论文是模型不是工厂；AI 用水的上限，本质是"谁付处置费"的分配问题。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">One lifts oil from the Permian Basin, bringing three to ten barrels of brine up with every barrel of crude; the other builds warehouses of servers that must stay cool where water is already scarce.</div>
+        <div class="row"><b>主干：</b>One lifts oil ...; the other builds warehouses ...（分号连接两个独立分句，One 与 the other 前后呼应，构成"两个行业"的对举）</div>
+        <div class="row"><b>省略：</b>One 与 the other 后都省略了 industry，靠上文 two industries 补足，是英语对比句的常见省笔</div>
+        <div class="row"><b>现在分词作状语：</b>bringing three to ten barrels of brine up（伴随状语，说明"抽油"这个动作同时带出什么；bring sth up 的宾语被后置，up 是副词）</div>
+        <div class="row"><b>定语从句：</b>servers that must stay cool where water is already scarce（that 指 servers；where＝in which 引导定语从句修饰前面的地点含义，already 暗示矛盾早已存在）</div>
+        <div class="row"><b>考点：</b>分号连接并列句；One ... the other ... 对举；分词作伴随状语；关系副词 where；量词搭配 three to ten barrels of</div>
+        <div class="row tr"><b>译文：</b>一个从二叠纪盆地抽油，每抽一桶原油就带上来三到十桶盐水；另一个在盖装满服务器的仓库，而这些服务器必须保持低温——就在一个水本来就稀缺的地方。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Most of it is trucked long distances and injected underground, a route that is costly, linked to earthquakes and, by some estimates, short of pore space by 2030.</div>
+        <div class="row"><b>主干：</b>Most of it is trucked ... and injected ...（两个并列的被动谓语；主语 Most of it 指上文每天八十亿加仑油田水）</div>
+        <div class="row"><b>同位语：</b>a route（名词短语作同位语，把前面"运输＋回注"整体命名为"一条路线"）</div>
+        <div class="row"><b>定语从句三连：</b>that is costly, (is) linked to earthquakes and ... (is) short of pore space（一个 that 引出三个并列谓语，后两个承前省略 is，从"贵"到"危险"到"没地方"，层层加码）</div>
+        <div class="row"><b>插入语：</b>by some estimates（"据一些估算"，把"2030 年用完"明确标为估算而非定论，学术写作的谨慎标志）</div>
+        <div class="row"><b>考点：</b>被动语态并列；同位语；一个关系代词带多个谓语及省略；插入语；be short of 的搭配</div>
+        <div class="row tr"><b>译文：</b>其中大部分被卡车运到很远的地方，再高压注回地下——这条路线既昂贵，又被认为与地震有关，而且按一些估算，到 2030 年连可以注水的孔隙空间都要用完了。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Reverse osmosis pushes water through membranes cheaply but struggles once the water is saltier than the sea, whereas thermal plants boil the water off and condense the vapour, which handles extreme salinity at the price of fuel and a steady buildup of scale.</div>
+        <div class="row"><b>主干：</b>Reverse osmosis pushes ... but struggles ..., whereas thermal plants boil ... and condense ...（whereas 引出对比分句，两边各带一个转折或并列）</div>
+        <div class="row"><b>时间状语从句：</b>once the water is saltier than the sea（once 在此不表"一次"，而是"一旦"，等于 as soon as）</div>
+        <div class="row"><b>非限制性定语从句：</b>which handles extreme salinity（which 指代前面"烧开＋冷凝"这套热法工艺，而不是紧邻的 vapour 一词）</div>
+        <div class="row"><b>介词短语作状语：</b>at the price of fuel and a steady buildup of scale（at the price of 后接两个并列名词，把"燃料"与"结垢"两种代价一并列出）</div>
+        <div class="row"><b>考点：</b>whereas 表对比；once 作连词；which 指代前文动作而非紧邻名词；at the price of 的搭配</div>
+        <div class="row tr"><b>译文：</b>反渗透把水挤过半透膜，便宜，但水一旦比海水还咸就力不从心；热法则把水烧开、再冷凝蒸汽，能对付极端盐度，代价是燃料，以及设备上不断积聚的水垢。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Two things are missing from that sum, and the first is the salt itself, since desalination does not destroy it but concentrates it into a reject stream that still needs a home.</div>
+        <div class="row"><b>主干：</b>Two things are missing from that sum（主系表；sum 在此不是抽象的"总和"，而是上文那笔"成本账"）</div>
+        <div class="row"><b>并列分句：</b>and the first is the salt itself（the first 指代 two things 中的第一件，下段用 the second 收尾，形成清单式结构）</div>
+        <div class="row"><b>原因状语从句：</b>since desalination does not destroy it but concentrates it ...（since 表原因；not ... but ... 构成"不是消灭、而是浓缩"的对照）</div>
+        <div class="row"><b>定语从句：</b>a reject stream that still needs a home（that 指 reject stream；needs a home 是拟人化说法，意为"仍要有去处"）</div>
+        <div class="row"><b>考点：</b>not ... but ... 结构；since 引导原因；代词 it 的两次指代（都指 salt）；抽象名词的具体化</div>
+        <div class="row tr"><b>译文：</b>这笔账里漏掉了两样东西，第一样是盐本身：淡化并没有消灭它，只是把它浓缩成一股仍然需要找出路的浓水。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What it establishes is where the argument now sits: the limit on AI's water use is less engineering than who pays for a disposal that has always been someone else's problem.</div>
+        <div class="row"><b>主干：</b>What it establishes is where the argument now sits（what 主语从句＋be＋where 表语从句，是本站在结论段常用的"判断句"骨架）</div>
+        <div class="row"><b>冒号的作用：</b>冒号后不是解释词义，而是把前半句的抽象判断"落地"为一个具体命题，读法上等于 namely</div>
+        <div class="row"><b>比较结构：</b>less engineering than who pays ...（less A than B＝与其说是 A，不如说是 B；A 与 B 词性并不对称，than 后相当于省略了 a question of）</div>
+        <div class="row"><b>宾语从句：</b>who pays for a disposal（who 引导从句作 for 的宾语；a disposal 后接 that 定语从句，点明"外部性"）</div>
+        <div class="row"><b>考点：</b>what／where 从句连用；less ... than ... 的比较；than 后的省略；介词后接 who 从句</div>
+        <div class="row tr"><b>译文：</b>它真正确立的，是这场争论现在的位置：AI 用水的上限，与其说是工程问题，不如说是"谁为那笔一直被当成别人麻烦的处置费买单"的问题。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">这篇文章的切口极小，落点却很大：它不问"AI 该不该用这么多水"，而问"这些水可不可以从别处来"。开场是一组同地的对照——在得州西部的干旱平原上，石油公司在钻井，科技公司也在盖房子，只不过前者钻出来的除了原油还有大量盐水，后者盖的是必须常年降温的服务器仓库。一个把水从地下抽上来却无处安放，一个需要大量水却偏偏落在缺水之地。作者用一句话把这个错位摆平：这两件事，也许可以互相抵消。</p>
+      <p class="zh-sum">先把需求端算清。一座大型数据中心为蒸发冷却每天最多可取五百万加仑水，相当于一座两万人口小镇的用量；而现代机架的功率密度还在上升。得州的反应很直接：2026 年 9 月，随着农民与郊区居民的投诉增多，州长暂停发放新的数据中心许可，州总检察长对现有设施的用水启动调查。这个背景很重要——它说明"技术可行"并不等于"社会允许"，一个方案能不能落地，先要过政治这一关。</p>
+      <p class="zh-sum">再把供给端算清。二叠纪盆地每天伴随油气开采产出约八十亿加仑"产出水"，也就是从井里一起上来的高盐地层水；行业目前的处置办法是用卡车运到远处、高压回注到地下深处的孔隙里。这条路线有三个问题：贵、被认为与诱发地震有关、而且空间有限——按一些估算，到 2030 年盆地内的孔隙空间就会用尽。也就是说，油田这边其实也在找一个出口，只是没有人愿意为它付高价。</p>
+      <p class="zh-sum">于是有了这项研究。得克萨斯大学奥斯汀分校的团队由 Vaibhav Bahadur 带领，问的是一个非常工程化的问题：现有的海水淡化装置，能不能把这些水处理到可以给服务器降温的程度？门槛是明确的——冷却水的溶解性总固体必须低于百万分之五百（ppm），否则会在管路里结垢、腐蚀。他们给出的答案是"有保留的可以"（a qualified yes）：技术上成立，成本上有条件。这个措辞本身就是这篇文章的基调，也是学术写作里很值得学的表达——它既承认可行性，也不假装没有代价。为了让比较站得住，团队还造了一个指标，叫"咸水利用强度"（Saline Water Utilisation Intensity, SWUI），把四件平时分开讨论的事捆在一起：用哪种冷却技术、本地水有多咸、区域含水层已经承受多大压力、剩下的浓盐水怎么处置。</p>
+      <p class="zh-sum">技术层面只有两条路，而它们恰好朝相反的方向失败。反渗透（reverse osmosis）用压力把水挤过半透膜，把盐截留在一侧，能耗相对低，但面对比海水还咸的水就顶不住——膜会被压垮、通量骤降。热法（thermal desalination）把水烧成蒸汽再冷凝，几乎不挑水质，多咸都能处理，代价是能耗高得多，而且换热面上会不断结垢（scale），需要停机清洗。作者的计算给出了一个反直觉的结论：即使是最耗能的热法路线，它的用电量也只占数据中心计算开销的一小部分。这一句把最常见的反对意见——"净水耗的能量比省下的水还多"——直接拆掉了。</p>
+      <p class="zh-sum">用 SWUI 衡量三个案例，结果又一次出人意料：得分最高的不是油田盐水项目，而是得州朗维尤（Longview）的一个拟建项目——它用两级反渗透处理微咸地下水（brackish groundwater），回收率高、成本低、能耗也不高。理由不难理解：微咸地下水的盐度远低于油田产出水，膜系统承受的压力小；而油田盐水还牵着一串法律责任问题，一旦处理后的水出了问题，责任在油田、处理商还是数据中心，很难说清。这个结果值得记住：在这套框架里，"最戏剧化的方案"并不是"最优的方案"。</p>
+      <p class="zh-sum">接下来是钱。把一桶产出水注回地下，成本约五十到七十五美分；而把它处理到可以在油田之外使用，业内估算约两美元一桶。差距接近三倍，所以单看账本，处理永远输给回注。作者给出的转折条件是：只有当作业者不得不把"这口井再也注不进去"的代价算进来时，这笔账才可能翻过来。换句话说，让处理变得划算的，不是技术进步，而是处置空间用尽这个物理事实——以及监管是否愿意把这项成本内部化。</p>
+      <p class="zh-sum">文章最后两段是全篇最值得学的地方，因为它开始拆自己的台。第一处漏洞是盐：淡化不会让盐消失，只会把它浓缩成一股"浓水"（reject stream），这股水盐度更高、更难处理，仍然要找出路。所以这个方案严格说来不是"消灭废物"，而是"搬运废物"。第二处漏洞更微妙：如果油田废水变得有市场价值，作业者就多了一个继续开采的理由——对一个正在讨论"该批多少开采"的州来说，这是份尴尬的礼物。一个环保方案，可能在解决水问题的同时，延长了它本来想约束的那个行业。</p>
+      <p class="zh-sum">结论下得很克制：这一切都还没有建成，论文是模型，不是一座在运行的工厂；它能主张的只是"技术已经存在"，而不是"已在规模上验证"。但它确实改变了争论的位置——AI 用水的上限，与其说是工程问题，不如说是分配问题：谁来为那笔一直被当作"别人的麻烦"的处置费买单。对读者而言，这篇文章提供的是一套可迁移的判断工具：看任何"把废物变成资源"的方案，先问三件事——能量账划不划得来、废物的"废"是不是只是被挪了个位置、以及这项方案会不会反过来补贴它本该替代的那件事。</p>
+
+      <h2>五、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. Oilfield wastewater can now be turned into drinking water at a cost lower than underground disposal.<br>
+        B. Treating oilfield wastewater for data-centre cooling is technically feasible, but its fate depends on cost and on how the leftover waste is finally accounted for.<br>
+        C. Data centres should be banned in dry regions until they stop using freshwater for cooling.<br>
+        D. Thermal desalination is the most promising solution because it can handle water of any salinity.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文重心在技术可行性（第 4–6 段）与成本、漏洞（第 7–8 段）之间，结尾句"上限不是工程问题而是谁付处置费"正是 B 的概括。A 错在两处：论文谈的是"冷却水"而非"饮用水"，且处理成本（约两美元）明显高于回注（五六十美分），方向正好相反。C 是文章没有主张的极端政策，文中只提到得州暂停新许可与立案调查。D 与第 5 段相反：热法虽耐高盐，但费燃料、易结垢，作者眼中的"最优"是微咸地下水＋两级反渗透。</div>
+      <div class="q"><b>2. The word "scale" in paragraph 5 ("a steady buildup of scale") is closest in meaning to ______.</b><br>
+        A. size or extent　B. a measuring instrument　C. a hard mineral deposit　D. a range of levels
+        <br><br><b>答案：C</b><br>
+        <b>解析：</b>该句讲热法工厂的代价：更费燃料，并且设备上会不断积累 scale。与锅炉、换热面、水同时出现时，scale 指"水垢"（硬质矿物沉积），故选 C。A（规模）、B（天平／刻度）、D（等级）都是 scale 的常见义，但放进"在设备上积累"这一语境都不成立——这正是熟词僻义题的典型设计：四个选项里三个是"正确的词典义、错误的语境义"。</div>
+
+      <h2>六、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 7 段说，处理一桶水约两美元、回注只要五六十美分，所以"账算不过来"；第 8 段又说，让废水变值钱反而给了油田继续开采的理由。请解释：为什么一项"把废物变成资源"的技术，可能同时是解决方案和问题的一部分？如果你是得州的决策者，你会用哪种政策工具把"处置空间用尽"变成企业账本上的成本（例如提高回注费、限定回注量、要求披露用水数据）？给出理由，并举出一条可以验证的证据。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"What it establishes is where the argument now sits: the limit on AI's water use is less engineering than who pays for a disposal that has always been someone else's problem."</span>（先用 "What it establishes is where the argument now sits:" 定位争论，再用 less A than B 把焦点从技术转向责任），就"校园里手机该不该禁"这个话题写一句你自己的判断句，要求 A、B 两项一个是技术／规则，一个是责任／习惯。</div>
+
+      <h2>七、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">1 · 错位：同一片地，一边抽油带出盐水，一边盖机房要水降温</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">2 · 需求端：日取水五百万加仑；得州暂停许可、立案查用水</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">3 · 供给端：日产八十亿加仑油田水，远运回注，空间将尽</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 研究：淡化能否造出冷却水？答"有保留的可以"，并造出 SWUI</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 技术：反渗透怕咸、热法费能结垢；但能耗只占一小部分</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">6 · 最优解：朗维尤用微咸地下水＋两级反渗透，风险最低</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 钱的账：回注 0.5–0.75 美元 对 处理约 2 美元</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 两处漏洞：盐只是挪了位置；变值钱反成开采的理由</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">9 · 判断：上限不是工程问题，而是谁付那笔处置费</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">红＝问题与核心判断　绿＝结果与证据　蓝＝背景与研究设计</text>
+        </svg>
+        <figcaption>全文共 9 段，按「错位 → 需求端 → 供给端 → 研究 → 技术 → 最优解 → 钱的账 → 两处漏洞 → 判断」推进。第 5 段是全文最反直觉的一击（把"净水更耗能"这个常识拆掉），第 7 段把话题从物理拉回经济，第 8 段则拆自己的台——承认盐没有消失、方案可能延长开采。最后一句刻意从"技术"转向"分配"，这是本站精读文章常见的收束方式：不给结论，给判断工具。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Vishnu Sree Shanthanu Katakam, Vaibhav Bahadur 等《System-scale design and analysis of desalination systems for meeting water needs of data centers》，Water Research（2026-09 在线；The University of Texas at Austin，Cockrell School of Engineering / Jackson School of Geosciences COMPASS）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
