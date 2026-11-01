@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 土里的塑料碎片，正在一点点偷走光合作用</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Soil &amp; Harvest · 人与自然 / 生态与可持续 / 农业 / 土壤污染</div>
+  <h1>土里的塑料碎片，正在一点点偷走光合作用</h1>
+  <div class="deck">A meta-analysis of 2,613 paired observations finds that microplastics cut photosynthesis in land plants by nearly 13 per cent, and a second paper asks how far that laboratory number can travel towards a harvest</div>
+  <div class="byline"><span><b>来源</b> Plants（2026, 15(19):2911）与 Frontiers in Plant Science（2026-10-09）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-01</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-01.jpg" alt="农田中覆盖着塑料地膜、农民在田间查看作物的实景照片（配图）">
+    <figcaption>配图：覆膜农田里的地膜与作物。地膜把水与温度留在土里，也把塑料留在了土里（图片来源：实景照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>这篇文章要讲的，是一个几乎没有人会当面看见的损失。中国北方的旱地里，农民一上午能把一整块田铺满薄薄的塑料地膜：保墒、抑草、提温，边际的土地因此变成稳产的口粮田。但收完庄稼，膜会碎，碎屑随犁翻回土里，再慢慢裂成直径不到五毫米的颗粒。到今天，农田已经是地球上最大的塑料"仓库"，进去的塑料比让它声名狼藉的海洋还多。2026 年 10 月，《Plants》刊出一项元分析，把一百项独立研究、2613 组配对观测汇总起来，给出三个平均数字：氧化应激指标上升 19.92%，光合相关性状下降 12.87%，生长相关性状下降 12.31%；浓度越高，伤害越大；而温度在所有三类性状里都是最强的预测因子之一。紧接着，湖南农业大学的综述把这片叶子上的百分比往粮仓上推：有全球元分析估计，仅"光合被抑制"这一项，每年就可能让主粮减产数千万到数亿吨。这篇文章最值得学的地方，是它没有停在那个惊人的数字上——作者把从"叶绿体受损"到"粮价上涨"之间的四道换算一层层拆开，指出每一步都带着假设，而假设决定结论是证据还是算术。全文按"田地—碎片—元分析—发现—机制—外推—换算链—为什么照旧铺—判断"推进，结尾落在一个可迁移的问句上。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-01.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.269">In the dry north of China, a farmer may spend a morning laying plastic <span class="kw" data-tip="n. 薄膜；胶片——熟词僻义：最常见的意思是“电影、影片”。plastic film 塑料地膜；thin film 薄膜；作动词时意为“拍摄”">film</span> across a field; for weeks the ground looks as though it has been glazed.</span> <span class="s" data-t="9.269" data-e="16.596">The film holds moisture in, keeps weeds down and warms the seedlings, turning <span class="kw" data-tip="adj. 边缘的；贫瘠的（marginal land 边际土地，指产量低、条件差的耕地；marginal benefit 边际收益；margin 边缘）">marginal</span> land into dependable harvests.</span></span></div>
+      <p class="para-tr">在中国北方干旱地区，农民可能花一上午把薄薄的塑料地膜铺满一块田，之后好几个星期，地面看着像上了一层釉。地膜把水分留住、把杂草压住、把幼苗捂暖，也帮着把贫瘠的边际土地变成了稳定的收成。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="16.596" data-e="28.245">What happens afterwards is less visible: the film tears at harvest, and the fragments are <span class="kw" data-tip="v. 犁；翻耕（plough the field 耕地；plough back 翻压回田；美式拼写 plow）">ploughed</span> back into the soil, where they break down into particles smaller than five millimetres.</span> <span class="s" data-t="28.245" data-e="36.637">Farmland has quietly become the planet's largest <span class="kw" data-tip="n. 储存库；蓄水池——熟词僻义：地理与生态语境里指“汇、容纳体”（a reservoir of carbon 碳汇）。常见义为水库">reservoir</span> of plastic, taking in more than the oceans that made the material infamous.</span></span></div>
+      <p class="para-tr">之后发生的事就不那么看得见了：收庄稼时膜被扯破，碎片随犁翻回土里，再在那里裂成直径不到五毫米的颗粒。农田已经悄悄变成地球上最大的塑料储存库，进去的塑料比让这种材料声名狼藉的海洋还多。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="36.637" data-e="44.215">A meta-analysis published last month in Plants tries to measure what those particles do to the plants growing above them.</span> <span class="s" data-t="44.215" data-e="55.238">Jinling Xu and colleagues at Shandong Normal University <span class="kw" data-tip="v. 汇集；共用（pool resources 汇集资源；pool data 汇总数据）。也作名词“水池、共用的资金”">pooled</span> 2,613 <span class="kw" data-tip="adj. 配对的（paired observations 配对观测，指同一实验里处理组与对照组一一对应的数据；pair 一对）">paired</span> observations from 100 independent studies, then combined a meta-analysis with a random-forest model.</span></span></div>
+      <p class="para-tr">上个月发表在《Plants》上的一项元分析，试图测量这些颗粒对长在上面的作物做了什么。山东师范大学的徐金玲与同事汇总了来自 100 项独立研究的 2613 组配对观测，再把元分析与随机森林模型结合起来。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="55.238" data-e="66.385">The averages are blunt: markers of <span class="kw" data-tip="adj. 氧化的（oxidative stress 氧化应激，指细胞内活性氧过多造成的损伤；oxidise 氧化；antioxidant 抗氧化剂）">oxidative</span> stress rose 19.92 per cent, while <span class="kw" data-tip="n. 性状；特征（photosynthetic traits 光合性状；personality traits 性格特征）。遗传学与农学里指可测量的生理特征">traits</span> tied to photosynthesis fell by 12.87 per cent and those describing growth by 12.31 per cent.</span> <span class="s" data-t="66.385" data-e="75.905">Concentration mattered more than almost anything else: heavier loads cut <span class="kw" data-tip="n. 生物量（biomass 指一定面积内生物的总质量；bio- 生命 + mass 质量。也指生物质能源）">biomass</span> and height further, whereas particle size showed no consistent pattern.</span> <span class="s" data-t="75.905" data-e="86.238">More striking still, temperature emerged as one of the strongest predictors across all three groups of traits, hinting that heat and plastic may <span class="kw" data-tip="v. 使加重；使恶化（compound the problem 让问题更糟）。常见义为名词“化合物、复合物”">compound</span> each other.</span></span></div>
+      <p class="para-tr">平均值很直白：氧化应激的指标上升了 19.92%，而与光合作用相关的性状下降 12.87%，描述生长的性状下降 12.31%。浓度的影响几乎大过其他任何因素——负荷越重，生物量和株高下降得越多；相比之下，颗粒大小并没有给出一致的规律。更值得注意的是，温度在三类性状里都成了最强的预测因子之一，暗示高温与塑料可能彼此加重。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="86.238" data-e="99.265">The mechanisms are plausible enough to be troubling: particles change how water moves through soil, <span class="kw" data-tip="v. 黏附；紧贴（cling to sth 紧贴某物；cling film 保鲜膜）。过去式与过去分词同为 clung">cling</span> to root surfaces, and trigger reactive molecules that damage the <span class="kw" data-tip="n. 色素（photosynthetic pigments 光合色素，如叶绿素；pigment 也指颜料）">pigments</span> plants use to capture light.</span></span></div>
+      <p class="para-tr">机制听起来足够可信，也因此令人不安：颗粒改变了水在土壤里的移动方式，黏附在根系表面，并触发那些会破坏植物捕光色素的活性分子。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="99.265" data-e="108.471">Scaling a twelve per cent decline at leaf level up to a national harvest is where the arithmetic turns dramatic, and where a second paper steps in.</span> <span class="s" data-t="108.471" data-e="124.066">A review in Frontiers in Plant Science, by Tong Xu of Hunan Agricultural University, reports that global meta-analyses estimate microplastic-driven <span class="kw" data-tip="n. 抑制；压制（suppress 抑制、镇压；suppression of photosynthesis 光合抑制）">suppression</span> of photosynthesis may cut <span class="kw" data-tip="adj. 主要的；主食的（staple crops 主粮作物，如水稻小麦玉米；staple food 主食）。也作名词“ staple 订书钉”">staple</span> output by tens to hundreds of millions of tonnes a year.</span></span></div>
+      <p class="para-tr">把一个叶片层面的过程下降 12% 放大到一国的收成，正是在这里，算术变得惊人——也是第二篇论文登场的地方。湖南农业大学徐彤的这篇综述指出，多项全球元分析估计，仅微塑料造成的光合抑制，每年就可能让主粮产量减少数千万到数亿吨。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="124.066" data-e="129.013">Xu handles that figure carefully, and the care is the paper's most useful part.</span> <span class="s" data-t="129.013" data-e="145.046">To move from a damaged chloroplast to a lost harvest, a modeller must pass through four translations, from effect size to biomass, biomass to <span class="kw" data-tip="n. 产量；收成——熟词僻义：常见义为动词“产出、屈服、让步”。agricultural yield 农业产量；yield per hectare 每公顷产量">yield</span>, yield to price, and each step carries <span class="kw" data-tip="n. 假设；前提（a key assumption 一个关键假设；on the assumption that 假定；assume 假定、承担）">assumptions</span> that decide whether the result is evidence or arithmetic.</span> <span class="s" data-t="145.046" data-e="152.123">A twelve per cent shortfall in photosynthetic rate is not a twelve per cent shortfall in the grain inside a silo.</span></span></div>
+      <p class="para-tr">徐彤对这个数字处理得很谨慎，而这份谨慎恰恰是全文最有用的部分。要从一个受损的叶绿体走到一场减产的收成，建模者必须经过四道翻译：从效应量到生物量，从生物量到产量，从产量到价格；而每一步都带着假设，正是这些假设决定最后得到的是证据还是算术。光合速率的 12% 缺口，并不等于粮仓里谷物的 12% 缺口。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="152.123" data-e="160.014">There is a simpler reason the film keeps being laid: the benefit is private and immediate, while the cost is diffuse and slow.</span> <span class="s" data-t="160.014" data-e="172.915">Xu calculates that the contamination <span class="kw" data-tip="n. 外部性（经济学概念：一项活动的成本由未参与交易的人承担，如污染；external 外部的）">externality</span> amounts to under one per cent of the returns that plasticulture delivers to the farmer using it, which is precisely why voluntary <span class="kw" data-tip="n. 克制；约束（exercise restraint 保持克制；voluntary restraint 自愿克制；restrain 抑制）">restraint</span> has gone nowhere.</span> <span class="s" data-t="172.915" data-e="183.249">Governance is arriving in soft forms, through a voluntary code of conduct, circular-economy rules and biochar <span class="kw" data-tip="n. 改良；修正案（soil amendment 土壤改良剂，如生物炭；amend 修改）">amendments</span>, but none changes that arithmetic by itself.</span></span></div>
+      <p class="para-tr">还有一个更简单的原因，解释地膜为什么照旧被铺开：好处是私人的、立刻兑现的，而代价是分散的、缓慢到来的。徐彤算过，这项污染的外部性不到"塑料农业"给使用者带来的收益的百分之一——这恰恰是自愿克制始终走不动的原因。治理正以柔性形式到来：自愿行为准则、循环经济规则、生物炭改良，但这些本身都不会改变那笔账。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="183.249" data-e="194.021">What the two papers establish together is a change in the kind of problem this is: not a spill to be cleaned up, but a slow <span class="kw" data-tip="n. 减除；扣除（a slow subtraction from 从……中缓慢减掉；subtract 减去）">subtraction</span> from the soil's <span class="kw" data-tip="n. 能力；容量（the capacity of soil to feed us 土壤养活我们的能力；capacity building 能力建设）">capacity</span> to feed us.</span> <span class="s" data-t="194.021" data-e="203.853">The question is therefore not whether plastic belongs on a farm, but what a society will measure, and pay for, before the loss appears in the price of bread.</span></span></div>
+      <p class="para-tr">这两篇论文合起来确立的，是问题性质上的一次改变：这不是一次可以清理干净的泄漏，而是从土壤养活我们的能力里缓慢减掉的一部分。所以问题不是塑料该不该出现在农田里，而是一个社会愿意在损失出现在面包价格之前，去测量什么、又肯为它付多少钱。</p>
+
+      <p class="muted">原文出处：本文据 Jinling Xu, Dongwen Yu, Mufan Liu 等《Effects of Microplastics on Growth, Photosynthesis, and Oxidative Stress-Related Traits in Terrestrial Plants: A Global Meta-Analysis》，Plants 2026, 15(19):2911（山东师范大学地理与环境学院、山东省新型污染物风险防控重点实验室；西北农林科技大学资源环境学院）与 Tong Xu《Microplastic contamination in agricultural systems: impacts on plant productivity, economic losses, and supply chain resilience》，Frontiers in Plant Science 17:1956066（2026-10-09；湖南农业大学经济学院）改写整理；2613 组观测、100 项研究、三项平均效应量、浓度与温度的结果，以及"数千万到数亿吨""外部性不足百分之一"等表述，均引自上述两文，仅供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">film</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /fɪlm/ · 美 /fɪlm/</div>
+          <div class="wc-pos"><b>n.</b> 薄膜；薄层（a thin film of oil 一层薄油；plastic film 塑料薄膜；cling film 保鲜膜）<br>常见义：电影、影片（see a film 看电影）<br>判断口诀：与 plastic、thin、layer、cover 连用时几乎都是"薄膜"，与 cinema、director、star 连用时才是"电影"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>film</b> holds moisture in and keeps weeds down.</div>
+          <div class="wc-tr">这层薄膜把水分留住，也把杂草压住。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reservoir</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈrezəvwɑː/ · 美 /ˈrezərvwɑːr/</div>
+          <div class="wc-pos"><b>n.</b> 储存库；容纳体（a reservoir of carbon 碳汇；a reservoir of talent 人才库）<br>常见义：水库、蓄水池（the reservoir behind the dam 坝后水库）<br>生态与气候文本里常引申为"汇"：进去的比出来的多的地方</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Farmland has become the largest <b>reservoir</b> of plastic on the planet.</div>
+          <div class="wc-tr">农田已经成为地球上最大的塑料储存库。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">yield</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /jiːld/ · 美 /jiːld/</div>
+          <div class="wc-pos"><b>n.</b> 产量；收成（crop yield 作物产量；yield per hectare 每公顷产量）<br>常见义：<b>v.</b> 产出（These trees yield fruit.）；屈服、让步（yield to pressure 屈服于压力）；<b>v.</b> 让路（yield to traffic 让行）<br>农业文本里作名词时几乎只指"产量"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each step carries assumptions that link effect size to <b>yield</b>.</div>
+          <div class="wc-tr">每一步都带着把效应量和产量联系起来的假设。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fragment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfræɡmənt/ (n.) · /fræɡˈment/ (v.)</div>
+          <div class="wc-pos"><b>n.</b> 碎片；片段（fragments of plastic 塑料碎片；a fragment of a poem 诗的残句）<br><b>v.</b> （使）碎裂（fragment into pieces 碎成小片）<br>重音随词性移动：名词在前，动词在后；fragile 易碎的，同源</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>fragments</b> are ploughed back into the soil.</div>
+          <div class="wc-tr">这些碎片随犁被翻回土里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plough</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /plaʊ/ · 美 /plaʊ/（美式拼写 plow）</div>
+          <div class="wc-pos"><b>v.</b> 犁；翻耕（plough a field 耕地；plough sth back 把……翻压回田；plough through 费力读完）<br><b>n.</b> 犁<br>同族词：ploughshare 犁铧；ploughland 耕地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Stems and film alike are <b>ploughed</b> back into the field.</div>
+          <div class="wc-tr">秸秆与地膜一起被翻回田里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">marginal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɑːdʒɪnl/ · 美 /ˈmɑːrdʒɪnl/</div>
+          <div class="wc-pos"><b>adj.</b> 边缘的；贫瘠的（marginal land 边际土地，指条件差、勉强可耕的地）；微小的（a marginal difference 很微小的差别）<br>经济学术语 marginal benefit 边际收益、marginal cost 边际成本<br>margin n. 边缘；利润；页边空白</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Plastic film turned <b>marginal</b> land into dependable harvests.</div>
+          <div class="wc-tr">地膜把边际土地变成了稳定的收成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">meta-analysis</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌmetəˈnæləsɪs/ · 美 /ˌmetəˈnæləsɪs/</div>
+          <div class="wc-pos"><b>n.</b> 元分析；整合分析（把多项独立研究的效应量统计合并，得出比单项研究更稳的结论）<br>meta- 在此不是"元"，而是"关于……的"：a study of studies<br>相关：systematic review 系统综述（偏重检索与筛选），meta-analysis 元分析（偏重数据合并）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>meta-analysis</b> pooled 2,613 paired observations from 100 studies.</div>
+          <div class="wc-tr">一项元分析汇总了来自 100 项研究的 2613 组配对观测。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pool</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /puːl/ · 美 /puːl/</div>
+          <div class="wc-pos"><b>v.</b> 汇集；共用（pool data 汇总数据；pool resources 集中资源）<br><b>n.</b> 水池；共用的资金或人力（a talent pool 人才库；a car pool 拼车）<br>研究论文里 pooled observations / pooled estimate 是高频搭配</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The authors <b>pooled</b> observations from a hundred studies.</div>
+          <div class="wc-tr">作者汇总了一百项研究中的观测数据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trait</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /treɪt/ · 美 /treɪt/</div>
+          <div class="wc-pos"><b>n.</b> 性状；特征（photosynthetic traits 光合性状；personality traits 性格特征）<br>农学与遗传学里特指可测量的生理指标，与 feature、characteristic 近义但更专业<br>注意：trait 与 traitor（叛徒）同源，原义是"一笔、一划"，引申为"特征"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Growth <b>traits</b> fell by 12.31 per cent.</div>
+          <div class="wc-tr">生长相关性状下降了 12.31%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">oxidative</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɒksɪdeɪtɪv/ · 美 /ˈɑːksɪdeɪtɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 氧化的（oxidative stress 氧化应激，细胞内活性氧过多造成的损伤，是衰老与胁迫研究的核心指标）<br>oxidise v. 氧化；oxide n. 氧化物；antioxidant n. 抗氧化剂<br>记法：oxid-（氧）＋-ative（形容词后缀）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Markers of <b>oxidative</b> stress rose by nearly twenty per cent.</div>
+          <div class="wc-tr">氧化应激的指标上升了近两成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">biomass</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbaɪəʊmæs/ · 美 /ˈbaɪoʊmæs/</div>
+          <div class="wc-pos"><b>n.</b> 生物量（单位面积内生物的总质量，衡量生长的常用指标）；生物质（可作燃料的有机物质）<br>bio-（生命）＋mass（质量）<br>常与 yield 一起出现，但前者是"长出来多少"，后者是"收进仓多少"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Heavier loads cut <b>biomass</b> and plant height further.</div>
+          <div class="wc-tr">负荷越重，生物量与株高下降得越多。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pigment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈpɪɡmənt/ · 美 /ˈpɪɡmənt/</div>
+          <div class="wc-pos"><b>n.</b> 色素；颜料（photosynthetic pigments 光合色素，如叶绿素；natural pigments 天然色素）<br>chlorophyll 叶绿素、carotenoid 类胡萝卜素都是 pigment<br>动词读音重音后移 /pɪɡˈment/，意为"着色"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The particles damage the <b>pigments</b> that capture light.</div>
+          <div class="wc-tr">这些颗粒会破坏捕光的色素。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cling</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /klɪŋ/ · 美 /klɪŋ/（clung, clung）</div>
+          <div class="wc-pos"><b>v.</b> 黏附；紧贴（cling to the surface 紧贴表面；cling film 保鲜膜）<br>引申义：抓住不放（cling to hope 抱着希望不放）；依恋（cling to the past 恋旧）<br>不规则变化：cling–clung–clung</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The particles <b>cling</b> to root surfaces.</div>
+          <div class="wc-tr">这些颗粒黏附在根系表面。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">suppression</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səˈpreʃn/ · 美 /səˈpreʃn/</div>
+          <div class="wc-pos"><b>n.</b> 抑制；压制（suppression of photosynthesis 光合抑制；the suppression of evidence 隐瞒证据）<br>suppress v. 抑制、镇压；suppressive adj. 抑制性的<br>与 depression（抑郁、萧条）形近而义异，勿混</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Microplastic-driven <b>suppression</b> of photosynthesis may cut output.</div>
+          <div class="wc-tr">微塑料造成的光合抑制可能削减产量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">staple</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsteɪpl/ · 美 /ˈsteɪpl/</div>
+          <div class="wc-pos"><b>adj.</b> 主要的；主食的（staple crops 主粮作物；staple food 主食）<br><b>n.</b> 主食；（按用途分的）主要产品；订书钉<br>新闻里的 staple 常指"某地离不开的那样东西"（Rice is a staple in the south.）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Staple</b> crop output could fall by hundreds of millions of tonnes.</div>
+          <div class="wc-tr">主粮产量可能下降数亿吨。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chloroplast</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈklɒrəplɑːst/ · 美 /ˈklɔːrəplæst/</div>
+          <div class="wc-pos"><b>n.</b> 叶绿体（植物细胞里进行光合作用的细胞器，含叶绿素）<br>chloro-（绿）＋plast（成形物）：chlorophyll 叶绿素、chlorine 氯<br>同类词：mitochondrion 线粒体、ribosome 核糖体</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>To move from a damaged <b>chloroplast</b> to a lost harvest takes four translations.</div>
+          <div class="wc-tr">从一个受损的叶绿体走到一场减产，要经过四道换算。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">assumption</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈsʌmpʃn/ · 美 /əˈsʌmpʃn/</div>
+          <div class="wc-pos"><b>n.</b> 假设；前提（a key assumption 关键假设；on the assumption that 假定；challenge an assumption 质疑一个前提）<br>assume v. 假定；承担（assume responsibility）；呈现（assume a shape）<br>论文里"assumption"往往就是批评的入口</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Each step carries <b>assumptions</b> that decide what the number means.</div>
+          <div class="wc-tr">每一步都带着决定这个数字含义的假设。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">externality</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌekstɜːˈnæləti/ · 美 /ˌekstɜːrˈnæləti/</div>
+          <div class="wc-pos"><b>n.</b> 外部性（经济学概念：一项交易的成本或收益落在第三方身上，如污染让下游居民承担）<br>negative externality 负外部性（污染）；positive externality 正外部性（教育）<br>internalise the externality 把外部成本内部化，是环境政策的核心思路</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The contamination <b>externality</b> is under one per cent of the returns.</div>
+          <div class="wc-tr">这项污染的外部性不到收益的百分之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">restraint</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈstreɪnt/ · 美 /rɪˈstreɪnt/</div>
+          <div class="wc-pos"><b>n.</b> 克制；约束（exercise restraint 保持克制；voluntary restraint 自愿克制；wage restraint 工资限制）<br>restrain v. 抑制；restrained adj. 克制的（a restrained style 克制的文风）<br>与 constraint（外部限制）不同：restraint 偏"自我克制"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Voluntary <b>restraint</b> has gone nowhere.</div>
+          <div class="wc-tr">自愿克制始终没什么进展。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">amendment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈmendmənt/ · 美 /əˈmendmənt/</div>
+          <div class="wc-pos"><b>n.</b> 改良；修正（soil amendment 土壤改良剂，如生物炭、堆肥；an amendment to the law 法律修正案）<br>amend v. 修改；amendable adj. 可修正的<br>农学语境里 soil amendment 与法律语境里的"修正案"是同一个词</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Biochar <b>amendments</b> are one of the softer fixes on offer.</div>
+          <div class="wc-tr">生物炭改良是现有的较温和的补救办法之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">subtraction</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səbˈtrækʃn/ · 美 /səbˈtrækʃn/</div>
+          <div class="wc-pos"><b>n.</b> 减除；扣除（a slow subtraction from 从……中缓慢减掉；addition and subtraction 加减法）<br>subtract v. 减去（subtract A from B）；subtractive adj. 减色的<br>反义：addition 增加；本文用 subtraction 强调"一点点变少"，与 spill（一次性泄漏）对照</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The loss is a slow <b>subtraction</b>, not a spill.</div>
+          <div class="wc-tr">这种损失是缓慢的减除，而不是一次泄漏。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">lay film across a field</span><span class="zh">在田里铺地膜</span></li>
+          <li><span class="en">look as though</span><span class="zh">看上去好像</span></li>
+          <li><span class="en">hold moisture in</span><span class="zh">把水分留住</span></li>
+          <li><span class="en">keep weeds down</span><span class="zh">抑制杂草</span></li>
+          <li><span class="en">turn A into B</span><span class="zh">把 A 变成 B</span></li>
+          <li><span class="en">plough sth back into the soil</span><span class="zh">把……翻压回土里</span></li>
+          <li><span class="en">break down into</span><span class="zh">分解成</span></li>
+          <li><span class="en">take in</span><span class="zh">吸纳；摄入</span></li>
+          <li><span class="en">paired observations</span><span class="zh">配对观测</span></li>
+          <li><span class="en">be tied to sth</span><span class="zh">与……相关；系于</span></li>
+          <li><span class="en">more striking still</span><span class="zh">更值得注意的是</span></li>
+          <li><span class="en">emerge as</span><span class="zh">表现为；成为</span></li>
+          <li><span class="en">compound each other</span><span class="zh">彼此加重</span></li>
+          <li><span class="en">be plausible enough to be troubling</span><span class="zh">可信到令人不安</span></li>
+          <li><span class="en">cling to sth</span><span class="zh">黏附在……上</span></li>
+          <li><span class="en">scale sth up to</span><span class="zh">把……放大到</span></li>
+          <li><span class="en">step in</span><span class="zh">介入；登场</span></li>
+          <li><span class="en">tens to hundreds of millions</span><span class="zh">数千万到数亿</span></li>
+          <li><span class="en">pass through four translations</span><span class="zh">经过四道换算</span></li>
+          <li><span class="en">effect size</span><span class="zh">效应量</span></li>
+          <li><span class="en">amount to</span><span class="zh">达到；相当于</span></li>
+          <li><span class="en">under one per cent of</span><span class="zh">不到……的百分之一</span></li>
+          <li><span class="en">go nowhere</span><span class="zh">毫无进展</span></li>
+          <li><span class="en">in soft forms</span><span class="zh">以柔性形式</span></li>
+          <li><span class="en">a code of conduct</span><span class="zh">行为准则</span></li>
+          <li><span class="en">by itself</span><span class="zh">单靠自身</span></li>
+          <li><span class="en">a spill to be cleaned up</span><span class="zh">一次待清理的泄漏</span></li>
+          <li><span class="en">the price of bread</span><span class="zh">面包的价格（代指日常食品价格）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>田地：地膜保墒、抑草、提温，把边际土地变成稳定收成——代价不在这一季。</li>
+          <li>碎片：收后膜破，碎屑随犁回田，裂成小于五毫米的颗粒；农田成为全球最大塑料储存库。</li>
+          <li>元分析：山东师大团队汇总 100 项研究、2613 组配对观测，元分析＋随机森林。</li>
+          <li>发现：氧化应激 +19.92%，光合性状 −12.87%，生长性状 −12.31%；浓度影响最大，温度亦为强预测因子。</li>
+          <li>机制：改变土壤水分运动、黏附根表、触发破坏光合色素的活性分子。</li>
+          <li>外推：湖南农大综述引全球元分析，称光合抑制每年或使主粮减产数千万至数亿吨。</li>
+          <li>谨慎：从叶绿体到粮仓要过四道换算（效应量→生物量→产量→价格），每步都有假设；12% 的光合缺口不等于 12% 的谷物缺口。</li>
+          <li>为何照旧：收益私有且即时，成本分散且缓慢；外部性不足收益的百分之一，自愿克制因此无效。</li>
+          <li>判断：问题不是"该不该用塑料"，而是社会愿意测量什么、为哪一段损失先付钱。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">What happens afterwards is less visible: the film tears at harvest, and the fragments are ploughed back into the soil, where they break down into particles smaller than five millimetres.</div>
+        <div class="row"><b>主干：</b>What happens afterwards is less visible（what 引导主语从句作主语，is 为系动词，less visible 作表语）</div>
+        <div class="row"><b>冒号的作用：</b>冒号后不是补充定义，而是把前面"看不见"这个判断当场演示一遍，等于 namely / that is to say</div>
+        <div class="row"><b>并列分句：</b>the film tears at harvest, and the fragments are ploughed back（两个独立分句由 and 连接，时态分别用一般现在时的主动与被动，暗示"自然发生"与"人为翻耕"两种力量）</div>
+        <div class="row"><b>非限制性定语从句：</b>where they break down into particles（where＝in the soil，指代前面的 soil；they 指 fragments，不是 film，注意代词的就近与逻辑一致）</div>
+        <div class="row"><b>考点：</b>what 主语从句；冒号的解释功能；被动语态；关系副词 where；比较级 smaller than 作后置定语</div>
+        <div class="row tr"><b>译文：</b>之后发生的事就不那么看得见了：收庄稼时膜被扯破，碎片随犁翻回土里，再在那里裂成直径不到五毫米的颗粒。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Concentration mattered more than almost anything else: heavier loads cut biomass and height further, whereas particle size showed no consistent pattern.</div>
+        <div class="row"><b>主干：</b>Concentration mattered more than almost anything else（主谓＋比较状语；matter 在此是动词"要紧、起作用"，不是名词"事情"）</div>
+        <div class="row"><b>冒号的作用：</b>冒号后不是解释词义，而是把"浓度更重要"这个判断当场展开为可观察的表现，读法上等于 namely</div>
+        <div class="row"><b>省略比较对象：</b>more than almost anything else 后省略了 mattered，almost 用来弱化绝对化，避免"比一切都重要"的过度断言</div>
+        <div class="row"><b>对比分句：</b>whereas particle size showed no consistent pattern（whereas 表对比，与前面的"浓度有效"构成"一个变量有效、另一个无效"的对照；show a pattern 是学术写作高频搭配）</div>
+        <div class="row"><b>考点：</b>matter 作动词；more than 比较结构及省略；冒号的解释功能；whereas 引导对比分句</div>
+        <div class="row tr"><b>译文：</b>浓度的影响几乎大过其他任何因素——负荷越重，生物量和株高下降得越多；相比之下，颗粒大小并没有给出一致的规律。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">To move from a damaged chloroplast to a lost harvest, a modeller must pass through four translations, from effect size to biomass, biomass to yield, yield to price, and each step carries assumptions that decide whether the result is evidence or arithmetic.</div>
+        <div class="row"><b>主干：</b>a modeller must pass through four translations（主谓宾；不定式 To move ... 置于句首作目的状语）</div>
+        <div class="row"><b>四道换算的列举：</b>from effect size to biomass, biomass to yield, yield to price（三个 from ... to ... 省略重复的 from，形成链式并列，读法是"一级一级往上换"）</div>
+        <div class="row"><b>并列分句：</b>and each step carries assumptions（与前面的主句并列，把"技术过程"转成"认识论问题"）</div>
+        <div class="row"><b>定语从句＋宾语从句：</b>assumptions that decide whether the result is evidence or arithmetic（that 指 assumptions；whether ... or ... 引导宾语从句，把结论二分为"证据"或"算术"，是全文的关键判断）</div>
+        <div class="row"><b>考点：</b>不定式作目的状语；省略式并列；whether ... or ... 从句；抽象名词的对比（evidence vs arithmetic）</div>
+        <div class="row tr"><b>译文：</b>要从一个受损的叶绿体走到一场减产的收成，建模者必须经过四道翻译：从效应量到生物量，从生物量到产量，从产量到价格；而每一步都带着假设，正是这些假设决定最后得到的是证据还是算术。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Xu calculates that the contamination externality amounts to under one per cent of the returns that plasticulture delivers to the farmer using it, which is precisely why voluntary restraint has gone nowhere.</div>
+        <div class="row"><b>主干：</b>Xu calculates that ...（主谓＋宾语从句，全文用一般现在时引述研究结论）</div>
+        <div class="row"><b>宾语从句内部：</b>the contamination externality amounts to under one per cent of the returns（amount to 意为"达到、相当于"；under one per cent 是"不到百分之一"，比 one per cent 更弱）</div>
+        <div class="row"><b>定语从句：</b>the returns that plasticulture delivers to the farmer using it（that 指 returns；using it 是现在分词短语作后置定语，修饰 farmer，it 指 plasticulture 这套做法）</div>
+        <div class="row"><b>非限制性定语从句：</b>which is precisely why voluntary restraint has gone nowhere（which 指代前面整个"外部性不到百分之一"的事实；why 引导表语从句；go nowhere 意为"毫无进展"）</div>
+        <div class="row"><b>考点：</b>amount to 的搭配；介词短语作后置定语；which 指代整句；why 表语从句；precisely 的强调作用</div>
+        <div class="row tr"><b>译文：</b>徐彤算过，这项污染的外部性不到"塑料农业"给使用者带来的收益的百分之一——这恰恰是自愿克制始终走不动的原因。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What the two papers establish together is a change in the kind of problem this is: not a spill to be cleaned up, but a slow subtraction from the soil's capacity to feed us.</div>
+        <div class="row"><b>主干：</b>What the two papers establish together is a change（what 主语从句＋系动词＋表语，本站在结论段常用的判断句骨架）</div>
+        <div class="row"><b>介词短语层层限定：</b>a change in the kind of problem this is（in 短语修饰 change；the kind of problem 后接省略 that 的定语从句 this is，意为"这属于哪一类问题"）</div>
+        <div class="row"><b>冒号后的对照：</b>not a spill to be cleaned up, but a slow subtraction（not A but B 结构；不定式 to be cleaned up 作后置定语，含被动与"待办"意味）</div>
+        <div class="row"><b>考点：</b>what 主语从句；省略关系词的定语从句；not ... but ... 对照；不定式被动式作定语；抽象名词的具体化（spill / subtraction）</div>
+        <div class="row tr"><b>译文：</b>这两篇论文合起来确立的，是问题性质上的一次改变：这不是一次可以清理干净的泄漏，而是从土壤养活我们的能力里缓慢减掉的一部分。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">这篇文章的切口很土，落点却很高：它不问"塑料该不该用"，而问"用完之后，土里留下的那部分正在做什么"。开场是一幅中国北方旱地的日常画面——农民花一上午把薄薄的塑料地膜铺满一块田，几周之内地面像上了一层釉。地膜的作用是真实的：保墒、抑草、提温，让原本产量不稳的边际土地变成可靠的收成。作者没有把这项技术写成反派，因为整篇文章的张力恰恰来自这里：一项确实养活过人的技术，同时也在往土里放东西。</p>
+      <p class="zh-sum">第二段把镜头往下移。收庄稼的时候膜会被扯破，碎片随犁翻回土里，再慢慢裂成直径不到五毫米的颗粒——这就是微塑料。作者用了一个容易被忽略的事实做支点：农田已经悄悄成为地球上最大的塑料储存库，进入农田的塑料比进入海洋的还多。海洋让塑料声名狼藉，但真正把它留住的是土壤，因为土壤不像水那样把它冲走。</p>
+      <p class="zh-sum">第三、四段是全文的证据核心。2026 年 10 月，《Plants》刊出山东师范大学徐金玲团队的元分析：把 100 项独立研究、2613 组配对观测汇总起来，既做统计合并，也做随机森林，看哪些因素最能解释差异。三个平均效应量给出的方向非常一致——氧化应激指标上升 19.92%，光合相关性状下降 12.87%，生长相关性状下降 12.31%。更细的发现有两处值得记：其一，浓度几乎是最重要的变量，负荷越重，生物量与株高下降越多，而颗粒大小反而没有一致规律；其二，温度在三类性状里都进入了最强预测因子之列，暗示高温与塑料污染可能互相加重。这一点在气候变暖的背景下尤其要紧。</p>
+      <p class="zh-sum">第五段补上机制，篇幅很短但足够。颗粒改变水在土壤中的运动方式，黏附在根系表面，并触发活性氧之类的分子，去破坏植物用来捕光的色素。这里不需要复杂的生理学细节，读者只要理解一件事：光合作用是"把光变成糖"的过程，任何让它效率下降的因素，最后都会以生物量的形式表现出来。</p>
+      <p class="zh-sum">第六段是全篇的转折，也是最容易被误读的一段。把一个叶片层面的 12.87% 放大到一国的收成，会得到一个惊人的数字：湖南农业大学徐彤在《Frontiers in Plant Science》的综述里引用全球元分析，估计仅"微塑料造成的光合抑制"这一项，每年就可能让主粮减产数千万到数亿吨。这个数字在传播中通常会被单独拎出来，但文章的处理方式恰恰相反——它把这个数字放回产生它的链条里。</p>
+      <p class="zh-sum">第七段是全文最值得学的地方，因为它开始拆自己的台。作者指出，要从"叶绿体受损"走到"粮仓少粮"，建模者必须经过四道换算：从效应量到生物量，从生物量到产量，从产量到价格。每一步都要引入假设——叶片损伤能否线性折算为生物量损失？生物量损失里有多少能被灌浆补偿？产量下降在市场上会体现为价格上涨还是贸易转移？每一步的假设不同，最终数字可以差出一个数量级。所以那句判断句才显得锋利：光合速率的 12% 缺口，并不等于粮仓里谷物的 12% 缺口。这不是否定研究，而是给读者一把尺子：看到一个从实验室推到全球的数字，先问它经过了几道换算。</p>
+      <p class="zh-sum">第八段回答一个很实际的问题：既然知道有害，为什么地膜还在一车车铺下去？作者给出的答案不是"农民无知"，而是经济学里最朴素的一条：收益是私人的、当季就能兑现的，成本是分散的、要很多年才显形的。综述算过，这项污染的外部性不到"塑料农业"给使用者带来的收益的百分之一。只要这百分之一不进入使用者的账本，自愿克制就必然走不动——这也解释了为什么治理目前只能以柔性形式出现：自愿行为准则、循环经济规则、生物炭改良，它们都在减小伤害，却没有一个改变那笔账的结构。</p>
+      <p class="zh-sum">最后一段把两篇论文合起来，给出一个性质上的判断：这不是一次可以清理干净的泄漏，而是从土壤养活我们的能力里缓慢减掉的一部分。"泄漏"有起点、有责任人、有清理完的那一天；"减除"没有这些特征，它分散在千万块田里，每年少一点点，直到某一天体现在面包的价格上。所以作者把问题重新提了一遍：不是塑料该不该出现在农田里，而是一个社会愿意在损失显形之前，去测量什么、又肯为哪一段先付钱。</p>
+      <p class="zh-sum">从写作技术上看，这篇文章示范了一种很实用的论证动作：先给一个足够惊人的数字，再亲手把它拆开，让读者看到数字的骨架。它没有停在"微塑料有害"这个结论上，也没有走到"所以禁用"这个行动上，而是把读者带到两者之间那个更难的层面——证据的强度、换算的可靠性、以及成本落在谁身上。这种"既给结论又给尺子"的写法，正是高考阅读 D 篇和学术类外刊最常见的推进方式。</p>
+
+      <h2>五、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. Microplastics have been proved to reduce global staple crop harvests by about twelve per cent.<br>
+        B. A meta-analysis shows microplastics measurably weaken photosynthesis and growth in land plants, but turning that leaf-level effect into a harvest forecast depends on a chain of assumptions.<br>
+        C. Farmers should stop using plastic film because its contamination cost exceeds the benefits it brings.<br>
+        D. Rising temperatures are the main cause of the decline in global crop yields.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文由"叶片层面的效应量"（第 3–4 段）与"能否换算成收成"（第 6–7 段）两半构成，结尾句"不是泄漏而是缓慢减除、问题在于社会愿意测量什么"正是 B 的概括。A 错在把叶片层面的 12.87% 直接等同于全国或全球减产，这恰是第 7 段明确否定的推论。C 与第 8 段相反：综述算出外部性不到收益的百分之一，作者由此解释的是"为什么照旧在用"，而非主张禁用。D 偷换因果：温度只是第 4 段提到的强预测因子之一，文章并未把它列为减产主因。</div>
+      <div class="q"><b>2. The word "reservoir" in paragraph 2 ("the largest reservoir of plastic") is closest in meaning to ______.</b><br>
+        A. a lake built to store water　B. a place where something accumulates and is held　C. a supply kept for future use　D. a container for liquids
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>该句说农田"接收的塑料比海洋还多"，后文又解释土壤不像水那样把塑料冲走，可见 reservoir 在此指"把东西留住、越积越多的地方"，即 B。A 与 D 是 reservoir 的字面常见义（水库、容器），但农田不是水体也不是容器，不合语境。C 强调"为将来储备"，而文章讲的是无意间的堆积，不是有意储备。这正是熟词僻义题的典型设计：三个选项都是词典里的正确义项，只有一个是本文语境中的义项。</div>
+
+      <h2>六、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 7 段说，从"叶绿体受损"到"粮仓少粮"要经过四道换算，每一步都带着假设。请以文中任意一步为例（例如"生物量损失能否线性折算为产量损失"），说明为什么这一步可能高估或低估真实损失；再举出一个你能想到的、可以让这类外推更可靠的证据类型（例如多地点多年田间试验、产量与光合速率的同步实测、把价格反应纳入模型）。最后回答：如果一项风险"确定存在但数字不可靠"，政策应该等数字可靠再动手，还是先按预防原则行动？给出理由。</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"What the two papers establish together is a change in the kind of problem this is: not a spill to be cleaned up, but a slow subtraction from the soil's capacity to feed us."</span>（先用 What ... is a change in the kind of problem this is 定性，再用 not A but B 把两类问题对照），就"短视频与注意力"这个话题写一句你自己的判断句，要求 A 是一次性的、可清除的损害，B 是缓慢累积、难以归责的损耗。</div>
+
+      <h2>七、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 田地：地膜保墒抑草提温，边际土地变成稳定收成</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 碎片：膜破随犁回田，裂成＜5 mm；农田成最大塑料储存库</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">3 · 研究：100 项研究、2613 组配对观测，元分析＋随机森林</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 发现：氧化应激 +19.92%，光合 −12.87%，生长 −12.31%</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">5 · 机制：改水分运动、黏根表、触发活性分子破坏色素</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 外推：综述估计每年主粮减产数千万至数亿吨</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">7 · 四道换算：效应量→生物量→产量→价格，每步都是假设</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">8 · 为何照旧：外部性＜收益 1%，自愿克制走不动</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">9 · 判断：不是一次泄漏，而是土壤能力的缓慢减除</text>
+
+          <line x1="360" y1="82" x2="360" y2="94" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="134" x2="360" y2="146" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="186" x2="360" y2="198" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="238" x2="360" y2="250" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="290" x2="360" y2="302" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="342" x2="360" y2="354" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="394" x2="360" y2="406" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="446" x2="360" y2="458" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">红＝问题与核心判断　绿＝结论与机制　蓝＝背景与研究设计</text>
+        </svg>
+        <figcaption>全文共 9 段，按「田地 → 碎片 → 研究 → 发现 → 机制 → 外推 → 四道换算 → 为何照旧 → 判断」推进。第 4 段给出三个效应量，是全文的证据支点；第 7 段是全篇最见功力之处——它把第 6 段那个惊人数字重新拆回假设链，说明"叶片少合成 12%"与"粮仓少 12%"之间隔着四道换算；第 8 段用"外部性不足百分之一"解释现象为何持续。最后一句把问题从"该不该用"移到"愿意测量什么"，这是本站精读文章常见的收束方式：不给口号，给判断工具。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Vishnu Sree Shanthanu Katakam, Vaibhav Bahadur 等《System-scale design and analysis of desalination systems for meeting water needs of data centers》，Water Research（2026-09 在线；The University of Texas at Austin，Cockrell School of Engineering / Jackson School of Geosciences COMPASS）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

@@ -454,6 +454,21 @@
     "深海采矿",
     "生态"
    ]
+  },
+  {
+   "date": "2026-11-01",
+   "en": "A twelve per cent shortfall in photosynthetic rate is not a twelve per cent shortfall in the grain inside a silo.",
+   "zh": "光合速率下降 12%，并不等于粮仓里的谷物少 12%。",
+   "src": "外刊精读 · 土里的塑料碎片与光合作用（2026-11-01）",
+   "key": "shortfall",
+   "keyZh": "缺口；短缺（a shortfall in supply 供应缺口）",
+   "tip": "shortfall 是“应到未到”的那部分，比 shortage 更强调“差了多少”。句式更值得记：同一个数字在两端各说一次，用 not A ... B 的结构把“实验室效应量”和“真实收成”隔开——这正是评估任何外推结论时最该先问的一句。shortfall 常与 in 搭配：a shortfall in revenue / in grain。",
+   "tags": [
+    "微塑料",
+    "光合作用",
+    "农业",
+    "生态与可持续"
+   ]
   }
  ]
 }
