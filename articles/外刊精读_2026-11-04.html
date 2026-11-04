@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 周五晚上那场戏，值三十一天</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Culture &amp; Ageing · 人与社会 / 人与自我 / 文化 / 艺术与地方生活 / 衰老</div>
+  <h1>周五晚上那场戏，值三十一天</h1>
+  <div class="deck">A Japanese team followed 1,899 English adults across three survey waves and priced an evening at the theatre at thirty-one days of physiological age — then quietly took most of the three-year headline back</div>
+  <div class="byline"><span><b>来源</b> Journal of Epidemiology and Community Health（2026-07-14 线上先发）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-04</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-04.jpg" alt="傍晚剧院门口排队入场的观众实景照片（配图）">
+    <figcaption>配图：入夜前，剧院门口排队等候入场的观众。一场演出只占一个晚上，但它需要一扇还开着的门（图片来源：实景照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>"多出门走走对身体好"，这句话听上去像长辈的嘱咐，而不像科学结论。2026 年 7 月，《流行病学与社区健康杂志》在线先发了一篇论文，第一次把这句话换算成了一个数字：日本东京科学大学的松山祐介、木内さくら、相田潤三人，用英国老龄化纵向研究（ELSA）中 1,899 名 50 岁以上成年人、2004 至 2008 年三个调查轮次的数据，把"看电影、逛博物馆、看戏"三类活动的频率加成一个 0 到 15 分的量表，再和一项由十种生理指标合成的"生理年龄"比对。结论很抓人：常去的人平均生理年龄 66.9 岁，少去的人 69.9 岁，差三岁；而且每多一分，生理年龄低 0.085 年——31 天。</p>
+    <p>但真正值得学的不是这个数字，而是作者拿到数字之后做了什么。他们先承认：常去戏院的人本来就更多是女性、有工作、更富裕、身体更好——那三岁里有多少是"看戏"带来的，有多少是"本来就更健康"带来的？于是他们换了方法：不再拿人比人，而是拿同一个人前后比。这一换，三岁缩成了每年一个月。全文的张力就在这里：一个漂亮的头条数字，如何在同一个作者手里被自己拆掉一半，却反而更可信。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-04.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.234">On a wet Friday the lights above a provincial theatre's box office come on at half past six, and a queue of people in their sixties forms under the awning.</span> <span class="s" data-t="9.234" data-e="15.289">It is an ordinary scene, and until this summer nobody had put a number on what it might be worth.</span></span></div>
+      <p class="para-tr">一个下雨的周五，六点半，外省一家剧院的售票处上方亮起灯，六十来岁的人在雨棚下排起队。这是再普通不过的一幕，而直到今年夏天，没有人给它的价值标过一个数字。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="15.289" data-e="27.276">The number comes from a paper published in July in the Journal of Epidemiology and Community Health, by Yusuke Matsuyama, Sakura Kiuchi and Jun Aida at the Institute of Science Tokyo.</span> <span class="s" data-t="27.276" data-e="44.789">They drew on the English <span class="kw" data-tip="adj. 纵向的（longitudinal study 纵向研究，指对同一批人长期反复测量；反义 cross-sectional 横断面的）。longitude 经度是同根词，但词义已分家">longitudinal</span> Study of Ageing, a national sample of adults aged fifty and over, and used its survey <span class="kw" data-tip="n. （调查、实验的）轮次、批次——熟词僻义。常见义：波浪、挥手（a wave of 一阵）。the third wave 即“第三轮调查”">waves</span> of 2004, 2006 and 2008; anyone with fewer than two waves was dropped, leaving 1,899 people.</span></span></div>
+      <p class="para-tr">这个数字来自 7 月发表在《流行病学与社区健康杂志》上的一篇论文，作者是东京科学大学的松山祐介、木内さくら和相田潤。他们用的是"英国老龄化纵向研究"——一个由 50 岁及以上成年人组成的全国性样本——取其中 2004、2006、2008 三个调查轮次的数据；凡不足两轮的都被剔除，最后剩下 1,899 人。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="44.789" data-e="55.118">Ageing is universal; its speed is not, and the gap between the two is what researchers call <span class="kw" data-tip="adj. 生理的、生理学的（physiological age 生理年龄；physiology 生理学；physical 身体的）">physiological</span> age — how well a body is running rather than how long it has been running.</span> <span class="s" data-t="55.118" data-e="65.645">The nurses who visited these households had recorded ten indicators, from pulse pressure and lung <span class="kw" data-tip="n. 容量；（肺、器官的）容积。lung capacity 肺活量。常见义“能力”（the capacity to do sth），此处偏“能装多少”">capacity</span> to glycated haemoglobin, grip strength and walking speed.</span></span></div>
+      <p class="para-tr">衰老是普遍的，速度却不是；两者之间的差额，就是研究者所说的"生理年龄"——身体运转得怎么样，而不是运转了多少年。上门走访的护士记录过十项指标，从脉压、肺活量，到糖化血红蛋白、握力和步行速度。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="65.645" data-e="76.105">Those ten numbers were folded into one <span class="kw" data-tip="n. 分数、得分（test scores 考试成绩）。此处指把十项指标“折算”成的一个综合分；动词 score 意为“打分、得分”">score</span>, and the same respondents were asked how often they went to the cinema, to a museum, or to a theatre, concert or opera.</span> <span class="s" data-t="76.105" data-e="83.34">Each answer ran from zero for never to five for twice a month or more, giving a total between zero and fifteen.</span></span></div>
+      <p class="para-tr">这十个数字被折算成一个综合分；同一批受访者还被问到：多久去一次电影院、博物馆，以及剧院、音乐会或歌剧院。每项从"从不去"的 0 分到"每月两次及以上"的 5 分，加总后落在 0 到 15 之间。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="83.34" data-e="93.408">Split at the <span class="kw" data-tip="n. 中位数（把一组数据从大到小排列后位于正中的那个值；median income 收入中位数）。与 mean 平均数、mode 众数并列">median</span>, frequent attenders averaged 66.9 years of physiological age and rare ones 69.9 — a gap of about three years.</span> <span class="s" data-t="93.408" data-e="101.75">They were also more often women, in paid work, better off and healthier to begin with, which is the first reason to distrust that gap.</span></span></div>
+      <p class="para-tr">按中位数一分为二，常去的人平均生理年龄 66.9 岁，很少去的人 69.9 岁——差了约三岁。可常去的人也更常是女性、有工作、更宽裕、本来就更健康；这正是让人不敢全信这三岁的第一个理由。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="101.75" data-e="112.789">So the authors stopped comparing people with each other and started comparing each person with themselves, a method called fixed effects that cancels out whatever stays constant about a person.</span> <span class="s" data-t="112.789" data-e="121.211">On that stricter test the three years <span class="kw" data-tip="v. 消散、化为乌有——熟词僻义。常见义“溶解”（sugar dissolves in water）；此处指差距“不见了”，不是真的溶解">dissolved</span>: each extra point was worth 0.085 of a year, or thirty-one days.</span></span></div>
+      <p class="para-tr">于是作者不再拿人比人，而是拿同一个人前后比——这种方法叫"固定效应"，它把一个人身上不随时间变化的那些特质全部抵消掉。在这样更严格的检验下，那三岁消散了：量表每多一分，生理年龄低 0.085 年，也就是三十一天。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="121.211" data-e="135.553">Small as it is, the estimate survived adjustment for income, employment and chronic illness, and the authors argue that culture works through channels ageing research already recognises: company, rhythm, and pleasure that costs nothing.</span> <span class="s" data-t="135.553" data-e="144.197">They go further, claiming an effect comparable to frequent exercise — the sentence most likely to be quoted and least likely to be tested.</span></span></div>
+      <p class="para-tr">这个估计值虽小，却在控制了收入、就业和慢性病之后依然成立；作者主张，文化是通过衰老研究早已承认的几条通路起作用的：有人做伴、有固定的节奏、以及一种不必付出代价的愉悦。他们还更进一步，说这个效应可与经常锻炼相比——这句话最容易被引用，也最不容易被检验。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="144.197" data-e="157.066">What the design cannot do is rule out the obvious reversal: people whose knees hurt and whose lungs are failing do not buy tickets, so part of the association is illness choosing the sample, not culture changing the body.</span> <span class="s" data-t="157.066" data-e="165.395">The authors <span class="kw" data-tip="v. 承认、让步（concede a point 承认对方有道理；concede defeat 认输）。名词 concession 让步、优惠">concede</span> this, then make the one claim that still <span class="kw" data-tip="v. （论点、结论）站得住、依然成立——熟词僻义。常见义“握住、举行”（hold a meeting）、“容纳”">holds</span>: cultural attendance is at least a behaviour a person can change.</span></span></div>
+      <p class="para-tr">这个设计做不到的，是排除那个显而易见的反向解释：膝盖疼、肺不好的人不会去买票，所以这份关联里有一部分是"疾病在挑样本"，而不是"文化在改身体"。作者承认这一点，然后提出唯一还站得住的主张：至少，看戏这件事是一个人能改变的。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="165.395" data-e="175.382">Their recommendation is therefore less a prescription than a planning rule: keep <span class="kw" data-tip="n. 场所、场馆（concert venue 演出场地；venue 与 avenue 同源，本义“来处”）">venues</span> close enough to walk to and cheap enough to enter, because a habit needs somewhere to happen.</span> <span class="s" data-t="175.382" data-e="183.553">That is the uncomfortable part: the lights at half past six are not a decoration on a healthy city but one of the things that make it one.</span></span></div>
+      <p class="para-tr">所以他们给出的建议，与其说是处方，不如说是一条规划原则：让场馆近到可以走着去、便宜到可以走进去，因为习惯需要一个发生的地方。这才是让人不太舒服的地方：六点半亮起的那些灯，不是一座健康城市上的装饰，而是让它成为健康城市的东西之一。</p>
+
+      <p class="muted">原文出处：本文据 Yusuke Matsuyama, Sakura Kiuchi, Jun Aida《Cultural engagement and physiological ageing: a fixed-effects analysis》，Journal of Epidemiology and Community Health，2026-07-14 线上先发（Institute of Science Tokyo 东京科学大学；DOI 10.1136/jech-2025-225753）改写整理；1,899 名 50 岁以上英国人、2004/2005–2008/2009 三个调查轮次、十项生理指标、0–15 分文化参与量表、66.9 岁与 69.9 岁、每分 0.085 年（31 天）等数据，均引自该文及其作者接受的 BMJ 集团新闻稿，仅供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">wave</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /weɪv/ · 美 /weɪv/</div>
+          <div class="wc-pos"><b>n.</b> （调查、实验的）<b>轮次、批次</b>（the third wave of the survey 第三轮调查；a wave of interviews 一批访谈）<br>常见义：波浪（waves on the sea）；<b>v.</b> 挥手（wave goodbye）<br>判断口诀：主语是 survey / study / data / recruitment 时，wave 几乎都指"第几轮"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They used the survey <b>waves</b> of 2004, 2006 and 2008.</div>
+          <div class="wc-tr">他们取用了 2004、2006、2008 三个调查轮次的数据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dissolve</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /dɪˈzɒlv/ · 美 /dɪˈzɑːlv/</div>
+          <div class="wc-pos"><b>v.</b> （差距、疑虑、组织）<b>消散、瓦解、不复存在</b>（The difference dissolved. 差异消失了；Parliament was dissolved. 议会解散）<br>常见义：溶解（Sugar dissolves in water.）<br>判断口诀：主语若是"差距、怀疑、希望、议会"，dissolve 就不是化学而是"消失 / 解散"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>On that stricter test the three years <b>dissolved</b>.</div>
+          <div class="wc-tr">在更严格的检验下，那三岁消散了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> （结论、论点、规律）<b>站得住、依然成立</b>（The finding holds after adjustment. 控制变量后结论仍成立；The rule still holds. 这条规律仍适用）<br>常见义：握住（hold a cup）；举行（hold a meeting）；容纳（hold 200 people）<br>判断口诀：主语是 finding / claim / argument / rule 时，hold 多为"仍然成立"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They make the one claim that still <b>holds</b>.</div>
+          <div class="wc-tr">他们提出了唯一仍然站得住的主张。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">physiological</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌfɪziəˈlɒdʒɪkl/ · 美 /ˌfɪziəˈlɑːdʒɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 生理的、生理学的（physiological age 生理年龄；physiological needs 生理需求）<br>词族：physiology 生理学；physiologist 生理学家；physical 身体的（易混：physical 偏"体格"，physiological 偏"机能运转"）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Frequent attenders averaged 66.9 years of <b>physiological</b> age.</div>
+          <div class="wc-tr">常去的人平均生理年龄为 66.9 岁。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">longitudinal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌlɒŋɡɪˈtjuːdɪnl/ · 美 /ˌlɑːndʒɪˈtuːdɪnl/</div>
+          <div class="wc-pos"><b>adj.</b> 纵向的（longitudinal study 纵向研究：对同一批人反复测量多年；反义 cross-sectional 横断面的，只在一个时点比较不同人）<br>词根：longitude 经度（同源但词义已分家）；latitude 纬度对应 latitudinal</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They drew on the English <b>longitudinal</b> Study of Ageing.</div>
+          <div class="wc-tr">他们使用了"英国老龄化纵向研究"的数据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">median</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmiːdiən/ · 美 /ˈmiːdiən/</div>
+          <div class="wc-pos"><b>n.</b> 中位数（把数据排序后位于正中的值）；<b>adj.</b> 中间的、中位数的（median income 收入中位数）<br>三兄弟：mean 平均数、median 中位数、mode 众数。收入类报道偏爱 median，因为它不受极端值拉高</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Split at the <b>median</b>, frequent attenders averaged 66.9 years.</div>
+          <div class="wc-tr">按中位数一分为二，常去的人平均 66.9 岁。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">capacity</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəˈpæsəti/ · 美 /kəˈpæsəti/</div>
+          <div class="wc-pos"><b>n.</b> 容量、容积（lung capacity 肺活量；the capacity of the hall 大厅的容量）；能力（the capacity to do sth）；职位身份（in my capacity as chairman 以主席身份）<br>注意：表"能力"时多与 to do 或 for 连用；表"容量"时可直接修饰名词</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Ten indicators, from pulse pressure and lung <b>capacity</b> to grip strength.</div>
+          <div class="wc-tr">十项指标，从脉压、肺活量到握力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">comparable</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɒmpərəbl/ · 美 /ˈkɑːmpərəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 可相比的、相当的（be comparable to/with sth 与……相当）<br>易混：comparative 比较的（comparative study 比较研究）；comparable 强调"量级相当"，不是"用于比较"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They claim an effect <b>comparable</b> to frequent exercise.</div>
+          <div class="wc-tr">他们声称这个效应可与经常锻炼相比。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">concede</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈsiːd/ · 美 /kənˈsiːd/</div>
+          <div class="wc-pos"><b>v.</b> （不情愿地）承认、让步（concede a point 承认对方有道理；concede defeat 认输）；让与（concede territory 割让领土）<br>词族：concession 让步、 concession stand 小卖部；concessive 让步的（concessive clause 让步状语从句）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The authors <b>concede</b> this, then make one further claim.</div>
+          <div class="wc-tr">作者承认了这一点，然后提出了更进一步的主张。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">venue</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈvenjuː/ · 美 /ˈvenjuː/</div>
+          <div class="wc-pos"><b>n.</b> （演出、赛事、会议的）场所、场馆（a concert venue 演出场地；change the venue 更换场地）<br>与 avenue 大道同源（拉丁 venire 来），本义"来人之处"；法律语境中也指审判地</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Keep <b>venues</b> close enough to walk to.</div>
+          <div class="wc-tr">让场馆近到可以走着去。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">adjustment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈdʒʌstmənt/ · 美 /əˈdʒʌstmənt/</div>
+          <div class="wc-pos"><b>n.</b> 调整、调节；<b>（统计）校正、控制</b>（adjustment for income 对收入作校正）<br>研究中 "survive adjustment for X" 意为"把 X 这个混杂因素扣除后关联仍然存在"，是证据强度的重要信号</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The estimate survived <b>adjustment</b> for income and employment.</div>
+          <div class="wc-tr">控制了收入与就业后，这个估计值依然成立。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reversal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈvɜːsl/ · 美 /rɪˈvɜːrsl/</div>
+          <div class="wc-pos"><b>n.</b> 颠倒、反转；（此处）<b>因果方向的颠倒</b>（reverse causation 反向因果：不是 A 导致 B，而是 B 导致 A）<br>词族：reverse 颠倒的、倒车；reversible 可逆的；irreversible 不可逆的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The design cannot rule out the obvious <b>reversal</b>.</div>
+          <div class="wc-tr">这个设计无法排除那个显而易见的反向解释。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attender</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈtendə(r)/ · 美 /əˈtendər/</div>
+          <div class="wc-pos"><b>n.</b> 经常到场的人、参与者（frequent attenders 常客；church attenders 常去教堂的人）<br>attend 除"出席"外，还有"照料"（attend to a patient）与"处理"（attend to the matter）；attention、attendant 同根</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Frequent <b>attenders</b> averaged 66.9 years.</div>
+          <div class="wc-tr">常去的那些人平均 66.9 岁。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">grip</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɡrɪp/ · 美 /ɡrɪp/</div>
+          <div class="wc-pos"><b>n.</b> 紧握；<b>握力</b>（grip strength 握力，是老年人健康与衰弱评估的常规指标）；掌控（lose grip on reality 脱离现实）<br><b>v.</b> 抓紧；吸引住（The film grips you. 这部电影抓住你）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Indicators include <b>grip</b> strength and walking speed.</div>
+          <div class="wc-tr">指标包括握力与步行速度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">indicator</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɪndɪkeɪtə(r)/ · 美 /ˈɪndɪkeɪtər/</div>
+          <div class="wc-pos"><b>n.</b> 指标、指示物（economic indicators 经济指标）；指示器<br>词族：indicate 表明；indication 迹象；indicative 标示的（be indicative of 表明）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nurses recorded ten <b>indicators</b> of physical health.</div>
+          <div class="wc-tr">护士记录了十项身体健康指标。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prescription</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɪˈskrɪpʃn/ · 美 /prɪˈskrɪpʃn/</div>
+          <div class="wc-pos"><b>n.</b> 处方、药方；<b>（喻）解决方案、对策</b>（a prescription for growth 增长药方）<br>易混三兄弟：prescription 处方（医生开药）；description 描述；subscription 订阅。词根 scrib 写</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their recommendation is less a <b>prescription</b> than a planning rule.</div>
+          <div class="wc-tr">他们的建议与其说是处方，不如说是一条规划原则。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chronic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkrɒnɪk/ · 美 /ˈkrɑːnɪk/</div>
+          <div class="wc-pos"><b>adj.</b> 慢性的、长期的（chronic illness 慢性病；chronic shortage 长期短缺）<br>反义 acute 急性的；chron- 词根表"时间"（chronology 年表、synchronise 同步）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Survived adjustment for income, employment and <b>chronic</b> illness.</div>
+          <div class="wc-tr">在控制收入、就业与慢性病之后依然成立。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decoration</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌdekəˈreɪʃn/ · 美 /ˌdekəˈreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 装饰、装饰品；勋章（award a decoration 授勋）<br>词族：decorate 装饰；decorative 装饰性的。文中 "not a decoration on X but one of the things that make it X" 是极好用的对照句式</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The lights are not a <b>decoration</b> on a healthy city.</div>
+          <div class="wc-tr">那些灯不是健康城市上的装饰。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">score</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /skɔː(r)/ · 美 /skɔːr/</div>
+          <div class="wc-pos"><b>n.</b> 分数、得分、成绩（a test score 考试分数）；<b>v.</b> 得分、打分（score a goal 进球；score the answers 给答案评分）<br>另有"二十"之义（a score of people 二十人；scores of 许多），高考少见但外刊常见</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Those ten numbers were folded into one <b>score</b>.</div>
+          <div class="wc-tr">这十个数字被折算成一个综合分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sample</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈsɑːmpl/ · 美 /ˈsæmpl/</div>
+          <div class="wc-pos"><b>n.</b> 样本、抽样（a national sample 全国性样本）；样品；<b>v.</b> 品尝、抽样调查<br>搭配：a sample of 一份……的样本；sample size 样本量（读研究报道时最该先找的两个词之一）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A national <b>sample</b> of adults aged fifty and over.</div>
+          <div class="wc-tr">一个由 50 岁及以上成年人组成的全国性样本。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">put a number on sth</span><span class="zh">给……估出具体数值</span></li>
+          <li><span class="en">draw on sth</span><span class="zh">取用、借鉴（数据、经验）</span></li>
+          <li><span class="en">aged fifty and over</span><span class="zh">五十岁及以上</span></li>
+          <li><span class="en">fewer than two waves</span><span class="zh">不足两轮（调查）</span></li>
+          <li><span class="en">physiological age</span><span class="zh">生理年龄</span></li>
+          <li><span class="en">be folded into</span><span class="zh">被并入、被折算进</span></li>
+          <li><span class="en">twice a month or more</span><span class="zh">每月两次及以上</span></li>
+          <li><span class="en">split at the median</span><span class="zh">按中位数切分</span></li>
+          <li><span class="en">better off</span><span class="zh">更宽裕、更富裕</span></li>
+          <li><span class="en">to begin with</span><span class="zh">本来、起初（此处强调"一开始就"）</span></li>
+          <li><span class="en">distrust that gap</span><span class="zh">不敢轻信这个差距</span></li>
+          <li><span class="en">compare each person with themselves</span><span class="zh">拿同一个人前后作比</span></li>
+          <li><span class="en">cancel out</span><span class="zh">抵消、抵销</span></li>
+          <li><span class="en">fixed effects</span><span class="zh">固定效应（计量方法）</span></li>
+          <li><span class="en">small as it is</span><span class="zh">尽管它很小（让步倒装）</span></li>
+          <li><span class="en">survive adjustment for</span><span class="zh">在控制……之后依然成立</span></li>
+          <li><span class="en">go further</span><span class="zh">更进一步（说）</span></li>
+          <li><span class="en">rule out</span><span class="zh">排除（某种解释）</span></li>
+          <li><span class="en">the obvious reversal</span><span class="zh">显而易见的反向因果</span></li>
+          <li><span class="en">concede a point</span><span class="zh">承认对方有道理</span></li>
+          <li><span class="en">a behaviour a person can change</span><span class="zh">一个人能改变的行为</span></li>
+          <li><span class="en">close enough to walk to</span><span class="zh">近到可以走着去</span></li>
+          <li><span class="en">one of the things that make it one</span><span class="zh">使它成为"那样"的东西之一</span></li>
+          <li><span class="en">carry away</span><span class="zh">带走、记住（心得）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>场景：雨夜剧院门口的队伍，普通得没人给它标过价。</li>
+          <li>出处：JECH 2026-07 线上先发，东京科学大学三人组；ELSA 三个轮次，剔除不足两轮后剩 1,899 人。</li>
+          <li>概念：生理年龄＝身体"运转得怎么样"，十项指标合成，脉压、肺活量、握力、步速等。</li>
+          <li>测量：十项指标折算成一个分；三类文化活动各 0–5 分，合计 0–15 分。</li>
+          <li>头条数字：常去 66.9 岁，少去 69.9 岁，差三岁；但常去者本来就更有钱、更有工作、更健康。</li>
+          <li>收紧检验：改用固定效应，拿同一个人前后比，三岁缩成"每分 31 天"。</li>
+          <li>机制与夸大：控制收入、就业、慢病后仍成立；作者称可与经常锻炼相比——最易被引用，最难被检验。</li>
+          <li>限定：无法排除反向因果（身体差的人买不了票）；但"看戏"是个人能改变的行为。</li>
+          <li>落点：建议不是处方而是规划原则——场馆要近、要便宜；六点半的灯是城市健康的构成，不是装饰。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>四、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">They drew on the English longitudinal Study of Ageing, a national sample of adults aged fifty and over, and used its survey waves of 2004, 2006 and 2008; anyone with fewer than two waves was dropped, leaving 1,899 people.</div>
+        <div class="row"><b>主干：</b>They drew on ... and used ...（两个并列谓语共用一个主语 They，第二个谓语前省略了主语）</div>
+        <div class="row"><b>同位语：</b>a national sample of adults aged fifty and over 说明前面那项研究的性质（不是新的研究对象，而是同一事物的另一种说法）</div>
+        <div class="row"><b>分号后的独立分句：</b>anyone with fewer than two waves was dropped（with 短语作后置定语修饰 anyone；was dropped 为被动，指"被剔除出样本"）</div>
+        <div class="row"><b>分词作结果状语：</b>leaving 1,899 people（现在分词短语表示前面动作造成的自然结果，相当于 so that 1,899 people were left）</div>
+        <div class="row"><b>考点：</b>并列谓语省略主语；同位语；with 短语作定语；分词作结果状语；drop 的"剔除"义</div>
+        <div class="row tr"><b>译文：</b>他们使用了"英国老龄化纵向研究"——一个由五十岁及以上成年人组成的全国性样本——取其中 2004、2006、2008 三个调查轮次的数据；凡不足两轮的都被剔除，最后剩下 1,899 人。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Ageing is universal; its speed is not, and the gap between the two is what researchers call physiological age — how well a body is running rather than how long it has been running.</div>
+        <div class="row"><b>前半句的省略：</b>its speed is not (universal)（is not 后省略了表语，靠前句的 universal 补全；这种"只留否定词"的省略在外刊中很常见，读时要把被省的词补回来）</div>
+        <div class="row"><b>主干：</b>the gap between the two is what researchers call physiological age（what 引导表语从句，作 is 的表语；between the two 指"普遍"与"速度"这两件事）</div>
+        <div class="row"><b>破折号后的解释：</b>how well a body is running rather than how long it has been running（两个 how 从句并列，rather than 构成对照：比的是"运转得好不好"，不是"运转了多久"）</div>
+        <div class="row"><b>时态对照：</b>is running 用现在进行，强调"此刻的状态"；has been running 用现在完成进行，强调"从过去延续至今的时长"——一处时态差别，正好把两个概念分开</div>
+        <div class="row"><b>考点：</b>省略；what 表语从句；rather than 的对照；现在进行 vs 现在完成进行；run 的"运转"义</div>
+        <div class="row tr"><b>译文：</b>衰老是普遍的，速度却不是；两者之间的差额，就是研究者所说的"生理年龄"——身体运转得怎么样，而不是运转了多少年。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">So the authors stopped comparing people with each other and started comparing each person with themselves, a method called fixed effects that cancels out whatever stays constant about a person.</div>
+        <div class="row"><b>主干：</b>the authors stopped ... and started ...（stop doing 与 start doing 并列，两个动名词短语形成"换方法"的对照）</div>
+        <div class="row"><b>两组比较对象：</b>comparing people with each other（人与人比）vs comparing each person with themselves（自己与自己比）——这是全文方法的转折点，也是"横断面"与"固定效应"的分水岭</div>
+        <div class="row"><b>同位语＋定语从句：</b>a method called fixed effects that cancels out ...（a method 是前半个分句的同位语；called fixed effects 为过去分词短语作定语；that 从句进一步说明该方法做什么）</div>
+        <div class="row"><b>宾语从句：</b>whatever stays constant about a person（whatever 引导名词性从句作 cancels out 的宾语，意为"任何不随时间改变的东西"，如性别、性格、早年教育）</div>
+        <div class="row"><b>考点：</b>stop/start doing；with 表比较对象；同位语＋双重定语；whatever 名词性从句；cancel out 的"抵消"义</div>
+        <div class="row tr"><b>译文：</b>于是作者不再拿人比人，而是拿同一个人前后比——这种方法叫"固定效应"，它把一个人身上不随时间变化的那些特质全部抵消掉。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What the design cannot do is rule out the obvious reversal: people whose knees hurt and whose lungs are failing do not buy tickets, so part of the association is illness choosing the sample, not culture changing the body.</div>
+        <div class="row"><b>主语从句＋表语：</b>What the design cannot do is rule out ...（what 引导主语从句；is 后接不定式 rule out 作表语——注意此处不用 to 也可，is to rule out 同样正确）</div>
+        <div class="row"><b>冒号后的解释：</b>冒号把抽象结论"反向因果"具体化为一个画面：膝盖疼、肺不好的人不会去买票</div>
+        <div class="row"><b>两个定语从句并列：</b>whose knees hurt 与 whose lungs are failing 同时修饰 people；第二个用进行时，暗示"正在衰竭"的过程感</div>
+        <div class="row"><b>so 引导的结果＋对照：</b>part of the association is illness choosing the sample, not culture changing the body（两个动名词复合结构并列对照；choosing the sample 意为"在挑选样本"，即身体差的人自动退出了样本）</div>
+        <div class="row"><b>考点：</b>what 主语从句；不定式作表语；whose 引导定语从句；动名词复合结构；not A but B 的变体（此处省略 but）</div>
+        <div class="row tr"><b>译文：</b>这个设计做不到的，是排除那个显而易见的反向解释：膝盖疼、肺不好的人不会去买票，所以这份关联里有一部分是"疾病在挑样本"，而不是"文化在改身体"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">That is the uncomfortable part: the lights at half past six are not a decoration on a healthy city but one of the things that make it one.</div>
+        <div class="row"><b>主干：</b>That is the uncomfortable part（That 回指上一句"建议其实是规划原则"这一判断；uncomfortable 指"让人不舒服"，因为它把责任从个人转给了城市）</div>
+        <div class="row"><b>not A but B 对照：</b>not a decoration on a healthy city but one of the things that make it one（否定项是"装饰"，肯定项是"构成条件"，一字之差把因果方向倒过来）</div>
+        <div class="row"><b>代词 one 的两副面孔：</b>第一个 one 是代词，指 a healthy city；第二个 one（make it one 中）也是代词，仍指 a healthy city——两个 one 都靠前文回指，不能读成数词"一个"</div>
+        <div class="row"><b>修辞：</b>decoration 与 make 构成"表象 vs 成因"的对立；全句是典型的英文收尾判断句，用一个对照把全文主张压在一行里</div>
+        <div class="row"><b>考点：</b>not A but B；one 的代词用法与回指；定语从句 that make it one；抽象名词的具体化</div>
+        <div class="row tr"><b>译文：</b>这才是让人不太舒服的地方：六点半亮起的那些灯，不是一座健康城市上的装饰，而是让它成为健康城市的东西之一。</div>
+      </div>
+
+      <h2>五、全文大意</h2>
+      <p class="zh-sum">这篇文章的切口极小：一个下雨的周五，六点半，外省一家剧院门口排起队。但它要处理的，是一句几乎人人都听过、却从没人算过的判断——"多出门走走对身体好"。作者没有从"文化有益"讲起，而是从一个数字讲起：三岁。常去电影院、博物馆、剧院的人，平均生理年龄比很少去的人低三岁。这个数字足够抓人，也足够危险，因为整篇文章后半段的力气，几乎都花在告诉读者：这三岁不能这么读。</p>
+      <p class="zh-sum">第二段交代出处与样本。论文 2026 年 7 月在线先发于《流行病学与社区健康杂志》，作者是东京科学大学的松山祐介、木内さくら、相田潤。数据来自"英国老龄化纵向研究"（ELSA）——一个自 2002 年起追踪英格兰 50 岁以上人群的全国性样本。研究者取 2004/05、2006/07、2008/09 三个调查轮次，凡不足两轮的都剔除，最后剩 1,899 人。这里有个容易被忽略的细节：剔到只剩两轮以上的人，本身就把"一直活着、一直能受访"的人筛了出来，样本从第一步起就不是随机的。</p>
+      <p class="zh-sum">第三、四段是测量部分，也是全文技术含量最高的地方。"生理年龄"不是一个玄学概念，它指的是身体运转的状态与同龄人平均水平的偏离程度——不是活了多少年，而是这些年活得怎么样。ELSA 的护士上门测量了十项指标：脉压、舒张压、用力呼气量（肺功能）、血红蛋白、纤维蛋白原、糖化血红蛋白、低密度脂蛋白胆固醇、体质指数、握力、步行速度。这十项被折算成一个综合分。与此同时，受访者回答三类文化活动的频率：去电影院、去博物馆或美术馆、去剧院/音乐会/歌剧院。每项 0 到 5 分（0＝从不去，5＝每月两次及以上），合计 0 到 15 分。请注意这套测量的两个特点：它衡量的只是"出门看东西"这一类活动，不包括自己唱、自己画、自己写；而且它是自报的，记性好不好、愿不愿意承认"我很少出门"，都会进入数据。</p>
+      <p class="zh-sum">第五段给出头条数字，也立刻自己拆台。按中位数把 1,899 人切成两半，常去的一组平均生理年龄 66.9 岁，少去的一组 69.9 岁，差三岁。听起来像是"看戏能让人年轻三岁"。但作者紧接着列出：常去的人更常是女性、有带薪工作、更宽裕、本来就更健康。这四项中的任何一项，都足以独立地让人既更可能出门、又更可能年轻。换句话说，那三岁里混着"文化的作用"和"能出门的人的共同特征"，而这两者在横断面比较里根本分不开。</p>
+      <p class="zh-sum">第六段是全文的方法转折，也是最值得学的一段。作者换了问法：不再问"常去的人和少去的人有什么不同"，而问"同一个人在去得多的那几年，和去得少的那几年，有什么不同"。这就是固定效应模型——它把每个不随时间变化的特征（性别、性格、早年教育、城乡出身）当作每个人自己的常数扣掉，只用"同一个人身上的变化"来估计效应。结果那三岁消散了：量表每多一分，生理年龄低 0.085 年，也就是 31 天。15 分满分，全加上去也不到一年三个月。这才是这篇文章真正的结论，也是它最诚实的地方：一个漂亮的三岁，在更严格的检验下缩成了一个月的量级。</p>
+      <p class="zh-sum">第七段处理机制，同时埋了一个警报。这个"每月 31 天"的估计在控制了收入、就业、慢性病之后依然成立，作者给出三条通路：文化活动把人拉进人群（社会联结）、给一周提供固定的节奏（作息规律）、提供一种不必以压力为代价的愉悦（心理健康）。这三条都合理，也都无法在这份数据里被单独验证。随后作者更进一步，说这个效应"可与经常锻炼相比"——这句话是全篇最容易被媒体摘出来当标题的一句，也是最难被这份数据支持的一句：因为"可比"到底是效应量可比，还是量级可比，文中并没有给出对照的检验。</p>
+      <p class="zh-sum">第八段是标准的自我限定。观察性设计无法排除反向因果：膝盖疼、肺功能在衰退的人，本来就不会去买票；所以关联里有一部分是"疾病在挑选样本"，而不是"文化在改变身体"。作者承认这一点，然后退到唯一还站得住的位置：至少，"去看戏"是一个人能改变的行为，它不像基因、不像收入、不像住在哪个城市那样难以撼动。这句话的分量不在"有效"，而在"可改"——公共卫生真正能做的事情，往往只是后者。</p>
+      <p class="zh-sum">第九段把结论从个人层面推到城市层面，这是全文最狠的一次视角切换。如果"看戏"真有一点点作用，那么真正决定谁能得到这点作用的，不是他有没有决心，而是剧院离他家多远、票多少钱。所以作者的建议不是"劝人出门"，而是一条规划原则：让场馆近到可以走着去、便宜到可以走进去。最后一句把话说到底：六点半亮起的那些灯，不是健康城市上的装饰，而是让它成为健康城市的东西之一。装饰可以撤掉，构成条件不能——这一句也顺势把"文化政策"从福利预算挪进了公共卫生预算。</p>
+      <p class="zh-sum">从写作技术看，这篇示范了一个非常实用的论证动作：先抛出一个漂亮的数字（三岁），再亲手把它拆开，露出里面更小、更硬的那个数（每月 31 天），最后把剩下的那一点作用交还给环境而不是个人。它没有停在"看戏能延寿"这种廉价结论上，也没有滑到"所以都是伪科学"这种更廉价的怀疑论上，而是把读者带到中间那个更难的层面：效应有多大、证据有多硬、以及这个效应到底该由谁来兑现。这种"既给结论又给尺子"的写法，正是高考阅读 D 篇与学术类外刊最常见的推进方式。另外值得留意的是全文的动词选择——drew on、folded into、dissolved、survived、concede、holds，每一个都在替作者做判断，而不是仅仅陈述事实。</p>
+
+      <h2>六、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. Going to the theatre regularly can make people about three years younger, and everyone should be encouraged to buy tickets.<br>
+        B. A study linking cultural attendance to a younger physiological age found the three-year gap shrank to about a month per point once each person was compared with themselves, leaving a small effect whose value depends on access.<br>
+        C. Cultural activities are worthless as a health strategy because the research is observational and cannot prove causation.<br>
+        D. Physiological age is a more reliable measure of health than chronological age, especially among people over fifty.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文的推进是"头条数字（第 5 段）→ 方法收紧（第 6 段）→ 机制与夸大（第 7 段）→ 自我限定（第 8 段）→ 政策落点（第 9 段）"，B 把这条链条的两个关键节点（三岁缩成每月、效应小但取决于可及性）都装进去了。A 停在第五段，正是作者随后要拆掉的那个读法，且"everyone should"属过度推论。C 把"证据有限"升级为"毫无价值"，与第 8 段"至少是能改变的行为"相反。D 只是第 3 段的一个背景概念，不是全文论点。</div>
+      <div class="q"><b>2. Why does the author call the comparison with exercise "the sentence most likely to be quoted and least likely to be tested"?</b><br>
+        A. Because journalists prefer simple metaphors and scientists refuse to comment on them.<br>
+        B. Because the claim is vivid and easy to headline, while the study itself provides no head-to-head comparison with physical activity.<br>
+        C. Because exercise has been proved to have no effect on physiological ageing.<br>
+        D. Because the authors were criticised by other researchers for making the claim.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>第 7 段先承认估计值在控制混杂后仍成立，随后指出作者"更进一步"说效应可与经常锻炼相比；下一句的 quoted / tested 对照，正是对"传播性强、可验证性弱"这一落差的评论。B 准确复述了这个落差。A 把问题归给记者与科学家的态度，文中没有依据。C 与原文相反——文中从未否认锻炼有效，只说这项研究没有做两者的直接对照。D 属无中生有，全文未提任何批评者。</div>
+
+      <h2>七、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 6 段用"固定效应"把三岁缩成了每月 31 天。请回答三个问题：（1）为什么"拿同一个人前后比"比"拿人比人"更能接近因果？请用"混杂因素"这个词解释，并举出一个在这项研究里会被固定效应自动抵消掉的例子。（2）假如一项研究发现"常去图书馆的人更长寿"，你会依次追问哪三个问题来判断它是否可信？（3）第 9 段说"场馆要近到可以走着去、便宜到可以走进去"。如果让你为所在城市设计一条"文化可及性"指标，你会量什么——数量、距离、价格、开放时间，还是别的？为什么？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段最后一句 <span style="font-family:Georgia,serif;font-style:italic">"the lights at half past six are not a decoration on a healthy city but one of the things that make it one."</span>（用 not A but B 把"表象"与"成因"对举，B 处用 one of the things that make it + 代词 回指，形成收束），就"学校里的图书馆"这个话题写一句你自己的判断句，要求 A 是一种可有可无的摆设，B 是一种让它之所以成立的条件。</div>
+
+      <h2>八、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 场景：雨夜剧院门口的队伍，普通得没人给它标过价</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 出处：JECH 2026-07；ELSA 三轮调查，剔除后剩 1,899 人</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 概念：生理年龄＝身体运转得怎么样，十项指标合成</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 测量：三类活动各 0–5 分，文化参与量表合计 0–15 分</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 头条：66.9 岁 vs 69.9 岁，差三岁；但常去者本就更健康、更宽裕</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">6 · 收紧：固定效应，自己与自己比；三岁消散→每分 31 天</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">7 · 机制：联结、节奏、无代价的愉悦；“堪比锻炼”是最易被引用的一句</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 限定：排除不了反向因果；但“去看戏”是个人能改变的行为</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">9 · 落点：不是处方而是规划原则——近到能走、便宜到能进</text>
+
+          <line x1="360" y1="82" x2="360" y2="92" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="134" x2="360" y2="144" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="186" x2="360" y2="196" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="238" x2="360" y2="248" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="290" x2="360" y2="300" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="342" x2="360" y2="352" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="394" x2="360" y2="404" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="446" x2="360" y2="456" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">红＝核心数字与判断　绿＝机制与限定　蓝＝背景与研究设计</text>
+        </svg>
+        <figcaption>全文共 9 段，按「场景 → 出处 → 概念 → 测量 → 头条 → 收紧 → 机制 → 限定 → 落点」推进。第 5 段与第 6 段是全篇的骨架：前者给出一个可以上标题的数字，后者在同一个作者手里把它缩小十几倍——三岁变成每分一个月。读懂这两段的落差，就读懂了"关联"与"因果"之间那道最常被媒体抹平的沟。第 9 段是本篇最值得模仿的收尾：把个人选择推回城市条件，用 not A but B 一句定性。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Yusuke Matsuyama, Sakura Kiuchi, Jun Aida《Cultural engagement and physiological ageing: a fixed-effects analysis》，Journal of Epidemiology and Community Health，2026-07-14 线上先发（Institute of Science Tokyo 东京科学大学；DOI 10.1136/jech-2025-225753）｜数据基于 English Longitudinal Study of Ageing（ELSA），2004/05、2006/07、2008/09 三个调查轮次 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
