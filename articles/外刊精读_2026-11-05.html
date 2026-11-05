@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 屋顶凉了二十二度，路上的人呢</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Cool Cities · 人与自然 / 人与社会 / 科技与创新 / 城市治理 / 气候适应</div>
+  <h1>屋顶凉了二十二度，路上的人呢</h1>
+  <div class="deck">A Singapore team coated two of four residential towers and recorded a 22°C drop on the concrete roof, two degrees in the air at knee height and three degrees of comfort — while a second set of measurements found the same paint raising the radiant load on the people standing on it</div>
+  <div class="byline"><span><b>来源</b> Sustainable Cities and Society 131:106754（2025-09）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-05</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-05.jpg" alt="同一街区屋顶航拍：白色反射屋顶与深色屋顶相邻的实景照片（配图）">
+    <figcaption>配图：同一片街区的屋顶俯瞰——有的刷成白色，有的仍是深灰，空调外机一排排装在屋面上。把太阳反射回去，到底凉快了谁（图片来源：实景航拍照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>过去十年，全球至少几十座城市往屋顶、墙面和马路上刷过一种白色的"降温涂料"。理由简单得像物理课本：深色表面吸收阳光，把热量交还给空气；把表面刷白，太阳被反射回去，街道自然凉。这个逻辑便宜、被动、容易推广，于是它比证据更早地进入了城市气候规划。</p>
+    <p>2025 年 9 月，《可持续城市与社会》刊出一项在新加坡做的全尺度实验：同一个屋邨里的四栋高层，两栋刷涂料、两栋不动，连测数周。结果漂亮得可以上标题——混凝土屋顶表面最多降 22℃，膝高处的空气降 2℃，以通用热气候指数衡量的舒适度改善 3℃。但同年另一组新加坡实测与一项开罗街区的模拟给出了相反的信号：白路面确实让地表变凉，却把更多短波辐射抛向站在上面的人，行人的平均辐射温度反而升高。全文的张力就在这里：同一个产品，在"气温"这个指标上赢，在"人身上"这个指标上可能输。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-05.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.826">At three in the afternoon a Singapore housing block's roof is almost white, and the concrete under it <span class="kw" data-tip="v. （数值、温度、物价）处于某个水平、达到——熟词僻义。常见义“跑”（run fast）、“经营”（run a shop）。价格类报道里的 running at 3% 即“维持在 3%”">runs</span> twenty-two degrees cooler than the identical roof next door.</span> <span class="s" data-t="9.826" data-e="17.395">That figure, published in September, is the sharpest result yet from a technology cities have been buying for a decade.</span></span></div>
+      <p class="para-tr">下午三点，新加坡某屋邨一栋楼的屋顶几乎是白的，它下面的混凝土比隔壁那栋一模一样的屋顶低了二十二度。这个 9 月发表的数字，是各城市买了十年的那项技术迄今最锋利的一份结果。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="17.395" data-e="26.842">Cities run hotter than the land around them because dark surfaces <span class="kw" data-tip="v. 吞没、吞下；此处引申为“把（阳光）整个吸收掉”。常见义“吞咽”（swallow a pill）、“忍住”（swallow one's anger）">swallow</span> sunlight and hand it back; a coating that reflects most of it should leave the street cooler.</span> <span class="s" data-t="26.842" data-e="35.355">The idea is cheap, <span class="kw" data-tip="adj. 被动的、无需外加动力的（passive cooling 被动降温，指不靠空调、电机，只靠材料与结构）；消极的（passive resistance 消极抵抗）">passive</span> and easy to scale, which every heat plan wants and which has let it spread faster than it has been tested.</span></span></div>
+      <p class="para-tr">城市比周边土地更热，是因为深色表面吞下阳光、再把热量交还出去；那么一层能反射掉大部分阳光的涂料，理应让街道更凉。这个想法便宜、被动、容易推广——这既是每份高温规划都想要的，也是它传播得比验证更快的原因。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="35.355" data-e="47.224">The trial, led by Yong Ping Long of Nanyang Technological University, coated the roofs, walls and roads of two high-rise blocks in one <span class="kw" data-tip="n. （成片的）住宅区、屋邨（housing estate 住宅小区；an industrial estate 工业区）。常见义“地产、遗产”（real estate 房地产；leave an estate 留下遗产）">estate</span> and left two identical ones as <span class="kw" data-tip="n. （实验的）对照组、对照——熟词僻义。常见义“控制”（take control of）、“控制键”。as controls 即“作为对照”">controls</span>.</span> <span class="s" data-t="47.224" data-e="60.5">Instruments then recorded surface temperature, air temperature and comfort for weeks — unusual, since most work on reflective paint has been done in computer models or on sample boxes, not on buildings people live in.</span></span></div>
+      <p class="para-tr">这项由南洋理工大学龙永平（Yong Ping Long）领衔的试验，在同一个屋邨里给两栋高层的屋顶、墙面和道路刷上涂料，另两栋完全相同的楼则作为对照。随后仪器连续数周记录表面温度、空气温度与舒适度——这是个少见的选择，因为此前关于反射涂料的研究大多做在模型或小样箱里，而不是人们真正居住的楼上。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="60.5" data-e="72.197">On the coated blocks the concrete roof <span class="kw" data-tip="v. 吸收（热量、光、水分）；使全神贯注（be absorbed in 专注于）。名词 absorption 吸收；absorbing 引人入胜的">absorbed</span> 56.5 per cent less energy a day and ran up to twenty-two degrees cooler at the worst hour, while air at knee height fell by two degrees.</span> <span class="s" data-t="72.197" data-e="80.855">Scored on the Universal Thermal Climate Index, a scale built to describe what a body feels, comfort improved by up to three degrees.</span></span></div>
+      <p class="para-tr">在刷过涂料的那两栋上，混凝土屋顶一整天的吸能量少了 56.5%，最热那一小时表面温度最多低了二十二度，而膝高处（1 米）的空气温度降了两度。若按"通用热气候指数"——一个专门描述人体实际感受的标尺——来打分，舒适度最多改善了三度。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="80.855" data-e="90.539">Roofs did most of the work and roads did least: a busy pavement is shaded by people and cars, and the heat a road releases arrives where pedestrians stand.</span> <span class="s" data-t="90.539" data-e="98.487">Even so, two degrees held through an afternoon is the difference between a street an older resident can cross and one they cannot.</span></span></div>
+      <p class="para-tr">起最大作用的是屋顶，作用最小的是道路：繁忙的路面本来就被人和车遮住，而道路释放的热量，恰好就在行人已经站着的地方。即便如此，一个下午都维持住的两度，就是"老人敢不敢穿过去"的区别。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="98.487" data-e="112.579">A second Singapore experiment found that reflective paving did cool the surface and barely lowered air temperature, while <span class="kw" data-tip="adj. 辐射的（radiant heat 辐射热；mean radiant temperature 平均辐射温度，指人体从周围表面接收到的辐射换热总量，是热舒适的三大变量之一）。动词 radiate 辐射、散发；radiation 辐射">radiant</span> temperature at head height rose, because the sunlight a pale road refuses to absorb is partly thrown at the people on it.</span> <span class="s" data-t="112.579" data-e="126.895">A model of a Cairo shopping street reached the same place: raising <span class="kw" data-tip="n. 反照率、反射率（地表反射太阳辐射的比例，0 至 1；新鲜沥青约 0.05，白色涂层可达 0.7 以上）。源自拉丁 albus 白，albino 白化病同根">albedo</span> cut surface heat by seven degrees and air temperature by 1.5, but lifted radiant temperature by six, pushing comfort past 46 without shade.</span></span></div>
+      <p class="para-tr">今年报告的另一项新加坡实测发现：反射铺装确实让地表变凉，但气温只小幅下降，而行人高度的辐射温度反而升高了——因为浅色路面不肯吸收的那部分阳光，有一部分被抛向了站在上面的人。一项针对开罗商业街的模拟走到同一处：提高反照率让地表降温七度、气温降 1.5 度，却把辐射温度抬高了六度，在没有遮阴处把舒适指数推过 46。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="126.895" data-e="132.276">The two sets of numbers <span class="kw" data-tip="v. （说法、数据、事实）与……相符、对得上——熟词僻义。常见义“正方形”（a square table）、“广场”（Tiananmen Square）、“平方”。square with sth 即“与……一致”">square</span> once you notice that they describe different quantities.</span> <span class="s" data-t="132.276" data-e="145.329">Air temperature is well mixed and measured out of the sun, and two degrees across a canyon is a large effect; radiant temperature is local, and depends on what one body can see, including a bright wall two metres away.</span> <span class="s" data-t="145.329" data-e="150.342">A coating can win the first measurement and lose the second in the same afternoon.</span></span></div>
+      <p class="para-tr">只要注意到这两组数字描述的是不同的量，它们就对得上了。气温是充分混合的量，且在避开阳光处测量，一条街谷移动两度已经是很强的效应；辐射温度则是局部的、当下的，取决于某一具身体能"看见"什么，包括两米外一面发白的墙。同一件涂料，可以在同一个下午赢下第一个测量、输掉第二个。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="150.342" data-e="161.63">What follows is less a <span class="kw" data-tip="n. （陪审团的）裁决；（经过讨论后的）定论、判决性意见（deliver a verdict 作出裁决）。此处引申为“一锤定音的结论”">verdict</span> on white paint than a rule about how to buy it: reflectance belongs with shade, because in Cairo a <span class="kw" data-tip="n. （街道、广场上方的）顶棚、遮阳篷；树冠（forest canopy 林冠层）。动词义“遮盖”">canopy</span> cut the comfort index by five to seven degrees.</span> <span class="s" data-t="161.63" data-e="171.303">The cheapest way to <span class="kw" data-tip="v. 应对、处理（问题）——熟词僻义。常见义“地址”（home address）、“演讲”（give an address）、“称呼”。address the problem 即“着手解决这个问题”">address</span> urban heat is therefore not a product but an order of operations — shade first, surface second, and measured where people stand.</span></span></div>
+      <p class="para-tr">由此得到的，与其说是对白色涂料的判决，不如说是一条"该怎么买"的规则：反照率要和遮阴一起考虑——因为在开罗那项模型里，在同一段路面上加一层遮阳顶棚，把舒适指数降了五到七度。所以应对城市高温最便宜的办法不是一个产品，而是一个先后次序：先遮阴，再换表面，而且永远在人真正站着的地方测量。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="171.303" data-e="177.868">Which returns the argument to a question most heat plans never ask: cooler than what, and for whom.</span> <span class="s" data-t="177.868" data-e="186.75">A roof that is twenty-two degrees cooler is a real gain for the family underneath it, and a poor guide to whether the street outside is worth <span class="kw" data-tip="v. 逗留、徘徊（linger over coffee 慢慢喝咖啡；linger in the doorway 在门口徘徊）。另有“（记忆、气味）久久不散”（The smell lingered.）">lingering</span> in.</span></span></div>
+      <p class="para-tr">这就把争论推回到大多数高温规划从不追问的一个问题上：比什么更凉，又是为谁而凉。一个低了二十二度的屋顶，对住在它下面的那家人来说是实实在在的好处，却是判断"外面的街道是否还值得多站一会儿"的很差的依据。</p>
+
+      <p class="muted">原文出处：本文据 Yong Ping Long, E. V. S. Kiran Kumar Donthu, Di Han, Man Di Zhou, Xiao Qin Zhang, Bing Feng Ng, Man Pun Wan《A site experiment on the effects of cool coating in a residential community under the tropical climate》，Sustainable Cities and Society，第 131 卷，文章号 106754，2025 年 9 月（南洋理工大学，合著者含新加坡国立大学与印度理工学院 BHU；DOI 10.1016/j.scs.2025.106754）改写整理；56.5%、22℃、2℃、3℃、四栋两对照等数据引自该文，行人辐射温度与开罗街区模拟分别引自 2025 年 ICUC12 会议摘要与 Civil Engineering and Architecture 13(6):4331–4352 一文，仅供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">square</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /skweə(r)/ · 美 /skwer/</div>
+          <div class="wc-pos"><b>v.</b> （说法、数据、事实）<b>与……相符、对得上</b>（square with the facts 与事实相符；His story doesn't square with hers. 他的说法和她的对不上）<br>常见义：<b>n.</b> 正方形、广场（Tiananmen Square）；<b>adj.</b> 方正的、公平的（a square deal）；平方（square metres）<br>判断口诀：后面接 with，且主语是"两种说法 / 两组数据"，square 就是"对得上"，不是"弄成方形"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The two sets of numbers <b>square</b> once you notice they describe different quantities.</div>
+          <div class="wc-tr">一旦注意到它们描述的是不同的量，这两组数字就对得上了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">address</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /əˈdres/ · 美 /əˈdres/</div>
+          <div class="wc-pos"><b>v.</b> <b>应对、着手处理（问题）</b>（address a problem / a challenge / concerns 应对问题、挑战、关切）<br>常见义：<b>n.</b> 地址（home address）；演说（give an address）；<b>v.</b> 称呼（address sb as Professor）、寄给<br>判断口诀：宾语是 problem / issue / need / question 时，address 一律译"应对"，不译"致辞"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The cheapest way to <b>address</b> urban heat is not a product but an order of operations.</div>
+          <div class="wc-tr">应对城市高温最便宜的办法不是一个产品，而是一个先后次序。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">run</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rʌn/ · 美 /rʌn/</div>
+          <div class="wc-pos"><b>v.</b> （数值、温度、物价）<b>处于某个水平、达到</b>（Inflation is running at 3%. 通胀维持在 3%；The engine runs hot. 发动机温度偏高）<br>常见义：跑（run fast）；经营（run a shop）；运行（run a program）<br>判断口诀：后面跟 at / high / low 或具体数值时，run 是"处于……水平"，属经济与工程报道的固定用法</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The concrete under it <b>runs</b> twenty-two degrees cooler than the identical roof next door.</div>
+          <div class="wc-tr">它下面的混凝土比隔壁一模一样的屋顶低了二十二度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">control</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /kənˈtrəʊl/ · 美 /kənˈtroʊl/</div>
+          <div class="wc-pos"><b>n.</b> （实验中的）<b>对照、对照组</b>（the control group 对照组；serve as a control 作为对照）<br>常见义：控制、管理（take control of）；控制键<br>判断口诀：出现在实验描述里、且与 treatment / intervention 并列时，control 指"不处理的那些"，不是"管控"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Two blocks were left untouched as <b>controls</b>.</div>
+          <div class="wc-tr">另外两栋原样保留，作为对照。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">albedo</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ælˈbiːdəʊ/ · 美 /ælˈbiːdoʊ/</div>
+          <div class="wc-pos"><b>n.</b> 反照率、反射率（地表反射太阳辐射占入射的比例，取值 0–1；新铺沥青约 0.05，白色涂层可达 0.7 以上）<br>词源：拉丁 albus 白，同根词 albino 白化病人、album 相册（原指空白册）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Raising <b>albedo</b> cut surface heat by up to seven degrees.</div>
+          <div class="wc-tr">提高反照率让地表最多降温七度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">radiant</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈreɪdiənt/ · 美 /ˈreɪdiənt/</div>
+          <div class="wc-pos"><b>adj.</b> 辐射的（radiant heat 辐射热）；容光焕发的（a radiant smile）<br>关键术语：mean radiant temperature 平均辐射温度，指人体从四周表面接收到的辐射换热总量，与气温、风速、湿度并列，是判断热舒适的四个变量之一<br>词族：radiate 辐射、散发；radiation 辐射；radiator 散热器</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Mean <b>radiant</b> temperature at pedestrian height rose.</div>
+          <div class="wc-tr">行人高度的平均辐射温度反而升高了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">canopy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkænəpi/ · 美 /ˈkænəpi/</div>
+          <div class="wc-pos"><b>n.</b> （街道、广场上方的）<b>顶棚、遮阳篷</b>；树冠（forest canopy 林冠层）；<b>v.</b> 遮盖<br>城市气候文献里 canopy 常指两种东西：street canopy 街道遮阳设施、tree canopy 树冠覆盖率，二者都是"遮阴"的同义手段</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A <b>canopy</b> over the same pavement cut the comfort index by five to seven degrees.</div>
+          <div class="wc-tr">在同一段路面上加一层遮阳顶棚，把舒适指数降了五到七度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">verdict</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈvɜːdɪkt/ · 美 /ˈvɜːrdɪkt/</div>
+          <div class="wc-pos"><b>n.</b> （陪审团的）裁决；（经权衡后的）<b>定论、判决性意见</b>（deliver a verdict 作出裁决；the verdict on the policy 对这项政策的定论）<br>搭配：less a verdict on A than a rule about B（与其说是对 A 的判决，不如说是关于 B 的规则）——极好用的"降调"句式</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What follows is less a <b>verdict</b> on white paint than a rule about how to buy it.</div>
+          <div class="wc-tr">由此得到的，与其说是对白色涂料的判决，不如说是一条关于怎么买的规则。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">linger</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈlɪŋɡə(r)/ · 美 /ˈlɪŋɡər/</div>
+          <div class="wc-pos"><b>v.</b> 逗留、徘徊（linger in the doorway 在门口徘徊；linger over coffee 慢慢喝着咖啡不走）；<b>（记忆、气味、疑虑）久久不散</b>（The smell lingered for hours.）<br>语感：带有"舍不得走"的意味，因此形容一条街道"值得多待"时特别贴切</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A poor guide to whether the street outside is worth <b>lingering</b> in.</div>
+          <div class="wc-tr">它是判断外面那条街是否值得多站一会儿的很差的依据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">absorb</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əbˈzɔːb/ · 美 /əbˈzɔːrb/</div>
+          <div class="wc-pos"><b>v.</b> 吸收（热量、光、液体、声音）；使全神贯注（be absorbed in sth 专注于）；承受（absorb the cost 承担成本）<br>词族：absorption 吸收；absorbent 吸水的；absorbing 引人入胜的（an absorbing story）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The concrete roof <b>absorbed</b> 56.5 per cent less energy a day.</div>
+          <div class="wc-tr">混凝土屋顶一整天的吸能量少了 56.5%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reflect</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈflekt/ · 美 /rɪˈflekt/</div>
+          <div class="wc-pos"><b>v.</b> 反射（光、热、声）；反映（Prices reflect demand.）；深思（reflect on sth）<br>词族：reflection 反射、倒影、反思；reflective 反光的、反思的（reflective paint 反光涂料）<br>注意：本文的 reflective 取"反光的"这一物理义，与"善于反思的"同形不同义</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A coating that <b>reflects</b> most of it should leave the street cooler.</div>
+          <div class="wc-tr">一层能反射掉大部分阳光的涂料，理应让街道更凉。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">identical</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /aɪˈdentɪkl/ · 美 /aɪˈdentɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> 完全相同的（identical twins 同卵双胞胎；be identical to/with sth 与……一模一样）<br>易混：similar 相似的（程度弱）；the same 同样的（需与 as 搭配）；identical 强调"看不出差别"，是实验设计里最有说服力的词</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Cooler than the <b>identical</b> roof next door.</div>
+          <div class="wc-tr">比隔壁那栋一模一样的屋顶更凉。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">estate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪˈsteɪt/ · 美 /ɪˈsteɪt/</div>
+          <div class="wc-pos"><b>n.</b> （成片的）<b>住宅区、屋邨</b>（housing estate 住宅小区；an industrial estate 工业区）；地产、庄园；遗产（leave an estate 留下遗产）<br>英国英语里 a housing estate 相当于美式的 housing project / complex，多指政府兴建的成片公共住宅</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Two high-rise blocks in one <b>estate</b> were coated.</div>
+          <div class="wc-tr">同一个屋邨里的四栋高层。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">passive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈpæsɪv/ · 美 /ˈpæsɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 被动的、消极的（passive resistance 消极抵抗）；<b>（技术）无源的、不需外加动力的</b>（passive cooling 被动降温；passive solar design 被动式太阳能设计）<br>反义 active；建筑与能源语境中的 passive 是褒义，指"不耗电也能起作用"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The idea is cheap, <b>passive</b> and easy to scale.</div>
+          <div class="wc-tr">这个想法便宜、被动、容易推广。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pedestrian</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /pəˈdestriən/ · 美 /pəˈdestriən/</div>
+          <div class="wc-pos"><b>n.</b> 行人（pedestrian crossing 人行横道；a pedestrian street 步行街）；<b>adj.</b> 行人的；<b>平淡无奇的</b>（a pedestrian performance 平平无奇的表演——此义常被忽略）<br>词根 ped 脚（pedal 踏板、pedicure 足部护理）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Radiant temperature at <b>pedestrian</b> height rose.</div>
+          <div class="wc-tr">行人高度的辐射温度反而升高了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sustain</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səˈsteɪn/ · 美 /səˈsteɪn/</div>
+          <div class="wc-pos"><b>v.</b> 维持、使持续（sustain growth 维持增长）；遭受（sustain injuries 受伤）；支撑（sustain the weight）<br>词族：sustained 持续的（sustained attention）；sustainable 可持续的；sustenance 食物、养分<br>本文 sustained over an afternoon 意为"整个下午都维持住"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Two degrees of air temperature <b>held</b> through an afternoon.</div>
+          <div class="wc-tr">两度的气温差维持了整个下午。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trivial</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtrɪviəl/ · 美 /ˈtrɪviəl/</div>
+          <div class="wc-pos"><b>adj.</b> 微不足道的、不重要的（a trivial matter 小事；trivial details 琐碎细节）<br>词源：拉丁 trivium 三岔路口，本是"人人可去的公共场所"，后引申为"随处可闻的琐事"<br>反义 significant、substantial；数学中 trivial solution 指"平凡解"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>None of this is <b>trivial</b> at street level.</div>
+          <div class="wc-tr">在街道尺度上，这些都不是小事。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">instrument</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɪnstrəmənt/ · 美 /ˈɪnstrəmənt/</div>
+          <div class="wc-pos"><b>n.</b> 仪器、器械（measuring instruments 测量仪器）；乐器（musical instrument）；工具、手段（an instrument of policy 政策工具）<br>词族：instrumental 起作用的（be instrumental in 在……中起关键作用）、器乐的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Instruments</b> recorded surface temperature for weeks.</div>
+          <div class="wc-tr">仪器连续数周记录表面温度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shade</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ʃeɪd/ · 美 /ʃeɪd/</div>
+          <div class="wc-pos"><b>n.</b> 阴凉处、遮阴（in the shade 在阴凉处）；色度（a shade of blue 一种蓝）；细微差别（shades of meaning）<br><b>v.</b> 遮蔽（trees shade the road）<br>注意与 shadow 的区别：shade 指"避开阳光的地方"（褒义、舒适），shadow 指"物体投下的影子"（中性）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Reflectance belongs with <b>shade</b>.</div>
+          <div class="wc-tr">反照率要和遮阴一起考虑。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">survive the press release</span><span class="zh">在新闻稿里还能留下来（指不被夸大掉）</span></li>
+          <li><span class="en">hand sth back to</span><span class="zh">把……交还给</span></li>
+          <li><span class="en">easy to scale</span><span class="zh">容易推广、易于规模化</span></li>
+          <li><span class="en">spread faster than it has been tested</span><span class="zh">传播得比验证更快</span></li>
+          <li><span class="en">housing estate</span><span class="zh">住宅小区、屋邨</span></li>
+          <li><span class="en">leave sth untouched</span><span class="zh">使……保持原样</span></li>
+          <li><span class="en">serve as a control</span><span class="zh">作为对照</span></li>
+          <li><span class="en">at the worst hour</span><span class="zh">在最糟糕的那个小时（最热时段）</span></li>
+          <li><span class="en">at knee height</span><span class="zh">齐膝高处（约 1 米）</span></li>
+          <li><span class="en">thermal comfort</span><span class="zh">热舒适（度）</span></li>
+          <li><span class="en">do most of the work</span><span class="zh">起主要作用</span></li>
+          <li><span class="en">held through an afternoon</span><span class="zh">维持了整个下午</span></li>
+          <li><span class="en">mean radiant temperature</span><span class="zh">平均辐射温度</span></li>
+          <li><span class="en">be thrown at sb</span><span class="zh">被抛向某人</span></li>
+          <li><span class="en">arrive at the same place</span><span class="zh">殊途同归、得到同样的结论</span></li>
+          <li><span class="en">square with</span><span class="zh">与……相符</span></li>
+          <li><span class="en">measured out of the sun</span><span class="zh">在避开阳光处测得</span></li>
+          <li><span class="en">win the first measurement</span><span class="zh">赢下第一个测量</span></li>
+          <li><span class="en">less a verdict on A than a rule about B</span><span class="zh">与其说是对 A 的判决，不如说是关于 B 的规则</span></li>
+          <li><span class="en">belong with</span><span class="zh">应与……配套、归入一类</span></li>
+          <li><span class="en">an order of operations</span><span class="zh">先后次序、操作顺序</span></li>
+          <li><span class="en">cooler than what, and for whom</span><span class="zh">比什么更凉，为谁而凉</span></li>
+          <li><span class="en">a poor guide to</span><span class="zh">判断……的很差的依据</span></li>
+          <li><span class="en">a place worth lingering in</span><span class="zh">一个值得多待一会儿的地方</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>场景：新加坡屋邨，刷白的屋顶比隔壁低了二十二度——一个可以上标题的数字。</li>
+          <li>原理与隐忧：深色吸热、浅色反射，便宜、被动、易推广，因此传得比验证快。</li>
+          <li>设计：四栋高层，两栋刷屋顶墙面道路、两栋作对照；连测数周，而不是只做模型与小样箱。</li>
+          <li>结果：吸能 −56.5%，屋顶最多 −22℃，膝高气温 −2℃，热舒适指数最多 −3℃。</li>
+          <li>分解：屋顶贡献最大、道路最小；两度气温差在街道尺度上足以改变老人能否过街。</li>
+          <li>反转：另一组新加坡实测与开罗模拟都发现，白路面让地表变凉，却抬高行人辐射温度。</li>
+          <li>调和：两组数字描述的是不同的量——气温是混合值，辐射温度是局部即时值；同一产品可一赢一输。</li>
+          <li>规则：反照率须与遮阴配套（顶棚降舒适指数 5–7 度）；先遮阴、再换面、在人站着处测量。</li>
+          <li>落点：比什么更凉、为谁而凉；屋顶的二十二度是住在下面那家人的实惠，却不能证明街上值得停留。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>四、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Instruments then recorded surface temperature, air temperature and comfort for weeks — unusual, since most work on reflective paint has been done in computer models or on sample boxes, not on buildings people live in.</div>
+        <div class="row"><b>主干：</b>Instruments recorded A, B and C for weeks（三个并列宾语共用一个谓语；for weeks 表示持续时间）</div>
+        <div class="row"><b>破折号后的省略：</b>unusual 前省略了 which was，等于 which was unusual；它把“连测数周”这件事定性为“少见的选择”</div>
+        <div class="row"><b>since 引导的原因状语从句：</b>most work ... has been done in ...（现在完成时，强调“直到现在的全部研究积累”；most work 作主语时谓语用单数 has）</div>
+        <div class="row"><b>句末的省略对照：</b>in computer models or on sample boxes, not on buildings people live in（not 后省略了 has been done；buildings people live in 是省略了关系词的定语从句，等于 buildings that people live in）</div>
+        <div class="row"><b>考点：</b>并列宾语；省略 which was；since 表原因；现在完成时与主谓一致；省略关系词的定语从句；介词搭配 in models / on boxes / on buildings</div>
+        <div class="row tr"><b>译文：</b>随后仪器连续数周记录表面温度、空气温度与舒适度——这是个少见的选择，因为此前关于反射涂料的研究大多做在计算机模型或小样箱里，而不是人们真正居住的楼上。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A second Singapore experiment found that reflective paving did cool the surface and barely lowered air temperature, while radiant temperature at head height rose, because the sunlight a pale road refuses to absorb is partly thrown at the people on it.</div>
+        <div class="row"><b>主干：</b>A second Singapore experiment found that ...（宾语从句内部是主谓宾结构：reflective paving did cool ... and barely lowered ...）</div>
+        <div class="row"><b>do 用于强调：</b>did cool the surface（did 在此不表时态，而是强调“确实降了”，朗读时重读；同类：I did tell you.）</div>
+        <div class="row"><b>while 的转折义：</b>此处不是“当……时”，而是“然而、而”，把“地表降了”与“辐射温度升了”并置成一对相反趋势——学术写作中最常见的转折连词之一</div>
+        <div class="row"><b>because 从句中的定语从句：</b>the sunlight (that) a pale road refuses to absorb（省略关系代词 that，先行词 sunlight 在从句中作 absorb 的宾语）＋ is partly thrown at the people on it（主句谓语为被动语态；on it 回指 the road）</div>
+        <div class="row"><b>考点：</b>do 表强调；while 表对比；省略关系代词的定语从句；被动语态；refuse to do 的拟人用法；barely 的“几乎不”义</div>
+        <div class="row tr"><b>译文：</b>另一项新加坡实验发现：反射铺装确实让地表变凉，却几乎没有降低气温，而齐头高处的辐射温度反而升高了——因为浅色路面不肯吸收的那部分阳光，有一部分被抛向了站在上面的人。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Air temperature is well mixed and measured out of the sun, and two degrees across a canyon is a large effect; radiant temperature is local, and depends on what one body can see, including a bright wall two metres away.</div>
+        <div class="row"><b>分号两侧的对称结构：</b>前半谈 air temperature，后半谈 radiant temperature，各自“下定义＋作评价”，是学术写作里最干净的对比法</div>
+        <div class="row"><b>过去分词短语作状语：</b>measured out of the sun（= which is measured out of the sun），交代气温的测量条件——正是这一点决定了它“混合均匀”</div>
+        <div class="row"><b>主谓一致：</b>two degrees across a canyon is a large effect（主语中心词是 two degrees，把“两度”当作一个整体量，故谓语用 is 而非 are）</div>
+        <div class="row"><b>what 引导的宾语从句：</b>depends on what one body can see（介词 on 后接名词性从句；one body 强调“某一具具体的身体”，与前面“整条街谷”的尺度形成对照）</div>
+        <div class="row"><b>考点：</b>分词作状语；分号连接两个独立分句；度量名词作主语时的数一致；介词后接 what 从句；well 作副词修饰过去分词</div>
+        <div class="row tr"><b>译文：</b>气温是充分混合的量，且在避开阳光处测量，一条街谷移动两度已经是很强的效应；辐射温度则是局部的，取决于某一具身体能“看见”什么，包括两米外一面发白的墙。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What follows is less a verdict on white paint than a rule about how to buy it: reflectance belongs with shade, because in Cairo a canopy cut the comfort index by five to seven degrees.</div>
+        <div class="row"><b>主语从句：</b>What follows 意为“接下来（要说的）东西”，是英文论述文常用的过渡主语，等于 the thing that follows</div>
+        <div class="row"><b>less A than B 的降调结构：</b>less a verdict on white paint than a rule about how to buy it（与其说是对白漆的判决，不如说是关于怎么买的规则）——语义重心落在 B，A 被有意压低，这是“给结论降温”最省力的句式</div>
+        <div class="row"><b>冒号后的解释：</b>冒号引出这条规则的具体内容，即“反照率须与遮阴配套”；此处冒号相当于 that is to say</div>
+        <div class="row"><b>because 从句：</b>in Cairo a canopy cut the comfort index by five to seven degrees（in Cairo 为地点状语前置；cut ... by + 幅度是“削减了多少”的固定搭配）</div>
+        <div class="row"><b>考点：</b>what 主语从句；less A than B；冒号的解释功能；by + 幅度；cut 的“削减”义；地点状语前置</div>
+        <div class="row tr"><b>译文：</b>由此得到的，与其说是对白色涂料的判决，不如说是一条“该怎么买”的规则：反照率要和遮阴一起考虑——因为在开罗那项研究里，一层遮阳顶棚把舒适指数降了五到七度。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A roof that is twenty-two degrees cooler is a real gain for the family underneath it, and a poor guide to whether the street outside is worth lingering in.</div>
+        <div class="row"><b>主干：</b>A roof is a real gain ... and a poor guide ...（一个主语、两个并列表语，形成“是 A 却是 B”的判断结构）</div>
+        <div class="row"><b>定语从句：</b>that is twenty-two degrees cooler 修饰 roof；cooler 后省略了 than the control roof，比较对象靠上文补全</div>
+        <div class="row"><b>whether 引导的介词宾语从句：</b>a poor guide to whether ...（guide to 后接名词性从句，说明“它不能用来判断什么”）</div>
+        <div class="row"><b>worth + 动名词：</b>worth lingering in（worth 后接动名词的主动形式表被动含义；linger in a place 的介词 in 留在句末，不能省略）</div>
+        <div class="row"><b>考点：</b>并列宾语；比较结构的省略；介词后接 whether 从句；worth doing；句末介词；gain 的“收益”义</div>
+        <div class="row tr"><b>译文：</b>一个低了二十二度的屋顶，对住在它下面的那家人来说是实实在在的好处，却是判断“外面的街道是否还值得多待一会儿”的很差的依据。</div>
+      </div>
+
+      <h2>五、全文大意</h2>
+      <p class="zh-sum">这篇文章处理的是一个看起来很"物理"、实际上很"政治"的问题：把屋顶刷白，究竟谁凉快了。开头两段先把读者放进场景与原理里——新加坡一个屋邨，午后三点的屋顶白得发亮，它下面的混凝土比隔壁那栋一模一样的楼低了二十二度；而这项技术的逻辑简单得近乎不可反驳：城市之所以比周边热，是因为深色表面吸下阳光、再把热量交还空气，那么反射掉阳光，街道自然凉。作者在这里埋下了全文的伏笔：这项技术"便宜、被动、容易推广"，正是每个高温规划都想要的；也正因为如此，它传播的速度超过了被验证的速度。</p>
+      <p class="zh-sum">第三、四段交代证据。2025 年 9 月，《可持续城市与社会》刊出南洋理工大学龙永平（Yong Ping Long）团队的全尺度实验：同一个屋邨里四栋高层，两栋的屋顶、墙面与道路刷上高反射涂料，另两栋原样保留作对照，仪器连测数周。这个设计本身值得停一下——此前绝大多数关于反射涂料的研究，要么跑在计算机模型里，要么做在院子里的小样箱上，很少直接刷在有人居住的楼上，再拿隔壁作对照。结果是：混凝土屋顶一整天的吸能量减少 56.5%（白天约 2.07 千瓦时每平方米），最热那一小时表面温度最多降 22℃，膝高处（1 米）的气温最多降 2℃，按通用热气候指数（UTCI）衡量的舒适度最多改善 3℃。</p>
+      <p class="zh-sum">第五段做了一个容易被忽略的分解：三种表面贡献不同。屋顶降得最狠，道路降得最少——一半是因为繁忙的路面本来就被行人和车辆遮住，一半是因为道路释放的热量恰好就发生在行人已经在的地方。作者随即提醒这两度不是小数：一个下午都维持住的两度，足以决定一位老人敢不敢穿过那条街。这句是全文的人本尺度，也是后面所有技术争论的落点。</p>
+      <p class="zh-sum">第六段是转折，也是本篇真正的价值所在。今年报告的另一项新加坡实测发现：反射铺装确实让地表变凉，气温却只小幅下降，而行人高度的平均辐射温度反而升高了——理由是浅色路面不肯吸收的那部分短波阳光，有一部分被反射到了站在路面上的人身上。一项针对开罗商业街的模拟从另一条路走到同一处结论：反照率提高让地表最多降温七度、气温降 1.5 度，却把平均辐射温度抬高了六度，在没有遮阴的路段把 UTCI 推过 46，属于"强到极强热应激"。两处研究、两种方法，指向同一件事：反射率做的事，本质上是"把热量从地表挪到别处"，而"别处"有时就是人的身体。</p>
+      <p class="zh-sum">第七段负责调和，也是全文方法论的核心。作者指出，两组数字并不矛盾，因为它们描述的是不同的量。气温是充分混合的量，通常在避开阳光处测量，因此整条街谷移动两度已经是很强的效应；平均辐射温度则是局部的、当下的，取决于某一具具体身体"看得见"什么——包括两米外一面被晒白的墙。同一种涂料，完全可以在同一个下午赢下第一个指标、输掉第二个。读懂这一句，就读懂了城市气候报道里最常见的误读：媒体引用的那个"降了几度"，往往没说清是哪个温度。</p>
+      <p class="zh-sum">第八段把结论翻译成可执行的规则。作者给出的不是"白漆有用"或"白漆没用"的判决，而是一条采购与设计的次序：反照率必须和遮阴配套。开罗那项模型里，在同一段路面加一层遮阳顶棚，把舒适指数降了五到七度，比任何更换材料的做法都多。于是那句话可以概括为：先遮阴、再换表面，并且永远在人真正站着的地方测量。这也顺带解释了为什么"种树"在城市降温里始终压过"刷漆"——树同时提供遮阴、蒸腾与长波遮蔽，而涂料只处理了短波。</p>
+      <p class="zh-sum">第九段收束，用一个追问把技术问题推回公共问题：比什么更凉，又是为谁而凉。一个低了二十二度的屋顶，对住在它下面的家庭是真金白银的收益——空调少开、顶层不再闷热；但它同时是判断"外面那条街是否还值得多待一会儿"的很差的依据。这个收尾很值得学：它没有否定技术，也没有替技术背书，而是把"测量对象"和"受益对象"这两件事分开，让读者自己看到，一个漂亮的百分比背后，其实站着一个具体的人、一个具体的下午、一个具体的高度。</p>
+      <p class="zh-sum">从写作技术看，这篇示范了一类非常典型的外刊论证结构：先给一个漂亮的结果（22℃），再给一个漂亮的反例（辐射温度上升），然后用"它们量的不是同一个东西"把两者同时保住，最后把结论降级为一条操作规则。它既不站在"技术乐观"那边，也不站在"技术怀疑"那边，而是把争论移到"测量"这一层——这也正是高考阅读 D 篇最爱的推进方式：不是问"对不对"，而是问"在什么条件下、对谁、以什么为标准"。语言上值得留意的是动词的选择：swallow、hand back、absorb、cut、lift、push、square、address，每一个都在替作者下判断，而不只是陈述数据。</p>
+
+      <h2>六、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. White roofing paint is an ineffective technology, because reflective surfaces only move heat from the ground into the air.<br>
+        B. A Singapore field experiment found that cool coatings sharply lowered surface and air temperatures, but other studies show the same paint can raise the radiant load on pedestrians, so the benefit depends on what is measured and where.<br>
+        C. Cool coatings should be banned in tropical cities until computer models can predict their effects accurately.<br>
+        D. Urban heat can be solved most cheaply by planting trees, which outperform any change of surface material.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文的推进是"漂亮的结果（第 3–5 段）→ 相反的证据（第 6 段）→ 两者为何不矛盾（第 7 段）→ 降级为操作规则（第 8 段）→ 追问测量对象（第 9 段）"。B 同时装进了这两个节点，并保留了作者"取决于测什么、在哪里测"的判断。A 把"有代价"升级为"无效"，与第 4、8 段相反，也误读了第 6 段（热量不是从地面移到空气，而是部分反射到人身上）。C 文中从未主张禁用，第 3 段恰恰肯定实地实验的价值。D 把第 8 段的一个比较（顶棚降 5–7 度多于换材料）扩大成"种树能解决一切"，属过度推论，且"最便宜"在原文指的是次序而非树种。</div>
+      <div class="q"><b>2. Why does the author say a coating "can win the first measurement and lose the second in the same afternoon"?</b><br>
+        A. Because measurements taken in the afternoon are less reliable than those taken at night.<br>
+        B. Because air temperature and mean radiant temperature describe different things — one a well-mixed quantity measured out of the sun, the other a local radiant load on a particular body.<br>
+        C. Because the Singapore team and the Cairo team used incompatible instruments.<br>
+        D. Because reflective coatings stop working once the surface has been in sunlight for several hours.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>第 7 段明确给出理由：气温是"充分混合、避开阳光测量"的量，辐射温度是"局部、即时、取决于某一具身体能看见什么"的量，因此同一件涂料可以在一个指标上降、在另一个指标上升。B 是这段的准确复述。A 把"下午"读成时间质量问题，原文的"同一个下午"只是强调同时发生。C 属无中生有，两项研究的仪器与方法并未被比较。D 与原文相反，涂料的物理性质不会因暴晒数小时而失效。</div>
+
+      <h2>七、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 7 段说"两组数字描述的是不同的量，所以它们对得上"。请回答三个问题：（1）用你自己的话解释"气温"和"平均辐射温度"的区别，并各举一个日常经验（例如夏天站在树荫下、或靠近一面被晒热的墙）来印证。（2）如果某市政府只公布"改造后街面温度下降 7℃"，你会追问哪三个问题，才能判断市民是否真的更凉快？（3）第 8 段把结论降级为"先遮阴、再换表面"。请你就自己学校或小区的某一处空地，写出一条符合这个次序的改造建议，并说明你会把温度计放在哪里、放在多高。</div>
+      <div class="q"><b>仿写题：</b>仿照第 8 段开头 <span style="font-family:Georgia,serif;font-style:italic">"What follows is less a verdict on white paint than a rule about how to buy it."</span>（用 less A than B 把"判决"降级为"规则"，A 是被压低的对象，B 是真正要说的落点），就"手机该不该进校园"这个话题写一句你自己的判断句，要求 A 是一种非黑即白的结论，B 是一条可执行的做法。</div>
+
+      <h2>八、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 场景：刷白的屋顶，比隔壁同一栋低了 22℃</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 原理：深色吸热、浅色反射；便宜易推广，故传得比验证快</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 设计：四栋高层，两栋刷屋顶墙面道路，两栋作对照</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 结果：吸能 −56.5%，屋顶 −22℃，膝高气温 −2℃，UTCI −3℃</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 分解：屋顶贡献最大、道路最小；两度已足以决定过不过街</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">6 · 反转：白路面让地表更凉，却把辐射抛向行人（开罗：+6℃）</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">7 · 调和：两者量的是不同的量——混合气温 vs 局部辐射</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">8 · 规则：先遮阴、再换面；在人站着的地方测（顶棚 −5~7℃）</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">9 · 落点：比什么更凉、为谁而凉——测量对象 ≠ 受益对象</text>
+
+          <line x1="360" y1="82" x2="360" y2="92" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="134" x2="360" y2="144" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="186" x2="360" y2="196" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="238" x2="360" y2="248" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="290" x2="360" y2="300" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="342" x2="360" y2="352" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="394" x2="360" y2="404" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="446" x2="360" y2="456" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">蓝＝背景与研究设计　绿＝实测结果　红＝反转、方法与落点</text>
+        </svg>
+        <figcaption>全文共 9 段，按「场景 → 原理 → 设计 → 结果 → 分解 → 反转 → 调和 → 规则 → 落点」推进。骨架在第 4 段与第 6 段之间：前者给出一个可以上标题的降温幅度，后者给出同一件产品在另一个指标上的反效果。第 7 段是全篇的枢纽——它不否认任何一方，而是指出两边量的根本不是同一个量。读懂这一段的"指标意识"，就读懂了所有关于"降了几度"的城市新闻。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+</article>
+
+  <footer>
+    素材来源：Yong Ping Long, E. V. S. Kiran Kumar Donthu, Di Han, Man Di Zhou, Xiao Qin Zhang, Bing Feng Ng, Man Pun Wan《A site experiment on the effects of cool coating in a residential community under the tropical climate》，Sustainable Cities and Society 131:106754，2025-09（Nanyang Technological University 南洋理工大学；DOI 10.1016/j.scs.2025.106754）｜行人辐射温度与开罗街区模拟分别引自 ICUC12 2025 会议摘要与 Civil Engineering and Architecture 13(6) ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

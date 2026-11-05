@@ -2,6 +2,20 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-11-05",
+   "en": "A coating can win the first measurement and lose the second in the same afternoon.",
+   "zh": "同一件涂料，可以在同一个下午赢下第一个测量、输掉第二个。",
+   "src": "外刊精读 · 屋顶凉了二十二度，路上的人呢（2026-11-05）",
+   "key": "win the first measurement and lose the second",
+   "keyZh": "赢下第一个测量、输掉第二个（同一件事在两个指标上一正一反）",
+   "tip": "整句的力气全在 win 与 lose 的对举：同一个主语（a coating），两个反义动词，各自带一个 measurement，把“同样一件东西，在甲指标上得分、在乙指标上失分”压缩进一行。真正要学的是后半截 in the same afternoon——它把矛盾从“两种研究打架”改写成“同一时刻的两种读数”，矛盾感立刻具体了。写议论文时可用同一句式给结论加限定：X can win A and lose B，读者会自己明白为什么不能只报一个数字。",
+   "tags": [
+    "科技与创新",
+    "城市治理",
+    "气候适应"
+   ]
+  },
+  {
    "date": "2026-10-31",
    "en": "What it establishes is where the argument now sits: the limit on AI's water use is less engineering than who pays for a disposal that has always been someone else's problem.",
    "zh": "它真正确立的，是这场争论现在的位置：AI 用水的上限，与其说是工程问题，不如说是“谁为那笔一直被当成别人麻烦的处置费买单”的问题。",
