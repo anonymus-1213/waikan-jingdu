@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 风停了以后，那片叶子去哪儿</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Blade &amp; Circular · 人与自然 / 人与社会 / 生态与可持续 / 再生能源 / 材料循环</div>
+  <h1>风停了以后，那片叶子去哪儿</h1>
+  <div class="deck">A turbine emits almost nothing for twenty years and then leaves behind a fifty-metre object that cannot be melted, cannot be burnt cleanly and is, in most countries, simply buried — until a laboratory in Chengdu found a way to make the rubbish outperform the factory product</div>
+  <div class="byline"><span><b>来源</b> Communications Chemistry（2026-10-02）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-06</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-06.jpg" alt="堆场上成排退役风机叶片、杂草从缝隙长出的实景照片（配图）">
+    <figcaption>配图：一片正在被分段拆解的风机叶片——玻璃纤维与环氧树脂被压成一整块固体，正是这种"结实"让它无法被熔化重造（图片来源：实景照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>风力发电有一笔账，一直被算在"运行阶段"：一台机组转二十年，几乎不排二氧化碳，于是它被写进各国的减排清单，成为"干净"的代名词。但那台机器是有身体的——三片叶片，每片几十米长，用玻璃纤维和环氧树脂压成一体，重量以吨计。二十年后，它们要有个去处。</p>
+    <p>问题在于，这种材料的设计目标恰恰是"永不分解"。金属可以回炉，玻璃可以重熔，而热固性复合材料一旦固化，就成了一个交联的整体：加热到能软化它的温度，里面的纤维也就毁了；粉碎成粉末，价值只剩原来的一小部分；烧掉，烧掉的正是最贵的那部分。于是全球大多数退役叶片，最后的归宿是填埋场的一条沟。</p>
+    <p>2026 年 10 月 2 日，《通讯化学》刊出西南交通大学团队的论文：用锰催化剂在 110℃ 的温和条件下把环氧树脂"拆"下来，去除率 92.69%。真正让人停下来的是下一步——把回收纤维按 1% 掺进砂浆，抗折强度比纯砂浆高 66%；而同样长度的全新工业纤维，只做到 29%。垃圾赢过了正品。这篇文章要讲的，就是这个"赢"到底能说明什么，又不能说明什么。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-06.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.761">Outside Sioux Falls, South Dakota, three sections of a retired turbine blade lie end to end in a landfill trench, each longer than a city bus.</span> <span class="s" data-t="9.761" data-e="18.421">The turbine that turned them produced almost no carbon dioxide for twenty years, which is precisely what makes the hole in the ground so awkward.</span></span></div>
+      <p class="para-tr">在南达科他州苏福尔斯城外，一段填埋沟里并排躺着三截退役风机叶片，每一截都比一辆城市公交车还长。让它们转起来的那台机组，二十年里几乎没排出二氧化碳——而这也正是这个土坑显得如此尴尬的原因。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.421" data-e="31.632">A blade cannot be melted down like scrap steel, because it is not metal but a thermoset: thousands of glass fibres locked inside an epoxy resin cured, deliberately, into one continuous cross-linked solid.</span> <span class="s" data-t="31.632" data-e="39.972">Grinding it up yields a coarse powder worth a fraction of what went in, and burning it destroys the very fibre that gave the blade its value.</span></span></div>
+      <p class="para-tr">叶片没法像废钢那样回炉，因为它不是金属，而是一种热固性材料：成千上万根玻璃纤维被锁在环氧树脂里，而树脂是被"故意"固化成一个连续的交联整体的。把它磨碎，得到的是一堆只值原来一小部分的粗粉；把它烧掉，烧掉的恰恰是当初让叶片值钱的那些纤维。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="39.972" data-e="55.316">The volumes are now arriving on schedule: American researchers project about 2.2 million tonnes of retired blade material by 2050, and global estimates reach 43 million tonnes once the first wind farms complete a twenty-year service life.</span> <span class="s" data-t="55.316" data-e="62.605">Almost all of that material is currently buried, stockpiled, or fed into cement plants as fuel and filler.</span></span></div>
+      <p class="para-tr">这些"货量"正按计划抵达：美国研究者预计，到 2050 年仅美国就会产生约 220 万吨退役叶片材料；而一旦第一批风场跑完二十年服役期，全球估算将达到 4300 万吨。目前这些材料几乎全部被填埋、堆存，或者送进水泥厂当燃料和填料。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="62.605" data-e="81.395">A paper in Communications Chemistry on 2 October proposes a fourth route: a team at Southwest Jiaotong University treated blade waste with a manganese catalyst in dimethyl sulfoxide at 110 °C, warm enough to unpick the resin and cool enough to leave the glass intact.</span> <span class="s" data-t="81.395" data-e="89.487">The process stripped away 92.69 per cent of the epoxy, leaving fibres clean enough to be sold rather than dumped.</span></span></div>
+      <p class="para-tr">10 月 2 日《通讯化学》上的一篇论文提出了第四条路：西南交通大学的一个团队用锰催化剂、在二甲基亚砜溶剂中把叶片废料加热到 110℃——温度够高，能把树脂"拆线"；又够低，能让玻璃纤维完好无损。这一过程去掉了 92.69% 的环氧树脂，留下的纤维干净到可以卖，而不必倒掉。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="89.487" data-e="105.13">What happened next is the part worth pausing on: mixed into mortar at one per cent by weight, the recovered fibres made the cured material resist bending 66 per cent better than plain mortar, while fresh factory-made fibres managed only 29 per cent.</span> <span class="s" data-t="105.13" data-e="113.579">The recycled fibre did not merely substitute for the virgin product; at equal loading it outperformed it by more than a factor of two.</span></span></div>
+      <p class="para-tr">真正值得停一下的是接下来这一步：把这些回收纤维按重量 1% 掺进砂浆，固化后的材料抗折能力比纯砂浆高出 66%；而同样掺量的全新工业纤维，只做到 29%。回收纤维并不只是"替代"了原生材料——在同等掺量下，它的表现超过后者不止一倍。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="113.579" data-e="127.919">The explanation lies in what the recycling failed to remove: a thin skin of epoxy still clings to each fibre, and those residual chemical groups bond with the cement paste, bridging fibre and matrix in a way that clean glass cannot.</span> <span class="s" data-t="127.919" data-e="135.711">Electron micrographs in the paper show a denser interfacial zone, which is exactly where mortar usually fails first.</span></span></div>
+      <p class="para-tr">解释就在"没被去掉的东西"里：每一根回收纤维表面还留着一层薄薄的环氧，这些残留的化学基团会与水泥浆体结合，把纤维与基体"桥"在一起，而干净的玻璃做不到这一点。论文里的电子显微照片显示，界面过渡区变得更致密——而那正是砂浆通常最先失效的地方。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="135.711" data-e="148.618">None of this yet amounts to an industry: the experiments ran on grams, the solvent must be recovered and the catalyst reused, and heating dimethyl sulfoxide to 110 °C is not free.</span> <span class="s" data-t="148.618" data-e="158.592">One per cent of fibre is also a small addition to a mixture dominated by sand and cement, so a large relative gain in strength rests on a modest absolute one.</span></span></div>
+      <p class="para-tr">但这些还构不成一个产业：实验是以克为单位的，溶剂必须回收、催化剂必须重复使用，而把二甲基亚砜加热到 110℃ 也不是免费的。另外，1% 的纤维对一个由砂和水泥主导的混合物来说只是很小的添加量，所以"相对提升很大"其实建立在"绝对增量不大"之上。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="158.592" data-e="172.34">Engineers increasingly argue that the real fix belongs upstream, in resins designed to come apart on command rather than to last for ever, and several manufacturers now sell blades built from thermoplastics that can be remelted.</span> <span class="s" data-t="172.34" data-e="180.355">Landfill bans across parts of Europe push in the same direction, though the blades already standing in fields will benefit from neither.</span></span></div>
+      <p class="para-tr">越来越多的工程师主张，真正的解法在上游——把树脂设计成"听指令就散开"，而不是"永远不坏"；如今已有几家厂商在卖用可重熔的热塑性材料做的叶片。欧洲部分地区的填埋禁令也在往同一个方向推，只不过，那些已经立在田野里的叶片，这两条路都帮不上忙。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="180.355" data-e="190.658">The lesson is uncomfortable for a sector that has always counted its emissions and rarely its debris: a machine is only as clean as the least recoverable thing it leaves behind.</span> <span class="s" data-t="190.658" data-e="197.658">Recovering glass from a blade is a real advance, but the better blade is the one that never has to be dug up at all.</span></span></div>
+      <p class="para-tr">这对一个历来只统计排放、很少统计残骸的行业来说并不舒服：一台机器有多干净，取决于它留下的、最难回收的那件东西。从叶片里回收玻璃是实实在在的进步，但更好的叶片，是那种根本不必被挖出来的叶片。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plant</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /plɑːnt/ · 美 /plænt/</div>
+          <div class="wc-pos"><b>n.</b> <b>工厂、厂区</b>（a cement plant 水泥厂；a power plant 发电厂；an assembly plant 装配厂）<br>常见义：<b>n.</b> 植物（water the plants）、<b>v.</b> 种植（plant trees）、安放（plant a bomb）<br>判断口诀：前面是 cement / power / steel / chemical 这类"工业名词"，plant 就是"厂"；后面跟 in the garden 或 the plants，才是"植物"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Almost all of that material is fed into cement <b>plants</b> as fuel and filler.</div>
+          <div class="wc-tr">这些材料几乎全部被送进水泥厂，当作燃料和填料。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bridge</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /brɪdʒ/ · 美 /brɪdʒ/</div>
+          <div class="wc-pos"><b>v.</b> <b>把……连接起来、弥合（差距、分歧）</b>（bridge the gap 弥合差距；bridge two worlds 连接两个世界）<br>常见义：<b>n.</b> 桥（cross the bridge）；<b>n.</b> 舰船的舰桥；（小提琴的）琴码<br>判断口诀：后面直接跟两个"本不相通的东西"，bridge 就是动词"搭桥"；跟 across / over 才是名词"过桥"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Those residual chemical groups <b>bridge</b> fibre and matrix in a way that clean glass cannot.</div>
+          <div class="wc-tr">这些残留的化学基团把纤维与基体连接起来，干净的玻璃做不到这一点。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">count</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /kaʊnt/ · 美 /kaʊnt/</div>
+          <div class="wc-pos"><b>v.</b> <b>把……计算在内、计入（账目或评估）</b>（count the cost 计算代价；count sb among 把某人算作）<br>常见义：<b>v.</b> 数数（count to ten）、重要（Every vote counts. 每一票都重要）<br>判断口诀：宾语是"成本、排放、人口、损失"这类要被纳入统计的东西时，count 是"计入"，不是"数一数"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A sector that has always <b>counted</b> its emissions and rarely its debris.</div>
+          <div class="wc-tr">一个历来只把排放计入账、很少把残骸计入账的行业。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cure</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kjʊə(r)/ · 美 /kjʊr/</div>
+          <div class="wc-pos"><b>v.</b> （用加热、化学方法使材料）<b>固化、硫化</b>（cured resin 固化树脂；The glue cures in ten minutes. 胶水十分钟固化）<br>常见义：<b>v./n.</b> 治愈（cure a disease）；<b>n.</b> 疗法、药<br>提示：材料科学与化工语境里 cure 几乎总是"固化"，与"治好"无关</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An epoxy resin <b>cured</b>, deliberately, into one continuous cross-linked solid.</div>
+          <div class="wc-tr">环氧树脂被刻意固化成一个连续的交联固体。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trench</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /trentʃ/ · 美 /trentʃ/</div>
+          <div class="wc-pos"><b>n.</b> <b>沟、壕</b>；（海）<b>海沟</b>（the Mariana Trench 马里亚纳海沟）<br>搭配：dig a trench 挖沟；in a landfill trench 在填埋场的沟里<br>联想：trench coat（ trench 原指战壕，风衣得名于一战军官的堑壕外套）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Three sections of a retired blade lie end to end in a landfill <b>trench</b>.</div>
+          <div class="wc-tr">三截退役叶片首尾相接地躺在一条填埋沟里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scrap</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /skræp/ · 美 /skræp/</div>
+          <div class="wc-pos"><b>n.</b> <b>废料、废金属</b>（scrap steel 废钢；scrap metal 废金属）；<b>v.</b> 废弃（scrap a plan 取消计划）<br>注意：a scrap of 一点点（a scrap of evidence 一丝证据）是另一个义项<br>构词：scrap yard 废品场，scrap value 残值——本文的"值一点点钱"正对应 scrap value</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A blade cannot be melted down like <b>scrap</b> steel.</div>
+          <div class="wc-tr">叶片没法像废钢那样回炉熔化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">resin</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrezɪn/ · 美 /ˈrezn/</div>
+          <div class="wc-pos"><b>n.</b> <b>树脂</b>；合成树脂（epoxy resin 环氧树脂；resin is the glue that holds the fibres together 树脂是把纤维粘住的胶）<br>相关：thermoset 热固性（加热固化后不可再熔）；thermoplastic 热塑性（可反复加热重塑）<br>记忆：松脂即 resin，合成树脂借用了这个词</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Warm enough to unpick the <b>resin</b> and cool enough to leave the glass intact.</div>
+          <div class="wc-tr">温度够高，能把树脂拆开；又够低，能让玻璃纤维完好无损。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stockpile</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈstɒkpaɪl/ · 美 /ˈstɑːkpaɪl/</div>
+          <div class="wc-pos"><b>v.</b> <b>囤积、大量储存</b>；<b>n.</b> 库存、储备（a stockpile of weapons 武器储备）<br>构词：stock（存货）+ pile（堆）→ 堆起来存着<br>语境：文中指退役叶片找不到去处，先"堆在场边"——既不是回收，也不是处置</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Almost all of that material is buried, <b>stockpiled</b>, or fed into cement plants.</div>
+          <div class="wc-tr">这些材料几乎全部被填埋、堆存，或送进水泥厂。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">catalyst</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkætəlɪst/ · 美 /ˈkætəlɪst/</div>
+          <div class="wc-pos"><b>n.</b> <b>催化剂</b>；<b>促使变化的人或事</b>（a catalyst for reform 改革的催化剂）<br>动词：catalyse / catalyze 催化；形容词：catalytic 催化的<br>提示：催化剂本身不被消耗——这正是文中"催化剂必须重复使用"的经济学前提</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Blade waste was treated with a manganese <b>catalyst</b> in dimethyl sulfoxide.</div>
+          <div class="wc-tr">叶片废料在二甲基亚砜中用锰催化剂处理。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">strip</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /strɪp/ · 美 /strɪp/</div>
+          <div class="wc-pos"><b>v.</b> <b>剥去、去除（一层覆盖物）</b>（strip the paint 剥掉油漆；strip away 92% of the resin 去掉 92% 的树脂）<br>常见义：<b>n.</b> 条、带（a strip of land 一条地）；<b>v.</b> 脱衣<br>搭配：strip A of B 剥夺 A 的 B；strip down 拆解到最基本部件</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The process <b>stripped</b> away 92.69 per cent of the epoxy.</div>
+          <div class="wc-tr">这一过程去掉了 92.69% 的环氧树脂。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mortar</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmɔːtə(r)/ · 美 /ˈmɔːrtər/</div>
+          <div class="wc-pos"><b>n.</b> <b>砂浆、灰浆</b>（cement mortar 水泥砂浆；brick and mortar 砖与灰浆→实体店）<br>辨析：cement 水泥（粉状胶结料）→ mortar 砂浆（水泥+砂+水）→ concrete 混凝土（再加石子）<br>同形词：mortar 还有"研钵"（pestle and mortar 杵与臼）与"迫击炮"两义</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Mixed into <b>mortar</b> at one per cent by weight, the recovered fibres raised bending strength by 66 per cent.</div>
+          <div class="wc-tr">按重量 1% 掺进砂浆后，回收纤维使抗折强度提高了 66%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">virgin</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈvɜːdʒɪn/ · 美 /ˈvɜːrdʒɪn/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（材料）全新的、未经加工的、原生的</b>（virgin fibre 原生纤维；virgin forest 原始林；virgin paper 原浆纸）<br>常见义：<b>n.</b> 处女；<b>adj.</b> 处女的、纯洁的<br>提示：工业与环保文本里的 virgin 几乎都是"没用过的原料"，与 virgin material / recycled material 相对</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The recycled fibre did not merely substitute for the <b>virgin</b> product.</div>
+          <div class="wc-tr">回收纤维并不只是替代了原生材料。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">residual</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈzɪdjuəl/ · 美 /rɪˈzɪdʒuəl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>残留的、剩余的</b>（residual chemical groups 残留化学基团；residual risk 剩余风险）<br>名词：residue 残留物（pesticide residues 农药残留）；<b>v.</b> remain 留下<br>提示：residual 常修饰"本该被清除却没清干净"的东西，带一点"残留即隐患"的意味——但本文恰恰把它写成了优点</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Those <b>residual</b> chemical groups bond with the cement paste.</div>
+          <div class="wc-tr">那些残留的化学基团会与水泥浆体结合。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">matrix</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmeɪtrɪks/ · 美 /ˈmeɪtrɪks/</div>
+          <div class="wc-pos"><b>n.</b> <b>基体、基质</b>（复合材料中包住纤维的那部分）；矩阵；母体<br>搭配：fibre and matrix 纤维与基体；the matrix of a composite 复合材料的基体<br>提示：复合材料的两大组成就是 reinforcement（增强体，这里是纤维）与 matrix（基体，这里是水泥或树脂）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bridging fibre and <b>matrix</b> in a way that clean glass cannot.</div>
+          <div class="wc-tr">把纤维与基体连接起来，而干净的玻璃做不到这一点。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">interfacial</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈfeɪʃl/ · 美 /ˌɪntərˈfeɪʃl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>界面的、界面处的</b>（interfacial zone 界面过渡区；interfacial tension 界面张力）<br>词根：inter-（之间）+ face（面）→ interface 界面 → interfacial 界面的<br>语境：混凝土里纤维与浆体的交界处是最薄弱的环节，所以"界面更致密"等于"更不容易开裂"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Micrographs show a denser <b>interfacial</b> zone.</div>
+          <div class="wc-tr">显微照片显示界面过渡区更致密。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">upstream</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌʌpˈstriːm/ · 美 /ˌʌpˈstriːm/</div>
+          <div class="wc-pos"><b>adv./adj.</b> <b>在上游；在（产业链的）前端、源头</b>（upstream of the factory 在工厂上游；upstream suppliers 上游供应商）<br>反义：downstream 下游、后端（回收与处置属于 downstream）<br>提示：环保与产业文本里 upstream 常指"在设计、选材阶段就把问题解决掉"，本文即此用法</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The real fix belongs <b>upstream</b>, in resins designed to come apart on command.</div>
+          <div class="wc-tr">真正的解法在上游——把树脂设计成"听指令就散开"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">debris</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdebriː/ · 美 /dəˈbriː/</div>
+          <div class="wc-pos"><b>n.</b> <b>残骸、碎片、废弃物</b>（space debris 太空垃圾；debris from the storm 风暴留下的残骸）<br>提示：不可数名词，不能说 a debris / debries<br>辨析：debris 强调"大件、散落的残留物"，rubbish / trash 是一般垃圾，waste 偏工业与生活废料</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A sector that has always counted its emissions and rarely its <b>debris</b>.</div>
+          <div class="wc-tr">一个历来只统计排放、很少统计残骸的行业。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">awkward</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɔːkwəd/ · 美 /ˈɔːkwərd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>令人尴尬的、难以处理的</b>（an awkward fact 一个尴尬的事实；an awkward question 一个不好回答的问题）<br>常见义：笨拙的（an awkward dancer）、不方便的（an awkward time）<br>提示：修饰 fact / truth / question 时，awkward 的重点不是"笨",而是"让人不好交代"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Precisely what makes the hole in the ground so <b>awkward</b>.</div>
+          <div class="wc-tr">这正是这个土坑显得如此尴尬的原因。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">schedule</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈʃedjuːl/ · 美 /ˈskedʒuːl/</div>
+          <div class="wc-pos"><b>n.</b> 时间表、进度；<b>on schedule</b> <b>按计划、准时</b>（ahead of schedule 提前；behind schedule 落后）<br>常见搭配：a tight schedule 日程很紧；schedule a meeting 安排会议<br>提示：文中 "arriving on schedule" 是反讽——退役潮不是意外，是早就算得出来的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The volumes are now arriving on <b>schedule</b>.</div>
+          <div class="wc-tr">这些"货量"正按计划抵达。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">thermoset</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈθɜːməʊset/ · 美 /ˈθɜːrmoʊset/</div>
+          <div class="wc-pos"><b>n./adj.</b> <b>热固性（材料）</b>——加热固化后形成不可逆的交联结构，再加热不会软化，只会分解<br>对比：thermoplastic 热塑性——可反复加热软化、重塑，因而可回收<br>构词：thermo-（热）+ set（定型）→ "热一定型就定死"<br>常识：轮胎、电路板、风机叶片都是热固性材料，这正是它们难回收的根本原因</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is not metal but a <b>thermoset</b>: thousands of glass fibres locked inside an epoxy resin.</div>
+          <div class="wc-tr">它不是金属，而是一种热固性材料：成千上万根玻璃纤维被锁在环氧树脂里。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">end to end</span><span class="zh">首尾相接地、一字排开</span></li>
+          <li><span class="en">melt sth down</span><span class="zh">把……熔化（以便重铸）</span></li>
+          <li><span class="en">lock sth inside sth</span><span class="zh">把……封在……里面</span></li>
+          <li><span class="en">cross-linked solid</span><span class="zh">交联固体</span></li>
+          <li><span class="en">grind sth up</span><span class="zh">把……磨碎、粉碎</span></li>
+          <li><span class="en">a fraction of</span><span class="zh">……的一小部分</span></li>
+          <li><span class="en">arrive on schedule</span><span class="zh">按计划到来（如期而至）</span></li>
+          <li><span class="en">service life</span><span class="zh">使用寿命、服役期</span></li>
+          <li><span class="en">be fed into</span><span class="zh">被送入（某工序）作原料</span></li>
+          <li><span class="en">fuel and filler</span><span class="zh">燃料与填料</span></li>
+          <li><span class="en">a fourth route</span><span class="zh">第四条路径</span></li>
+          <li><span class="en">warm enough to …, cool enough to …</span><span class="zh">温度够高可以……，又够低可以……</span></li>
+          <li><span class="en">leave sth intact</span><span class="zh">使……保持完好</span></li>
+          <li><span class="en">strip away</span><span class="zh">剥除、去掉（一层）</span></li>
+          <li><span class="en">by weight</span><span class="zh">按重量计</span></li>
+          <li><span class="en">the part worth pausing on</span><span class="zh">值得停一下细看的部分</span></li>
+          <li><span class="en">at equal loading</span><span class="zh">在同等掺量下</span></li>
+          <li><span class="en">by a factor of two</span><span class="zh">达到两倍（"两倍之多"）</span></li>
+          <li><span class="en">cling to</span><span class="zh">附着在……上、紧贴</span></li>
+          <li><span class="en">fail first</span><span class="zh">最先失效、最先出问题</span></li>
+          <li><span class="en">amount to</span><span class="zh">相当于、构成（某种规模）</span></li>
+          <li><span class="en">rest on</span><span class="zh">建立在……之上、取决于</span></li>
+          <li><span class="en">on command</span><span class="zh">一接到指令就（立即）</span></li>
+          <li><span class="en">push in the same direction</span><span class="zh">朝同一个方向推动</span></li>
+          <li><span class="en">only as … as</span><span class="zh">只和……一样……（不会更……）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>场景：南达科他州一条填埋沟里，三截叶片首尾相接——一台"零排放"的机器留下的躯壳。</li>
+          <li>原理：热固性材料被刻意固化成不可逆的交联体，熔化、粉碎、焚烧三条路都不划算。</li>
+          <li>规模：2050 年美国 220 万吨、全球 4300 万吨；目前几乎全靠填埋、堆存与水泥窑消化。</li>
+          <li>新方法：西南交大团队用锰催化剂/二甲基亚砜，110℃ 去掉 92.69% 的环氧树脂。</li>
+          <li>反常识结果：1% 掺量的回收纤维让砂浆抗折强度 +66%，同掺量原生纤维只有 +29%。</li>
+          <li>机制：残留环氧不是杂质而是"偶联剂"，把纤维与水泥基体桥接，界面更致密。</li>
+          <li>冷水：克级实验、溶剂与催化剂要回收、110℃ 有能耗；1% 掺量意味着绝对增量有限。</li>
+          <li>上游：可解聚树脂与可重熔热塑性叶片才是根治；但已立在田野里的叶片两头都不占。</li>
+          <li>落点：一台机器有多干净，取决于它最难回收的那件遗留物；最好的叶片是永远不必被挖出来的那种。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>四、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">A blade cannot be melted down like scrap steel, because it is not metal but a thermoset: thousands of glass fibres locked inside an epoxy resin cured, deliberately, into one continuous cross-linked solid.</div>
+        <div class="row"><b>主干：</b>A blade cannot be melted down（主句，被动语态 + 情态动词否定）｜because 引导原因状语从句：it is not metal but a thermoset（not A but B 结构）｜冒号后是同位语式解释，核心是 fibres (which are) locked inside a resin (which was) cured into a solid——两个过去分词短语作后置定语，层层套接</div>
+        <div class="row"><b>难点：</b>① not … but … 的对比重点在 but 之后，"不是什么"只是铺垫；② 冒号在此不是列举，而是"用一幅画面解释前面的抽象判断"，可译为"——"；③ cured 前插入的 deliberately 是全句的态度词：这个"不可逆"不是失误，是设计目标；④ cross-linked 为复合形容词，"交联的"</div>
+        <div class="row tr"><b>译文：</b>叶片没法像废钢那样回炉熔化，因为它不是金属，而是一种热固性材料：成千上万根玻璃纤维被锁在环氧树脂里，而树脂是被刻意固化成一个连续的交联整体的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What happened next is the part worth pausing on: mixed into mortar at one per cent by weight, the recovered fibres made the cured material resist bending 66 per cent better than plain mortar, while fresh factory-made fibres managed only 29 per cent.</div>
+        <div class="row"><b>主干：</b>What happened next is the part（主语从句 + 系表结构）｜冒号后是完整的分句作解释：the fibres made the material resist bending（make + 宾语 + 不带 to 的不定式）｜while 引导对比状语从句，与前面构成 66% 对 29% 的对照</div>
+        <div class="row"><b>难点：</b>① worth pausing on 是"形容词 + 介词"后置修饰 the part，介词 on 不可省；② mixed into mortar 是过去分词作状语，逻辑主语是 the fibres（不是 the material），中文要还原成"把纤维掺进砂浆后"；③ resist bending 中 resist 后接动名词，"抗弯"；④ managed only 29 per cent 的 manage 是"勉强做到"，一个词就把差距写出来了</div>
+        <div class="row tr"><b>译文：</b>真正值得停一下的是接下来这一步：把这些回收纤维按重量 1% 掺进砂浆，固化后的材料抗折能力比纯砂浆高出 66%；而同样掺量的全新工业纤维，只做到 29%。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The explanation lies in what the recycling failed to remove: a thin skin of epoxy still clings to each fibre, and those residual chemical groups bond with the cement paste, bridging fibre and matrix in a way that clean glass cannot.</div>
+        <div class="row"><b>主干：</b>The explanation lies in …（lie in 表示"在于"）｜what 引导宾语从句，作 in 的宾语｜冒号后两个并列分句：a skin clings to each fibre / those groups bond with the paste｜句末 bridging … 为现在分词作结果状语，in a way that … 是方式状语从句</div>
+        <div class="row"><b>难点：</b>① failed to remove 是"没能去掉"，否定藏在动词里，比 did not remove 更强调"想去除而没除尽"；② clean glass cannot (bridge) 是状语从句的省略，补全为 in a way that clean glass cannot bridge fibre and matrix；③ 本句的修辞骨架是"把缺点重新命名为优点"——residual 本是贬义，这里成了性能来源</div>
+        <div class="row tr"><b>译文：</b>解释就在"没被去掉的东西"里：每一根回收纤维表面还留着一层薄薄的环氧，这些残留的化学基团会与水泥浆体结合，把纤维与基体连接起来，而干净的玻璃做不到这一点。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">One per cent of fibre is also a small addition to a mixture dominated by sand and cement, so a large relative gain in strength rests on a modest absolute one.</div>
+        <div class="row"><b>主干：</b>One per cent of fibre is a small addition（主系表）｜dominated by sand and cement 为过去分词短语后置修饰 mixture｜so 引导结果分句：a gain rests on an absolute one（one 替代 gain，避免重复）</div>
+        <div class="row"><b>难点：</b>① relative gain 与 absolute gain 是本句的关键对照：相对提升 66% 听着惊人，绝对增量却很小——这是全文最重要的"降温"动作；② rests on 的 rest 不是"休息"，而是"支撑、依托"；③ 句末的 one 是替代词，指 gain，若不识别会读成"一个谦虚的绝对数"这种无意义表述</div>
+        <div class="row tr"><b>译文：</b>另外，1% 的纤维对一个由砂和水泥主导的混合物来说只是很小的添加量，所以"相对提升很大"其实建立在"绝对增量不大"之上。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The lesson is uncomfortable for a sector that has always counted its emissions and rarely its debris: a machine is only as clean as the least recoverable thing it leaves behind.</div>
+        <div class="row"><b>主干：</b>The lesson is uncomfortable（主系表）｜for a sector that … 介词短语 + 定语从句修饰 sector｜冒号后是一句格言式判断：a machine is only as clean as the thing（as … as 同级比较）</div>
+        <div class="row"><b>难点：</b>① counted its emissions and rarely (counted) its debris 是动词的省略式并列，count 在此为"计入"，不是"数"；② only as … as 是"只和……一样……（因此不会更……）"，暗含上限，是全篇的判决句；③ the least recoverable thing 用最高级 + 否定前缀，把"最难回收的那一件"变成整台机器的清洁度标尺</div>
+        <div class="row tr"><b>译文：</b>这对一个历来只统计排放、很少统计残骸的行业来说并不舒服：一台机器有多干净，取决于它留下的、最难回收的那件东西。</div>
+      </div>
+
+      <h2>五、全文大意</h2>
+      <p class="zh-sum">这篇文章处理的是一个被"运行阶段"遮住的问题：风力发电的碳账算得很清楚，物质账却几乎没人算。开头两段先把读者放到两个具体场景里——南达科他州一条填埋沟，三截退役叶片首尾相接地躺着，每一截都比公交车长；然后是那句让整篇文章立住的反讽：让它们转起来的那台机组，二十年几乎没排过二氧化碳，"而这也正是这个土坑显得如此尴尬的原因"。作者没有一上来就批判，而是先承认风电的清洁性，再指出这份清洁是有身体的，身体的处置没人管。</p>
+      <p class="zh-sum">第二段是全篇的技术地基，也是最能考阅读理解的一段：叶片之所以难处理，不是工艺落后，而是材料的设计目标本身。它是一种热固性复合材料——玻璃纤维被环氧树脂包住，树脂被"刻意"固化成一个连续的交联整体。这个"刻意"是全文的第一个关键词：不可回收不是失误，是为了让叶片在二十年台风与疲劳载荷下不开裂而付出的代价。于是三条常规路径都不划算：熔化不行（不是金属，且一熔纤维就毁）、粉碎不行（只能得到值一点点钱的粗粉）、焚烧不行（烧掉的正是最贵的纤维）。</p>
+      <p class="zh-sum">第三段把问题量化。美国研究预计到 2050 年仅美国就会产生约 220 万吨退役叶片材料；全球估算在第一批风场跑完二十年服役期后达到 4300 万吨。作者用了一个很妙的说法——"这些货量正按计划抵达"：退役潮不是意外，是二十年前装机那一刻就已经算得出来的。而现状是：填埋、堆存，或者送进水泥厂当燃料和填料。注意 cement plants 里的 plant 是"工厂"而不是"植物"，这是本站反复提醒的熟词僻义。</p>
+      <p class="zh-sum">第四到第六段是全文的证据核心，也是结构上最漂亮的三连。第四段给出方法：西南交通大学团队用锰催化剂在二甲基亚砜中把叶片废料加热到 110℃——这个温度被作者写成一组对偶："温度够高，能把树脂拆线；又够低，能让玻璃纤维完好无损"。结果是 92.69% 的环氧被去掉，纤维干净到可以卖。第五段给出那个让人停下来的数字：1% 掺量的回收纤维让砂浆抗折强度提高 66%，而同样掺量的全新工业纤维只做到 29%——垃圾赢过了正品，而且不是小胜。第六段给出机制解释，也是全文思想的转折点：原因恰恰在于"没被去干净"。每根纤维表面残留的一层环氧，其化学基团会与水泥浆体结合，把纤维与基体"桥"在一起，而干净的玻璃做不到；显微照片显示界面过渡区更致密，而那正是砂浆通常最先失效的位置。这里的写作值得单独学：作者把"残留"这个通常带贬义的词，重新命名为"性能的来源"。</p>
+      <p class="zh-sum">第七段立刻踩刹车，这是外刊科技报道最重要的教养。三盆冷水依次泼下：实验是以克为单位的，离吨级产线还很远；溶剂必须回收、催化剂必须复用，否则成本与环境账都算不过来；110℃ 的加热不是免费的。最狠的是第四点：1% 的掺量意味着，66% 这个漂亮的相对提升，建立在一个并不大的绝对增量上——它说明"这根纤维很会抓水泥"，但不说明"砂浆因此变强了一个等级"。第五段与第七段必须一起读：前者给你希望，后者告诉你希望在哪个量级上。</p>
+      <p class="zh-sum">第八段把视线从"处理垃圾"移到"不制造垃圾"。越来越多的工程师主张真正的解法在上游：把树脂设计成"听指令就散开"，而不是"永远不坏"；已经有厂商在卖用可重熔热塑性材料做的叶片；欧洲部分地区的填埋禁令也在往同一方向推。但作者没有就此乐观，而是补了一句极冷的话：那些已经立在田野里的叶片，这两条路都帮不上——上游的改变只能救未来的叶片，救不了已经存在的 4300 万吨。</p>
+      <p class="zh-sum">第九段收束，用一个格言式的判断把技术问题推回会计问题："一台机器有多干净，取决于它留下的、最难回收的那件东西。"这句话的力量来自它的形式——only as … as 是一个设上限的比较结构，说的不是"很干净"，而是"最脏的地方有多脏，整台机器就有多脏"。紧接着是全文的落点：从叶片里回收玻璃是实实在在的进步，但更好的叶片，是那种根本不必被挖出来的叶片。</p>
+      <p class="zh-sum">从写作技术看，这篇示范了一类非常典型的外刊科学报道结构：先给一个反讽的场景（零排放的机器留下最难埋的垃圾）→ 给出材料学上的"为什么"（热固性）→ 用规模数据把问题变成公共问题（4300 万吨）→ 给出一项新研究，并用一个反常识数字制造惊叹（66% 对 29%）→ 立刻用机制解释把惊叹转成理解（残留环氧是偶联剂）→ 再用四盆冷水把理解降回量级（克级、溶剂、能耗、1%）→ 最后把解法移到上游，并以一句格言收尾。它既不站"技术乐观"，也不站"技术怀疑"，而是把争论从"能不能回收"移到"在什么量级上、由谁承担、以及一开始为什么要做成这样"——这正是高考阅读 D 篇最爱的推进方式。语言上值得留意的是动词的选择：lock、cure、grind、strip、cling、bond、bridge、count，每一个都在替作者下判断，而不只是陈述事实；尤其 count 一词，把整篇文章从材料学改写成了会计学。</p>
+
+      <h2>六、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. Wind power is not a genuinely clean technology, because the blades it uses cannot be recycled at all.<br>
+        B. A new chemical method recovers glass fibre from retired blades and the recovered fibre outperforms new fibre in mortar, but the result is still laboratory-scale, and the deeper fix lies in designing blades that need not be buried.<br>
+        C. Recycling blades is pointless as long as manufacturers continue to use thermoset resins, which by definition can never be broken down.<br>
+        D. Cement plants are the most practical destination for retired blades, since they can use them as both fuel and filler.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文推进是"反讽场景（1–3 段）→ 新方法与反常识结果（4–6 段）→ 量级上的冷水（7 段）→ 上游解法（8 段）→ 格言式落点（9 段）"。B 同时装进了"方法有效""结果反常识""仍是实验室规模""根治在上游"四个节点，与第 7、8 段完全一致。A 把"难回收"升级成"完全不能回收"，与第 4 段 92.69% 的去除率直接矛盾，也误读了第 1 段的让步语气。C 文中恰恰说明热固性材料可以被化学拆解，只是成本与规模尚未过关，"by definition" 属绝对化。D 把第 3 段描述的一种现状（送进水泥厂）读成了作者的推荐，原文对这条路径的态度是中性的，且它属于"降级使用"而非回收。</div>
+      <div class="q"><b>2. Why does the author say the recycled fibre "outperformed the virgin product"?</b><br>
+        A. Because recovered fibres are longer and stronger than newly manufactured ones.<br>
+        B. Because the epoxy residue left on the fibres bonds with the cement paste, improving the interfacial zone where mortar usually fails.<br>
+        C. Because the recycled fibres cost less, so more of them can be added to the mixture.<br>
+        D. Because factory-made fibres are of lower quality than those used in turbine blades.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>第 6 段明确给出机制：残留环氧的化学基团与水泥浆体结合，把纤维与基体桥接，界面过渡区更致密，而那里正是砂浆最先失效处。B 是这一段的准确复述。A 与原文相反，回收纤维并不更长；文中明确"同样长度的全新纤维"只做到 29%。C 属无中生有，成本在第 7 段被当作尚未解决的问题（溶剂、催化剂、能耗），且掺量固定为 1%，与价格无关。D 无依据，第 5 段说"fresh factory-made fibres"是正常的工业产品，其劣势来自表面太干净、缺乏化学桥接，不是质量差。</div>
+
+      <h2>七、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 7 段说 66% 的"相对提升"建立在"绝对增量不大"之上。请回答三个问题：（1）用你自己的话解释 relative gain 与 absolute gain 的区别，并举一个生活例子（例如某种饮料"含糖量降低 50%"）说明为什么只看百分比会被误导。（2）如果一家公司宣布"我们的回收纤维让混凝土强度提升 66%"，你会追问哪三个问题，才能判断这项技术是否值得推广？（3）作者最后说"更好的叶片是那种根本不必被挖出来的叶片"——这句话是在否定第 4 至 6 段的研究吗？请说明理由。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段用 <span class="hl">only as … as</span> 造了一句格言：<i>A machine is only as clean as the least recoverable thing it leaves behind.</i>（用"设上限"的比较结构，把整体评价压到最薄弱的一环上）。请仿照这个句式，就"一部手机是否环保""一次旅行是否低碳"或"一所学校是否公平"写一句你自己的判断句，要求：前半句给一个人们习惯用来夸奖的指标，后半句用 only as … as 把它压回最薄弱的那一环。</div>
+
+      <h2>八、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 场景：填埋沟里三截叶片，比公交车还长</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 原理：热固性＝刻意固化，熔化／粉碎／焚烧都不划算</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 规模：2050 年美国 220 万吨 / 全球 4300 万吨</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 方法：锰催化剂＋110℃，去掉 92.69% 环氧</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">5 · 反转结果：回收纤维 +66%，原生纤维只 +29%</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 机制：残留环氧＝偶联剂，界面更致密故不易开裂</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">7 · 冷水：克级实验／溶剂与能耗／1% 掺量的绝对增量</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">8 · 上游：可解聚树脂／可重熔叶片／填埋禁令</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#f7f1e3" stroke="#8a6d3b" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#6b5220">9 · 落点：only as clean as its least recoverable part</text>
+
+          <line x1="360" y1="496" x2="360" y2="512" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+
+          <text x="360" y="536" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">蓝＝场景与规模　绿＝方法与结果　红＝冷水与上游　金＝判断句</text>
+        </svg>
+        <figcaption>全文共 9 段，按「场景 → 原理 → 规模 → 方法 → 反转结果 → 机制 → 冷水 → 上游 → 落点」推进。骨架在第 5 段与第 7 段之间：前者给出一个反常识的漂亮数字（66% 对 29%），后者立刻把它按回量级（1% 掺量、克级实验）。第 6 段是全文最容易被略过、也最值得学的一段——它把"没洗干净"这个缺陷重新命名为"性能来源"，一句话同时解释了好结果和它的上限。读懂这三段的配合，就读懂了绝大多数"某新材料性能提升 N 倍"的科技新闻。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+</article>
+
+  <footer>
+    素材来源：H. T. Mekonnen, S. Qian, C. De 等《Low-temperature catalytic chemical recycling of WTB-GFRP waste for glass fiber recovery and reuse》，Communications Chemistry，2026-10-02（西南交通大学土木工程学院 / 高速铁路工程教育部重点实验室；DOI 10.1038/s42004-026-02235-9，CC BY 4.0）｜退役叶片规模数据引自 Resources, Conservation and Recycling 关于美国 2050 年 220 万吨的估算，以及 Liu & Barlow 关于全球 2050 年 4300 万吨的预测 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

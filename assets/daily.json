@@ -2,6 +2,21 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-11-06",
+   "en": "The lesson is uncomfortable for a sector that has always counted its emissions and rarely its debris: a machine is only as clean as the least recoverable thing it leaves behind.",
+   "zh": "这对一个历来只统计排放、很少统计残骸的行业来说并不舒服：一台机器有多干净，取决于它留下的、最难回收的那件东西。",
+   "src": "外刊精读 · 风停了以后，那片叶子去哪儿（2026-11-06）",
+   "key": "only as clean as",
+   "keyZh": "只和……一样干净（设上限的比较，言下之意：不会更干净）",
+   "tip": "这句的分量全在 only as … as 这个结构：它不是夸一台机器“很干净”，而是给清洁度设了一个上限——最脏的那一环有多脏，整台机器就只能有多干净。前半句的 counted 也是熟词僻义：不是“数”，而是“把……计入账”，与 rarely its debris 里的省略（rarely counted）合起来，把一篇材料学的报道一刀切成了会计学的追问。仿写时可套：A city is only as walkable as its worst crossing / A school is only as fair as its quietest student.",
+   "tags": [
+    "生态与可持续",
+    "再生能源",
+    "材料循环",
+    "环境政策"
+   ]
+  },
+  {
    "date": "2026-11-05",
    "en": "A coating can win the first measurement and lose the second in the same afternoon.",
    "zh": "同一件涂料，可以在同一个下午赢下第一个测量、输掉第二个。",
