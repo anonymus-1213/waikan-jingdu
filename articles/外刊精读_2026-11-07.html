@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 把上课时间推后一小时，多出来的二十六分钟</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Sleep &amp; School · 人与自然 / 人与自我 / 健康与身心 / 教育 / 青少年睡眠</div>
+  <h1>把上课时间推后一小时，多出来的二十六分钟</h1>
+  <div class="deck">A French boarding school moved its first bell from eight to nine for half its classes and followed them for six months — and the most instructive number in the result is not the sleep they gained but the bedtime that never moved at all</div>
+  <div class="byline"><span><b>来源</b> Scientific Reports（2026-05-15）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-07</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-07.jpg" alt="清晨课堂上，一名学生趴在桌上睡着，同学在旁边写字的实景照片（配图）">
+    <figcaption>配图：早课刚开始，前排的孩子已经趴下了，后排的同学还在写——同一间教室，两种清醒程度（图片来源：实景照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>"推迟上学时间"是过去二十年最受家长欢迎的一条教育建议，理由也很硬：青少年期生物钟天然往后漂，八点上课等于逼他们跟自己的身体作对。于是各地陆续有人把铃声往后挪，媒体上的数字一个比一个好看——多睡半小时、一小时的都有。</p>
+    <p>但宣传语里很少出现一个更朴素的问题：那一小时，最后真的睡掉了吗？2026 年 5 月《科学报告》刊出的一项法国研究，少见地用随机对照的方式回答它：一所乡村寄宿学校的四个班抽签分成两组，一组八点上课，一组秋假后改成九点，跟了六个月。结果是：睡眠确实变多了，但只多了二十六分钟；而最值得看的不是这二十六分钟，是"入睡时间根本没有动"这个事实。</p>
+    <p>这篇文章想讲的不只是睡眠。它示范了一类特别值得学的思维：当一项政策"有效"却被效果量打了折，该去哪里找原因——答案往往不在政策本身，而在政策周围那些没人写进文件的时间里。同时，它也是一个提醒：效应量再漂亮，也不能替代"到底多了多少"这个绝对问题。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-07.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.274">At six in a rural boarding school in France, lights come on in four dormitories and eighty-six children aged twelve to fourteen get up in the dark to be in class by eight.</span> <span class="s" data-t="10.274" data-e="20.695">Wrist monitors worn over two school weeks showed a bedtime of ten to ten and seven hours twenty minutes of sleep a night, some ninety minutes short of what physicians recommend.</span></span></div>
+      <p class="para-tr">在法国一所乡村寄宿学校，早上六点，四间宿舍的灯几乎同时亮起，八十六个十二到十四岁的孩子摸黑起床，为的是赶上八点的第一节课。连续两个教学周的手腕监测给出两个数字：九点五十上床，一夜睡七小时二十分钟——比医生建议的时长少了大约一个半小时。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="20.695" data-e="33.171">The cause is not laziness but puberty: the adolescent circadian clock drifts later by up to two hours, so a fourteen-year-old told to sleep at ten is asked to fall asleep in what her body reads as early evening.</span> <span class="s" data-t="33.171" data-e="41.513">Timetables, meanwhile, <b class="kw">hold</b> their start times steady for decades, and that mismatch is what researchers call social jetlag.</span></span></div>
+      <p class="para-tr">原因不是懒，是青春期：青少年的生物钟会往后漂移多达两小时，所以对一个十四岁的孩子说"十点睡"，等于要求她在身体还认为"才傍晚"的时候睡着。而课表这边，几十年来把上课时间稳稳地钉在原地；生理时间与制度时间之间的这道错位，研究者称之为"社会时差"。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="41.513" data-e="51.421">In 2023–24, teams from Lyon and the Paris School of Economics ran something rare in education: a randomised trial of the school bell.</span> <span class="s" data-t="51.421" data-e="63.314">Four classes were allocated by lottery, two to keep starting at eight and two to move to nine after the autumn holiday, with dismissal unchanged and the missing hour taken from supervised free time.</span></span></div>
+      <p class="para-tr">2023–2024 学年，里昂与巴黎经济学院的团队做了一件在教育界很罕见的事：对"上课铃声"本身做随机对照试验。四个班抽签分组，两个班继续八点上课，两个班在秋假后改为九点；放学时间不变，缺出来的那一小时从有老师看管的自由活动时间里扣。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="63.314" data-e="73.224">Six months later the control classes had lost fifteen minutes while the delayed classes had gained seven, a gap of twenty-three minutes once both trends were netted out.</span> <span class="s" data-t="73.224" data-e="84.737">In absolute terms the groups ended at seven hours four minutes and seven hours thirty, a <b class="kw">margin</b> of twenty-six minutes, and the share sleeping under seven hours fell from one half to one in eight.</span></span></div>
+      <p class="para-tr">六个月后，对照组少睡了十五分钟，推迟组多睡了七分钟；把两边各自的趋势抵掉之后，净差是二十三分钟。按绝对值看，两组分别停在七小时四分和七小时三十分，差距二十六分钟；每晚睡不足七小时的比例，从一半降到八分之一。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="84.737" data-e="92.526">An hour of later bells did not become an hour of sleep, and the reason is the best number in the paper: bedtimes did not move.</span> <span class="s" data-t="92.526" data-e="103.855">Only wake-up time shifted, and only by twelve minutes, suggesting that breakfast, the walk to the refectory and morning supervision swallowed most of the hour before it could reach the mattress.</span></span></div>
+      <p class="para-tr">一小时更晚的铃声，并没有变成一小时睡眠——原因藏在全文最有意思的那个数字里：入睡时间根本没有动。只有起床时间往后挪了，而且只挪了十二分钟。这说明早餐、走去食堂的那段路、以及寄宿学校雷打不动的晨间管理，在那一小时抵达床垫之前就把它吃掉了大半。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="103.855" data-e="118.329">The consequences followed the sleep: daytime drowsiness rose two points in the control classes and stayed flat in the delayed ones, while on a Stroop task the delayed group's interference shrank by fifty milliseconds and the control group's grew by eighteen.</span> <span class="s" data-t="118.329" data-e="124.776">Sustained attention moved the same way but missed significance, which is what small trials tend to do.</span></span></div>
+      <p class="para-tr">后果跟着睡眠走：对照组的日间嗜睡上升两分，推迟组持平；而在 Stroop 任务中，推迟组的干扰效应缩短了五十毫秒，对照组反而拉长了十八毫秒。持续注意朝同一方向移动，却没能达到显著——小样本试验的结局，多半如此。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="124.776" data-e="135.342">The gain was also unevenly spread: pupils with a late chronotype added twenty-eight minutes, while early and intermediate types added under ten, and not significantly.</span> <span class="s" data-t="135.342" data-e="144.303">A later bell is therefore less a universal tonic than a targeted repair, and it repairs exactly the pupils teachers find hardest to wake.</span></span></div>
+      <p class="para-tr">收益的分布同样不均匀，而这一点很关键：晚睡型的孩子多睡了二十八分钟，早睡型与中间型不到十分钟，且不显著。所以"推迟铃声"不是一剂普适的补药，而是一次定向修补——而它修补的，恰恰是老师最难叫醒的那批学生。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="144.303" data-e="150.053">The finding is <b class="kw">sound</b> as far as it goes, but the trial is small and its setting unusual.</span> <span class="s" data-t="150.053" data-e="159.303">Actigraphy survived in only fifty children, the school serves a fixed dinner and lights-out at half past nine, and nobody could be blinded to a bell.</span> <span class="s" data-t="159.303" data-e="166.316">Even then the delayed classes slept seven and a half hours, short of the eight to ten that specialists recommend.</span></span></div>
+      <p class="para-tr">就它所能说明的范围而言，这个结论是站得住的；但试验很小，场景也很特殊。活动记录仪只留下五十个孩子的数据，学校晚餐时间固定、九点半统一熄灯，而且"铃声"这件事无法对任何人设盲。即便改过之后，推迟组也只睡到七个半小时，离专家建议的八到十小时仍有距离。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="166.316" data-e="174.605">The lesson is not that schools should start at nine, nor that they should not, but that a timetable is one of several clocks a child lives by.</span> <span class="s" data-t="174.605" data-e="186.908">A bell can be pushed back by an hour, but what a child actually sleeps is settled later, by a homework deadline, a bus schedule, a screen and a family, and that gap is where the twenty-six minutes went.</span></span></div>
+      <p class="para-tr">这件事的教益不是"学校该九点上课"，也不是"不该"，而是：课表只是孩子生活里若干个钟之一。铃声可以往后推一小时，但一个孩子实际睡多久，是更晚的时候由一份作业截止时间、一趟班车、一块屏幕和一个家庭决定的——那二十六分钟，就丢在这道缝里。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> <b>使保持（某状态、某水平）</b>（hold prices steady 稳住价格；hold the line 守住阵线；hold start times steady 让上课时间保持不变）<br>常见义：<b>v.</b> 握住（hold a cup）、举行（hold a meeting）、容纳（The hall holds 500 people.）<br>判断口诀：hold + 宾语 + 形容词/副词（steady, steady at 8, firm）时，"保持"义几乎必然；"握住"后面不会跟形容词</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Timetables, meanwhile, <b>hold</b> their start times steady for decades.</div>
+          <div class="wc-tr">而课表这边，几十年来把上课时间稳稳地钉在原地。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">margin</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈmɑːdʒɪn/ · 美 /ˈmɑːrdʒɪn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（数量上的）差距、差额、幅度</b>（by a narrow margin 以微弱差距；a margin of 26 minutes 二十六分钟的差距；win by a margin of three votes）<br>常见义：<b>n.</b> 页边空白（write in the margin）、边缘（on the margin of society）、利润率（profit margin）<br>判断口诀：出现数字、票数、时间、"胜负"时，margin 一律是"差多少"，中文可译"差距／幅度"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In absolute terms the groups ended at seven hours four minutes and seven hours thirty, a <b>margin</b> of twenty-six minutes.</div>
+          <div class="wc-tr">按绝对值看，两组分别停在七小时四分和七小时三十分，差距二十六分钟。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sound</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /saʊnd/ · 美 /saʊnd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>可靠的、有根据的、站得住脚的</b>（a sound argument 站得住脚的论证；sound evidence 可靠的证据；of sound mind 神志健全）<br>常见义：<b>n.</b> 声音；<b>v.</b> 听起来（That sounds great.）<br>判断口诀：sound 后面跟名词（argument / evidence / method / sleep）时多为形容词"可靠的"；跟 like 或形容词时才是"听起来"。注意 a sound sleep 是"睡得沉"，不是"有声音的觉"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The finding is <b>sound</b> as far as it goes, but the trial is small and its setting unusual.</div>
+          <div class="wc-tr">就它所能说明的范围而言，这个结论是站得住的；但试验很小，场景也很特殊。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">drift</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /drɪft/ · 美 /drɪft/</div>
+          <div class="wc-pos"><b>v.</b> <b>（缓慢地）偏移、漂移</b>（the clock drifts later 生物钟往后漂；drift away from the topic 渐渐跑题）；<b>n.</b> 趋势、逐渐的变化<br>搭配：drift apart 渐渐疏远；drift into 不知不觉陷入<br>提示：drift 的速度暗示"没人推它，它自己就走了"，因此常用来写"不知不觉发生的变化"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The adolescent circadian clock <b>drifts</b> later by up to two hours.</div>
+          <div class="wc-tr">青少年的生物钟会往后漂移多达两小时。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">circadian</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /sɜːˈkeɪdiən/ · 美 /sɜːrˈkeɪdiən/</div>
+          <div class="wc-pos"><b>adj.</b> <b>昼夜节律的</b>（circadian clock 生物钟；circadian rhythm 昼夜节律）<br>构词：拉丁 circa（大约）+ dies（一天）→ "大约一天一轮"<br>联想：jet lag（时差反应）本质就是昼夜节律与外部时间脱节；本文的 social jetlag 是同一机制，只不过"外部时间"换成了课表</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The adolescent <b>circadian</b> clock drifts later by up to two hours.</div>
+          <div class="wc-tr">青少年的昼夜节律钟会往后漂移多达两小时。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">puberty</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈpjuːbəti/ · 美 /ˈpjuːbərti/</div>
+          <div class="wc-pos"><b>n.</b> <b>青春期</b>（reach puberty 进入青春期；during puberty 青春期期间）<br>辨析：puberty 指生理发育的"青春期"（激素、身体变化）；adolescence 范围更宽，含心理与社会角色转变<br>同根：pubescent（adj. 青春期的）<br>注意：本文用 puberty 而不是 laziness，本身就是作者的态度——把"起不来"归因于生理，而非品格</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The cause is not laziness but <b>puberty</b>.</div>
+          <div class="wc-tr">原因不是懒，是青春期。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">jetlag</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdʒetlæɡ/ · 美 /ˈdʒetlæɡ/</div>
+          <div class="wc-pos"><b>n.</b> <b>时差反应</b>（suffer from jetlag 倒时差）；本文 <b>social jetlag</b> 特指"社会时差"——工作日与休息日、或生理时间与作息制度之间的错位<br>构词：jet（喷气机）+ lag（滞后）<br>延伸：social jetlag 由德国睡眠研究者 Roenneberg 提出，测量方式是比较"自由日"与"工作日"的睡眠中点之差</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That mismatch is what researchers call social <b>jetlag</b>.</div>
+          <div class="wc-tr">生理时间与制度时间之间的错位，研究者称之为"社会时差"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">allocate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈæləkeɪt/ · 美 /ˈæləkeɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>分配、分派（尤指按计划或配额）</b>（allocate resources 分配资源；allocate classes to groups 把班级分到各组）<br>名词：allocation（n. 分配、拨款）<br>辨析：allocate 强调"按规则分"，assign 强调"指定任务"，distribute 强调"散发到各处"<br>被动常见：be allocated by lottery 抽签分配</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Four classes were <b>allocated</b> by lottery, two to keep starting at eight.</div>
+          <div class="wc-tr">四个班抽签分组，两个班继续八点上课。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lottery</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈlɒtəri/ · 美 /ˈlɑːtəri/</div>
+          <div class="wc-pos"><b>n.</b> <b>抽签、抓阄</b>；彩票（win the lottery 中彩票）<br>搭配：by lottery 靠抽签；a lottery draw 开奖<br>引申：a lottery 也可指"全凭运气的事"（Life is a lottery.）<br>本文语用：by lottery 是随机对照试验的关键词——抽签决定了分组与结果无关，这正是"随机"二字的日常版本</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Four classes were allocated by <b>lottery</b>.</div>
+          <div class="wc-tr">四个班靠抽签分组。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dismissal</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪsˈmɪsl/ · 美 /dɪsˈmɪsl/</div>
+          <div class="wc-pos"><b>n.</b> <b>（学校的）放学、散课</b>；解散（the dismissal bell 放学铃）<br>常见义：<b>n.</b> 解雇（unfair dismissal 不公平解雇）、驳回（the dismissal of a case）<br>动词：dismiss（v. 让……离开、解雇、不予考虑）<br>判断口诀：主语是 school / class / bell 时，dismissal 是"放学"；主语是 employer / court 时，是"解雇／驳回"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…with <b>dismissal</b> unchanged and the missing hour taken from supervised free time.</div>
+          <div class="wc-tr">放学时间不变，缺出来的那一小时从有老师看管的自由活动时间里扣。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">supervise</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsuːpəvaɪz/ · 美 /ˈsuːpərvaɪz/</div>
+          <div class="wc-pos"><b>v.</b> <b>监督、看管、指导</b>（supervise children 看管孩子；supervised free time 有老师看管的自由活动时间）<br>名词：supervision（n. 监督）；supervisor（n. 主管、导师）<br>辨析：supervise 是"在场并负责"，monitor 是"持续观察记录"，前者含责任，后者不含<br>本文：supervised 这个形容词是全段的伏笔——那一小时并非凭空消失，而是转成了"被看管的时间"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The missing hour taken from <b>supervised</b> free time.</div>
+          <div class="wc-tr">缺出来的那一小时，是从有老师看管的自由活动时间里扣出来的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">absolute</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈæbsəluːt/ · 美 /ˈæbsəluːt/</div>
+          <div class="wc-pos">短语 <b>in absolute terms</b> <b>按绝对值看、从绝对量上说</b>（与 in relative terms 相对而言 对立）<br>常见义：<b>adj.</b> 绝对的、完全的（absolute power 绝对权力；absolute nonsense 一派胡言）<br>用法提示：英文科技写作中，in absolute terms 后面几乎必然跟一个"看起来不惊人"的数字——因为前面刚给过一个漂亮的比例<br>同族：absolutely（adv. 完全地）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In <b>absolute</b> terms the groups ended at seven hours four minutes and seven hours thirty.</div>
+          <div class="wc-tr">按绝对值看，两组分别停在七小时四分和七小时三十分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">drowsiness</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdraʊzinəs/ · 美 /ˈdraʊzinəs/</div>
+          <div class="wc-pos"><b>n.</b> <b>困倦、昏昏欲睡</b>（daytime drowsiness 日间嗜睡）<br>形容词：drowsy（adj. 困倦的；a drowsy afternoon 令人昏沉的午后）<br>辨析：drowsiness 是"想睡"的状态；fatigue 是"累"；sleepiness 与 drowsiness 近义，但临床量表多用 sleepiness（如 Epworth Sleepiness Scale）<br>本文：研究者用的是 FSSA 量表，0–24 分，超过 11 分视为临床意义上的过度嗜睡</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Daytime <b>drowsiness</b> rose two points in the control classes.</div>
+          <div class="wc-tr">对照组的日间嗜睡在标准量表上上升两分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">interference</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈfɪərəns/ · 美 /ˌɪntərˈfɪrəns/</div>
+          <div class="wc-pos"><b>n.</b> <b>干扰</b>；心理学中特指"干扰效应"——无关信息拖慢反应的速度差（the Stroop interference effect 斯特鲁普干扰效应）<br>动词：interfere（v. 妨碍，interfere with sth）<br>辨析：interfere 后接 with 表"妨碍"，接 in 表"干涉（他人事务）"<br>本文：Stroop 任务让人说出字的"颜色"而不是"字义"，字义与颜色冲突时反应变慢，慢出来的毫秒数就是干扰效应；它变小，说明抑制无关信息的能力变强</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>On a Stroop task the delayed group's <b>interference</b> shrank by fifty milliseconds.</div>
+          <div class="wc-tr">在 Stroop 任务中，推迟组的干扰效应缩短了五十毫秒。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sustained</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səˈsteɪnd/ · 美 /səˈsteɪnd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>持续的、持久的</b>（sustained attention 持续注意；sustained growth 持续增长）<br>动词：sustain（v. 维持、支撑、承受）<br>辨析：sustained attention 指"长时间把注意力保持在同一件事上"，与 selective attention（选择性注意）相对<br>同族：sustainable（adj. 可持续的）——同根不同义，别混</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Sustained</b> attention moved the same way but missed significance.</div>
+          <div class="wc-tr">持续注意朝同一方向移动，却没能达到显著。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">significance</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /sɪɡˈnɪfɪkəns/ · 美 /sɪɡˈnɪfɪkəns/</div>
+          <div class="wc-pos"><b>n.</b> <b>（统计上的）显著性</b>；重要性、意义（historical significance 历史意义）<br>搭配：reach / miss significance 达到／未达到显著水平；statistical significance 统计显著性<br>提示：在科研语境里 significance 常是技术词，不等于"很重要"——"显著"只说明差异不太可能纯属偶然，不说明差异大到有用<br>动词：signify（v. 表示、意味着）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Sustained attention moved the same way but missed <b>significance</b>.</div>
+          <div class="wc-tr">持续注意朝同一方向移动，却没能达到显著水平。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chronotype</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkrɒnətaɪp/ · 美 /ˈkrɑːnətaɪp/</div>
+          <div class="wc-pos"><b>n.</b> <b>睡眠时型、昼夜偏好型</b>（a late chronotype 晚睡型；an early chronotype 早睡型）<br>构词：chrono-（时间）+ type（类型）<br>通俗说法：morning lark（百灵鸟型）与 night owl（夜猫子型）<br>本文：晚睡型并非"习惯不好"，而是生物钟位置偏后，因此推迟上课对他们的补偿最大</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Pupils with a late <b>chronotype</b> added twenty-eight minutes.</div>
+          <div class="wc-tr">晚睡型的孩子多睡了二十八分钟。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tonic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈtɒnɪk/ · 美 /ˈtɑːnɪk/</div>
+          <div class="wc-pos"><b>n.</b> <b>补药、提神之物</b>；比喻"让人振作的东西"（a tonic for the economy 经济的一剂强心针）<br>常见义：<b>n.</b> 汤力水（gin and tonic 金汤力）<br>本文语用：less a universal tonic than a targeted repair 不是普适的补药，而是一次定向修补——tonic 与 repair 的对立，正是全文对"推迟上课"的定位<br>同根：tone（n. 音调、肌肉张力）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A later bell is therefore less a universal <b>tonic</b> than a targeted repair.</div>
+          <div class="wc-tr">所以"推迟铃声"不是一剂普适的补药，而是一次定向修补。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">actigraphy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ækˈtɪɡrəfi/ · 美 /ækˈtɪɡrəfi/</div>
+          <div class="wc-pos"><b>n.</b> <b>活动记录法（用腕表式设备长时间记录体动以推断睡眠）</b>（wrist actigraphy 手腕活动记录）<br>仪器：actigraph（n. 活动记录仪）<br>原理：人睡着时体动显著减少，设备按"动/不动"的时间序列推断入睡与醒来<br>辨析：actigraphy 是客观测量但非"金标准"；金标准是多导睡眠图（polysomnography），需在睡眠实验室过夜<br>本文：actigraphy survived in only fifty children 一句里的 survive 是"数据留了下来"，写得很克制</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Actigraphy</b> survived in only fifty children.</div>
+          <div class="wc-tr">活动记录仪的数据只留在五十个孩子身上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">blind</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /blaɪnd/ · 美 /blaɪnd/</div>
+          <div class="wc-pos"><b>v.</b> <b>使（试验的参与者或研究者）不知情，设盲</b>（a blinded trial 盲法试验；nobody could be blinded to a bell 铃声这件事没法设盲）<br>常见义：<b>adj.</b> 失明的、盲的（go blind 失明）；<b>n.</b> 窗帘（pull down the blinds）<br>判断口诀：出现在 trial / study / assessment 旁边时，blind 是"设盲"，与视力无关；double-blind 双盲、single-blind 单盲<br>提示：本文属于"无法设盲"的典型——学生当然知道自己几点上课，这正是它的软肋</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Nobody could be <b>blinded</b> to a bell.</div>
+          <div class="wc-tr">而且"铃声"这件事无法对任何人设盲。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">refectory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈfektri/ · 美 /rɪˈfektri/</div>
+          <div class="wc-pos"><b>n.</b> <b>（学校、修道院等的）食堂、餐厅</b>（the school refectory 学校食堂）<br>语域：多见于英式英语与校园/宗教语境，日常口语更常说 canteen（英）或 cafeteria（美）<br>词源：拉丁 refectorium，意为"使人恢复精神的地方"<br>本文：the walk to the refectory 是那句关键解释里的一个具体细节——正是这类"具体"，让一个统计结论变成了可想象的画面</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Breakfast, the walk to the <b>refectory</b> and morning supervision swallowed most of the hour.</div>
+          <div class="wc-tr">早餐、走去食堂的那段路，以及晨间管理，把那一小时吃掉了大半。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">in the dark</span><span class="zh">在黑暗里；摸黑</span></li>
+          <li><span class="en">be short of</span><span class="zh">缺少、未达到</span></li>
+          <li><span class="en">hold sth steady</span><span class="zh">使……保持不变、稳住</span></li>
+          <li><span class="en">by as much as</span><span class="zh">多达（强调幅度大）</span></li>
+          <li><span class="en">be asked to do sth</span><span class="zh">被要求做某事</span></li>
+          <li><span class="en">register as</span><span class="zh">被感知为、被读解为</span></li>
+          <li><span class="en">social jetlag</span><span class="zh">社会时差（作息与生物钟错位）</span></li>
+          <li><span class="en">run a trial</span><span class="zh">开展一项试验</span></li>
+          <li><span class="en">be allocated by lottery</span><span class="zh">抽签分组／分配</span></li>
+          <li><span class="en">keep doing sth</span><span class="zh">一直、照旧做某事</span></li>
+          <li><span class="en">take sth out of sth</span><span class="zh">从……中扣除／抽出</span></li>
+          <li><span class="en">net out</span><span class="zh">（把两边趋势）相互抵消后算出净值</span></li>
+          <li><span class="en">in absolute terms</span><span class="zh">按绝对值看、从绝对量上说</span></li>
+          <li><span class="en">one in eight</span><span class="zh">八分之一</span></li>
+          <li><span class="en">not … at all</span><span class="zh">根本不……（全句否定）</span></li>
+          <li><span class="en">stay flat</span><span class="zh">保持不变、持平</span></li>
+          <li><span class="en">miss significance</span><span class="zh">未达到显著水平</span></li>
+          <li><span class="en">unevenly spread</span><span class="zh">分布不均</span></li>
+          <li><span class="en">as far as it goes</span><span class="zh">就其本身而言、在它能说明的范围内</span></li>
+          <li><span class="en">be blinded to sth</span><span class="zh">对……设盲（参与者不知情）</span></li>
+          <li><span class="en">push sth back</span><span class="zh">把……往后推（时间）</span></li>
+          <li><span class="en">live by a clock</span><span class="zh">按某个时钟／节奏生活</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>场景：六点起床、八点上课，一夜七小时二十分。</li>
+          <li>生理：青春期生物钟后移两小时——"十点睡"等于傍晚入睡。</li>
+          <li>设计：四个班抽签，八点对九点，放学不变，跟六个月。</li>
+          <li>结果一：净增二十三分钟；绝对值差二十六分钟；睡不足七小时者腰斩。</li>
+          <li>机制：入睡时间一分钟没动，起床只晚十二分钟——那一小时被早晨吞了。</li>
+          <li>结果二：嗜睡未上升、抑制控制改善；持续注意只有趋势。</li>
+          <li>分层：晚睡型 +28 分钟，早睡型不足 10 分钟——定向修补而非普适补药。</li>
+          <li>冷水：五十人的样本、寄宿制场景、无法设盲、仍不足八小时。</li>
+          <li>落点：课表只是若干个钟之一；二十六分钟丢在"铃声"与"生活"之间的缝里。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The cause is not laziness but puberty: the adolescent circadian clock drifts later by up to two hours, so a fourteen-year-old told to sleep at ten is asked to fall asleep in what her body reads as early evening.</div>
+        <div class="row"><b>主干：</b>The cause is not laziness but puberty（主系表，not A but B 结构）｜冒号后两个分句：the clock drifts later（主谓）／so a fourteen-year-old … is being asked to fall asleep（so 引出结果）｜what her body registers as early evening 是介词 in 的宾语从句</div>
+        <div class="row"><b>难点：</b>① not … but … 的重心在 but 之后，"不是懒"只是给后面的生物学让位；② told to sleep at ten 是过去分词短语后置修饰 a fourteen-year-old，相当于 who is told…；③ is being asked 用现在进行时的被动，暗示"每天都在被这样要求"；④ registers as 的 register 不是"登记"，而是"（身体）把它读解为"；⑤ 全句没有一个生僻词，力量全在"把道德判断（laziness）换成生理事实（puberty）"这个动作上</div>
+        <div class="row tr"><b>译文：</b>原因不是懒，是青春期：青少年期生物钟会往后漂移多达两小时，所以对一个十四岁的孩子说"十点睡"，等于要求她在身体还认为"才傍晚"的时候睡着。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Four classes were allocated by lottery, two to keep starting at eight and two to move to nine after the autumn holiday, with dismissal unchanged and the missing hour taken from supervised free time.</div>
+        <div class="row"><b>主干：</b>Four classes were allocated by lottery（主句，被动）｜two to keep …, and two to move …（两个独立主格，用不定式说明分组的"去向"）｜with dismissal unchanged and the missing hour taken out of …（with 复合结构作补充说明）</div>
+        <div class="row"><b>难点：</b>① two / two 后面省略了 classes，是英语里极常见的"数词＋不定式"的独立主格；② with + 宾语 + 过去分词（unchanged / taken out）表示"伴随状态"，中文要拆成两个小句；③ the missing hour 的 missing 是"缺出来的、少掉的那一小时"，不是"正在消失"；④ take sth out of sth 在这里是"从……里扣除"，与"拿出来"不同；⑤ 整句信息密度极高，翻译时按"主句 → 分组 → 补偿方式"的顺序重排最清楚</div>
+        <div class="row tr"><b>译文：</b>四个班抽签分组，两个班继续八点上课，两个班在秋假后改为九点；放学时间不变，缺出来的那一小时从有老师看管的自由活动时间里扣。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The consequences followed the sleep: daytime drowsiness rose two points in the control classes and stayed flat in the delayed ones, while on a Stroop task the delayed group's interference shrank by fifty milliseconds and the control group's grew by eighteen.</div>
+        <div class="row"><b>主干：</b>The consequences followed the sleep（主谓宾，五个词就交代了因果方向）｜冒号后是两个并列分句，由 while 连接并构成对照：drowsiness rose … and stayed flat …／the delayed group's effect shrank … and the control group's grew</div>
+        <div class="row"><b>难点：</b>① followed 在这里是"随之而来"，不是"跟随某人"，主语是 consequences；② the delayed ones 的 ones 回指 classes，避免重复；③ the control group's 后面省略了 interference effect，英文靠所有格省得极干净；④ 四个动词构成两组反向对偶：rose / stayed flat、shrank / grew，读时要把这两组对照读出来；⑤ while 在此是"而"，表对比，不表时间</div>
+        <div class="row tr"><b>译文：</b>后果跟着睡眠走：对照组的日间嗜睡在标准量表上上升两分，推迟组持平；而在 Stroop 任务中，推迟组的干扰效应缩短了五十毫秒，对照组反而拉长了十八毫秒。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Actigraphy survived in only fifty children, the school serves a fixed dinner and lights-out at half past nine, and nobody could be blinded to a bell.</div>
+        <div class="row"><b>主干：</b>三个并列分句，用逗号与 and 连接，没有任何从属结构——这是英文里"三连击"式的让步写法：不加连接词，让对方自己数</div>
+        <div class="row"><b>难点：</b>① survived 的用法极妙：数据"活下来"的只有五十人，一个词写出了样本流失；② serves a fixed dinner 的 serve 是"供应（饭菜）"，不是"服务"；③ switches the lights off at half past nine 用一般现在时，表示学校长期如此——制度性的、不会变的；④ be blinded to 是被动语态，blinded 是本文的熟词僻义（设盲），不是"失明"；⑤ 三句分别对应三种偏倚：样本、场景、盲法，读懂了这三样，就懂了一切"小样本试验"的通用批判框架</div>
+        <div class="row tr"><b>译文：</b>活动记录仪的数据只留在五十个孩子身上；学校晚餐时间固定、九点半统一熄灯；而且"铃声"这件事无法对任何人设盲。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A bell can be pushed back by an hour, but what a child actually sleeps is settled later, by a homework deadline, a bus schedule, a screen and a family, and that gap is where the twenty-six minutes went.</div>
+        <div class="row"><b>主干：</b>A bell can be pushed back（第一分句，被动 + 情态）｜but what a child actually sleeps is settled later（第二分句，主语从句 + 被动）｜and the gap between the two is where …（第三分句，表语从句）</div>
+        <div class="row"><b>难点：</b>① 三个分句长度递增，节奏上是"短—中—长"，最后一句把全篇收住；② settled 是"被决定"，比 decided 更强调"不由某一方单独说了算"；③ by 后面四个名词并列，没有动词——这是英文列举的高效写法，中文须补成"由……决定"；④ where the twenty-six minutes went 是表语从句，用"钱花到哪儿去了"的隐喻说时间；⑤ 注意时态：can be pushed（可能）对 is settled（事实），一个写政策空间，一个写现实约束</div>
+        <div class="row tr"><b>译文：</b>铃声可以往后推一小时，但一个孩子实际睡多久，是更晚的时候由一份作业截止时间、一趟班车、一块屏幕和一个家庭决定的——那二十六分钟，就丢在这两者之间的缝里。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章要处理的是一个"常识"与"证据"之间的落差。关于青少年睡眠，公共讨论里有一条几乎无人反对的结论：中学上课太早。理由也确实扎实——青春期生物钟往后移，早课等于让孩子在生理上的"傍晚"起床。于是"推迟上学时间"成了政策建议里的常客，媒体上的效果数字也越来越动人。但宣传语里很少追问一个更朴素的问题：如果把铃声推后一小时，那一小时最后真的变成睡眠了吗？这项来自法国的研究，就是少见地拿随机对照去回答它。</p>
+      <p class="zh-sum">文章开头没有从研究讲起，而是先给一个可以看见的场景：法国中部一所乡村寄宿学校，早上六点，四间宿舍的灯几乎同时亮，八十六个十二到十四岁的孩子摸黑起床，为的是赶上八点的第一节课。手腕上的活动记录仪跟了两个教学周，给出两个数字：晚上九点五十上床，一夜睡七小时二十分钟。作者紧接着补了一句关键的话——这比医生建议的时长少了大约一个半小时。两个数字一摆，"早课"这个问题就从"家长抱怨"变成了"可测量的缺口"。</p>
+      <p class="zh-sum">第二段给出机制，也是全篇的生理学地基。原因不是懒，是青春期：青少年期昼夜节律钟会往后漂移多达两小时，所以对一个十四岁的孩子说"十点睡"，实际是在要求她在身体还认为"才傍晚"的时候睡着。而课表这一侧，几十年来把上课时间稳稳地钉在原地。作者用的是 hold steady 这个短语——"稳"这个字很关键，它说明问题不在某位校长的保守，而在制度的惯性。生理时间与制度时间之间这道错位，研究者有个专门的名字：社会时差（social jetlag）。它借用了"时差"这个人人有体感的词，把抽象的错位翻译成了一种可感知的难受。</p>
+      <p class="zh-sum">第三段讲设计，这一段是全文可信度的来源。2023–2024 学年，里昂与巴黎经济学院的团队做了一件在教育界很罕见的事：对"上课铃声"本身做随机对照试验。四个班抽签分组——by lottery 这个词值得留意，它是随机对照的日常版本，抽签保证了分组与孩子的任何特征无关。两个班继续八点，两个班在秋假后改为九点；放学时间不变，缺出来的那一小时从有老师看管的自由活动时间里扣。最后这半句是全段最容易被略过、却最重要的信息：推迟上课并不是"凭空多出一小时"，它是从别的地方挪来的，而且是从"有人看管的自由活动"里挪的。</p>
+      <p class="zh-sum">第四段给出主结果，写法非常克制。六个月后，对照组少睡了十五分钟，推迟组多睡了七分钟；把两边各自的趋势抵掉（netted out）之后，净差是二十三分钟。然后作者立刻换成绝对值：两组分别停在七小时四分和七小时三十分，差距二十六分钟；每晚睡不足七小时的比例，从一半降到大约八分之一。这里有一个值得单独学的技巧——先给"净效应"（统计上干净），再给"绝对量"（读者能感知），两个数字都不是废话：前者回答了"是不是真的有效"，后者回答了"到底多了多少"。</p>
+      <p class="zh-sum">第五段是全文最精彩的一段，也是所有"效果打折"现象的解释模板。一小时更晚的铃声，并没有变成一小时睡眠；原因藏在全文最有意思的那个数字里——入睡时间根本没有动。只有起床时间往后挪了，而且只挪了十二分钟。作者给出的解释具体到不能再具体：早餐、走去食堂的那段路、寄宿学校雷打不动的晨间管理，在那一小时抵达床垫之前就把它吃掉了大半。这个解释的力量来自它的"可想象性"：读者立刻能想到自己学校的早晨——早读、值日、食堂排队、班车。政策的杠杆落在铃声上，但时间是被一整套晨间流程分配的，流程不动，杠杆就只顶到流程为止。</p>
+      <p class="zh-sum">第六、七段给出后果与分层。后果跟着睡眠走：对照组的日间嗜睡在标准量表上上升两分，推迟组持平；Stroop 任务里，推迟组的干扰效应缩短五十毫秒，对照组反而拉长十八毫秒——抑制控制是"压住无关信息"的能力，恰好是对睡眠最敏感的那一类。持续注意朝同一方向移动，但没到显著水平，作者没有掩饰这一点，而是直接说：这么小的试验无法把每个结局都干净地分开。第七段的分层更有政策含义：晚睡型的孩子多睡二十八分钟，早睡型与中间型不到十分钟且不显著。于是"推迟铃声"的定位被改写了——它不是普适的补药（tonic），而是一次定向修补（repair），而它修补的恰恰是老师早上九点最难叫醒的那批学生。</p>
+      <p class="zh-sum">第八段是全篇的自我审查，也是外刊科技报道最见教养的地方。作者先给一句"就它所能说明的范围而言，这个结论是站得住的"（sound as far as it goes），然后连开三枪：活动记录仪只留下五十个孩子的数据；学校晚餐固定、九点半统一熄灯，这种寄宿制的高度结构化环境在走读学校根本不存在；而"铃声"这件事无法对任何人设盲——学生当然知道自己几点上课，期待效应无从排除。第四枪最重：即便改过之后，推迟组也只睡到七个半小时，离专家建议的八到十小时仍有距离。换句话说，这个干预"有效"，但没有"解决问题"。</p>
+      <p class="zh-sum">第九段收束，把技术结论提炼成一句可迁移的判断：这件事的教益不是"学校该九点上课"，也不是"不该"，而是课表只是孩子生活里若干个钟之一。铃声可以往后推一小时，但一个孩子实际睡多久，是更晚的时候由一份作业截止时间、一趟班车、一块屏幕和一个家庭决定的——那二十六分钟，就丢在这两者之间的缝里。</p>
+      <p class="zh-sum">从写作技术看，这篇文章示范了一类很值得学的科学报道结构：场景（六点的宿舍）→ 机制（生物钟后移）→ 设计（抽签、六个月、放学不变）→ 主结果（净增二十三分钟／绝对差二十六分钟）→ 机制解释（入睡没动、起床只晚十二分钟）→ 次级结果（嗜睡、抑制控制）→ 分层（晚睡型受益最大）→ 自我审查（样本、场景、盲法、仍不足八小时）→ 落点（课表只是若干个钟之一）。它既没有站"推迟上课派"，也没有站"反对派"，而是把争论从"该不该推迟"挪到"推迟出来的时间去了哪里"。这正是高考阅读 D 篇最爱的推进方式：先给一个大家都能同意的目标，再用证据指出实现路径上的损耗，最后问一句"损耗发生在哪一环"。</p>
+      <p class="zh-sum">语言上有三处特别值得记。第一处是数字的两种说法：净效应（netted out）与绝对量（in absolute terms）。英文科普写作里，in absolute terms 后面几乎必然跟一个"看起来不惊人"的数字，因为前面刚给过一个漂亮的比例——认出这个信号，就能在阅读时自动补上"别被百分比骗了"的警觉。第二处是动词的选择：hold（稳住）、drift（漂移）、swallow（吞掉）、settle（被决定）、repair（修补）——每一个都不是中性描述，而是在替作者下判断；尤其 swallow，把制度写成了一个有胃口的东西。第三处是那个只有五个词的句子：The consequences followed the sleep. 主语是 consequences，宾语是 sleep，一个 follow 就把因果方向钉死了，不需要 any because。</p>
+      <p class="zh-sum">如果要把这篇文章的方法论带走，可以记住三句话。其一，效应量（effect size）回答的是"信号比噪声大多少"，绝对增量回答的是"到底多了多少"，两者可以同时为真：这项研究的效应量 d=0.93 属于"大"，但绝对收益只有二十六分钟。其二，任何"某项政策有效"的结论，都值得追问一句"它从哪里挪来的"——推迟上课的那一小时来自自由活动，减少作业的那一小时可能来自睡眠，账总是平的，只是记账的人不同。其三，也是最重要的一句：当一项干预只兑现了承诺的一小部分时，最好的解释往往不在干预本身，而在干预周围那些没人写进文件的时间里。对正在准备高考的读者来说，这句话可以直接搬到自己身上：把睡觉时间提前半小时的决定，最后能不能兑现，同样取决于那半小时周围的课表、通勤与手机。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. Delaying the school bell is ineffective, because teenagers will simply stay up later to compensate.<br>
+        B. A randomised trial found that a one-hour later start produced a real but modest gain in sleep, largely because bedtimes did not change and morning routines absorbed most of the extra hour; the effect was concentrated among late chronotypes and remains limited by the study's small scale.<br>
+        C. Later school start times should be adopted everywhere, since the trial showed large improvements in sleep, alertness and inhibitory control.<br>
+        D. Sleep researchers have exaggerated the importance of school start times, because academic achievement was not measured at all.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文推进是"场景（1 段）→ 机制（2 段）→ 设计（3 段）→ 主结果（4 段）→ 为什么只有二十六分钟（5 段）→ 次级结果与分层（6、7 段）→ 自我审查（8 段）→ 落点（9 段）"。B 同时装进了"有效但幅度有限""入睡未变、晨间流程吞掉大部分""晚睡型受益最大""样本有限"四个节点，与第 5、7、8 段完全一致。A 与第 5 段相反：原文明确说 bedtimes did not move at all，即孩子并没有"用晚睡抵消"。C 是典型的过度推广，第 8 段四处限定（五十人、寄宿制、无法设盲、仍不足八小时）直接否掉"large improvements"与"everywhere"。D 把"未测学业成绩"读成"研究者夸大了重要性"，属偷换论证对象：作者批评的是媒体标题，不是研究本身，且第 8 段明确说结论 sound as far as it goes。</div>
+      <div class="q"><b>2. According to the passage, why did an hour's delay in the start of school produce only about twenty-six minutes of extra sleep?</b><br>
+        A. Because the pupils went to bed about an hour later than before.<br>
+        B. Because the extra hour was taken out of supervised free time and replaced by homework.<br>
+        C. Because sleep onset times did not shift at all, wake-up times moved later by only about twelve minutes, and morning routines such as breakfast and supervision used up most of the remaining time.<br>
+        D. Because actigraphy is an unreliable instrument that systematically underestimates sleep duration.
+        <br><br><b>答案：C</b><br>
+        <b>解析：</b>第 5 段给出完整机制链：入睡时间根本没有动（bedtimes did not move at all）→ 起床只推迟十二分钟 → 早餐、走去食堂的路、晨间管理在那一小时"抵达床垫"之前就消耗掉大半。C 是这一段的准确复述。A 与原文相反，正是"没有晚睡"才使净收益小于一小时。B 混淆了两件事：从自由活动里扣掉的那一小时是学校的时间安排，不是学生睡眠被作业替代，且原文第 3 段明确说 dismissal unchanged，与"作业"无关。D 属无中生有：文中把 actigraphy 当作客观测量的长处，其局限被归为样本流失（只剩五十人），而非系统性低估时长。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 4 段先给"净增二十三分钟"，再给"绝对值差二十六分钟"，第 5 段又解释为什么一小时只兑现了二十六分钟。请回答三个问题：（1）用你自己的话说明"效应量大"（d=0.93）与"绝对增量小"（二十六分钟）为什么可以同时成立，并举一个生活中的例子（例如某种方法"让成绩提升了 30%"）说明只看前者会被怎样误导。（2）如果有人主张"既然只多睡二十六分钟，那推迟上课就没意义"，你会用文中的哪些证据反驳他？请至少给出两条。（3）作者最后说"课表只是孩子生活里若干个钟之一"。请结合你自己的作息，写出三个"课表之外的钟"，并说明其中哪一个最难改、为什么。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段用 <span class="hl">X can be …, but what actually happens is settled later, by A, B, C and D</span> 这个句式，把"政策能改的"与"真正决定结果的"分开：<i>A bell can be pushed back by an hour, but what a child actually sleeps is settled later, by a homework deadline, a bus schedule, a screen and a family.</i>（前半句承认杠杆存在，后半句用四个具体名词把杠杆的长度量出来）。请仿照这个句式，就"减少作业能否让孩子早点睡""禁止手机能否让学生更专注"或"增设体育课能否让学生更健康"写一句你自己的判断句，要求：前半句承认这项措施确实改变了某个可见的东西，后半句用三个以上的具体名词说明真正的结果由什么决定，并保留 settled later 这个"时间错位"的暗示。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 590" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 场景：六点亮灯，八点上课，一夜七小时二十分</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 机制：生物钟后移两小时 vs 课表几十年不动＝社会时差</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 设计：四班抽签，八点对九点；放学不变，从自由活动里扣</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 主结果：净增 23 分钟；绝对差 26 分钟；睡不足七小时者腰斩</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">5 · 关键：入睡没动、起床只晚 12 分钟——一小时被早晨吞了</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 次级结果：嗜睡持平、抑制控制改善；持续注意仅趋势</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 分层：晚睡型 +28 分钟，早睡型不足 10 分钟＝定向修补</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">8 · 冷水：五十人样本／寄宿制场景／无法设盲／仍不足八小时</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#f7f1e3" stroke="#8a6d3b" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#6b5220">9 · 落点：课表只是若干个钟之一；26 分钟丢在铃声与生活之间</text>
+
+          <line x1="360" y1="500" x2="360" y2="518" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr2)"/>
+
+          <text x="360" y="542" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">蓝＝场景·机制·设计　绿＝结果与分层　红＝自我审查　金＝判断句</text>
+          <text x="360" y="562" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">骨架在 4–5 段之间：先给"有效"，再解释"为什么只兑现了一小部分"</text>
+        </svg>
+        <figcaption>全文共 9 段，按「场景 → 机制 → 设计 → 主结果 → 为什么打折 → 次级结果 → 分层 → 自我审查 → 落点」推进。骨架在第 4 段与第 5 段之间：第 4 段证明"推迟上课真的有用"，第 5 段立刻解释"为什么一小时只兑现了二十六分钟"——而后者才是这篇文章真正的贡献。第 3 段那句"从有老师看管的自由活动时间里扣"是全文最容易被略过的伏笔：它提前告诉读者，那一小时不是凭空产生的，是挪来的。读懂这一层，就能理解第 9 段为什么会说"课表只是若干个钟之一"。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+</article>
+
+  <footer>
+    素材来源：E. Reynaud, L. Malevergne, A. Grellet, A. Pawlik, M. Gurgand, A. E. Rey, S. Mazza《A one-hour delayed school start improves sleep, sleepiness and inhibitory control in early adolescents in a randomized controlled trial》，Scientific Reports 16:22215（2026-05-15，线上先发），法国里昂神经科学研究中心（CNRS / INSERM CRNL, Université Claude Bernard Lyon 1）、巴黎经济学院与 SciencesPo；通讯作者 Stéphanie Mazza；DOI 10.1038/s41598-026-50892-6，CC BY 4.0｜ 8–10 小时睡眠建议引自美国睡眠医学会（AASM）青少年睡眠共识 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

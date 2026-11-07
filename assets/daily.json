@@ -2,6 +2,20 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-11-07",
+   "en": "A bell can be pushed back by an hour, but what a child actually sleeps is settled later, by a homework deadline, a bus schedule, a screen and a family.",
+   "zh": "铃声可以往后推一小时，但一个孩子实际睡多久，是更晚的时候由一份作业截止时间、一趟班车、一块屏幕和一个家庭决定的。",
+   "src": "外刊精读 · 把上课时间推后一小时，多出来的二十六分钟（2026-11-07）",
+   "key": "settled later",
+   "keyZh": "（结果）是在更晚的时候被决定的；settle 在此不是“安顿下来”，而是“尘埃落定、被定下来”",
+   "tip": "这句的力气全在 but 之后的语序：先说“铃声可以推后”（承认杠杆存在），再说“实际睡多久是被……决定的”，四个名词依次排开，把杠杆的长度量了出来。settled 是熟词僻义——不是“定居／安顿”，而是“（结果）被最终确定”，比 decided 多一层“不由某一方单独说了算”的意思。仿写可套：A rule can be written in a week, but what a classroom actually feels like is settled later, by a deadline, a corridor, a lunch queue and a tired teacher.",
+   "tags": [
+    "健康与身心",
+    "教育",
+    "青少年睡眠"
+   ]
+  },
+  {
    "date": "2026-11-06",
    "en": "The lesson is uncomfortable for a sector that has always counted its emissions and rarely its debris: a machine is only as clean as the least recoverable thing it leaves behind.",
    "zh": "这对一个历来只统计排放、很少统计残骸的行业来说并不舒服：一台机器有多干净，取决于它留下的、最难回收的那件东西。",
