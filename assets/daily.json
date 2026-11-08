@@ -2,6 +2,20 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-11-08",
+   "en": "Once a week measured the same as four days a week, which dismantles the folk version of the finding, where the brain is a muscle and a grandchild is the gym.",
+   "zh": "一周一次，和一周四天，测出来是一样的——这就把这条发现的民间版本拆掉了。那个版本里，大脑是一块肌肉，孙辈就是健身房。",
+   "src": "外刊精读 · 带孙辈的老人更聪明，可箭头也许是反的（2026-11-08）",
+   "key": "dismantles",
+   "keyZh": "拆掉、拆解（不是“驳倒”，而是把结构拆散——零件还在，但组合散了）",
+   "tip": "这句话的力量分两层。第一层是 which 引导的非限制性定语从句：它不修饰某个名词，而是回指前面整个“一周等于四天”的事实，等于用一个从句给整句定性。第二层是 dismantle 这个动词的选择——作者本可以写 refute（驳倒）或 disprove（证伪），但他选了“拆”：民间版本并没有被证明是假的，它只是被拆成了零件，而零件（大脑会变、孙辈有用）本身还在。最后那个比喻 the brain is a muscle and a grandchild is the gym，用 where 从句轻轻一摆，就把“剂量越大越好”的直觉说完了，也顺手判了它死刑——因为健身房的理论前提是练得越多越强，而这篇文章恰恰发现频率无关。",
+   "tags": [
+    "代际关系",
+    "认知老化",
+    "家庭"
+   ]
+  },
+  {
    "date": "2026-11-07",
    "en": "A bell can be pushed back by an hour, but what a child actually sleeps is settled later, by a homework deadline, a bus schedule, a screen and a family.",
    "zh": "铃声可以往后推一小时，但一个孩子实际睡多久，是更晚的时候由一份作业截止时间、一趟班车、一块屏幕和一个家庭决定的。",

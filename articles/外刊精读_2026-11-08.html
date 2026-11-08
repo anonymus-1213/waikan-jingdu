@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 带孙辈的老人更聪明，可箭头也许是反的</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Generations &amp; Mind · 人与社会 / 人与自我 / 代际关系 / 认知老化 / 家庭</div>
+  <h1>带孙辈的老人更聪明，可箭头也许是反的</h1>
+  <div class="deck">A study of English grandparents finds higher memory and verbal fluency among those who help with the grandchildren — and then reports, in the same table, that the sharper ones were the ones who chose the homework</div>
+  <div class="byline"><span><b>来源</b> Psychology and Aging（2026-01-26）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-08</span><span><b>难度</b> 难</span><span><b>词数</b> 约 535 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-08.jpg" alt="一位祖母和孙女在厨房里一起做饼干的实景照片（配图）">
+    <figcaption>配图：厨房里，祖母和孙女一起做饼干，一个在说、一个在动手——"给他们做饭"正是这项研究列出的照护活动之一（图片来源：Pexels，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>"带孙子能防老糊涂"，这句话在家庭群里流传的速度，比任何一篇论文都快。它听上去也很合理：追着孩子跑、回答无数个"为什么"、辅导作业到血压升高——这些事看上去都在锻炼大脑。于是每年都有媒体把某一项研究写成"科学证明"，配上一个笑眯眯的爷爷奶奶抱孩子的封面图。</p>
+    <p>2026 年 1 月《心理学与衰老》刊出的一项英国研究，确实给出了支持这个说法的证据：带孙辈的祖父母在词语流畅性与情景记忆上得分更高，祖母的衰退速度也更慢。但它同时在同一张表里承认了两件事：一是<b>带的频率完全不影响结果</b>，一周一次和一周四天测出来一样；二是<b>本来脑子更好的人，才是那些去做"高质量陪伴"的人</b>——也就是说，因果箭头有可能是反的。</p>
+    <p>这篇文章想讲的不只是养老。它是一次极好的"读论文"训练：当一句结论被反复转述之后，你要回到抽象（abstract）和表格里，看作者自己承认了什么。因为高考阅读 D 篇最爱考的那类判断——"这项研究能证明什么、不能证明什么"——答案往往就藏在作者用 raise questions 这种客气话让开的地方。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-08.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.353">There is a paper in this month's <i>Psychology and Aging</i> that has already been summarised, in several languages, as proof that looking after your grandchildren keeps your brain young.</span> <span class="s" data-t="10.353" data-e="19.053">The paper does report something real, but it also reports, in the same table, a detail that most of those summaries quietly left out.</span></span></div>
+      <p class="para-tr">本月《心理学与衰老》上有一篇论文，已经被若干种语言概括成同一句话：照看孙辈能让你的大脑保持年轻。这篇论文确实报告了某种真实的东西，但它也在同一张表里报告了一个细节——而这个细节，大多数转述都悄悄省掉了。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.053" data-e="31.487">The authors, led by Flavia Chereches at Tilburg University, worked through three waves of the English Longitudinal Study of Ageing, a panel that has followed the same older adults since 2002.</span> <span class="s" data-t="31.487" data-e="45.632">Rather than simply comparing helpers with non-helpers, they matched each caregiving grandparent to a non-caregiving peer of similar age, health, education and wealth, and then modelled how memory and verbal fluency moved across the waves.</span></span></div>
+      <p class="para-tr">论文由蒂尔堡大学的 Flavia Chereches 领衔，数据取自"英国老龄化纵向研究"的三轮调查——这是一个自 2002 年起持续追踪同一批老年人的固定样本库。他们没有简单地拿"带孙辈的"和"不带孙辈的"相比，而是给每一位带孙辈的祖父母，配了一位年龄、健康、教育、财富都相近、但不带孙辈的同辈人，然后再建模看记忆与词语流畅性这几轮里怎么变化。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="45.632" data-e="55.961">On that comparison the caregiving group came out ahead, with higher scores for verbal fluency, the speed at which a word arrives when you reach for it, and for episodic memory.</span> <span class="s" data-t="55.961" data-e="64.947">The gap survived the matching, which is why the result deserves to be taken seriously rather than dismissed as the usual advantage of the already healthy.</span></span></div>
+      <p class="para-tr">在这个对比里，带孙辈的一组领先：他们的词语流畅性更高——也就是想用一个词时，那个词来得有多快——情景记忆的得分也更高。这道差距在配对之后依然存在，所以这个结果值得认真对待，不能一句"不过是身体好的人更能带"就打发了。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="64.947" data-e="75.947">Then comes the part the headlines compressed into a single word: only grandmothers showed a slower rate of decline over the years, while grandfathers held a higher level without a flatter slope.</span> <span class="s" data-t="75.947" data-e="87.616">The explanation the authors offer is unglamorous — grandmothers tend to do the hands-on work of meals, schedules and homework, and may also be the ones who chose the job rather than inherited it.</span></span></div>
+      <p class="para-tr">接下来是媒体标题压缩成一个词的那部分：这些年里，只有祖母的衰退速度更慢；祖父的起点更高，但下降的坡度并没有变平。作者给出的解释一点也不光鲜——祖母往往承担做饭、排日程、辅导作业这类亲力亲为的活；而且她们更可能是"自己选的"这份差事，而不是被安排上的。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="87.616" data-e="95.947">The most useful number in the paper is a null one: among grandparents who did provide care, how often they did it predicted nothing at all.</span> <span class="s" data-t="95.947" data-e="104.934">Once a week measured the same as four days a week, which dismantles the folk version of the finding, where the brain is a muscle and a grandchild is the gym.</span></span></div>
+      <p class="para-tr">全文最有用的数字，是一个"零结果"：在确实带孙辈的那些祖父母当中，带的频率对认知毫无预测力。一周一次，和一周四天，测出来是一样的——这就把这条发现的民间版本拆掉了。那个版本里，大脑是一块肌肉，孙辈就是健身房。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="104.934" data-e="110.289">What did track cognition was the content of the visits, and here the arrow bends.</span> <span class="s" data-t="110.289" data-e="125.643">The grandparents who already scored higher were also the ones who spent leisure time with a grandchild, helped with homework and <b class="kw" data-tip="v. 轮换、轮流做（rotate through 轮换着做）">rotated</b> through a wider variety of activities, a pattern the authors describe as <b class="kw" data-tip="v. 提出（问题、疑问）；不是“举起”">raising</b> questions about direction rather than as evidence of benefit.</span></span></div>
+      <p class="para-tr">真正与认知相关的是"相处的内容"，而箭头正是在这里拐了个弯。那些本来得分就更高的祖父母，恰恰也是陪孙辈玩、辅导作业、把活动轮换着来、种类更丰富的那批人。作者把这种模式说成"提出了关于方向的问题"，而不是"证明了益处"。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="125.643" data-e="139.5">None of this makes the mechanism absurd: explaining long division to a nine-year-old forces you to break a habit down into steps, to hold two versions of an idea at once and to notice, in real time, that the explanation has failed.</span> <span class="s" data-t="139.5" data-e="148.737">That is real cognitive work, and it is exactly the kind of work an <b class="kw" data-tip="adj. 观察性的（只观察、不干预）">observational</b> cohort cannot separate from the sort of person who volunteers to do it.</span></span></div>
+      <p class="para-tr">这一切并不能说明机制荒谬：给一个九岁孩子讲长除法，会逼着你把一个习惯拆成步骤，同时在脑子里握住同一个想法的两个版本，还要实时察觉"这次没讲通"。这是货真价实的认知劳动——而恰恰是这种劳动，观察性队列没法把它跟"愿意去做这件事的那种人"分开。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="148.737" data-e="163.211">The paper is honest about its borders: caregiving was self-reported, the sample is British and aged fifty and over, matching can only adjust for what was measured, and a grandparent who is already unwell is unlikely to be <b class="kw" data-tip="v. 照看、看管（孩子、店）；不是“介意”">minding</b> anybody at all.</span> <span class="s" data-t="163.211" data-e="169.618">That last point matters, because it reproduces the reversed arrow at the level of the whole design.</span></span></div>
+      <p class="para-tr">论文对自己的边界很坦诚：照护是自己报告的；样本是英国人，且都是五十岁及以上；配对只能校正"测得到的"那些差异；而一个身体已经不好的祖父母，本来就不太可能去照看任何人。最后这一条最要紧，因为它在整个研究设计的层面上，把那个反向的箭头又重现了一遍。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="169.618" data-e="179.235">So the sentence worth carrying away is not that grandchildren sharpen grandparents, but that the sharpening, where it happens, happens inside the explaining.</span> <span class="s" data-t="179.235" data-e="188.382">Anyone who has talked a younger cousin through a maths problem, and felt the topic rearrange itself in the attempt, has already <b class="kw" data-tip="v. 进行、实施（实验）；不是“跑”">run</b> the experiment on themselves.</span></span></div>
+      <p class="para-tr">所以真正值得带走的那句话，不是"孙辈让祖父母变敏锐"，而是：那种敏锐，如果真会发生，是发生在"讲"的过程里的。任何一个人，只要给比自己小的表弟表妹讲过一道数学题，并且在讲的过程中感到那个知识点自己重新排了一遍——他就已经在自己身上做过这个实验了。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mind</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /maɪnd/ · 美 /maɪnd/</div>
+          <div class="wc-pos"><b>v.</b> <b>照看、看管（孩子、店铺等）</b>（mind the children 看孩子；mind the shop 看店；mind the baby while I cook 我做饭时你看着孩子）<br>常见义：<b>n.</b> 头脑、心思（change one's mind 改主意）；<b>v.</b> 介意（Do you mind if …?）、当心（Mind the step.）<br>判断口诀：mind 后面直接跟"人"或"店、车、摊"这类需要看守的对象时，几乎都是"照看"；跟从句或动名词时才是"介意"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A grandparent who is already unwell is unlikely to be <b>minding</b> anybody at all.</div>
+          <div class="wc-tr">一个身体已经不好的祖父母，本来就不太可能去照看任何人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">run</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rʌn/ · 美 /rʌn/</div>
+          <div class="wc-pos"><b>v.</b> <b>进行、实施（试验、调查、课程）</b>（run an experiment 做实验；run a check 做一次检查；run a course 开一门课）<br>常见义：<b>v.</b> 跑（run fast）、经营（run a business）、流动（The tap is running.）<br>判断口诀：run 后面接 experiment / test / trial / survey / check 时，它就是中文的"做、开展"，跟"跑"一点关系都没有</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Anyone who has talked a younger cousin through a maths problem … has already <b>run</b> the experiment on themselves.</div>
+          <div class="wc-tr">给表弟表妹讲过一道数学题的人，其实已经在自己身上做过这个实验了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">raise</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /reɪz/ · 美 /reɪz/</div>
+          <div class="wc-pos"><b>v.</b> <b>提出（问题、疑问、反对）</b>（raise a question 提出问题；raise doubts 引起怀疑；raise an objection 提出异议）<br>常见义：<b>v.</b> 举起（raise your hand）、提高（raise prices）、抚养（raise children）、筹集（raise money）<br>判断口诀：宾语是 question / doubt / issue / concern / objection 时，raise 一律译"提出"；汉语说"提出问题"，英语绝不用 ask a question 之外的 put forward 时才用 raise</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A pattern the authors describe as <b>raising</b> questions about direction rather than as evidence of benefit.</div>
+          <div class="wc-tr">作者把这种模式说成"提出了关于方向的问题"，而不是"证明了益处"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">null</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /nʌl/ · 美 /nʌl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（结果）无显著差异的、零的</b>（a null result 零结果；the null hypothesis 零假设）<br>搭配：null and void（法律上无效）<br>语域：统计学与科研写作的专门词。a null result 不等于"实验失败"，而是"没有测出差别"——这两件事在科学上区别极大，本文全篇的转折就架在这个词上</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The most useful number in the paper is a <b>null</b> one.</div>
+          <div class="wc-tr">全文最有用的数字，是一个"零结果"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">longitudinal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌlɒŋɡɪˈtjuːdɪnl/ · 美 /ˌlɑːndʒɪˈtuːdənl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>纵向的、（长期）追踪的</b>（a longitudinal study 纵向研究；longitudinal data 追踪数据）<br>构词：longitude（经度）本义"长度"，longitudinal 由"沿长度方向"引申为"沿时间方向"<br>反义：cross-sectional（横断面的，只在一个时间点上看）——本文的方法论优势正在于此：横断面只能比"谁现在更好"，纵向才能比"谁老得更慢"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The authors worked through three waves of the English <b>Longitudinal</b> Study of Ageing.</div>
+          <div class="wc-tr">他们梳理了"英国老龄化纵向研究"的三轮调查数据。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">wave</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /weɪv/ · 美 /weɪv/</div>
+          <div class="wc-pos"><b>n.</b> <b>（调查、数据的）一轮、一批</b>（three waves of data 三轮数据；the second wave of the survey 第二轮调查）<br>常见义：<b>n.</b> 波浪；浪潮（a wave of protest 抗议浪潮）；<b>v.</b> 挥手<br>说明：大型追踪研究里 wave 是标准术语，指"同一批人又被测了一遍"那一轮。中文的"一波"其实很接近，只是要记住它是有编号的、可数的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Modelled how memory and verbal fluency moved across the <b>waves</b>.</div>
+          <div class="wc-tr">建模看记忆与词语流畅性在各轮调查之间如何变化。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">match</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /mætʃ/ · 美 /mætʃ/</div>
+          <div class="wc-pos"><b>v.</b> <b>（按特征）配对、匹配</b>（match each case to a control 给每个病例配一个对照；be matched for age 按年龄配对）<br>常见义：<b>n.</b> 比赛、火柴；<b>v.</b> 相配（The shoes match the dress.）<br>说明：配对是观察性研究里最常用的"伪随机化"手段——既然不能抽签，就找一群各方面都像的人来比。本文的 matching 指的是倾向性得分配对（propensity score matching）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They <b>matched</b> each caregiving grandparent to a non-caregiving peer of similar age, health, education and wealth.</div>
+          <div class="wc-tr">他们给每位带孙辈的祖父母，配了一位年龄、健康、教育、财富都相近、但不带孙辈的同辈人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">peer</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /pɪə/ · 美 /pɪr/</div>
+          <div class="wc-pos"><b>n.</b> <b>同辈、同龄人；同等地位的人</b>（peer pressure 同辈压力；peer review 同行评议；a peer of similar age 年龄相仿的同辈）<br>常见义：<b>v.</b> 凝视（peer at sth，多用于书面）<br>辨析：peer 强调"位置相当"，classmate 只强调"同班"，colleague 只强调"同事"；学术写作里 peer 几乎固定搭配 review（同行评议）与 group（同辈群体）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A non-caregiving <b>peer</b> of similar age, health, education and wealth.</div>
+          <div class="wc-tr">一位年龄、健康、教育、财富都相近、但不带孙辈的同辈人。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fluency</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfluːənsi/ · 美 /ˈfluːənsi/</div>
+          <div class="wc-pos"><b>n.</b> <b>流利；（心理测量）流畅性</b>（verbal fluency 词语流畅性；language fluency 语言流利度）<br>派生：fluent（adj. 流利的）、fluently（adv.）<br>本文语境：verbal fluency 是一项经典认知测验——给一个字母或类别，在一分钟内说出尽可能多的词。它测的不只是词汇量，更是"从记忆里把词捞出来"的速度，而这项能力在老化中退化得最早</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Higher scores for verbal <b>fluency</b>, the speed at which a word arrives when you reach for it.</div>
+          <div class="wc-tr">词语流畅性得分更高——也就是想用一个词时，那个词来得有多快。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">episodic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌepɪˈsɒdɪk/ · 美 /ˌepɪˈsɑːdɪk/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（记忆）情景的、事件性的</b>（episodic memory 情景记忆：记得"上周三在哪儿吃过什么"）<br>构词：episode（一段经历、一集）+ -ic<br>对照：semantic memory（语义记忆，记"巴黎是法国首都"这类知识）；procedural memory（程序记忆，记"怎么骑车"）<br>语域：认知心理学专业词，但概念极好懂——凡是"能回放成一段画面"的记忆，都是情景记忆</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Higher scores for verbal fluency … and for <b>episodic</b> memory.</div>
+          <div class="wc-tr">词语流畅性得分更高，情景记忆的得分也更高。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">compress</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəmˈpres/ · 美 /kəmˈpres/</div>
+          <div class="wc-pos"><b>v.</b> <b>压缩；把（复杂内容）浓缩成</b>（compress a file 压缩文件；compress a story into one line 把一个故事压成一句话）<br>派生：compression（n.）、compressed（adj.）<br>本文用法：the headlines compressed X into a single word——注意这个动词自带批评：压缩必然丢信息，而丢掉的那部分正是本文要捡回来的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Then comes the part the headlines <b>compressed</b> into a single word.</div>
+          <div class="wc-tr">接下来是媒体标题压缩成一个词的那部分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">slope</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /sləʊp/ · 美 /sloʊp/</div>
+          <div class="wc-pos"><b>n.</b> <b>斜率、坡度；（变化的）趋势线</b>（a flatter slope 更平的斜率；a steep slope 陡坡）<br>常见义：<b>n.</b> 斜坡（ski slope 滑雪道）；<b>v.</b> 倾斜<br>本文隐喻：把"衰退"画成一条下滑的线，level（起点高低）与 slope（下降快慢）就是两个完全不同的量——这件事想清楚了，本文一半的难点就通了</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Grandfathers held a higher level without a flatter <b>slope</b>.</div>
+          <div class="wc-tr">祖父的起点更高，但下降的坡度并没有变平。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decline</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /dɪˈklaɪn/ · 美 /dɪˈklaɪn/</div>
+          <div class="wc-pos"><b>n.</b> <b>下降、衰退</b>（cognitive decline 认知衰退；a decline in sales 销量下滑；a slower rate of decline 更慢的衰退速度）<br>常见义：<b>v.</b> 下降；<b>v.</b> 婉拒（decline an invitation 婉拒邀请）<br>辨析：refuse 是直截了当地拒绝，decline 是客气地推掉；作名词时 decline 几乎只表"变少、变差"，不表"拒绝"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Only grandmothers showed a slower rate of <b>decline</b> over the years.</div>
+          <div class="wc-tr">这些年里，只有祖母的衰退速度更慢。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">unglamorous</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ʌnˈɡlæmərəs/ · 美 /ʌnˈɡlæmərəs/</div>
+          <div class="wc-pos"><b>adj.</b> <b>不光鲜的、不起眼的、没有戏剧性的</b>（an unglamorous job 一份不起眼的工作；an unglamorous explanation 一个很朴素的解释）<br>构词：un-（否定）+ glamour（魅力、光环）+ -ous<br>本文作用：作者用一个形容词，把"祖母干的是琐碎的体力活"这件事说得既准确又不刻薄——这是英文评论性写作里极高效的一招</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The explanation the authors offer is <b>unglamorous</b>.</div>
+          <div class="wc-tr">作者给出的解释一点也不光鲜。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hands-on</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌhændzˈɒn/ · 美 /ˌhændzˈɑːn/</div>
+          <div class="wc-pos"><b>adj.</b> <b>亲力亲为的、动手的</b>（hands-on experience 实操经验；hands-on work 亲自上手的活）<br>构词：hands + on，画面感极强——"手放在上面"，就是"亲手在做"<br>反义：hands-off（放手不管的）；对照：supervisory（监督性的）<br>本文语境：祖母做的是 hands-on work（做饭、排日程、盯作业），祖父更多是 supervisory（陪着、搭把手）——这个区分正是性别差异的可能来源</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Grandmothers tend to do the <b>hands-on</b> work of meals, schedules and homework.</div>
+          <div class="wc-tr">祖母往往承担做饭、排日程、辅导作业这类亲力亲为的活。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">inherit</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪnˈherɪt/ · 美 /ɪnˈherɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>继承（财产、基因）；接手（一份角色、一个问题）</b>（inherit a fortune 继承一笔财产；inherit the role 接过这个角色；inherit a problem 接手一个烂摊子）<br>派生：inheritance（n. 遗产、遗传）<br>本文妙处：chose the job rather than inherited it——把"带孙子"写成一份可以被"选"也可以被"摊上"的差事，一句话解释了为什么祖母受益更多：自愿做的人，才享受得到做的过程</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>May also be the ones who chose the job rather than <b>inherited</b> it.</div>
+          <div class="wc-tr">而且她们更可能是"自己选的"这份差事，而不是被安排上的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dismantle</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪsˈmæntl/ · 美 /dɪsˈmæntl/</div>
+          <div class="wc-pos"><b>v.</b> <b>拆掉、拆解（设备、制度、说法）</b>（dismantle a machine 拆机器；dismantle an argument 拆掉一个论证；dismantle the folk version 拆掉民间版本）<br>构词：dis-（去掉）+ mantle（覆盖物、外壳）→ 剥掉外壳<br>辨析：destroy 是毁掉（结果没了），dismantle 是拆开（零件还在，但结构散了）；用来批评一种说法时，dismantle 比 refute 更有画面感</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Once a week measured the same as four days a week, which <b>dismantles</b> the folk version of the finding.</div>
+          <div class="wc-tr">一周一次，和一周四天，测出来是一样的——这就把这条发现的民间版本拆掉了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rotate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rəʊˈteɪt/ · 美 /ˈroʊteɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>轮换、轮流做</b>（rotate crops 轮种作物；rotate the chairs 轮流坐庄；rotate through activities 轮换着做各种活动）<br>常见义：<b>v.</b> 旋转（The earth rotates.）<br>派生：rotation（n. 轮换、旋转）<br>本文用法：rotated through a wider variety of activities——注意 through 这个介词，它暗示"依次经过每一种"，而不是"同时做很多种"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Helped with homework and <b>rotated</b> through a wider variety of activities.</div>
+          <div class="wc-tr">辅导作业，并且把活动轮换着来、种类更丰富。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cohort</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkəʊhɔːt/ · 美 /ˈkoʊhɔːrt/</div>
+          <div class="wc-pos"><b>n.</b> <b>（流行病学、社会学）队列、同批追踪人群</b>（a birth cohort 出生队列；a cohort study 队列研究；an observational cohort 观察性队列）<br>常见义：<b>n.</b> （古罗马）步兵队；（喻）一伙人<br>语域：医学论文高频词。cohort study 与 randomised trial 的核心差别就在"有没有人为分配"——本文最后一段的批评正是从这个词出发的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is exactly the kind of work an observational <b>cohort</b> cannot separate from the sort of person who volunteers to do it.</div>
+          <div class="wc-tr">恰恰是这种劳动，观察性队列没法把它跟"愿意去做这件事的那种人"分开。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">observational</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɒbzəˈveɪʃənl/ · 美 /ˌɑːbzərˈveɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>观察性的（只观察、不干预）</b>（an observational study 观察性研究；observational data 观察数据）<br>派生：observe（v.）、observation（n.）、observer（n.）<br>对照：experimental（实验性的，研究者主动施加干预）。两者最大的区别不是"谁更科学"，而是"能不能排除反向因果"——本文的整篇张力就在这里</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is exactly the kind of work an <b>observational</b> cohort cannot separate from the sort of person who volunteers to do it.</div>
+          <div class="wc-tr">观察性队列没法把这份劳动，跟"愿意去做这件事的那种人"分开。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reproduce</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌriːprəˈdjuːs/ · 美 /ˌriːprəˈduːs/</div>
+          <div class="wc-pos"><b>v.</b> <b>重现、再现；复制</b>（reproduce the same pattern 重现同一模式；reproduce results 复现结果）<br>常见义：<b>v.</b> 繁殖、生育<br>派生：reproducible（adj. 可复现的）——这是当代科研最被看重的品质之一<br>本文用法：it reproduces the reversed arrow at the level of the whole design——"同样的错误在更大的尺度上又出现了一次"，这个用法在批评性写作里极有力</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That last point matters, because it <b>reproduces</b> the reversed arrow at the level of the whole design.</div>
+          <div class="wc-tr">最后这一条最要紧，因为它在整个研究设计的层面上，把那个反向的箭头又重现了一遍。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sharpen</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈʃɑːpən/ · 美 /ˈʃɑːrpən/</div>
+          <div class="wc-pos"><b>v.</b> <b>使敏锐、使提高（能力、感官、判断）</b>（sharpen the mind 使头脑敏锐；sharpen one's skills 磨练技能；sharpen a pencil 削铅笔）<br>派生：sharp（adj. 锋利的、敏锐的；adv. 整点）<br>本文用法：动词 sharpen 是全篇的"关键词"——它把"认知提高"这件抽象的事，说成了"把刀刃磨快"，于是"拿什么磨"就成了一个自然的问题</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Not that grandchildren <b>sharpen</b> grandparents, but that the sharpening, where it happens, happens inside the explaining.</div>
+          <div class="wc-tr">不是"孙辈让祖父母变敏锐"，而是那种敏锐如果真会发生，是发生在"讲"的过程里的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rearrange</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌriːəˈreɪndʒ/ · 美 /ˌriːəˈreɪndʒ/</div>
+          <div class="wc-pos"><b>v.</b> <b>重新排列、重新安排</b>（rearrange the furniture 重新摆家具；rearrange a meeting 改会议时间；the topic rearranged itself 那个知识点自己重排了一遍）<br>构词：re-（再）+ arrange（安排）<br>派生：arrangement（n.）<br>本文妙处：felt the topic rearrange itself——用反身代词 itself，把"知识在脑子里自己重组"这种难以言说的体验，写成了一个可以看见的动作</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Felt the topic <b>rearrange</b> itself in the attempt.</div>
+          <div class="wc-tr">感到那个知识点在讲的过程中自己重新排了一遍。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">look after</span><span class="zh">照看、照料</span></li>
+          <li><span class="en">be summarised as</span><span class="zh">被概括为</span></li>
+          <li><span class="en">leave out</span><span class="zh">略去、漏掉</span></li>
+          <li><span class="en">work through</span><span class="zh">逐一梳理、从头过一遍</span></li>
+          <li><span class="en">rather than</span><span class="zh">而不是</span></li>
+          <li><span class="en">come out ahead</span><span class="zh">领先、占优</span></li>
+          <li><span class="en">reach for a word</span><span class="zh">（在记忆里）去捞一个词</span></li>
+          <li><span class="en">take sth seriously</span><span class="zh">认真对待某事</span></li>
+          <li><span class="en">dismiss sth as</span><span class="zh">把……当成……而不屑一顾</span></li>
+          <li><span class="en">at a slower rate</span><span class="zh">以更慢的速度</span></li>
+          <li><span class="en">tend to do sth</span><span class="zh">往往、倾向于做某事</span></li>
+          <li><span class="en">the hands-on work of</span><span class="zh">……这类亲力亲为的活</span></li>
+          <li><span class="en">predict nothing at all</span><span class="zh">毫无预测力</span></li>
+          <li><span class="en">the folk version of</span><span class="zh">……的民间版本（通俗说法）</span></li>
+          <li><span class="en">the content of the visits</span><span class="zh">（祖孙）相处的内容</span></li>
+          <li><span class="en">spend leisure time with</span><span class="zh">与……共度闲暇</span></li>
+          <li><span class="en">rotate through</span><span class="zh">轮换着做（各种活动）</span></li>
+          <li><span class="en">raise questions about</span><span class="zh">对……提出疑问</span></li>
+          <li><span class="en">break sth down into steps</span><span class="zh">把……拆解成步骤</span></li>
+          <li><span class="en">in real time</span><span class="zh">实时地、当场</span></li>
+          <li><span class="en">adjust for</span><span class="zh">对……作校正（排除干扰）</span></li>
+          <li><span class="en">be honest about</span><span class="zh">对……坦诚</span></li>
+          <li><span class="en">carry away</span><span class="zh">（从中学到并）带走</span></li>
+          <li><span class="en">talk sb through sth</span><span class="zh">一步步讲给某人听</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：一篇被译成多国语言的"带孙辈防老"论文，和它被省掉的那个细节。</li>
+          <li>设计：英国老龄化研究三轮数据；不带孙辈的人按年龄、健康、教育、财富一一配对。</li>
+          <li>结果一：带孙辈的一组在词语流畅性与情景记忆上得分更高，且配对后仍在。</li>
+          <li>结果二：只有祖母的衰退更慢；祖父只是起点高，坡度没变。</li>
+          <li>零结果：带多带少没差别，一周一次等于一周四天——"大脑健身房"的说法被拆掉。</li>
+          <li>反转：真正相关的是"做什么"；而得分高的人本来就做得多、做得杂——箭头可能是反的。</li>
+          <li>机制：讲长除法确实耗脑力，但观察性队列分不清"这份劳动"与"愿意做这份劳动的人"。</li>
+          <li>边界：自我报告、英国样本、只能校正测得到的变量、身体不好的人根本带不动。</li>
+          <li>落点：敏锐若真会发生，就发生在"讲"的过程里——你我都能在自己身上试。</li>
+        </ol>
+      </div>
+    </aside>
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Rather than simply comparing helpers with non-helpers, they matched each caregiving grandparent to a non-caregiving peer of similar age, health, education and wealth, and then modelled how memory and verbal fluency moved across the waves.</div>
+        <div class="row"><b>主干：</b>they matched A to B, and then modelled how …（两个并列谓语）｜Rather than … 是句首的介词短语，表示"不是……而是……"｜how memory and verbal fluency moved 是 modelled 的宾语从句</div>
+        <div class="row"><b>难点：</b>① rather than 放在句首时后面跟动名词（comparing），表示被否定的做法，真正做的动作在主句里——读时要先跳过它；② match A to B 是"给 A 配一个 B"，不是"把 A 和 B 比较"，这一步正是本研究比"直接对比"高明的地方；③ peer 后面跟 of similar age, health, education and wealth 四个名词并列作后置定语，中文要补成"年龄、健康、教育、财富都相近的"；④ modelled 是动词（建模），不是名词"模型"；⑤ across the waves 的 waves 指"第几轮调查"，不指水波</div>
+        <div class="row tr"><b>译文：</b>他们没有简单地拿"带孙辈的"和"不带孙辈的"相比，而是给每一位带孙辈的祖父母，配了一位年龄、健康、教育、财富都相近、但不带孙辈的同辈人，然后再建模看记忆与词语流畅性在各轮调查之间如何变化。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The explanation the authors offer is unglamorous — grandmothers tend to do the hands-on work of meals, schedules and homework, and may also be the ones who chose the job rather than inherited it.</div>
+        <div class="row"><b>主干：</b>The explanation … is unglamorous（主系表，主语带省略了 that 的定语从句）｜破折号后是两个并列分句，解释"为什么只有祖母受益"｜who chose the job rather than inherited it 是定语从句修饰 the ones</div>
+        <div class="row"><b>难点：</b>① the authors offer 是省略了关系代词 that/which 的定语从句，插在主语和系动词之间，是英文里最容易读断的地方；② 破折号的作用不是补充，而是"展开"——前面给判断（不光鲜），后面给内容（具体是什么活）；③ hands-on work of meals, schedules and homework 三个名词共用 of，中文要拆成"做饭、排日程、辅导作业"；④ inherited it 后面省略了 rather than 已给出的对比对象（chose it），属于英文的"尾巴省略"；⑤ 一个 unglamorous 就把性别分工写得既准确又不刻薄，这是评论性写作的分寸</div>
+        <div class="row tr"><b>译文：</b>作者给出的解释一点也不光鲜——祖母往往承担做饭、排日程、辅导作业这类亲力亲为的活；而且她们更可能是"自己选的"这份差事，而不是被安排上的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The grandparents who already scored higher were also the ones who spent leisure time with a grandchild, helped with homework and rotated through a wider variety of activities, a pattern the authors describe as raising questions about direction rather than as evidence of benefit.</div>
+        <div class="row"><b>主干：</b>The grandparents … were also the ones …（主系表）｜两个 who 引导的定语从句分别修饰 grandparents 与 the ones｜句末 a pattern … 是同位语，回指前面整件事</div>
+        <div class="row"><b>难点：</b>① 第一个 who already scored higher 是"本来得分就高"，already 是这句话的关键副词——它把时间点挪到了"做这些事之前"；② the ones who … 后面三个动词并列（spent / helped / rotated），共用 who，读时要把三个动作都挂回 the ones；③ 句末的同位语 a pattern 是英文常见的"整句打包"手法，中文必须另起一句说"这种模式"；④ describe A as B rather than as C 是"把 A 说成 B 而不是 C"，两个 as 后面都是名词性成分；⑤ raising questions 是 raise（提出）的熟词僻义，不是"举起"</div>
+        <div class="row tr"><b>译文：</b>那些本来得分就更高的祖父母，恰恰也是陪孙辈玩、辅导作业、把活动轮换着来、种类更丰富的那批人。作者把这种模式说成"提出了关于方向的问题"，而不是"证明了益处"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">None of this makes the mechanism absurd: explaining long division to a nine-year-old forces you to break a habit down into steps, to hold two versions of an idea at once and to notice, in real time, that the explanation has failed.</div>
+        <div class="row"><b>主干：</b>None of this makes the mechanism absurd（主谓宾补）｜冒号后用一句话证明前面的判断：explaining … forces you to do A, to do B and to do C（三个不定式并列作宾补）｜that the explanation has failed 是 notice 的宾语从句</div>
+        <div class="row"><b>难点：</b>① None of this 作主语时谓语用单数，且它是"全盘否定"，等于"这一切都不能说明……"；② make + 宾语 + 形容词（absurd）是复合宾语，形容词作宾补；③ 三个不定式 to break / to hold / to notice 是并列的，中间用逗号与 and 连接，最后那个最长；④ notice 后面被 in real time 隔开，再接 that 从句——插入语造成的"动宾分离"是长难句的常见陷阱；⑤ hold two versions of an idea at once 是全句最漂亮的地方：把"同时想着两种解释"写成了"同时握住两个版本"</div>
+        <div class="row tr"><b>译文：</b>这一切并不能说明机制荒谬：给一个九岁孩子讲长除法，会逼着你把一个习惯拆成步骤，同时在脑子里握住同一个想法的两个版本，还要实时察觉"这次没讲通"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Anyone who has talked a younger cousin through a maths problem, and felt the topic rearrange itself in the attempt, has already run the experiment on themselves.</div>
+        <div class="row"><b>主干：</b>Anyone … has already run the experiment（主谓宾，主语带一个很长的定语从句）｜who has talked … and felt … 两个现在完成时的动作并列｜on themselves 是方式状语</div>
+        <div class="row"><b>难点：</b>① 主语 Anyone 与谓语 has run 之间隔了 24 个词，读时先找到 has already run 这个谓语，句子立刻清楚；② talk sb through sth 是"一步步讲给某人听"，through 表"从头到尾"；③ felt the topic rearrange itself 是 feel + 宾语 + 动词原形（不带 to），感官动词的典型用法；④ themselves 回指 anyone——英文里 anyone 用 they/them 回指，不用 he；⑤ run an experiment 的 run 是熟词僻义（做实验），与"跑"无关；⑥ 全句的力量来自"你已经在无意中做过这个实验了"这个收束，它把一篇老年学论文拽回了读者自己身上</div>
+        <div class="row tr"><b>译文：</b>任何一个人，只要给比自己小的表弟表妹一步步讲过一道数学题，并且在讲的过程中感到那个知识点自己重新排了一遍——他就已经在自己身上做过这个实验了。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章处理的是一件很小、也很日常的事：爷爷奶奶带孙子，到底会不会让他们的脑子更好使。之所以值得写，不是因为结论新奇，而是因为它示范了一种极常见的传播失真——一句被反复转述的科学结论，如何在转述中丢掉它最关键的限定条件。作者的写法很克制：先把"媒体怎么说"摆出来，再把论文"实际说了什么"摆出来，最后让两者之间的落差自己说话。</p>
+      <p class="zh-sum">第一段只有两句话，却完成了全文的框架。第一句给出流行的版本：本月《心理学与衰老》上有一篇论文，已经被若干种语言概括成"照看孙辈能让大脑保持年轻"。注意 be summarised as 这个被动结构——它刻意隐去了"谁在概括"，暗示这不是论文自己的话。第二句立刻转向：论文确实报告了某种真实的东西，但它在同一张表里还报告了一个细节，而这个细节被大多数转述悄悄省掉了。left out 是这一段的关键动词：不是"说错"，而是"没说"。整篇文章要做的，就是把这个被省掉的细节捡回来。</p>
+      <p class="zh-sum">第二段讲研究设计，是全文可信度的地基。作者先交代了人与机构——蒂尔堡大学的 Flavia Chereches 领衔——再交代数据：英国老龄化纵向研究的三轮调查，这是一个自 2002 年起追踪同一批老年人的固定样本库。longitudinal 这个词值得停留一下：横断面研究只能比"谁现在更好"，纵向研究才能比"谁老得更慢"，而后一个问题才是本文真正想问的。接下来是方法上的关键一步：他们没有简单地把"带孙辈的"和"不带孙辈的"拿来对比，而是给每一位带孙辈的祖父母，配了一位年龄、健康、教育、财富都相近、但不带孙辈的同辈人。这种配对（matching）是观察性研究里最常用的"伪随机化"手段——既然不能抽签，就找一群各方面都像的人来比。</p>
+      <p class="zh-sum">第三段给出第一个结果，也是媒体最爱引用的那一句：带孙辈的一组领先，词语流畅性与情景记忆的得分都更高。作者在这里做了一个很体贴的动作——给 verbal fluency 加了一个同位语解释，"想用一个词时，那个词来得有多快"。这个解释不是可有可无的修辞：词语流畅性是认知老化里最早退化的能力之一，读者一旦理解了它测的是什么，就明白了为什么这个指标值得关注。紧接着一句是全文的方法论护城河：这道差距在配对之后依然存在。survived 这个词用得好——差距"活下来了"，说明它不是年龄、健康、教育、财富这些显而易见的东西造成的，所以这个结果值得认真对待，不能一句"不过是身体好的人更能带"就打发了。</p>
+      <p class="zh-sum">第四段是全篇第一个转折，也是被媒体压缩得最厉害的地方。作者说：接下来是标题压缩成一个词的那部分——只有祖母的衰退速度更慢。这里有一个必须读懂的技术区分：level（水平、起点高低）与 slope（斜率、下降快慢）是两个完全不同的量。祖父的起点更高，但下降的坡度并没有变平；祖母不但起点高，坡也变缓了。换句话说，"带孙辈的祖父母更聪明"这句话对两种性别都成立，但"带孙辈能延缓衰退"只对祖母成立。作者给出的解释一点也不光鲜：祖母往往承担做饭、排日程、辅导作业这类亲力亲为的活；而且她们更可能是自己选的这份差事，而不是被安排上的。chose the job rather than inherited it——这个对比把"带孙子"写成了一份可以被选、也可以被摊上的差事，而自愿与被迫，恰恰是后面所有解释的伏笔。</p>
+      <p class="zh-sum">第五段是全文最有用、也最容易被跳过的一段：全文最有用的数字，是一个"零结果"。在确实带孙辈的那些祖父母当中，带的频率对认知毫无预测力；一周一次，和一周四天，测出来是一样的。null 是统计学的专门词，a null result 不等于"实验失败"，而是"没有测出差别"——这两件事在科学上区别极大，而本文全篇的转折就架在这个词上。作者接着用了一个近乎刻薄的比喻：这就把这条发现的民间版本拆掉了，那个版本里，大脑是一块肌肉，孙辈就是健身房。dismantle 这个动词选得准：不是"驳倒"，而是"拆开"——零件还在，但结构散了。对读者来说，这一段的方法论价值极高：一个"剂量无关"的效应，往往不是剂量在起作用，而是别的东西在起作用。</p>
+      <p class="zh-sum">第六段给出那个"别的东西"，也是全文的拐点：真正与认知相关的是"相处的内容"，而箭头正是在这里拐了个弯。那些本来得分就更高的祖父母，恰恰也是陪孙辈玩、辅导作业、把活动轮换着来、种类更丰富的那批人。请注意 already 这个副词——它把时间点挪到了"做这些事之前"：不是做了这些事所以变聪明，而是本来就聪明的人更愿意、也更有能力去做这些事。作者的措辞极为谨慎：a pattern the authors describe as raising questions about direction rather than as evidence of benefit——"提出了关于方向的问题"，而不是"证明了益处"。raise questions 是 raise 的熟词僻义（提出），而 rather than as evidence of benefit 这个否定，是全文最诚实的一句话。</p>
+      <p class="zh-sum">第七段替机制说话，避免读者走到另一个极端。这一切并不能说明机制荒谬：给一个九岁孩子讲长除法，会逼着你把一个习惯拆成步骤，同时在脑子里握住同一个想法的两个版本，还要实时察觉"这次没讲通"。这是货真价实的认知劳动——注意作者用了三个并列的不定式（break down / hold / notice）来"演"这件事本身，句子读起来就有一种被拆解的负重感。但紧接着就是冷水：恰恰是这种劳动，观察性队列没法把它跟"愿意去做这件事的那种人"分开。这就是观察性研究的天花板——它可以告诉你两件事一起发生，却无法告诉你谁先谁后。</p>
+      <p class="zh-sum">第八段是自我审查，也是外刊科技报道最见教养的地方。作者一口气列出四条边界：照护是自己报告的；样本是英国人，且都是五十岁及以上；配对只能校正"测得到的"那些差异；而一个身体已经不好的祖父母，本来就不太可能去照看任何人。最后这一条最要紧，因为它在整个研究设计的层面上，把那个反向的箭头又重现了一遍——不是"带孙辈让人健康"，而是"健康的人才带得动孙辈"。reproduce 这个词在这里用得极狠：同一个错误，在更大的尺度上又出现了一次。而 adjust for 这个短语也值得记住——"校正"听起来很技术，但它校正的永远只是"测得到的"东西，而人的动机、精力、家庭关系，恰恰是最难测的那部分。</p>
+      <p class="zh-sum">第九段收束，把技术结论提炼成一句可迁移的判断：真正值得带走的那句话，不是"孙辈让祖父母变敏锐"，而是那种敏锐如果真会发生，是发生在"讲"的过程里的。最后一句是全文最漂亮的一笔：任何一个人，只要给比自己小的表弟表妹一步步讲过一道数学题，并且在讲的过程中感到那个知识点自己重新排了一遍——他就已经在自己身上做过这个实验了。这句话做了三件事：把一篇老年学论文拽回到十几岁的读者身上；把"认知训练"从一种需要购买的服务，还原成一件随时可做的事；用 has already run 这个现在完成时，告诉你这件事不是"将来可以试"，而是"你早就做过"。</p>
+      <p class="zh-sum">从写作技术看，这篇文章示范了一种很值得学的科学报道结构：流行说法（第一段）→ 设计（第二段）→ 主结果（第三段）→ 分层与性别差异（第四段）→ 零结果（第五段）→ 反向因果（第六段）→ 机制辩护（第七段）→ 边界自审（第八段）→ 落点（第九段）。它的推进方式不是"结论—证据—结论"，而是"结论—证据—对证据的怀疑—对怀疑的怀疑"。这正是高考阅读 D 篇最爱的推进方式：先给一个大家都能同意的目标，再用证据指出实现路径上的损耗，最后问一句"损耗发生在哪一环"。而本文的特别之处在于，它把最后一问指向了因果方向本身。</p>
+      <p class="zh-sum">语言上有三处特别值得记。第一处是 level 与 slope 的对立：中文里"更聪明"和"老得更慢"经常被混为一谈，英文用两个几何词把它们分得干干净净，这是"用比喻把统计量说清楚"的典范。第二处是副词 already：the grandparents who already scored higher——一个副词就完成了因果方向的翻转，比任何一句"相关不等于因果"都有效。第三处是那一串动词的选择：compress（压缩）、dismantle（拆掉）、reproduce（重现）、sharpen（磨快）、rearrange（重排）——每一个都带着画面，而且方向一致：都是"结构被动过"的动作。作者的立场就藏在这组动词里，而不在任何一句议论中。</p>
+      <p class="zh-sum">如果要把这篇文章的方法论带走，可以记住三句话。其一，判断一项研究能证明什么，先看它是"观察"还是"干预"：观察性研究能给出极强的线索，但它永远要给"反向因果"和"遗漏变量"留一个位置。其二，当一个效应与"剂量"无关时，真正起作用的往往不是剂量，而是"谁选择了这个剂量"——一周一次与一周四天测出来一样，说明这道题问的不是"带多久"，而是"谁在带、带什么"。其三，也是最重要的一句：读论文时，最该找的不是摘要里的那句话，而是作者用 raise questions 这类客气话让开的地方。那里往往藏着整篇文章真正的结论，也藏着高考阅读最爱考的那个"作者的态度"。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. Grandparents should look after their grandchildren as often as possible, since doing so has been proved to protect the ageing brain.<br>
+        B. A longitudinal study found higher memory and verbal fluency among caregiving grandparents, but the advantage was not dose-dependent and may partly reflect the fact that cognitively sharper grandparents were the ones who chose enriching activities, so the direction of cause remains open.<br>
+        C. The study is worthless because it was observational, self-reported and based on a British sample, and therefore tells us nothing about grandparenting.<br>
+        D. Grandmothers benefit from childcare while grandfathers do not, which shows that gender roles determine how the brain ages.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文推进是"流行说法（1 段）→ 设计（2 段）→ 主结果（3 段）→ 性别差异（4 段）→ 零结果（5 段）→ 反向因果（6 段）→ 机制（7 段）→ 边界（8 段）→ 落点（9 段）"。B 同时装进了"水平差异真实存在""与频率无关""更敏锐的人本来就更愿意做这些事""因果方向仍未定"四个节点，与第 3、5、6 段完全一致。A 是媒体版本，被第 5 段（频率无关）与第 6 段（方向存疑）双重否掉。C 走向另一个极端：第 3 段明确说差距 survived the matching，第 8 段也只是"自我审查"，作者从未说研究无价值，结尾更把结论提炼成"讲的过程"这一可迁移的观察。D 偷换了第 4 段：原文说祖父只是"起点高、坡度未变平"，并未说祖父毫无益处，且"性别角色决定大脑如何老化"是把一个可能解释说成了定律。</div>
+      <div class="q"><b>2. According to the passage, why can the study not establish that caring for grandchildren sharpens grandparents' minds?</b><br>
+        A. Because the grandparents who already scored higher were also the ones who chose leisure time and homework help, so the causal arrow may run the other way, and an observational cohort cannot separate the activity from the kind of person who chooses it.<br>
+        B. Because the caregiving group was compared with grandparents who were older and in worse health.<br>
+        C. Because the study never measured verbal fluency or episodic memory in a standardised way.<br>
+        D. Because the grandchildren in the sample were too young for the activities to make any difference.
+        <br><br><b>答案：A</b><br>
+        <b>解析：</b>第 6 段给出反转机制（already scored higher 的人才是做高质量活动的人，作者称之为 raising questions about direction），第 7 段给出方法论理由（observational cohort 无法把"这份劳动"与"愿意做这份劳动的人"分开），第 8 段再补一层（身体不好的祖父母根本带不动，反向箭头在整体设计上重现）。A 完整复述了这条链。B 与第 2 段相反：配对恰恰是按年龄、健康、教育、财富一一匹配的。C 无中生有：第 3 段明确给出了词语流畅性与情景记忆的得分比较。D 也不成立：文中从未以孙辈年龄为解释，且第 5 段说明与频率无关的原因在于"谁在带、带什么"，不是孩子的年龄。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文第 3 段说"带孙辈的一组得分更高，且配对之后差距仍在"，第 6 段又说"本来得分更高的人才更愿意去做那些高质量的活动"。请回答三个问题：（1）用你自己的话说明：这两句话为什么可以同时成立？它们各自能支持什么结论、不能支持什么结论？（2）如果有一位亲戚读完新闻标题后说"那我得多让孩子去奶奶家住"，你会用文中的哪两条证据回应他？请给出具体段落依据。（3）作者最后把落点放在"讲的过程"上。请结合你自己的一次经历（给同学讲题、给弟妹讲作业、在小组里解释一个概念），写出那次"讲"让你自己搞懂了什么、又暴露了什么。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段用 <span class="hl">The sentence worth carrying away is not that A does B, but that B, where it happens, happens inside C</span> 这个句式，先把流行结论否掉，再把真正的机制安放在一个具体动作上：<i>The sentence worth carrying away is not that grandchildren sharpen grandparents, but that the sharpening, where it happens, happens inside the explaining.</i>（前半句先否定一个流行因果，后半句用 where it happens 这个插入语留出余地——不承诺一定发生，只承诺"若发生，发生在哪里"）。请仿照这个句式，就"跑步能否让人心情变好""整理笔记能否提高成绩"或"养宠物能否让人更健康"写一句你自己的判断句，要求：前半句否定一个流行的因果说法，后半句把真正的机制落到一个具体的动作或时刻上，并保留 where it happens 这种"有条件"的谨慎语气。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr8" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 引子：被译成多国语言的标题，与被省掉的那个细节</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 设计：三轮追踪 ＋ 一对一配对（年龄/健康/教育/财富）</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 结果一：带孙辈者词语流畅性、情景记忆得分更高</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">4 · 结果二：只有祖母衰退更慢；祖父起点高、坡度未变</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">5 · 零结果：一周一次 ＝ 一周四天，频率毫无预测力</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">6 · 拐点：得分高的人本来就做得杂——箭头可能反向</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 机制：讲长除法确实费脑，但队列分不清"人"与"事"</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">8 · 边界：自报、英国样本、校正有限、病人带不动</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：敏锐发生在"讲"的过程里——可自我实验</text>
+
+          <rect x="60" y="512" width="600" height="38" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="536" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文唯一无法排除的东西：箭头方向（谁先谁后）</text>
+        </svg>
+        <figcaption>结构说明：第 1 段立靶，第 2 段交代设计，第 3–4 段给结果（水平与斜率），第 5 段拆掉"剂量"直觉，第 6 段调转箭头，第 7 段替机制辩护，第 8 段自我审查，第 9 段落到"讲"这个动作上。</figcaption>
+      </figure>
+    </section>
+
+  </div>
+</article>
+
+
+  <footer>
+    素材来源：F. S. Chereches, G. Olaru, N. Ballhausen, Y. Brehmer《Grandparents’ cognition and caregiving for grandchildren: Frequency, type, and variety of activities》，Psychology and Aging 41:429–443（2026-01-26 线上先发），蒂尔堡大学（荷兰）与 Charlotte Fresenius 高等学院（德国）；数据来自英国老龄化纵向研究（ELSA，2002 年起）；DOI 10.1037/pag0000958，PMID 41587188｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
