@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · AI 把文章改好了，也把“谁写的”改掉了</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Language &amp; Machines · 人与社会 / 人与自我 / 科技与创新 / 语言 / 人工智能 / 文化</div>
+  <h1>AI 把文章改好了，也把“谁写的”改掉了</h1>
+  <div class="deck">A model that polishes your prose keeps the meaning and deletes the fingerprint — and the science built on reading people through their words is starting to notice.</div>
+  <div class="byline"><span><b>来源</b> Nature Human Behaviour（2026-08-24）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-09</span><span><b>难度</b> 难</span><span><b>词数</b> 约 527 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-09.jpg" alt="一名学生在书桌前对着笔记本电脑修改作文的实景照片（配图）">
+    <figcaption>配图：台灯下，一名学生盯着屏幕上的作文，光标停在句尾——修改与“被修改”之间的界线，在这几年变得模糊了（图片来源：教学素材图库，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>先说结论：一项发表在《自然·人类行为》上的研究，用三年、七个数据集、八十八万余篇文本证明了一件事——<b>语言模型把文章改得更漂亮时，几乎不会弄丢内容，却会系统性地抹掉“这个人是谁”的痕迹</b>。</p>
+    <p>研究分三步。第一步看现实世界：ChatGPT 上线后，Reddit 创意写作、arXiv 论文摘要、地方新闻这三类文本的“写作复杂度方差”全都下滑，也就是大家的文字开始往同一个模子里靠。第二步做实验：把同样的文字交给三个模型、十三种提示词去改写，语义几乎不变，方差被砍掉 21% 到 50%。第三步最狠：<b>原来能从文字里认出作者年龄、性别、人格、共情能力、道德倾向、政治归属的分类器，在改写后的文本上统统失灵</b>——而且不是变成噪声，是整体漂向“中间那个标准人”。</p>
+    <p>这件事对我们有直接关系：你交上去的那篇“更好的作文”，可能已经不是“你的”作文了。本文最后给了一个可迁移的判断句——值得问的不是“写得更好没有”，而是“写它的那个人还在不在”。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-09.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="12.708">There is a kind of essay that has become easy to recognise in the past three years: the grammar is <b class="kw" data-tip="adj. 完美无瑕的（flaw + less）">flawless</b>, the paragraphs are balanced, the transitions are smooth, and by the second page you have no idea who wrote it.</span> <span class="s" data-t="12.708" data-e="22.801">Teachers describe the sensation as reading something <b class="kw" data-tip="v. 润色、打磨（文字）；不是“擦亮”">polished</b> to the point of <b class="kw" data-tip="n. 匿名、无名；anonymity 指“认不出是谁”">anonymity</b> — a text that has clearly been improved, and has somehow lost its owner along the way.</span></span></div>
+      <p class="para-tr">过去三年里出现了一种很容易认出来的作文：语法无懈可击，段落匀称，过渡顺滑，读到第二页你已经完全不知道是谁写的。老师们把这种感觉形容为“读到了一篇打磨得过于光亮的文字”——它显然被改好了，却不知怎么就丢掉了主人。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="22.801" data-e="28.553">A paper published in <i>Nature Human Behaviour</i> in August puts a number on that sensation.</span> <span class="s" data-t="28.553" data-e="45.671">A team at the University of Southern California, led by Zhivar Sourati and Morteza Dehghani, drew on three studies, seven <b class="kw" data-tip="n. 数据集（data + set）">datasets</b> and more than 880,000 texts to ask one narrow question: when a language model rewrites what we have written, what exactly disappears?</span></span></div>
+      <p class="para-tr">今年八月发表在《自然·人类行为》上的一篇论文，给这种感觉配了一个数字。南加州大学一支由 Zhivar Sourati 与 Morteza Dehghani 带领的团队，动用了三项研究、七个数据集、八十八万余篇文本，只为追问一个很窄的问题：当一个语言模型改写我们写过的东西时，究竟是什么消失了？</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="45.671" data-e="54.763">Their answer required a way of measuring sameness: an index built from <b class="kw" data-tip="adj. 词汇的（lexicon 词汇表）">lexical</b> richness, <b class="kw" data-tip="adj. 句法的（syntax 句法）">syntactic</b> complexity and the share of rare words.</span> <span class="s" data-t="54.763" data-e="62.053">High <b class="kw" data-tip="n. 方差；此处指“彼此差异的程度”">variance</b> means people write differently from one another; collapsing variance means they are beginning to write alike.</span></span></div>
+      <p class="para-tr">要回答这个问题，先得有一种办法去度量“像”。他们用词汇丰富度、句法复杂度、罕用词占比三项，合成一个写作复杂度指数。方差高，说明人和人写得不一样；方差塌缩，说明大家开始写得像。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="62.053" data-e="70.235"><b class="kw" data-tip="v. 以……为坐标作图、标绘（数据）；不是“密谋”">Plotted</b> against the release of ChatGPT in November 2022, the spread narrowed on every platform the team examined.</span> <span class="s" data-t="70.235" data-e="79.908">It fell sharpest on Reddit's creative-writing forum, next on the preprints of arXiv, and most gently in the local news reports of a site called Patch.</span></span></div>
+      <p class="para-tr">把这条曲线对着 2022 年 11 月 ChatGPT 的发布时点画出来，团队检查的每一个平台上，离散度都在收窄。掉得最狠的是 Reddit 的创意写作版块，其次是 arXiv 的预印本，最温和的是社区新闻网站 Patch 的地方报道。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="79.908" data-e="91.419">A second study turned the observation into an experiment by sending the same texts through GPT-3.5, Gemini and Llama 3 under thirteen different rewriting <b class="kw" data-tip="n. （给 AI 的）提示词；常见义 v. 促使、提示">prompts</b>.</span> <span class="s" data-t="91.419" data-e="104.382">The content survived almost <b class="kw" data-tip="adj. 完好无损的、未被破坏的">intact</b>, with <b class="kw" data-tip="adj. 语义的（meaning 层面的）">semantic</b> similarity staying high, but the variance in complexity fell by 21 to 50 per cent across datasets and models, and the effect <b class="kw" data-tip="v. （结论、规律）成立、依然有效；不是“握住”">held</b> whatever the prompt.</span></span></div>
+      <p class="para-tr">第二项研究把观察变成了实验：同一批文字，交给 GPT-3.5、Gemini、Llama 3 三个模型，用十三种不同的提示词去改写。内容几乎完好，语义相似度始终很高；但复杂度的方差在跨数据集、跨模型的情况下掉了 21% 到 50%，而且无论用哪种提示词，这个效应都成立。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="104.382" data-e="109.105">The third study should worry anyone who studies people through their words.</span> <span class="s" data-t="109.105" data-e="122.616"><b class="kw" data-tip="n. 分类器（自动判别类别的模型）">Classifiers</b> trained on original writing to <b class="kw" data-tip="v. 推断、推知（从证据出发）">infer</b> an author's age, gender, personality, empathy, moral values or political <b class="kw" data-tip="n. 归属、隶属（党派归属、机构隶属）">affiliation</b> kept their accuracy on the originals, and lost it on the rewrites.</span> <span class="s" data-t="122.616" data-e="134.908">What replaced the signal was not noise but a different signal, <b class="kw" data-tip="v. 逐渐偏移、漂移（不是突然改变）">drifting</b> towards the dominant category — the middle-aged, the moderate, the agreeable — as if the model had decided in advance who the author ought to be.</span></span></div>
+      <p class="para-tr">第三项研究会让所有“通过文字研究人”的人不安。那些在原文上训练、能从写作里推断作者年龄、性别、人格、共情、道德取向、政治归属的分类器，在原文上准确率照旧，一换到改写文本就全部失效。取代原有信号的并不是噪声，而是另一种信号：它整体漂向“主流那一类”——中年、温和、讨人喜欢——仿佛模型事先就决定了作者应该是什么样的人。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="134.908" data-e="146.724">The mechanism is not mysterious: a language model is trained to produce the most probable continuation, which means pulling every sentence towards the statistical centre of everything it has read.</span> <span class="s" data-t="146.724" data-e="156.419">Because hundreds of millions of people now use such tools, that centre is being fed back into the <b class="kw" data-tip="n. 语料库、文本库">corpus</b> from which the next model will learn, and the loop tightens.</span></span></div>
+      <p class="para-tr">机制并不神秘：语言模型被训练来生成“最可能的下文”，这就等于把每一个句子往它读过的一切的统计中心拉。而如今有数亿人在用这类工具，那个中心正被重新喂回下一代模型要学习的语料库里——回路越收越紧。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="156.419" data-e="161.592">None of this makes the tools useless, and the authors are careful not to say so.</span> <span class="s" data-t="161.592" data-e="175.801">What stops working is a narrower <b class="kw" data-tip="n. 假设、预设（未经证明就当作前提）">assumption</b> — that a person's writing carries a person's <b class="kw" data-tip="n. 指纹；（喻）独一无二的个人标记">fingerprint</b> — and with it the practical uses built on top: screening for depression, personality assessment in hiring, the study of how cultures differ.</span></span></div>
+      <p class="para-tr">这一切并不等于工具没用，作者也很谨慎地没有这么说。真正失效的是一个更窄的假设——一个人的文字携带这个人的指纹——以及架在它上面的那些实际用途：抑郁症筛查、招聘中的人格测评、文化差异研究。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="175.801" data-e="179.592">The uncomfortable part is that the improvement is <b class="kw" data-tip="adj. 真实的、名副其实的（不是假装的）">genuine</b>.</span> <span class="s" data-t="179.592" data-e="186.592">A student who puts an essay through a model gets a cleaner essay and hands in a text that could have been written by anyone.</span> <span class="s" data-t="186.592" data-e="193.974">So the question worth asking is not whether the writing got better, but whether the person who wrote it is still there to be found.</span></span></div>
+      <p class="para-tr">让人不舒服的地方在于：这种改进是真实的。一个学生把作文交给模型润色，会得到一篇更干净的文章，然后交上去一篇“谁写都有可能”的文本。所以值得问的不是“这篇文章有没有变好”，而是“写它的那个人，是否还找得到”。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">polish</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈpɒlɪʃ/ · 美 /ˈpɑːlɪʃ/</div>
+          <div class="wc-pos"><b>v.</b> <b>润色、打磨（文字、措辞）</b>，指把文章改得更顺、更亮、更“像样”。<br>常见义：<b>v.</b> 擦亮、上光（polish shoes 擦鞋）；<b>n.</b> 上光剂、光泽。<br>辨析：polish 改的是“表面”——这正是全文的关键词：表面亮了，指纹没了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Teachers describe the sensation as reading something <b>polished</b> to the point of anonymity.</div>
+          <div class="wc-tr">老师们把这种感觉形容为：读到的东西太“光”了，光到认不出作者。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plot</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /plɒt/ · 美 /plɑːt/</div>
+          <div class="wc-pos"><b>v.</b> <b>把（数据）标绘成图、以……为坐标作图</b>；plot A against B 即以 B 为横轴画 A。<br>常见义：<b>n.</b> 情节（小说的情节）；<b>n.</b> 一小块土地（a vegetable plot）；<b>v.</b> 密谋。<br>提示：学术写作里 plot 几乎只作“作图”讲，数据图就叫 plot。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Plotted</b> against the release of ChatGPT in November 2022, the spread narrowed on every platform the team examined.</div>
+          <div class="wc-tr">以 2022 年 11 月 ChatGPT 的发布为横轴把数据画出来，团队检查的每个平台上离散度都在收窄。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> <b>（结论、规律、效应）成立、依然有效</b>，是论文里最常用的“站得住”的说法。<br>常见义：<b>v.</b> 握住、举行（hold a meeting）、容纳（The hall holds 500.）。<br>搭配：the effect holds across groups（该效应在各组都成立）／hold true for 对……同样成立</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the effect <b>held</b> whatever the prompt.</div>
+          <div class="wc-tr">而且无论用哪种提示词，这个效应都成立。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">variance</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈveəriəns/ · 美 /ˈveriəns/</div>
+          <div class="wc-pos"><b>n.</b> <b>方差；（统计上的）离散程度</b>，衡量一组数据彼此差多远。<br>派生：vary（v. 变化）→ various（adj. 各种各样的）→ variable（n. 变量）。<br>本文用法：variance 高＝千人千面；variance 塌缩＝千篇一律。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>High <b>variance</b> means people write differently from one another.</div>
+          <div class="wc-tr">方差高，意味着人和人写得不一样。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">anonymity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌænəˈnɪməti/ · 美 /ˌænəˈnɪməti/</div>
+          <div class="wc-pos"><b>n.</b> <b>匿名、无名（认不出是谁的状态）</b>。<br>构词：an-（无）+ onyma（名字）+ -ity（名词后缀）＝“没有名字”。<br>派生：anonymous（adj. 匿名的）；反义：identification（身份的识别）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…reading something polished to the point of <b>anonymity</b>.</div>
+          <div class="wc-tr">……读到一篇打磨得光亮到“没有作者”的文字。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flawless</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈflɔːləs/ · 美 /ˈflɔːləs/</div>
+          <div class="wc-pos"><b>adj.</b> <b>完美无瑕的、毫无错误的</b>。<br>构词：flaw（n. 瑕疵、裂纹）+ -less（无）＝“没有裂纹的”。<br>注意：本文用它是带讽刺的——没有一处错，恰恰是最可疑的迹象。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the grammar is <b>flawless</b>, the paragraphs are balanced, the transitions are smooth.</div>
+          <div class="wc-tr">语法无懈可击，段落匀称，过渡顺滑。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dataset</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈdeɪtəset/ · 美 /ˈdeɪtəset/</div>
+          <div class="wc-pos"><b>n.</b> <b>数据集</b>，指为分析而整理好的一整套数据。<br>构词：data（数据）+ set（一套）。<br>同类复合词：database（数据库）、data point（数据点）、data-driven（数据驱动的）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…three studies, seven <b>datasets</b> and more than 880,000 texts.</div>
+          <div class="wc-tr">……三项研究、七个数据集、八十八万余篇文本。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lexical</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈleksɪkl/ · 美 /ˈleksɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>词汇的、词项的</b>，指“用词”这一层面（与句法层面相对）。<br>词源：lexicon（n. 词汇表、词典）。<br>搭配：lexical richness（词汇丰富度）／lexical choice（用词选择）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…an index built from <b>lexical</b> richness, syntactic complexity and the share of rare words.</div>
+          <div class="wc-tr">……一个由词汇丰富度、句法复杂度和罕用词占比搭起来的指数。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">syntactic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /sɪnˈtæktɪk/ · 美 /sɪnˈtæktɪk/</div>
+          <div class="wc-pos"><b>adj.</b> <b>句法的、句子结构层面的</b>。<br>词源：syntax（n. 句法）＋ -tic。语言学的两大层面即 lexicon（词）与 syntax（句）。<br>搭配：syntactic complexity（句法复杂度）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…lexical richness, <b>syntactic</b> complexity and the share of rare words.</div>
+          <div class="wc-tr">……词汇丰富度、句法复杂度、罕用词占比。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">classifier</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈklæsɪfaɪə/ · 美 /ˈklæsɪfaɪər/</div>
+          <div class="wc-pos"><b>n.</b> <b>分类器</b>，指把输入自动判进某一类别的模型或算法。<br>构词：classify（v. 分类）+ -er（做这件事的东西）。<br>语境：本文的分类器读一段文字，输出“作者可能是 20 岁男性、偏自由派”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Classifiers</b> trained on original writing to infer an author's age, gender, personality, empathy, moral values or political affiliation kept their accuracy on the originals.</div>
+          <div class="wc-tr">在原文上训练、用来推断作者年龄、性别、人格、共情、道德取向或政治归属的分类器，在原文上准确率照旧。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">infer</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈfɜː(r)/ · 美 /ɪnˈfɜːr/</div>
+          <div class="wc-pos"><b>v.</b> <b>推断、推知</b>，指从已有证据往前推一步，不是凭空猜。<br>辨析：infer（读者／研究者推断）↔ imply（作者／证据暗示）。<br>派生：inference（n. 推断）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…to <b>infer</b> an author's age, gender, personality, empathy, moral values or political affiliation.</div>
+          <div class="wc-tr">……去推断作者的年龄、性别、人格、共情、道德取向或政治归属。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">affiliation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˌfɪliˈeɪʃn/ · 美 /əˌfɪliˈeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>归属、隶属关系</b>；政治语境中多指党派倾向。<br>构词：af-（向）+ filius（儿子）→“认作一家”。<br>派生：affiliate（v. 使隶属于；n. 附属机构）；论文作者栏的 affiliation 就是“所属单位”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…moral values or political <b>affiliation</b>…</div>
+          <div class="wc-tr">……道德取向或政治归属……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">semantic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /sɪˈmæntɪk/ · 美 /sɪˈmæntɪk/</div>
+          <div class="wc-pos"><b>adj.</b> <b>语义的、意义层面的</b>（区别于风格、语法层面）。<br>词源：希腊语 sēmainein（表示、意味着）。<br>搭配：semantic similarity（语义相似度）——本文用它证明“内容其实没丢”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The content survived almost intact, with <b>semantic</b> similarity staying high.</div>
+          <div class="wc-tr">内容几乎完好无损，语义相似度始终很高。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">drift</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /drɪft/ · 美 /drɪft/</div>
+          <div class="wc-pos"><b>v.</b> <b>逐渐偏移、慢慢漂向</b>（强调无声、缓慢、无意识）。<br>常见义：<b>v.</b> 漂流、漂泊；<b>n.</b> 趋势、漂流。<br>辨析：drift 与 shift 的区别在于“没有人推”——它是自己滑过去的。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a different signal, <b>drifting</b> towards the dominant category.</div>
+          <div class="wc-tr">……另一种信号，它正漂向“主流那一类”。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intact</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈtækt/ · 美 /ɪnˈtækt/</div>
+          <div class="wc-pos"><b>adj.</b> <b>完好无损的、未受损伤的</b>。<br>构词：in-（否定）+ tact（触摸）→“没被碰过”。<br>搭配：survive intact（完好地保留下来）、remain intact（保持不变）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The content survived almost <b>intact</b>…</div>
+          <div class="wc-tr">内容几乎完好地保留了下来……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">assumption</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈsʌmpʃn/ · 美 /əˈsʌmpʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>假设、预设前提</b>，指未经证明就先当作成立的东西。<br>派生：assume（v. 假定；承担）。<br>搭配：rest on an assumption（建立在某个假设上）、challenge an assumption（挑战一个假设）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What stops working is a narrower <b>assumption</b> — that a person's writing carries a person's fingerprint.</div>
+          <div class="wc-tr">失效的是一个更窄的假设——一个人的文字携带这个人的指纹。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fingerprint</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈfɪŋɡəprɪnt/ · 美 /ˈfɪŋɡərprɪnt/</div>
+          <div class="wc-pos"><b>n.</b> <b>指纹；（喻）独一无二的个人标记</b>，本文的核心比喻。<br>构词：finger（手指）+ print（印记）。<br>引申：carbon footprint（碳足迹）、digital footprint（数字足迹）——同一构词思路。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…that a person's writing carries a person's <b>fingerprint</b>.</div>
+          <div class="wc-tr">……一个人的文字携带这个人的指纹。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">genuine</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈdʒenjuɪn/ · 美 /ˈdʒenjuɪn/</div>
+          <div class="wc-pos"><b>adj.</b> <b>真实的、名副其实的</b>（不是假装的、不是表面的）。<br>搭配：genuine improvement（实打实的改进）、genuine concern（真心的关切）。<br>注意：本文用它制造反讽——改进是真的，代价也是真的。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The uncomfortable part is that the improvement is <b>genuine</b>.</div>
+          <div class="wc-tr">让人不舒服的地方在于：这种改进是真实的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">corpus</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɔːpəs/ · 美 /ˈkɔːrpəs/</div>
+          <div class="wc-pos"><b>n.</b> <b>语料库、文本总集</b>（复数为 corpora），指供模型或语言研究使用的大规模文本集合。<br>常见义：<b>n.</b> （法律）主体财产、全集。<br>语境：训练语料池被 AI 文本污染，就是本文说的那条回路。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…that centre is being fed back into the <b>corpus</b> from which the next model will learn.</div>
+          <div class="wc-tr">……那个中心正被重新喂回下一代模型要学习的语料库里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sensation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /senˈseɪʃn/ · 美 /senˈseɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>感觉、感受</b>（身体或心理上的）。<br>常见义：<b>n.</b> 轰动（cause a sensation 引起轰动）。<br>派生：sense（n./v.）→ sensory（adj. 感官的）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A paper published in Nature Human Behaviour in August puts a number on that <b>sensation</b>.</div>
+          <div class="wc-tr">今年八月《自然·人类行为》上的一篇论文，给这种感觉配了一个数字。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rewrite</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌriːˈraɪt/ · 美 /ˌriːˈraɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>改写、重写</b>（保留大意，重做表达）。<br>构词：re-（再）+ write（写）。<br>搭配：rewrite a sentence（改写句子）、a rewritten version（改写版）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…when a language model <b>rewrites</b> what we have written, what exactly disappears?</div>
+          <div class="wc-tr">……当一个语言模型改写我们写过的东西时，究竟是什么消失了？</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prompt</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɒmpt/ · 美 /prɑːmpt/</div>
+          <div class="wc-pos"><b>n.</b> <b>（给 AI 的）提示词、指令</b>，指用户输入的那段要求。<br>常见义：<b>v.</b> 促使、引起（prompt sb to do sth）；<b>adj.</b> 迅速的、准时的。<br>提示：prompt engineering（提示词工程）即由此而来。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…under thirteen different rewriting <b>prompts</b>.</div>
+          <div class="wc-tr">……在十三种不同的改写提示词之下。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">essay</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈeseɪ/ · 美 /ˈeseɪ/</div>
+          <div class="wc-pos"><b>n.</b> <b>短文、议论文</b>（尤指学生的作文、随笔）。<br>辨析：essay 偏“论述性短文”；article 指报刊文章；paper 指学术论文。<br>搭配：write an essay on…（就……写一篇短文）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There is a kind of <b>essay</b> that has become easy to recognise in the past three years.</div>
+          <div class="wc-tr">过去三年里出现了一种很容易认出来的作文。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">be easy to recognise</span><span class="zh">很容易辨认出来</span></li>
+          <li><span class="en">to the point of</span><span class="zh">到了……的地步</span></li>
+          <li><span class="en">along the way</span><span class="zh">在这一过程中</span></li>
+          <li><span class="en">put a number on sth</span><span class="zh">给……配上一个具体数字、量化</span></li>
+          <li><span class="en">draw on</span><span class="zh">动用、借助（数据、资料、经验）</span></li>
+          <li><span class="en">ask a narrow question</span><span class="zh">追问一个范围很窄的问题</span></li>
+          <li><span class="en">build sth from</span><span class="zh">用……搭建出……</span></li>
+          <li><span class="en">the share of</span><span class="zh">……所占的比例</span></li>
+          <li><span class="en">from one another</span><span class="zh">彼此之间</span></li>
+          <li><span class="en">be plotted against</span><span class="zh">以……为坐标（轴）作图</span></li>
+          <li><span class="en">at the release of</span><span class="zh">在……发布之际</span></li>
+          <li><span class="en">fall sharpest on</span><span class="zh">在……上跌得最狠</span></li>
+          <li><span class="en">turn sth into</span><span class="zh">把……转变为……</span></li>
+          <li><span class="en">survive intact</span><span class="zh">完好地保留下来</span></li>
+          <li><span class="en">stay high</span><span class="zh">保持在高位</span></li>
+          <li><span class="en">fall by 21 to 50 per cent</span><span class="zh">下降 21% 至 50%</span></li>
+          <li><span class="en">across datasets and models</span><span class="zh">跨数据集、跨模型</span></li>
+          <li><span class="en">be trained on</span><span class="zh">在……上接受训练</span></li>
+          <li><span class="en">keep one's accuracy</span><span class="zh">保持准确率</span></li>
+          <li><span class="en">lose it on</span><span class="zh">在……上失灵、失效</span></li>
+          <li><span class="en">drift towards</span><span class="zh">逐渐漂向、偏向</span></li>
+          <li><span class="en">as if</span><span class="zh">仿佛、就好像</span></li>
+          <li><span class="en">in advance</span><span class="zh">事先、预先</span></li>
+          <li><span class="en">be fed back into</span><span class="zh">被重新喂回、反馈进</span></li>
+          <li><span class="en">be built on top</span><span class="zh">架在……之上（建立于其上）</span></li>
+          <li><span class="en">screen for</span><span class="zh">筛查（某种疾病、风险）</span></li>
+          <li><span class="en">the question worth asking</span><span class="zh">真正值得问的问题</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：一种“太完美”的作文——语法无瑕、过渡顺滑，读完不知道是谁写的。</li>
+          <li>出处：南加大团队，《自然·人类行为》2026 年 8 月；三项研究、七个数据集、88 万篇文本。</li>
+          <li>方法：用词汇丰富度、句法复杂度、罕用词占比合成“写作复杂度指数”，看其方差。</li>
+          <li>发现一：ChatGPT 上线后三平台方差同步收窄；Reddit 最狠，arXiv 次之，地方新闻最轻。</li>
+          <li>发现二：实验改写——内容保住（语义相似度高），方差被砍 21%–50%，跨模型跨提示词都成立。</li>
+          <li>发现三：作者属性分类器全部失灵；信号不是变噪声，是漂向“主流那一类”。</li>
+          <li>机制：模型生成“最可能的下文”＝往统计中心拉；数亿人使用→中心被喂回语料库→回路收紧。</li>
+          <li>边界：工具并非无用，规范化对学术写作有益；失效的是“文字＝指纹”这个前提及其应用。</li>
+          <li>落点：改进是真的；要问的不是“有没有变好”，而是“写它的人还在不在”。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">There is a kind of essay that has become easy to recognise in the past three years: the grammar is flawless, the paragraphs are balanced, the transitions are smooth, and by the second page you have no idea who wrote it.</div>
+        <div class="row"><b>主干：</b>There is a kind of essay（有一种作文）——that 从句修饰 essay；冒号之后用三个并列小句＋一个结果小句，把“是什么样”具体化。</div>
+        <div class="row"><b>难点：</b>① 冒号在此不是“解释一个名词”，而是“展开一个判断”，等于 namely；② 三个 the…is… 结构构成排比（flawless / balanced / smooth），越整齐越可疑；③ by the second page 是“到第二页时”的时间界限，不是“在第二页”；④ have no idea who wrote it 中 who 引导的是同位性疑问从句，作 idea 的内容。</div>
+        <div class="row tr"><b>译文：</b>过去三年里出现了一种很容易认出来的作文：语法无懈可击，段落匀称，过渡顺滑，读到第二页你已经完全不知道是谁写的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A team at the University of Southern California, led by Zhivar Sourati and Morteza Dehghani, drew on three studies, seven datasets and more than 880,000 texts to ask one narrow question: when a language model rewrites what we have written, what exactly disappears?</div>
+        <div class="row"><b>主干：</b>A team drew on three studies, seven datasets and more than 880,000 texts to ask one narrow question（一支团队动用了……去追问一个问题）。</div>
+        <div class="row"><b>难点：</b>① 主语与谓语之间插入过去分词短语 led by…，是典型的“主语＋同位说明＋谓语”结构，读时先跳过；② draw on 是“动用、借助”，不是“画在……上”；③ 冒号后是直接引出的问题，其中 when 引导时间状语从句，what we have written 是 rewrites 的宾语从句；④ one narrow question 的 narrow 是褒义——“窄”才问得清。</div>
+        <div class="row tr"><b>译文：</b>南加州大学一支由 Zhivar Sourati 与 Morteza Dehghani 带领的团队，动用了三项研究、七个数据集、八十八万余篇文本，只为追问一个很窄的问题：当一个语言模型改写我们写过的东西时，究竟是什么消失了？</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What replaced the signal was not noise but a different signal, drifting towards the dominant category — the middle-aged, the moderate, the agreeable — as if the model had decided in advance who the author ought to be.</div>
+        <div class="row"><b>主干：</b>What replaced the signal was not noise but a different signal（取代原信号的不是噪声，而是另一种信号）。</div>
+        <div class="row"><b>难点：</b>① 主语是 What 引导的名词性从句，谓语用 not…but… 的对比结构；② drifting… 是现在分词作伴随状语，逻辑主语是 a different signal；③ 破折号中间三个并列形容词是 dominant category 的具体化，注意 moderate 在此是“政治立场温和”，不是“适度的”；④ as if 后接虚拟语气（had decided），暗示“模型并没有真的决定，但效果等同”。</div>
+        <div class="row tr"><b>译文：</b>取代原有信号的并不是噪声，而是另一种信号：它整体漂向“主流那一类”——中年、温和、讨人喜欢——仿佛模型事先就决定了作者应该是什么样的人。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The mechanism is not mysterious: a language model is trained to produce the most probable continuation, which means pulling every sentence towards the statistical centre of everything it has read.</div>
+        <div class="row"><b>主干：</b>The mechanism is not mysterious（机制并不神秘），冒号后给出解释。</div>
+        <div class="row"><b>难点：</b>① which 引导非限制性定语从句，但它的先行内容不是某个名词，而是前面整句“被训练去生成最可能的下文”；② means 后接动名词 pulling，而不是 to pull——此处 means＝“等于”，与 mean to do（打算做）不同；③ the statistical centre of everything it has read 层层嵌套，it 指 model，核心意思是“它读过的一切的统计中心”。</div>
+        <div class="row tr"><b>译文：</b>机制并不神秘：语言模型被训练来生成“最可能的下文”，这就等于把每一个句子往它读过的一切的统计中心拉。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What stops working is a narrower assumption — that a person's writing carries a person's fingerprint — and with it the practical uses built on top: screening for depression, personality assessment in hiring, the study of how cultures differ.</div>
+        <div class="row"><b>主干：</b>What stops working is a narrower assumption…and with it the practical uses（失效的是一个更窄的假设……以及随之失效的实际用途）。</div>
+        <div class="row"><b>难点：</b>① 破折号之间是 that 引导的同位语从句，解释 assumption 的具体内容；② and with it the practical uses 是省略句，完整为 and with it [stop working] the practical uses，with it 意为“随之”；③ built on top 是过去分词短语后置修饰 uses，top 指“这个假设之上”；④ 冒号后三个名词短语并列，是 uses 的列举，注意 hiring 在此是“招聘”而非“租用”。</div>
+        <div class="row tr"><b>译文：</b>真正失效的是一个更窄的假设——一个人的文字携带这个人的指纹——以及架在它上面的那些实际用途：抑郁症筛查、招聘中的人格测评、文化差异研究。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章处理的是一个我们几乎每天都会遇到、却很少认真想过的现象：为什么现在读到的一些文字，语法完美、逻辑顺畅、读起来毫不费力，可你就是说不出它是谁写的。</p>
+      <p class="zh-sum">作者没有从“AI 会不会取代写作”这种大问题入手，而是从一个极小的切口进入：只问一件事——当一个语言模型改写我们写过的文字时，究竟什么消失了。这个问题之所以问得好，是因为它把“好”与“像”拆成了两件事。我们通常用“好不好”来评价一篇文章：有没有语法错误、逻辑通不通、句子漂不漂亮。但这篇文章提醒我们，还有另一个维度：像不像你。</p>
+      <p class="zh-sum">研究出自南加州大学的一支跨学科团队，领头的是 Zhivar Sourati 与 Morteza Dehghani，成员同时来自计算机科学系、心理学系、计算语言科学中心与信息科学研究所。论文发表在 2026 年 8 月的《自然·人类行为》，并且上了当期封面。他们动用的是三项研究、七个数据集、八十八万余篇文本，覆盖 Reddit 创意写作、地方新闻、arXiv 论文摘要、个人随笔、道德问卷、共情对话、国会发言等不同文体——这个组合本身就是一种论证：如果只在一种文体里发现同质化，你可以说是巧合；七种文体都出现，就很难解释了。</p>
+      <p class="zh-sum">第一步是“量出像不像”。研究者没有用主观打分，而是造了一个写作复杂度指数，由三块拼成：词汇丰富度（用熵、辛普森指数、类符形符比衡量）、句法复杂度（用平均依存长度衡量）、罕用词占比。把这三块合成一个分数之后，他们真正关心的不是平均分，而是这个分数在人群中的分布有多散——也就是方差。方差大，说明这个月大家在用不同的方式说话；方差塌缩，说明大家开始用同一种方式说话。这个设计很聪明：它绕开了“文笔好不好”的价值判断，只问“彼此差多远”。</p>
+      <p class="zh-sum">第二步是看现实世界的时间线。他们用 AI 文本检测工具逐月估算各平台上“疑似由模型生成”的比例，再把复杂度方差画在同一张图上。结果非常整齐：以 2022 年 11 月 ChatGPT 发布为界，三个平台的方差同时开始下滑。掉得最厉害的是 Reddit 的创意写作版块——一个本来最鼓励个性、最不该趋同的地方；其次是 arXiv 的预印本摘要，学术写作被“规范化”了；最温和的是社区新闻网站 Patch 的地方报道，因为本地新闻本来就有强烈的文体惯性和人工编辑环节。三种下降幅度不同，方向完全一致，这个“同向不同幅”的图景比任何单一数字都更有说服力。</p>
+      <p class="zh-sum">第三步是把观察变成实验。既然不能确定因果，那就人为地制造一次改写：把同一批文字交给 GPT-3.5、Gemini、Llama 三个模型，用十三种不同的提示词去润色，然后比较改写前后的差别。结果分两半，而这两半同样重要。第一半是内容：语义相似度始终很高，也就是说，你的意思基本被完整保留了，模型没有偷偷换掉你的观点。第二半是风格：复杂度的方差掉了 21% 到 50%，而且跨数据集、跨模型、跨提示词都成立。换句话说，这不是某个模型某个设定的毛病，而是这套方法的固有属性——你让它“改得更好”，它就必然把文字往某个中间位置推。</p>
+      <p class="zh-sum">第四步，也是最锋利的一步，是问：那些靠文字读人的技术，还灵吗？团队训练了一批分类器，让它们从原文里判断作者的年龄组、性别、人格特质、共情水平、道德取向、政治归属。这些分类器在原文上表现良好——毕竟这正是过去几十年文本心理学的老本行。但把同样的分类器用到改写后的文本上，准确率就垮了。更值得注意的是垮掉的方式：它不是变成随机的噪声，而是系统性地偏向“主流类别”——中年、政治温和、性格讨喜。这意味着一件事：AI 不只是把你的文字磨平了，它还替你选了一个“更安全的人格”。对于做抑郁症筛查、招聘人格测评、文化差异研究的人来说，这是釜底抽薪。</p>
+      <p class="zh-sum">为什么会这样？机制其实一点都不神秘。语言模型的训练目标是生成“最可能的下文”，而“最可能”在数学上就等于“最接近平均”。所以每一次润色，都是把句子往它读过的一切的统计中心拉一把。问题在于这把拉力现在有了回路：数亿人在用这些工具，产生的文本又被抓回去训练下一代模型，于是“中心”不断被自己的产物加固，越来越窄，越来越像。文章里那句“回路越收越紧”，说的就是这个自我强化。</p>
+      <p class="zh-sum">但作者很克制。他们没有说这些工具没用，也没有说同质化一定是坏事。学术写作的规范化确实让论文更好读，求职信更清楚，公文更少歧义。真正失效的，是一个更窄、也更基础的前提：一个人的文字携带这个人的指纹。这个前提支撑着一整套产业和研究——从用语言特征筛查抑郁，到招聘时的人格测评，再到“不同文化的人说话方式有何不同”这类跨文化研究。前提一旦松动，上面的东西都得重新检查。这种处理方式值得学：不是把新技术骂一顿，而是精确指出“它让哪一个具体假设不再成立”。</p>
+      <p class="zh-sum">对我们这些正在学英语、正在练写作的人，这篇文章的落点其实很近。它承认了一件让人不舒服的事：润色带来的改进是真实的——句子确实更顺，错误确实更少。但代价也是真实的，只是不在纸面上：你交上去的那篇“更好的作文”，可能已经是一篇谁都写得出的作文。而这个损失不会被任何评分标准捕捉到，因为在“语法正确”“结构清晰”“用词准确”这些维度上，它全是加分项。</p>
+      <p class="zh-sum">所以文章最后给出的判断句值得抄下来：真正值得问的，不是“这篇文章有没有变好”，而是“写它的那个人，是否还找得到”。这句话可以迁移到很多地方——不只是写作，也包括我们让算法替我们选歌、选餐厅、选观点的时候。工具越顺手，我们越要留一道检查：做完这件事之后，那个做选择的人还在不在场。</p>
+      <p class="zh-sum">如果要把这篇文章的方法论也学一手，有两点值得记住。第一是“用方差代替平均值”：想知道一件事有没有变，看平均往往看不出来，看分布的离散程度才看得出来。第二是“把感受变成一个可测的量”：几乎所有重要的社会科学发现，都是先有人把一句“我感觉好像……”翻译成一个能算的指标。这篇文章做的正是这件事——它把“现在的文章读起来都一个味儿”这句抱怨，变成了一个可以画在坐标轴上的数字。</p>
+      <p class="zh-sum">最后一个提醒：这项研究的样本以英文平台为主，Reddit、arXiv、Patch 也都不是普通人的日常写作场景。所以不能简单推论说“中文写作也在同质化”。但机制是通用的——只要训练目标是“最可能”，只要用户在增长，那条回路就成立。至于它在中文里长什么样，大概要等有人用同样的方法去测一遍。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. Large language models are unable to preserve the meaning of the texts they rewrite.<br>B. AI polishing keeps what a text says but erases the traces of who wrote it, undermining research that reads people through language.<br>C. Students should be forbidden to use AI tools when writing essays for school.<br>D. The writing-complexity index is a more reliable measure than human judgement.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文的骨架是“内容保住、指纹消失、依赖指纹的研究失效”，B 三项俱全。A 与第 5 段相反（semantic similarity staying high）；C 是把文末的教学落点误当成主旨，且文中从未提出禁令；D 只是第 3 段的方法细节，属于以偏概全。</div>
+      <div class="q"><b>2. What can be inferred about the classifiers from the third study?</b><br>A. They were never accurate, even on the original texts.<br>B. They failed because the rewritten texts contained too much random noise.<br>C. They did not simply lose the signal; the signal shifted towards the most common categories.<br>D. They worked better on rewritten texts because the style had been standardised.<br><br><b>答案：C</b><br>
+        <b>解析：</b>第 6 段明确写道“What replaced the signal was not noise but a different signal, drifting towards the dominant category”，C 是同义改写。A 与“kept their accuracy on the originals”矛盾；B 被 not noise 直接否掉；D 与“lost it on the rewrites”相反。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>如果“写得更像标准答案”和“写得更像你自己”发生了冲突，你会怎么选？请结合本文第 8、9 段，说明你认为哪一种损失更难被察觉，并给出一个你自己写作中的例子（可以是一次被老师改过的作文，也可以是一次用翻译软件“顺一遍”的经历）。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段用的是“先承认对方最强的一点，再翻转”的句式：<span class="hl">The uncomfortable part is that the improvement is genuine.</span> 它不否认好处，而是把好处摆在最前面，让后面的代价显得无法回避。仿写时可以先立后破：<i>The uncomfortable part is that ______ is genuine.</i>，再用一句 “So the question worth asking is not whether ______, but whether ______.” 收束。这个句式在议论文里极其好用——它能让你的文章避开“一边倒”的幼稚感。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr9" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 引子：一种“太完美”的作文，读完不知谁写的</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 出处：南加大团队 · 3 项研究 / 7 数据集 / 88 万篇</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">3 · 方法：词／句／罕词合成指数，关键看“方差”</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 发现一：ChatGPT 后三平台方差同步收窄</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">5 · 发现二：内容保住，方差被砍 21%–50%</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">6 · 发现三：属性分类器失灵，信号漂向“主流”</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 机制：生成“最可能”＝拉向中心，回路自我加固</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">8 · 边界：工具非无用，失效的是“文字＝指纹”</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：改进是真的，人是否还找得到才是问题</text>
+
+          <rect x="60" y="512" width="600" height="38" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="536" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：读起来更好 ≠ 还是你写的</text>
+        </svg>
+        <figcaption>结构图解：文章走的是“现象 → 量化 → 三个发现 → 机制 → 边界 → 判断句”的标准说明文路径；第 6 段是全篇转折，第 8 段负责收窄结论、防止过度推论。</figcaption>
+      </figure>
+    </section>
+
+  </div>
+</article>
+
+
+  <footer>
+    素材来源：Zhivar Sourati, Farzan Karimi-Malekabadi, Meltem Ozcan, Colin McDaniel, Alireza Ziabari, Jackson Trager, Ala N. Tak, Meng Chen, Fred Morstatter, Morteza Dehghani《The shrinking landscape of linguistic diversity in the age of large language models》，Nature Human Behaviour 10:1925–1942（2026-08-24 在线），南加州大学（USC）计算机科学系 / 心理学系 / 计算语言科学中心 / 信息科学研究所；DOI 10.1038/s41562-026-02550-0｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

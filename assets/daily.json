@@ -2,6 +2,20 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-11-09",
+   "en": "So the question worth asking is not whether the writing got better, but whether the person who wrote it is still there to be found.",
+   "zh": "所以值得问的不是“这篇文章有没有变好”，而是“写它的那个人，是否还找得到”。",
+   "src": "外刊精读 · AI 把文章改好了，也把“谁写的”改掉了（2026-11-09）",
+   "key": "still there to be found",
+   "keyZh": "还在不在、是否仍然找得到（不是“仍然在那里”这么平淡；to be found 强调“可被发现”）",
+   "tip": "这句话的结构值得整句背下来：The question worth asking is not whether A, but whether B。三个动作各有讲究。第一，worth asking 是形容词短语后置修饰 question，等于“值得问的那个问题”，比 which we should ask 干净得多。第二，not whether…but whether… 是“排除一个假问题、立起一个真问题”的标准框架——先承认“有没有变好”这个问法很自然，再说明它问偏了。第三，结尾的 is still there to be found 用了被动不定式：如果只写 is still there，意思是“人还在原地”；加上 to be found，意思变成“还找得到”——差别在于读者是否还认得出作者。全文的落脚点就压在这个被动上：文章没有被毁掉，只是作者变得不可检索了。仿写时可以把 A、B 换成任何一组“表面指标 vs 真正问题”，例如 not whether the score went up, but whether the student is still in the sentence。",
+   "tags": [
+    "科技与创新",
+    "语言",
+    "人工智能"
+   ]
+  },
+  {
    "date": "2026-11-08",
    "en": "Once a week measured the same as four days a week, which dismantles the folk version of the finding, where the brain is a muscle and a grandchild is the gym.",
    "zh": "一周一次，和一周四天，测出来是一样的——这就把这条发现的民间版本拆掉了。那个版本里，大脑是一块肌肉，孙辈就是健身房。",
