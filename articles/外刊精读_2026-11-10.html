@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 捐出去的那件外套，一半没人要</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Wardrobe &amp; Waste · 人与自然 / 人与社会 / 生态与可持续 / 消费 / 循环经济</div>
+  <h1>捐出去的那件外套，一半没人要</h1>
+  <div class="deck">The world throws away 92 million tonnes of textiles a year, and the donation bag is one of the routes that gets them there — so ten grandmothers in Cape Town were asked to cut the clothes up instead.</div>
+  <div class="byline"><span><b>来源</b> Textiles（2026-09-28）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-10</span><span><b>难度</b> 难</span><span><b>词数</b> 约 528 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-10.jpg" alt="一双老人的手在旧缝纫机前推送一条磨旧的牛仔裤，旁边堆着一摞叠好的旧衣物（配图）">
+    <figcaption>配图：缝纫机前的一双手，旁边是一摞被反复叠过的旧衣——牛仔、毛呢、格纹衬衫，每一件都曾经被人穿过、被人送走（图片来源：教学素材图库，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>先给一个数字：全世界每年丢弃约 <b>9200 万吨</b>纺织品，其中约 <b>85%</b> 被填埋或焚烧；而我们从“捐赠”这条路上送出去的衣服，在被运往较贫穷国家之后，有<b>近一半因为质量太差而卖不掉</b>，就地变成新的垃圾。</p>
+    <p>本文的实验很小：南非开普半岛科技大学的研究团队在开普敦一间社区活动室，和十位 58 到 74 岁的祖母级女性一起工作了五个月，让她们把别人捐来的旧衣改成能穿的东西。193 件里筛出 168 件，最后做出 <b>37 件</b>成品。数据小得几乎不像一篇论文，但正是这个小，暴露了一个大问题：<b>改衣不是材料难题，而是时间与判断力的难题</b>——而这两样，一只捐赠袋从来不需要提供。</p>
+    <p>文章最值得学的地方是它的克制：作者明确承认没测使用寿命、没算收入、没法规模化，也没有把十个人的手工经验说成政策方案。落点因此很稳：<b>捐赠把责任挪走，修补把责任留下</b>。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-10.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.326">Emptying a <b class="kw" data-tip="n. 衣柜、衣橱（ward 存放 + robe 长袍）">wardrobe</b> feels like a small <b class="kw" data-tip="adj. 道德上的、合乎道义的">moral</b> act: the bag leaves the door, and in your mind it already sits on somebody else's back.</span> <span class="s" data-t="8.326" data-e="16.026">The bag does leave the door, but the back it reaches is far less certain, and the distance in between is where the trouble begins.</span></span></div>
+      <p class="para-tr">清空一个衣柜，感觉像做了件小小的好事：袋子出了门，在你心里它已经穿在了别人身上。袋子确实出了门；但它最终落到谁身上，远比这种感觉所暗示的不确定，而中间那段距离，正是麻烦开始的地方。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="16.026" data-e="28.237">A study published in <i>Textiles</i> in September followed that distance into a community hall in Cape Town, where ten women aged 58 to 74 spent five months remaking other people's <b class="kw" data-tip="n. 被丢弃的东西（此处作名词，指废弃衣物）；v. 丢弃">discards</b>.</span> <span class="s" data-t="28.237" data-e="38.684">The team, from the Cape Peninsula University of Technology, worked with a local group called Grandmothers Against Poverty and AIDS between May and October 2024.</span></span></div>
+      <p class="para-tr">九月发表在《Textiles》上的一项研究，沿着这段距离走进开普敦的一间社区活动室：十位 58 到 74 岁的女性在那里花了五个月，把别人丢弃的衣物重新做成能穿的东西。这支来自开普半岛科技大学的团队，在 2024 年 5 月到 10 月之间与当地一个名为“祖母抗贫抗艾”的组织合作。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="38.684" data-e="49.329">The scale is hard to picture: the world <b class="kw" data-tip="v. 丢弃、扔掉（比 throw away 正式）">discards</b> roughly 92 million tonnes of <b class="kw" data-tip="n. 纺织品（textile 可数/不可数皆可）">textiles</b> a year, a <b class="kw" data-tip="n. 数字、数据（常见义“人物、身材、figure 图形”）">figure</b> projected to reach 150 million by 2050.</span> <span class="s" data-t="49.329" data-e="58.092">About 85 per cent of it is <b class="kw" data-tip="v. 掩埋、填埋（bury waste 填埋垃圾）">buried</b> or burned, so the fate of most clothing is settled not by a second owner but by whoever <b class="kw" data-tip="v. 经营、管理（run a business 经营企业）；常见义“跑”">runs</b> the landfill.</span></span></div>
+      <p class="para-tr">这个体量很难想象：全世界每年丢弃约 9200 万吨纺织品，预计到 2050 年会达到 1.5 亿吨。其中约 85% 被填埋或焚烧——也就是说，多数衣服的归宿不由第二个主人决定，而由经营垃圾填埋场的人决定。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="58.092" data-e="70.474">Export has long been the quiet answer, and it is failing: almost half of the used <b class="kw" data-tip="n. 衣服、衣物（正式用词，比 clothes 书面）">garments</b> shipped from richer countries are never sold, because nobody pays for what arrives <b class="kw" data-tip="adj. 有污渍的（stain 污点 + -ed）">stained</b>, torn or out of season.</span> <span class="s" data-t="70.474" data-e="77.592">What the exporting country records as reuse <b class="kw" data-tip="v. 最终落到、落得（某处/某种境地）；常见义“着陆、土地”">lands</b> in the importing country as waste with a shipping bill attached.</span></span></div>
+      <p class="para-tr">出口长期以来是那个不出声的答案，而它正在失效：从较富裕国家运出的二手衣物中，近一半从未卖出，因为没人愿意为污渍、破洞或过季买单。出口国记作“再利用”的东西，落到进口国就成了附带一张运费单的垃圾。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="77.592" data-e="92.395">The Cape Town project began by <b class="kw" data-tip="v. 筛、细细分拣（sift through 逐一翻检）">sifting</b> what arrived: of 193 garments collected in three <b class="kw" data-tip="n. 一批（a batch of 一批货/一批数据）">batches</b>, 168 passed the <b class="kw" data-tip="v. 筛查、筛除（screen out 剔除）；常见义“屏幕”">screening</b> and 25 were rejected <b class="kw" data-tip="adv. 直接地、彻底地（reject outright 当场判死）">outright</b>, 13 per cent lost before any sewing began.</span> <span class="s" data-t="92.395" data-e="102.261">Then came three stages — the women's own intuitive remaking, a structured co-design workshop, and a return to their own tables with whatever they had picked up.</span></span></div>
+      <p class="para-tr">开普敦项目从“筛”开始：三批共收集 193 件衣物，168 件通过筛选，25 件被直接判死——还没动针线，就先损失了 13%。接下来是三个阶段：她们自己凭直觉改衣、一场有结构的协同设计工作坊，以及带着学到的东西回到自己的工作台。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="102.261" data-e="112.421">They finished 37 items: 25 garments, seven shoe-related samples and five <b class="kw" data-tip="n. 配饰、附件（服装配件、设备附件）">accessories</b>, made mostly for grandchildren rather than for sale.</span> <span class="s" data-t="112.421" data-e="125.118">In seven of the eight interviews that followed, the motive offered was <b class="kw" data-tip="adj. 关系性的、与人际关系有关的（relation + -al）">relational</b> rather than environmental: an adult coat became a child's dress because a child needed a dress, not because the planet needed one fewer.</span></span></div>
+      <p class="para-tr">她们最终完成 37 件成品：25 件衣物、7 件鞋类样品、5 件配饰，大多做给孙辈，而不是拿去卖。在后来的八次访谈中，有七次给出的动机是“关系”而非“环保”：一件成人外套变成童装，是因为有个孩子需要一条裙子，而不是因为地球需要少一件外套。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="125.118" data-e="132.434">The more revealing result is what the workshop did not do: it did not replace the women's knowledge with a designer's method.</span> <span class="s" data-t="132.434" data-e="144.143">What they kept were the physical steps — turning a whole garment over in their hands, <b class="kw" data-tip="v. 把（布料）披挂、搭在……上（drape sth on）">draping</b> it on a chair when no <b class="kw" data-tip="n. （裁缝用的）人体模特、人台">mannequin</b> was available — while the formal <b class="kw" data-tip="n. 草图、素描（此处指设计草图绘制）">sketching</b> designers rely on was quietly dropped.</span> <span class="s" data-t="144.143" data-e="153.566">Remaking, on this evidence, is less a problem of materials than a problem of hours and judgement, the two things a donation bag never has to supply.</span></span></div>
+      <p class="para-tr">更有意思的结果，是这场工作坊“没有做”的事：它没有用设计师的方法替换这些女性的知识。她们保留下来的是身体性的步骤——把整件衣服在手里翻过来看、没有人体模特时就把衣服搭在椅子上比；而设计师依赖的正式绘图，被悄悄放弃了。按这份证据，改衣与其说是材料问题，不如说是时间与判断力的问题——而这两样，一只捐赠袋从来不需要提供。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="153.566" data-e="162.868">The authors are <b class="kw" data-tip="adj. 直白的、不加修饰的（plain language 平实的话）">plain</b> about the limits: nobody measured how long the remade items stayed in use, what they sold for, or what difference any of it made.</span> <span class="s" data-t="162.868" data-e="175.709">Ten women and 37 items cannot be <b class="kw" data-tip="v. 扩大规模、按比例放大（scale up 放量）">scaled</b> into a textile policy, and South Africa has no producer-responsibility <b class="kw" data-tip="n. 制度、方案（a scheme for doing sth）；常见义“阴谋”">scheme</b> for clothing, while the European Union now requires one from each member state.</span></span></div>
+      <p class="para-tr">作者对局限说得异常直白：没有人测量过这些改成品被穿了多久、卖了多少钱，或者究竟带来了什么差别。十位女性和 37 件成品无法放大成一项纺织政策；南非没有针对服装的生产者责任制度，而欧盟如今要求每个成员国都建立一套。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="175.709" data-e="187.461">So the honest conclusion is narrower than the headline: donation moves the responsibility for a garment elsewhere, while repair keeps it, which is why the second is harder to sell and easier to trust.</span> <span class="s" data-t="187.461" data-e="195.895">The question worth asking about the bag by the door is therefore not where the clothes will go, but who will have the hours to turn them into something else.</span></span></div>
+      <p class="para-tr">所以诚实的结论比标题要窄：捐赠把一件衣服的责任挪到别处，修补则把它留在原地——这也是为什么后者更难卖，却更容易被信任。因此，关于门口那只袋子，真正值得问的不是这些衣服会去哪儿，而是谁会有那些小时，把它们变成别的东西。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">land</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /lænd/ · 美 /lænd/</div>
+          <div class="wc-pos"><b>v.</b> <b>最终落到（某处）、落得（某种境地）</b>，指经过一段过程后有了一个结果，常带“不由自己决定”的意味。<br>常见义：<b>n.</b> 土地、陆地；<b>v.</b> 着陆（The plane landed.）。<br>搭配：land in / land on；land sb with sth（把……摊到某人头上）。本文用它写“出口国记作再利用的东西，落到进口国就是垃圾”，一个词就把责任转移写完了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What the exporting country records as reuse <b>lands</b> in the importing country as waste with a shipping bill attached.</div>
+          <div class="wc-tr">出口国记作“再利用”的东西，落到进口国就成了附带一张运费单的垃圾。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">screen</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /skriːn/ · 美 /skriːn/</div>
+          <div class="wc-pos"><b>v.</b> <b>筛查、甄别、筛除</b>，指按标准把人或物过一遍，把不合格的挡在外面。<br>常见义：<b>n.</b> 屏幕、银幕；<b>n.</b> 屏风、纱窗。<br>搭配：screen out（剔除）／screen for（筛查某种疾病、风险）／pass the screening（通过筛选）。注意：本文的 screening 不是“放映”，而是“筛”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…of 193 garments collected in three batches, 168 passed the <b>screening</b>.</div>
+          <div class="wc-tr">……三批共收集 193 件衣物，其中 168 件通过了筛选。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">run</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rʌn/ · 美 /rʌn/</div>
+          <div class="wc-pos"><b>v.</b> <b>经营、管理、运营</b>（企业、机构、设施）。<br>常见义：<b>v.</b> 跑、流动；<b>v.</b> 运转（The engine runs.）。<br>搭配：run a business / run a landfill / run a programme。学术写作里 run 还常作“进行（实验）”：run a trial（做一次试验）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the fate of most clothing is settled not by a second owner but by whoever <b>runs</b> the landfill.</div>
+          <div class="wc-tr">多数衣服的归宿，不由第二个主人决定，而由经营垃圾填埋场的人决定。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sift</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /sɪft/ · 美 /sɪft/</div>
+          <div class="wc-pos"><b>v.</b> <b>筛、细细分拣</b>；引申为“从大量信息中挑出有用的”。<br>搭配：sift through sth（逐一翻检）／sift out（筛出、剔除）／sift evidence（梳理证据）。<br>辨析：sift 强调“过筛子、逐件看”，sort 只强调“分类”，filter 强调“过滤掉”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The Cape Town project began by <b>sifting</b> what arrived.</div>
+          <div class="wc-tr">开普敦项目从“筛”开始——先看送来的都是些什么。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outright</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈaʊtraɪt/ · 美 /ˈaʊtraɪt/</div>
+          <div class="wc-pos"><b>adv.</b> <b>完全地、彻底地；当场、直接地</b>（不经过中间步骤）。<br>也作 <b>adj.</b>：an outright ban（彻底禁止）、an outright lie（彻头彻尾的谎话）。<br>本文用法：25 were rejected outright＝25 件不用再考虑，直接淘汰。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…168 passed the screening and 25 were rejected <b>outright</b>.</div>
+          <div class="wc-tr">……168 件通过筛选，25 件被直接判死。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">drape</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dreɪp/ · 美 /dreɪp/</div>
+          <div class="wc-pos"><b>v.</b> <b>把（布、衣）披挂、搭在……上</b>；裁剪时把布料搭在人台或人体上比形，是立裁的核心动作。<br>名词：<b>n.</b> 帷幔、垂布（drapes 窗帘）。<br>本文用法：没有人体模特时就“搭在椅子上”，这个细节说明她们靠的是手感，而不是图纸。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…<b>draping</b> it on a chair when no mannequin was available.</div>
+          <div class="wc-tr">……没有人体模特时，就把衣服搭在椅子上比形。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mannequin</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmænɪkɪn/ · 美 /ˈmænɪkɪn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（橱窗、裁缝用的）人体模型、人台</b>。<br>辨析：mannequin 指展示或裁剪用的假人；model 指真人模特；dummy 常指替身或试验用的假人。<br>本文的对比很有意思：专业工作室离不开人台，她们用一把椅子代替。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…when no <b>mannequin</b> was available.</div>
+          <div class="wc-tr">……在没有人体模特可用的时候。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">relational</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈleɪʃənl/ · 美 /rɪˈleɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>关系性的、与人际关系有关的</b>（relate + -ion + -al）。<br>常见搭配：relational database（关系型数据库）、relational wellbeing（关系层面的幸福）。<br>本文用法：动机是 relational 而非 environmental——她们改衣服是为了人，不是为了地球。这个区分是全文的转折点。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the motive offered was <b>relational</b> rather than environmental.</div>
+          <div class="wc-tr">……她们给出的动机是“关系”，而不是“环保”。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">garment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɡɑːmənt/ · 美 /ˈɡɑːrmənt/</div>
+          <div class="wc-pos"><b>n.</b> <b>衣服、衣物</b>（书面语，常用于纺织、服装行业与统计报告）。<br>辨析：clothes 是日常总称；clothing 是集合名词（不可数）；garment 指单件成衣，行业术语。<br>搭配：garment industry（服装业）、a woolen garment（一件毛料衣服）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…almost half of the used <b>garments</b> shipped from richer countries are never sold.</div>
+          <div class="wc-tr">……从较富裕国家运出的二手衣物中，近一半从未卖出。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">textile</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtekstaɪl/ · 美 /ˈtekstaɪl/</div>
+          <div class="wc-pos"><b>n.</b> <b>纺织品、织物</b>；<b>adj.</b> 纺织的（the textile industry 纺织业）。<br>词根：text-（编织）——同一个词根还长出 text（文本，原义“编织出来的东西”）与 context（上下文）。<br>本文用法：textile waste 是固定说法，指“废旧纺织品”，比 clothes waste 更行业化。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the world discards roughly 92 million tonnes of <b>textiles</b> a year.</div>
+          <div class="wc-tr">……全世界每年丢弃约 9200 万吨纺织品。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">batch</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /bætʃ/ · 美 /bætʃ/</div>
+          <div class="wc-pos"><b>n.</b> <b>一批</b>（同一批生产、收集或处理的东西）。<br>搭配：in batches（分批地）、a batch of data（一批数据）、batch production（批量生产）。<br>提示：实验报告里出现 three batches，就意味着“分三次收集”，样本可能受季节或来源影响。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…193 garments collected in three <b>batches</b>.</div>
+          <div class="wc-tr">……分三批收集的 193 件衣物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">accessory</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əkˈsesəri/ · 美 /əkˈsesəri/</div>
+          <div class="wc-pos"><b>n.</b> <b>配饰、附件</b>（服装搭配的包、带、帽；设备的附加件）。<br>复数 accessories；形容词 accessorial 极少用。<br>搭配：fashion accessories（时尚配饰）、phone accessories（手机配件）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…25 garments, seven shoe-related samples and five <b>accessories</b>.</div>
+          <div class="wc-tr">……25 件衣物、7 件鞋类样品和 5 件配饰。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scheme</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /skiːm/ · 美 /skiːm/</div>
+          <div class="wc-pos"><b>n.</b> <b>（系统的）计划、制度、方案</b>，尤指政府或机构推行的制度安排。<br>常见义：<b>n.</b> 阴谋（a scheme to cheat）；<b>v.</b> 密谋。<br>本文用法：producer-responsibility scheme＝生产者责任制度（谁生产谁负责回收），是政策文本里的固定搭配。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…South Africa has no producer-responsibility <b>scheme</b> for clothing.</div>
+          <div class="wc-tr">……南非没有针对服装的生产者责任制度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stain</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /steɪn/ · 美 /steɪn/</div>
+          <div class="wc-pos"><b>n.</b> <b>污渍、污点</b>；<b>v.</b> 弄脏、玷污（引申为“败坏名声”）。<br>派生：stained（adj. 有污渍的）、stainless（adj. 不锈的，stainless steel 不锈钢）。<br>本文用法：stained, torn or out of season 三个形容词并置，写的是“卖不掉”的具体理由。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…nobody pays for what arrives <b>stained</b>, torn or out of season.</div>
+          <div class="wc-tr">……没人愿意为有污渍、破洞或过季的衣服买单。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scale</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /skeɪl/ · 美 /skeɪl/</div>
+          <div class="wc-pos"><b>v.</b> <b>扩大规模、按比例放大</b>（scale up）；也可指“按比例缩放”。<br>常见义：<b>n.</b> 规模（on a large scale）、天平、刻度、音阶。<br>搭配：scale up / scale down；at scale（在规模化层面）。本文用它写“十个人的经验无法放大成政策”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Ten women and 37 items cannot be <b>scaled</b> into a textile policy.</div>
+          <div class="wc-tr">十位女性和 37 件成品，无法放大成一项纺织政策。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">discard</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪsˈkɑːd/ · 美 /dɪsˈkɑːrd/</div>
+          <div class="wc-pos"><b>v.</b> <b>丢弃、扔掉</b>（比 throw away 正式，常用于报告与学术写作）；<b>n.</b> 被丢弃的东西。<br>构词：dis-（去掉）+ card（纸牌）——原义是“把手里不要的牌打出去”。<br>注意：本文第 2 段 other people's discards 是名词用法，第 3 段 the world discards 是动词用法。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…ten women aged 58 to 74 spent five months remaking other people's <b>discards</b>.</div>
+          <div class="wc-tr">……十位女性花了五个月，把别人丢弃的东西重新做成衣物。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">figure</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈfɪɡə/ · 美 /ˈfɪɡjər/</div>
+          <div class="wc-pos"><b>n.</b> <b>数字、数据</b>（报告、图表中的具体数值）。<br>常见义：<b>n.</b> 人物（a public figure）、身材、图形、图表（Figure 1）；<b>v.</b> 认为、计算（figure out 弄明白）。<br>提示：读数据类文章时，figure 十有八九不是“人物”，而是“这个数”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a <b>figure</b> projected to reach 150 million by 2050.</div>
+          <div class="wc-tr">……一个预计到 2050 年将达到 1.5 亿吨的数字。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">wardrobe</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈwɔːdrəʊb/ · 美 /ˈwɔːrdroʊb/</div>
+          <div class="wc-pos"><b>n.</b> <b>衣柜、衣橱</b>；引申为“一个人全部的衣物”（a summer wardrobe 一柜夏装）。<br>构词：ward（看守）+ robe（长袍）＝“看管衣服的地方”。<br>搭配：wardrobe malfunction（衣着走光，口语、媒体用语）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Emptying a <b>wardrobe</b> feels like a small moral act.</div>
+          <div class="wc-tr">清空一个衣柜，感觉像做了件小小的好事。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bury</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈberi/ · 美 /ˈberi/</div>
+          <div class="wc-pos"><b>v.</b> <b>掩埋、埋葬</b>；引申为“埋头于”（bury oneself in work）、“掩盖”（bury the evidence）。<br>搭配：buried waste（填埋垃圾）、be buried alive（被活埋）。<br>本文用法：buried or burned 是垃圾处理的两条终点——埋掉或烧掉，都没有“再用一次”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>About 85 per cent of it is <b>buried</b> or burned.</div>
+          <div class="wc-tr">其中约 85% 被填埋或焚烧。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">moral</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈmɒrəl/ · 美 /ˈmɔːrəl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>道德的、道义上的</b>（a moral duty 道义上的责任）。<br>辨析：moral 与“对错”有关；ethical 与“职业规范、伦理准则”有关；virtuous 指“品德高尚的”。<br>注意：<b>n.</b> morals 是“道德观念”，而 morale（多一个 e）是“士气”，两个词常被混淆。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Emptying a wardrobe feels like a small <b>moral</b> act.</div>
+          <div class="wc-tr">清空一个衣柜，感觉像做了一件合乎道义的小事。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reject</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈdʒekt/ · 美 /rɪˈdʒekt/</div>
+          <div class="wc-pos"><b>v.</b> <b>拒绝、不予接受</b>；在质检语境里是“判为不合格”。<br>派生：rejection（n. 拒绝；排异反应）。<br>搭配：reject an application（驳回申请）、reject a hypothesis（否定一个假设）。本文用它写“25 件当场判死”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…25 were <b>rejected</b> outright.</div>
+          <div class="wc-tr">……25 件被直接判死。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">feel like</span><span class="zh">感觉像、好像是</span></li>
+          <li><span class="en">on somebody else's back</span><span class="zh">穿在别人身上</span></li>
+          <li><span class="en">far less certain</span><span class="zh">远没有那么确定</span></li>
+          <li><span class="en">the distance in between</span><span class="zh">中间那段距离</span></li>
+          <li><span class="en">follow sth into</span><span class="zh">沿着……一路追到……</span></li>
+          <li><span class="en">aged 58 to 74</span><span class="zh">年龄在 58 至 74 岁之间</span></li>
+          <li><span class="en">be projected to reach</span><span class="zh">预计将达到</span></li>
+          <li><span class="en">be buried or burned</span><span class="zh">被填埋或焚烧</span></li>
+          <li><span class="en">be settled by</span><span class="zh">由……来决定</span></li>
+          <li><span class="en">has long been</span><span class="zh">长期以来一直是</span></li>
+          <li><span class="en">out of season</span><span class="zh">过季的、不当令的</span></li>
+          <li><span class="en">record sth as</span><span class="zh">把……记为、记作</span></li>
+          <li><span class="en">with a bill attached</span><span class="zh">附带一张账单</span></li>
+          <li><span class="en">begin by doing</span><span class="zh">以……开始</span></li>
+          <li><span class="en">in three batches</span><span class="zh">分三批地</span></li>
+          <li><span class="en">pass the screening</span><span class="zh">通过筛选</span></li>
+          <li><span class="en">rather than</span><span class="zh">而不是</span></li>
+          <li><span class="en">for sale</span><span class="zh">供出售</span></li>
+          <li><span class="en">in seven of the eight interviews</span><span class="zh">在八次访谈的七次中</span></li>
+          <li><span class="en">turn sth over in one's hands</span><span class="zh">把东西在手里翻过来看</span></li>
+          <li><span class="en">be quietly dropped</span><span class="zh">被悄悄放弃</span></li>
+          <li><span class="en">on this evidence</span><span class="zh">根据这份证据</span></li>
+          <li><span class="en">be plain about</span><span class="zh">对……说得很直白</span></li>
+          <li><span class="en">what difference sth makes</span><span class="zh">……带来了什么差别</span></li>
+          <li><span class="en">be scaled into</span><span class="zh">被放大成</span></li>
+          <li><span class="en">narrower than the headline</span><span class="zh">比标题所说的要窄</span></li>
+          <li><span class="en">harder to sell and easier to trust</span><span class="zh">更难卖，却更容易被信任</span></li>
+          <li><span class="en">the question worth asking</span><span class="zh">真正值得问的问题</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：清空衣柜像做善事，可袋子出了门之后的去向远比感觉不确定。</li>
+          <li>出处：《Textiles》2026 年 9 月；开普半岛科技大学；开普敦十位 58–74 岁女性，五个月。</li>
+          <li>体量：全球每年 9200 万吨纺织废弃物，2050 年将达 1.5 亿吨；85% 填埋或焚烧。</li>
+          <li>反转一：出口不是解药——运出的二手衣近一半卖不掉，就地变成垃圾。</li>
+          <li>方法：193 件筛出 168 件，25 件直接淘汰（13%）；三阶段介入。</li>
+          <li>结果：37 件成品；八次访谈中七次说动机是“关系”而非“环保”。</li>
+          <li>反转二：工作坊没能替换她们的知识；保留的是手感（翻看、披挂），放弃的是绘图。</li>
+          <li>边界：未测使用寿命与收入；10 人 37 件无法规模化；南非无纺织 EPR，欧盟要求各国建立。</li>
+          <li>落点：捐赠把责任挪走，修补把责任留下——要问的不是衣服去哪儿，而是谁有时间。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">A study published in Textiles in September followed that distance into a community hall in Cape Town, where ten women aged 58 to 74 spent five months remaking other people's discards.</div>
+        <div class="row"><b>主干：</b>A study followed that distance into a community hall（一项研究沿着那段距离，一路走进了……的一间活动室）。</div>
+        <div class="row"><b>难点：</b>① 主语 a study 后紧跟过去分词短语 published in Textiles in September 作后置定语，读时先跳过；② follow sth into a place 是“跟着某物一直追到某地”，不是“跟随某人进入”；③ where 引导非限制性定语从句，修饰 a community hall，不是修饰 Cape Town；④ aged 58 to 74 是过去分词短语作后置定语，等于 who were aged 58 to 74。</div>
+        <div class="row tr"><b>译文：</b>九月发表在《Textiles》上的一项研究，沿着这段距离走进开普敦的一间社区活动室；十位 58 到 74 岁的女性在那里花了五个月，把别人丢弃的衣物重新做成能穿的东西。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Export has long been the quiet answer, and it is failing: almost half of the used garments shipped from richer countries are never sold, because nobody pays for what arrives stained, torn or out of season.</div>
+        <div class="row"><b>主干：</b>Export has long been the quiet answer, and it is failing（出口长期以来是那个不出声的答案，而它正在失效）。</div>
+        <div class="row"><b>难点：</b>① has long been 是“长期以来一直是”，long 在此是副词，不是形容词；② quiet 是反讽——出口之所以“安静”，是因为问题被运到了看不见的地方；③ 冒号后是证据，其中 shipped from richer countries 是过去分词短语后置修饰 garments；④ what arrives stained, torn or out of season 是名词性从句作 pays for 的宾语，stained / torn / out of season 三个成分并列，前两个是分词、第三个是介词短语，属于“不同结构并列”，读时容易断错。</div>
+        <div class="row tr"><b>译文：</b>出口长期以来是那个不出声的答案，而它正在失效：从较富裕国家运出的二手衣物中，近一半从未卖出，因为没人愿意为有污渍、破洞或过季的衣服买单。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The Cape Town project began by sifting what arrived: of 193 garments collected in three batches, 168 passed the screening and 25 were rejected outright, 13 per cent lost before any sewing began.</div>
+        <div class="row"><b>主干：</b>The Cape Town project began by sifting what arrived（开普敦项目从“筛”开始）。</div>
+        <div class="row"><b>难点：</b>① begin by doing 是“以做某事开始”，与 begin to do 语义不同；② sifting 后接 what arrived（名词性从句），意为“筛那些送来的东西”；③ 冒号后是一个“总数—分项”结构：of 193 garments…, 168…and 25…，这种“of + 总数”前置的写法在数据描述里极常见；④ 句末 13 per cent lost before any sewing began 是独立主格（名词 + 过去分词），补充说明 25/193 的比例，不是又一个并列谓语。</div>
+        <div class="row tr"><b>译文：</b>开普敦项目从“筛”开始：三批共收集 193 件衣物，168 件通过筛选，25 件被直接判死——还没动针线，就先损失了 13%。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What they kept were the physical steps — turning a whole garment over in their hands, draping it on a chair when no mannequin was available — while the formal sketching designers rely on was quietly dropped.</div>
+        <div class="row"><b>主干：</b>What they kept were the physical steps…while the formal sketching…was quietly dropped（她们保留下来的是身体性的步骤……而正式绘图被悄悄放弃了）。</div>
+        <div class="row"><b>难点：</b>① 主语是 What 引导的名词性从句，表语是 the physical steps，两者之间用破折号插入两个动名词短语作同位说明；② turning 与 draping 是并列的动名词，draping 后自带 when 引导的时间状语从句；③ while 在此不是“当……时”，而是对比连词“而”，连接两个相反的事实；④ designers rely on 是省略了关系代词 that/which 的定语从句，修饰 the formal sketching——这是全句最容易读错的地方：看起来像 sketching 后面接了个新动词，其实是定语从句。</div>
+        <div class="row tr"><b>译文：</b>她们保留下来的是那些身体性的步骤——把整件衣服在手里翻过来看、没有人体模特时就把衣服搭在椅子上比；而设计师所依赖的正式绘图，被悄悄放弃了。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">So the honest conclusion is narrower than the headline: donation moves the responsibility for a garment elsewhere, while repair keeps it, which is why the second is harder to sell and easier to trust.</div>
+        <div class="row"><b>主干：</b>the honest conclusion is narrower than the headline（诚实的结论比标题要窄）。</div>
+        <div class="row"><b>难点：</b>① narrower than the headline 是比喻用法：标题可以喊得很响，结论只能收得很窄；② 冒号后是两组对照：donation moves…elsewhere 对 repair keeps it；③ which 引导非限制性定语从句，先行内容是前面整个对比关系，而不是某个名词；④ the second 指代 repair（第二个），英语里常用 the former / the latter / the second 回指并列项，中文没有对应习惯，翻译时要还原成具体名词。</div>
+        <div class="row tr"><b>译文：</b>所以诚实的结论比标题要窄：捐赠把一件衣服的责任挪到别处，修补则把它留在原地——这也是为什么后者更难卖，却更容易被信任。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章从一个几乎人人都做过的动作开始：清空衣柜。我们把不穿的衣服装进袋子，送到小区的回收箱、慈善商店或者某个募捐点，然后心里松一下——像是做了一件小小的好事。作者第一句就把这种轻松感写得很准：袋子出了门，在你的想象里它已经穿在了别人身上。可接下来的整篇文章，做的就是这样一件事：把那只袋子重新打开，看看它到底去了哪里。</p>
+      <p class="zh-sum">先说体量。全球每年丢弃的纺织品约 9200 万吨，预计到 2050 年会达到 1.5 亿吨；其中约 85% 被填埋或焚烧。这两个数字放在一起，意味着一件很朴素的事实：绝大多数旧衣服并没有“第二次生命”，它们的终点是土里或者火里。而这句话里最刺人的部分不是 85%，而是主语——决定这个终点的人，不是“第二个主人”，而是经营垃圾填埋场的人。也就是说，一件衣服的结局，在你把它放进袋子的那一刻，其实已经大概率被写好了。</p>
+      <p class="zh-sum">接着是第一个反转：出口。长期以来，富裕国家处理旧衣的主流办法是打包卖到较贫穷的国家，这在账面上叫“再利用”，在良心上叫“物尽其用”。但研究给出的数字是：这些运出去的二手衣物里，近一半从来没被卖出去，因为没人愿意为有污渍、破洞或过季的衣服付钱。于是那些没卖掉的，就在目的地变成垃圾——一座城市要为另一座城市的消费习惯腾出土地。作者用了一个很省的写法：出口国把这批货记作 reuse，进口国收到的是 waste，还附带一张运费单。同一个集装箱，两种账本。</p>
+      <p class="zh-sum">第二个部分是实验本身。研究团队来自南非开普半岛科技大学，合作方是当地一个叫“祖母抗贫抗艾”的组织，参与者是十位 58 到 74 岁的女性，全部完成过十二周的缝纫培训。时间从 2024 年 5 月到 10 月，分三个阶段：先是她们自己凭直觉改衣，然后是由外部机构支持的一场有结构的协同设计工作坊，最后是带着新方法回到自己的桌子上。整个过程一共评估了 193 件消费后服装，分三批收集，168 件通过筛选，25 件被直接淘汰——淘汰率 13%，还没动针线。</p>
+      <p class="zh-sum">结果是 37 件成品：25 件衣物、7 件鞋类相关样品、5 件配饰。这个数字必须放在它该在的位置上——它很小，小到不能支撑任何宏大的结论。但小样本里有一个很有意思的分布：这些成品大多不是拿去卖的，而是做给孙辈的。在后来八次半结构访谈中，有七次给出的动机是“关系”而不是“环保”：一件成人外套被改成童装，是因为家里有个孩子需要一条裙子，不是因为这颗星球需要少一件外套。这个细节让整套“可持续消费”的话语突然落地了——人们修补东西，通常不是为了地球，而是为了某个人。</p>
+      <p class="zh-sum">第三个部分，也是全文最锋利的地方，是“工作坊没有做到什么”。我们通常以为，专业介入就是把自己的方法教给没有方法的人：给她们图纸、给她们流程、给她们人台。但研究记录下来的恰恰相反——工作坊并没有用设计师的方法替换她们原有的知识，参与者在事后保留下来的是那些身体性的步骤：把整件衣服翻过来在手里看，摸材质、看缝线、判断哪里还能用；没有人体模特，就把衣服搭在椅子上比形。而被悄悄放弃的，反而是设计师最依赖的正式绘图。换句话说，专业方法在这里起的作用不是“替代”，而是“让原本就有的东西被看见、被整理、被说出来”。</p>
+      <p class="zh-sum">这个发现支撑起全文的判断句：改衣与其说是材料问题，不如说是时间与判断力的问题。材料是现成的——旧衣服就在那里，一吨一吨地堆着；缺的是有人愿意花几个小时，去看、去比、去决定这一块布还能做什么。而“几个小时”恰恰是任何一只捐赠袋都不需要提供的东西。捐赠的成本是一次弯腰；修补的成本是一整个下午。这就是为什么前者可以规模化，后者不能——不是因为技术，而是因为时间不能批发。</p>
+      <p class="zh-sum">作者对局限的处理值得单独学一段。他们写得很直白：没有人测量过这些改成品被穿了多久，没有人算过它们卖了多少钱，也没有人测过它们究竟减少了多少环境负担。十位女性和 37 件成品，无法放大成一项纺织政策。同时他们给出制度层面的对照：南非目前没有针对服装的生产者责任制度（EPR），而欧盟修订后的《废弃物框架指令》已经要求每个成员国建立纺织品 EPR。这个对照很克制，也很清楚——一边是十个人的五个月，一边是一部要求所有企业承担回收责任的法规；前者证明“可以做到”，后者决定“能不能普遍做到”。</p>
+      <p class="zh-sum">于是结论收得很窄：捐赠把一件衣服的责任挪到别处，修补把它留在原地。这也是为什么修补更难卖——它不提供“我已经做了好事”的那种即时轻松；但它更容易被信任，因为它没有把成本转移给一个你看不见的人。文章最后一句把问题重新提了一遍：关于门口那只袋子，真正值得问的不是这些衣服会去哪儿，而是谁会有那些小时，把它们变成别的东西。</p>
+      <p class="zh-sum">对正在学英语、也正在形成自己判断的高中生来说，这篇文章有三处可以直接搬走的方法。第一是“用一个小样本说一件大事，并且老实承认它小”。37 件成品当然证明不了全球纺织业该怎么改，但它能证明一件事：改衣的门槛不在材料，而在时间——这个结论不需要大样本，只需要一个说得清的场景。第二是“把制度和个人放在同一张纸上”。个人层面的修补很动人，但如果只写动人，文章就变成了心灵鸡汤；加上 EPR 那句，读者才知道感动的边界在哪里。第三是“让形容词承担论证”。stained, torn or out of season 三个词，比一整段“质量下降”的抽象论述更有说服力。</p>
+      <p class="zh-sum">还有一个可以带走的语言点：这篇文章几乎所有的判断都靠“对照结构”完成——donation 对 repair，relational 对 environmental，material 对 hours and judgement，exporting country 对 importing country。读的时候不妨把这些成对的词抄下来，你会发现作者的立场就藏在这些配对里：他从来不直接说“捐赠是虚伪的”，他只是把两条路并排放好，让读者自己走过去。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. Second-hand clothing exports should be banned because they harm importing countries.<br>B. A small Cape Town project suggests that remaking clothes is limited less by materials than by the hours and judgement it demands, which donation quietly avoids.<br>C. South Africa should follow the European Union in setting up a producer-responsibility scheme for clothing.<br>D. Most donated clothes end up in landfills because charities cannot sort them efficiently.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文骨架是“捐赠把衣服送走 → 出口也接不住 → 小规模改造证明瓶颈在时间与判断力 → 规模化要靠制度”，B 覆盖了主线。A 把第 4 段的批评升级成“应当禁止”，文中从未提出；C 只是第 8 段的制度对照，属细节；D 把 85% 填埋的原因归给“慈善机构分拣不力”，文中说的是没人愿意买质量差的旧衣，属因果错置。</div>
+      <div class="q"><b>2. What can be inferred from the finding that the workshop's formal sketching was dropped?</b><br>A. The participants were unable to learn new design methods.<br>B. Sketching is unnecessary in professional garment design.<br>C. The women's existing, hands-on knowledge was already doing most of the work that drawing does for designers.<br>D. The workshop was poorly organised and failed to deliver its programme.<br><br><b>答案：C</b><br>
+        <b>解析：</b>第 7 段说保留的是“翻看、披挂”这类身体性步骤，放弃的是绘图，而作者的判断是“改衣是时间与判断力的问题”——说明她们用手感承担了设计师用图纸承担的那部分工作，C 正确。A 与“没有替换她们的知识”相反；B 过度推广，文中只说在这个场景里被放弃；D 与“工作坊使原有技能被看见、被整理”的结论矛盾。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章说“捐赠把责任挪走，修补把责任留下”。请举一个你生活里同类的例子（可以是旧手机、旧课本、外卖餐盒，也可以是一次“转发即关心”的网络行为），说明在这件事上，“挪走”和“留下”各自要付出什么代价，以及你认为哪一种更值得。要求：先给事实，再给判断，最后给边界（也就是：这个判断在什么情况下不成立）。</div>
+      <div class="q"><b>仿写：</b>本文第 7 段的判断句用的是“less A than B”的比较结构：<span class="hl">Remaking, on this evidence, is less a problem of materials than a problem of hours and judgement.</span> 它的好处是不必否定 A，只把重心移到 B——比“这不是材料问题，而是时间问题”更留有余地，也更像学术写作的口吻。仿写时可以照搬骨架：<i>______, on this evidence, is less a problem of ______ than a problem of ______.</i> 后半句再补一个同位语把 B 说具体（本文用的是 the two things a donation bag never has to supply），整句就有了“判断 + 解释”的双层结构。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr10" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 引子：清空衣柜像行善，去向却不确定</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 出处：开普敦 · 十位 58–74 岁女性 · 五个月</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 体量：每年 9200 万吨，85% 填埋或焚烧</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 反转一：运出的旧衣近一半卖不掉，就地成垃圾</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 方法：193 → 168 件，25 件当场淘汰 · 三阶段</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">6 · 结果：37 件成品，动机是“关系”不是“环保”</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">7 · 反转二：留下的是手感，放弃的是图纸</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">8 · 边界：未测寿命与收入 · 10 人无法规模化 · EPR</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：捐赠挪走责任，修补留下责任</text>
+
+          <rect x="60" y="512" width="600" height="44" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：把衣服送走很容易，把它留下来改很难</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">难点不在材料，而在谁愿意花那几个小时</text>
+        </svg>
+        <figcaption>结构图解：文章走的是“个人动作 → 体量 → 反转（出口失效）→ 小样本实验 → 反转（方法没被替换）→ 边界 → 判断句”的路径；第 4 段和第 7 段是两处转折，第 8 段负责把结论压回它撑得住的范围。</figcaption>
+      </figure>
+    </section>
+
+  </div>
+</article>
+
+
+  <footer>
+    素材来源：Mduduzi Khumalo, Sweta Patnaik, Bruce Snaddon, Asis Patnaik《Redesigning Clothing and Textile Waste Through Small Social Enterprise: A Circular Economy Perspective》，Textiles 6(4):118（2026-09-28），南非开普半岛科技大学（Cape Peninsula University of Technology，开普敦）视觉传达设计系 / 服装与纺织技术系；DOI 10.3390/textiles6040118｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

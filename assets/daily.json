@@ -2,6 +2,20 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-11-10",
+   "en": "The question worth asking about the bag by the door is therefore not where the clothes will go, but who will have the hours to turn them into something else.",
+   "zh": "因此，关于门口那只袋子，真正值得问的不是这些衣服会去哪儿，而是谁会有那几个小时，把它们变成别的东西。",
+   "src": "外刊精读 · 捐出去的那件外套，一半没人要（2026-11-10）",
+   "key": "who will have the hours",
+   "keyZh": "谁会有那几个小时（关键在 the hours：时间才是真正的成本，不是材料、不是技术）",
+   "tip": "这句话的全部重量压在最后那个 who 上。前半句 the bag by the door 是一个极具体的画面——你家门口那只待送走的袋子，比 any donated clothing 这种抽象说法有力得多；中间的 not where…but who… 是本文反复使用的对照框架：先排除一个看起来最自然的问题（衣服去哪儿了），再立起一个真正的问题（谁有时间）。注意 where the clothes will go 是将来时，who will have the hours 也是将来时，两个 will 并置，把“责任”从一个空间问题改造成了一个时间问题。最后 to turn them into something else 用不定式表目的，something else 故意含糊——因为答案本来就是“看情况”。仿写时可以整句替换宾语：not where the money went, but who had the hours to check it。",
+   "tags": [
+    "生态与可持续",
+    "消费",
+    "循环经济"
+   ]
+  },
+  {
    "date": "2026-11-09",
    "en": "So the question worth asking is not whether the writing got better, but whether the person who wrote it is still there to be found.",
    "zh": "所以值得问的不是“这篇文章有没有变好”，而是“写它的那个人，是否还找得到”。",
