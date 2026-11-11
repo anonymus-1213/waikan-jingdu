@@ -2,6 +2,20 @@
  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
  "sentences": [
   {
+   "date": "2026-11-11",
+   "en": "An hour a week is a cheap prescription; the plot of land that makes it possible is not.",
+   "zh": "每周一小时是一张廉价的处方；让这张处方成立的那块地，可不便宜。",
+   "src": "外刊精读 · 每周一小时的公园，值多少钱（2026-11-11）",
+   "key": "a cheap prescription",
+   "keyZh": "一张廉价的处方（prescription 由“药方”引申为“方案”；与后半句的地价形成反差）",
+   "tip": "这句话的全部力量来自三处。第一，prescription 的引申：把“每周走一小时”说成医生开的处方，读者立刻明白这是一个可执行、有剂量的小动作。第二，分号：不加 but、however 之类的连接词，把“便宜”和“贵”硬接在一起，反差自己说话——中文里若写成“但是那块地很贵”，力量立刻减半。第三，结尾的省略：the plot of land that makes it possible is not (cheap)，把“贵”这个词根本不写出来，让读者自己在句号处补完，补出来的那一下就是这一句的重量。注意 plot 在这里不是“情节”，而是一块地皮；that makes it possible 是定语从句修饰 the plot of land，读时先跳过再回填。仿写骨架：X is a cheap Y; the Z that makes it possible is not.",
+   "tags": [
+    "健康与身心",
+    "城市自然",
+    "公共卫生"
+   ]
+  },
+  {
    "date": "2026-11-10",
    "en": "The question worth asking about the bag by the door is therefore not where the clothes will go, but who will have the hours to turn them into something else.",
    "zh": "因此，关于门口那只袋子，真正值得问的不是这些衣服会去哪儿，而是谁会有那几个小时，把它们变成别的东西。",

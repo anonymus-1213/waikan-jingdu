@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 每周一小时的公园，值多少钱</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">Nature &amp; Health · 人与自然 / 人与自我 / 健康与身心 / 城市自然 / 公共卫生</div>
+  <h1>每周一小时的公园，值多少钱</h1>
+  <div class="deck">A 45-year meta-analysis says one hour of green space a week buys half the benefit; a Tokyo accounting of 1.79 million park visits says only sixteen per cent of the small ones ever pay for their land.</div>
+  <div class="byline"><span><b>来源</b> J. Environ. Psychol. / Nature Communications（2026-10）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-11</span><span><b>难度</b> 难</span><span><b>词数</b> 约 520 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-11.jpg" alt="午后的老小区步道上，一位老人坐在长椅上，一名行人沿着树影慢慢走远（配图）">
+    <figcaption>配图：午后的老小区步道——两排梧桐把光切成碎片，长椅上坐着一位老人，一名行人正沿着路慢慢走远。研究给出的门槛低到“每周来一次”就算数，可这样的地方能不能被走到，取决于城市愿不愿意在昂贵的土地上留一块不盖楼的空地（图片来源：教学素材图库，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>“多去公园走走对身体好”是那种正确到没人愿意再听一遍的建议。但今年秋天有两篇论文把它变成了可以争论的数字：一篇回答<b>“要去多少”</b>，一篇回答<b>“值不值得建”</b>。</p>
+    <p>港大姜斌团队把 1980 到 2025 年的 <b>92,430</b> 项研究筛到 78 条剂量—反应曲线，得到一条 S 形：<b>每周一次、累计一小时，就能拿到模型估算的最大效益的约一半</b>；四次四小时到九成；六次八小时才接近天花板。边际效益一开始最陡，之后越来越平——这恰好是“微量接触最划算”的数学版本。</p>
+    <p>第二篇更冷：北大深圳的团队用 32 万用户的手机数据还原了东京 4,139 座公园的 <b>179 万次访问</b>，再把这些“走路带来的健康收益”折成钱，去和地价、造价、养护费对账。结果是<b>回报极不均匀，且集中在小公园</b>：约 <b>16%</b> 的街区公园能在二十年内回本，而带湖、带博物馆的大型目的地公园，几乎从不回本。</p>
+    <p>两篇放在一起，结论比任何标题都窄：<b>不是“多去公园”，而是“把公园放在一个累了的人真的会走过去的地方”</b>。一小时是廉价的处方，那块地不是。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-11.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="7.824">Ask a doctor how much nature a person actually needs, and until recently the honest answer was that nobody had counted.</span> <span class="s" data-t="7.824" data-e="18.366">Two papers published this autumn have now put numbers on both halves of that question: how much green space buys how much peace of mind, and which parks ever earn back what they cost.</span></span></div>
+      <p class="para-tr">要是去问医生“一个人到底需要多少自然”，直到不久前，诚实的回答都是：没人算过。今年秋天发表的两篇论文，给这个问题两半都填上了数字：到底多少绿地能换来多少心安，以及哪些公园真能把造价挣回来。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.366" data-e="34.709">The first comes from a team at the University of Hong Kong, led by Bin Jiang, which <b class="kw" data-tip="v. 筛、细细过一遍（sift through 逐一翻检）；常见义“筛面粉”">sifted</b> 92,430 studies published between 1980 and 2025 and kept 78 <b class="kw" data-tip="n. 剂量—反应（曲线），药理学借来的说法：给多少，起多大作用">dose-response</b> curves built from 756 data points.</span> <span class="s" data-t="34.709" data-e="40.816">The result is less a review than a search for a shape, and the shape proved consistent enough to name.</span></span></div>
+      <p class="para-tr">第一篇出自香港大学姜斌带领的团队：他们把 1980 到 2025 年间发表的 92,430 项研究过了一遍，留下 78 条由 756 个数据点构成的剂量—反应曲线。与其说这是一篇综述，不如说是在找一条曲线的形状——而这条形状稳定到足以被命名。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.816" data-e="51.158">Across those curves the benefit of green space rises <b class="kw" data-tip="adv. 陡峭地；（数量）急剧地（rise steeply 陡升）">steeply</b> at first and then flattens into a long <b class="kw" data-tip="n. （上升后的）平台期、停滞段；v. 进入平台期">plateau</b>, so that the first hour of the week does far more work than the eighth.</span> <span class="s" data-t="51.158" data-e="64.303">One visit, or one accumulated hour, is associated with roughly half of the largest benefit the models estimate; four visits or four hours reach about ninety per cent; six visits or eight hours approach the <b class="kw" data-tip="n. 上限、天花板（hit a ceiling 触顶）">ceiling</b>.</span> <span class="s" data-t="64.303" data-e="73.303">The framing is deliberately <b class="kw" data-tip="adj. 克制、不夸张的（a modest claim 谨慎的论断）；常见义“谦虚的、朴素的”">modest</b>: weekly totals rather than single outings, shares of a modelled maximum rather than clinical improvement.</span></span></div>
+      <p class="para-tr">在这些曲线上，绿地的好处一开始陡峭上升，随后变平，拉出一段长长的平台——也就是说，一周里的第一个小时，比第八个小时有用得多。每周去一次、或累计待一小时，对应的约是模型估算最大效益的一半；去四次或累计四小时，约九成；去六次或累计八小时，才接近天花板。这套说法的措辞刻意克制：说的是每周累计，不是单次逗留；说的是模型最大值的百分比，不是临床症状的改善。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="73.303" data-e="83.724">It is also a population average drawn from <b class="kw" data-tip="adj. 观察性的（observational study 观察性研究，只观察不干预）">observational</b> work, which means the arrow may run the other way — people already low in mood go out less, rather than the reverse.</span> <span class="s" data-t="83.724" data-e="90.789">The authors say so themselves, and that honesty is what makes a <b class="kw" data-tip="n. 基准、参照标准（set a benchmark 设定基准）">benchmark</b> usable instead of merely quotable.</span></span></div>
+      <p class="para-tr">这同时是一个来自观察性研究的人群平均值，意味着箭头可能朝着反方向：本来就情绪低落的人更少出门，而不是更少出门让他们低落。作者自己就把这一点写了出来——也正是这份坦白，让一个基准值可以被使用，而不只是被引用。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="90.789" data-e="103.987">The second paper attacks the problem from the other end: instead of measuring greenery within a <b class="kw" data-tip="n. 半径、范围（within a radius of 在……半径之内）">radius</b> of home, a group at Peking University's Shenzhen campus, with partners in Tokyo, followed where people actually went.</span> <span class="s" data-t="103.987" data-e="118.513">They matched <b class="kw" data-tip="v. 匿名化处理（anonymise data 去掉身份信息）">anonymised</b> phone records, 1.79 million visits by 320,000 users, against the locations of 4,139 parks, land prices and population across Greater Tokyo.</span></span></div>
+      <p class="para-tr">第二篇从另一头切这个问题：北大深圳的团队没有去量“家周围多大范围内有多少绿”，而是跟着人实际去了哪里——他们与东京的合作者一道，把 32 万用户、179 万次入园的匿名手机记录，和东京都 4,139 座公园的位置、地价与人口对应起来。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="118.513" data-e="129.564">Walking-related benefits faded <b class="kw" data-tip="adv. 稳定地、持续地（强调速率稳定，不含“快”）">steadily</b> with distance from home and levelled off at about seven kilometres, while the type of park mostly changed the height of the curve, not its shape.</span> <span class="s" data-t="129.564" data-e="139.842">The money did not follow the benefit <b class="kw" data-tip="adv. 均匀地、平均地（even 作形容词是“均匀的、平的”）；常见义“甚至”">evenly</b>: returns <b class="kw" data-tip="v. 集中、聚集（cluster in 集中于）；n. 群、簇">clustered</b> in the smallest parks, and only about sixteen per cent of block parks <b class="kw" data-tip="v. 收回（成本）、回本（recover costs）；常见义“恢复、康复”">recovered</b> their costs within twenty years.</span> <span class="s" data-t="139.842" data-e="147.829">The large <b class="kw" data-tip="n. 目的地、终点（destination park 值得专程前往的大公园）">destination</b> parks, the ones with lakes and museums, almost never did when walking was the only benefit counted.</span></span></div>
+      <p class="para-tr">与走路相关的健康收益，随着离家距离变远而稳定下降，在七公里左右趋于平缓；而公园的类型主要改变曲线的高度，不改变它的形状。钱却并没有跟着收益均匀分布：回报集中在小公园上，只有约 16% 的街区公园能在二十年内收回成本。那些带湖、带博物馆、值得专程前往的大公园，在只计算走路收益的情况下，几乎从不回本。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="147.829" data-e="159.526">Side by side, the two papers are not saying the same thing: one argues that an hour a week is enough to matter, the other that the hour only happens if a small <b class="kw" data-tip="n. （一块）地皮、地块；常见义“情节、密谋”">plot</b> of shade sits within a short walk.</span></span></div>
+      <p class="para-tr">把两篇并排放，它们说的并不是同一件事：一篇主张每周一小时就足以起作用，另一篇则说，这一小时只有在步行可达的地方有一小片树荫时，才会真的发生。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="159.526" data-e="170.118">Both are <b class="kw" data-tip="adj. 明确的、直说的（be explicit about 对……说得很明确）">explicit</b> about their edges: the Tokyo accounting counts walking alone, leaving out cooler streets, cleaner air and the mental-health gains the first paper measures.</span> <span class="s" data-t="170.118" data-e="178.539">Phone data records presence rather than cause, and a metropolis of thirty-seven million is not a template for a town of thirty thousand.</span></span></div>
+      <p class="para-tr">两篇都把自己的边界写清楚了：东京那笔账只算走路，把更凉快的街道、更干净的空气，以及第一篇所测的心理健康收益都排除在外。手机数据记录的是“人在那儿”，而不是因果；而且一座三千七百万人的大都市，也不是三万人小城的模板。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="178.539" data-e="190.0">The practical conclusion is therefore narrower, and more awkward, than either headline: not that we should visit parks more often, but that cities should put them where a tired person will actually walk.</span> <span class="s" data-t="190.0" data-e="195.645">An hour a week is a cheap <b class="kw" data-tip="n. 处方；此处引申为“方案、建议”（prescription for 治疗……的方子）">prescription</b>; the plot of land that makes it possible is not.</span></span></div>
+      <p class="para-tr">所以实用的结论比两个标题都更窄、也更别扭：不是“我们该多去公园”，而是“城市该把公园放在一个累了的人真的会走过去的地方”。每周一小时是一张廉价的处方；让这张处方成立的那块地，可不便宜。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plot</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /plɒt/ · 美 /plɑːt/</div>
+          <div class="wc-pos"><b>n.</b> <b>（一块）地皮、地块</b>，指划出来用于某种用途的一小片土地。<br>常见义：<b>n.</b> 情节（小说的 plot）；<b>n./v.</b> 密谋（plot against sb）。<br>搭配：a plot of land（一块地）／a vegetable plot（菜地）／building plot（建筑用地）。本文用一个 plot of shade 把“绿地”说成“一小块有树荫的地皮”，比 a green space 具体得多，也顺手把土地成本带进了句子。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the hour only happens if a small <b>plot</b> of shade sits within a short walk.</div>
+          <div class="wc-tr">……这一小时只有在步行可达处有一小块树荫时才会发生。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recover</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rɪˈkʌvə/ · 美 /rɪˈkʌvər/</div>
+          <div class="wc-pos"><b>v.</b> <b>收回（成本）、回本</b>，指投入的钱重新挣回来。<br>常见义：<b>v.</b> 恢复、康复（recover from illness）；<b>v.</b> 找回（recover a stolen bike）。<br>搭配：recover costs（收回成本）／recover the investment（收回投资）／payback period（回本期）。注意：recover 后面直接接 costs 时是“挣回来”，不是“病好了”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…only about sixteen per cent of block parks <b>recovered</b> their costs within twenty years.</div>
+          <div class="wc-tr">……只有约 16% 的街区公园在二十年内收回了成本。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">even</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈiːvn/ · 美 /ˈiːvn/</div>
+          <div class="wc-pos"><b>adj.</b> <b>均匀的、平的、不相上下的</b>；副词 evenly 即“均匀地”。<br>常见义：<b>adv.</b> 甚至（even now）；<b>adj.</b> 偶数的（even numbers）。<br>搭配：an even spread（均匀分布）／an even match（势均力敌）／break even（收支相抵）。本文 did not follow the benefit evenly 意思是“钱没有跟着收益平均地走”——三个词就把“收益在哪儿、钱不在哪儿”的矛盾摆出来了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The money did not follow the benefit <b>evenly</b>: returns clustered in the smallest parks.</div>
+          <div class="wc-tr">钱并没有跟着收益均匀地走：回报集中在小公园上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sift</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /sɪft/ · 美 /sɪft/</div>
+          <div class="wc-pos"><b>v.</b> <b>筛、细筛；逐一翻检</b>，引申为从大量材料中挑出有用的部分。<br>搭配：sift through the evidence（逐一检视证据）／sift out（筛除）。<br>用法提示：综述类论文最爱用它——不是“读了一万篇”，而是“筛过一万篇，留下几十篇”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…which <b>sifted</b> 92,430 studies published between 1980 and 2025 and kept 78 dose-response curves.</div>
+          <div class="wc-tr">……该团队筛过 1980 至 2025 年间发表的 92,430 项研究，留下 78 条剂量—反应曲线。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plateau</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈplætəʊ/ · 美 /plæˈtoʊ/</div>
+          <div class="wc-pos"><b>n.</b> <b>高原；平台期</b>——上升或下降之后那段几乎不变的平稳阶段。 <b>v.</b> 进入平台期（Learning plateaus.）。<br>搭配：reach a plateau（到了平台期）／plateau at（在……处趋于平稳）。<br>提示：描述剂量—反应、学习成绩、减肥进度时，这个词比 stop growing 精确得多。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…rises steeply at first and then flattens into a long <b>plateau</b>.</div>
+          <div class="wc-tr">……起初陡峭上升，随后变平，拉出一段长长的平台。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ceiling</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsiːlɪŋ/ · 美 /ˈsiːlɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>上限、天花板</b>（比喻义）；<b>n.</b> 天花板（本义）。<br>搭配：hit a ceiling（触顶）／raise the ceiling（提高上限）／price ceiling（价格上限）。<br>提示：论文里说 approach the ceiling，就是“接近能达到的最大值”，比 get the most 学术。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…six visits or eight hours approach the <b>ceiling</b>.</div>
+          <div class="wc-tr">……去六次或累计八小时，才接近上限。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">modest</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdɪst/ · 美 /ˈmɑːdɪst/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（数量、程度）不大的、有限的</b>；<b>adj.</b> 谦虚的、朴素的。<br>搭配：a modest increase（小幅增长）／a modest claim（谨慎的论断）／be modest about（对……很谦虚）。<br>提示：学术写作中 modest 常用来“压低自己的结论强度”，是克制语气的标志词。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The framing is deliberately <b>modest</b>: weekly totals rather than single outings.</div>
+          <div class="wc-tr">这套说法的措辞刻意克制：说的是每周累计，而不是单次逗留。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">observational</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɒbzəˈveɪʃənl/ · 美 /ˌɑːbzərˈveɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>观察性的</b>，指只观察、不干预研究对象的研究设计。<br>搭配：observational study（观察性研究）／observational data（观察数据）。<br>对比：randomised controlled trial（随机对照试验）能证因果；observational study 只能证相关。本文第 4 段整段都在处理这个区别。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is also a population average drawn from <b>observational</b> work.</div>
+          <div class="wc-tr">这同时是一个来自观察性研究的人群平均值。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">radius</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈreɪdiəs/ · 美 /ˈreɪdiəs/</div>
+          <div class="wc-pos"><b>n.</b> <b>半径；半径范围</b>，引申为“覆盖范围”。<br>搭配：within a radius of 500 metres（500 米半径内）／within a ten-mile radius（方圆十英里）。<br>提示：描述“家门口的绿地”时，radius 是城市规划文献的标准说法。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…instead of measuring greenery within a <b>radius</b> of home.</div>
+          <div class="wc-tr">……而不是去量家周围一定半径内有多少绿。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">anonymise</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈnɒnɪmaɪz/ · 美 /əˈnɑːnəmaɪz/</div>
+          <div class="wc-pos"><b>v.</b> <b>匿名化处理</b>，去掉可识别个人身份的信息。<br>派生：anonymised data（匿名数据）／anonymous（adj. 匿名的）／anonymity（n. 匿名）。<br>提示：涉及手机、医疗、问卷数据的论文几乎必出现这个词，是“合规”的语言标记。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They matched <b>anonymised</b> phone records, 1.79 million visits by 320,000 users, against the locations of 4,139 parks.</div>
+          <div class="wc-tr">他们把匿名化的手机记录（32 万用户的 179 万次访问）与 4,139 座公园的位置对应起来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">destination</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌdestɪˈneɪʃn/ · 美 /ˌdestɪˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>目的地</b>；attrib. 作定语时指“值得专程前往的”。<br>搭配：a tourist destination（旅游目的地）／destination park（目的地型公园，指规模大、吸引力强的公园）。<br>提示：destination 作定语是本篇的关键区分——小公园靠“路过”，大公园靠“专程”，两者的成本结构完全不同。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The large <b>destination</b> parks, the ones with lakes and museums, almost never did.</div>
+          <div class="wc-tr">那些带湖、带博物馆、值得专程前往的大公园，几乎从不回本。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prescription</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /prɪˈskrɪpʃn/ · 美 /prɪˈskrɪpʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>处方、药方</b>；引申为“（解决问题的）方案、主张”。<br>搭配：prescribe（v. 开处方；规定）／a prescription for loneliness（应对孤独的方子）。<br>提示：本文说 an hour a week is a cheap prescription，把“每周一小时”说成一张便宜的处方——比喻一旦落到“cheap”这个词上，后半句的地价就自然接上了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>An hour a week is a cheap <b>prescription</b>; the plot of land that makes it possible is not.</div>
+          <div class="wc-tr">每周一小时是一张廉价的处方；让这张处方成立的那块地，可不便宜。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">steeply</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈstiːpli/ · 美 /ˈstiːpli/</div>
+          <div class="wc-pos"><b>adv.</b> <b>陡峭地；（数量）急剧地</b>。<br>搭配：rise steeply（陡升）／fall steeply（骤降）／a steep decline（急剧下降）。<br>提示：描述曲线时，steeply 与 steadily 常配对使用——前者说“快”，后者说“稳”，别混。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the benefit of green space rises <b>steeply</b> at first and then flattens.</div>
+          <div class="wc-tr">……绿地的好处起初陡峭上升，随后变平。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">steadily</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈstedəli/ · 美 /ˈstedəli/</div>
+          <div class="wc-pos"><b>adv.</b> <b>稳定地、持续地</b>；也可表示“匀速地、不间断地”。<br>搭配：fade steadily（持续减弱）／grow steadily（稳步增长）。<br>提示：steadily 描述“以稳定速率变化”，不含“快”的意思，这点与 steeply 正好互补。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Walking-related benefits faded <b>steadily</b> with distance from home.</div>
+          <div class="wc-tr">与走路相关的收益，随离家距离变远而持续减弱。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">benchmark</span><span class="lvl">CET6</span> <span style="font-size:11px;color:#8a8278"></span></div>
+          <div class="wc-ph">英 /ˈbentʃmɑːk/ · 美 /ˈbentʃmɑːrk/</div>
+          <div class="wc-pos"><b>n.</b> <b>基准、参照标准</b>；<b>v.</b> 以……为基准进行比较。<br>搭配：set a benchmark（设定基准）／benchmark against（与……对标）。<br>提示：港大这篇的新闻稿就用 estimated dose benchmarks 来称呼“每周一小时/四小时/八小时”，比 recommendation 更强调“可测量的参照”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That honesty is what makes a <b>benchmark</b> usable instead of merely quotable.</div>
+          <div class="wc-tr">正是这份坦白，让一个基准值可以被使用，而不只是被引用。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cluster</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈklʌstə/ · 美 /ˈklʌstər/</div>
+          <div class="wc-pos"><b>v.</b> <b>集中、聚集（在某处）</b>；<b>n.</b> 群、簇。<br>搭配：cluster around（围绕……聚集）／cluster in（集中于）／a cluster of（一群）。<br>提示：描述分布不均时最好用——returns clustered in the smallest parks，比 most returns came from small parks 更有画面。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…returns <b>clustered</b> in the smallest parks.</div>
+          <div class="wc-tr">……回报集中在小公园上。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">explicit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪkˈsplɪsɪt/ · 美 /ɪkˈsplɪsɪt/</div>
+          <div class="wc-pos"><b>adj.</b> <b>明确的、直说的</b>（反义 implicit 含蓄的）。<br>搭配：be explicit about（对……说得很明确）／explicit instructions（明确指示）。<br>提示：评价论文时，be explicit about its limits 是一种褒奖——说明作者没有藏起自己的短板。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Both are <b>explicit</b> about their edges.</div>
+          <div class="wc-tr">两篇都把自己的边界写得很明确。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">until recently</span><span class="zh">直到不久前</span></li>
+          <li><span class="en">put numbers on</span><span class="zh">给……填上数字、量化</span></li>
+          <li><span class="en">both halves of the question</span><span class="zh">这个问题的两半</span></li>
+          <li><span class="en">earn back what sth costs</span><span class="zh">把成本挣回来</span></li>
+          <li><span class="en">be led by</span><span class="zh">由……领导、领衔</span></li>
+          <li><span class="en">sift through</span><span class="zh">逐一翻检、筛过</span></li>
+          <li><span class="en">be built from</span><span class="zh">由……构建而成</span></li>
+          <li><span class="en">less a review than a search for</span><span class="zh">与其说是综述，不如说是寻找</span></li>
+          <li><span class="en">consistent enough to name</span><span class="zh">稳定到足以命名</span></li>
+          <li><span class="en">rise steeply</span><span class="zh">陡峭上升</span></li>
+          <li><span class="en">flatten into a plateau</span><span class="zh">变平、进入平台期</span></li>
+          <li><span class="en">do far more work than</span><span class="zh">起的作用远大于</span></li>
+          <li><span class="en">be associated with</span><span class="zh">与……相关（不表因果）</span></li>
+          <li><span class="en">approach the ceiling</span><span class="zh">接近上限</span></li>
+          <li><span class="en">rather than</span><span class="zh">而不是</span></li>
+          <li><span class="en">a population average</span><span class="zh">人群平均值</span></li>
+          <li><span class="en">the arrow may run the other way</span><span class="zh">箭头可能指向反面（因果可能颠倒）</span></li>
+          <li><span class="en">attack the problem from the other end</span><span class="zh">从另一头切入这个问题</span></li>
+          <li><span class="en">within a radius of</span><span class="zh">在……半径之内</span></li>
+          <li><span class="en">match A against B</span><span class="zh">把 A 与 B 对应、比对起来</span></li>
+          <li><span class="en">fade steadily with</span><span class="zh">随……持续减弱</span></li>
+          <li><span class="en">level off at</span><span class="zh">在……处趋于平稳</span></li>
+          <li><span class="en">change the height, not the shape</span><span class="zh">只改变高度，不改变形状</span></li>
+          <li><span class="en">recover costs</span><span class="zh">收回成本</span></li>
+          <li><span class="en">side by side</span><span class="zh">并排地、放在一起看</span></li>
+          <li><span class="en">within a short walk</span><span class="zh">步行可达范围内</span></li>
+          <li><span class="en">be explicit about</span><span class="zh">对……说得很明确</span></li>
+          <li><span class="en">leave out</span><span class="zh">排除在外、未计入</span></li>
+          <li><span class="en">record presence rather than cause</span><span class="zh">记录的是“在场”而非因果</span></li>
+          <li><span class="en">a template for</span><span class="zh">……的模板</span></li>
+          <li><span class="en">narrower than either headline</span><span class="zh">比两个标题都窄</span></li>
+          <li><span class="en">put sth where it will be used</span><span class="zh">把东西放在会被用到的地方</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：“需要多少自然”过去没人算过；今秋两篇论文把“要多少”和“值不值”都填上了数字。</li>
+          <li>方法一：港大姜斌团队，92,430 项研究筛到 78 条曲线、756 个数据点；目的不是综述而是找形状。</li>
+          <li>结果一：S 形曲线——一次/一小时≈50%，四次/四小时≈90%，六次/八小时≈99%；第一个小时最值钱。</li>
+          <li>边界一：人群平均、观察性研究，箭头可能反向（情绪低落者本就不出门）；措辞刻意克制。</li>
+          <li>方法二：北大深圳 + 东京，用 32 万人、179 万次访问的手机数据替代“家门口绿量”这一静态指标。</li>
+          <li>结果二：收益随距离衰减、七公里处趋平，类型只改高度；账本正好相反——钱集中在最小的公园，只有 16% 的街区公园二十年回本，大型目的地公园几乎从不回本。</li>
+          <li>合看：两篇说的不是一件事——一小时的门槛极低，可让它发生的那块地极贵。</li>
+          <li>边界二：东京只算走路；手机数据是“在场”不是因果；大都市不是小城模板。</li>
+          <li>落点：不是“多去公园”，而是“把公园放在一个累了的人会走过去的地方”；处方便宜，地不便宜。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">One visit, or one accumulated hour, is associated with roughly half of the largest benefit the models estimate; four visits or four hours reach about ninety per cent; six visits or eight hours approach the ceiling.</div>
+        <div class="row"><b>主干：</b>三个分句并列，共用同一个主语模式“次数/时长 + 谓语 + 效益比例”：One visit…is associated with…; four visits…reach…; six visits…approach the ceiling（一次、四次、六次分别对应 50%、90%、接近上限）。</div>
+        <div class="row"><b>难点：</b>① 这是典型的“三段并列 + 分号”，分号在此不是随便断句，而是把三种剂量放在同一层级上比较，读时要把三个分句当成一张表的三行；② is associated with 是学术写作的“免责说法”，只说相关不说因果，译为“与……相关”而不是“能带来”；③ the models estimate 是省略了关系代词 that 的定语从句，修饰 the largest benefit——不是“模型估计”这个动作，而是“模型所估计的那个最大效益”；④ 第二、三分句换成 reach / approach，避免重复 is associated with，属于“同义替换防单调”，但三个动词的强度是递增的（相关 → 达到 → 接近）。</div>
+        <div class="row tr"><b>译文：</b>每周去一次、或累计待一小时，对应的约是模型所估算最大效益的一半；去四次或累计四小时，约达九成；去六次或累计八小时，才接近上限。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">It is also a population average drawn from observational work, which means the arrow may run the other way — people already low in mood go out less, rather than the reverse.</div>
+        <div class="row"><b>主干：</b>It is also a population average（它同时是一个人群平均值）＋ which 引导的非限制性定语从句解释后果。</div>
+        <div class="row"><b>难点：</b>① drawn from observational work 是过去分词短语后置修饰 a population average，drawn from 意为“取自”；② which 的先行内容不是某个名词，而是前面整句“这是人群平均值”这件事；③ the arrow may run the other way 是比喻：统计里的“箭头”指因果方向，这里说方向可能反过来；④ 破折号后用一个完整句把“反过来”讲具体：不是“少出门导致低落”，而是“低落导致少出门”——rather than the reverse 中的 reverse 指“相反的那种解释”，中文必须补全才读得懂。</div>
+        <div class="row tr"><b>译文：</b>这同时是一个来自观察性研究的人群平均值，意味着因果箭头可能指向反面——本来就情绪低落的人更少出门，而不是更少出门让他们低落。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Walking-related benefits faded steadily with distance from home and levelled off at about seven kilometres, while the type of park mostly changed the height of the curve, not its shape.</div>
+        <div class="row"><b>主干：</b>benefits faded…and levelled off…, while the type of park changed the height…, not its shape（收益随距离衰减并在七公里趋平，而公园类型只改高度不改形状）。</div>
+        <div class="row"><b>难点：</b>① Walking-related 是“名词 + 过去分词”构成的复合形容词，类似的还有 government-funded、lab-tested；② fade with distance 的 with 表“随之”，不是“和……一起”；③ level off at 是固定搭配，“在某个数值处变平”，at 后面接的是数值不是地点；④ while 在此是对比连词“而”，不是“当……时”；⑤ not its shape 是省略结构，补全是 but did not change its shape——英语常把否定部分压成一个短语，中文要还原成完整分句。</div>
+        <div class="row tr"><b>译文：</b>与走路相关的收益随离家距离变远而持续减弱，在七公里左右趋于平稳；而公园的类型主要改变曲线的高度，并不改变它的形状。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The money did not follow the benefit evenly: returns clustered in the smallest parks, and only about sixteen per cent of block parks recovered their costs within twenty years.</div>
+        <div class="row"><b>主干：</b>The money did not follow the benefit evenly（钱并没有跟着收益均匀地走）＋ 冒号后两个分句给出证据。</div>
+        <div class="row"><b>难点：</b>① follow 在此不是“跟随某人”，而是“跟着……走、与……同步”，主语是钱，宾语是收益，这个搭配在中文里没有现成说法，要意译；② evenly 修饰 follow，不是修饰 did not——否定的是“均匀地跟”，不是“跟”；③ 冒号后的 returns clustered in… 中 returns 是“回报、收益”（不是“返回”），cluster in 是“集中在”；④ sixteen per cent of block parks 的 of 表示部分关系，谓语 recovered 与 sixteen per cent 保持一致（英文里百分数作主语，谓语随 of 后的名词单复数变化）。</div>
+        <div class="row tr"><b>译文：</b>钱并没有跟着收益均匀地走：回报集中在小公园上，只有约 16% 的街区公园在二十年内收回了成本。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Side by side, the two papers are not saying the same thing: one argues that an hour a week is enough to matter, the other that the hour only happens if a small plot of shade sits within a short walk.</div>
+        <div class="row"><b>主干：</b>the two papers are not saying the same thing（两篇论文说的不是同一件事）＋ 冒号后 one…, the other… 对照。</div>
+        <div class="row"><b>难点：</b>① Side by side 是独立成分作状语，字面“并排”，此处意为“放在一起看”；② are not saying the same thing 用进行时，强调“它们各自在主张什么”，比 do not say 更贴近“两篇文章正在对话”的感觉；③ one…, the other… 是固定对照框架，但第二个分句 the other that… 省掉了 argues，这叫“并列结构中的省略”，读时必须在 the other 后面自己补上 argues；④ if a small plot of shade sits within a short walk 是条件状语从句，sits 的主语是 a plot（一块地），不是 shade——a small plot of shade 是“一小块有树荫的地”。</div>
+        <div class="row tr"><b>译文：</b>把两篇并排放在一起，它们说的并不是同一件事：一篇主张每周一小时就足以起作用，另一篇则说，这一小时只有在步行可达处有一小块树荫时才会真的发生。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章要处理的是一个听上去太简单、其实一直没答案的问题：一个人到底需要多少自然？过去医生被问到这个问题，只能含糊地说“多出去走走”。含糊的原因不是懒惰，而是缺数据——直到今年秋天，两篇论文分别从两个方向把它变成了数字。一篇回答“要多少”，一篇回答“值不值得建”。把它们放在一起读，才看得出这件事真正的难点在哪里。</p>
+      <p class="zh-sum">第一篇来自香港大学姜斌团队，发表在《环境心理学杂志》。他们做的是元分析：把 1980 到 2025 年间发表的 92,430 项研究逐一过筛，最后留下 78 条剂量—反应曲线，由 756 个数据点构成，覆盖压力、焦虑、抑郁与情绪这几类指标。作者自己的说法很克制——这不是一篇普通的综述，而是在找一条曲线的“形状”。而形状确实找到了，并且稳定到可以命名：一条 S 形曲线。</p>
+      <p class="zh-sum">S 形曲线的含义，用一句话说就是“第一口最香”。收益在低剂量阶段陡峭上升，随后迅速变平，拉出一段很长的平台。具体到数字：每周去一次，或每周累计待一小时，对应的是模型估算最大效益的约一半；每周四次或累计四小时，约九成；每周六次或累计八小时，才接近上限。这三个数就是所谓“自然剂量”的基准值。它最重要的推论不是“要多去”，而是“少去也有用”——对完全没有自然接触的人、对时间被切碎的城市居民，这条曲线的起点极低，门槛只有一小时。</p>
+      <p class="zh-sum">但作者紧接着把话说回去，这一段是全文最值得学的地方。他们明确写出：这是人群平均值，来自观察性研究，所以因果箭头可能反向——不是“少出门让人情绪低落”，而可能是“情绪低落的人本来就少出门”。他们还逐条限定了措辞：所谓“时长”是一周累计，不是单次逗留；“百分比”是模型估算的最大效益占比，不等于个人临床症状的改善。这种自我限定的写法看起来是在削弱结论，实际上是在给结论上保险：正因为说清了边界，这个基准才可以被医生、规划者拿去用，而不只是被媒体拿去当标题。</p>
+      <p class="zh-sum">第二篇换了个方向，发表在《自然·通讯》，团队来自北京大学深圳校区，合作方在东京。他们不满意“家周围多少米内有多少绿”这种静态指标，因为它假设人只会用家门口的绿地。于是他们改测“人实际去了哪里”：把 32 万用户、179 万次入园的匿名手机记录，与东京都 4,139 座公园的位置、周边地价和人口数据对应起来，再把“走路带来的健康收益”折算成钱，去和土地、建设、养护成本对账，货币单位是 2019 年的日元。</p>
+      <p class="zh-sum">结果有两个层次。第一层是空间：与走路相关的收益随离家距离变远而稳定下降，在七公里左右趋于平缓；公园类型（街区小公园、邻里公园、大型综合公园）主要改变曲线的高度，不改变它的形状。也就是说，“离得近”比“修得好”更能决定一个人会不会去。第二层是钱，也是全文最刺人的地方：回报并没有跟着收益均匀分布，而是集中在最小的公园上——只有约 16% 的街区公园能在二十年内收回成本；那些带湖、带博物馆、值得专程前往的大型公园，在只计算走路收益时几乎从不回本。</p>
+      <p class="zh-sum">这个结果之所以重要，是因为它同时否定了两种常见的说法。一种说“公园是公共品，不该算经济账”——可城市财政是有限的，不算账的结果就是公园永远排在道路和学校后面。另一种说“建大公园最能提升城市形象”——可大公园地价高、维护贵，而它的收益又主要来自“专程前往”的人，走路收益这一栏填不满成本。真正被数据支持的，是最不显眼的那个选项：在居民走路能到的地方，铺一小块有树荫、有长椅、有连贯步道的绿地。</p>
+      <p class="zh-sum">把两篇并排放在一起，它们的结论并不是同一句话。第一篇说：每周一小时就足以起作用，门槛低到几乎人人可及。第二篇说：这一小时只有在步行可达处确实有一块地时才会发生，而那块地极贵。两句合起来，才是完整的意思——需求侧的门槛很低，供给侧的门槛很高。这也解释了现实中一个常见的错位：健康建议总是劝个人“多去走走”，可个人走不走，往往取决于城市有没有在他走路十分钟的范围内留出一块不盖楼的地。</p>
+      <p class="zh-sum">两篇论文都把自己的边界写清了。东京那笔账只算走路，把更凉快的街道、更干净的空气、以及第一篇所测的心理健康收益全部排除在外；如果把这些也算进去，大型公园的账本会好看很多。手机数据记录的是“人在那儿”，不是因果；样本也可能偏向有手机、爱出门的人。而一座三千七百万人的东京，其密度、轨道网络与土地制度，都不是三万人小城的模板。这些限制并不推翻结论，但决定了结论只能用在一件事上：判断“把公园放在哪儿”，而不是判断“公园值不值得建”。</p>
+      <p class="zh-sum">所以文章的落点比任何标题都窄，也更别扭：不是“我们该多去公园”，而是“城市该把公园放在一个累了的人真的会走过去的地方”。最后一句把这个矛盾压缩成一句对照：每周一小时是一张廉价的处方；让这张处方成立的那块地，可不便宜。对高中生来说，这篇文章最值得带走的是一种写法——把两个都正确、却各自只能解释一半的研究摆在一起，让它们互相校正；以及一种判断习惯：看到“有益健康”这四个字时，先问剂量，再问成本。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. Parks are a waste of public money because most of them never recover their construction costs.<br>B. A meta-analysis sets a very low weekly "dose" of green space for mental health, while a Tokyo cost accounting shows that such doses depend on small parks being within walking distance — so the real question is where cities put them.<br>C. Phone data is a more reliable way of measuring green-space exposure than counting greenery around the home.<br>D. People who are already depressed tend to visit parks less often than others.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文由两篇研究构成：第一篇给出“每周一小时≈五成效益”的剂量基准，第二篇算出“只有约 16% 的小公园能回本、收益随距离衰减”，两者合起来指向“公园放在哪儿”这一结论，B 覆盖了这条主线。A 把“大型公园难以回本”扩大成“公园浪费钱”，与第 6 段“回报集中在小公园”矛盾；C 是第 5 段的方法论细节，文中并未判定手机数据“更可靠”，只说它补上了静态指标的盲区；D 是第 4 段用来提醒因果可能反向的例子，属细节，且原文用的是 may。</div>
+      <div class="q"><b>2. Why does the author describe the framing of the first study as "deliberately modest"?</b><br>A. Because the authors were unsure whether green space has any effect on mental health at all.<br>B. Because the study used a small sample of only 78 participants.<br>C. Because the authors stated precisely what their numbers do and do not mean, which is what makes the benchmark safe to use.<br>D. Because the benefits found were too small to be of any practical value.<br><br><b>答案：C</b><br>
+        <b>解析：</b>第 3 段末列出“每周累计而非单次”“模型最大值的百分比而非临床改善”，第 4 段又点明这是观察性研究的人群平均值、因果可能反向，随后一句“that honesty is what makes a benchmark usable instead of merely quotable”正是对 modest 的解释，C 对应。A 与“收益曲线稳定到可以命名”矛盾；B 混淆了 78 条曲线与样本量（78 是曲线数，不是人数）；D 曲解 modest——它限制的是“说法”，不是“效果”。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章说“需求侧门槛很低，供给侧门槛很高”。请用你所在城市或小区的一个具体例子（一块空地、一段人行道、一处被围墙圈起来的地），说明如果要在那里加一小块“步行十分钟能到”的绿地，最难的约束是什么——是地价、是产权、是维护费，还是没人愿意为它说话？要求：先描述现场，再指出约束，最后给出一个你认为在现实中可行的最小方案（不要写“应该加强规划”这类空话）。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段的收尾用的是一组“贵/便宜”的反差对照：<span class="hl">An hour a week is a cheap prescription; the plot of land that makes it possible is not.</span> 它的力量来自三个动作：① 前半句给人一个可执行的、便宜的东西（处方）；② 分号把两半硬接在一起，不加连接词，让反差自己说话；③ 后半句用 …is not 收尾，把“贵”这个词省掉——省掉的比说出来的更重。仿写时照搬骨架：<i>______ is a cheap ______; the ______ that makes it possible is not.</i> 注意前半句要具体到能执行（an hour a week、a five-minute call），后半句要具体到有成本（the land、the hours、the trust）。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 引子：要多少自然？两篇论文把两半都填上数字</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 方法一：港大 · 9.2 万项研究筛出 78 条曲线</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 结果一：一小时≈50%，四小时≈90%，八小时≈99%</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">4 · 边界一：人群平均 · 观察性研究 · 箭头可能反向</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 方法二：北大深圳 · 32 万人 179 万次手机数据</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">6 · 结果二：七公里内衰减 · 只有 16% 小公园能回本</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">7 · 合看：门槛一低一高，两篇说的不是一件事</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">8 · 边界二：只算走路 · 手机数据非因果 · 东京非模板</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：不是“多去”，而是“放得够近”</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：需求侧门槛很低（一周一小时），供给侧门槛很高（那块地）</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">两篇各自只解释一半，合起来才成立</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 4、8 段为虚线框：文章的“自我限定”环节——先立数字，再削数字</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、6 段为绿色：两处“结果”；第 7 段为红色：两条线在这里才真正接上</text>
+        </svg>
+        <figcaption>结构图解：文章走的是“双线并置”的路子——第 2–4 段是第一条线（剂量），第 5–7 段是第二条线（账本），第 8 段同时给两条线削边界，第 9 段把两条线压成一句。注意每一段“结果”后面都紧跟一段“边界”，这是学术类外刊最稳的写法。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Jiali Li, Peng Gong, Gunter Schumann, Christopher John Webster, Bin Jiang《A generalized relationship between dose of greenspace exposure behaviours and mental health responses》，Journal of Environmental Psychology 115:103211（2026），香港大学建筑学院城市环境与人类健康实验室，合复旦大学、柏林夏里特医学院、剑桥大学；DOI 10.1016/j.jenvp.2026.103211 ｜ Hang Su, Wenjing Li, Sheng Li, Shuisong Ke, Haoran Zhang《Quantifying parks as preventive health assets using population-scale mobility data》，Nature Communications（2026-10-05），北京大学深圳城市规划与设计学院 + 深圳市规划和自然资源数据管理中心 + 东京大学 + LocationMind；DOI 10.1038/s41467-026-78106-7｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
