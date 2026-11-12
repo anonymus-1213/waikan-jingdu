@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 蝴蝶的翅膀，是给捕食者的一记假动作</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Illusion &amp; Instinct · 人与自然 / 科学 / 动物行为 / 进化生物学 / 视觉感知</div>
+  <h1>蝴蝶的翅膀，是给捕食者的一记假动作</h1>
+  <div class="deck">High-speed cameras and a bird-vision model suggest that the bold patterns on butterfly wings are neither warning nor camouflage: in flight they manufacture a false sense of direction, and the predator's last, uncorrectable strike lands behind the insect.</div>
+  <div class="byline"><span><b>来源</b> Nature（2026-09-30，DOI 10.1038/s41586-026-11062-w）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-03</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-03.jpg" alt="一只凤蝶在草地上方飞行，黑白条纹的翅膀正拍到上冲的顶点（配图）">
+    <figcaption>配图：一只凤蝶悬在草地之上，翅膀刚拍到上冲的顶点——条纹在这一刻被拉成斜向，而这正是研究者用每秒一千帧以上的镜头要抓住的那一瞬间（图片来源：教学素材图库，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>蝴蝶是草地上最显眼的昆虫：个头大、飞得慢、颜色艳得不讲道理。按常理它该是鸟类最容易得手的一顿午餐，可它被空中拦截的概率，反而远低于灰扑扑的蛾子。教科书给的答案是“伪装”，但一副专门用来被看见的翅膀，怎么也说不通。</p>
+    <p>2026 年 9 月 30 日《自然》给出另一种解释：<b>花纹不是在藏它，而是在骗那只正在瞄准它的眼睛</b>。埃克斯特大学的 Troscianko 团队用<b>每秒一千帧以上</b>的高速摄影拍下真实蝴蝶起飞，再把影像送进模拟鸟眼视觉的模型；同时用 <b>397 个欧洲物种的 757 种翅膀花纹</b>做统计，还请 <b>100 名志愿者</b>在触摸屏上“抓”了 <b>3,000 次</b>虚拟蝴蝶。</p>
+    <p>结果是一个视错觉：在模型里，一只正在<b>陡直上升</b>的蝴蝶看上去在<b>向下走</b>，因为翅膀拍动时会发生形变，条纹每一拍都改变角度，像理发店门口那个原地旋转却显得在向上跑的红白转筒。攻击者据此提前量算错，最后那一扑落在虫身之后。</p>
+    <p>最漂亮的一步是模拟：从随机花纹出发，只留下最能把模型搞糊涂的，演化出<b>五万个候选翅膀</b>，最后收敛到的设计，与欧洲草地上真实在飞的那些高度相似。这说明<b>醒目本身就可以是一种防御</b>——但它的代价与边界，作者写得很克制。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-03.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.063">A bird that hunts by sight <b class="kw" data-tip="v. 锁定、认准（commit to a target 认定目标不再更改）；常见义“承诺、犯（罪）”">commits</b> to its target in the last tens of milliseconds of a dive, when it can no longer change course.</span> <span class="s" data-t="8.063" data-e="23.171">Butterflies, which are large, slow and often violently coloured, ought to be the easiest <b class="kw" data-tip="n. 猎物（prey on sth 捕食某物；easy prey 容易得手的猎物）">prey</b> in a meadow; yet they are caught in mid-air far more rarely than moths, and the usual explanation, <b class="kw" data-tip="n. 伪装、保护色（camouflage 常指用颜色或形态与环境融为一体）">camouflage</b>, cannot account for wings designed to be seen.</span></span></div>
+      <p class="para-tr">靠视觉捕猎的鸟，在俯冲的最后几十毫秒里已经把目标锁定下来，那个时刻它再也改不了方向。蝴蝶体型大、飞得慢、颜色还往往艳得刺眼，本该是草地上最容易得手的猎物；可它们在飞行中被抓住的概率，反而远低于蛾子——而通常的那个解释“伪装”，根本说不通一副看起来就是为了被看见的翅膀。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="23.171" data-e="34.934">A study published in <i>Nature</i> on 30 September 2026 offers a different answer: the patterns do not hide the insect, they <b class="kw" data-tip="v. 破坏、使失真（corrupt the data 使数据失真）；常见义“腐败的、贪污的”">corrupt</b> the predator's <b class="kw" data-tip="n. 估算、判断（an estimate of distance 对距离的判断）；v. 估计">estimate</b> of where it is going.</span> <span class="s" data-t="34.934" data-e="48.038">Jolyon Troscianko and George Hancock, of the universities of Exeter and Essex, filmed real butterflies taking off at more than a thousand frames per second, then passed the footage through a computer model of bird vision.</span></span></div>
+      <p class="para-tr">2026 年 9 月 30 日《自然》刊出的一项研究给了另一种答案：这些花纹不是把这只虫藏起来，而是破坏捕食者对“它要往哪儿去”的判断。埃克斯特大学与埃塞克斯大学的 Jolyon Troscianko 和 George Hancock 用每秒一千帧以上的速度拍下真实蝴蝶起飞的实况，再把影像送进一个模拟鸟眼视觉的计算机模型。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="48.038" data-e="59.013">The first result surprised the researchers themselves: in the model, a butterfly climbing steeply appeared to be travelling downwards, its pale bands sliding against the direction of flight.</span> <span class="s" data-t="59.013" data-e="74.289">The mechanism is the barber-pole <b class="kw" data-tip="n. 错觉、幻觉（optical illusion 视错觉）；常见义“幻想”">illusion</b>, in which a spinning cylinder seems to move upward because the eye reads diagonal stripes as motion; a butterfly's wings <b class="kw" data-tip="v. 变形、扭曲（deform under pressure 受压变形）；名词 deformation 形变">deform</b> as they clap and peel apart, so their bands change angle on every <b class="kw" data-tip="n. （翅膀、桨的）一次划动（a stroke of the wing 一次拍翅）；常见义“中风、笔画”">stroke</b> and point away from the body.</span></span></div>
+      <p class="para-tr">第一个结果让研究者自己也吃了一惊：在模型里，一只正在陡直上升的蝴蝶看上去像是在向下走，它浅色的横带逆着飞行方向滑动。机制是“理发店转筒”错觉——转筒只是原地旋转，却因为眼睛把斜条纹读成运动而显得在向上跑；蝴蝶的翅膀在合拢与分开时会发生形变，于是条纹每一拍都改变角度，指向身体之外的方向。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="74.289" data-e="86.316">If the trick belonged to a single species it would be a curiosity, but the team found candidates for it in 757 wing patterns drawn from 397 European species.</span> <span class="s" data-t="86.316" data-e="95.709">Contrasting bars, single bands and patterned hindwings produced the strongest false motion, and they are also among the commonest designs in the family.</span></span></div>
+      <p class="para-tr">如果这套把戏只属于某一个物种，那不过是桩趣闻；但团队在取自 397 个欧洲物种的 757 种翅膀花纹里，都找到了它的候选。高对比的横条、单条色带、带花纹的后翅产生的假运动最强，而它们恰好也是这个科里最常见的几种设计。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="95.709" data-e="106.143">To see whether the illusion actually misleads a hunter, the researchers asked a hundred volunteers to catch virtual butterflies on a touchscreen, three thousand attempts in all.</span> <span class="s" data-t="106.143" data-e="115.432">Attacks aimed at the most <b class="kw" data-tip="adj. 有欺骗性的、会骗人的（deceptive appearance 骗人的外表）；动词 deceive">deceptive</b> patterns landed further behind the insect than attacks on plain ones, which is exactly the error a bird cannot afford.</span></span></div>
+      <p class="para-tr">要确认这个错觉是否真能骗过一个猎手，研究者请一百名志愿者在触摸屏上“抓”虚拟蝴蝶，一共三千次出手。指向最会骗人的那些花纹的攻击，落点比指向素色翅膀的更靠后——而这正是鸟最赔不起的那种误差。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="115.432" data-e="125.526">The strongest evidence came from a simulation that began with random patterns and kept only those that confused the model most, evolving fifty thousand candidate wings.</span> <span class="s" data-t="125.526" data-e="134.329">The designs that emerged <b class="kw" data-tip="v. 汇聚、趋同（converge on 收敛到同一点）；常见义“集中、汇合”">converged</b> on the ones already flying in European meadows, which is what natural selection would be expected to produce.</span></span></div>
+      <p class="para-tr">最硬的证据来自一次模拟：从随机花纹出发，只留下那些最能把模型搞糊涂的，如此演化出五万个候选翅膀。最后浮现出来的设计，收敛到了欧洲草地上已经在飞的那些——这正是自然选择本该留下的结果。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="134.329" data-e="145.158">This reframes a fact that has always sat <b class="kw" data-tip="adv. 别扭地、不自然地（sit awkwardly 显得格格不入）；形容词 awkward 尴尬的">awkwardly</b> in textbooks: <b class="kw" data-tip="n. 醒目、显眼（conspicuous 显眼的；反义 inconspicuous）">conspicuousness</b>, normally treated as a cost paid for in <b class="kw" data-tip="n. 毒性（toxic 有毒的；toxicity 指毒性的强弱）">toxicity</b>, can be a defence in its own right.</span> <span class="s" data-t="145.158" data-e="157.776">Butterflies are mostly <b class="kw" data-tip="adj. 可食用的（edible 指人或动物可以吃）；反义 inedible">edible</b> and, unlike moths, fly by day, so they cannot rely on <b class="kw" data-tip="n. 隐蔽、藏匿（conceal 隐藏；concealment 指被藏起来的状态）">concealment</b> in the air; the pattern works only while the wing is moving, and vanishes the moment the insect <b class="kw" data-tip="v. 停落、栖息（a butterfly settles on a leaf 蝴蝶停在叶上）；常见义“解决、安顿”">settles</b>.</span></span></div>
+      <p class="para-tr">这就重新解释了一个在教科书里一直显得别扭的事实：醒目，通常被当成一种必须用毒性去偿付的代价，而它本身就可以是一种防御。蝴蝶大多是可以吃的，而且与蛾子不同，它们白天飞，所以没法指望在空中藏起来；这套花纹只在翅膀运动时生效，虫一停下就消失了。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="157.776" data-e="160.684">The paper is candid about its limits.</span> <span class="s" data-t="160.684" data-e="174.945">Only the upper surface of the wing was modelled, at a handful of angles and distances, and the volunteers were human beings instructed to behave like birds; the stripes of zebras and the tails of lizards remain <b class="kw" data-tip="adj. 貌似合理的、说得通的（a plausible explanation 说得通的解释）；注意与 possible 的区别：plausible 强调“站得住”">plausible</b> but unproven cases.</span></span></div>
+      <p class="para-tr">论文对自己的局限说得很坦率。模型只算了翅膀的正面，只取了几种角度和距离；志愿者是人，只是被要求“像鸟那样”行事；至于斑马的条纹和蜥蜴甩动的尾巴，仍然只是说得通、却未被证实的例子。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="174.945" data-e="186.853">What the study finally suggests is that a wing pattern is less a warning than a calculation about the eye that is watching it, worked out over millions of years and paid for in the currency of missed <b class="kw" data-tip="n. 扑击、抓击（a strike at prey 对猎物的一扑）；常见义“罢工、打击”">strikes</b>.</span> <span class="s" data-t="186.853" data-e="192.829">The butterfly survives not because it is hard to see, but because it is hard to see correctly.</span></span></div>
+      <p class="para-tr">这项研究最终提示的是：翅膀上的花纹，与其说是警告，不如说是关于“正在看它的那只眼睛”的一次计算——算了几百万年，用一次次落空的扑击来付账。蝴蝶活下来，不是因为它难看清楚，而是因为它难以被看准。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">commit</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /kəˈmɪt/ · 美 /kəˈmɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>锁定、认准（目标）</b>，指在某一刻作出不可更改的决断。<br>常见义：<b>v.</b> 承诺（commit to a plan）；<b>v.</b> 犯（错、罪）（commit a crime）。<br>搭配：commit to sth（认定某事、投入某事）／commit oneself（表态、承诺）。本文的细节是：鸟在俯冲末段一旦“锁定”，就再也改不了方向——commit 的这一层“不可回头”的意思，正是整个实验能成立的前提。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A bird that hunts by sight <b>commits</b> to its target in the last tens of milliseconds of a dive…</div>
+          <div class="wc-tr">靠视觉捕猎的鸟，在俯冲的最后几十毫秒里就已锁定目标……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">settle</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈsetl/ · 美 /ˈsetl/</div>
+          <div class="wc-pos"><b>v.</b> <b>停落、栖息</b>，指（鸟、虫）落到某处不再移动。<br>常见义：<b>v.</b> 解决（settle a dispute）；<b>v.</b> 定居（settle in a city）。<br>搭配：settle on a branch（落在枝上）／settle down（安定下来）。文中的对比值得记：这套花纹“只在翅膀运动时生效，虫一停下就消失了”——settle 在这里是与 flight 相对的状态词。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the pattern works only while the wing is moving, and vanishes the moment the insect <b>settles</b>.</div>
+          <div class="wc-tr">……这套花纹只在翅膀运动时生效，虫一停下就消失了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">strike</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /straɪk/ · 美 /straɪk/</div>
+          <div class="wc-pos"><b>n.</b> <b>扑击、抓击</b>，指捕食者向猎物发出的那一下攻击。<br>常见义：<b>n.</b> 罢工（go on strike）；<b>v.</b> 打击、撞击。<br>搭配：a strike at prey（对猎物的一扑）／miss one's strike（扑空）。文中把“落空的扑击”当成货币来算账（paid for in the currency of missed strikes），是全文最凝练的一处比喻。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…paid for in the currency of missed <b>strikes</b>.</div>
+          <div class="wc-tr">……用一次次落空的扑击来付账。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">predator</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈpredətə/ · 美 /ˈpredətər/</div>
+          <div class="wc-pos"><b>n.</b> 捕食者、掠食动物。<br>反义：prey（猎物）；同根：predation（捕食行为）、predatory（掠食性的，也可形容“掠夺性的定价”）。<br>搭配：natural predator（天敌）／apex predator（顶级捕食者）。注意它与人无关时不要译成“掠夺者”，除非语境是商业或人。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…they corrupt the <b>predator</b>'s estimate of where it is going.</div>
+          <div class="wc-tr">……它们破坏捕食者对“它要往哪儿去”的判断。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prey</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /preɪ/ · 美 /preɪ/</div>
+          <div class="wc-pos"><b>n.</b> 猎物；<b>v.</b> 捕食（prey on）。<br>注意：prey 作名词时通常不可数，不说 a prey，要说 a prey animal 或直接 the prey。<br>搭配：easy prey（容易得手的猎物，也比喻“容易上当的人”）／fall prey to（成为……的牺牲品）。文中 easy prey 与后半句的“反被抓住的概率更低”构成反差。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Butterflies… ought to be the easiest <b>prey</b> in a meadow…</div>
+          <div class="wc-tr">蝴蝶……本该是草地上最容易得手的猎物……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">camouflage</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkæməflɑːʒ/ · 美 /ˈkæməflɑːʒ/</div>
+          <div class="wc-pos"><b>n.</b> 伪装、保护色；<b>v.</b> 掩饰。<br>词源是法语 camoufler（临时涂改），一战时进入英语，最初就是军事术语。<br>搭配：natural camouflage（天然保护色）／under camouflage（在伪装之下）。文中用它来指“教科书上的旧答案”，随后被否掉——这是科普写作常见的“先立旧说再推翻”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the usual explanation, <b>camouflage</b>, cannot account for wings designed to be seen.</div>
+          <div class="wc-tr">……通常的解释“伪装”，说不通一副看起来就是为了被看见的翅膀。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conspicuousness</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈspɪkjuəsnəs/ · 美 /kənˈspɪkjuəsnəs/</div>
+          <div class="wc-pos"><b>n.</b> 醒目、显眼。<br>形容词 conspicuous（显眼的）常与 in 连用：conspicuous in the crowd；反义 inconspicuous（不显眼的）。<br>搭配：conspicuous consumption（炫耀性消费）是经济学社会学的经典术语。文中讨论的正是“醒目是不是一定是坏事”这个进化问题。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…<b>conspicuousness</b>, normally treated as a cost paid for in toxicity, can be a defence in its own right.</div>
+          <div class="wc-tr">……醒目，通常被当成一种必须用毒性去偿付的代价，而它本身就可以是一种防御。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">illusion</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˈluːʒn/ · 美 /ɪˈluːʒn/</div>
+          <div class="wc-pos"><b>n.</b> 错觉、幻觉。<br>辨析：illusion 是“感知被骗”（optical illusion 视错觉）；delusion 是“信念荒谬”（他坚持自己没病，那是 delusion）。<br>搭配：optical illusion（视错觉）／be under the illusion that（误以为）。文中 barber-pole illusion 是知觉心理学里的经典范式，指斜条纹引起的方向误判。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The mechanism is the barber-pole <b>illusion</b>, in which a spinning cylinder seems to move upward…</div>
+          <div class="wc-tr">机制是“理发店转筒”错觉——转筒原地旋转，却显得在向上移动……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">deform</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪˈfɔːm/ · 美 /dɪˈfɔːrm/</div>
+          <div class="wc-pos"><b>v.</b> 变形、使变形。<br>名词 deformation（形变）是材料力学的核心词；前缀 de- 表“去除、反向”，form 是“形状”。<br>搭配：deform under pressure（受压变形）／plastic deformation（塑性形变）。文中强调翅膀是“柔性结构”，每拍都在改变形状——这是错觉能产生的物理前提。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a butterfly's wings <b>deform</b> as they clap and peel apart…</div>
+          <div class="wc-tr">……蝴蝶的翅膀在合拢与分开时会发生形变……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">converge</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈvɜːdʒ/ · 美 /kənˈvɜːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> 汇聚、趋同，指不同起点最终走到同一处。<br>反义 diverge（分岔）；名词 convergence（趋同）。<br>搭配：converge on a point（汇聚到一点）／convergent evolution（趋同演化，生物学的核心概念）。文中“模拟出来的花纹收敛到真实花纹”正是趋同的证据。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The designs that emerged <b>converged</b> on the ones already flying in European meadows…</div>
+          <div class="wc-tr">最后浮现出来的设计，收敛到了欧洲草地上已经在飞的那些……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">edible</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈedəbl/ · 美 /ˈedəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 可食用的。<br>反义 inedible（不能吃的）；同根 edibility（可食性）。<br>搭配：edible oil（食用油）／edible mushroom（食用菌）。文中说蝴蝶“大多是可以吃的”，是为了对比那些靠毒性警告色（warning colouration）自保的物种——如果没毒，醒目就必须有别的作用。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Butterflies are mostly <b>edible</b> and, unlike moths, fly by day…</div>
+          <div class="wc-tr">蝴蝶大多是可以吃的，而且与蛾子不同，它们白天飞……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">concealment</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈsiːlmənt/ · 美 /kənˈsiːlmənt/</div>
+          <div class="wc-pos"><b>n.</b> 隐蔽、藏匿（的状态）。<br>动词 conceal（隐藏）比 hide 正式；名词也可指“隐瞒事实”（concealment of evidence）。<br>搭配：in concealment（躲藏着）／concealment of assets（隐匿财产）。文中与 camouflage 呼应：静态的藏（concealment）与动态的骗（illusion）是两种不同策略。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…so they cannot rely on <b>concealment</b> in the air…</div>
+          <div class="wc-tr">……所以它们没法指望在空中藏起来……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plausible</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈplɔːzəbl/ · 美 /ˈplɔːzəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 貌似合理的、说得通的。<br>辨析：possible 只说“有可能”；plausible 说“听起来站得住”，但不保证为真——学术写作里常用来给未证实的解释留余地。<br>搭配：a plausible explanation（说得通的解释）／sound plausible（听起来合理）。反义 implausible。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the stripes of zebras and the tails of lizards remain <b>plausible</b> but unproven cases.</div>
+          <div class="wc-tr">……斑马的条纹与蜥蜴的尾巴，仍然只是说得通、却未被证实的例子。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stroke</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /strəʊk/ · 美 /stroʊk/</div>
+          <div class="wc-pos"><b>n.</b> （翅膀、桨的）一次划动、一拍。<br>常见义：<b>n.</b> 中风（a stroke）；<b>n.</b> 笔画（the strokes of a character）。<br>搭配：at a stroke（一下子）／a stroke of luck（运气一来）。同一拼写三种常用义，靠语境判断：本文的 stroke 与 wing 连用，只能译“一拍”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…so their bands change angle on every <b>stroke</b> and point away from the body.</div>
+          <div class="wc-tr">……于是条纹每一拍都改变角度，指向身体之外的方向。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">toxicity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /tɒkˈsɪsəti/ · 美 /tɑːkˈsɪsəti/</div>
+          <div class="wc-pos"><b>n.</b> 毒性、毒力。<br>形容词 toxic（有毒的，也喻指“有毒的人际关系”）；同根 toxin（毒素）。<br>搭配：high toxicity（高毒性）／toxicity test（毒性测试）。文中“用毒性偿付醒目”指的是警戒色物种：颜色越艳，越要有毒撑着，否则早被吃掉。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a cost that must be paid for in <b>toxicity</b>…</div>
+          <div class="wc-tr">……一种必须用毒性去偿付的代价……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">estimate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈestɪmət/ · 美 /ˈestɪmət/</div>
+          <div class="wc-pos"><b>n.</b> 估算、判断；<b>v.</b> /ˈestɪmeɪt/ 估计。<br>注意重音：名词在前（ES-ti-mate），动词在后（es-ti-MATE）。<br>搭配：a rough estimate（粗略估计）／at a conservative estimate（保守估计）。文中“破坏对去向的判断”，说的是捕食者脑内的一次内部运算被篡改。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…they corrupt the predator's <b>estimate</b> of where it is going.</div>
+          <div class="wc-tr">……它们破坏捕食者对“它要往哪儿去”的判断。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">deceptive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈseptɪv/ · 美 /dɪˈseptɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 有欺骗性的、会误导人的。<br>动词 deceive（欺骗）；名词 deception（欺骗行为）。<br>搭配：deceptive appearance（骗人的外表）／appearances can be deceptive（外表会骗人）。文中指“最会骗眼睛的花纹”，不带道德色彩——生物学里的 deception 是中性的策略。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Attacks aimed at the most <b>deceptive</b> patterns landed further behind the insect…</div>
+          <div class="wc-tr">指向最会骗人的那些花纹的攻击，落点更靠后……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">awkwardly</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɔːkwədli/ · 美 /ˈɔːkwərdli/</div>
+          <div class="wc-pos"><b>adv.</b> 别扭地、不自然地。<br>形容词 awkward（尴尬的、笨拙的、难处理的）；文中 sit awkwardly in textbooks 是“在教科书里显得格格不入”。<br>搭配：an awkward question（不好回答的问题）／awkward silence（尴尬的沉默）。这类副词是外刊句子的“态度标记”，读懂它才知道作者站在哪一边。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a fact that has always sat <b>awkwardly</b> in textbooks…</div>
+          <div class="wc-tr">……一个在教科书里一直显得别扭的事实……</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">hunt by sight</span><span class="zh">靠视觉捕猎</span></li>
+          <li><span class="en">commit to a target</span><span class="zh">锁定目标、认定目标</span></li>
+          <li><span class="en">change course</span><span class="zh">改变方向、改变路线</span></li>
+          <li><span class="en">ought to be</span><span class="zh">按理应该是</span></li>
+          <li><span class="en">the easiest prey in a meadow</span><span class="zh">草地上最容易得手的猎物</span></li>
+          <li><span class="en">be caught in mid-air</span><span class="zh">在半空中被抓住</span></li>
+          <li><span class="en">account for</span><span class="zh">解释、说明（此处不取“占比”）</span></li>
+          <li><span class="en">be designed to be seen</span><span class="zh">生来就是要被看见的</span></li>
+          <li><span class="en">offer a different answer</span><span class="zh">给出另一种答案</span></li>
+          <li><span class="en">corrupt the estimate of</span><span class="zh">破坏对……的判断</span></li>
+          <li><span class="en">take off</span><span class="zh">起飞、腾空</span></li>
+          <li><span class="en">at a thousand frames per second</span><span class="zh">以每秒一千帧的速度</span></li>
+          <li><span class="en">pass the footage through a model</span><span class="zh">把影像送进模型处理</span></li>
+          <li><span class="en">surprise the researchers themselves</span><span class="zh">让研究者自己也吃了一惊</span></li>
+          <li><span class="en">appear to be travelling downwards</span><span class="zh">看上去在向下移动</span></li>
+          <li><span class="en">against the direction of flight</span><span class="zh">逆着飞行方向</span></li>
+          <li><span class="en">read A as B</span><span class="zh">把 A 误读为 B</span></li>
+          <li><span class="en">change angle on every stroke</span><span class="zh">每一拍都改变角度</span></li>
+          <li><span class="en">point away from the body</span><span class="zh">指向身体以外的方向</span></li>
+          <li><span class="en">belong to a single species</span><span class="zh">只属于某一个物种</span></li>
+          <li><span class="en">find candidates for it in</span><span class="zh">在……中找到它的候选</span></li>
+          <li><span class="en">be drawn from</span><span class="zh">取自、来自</span></li>
+          <li><span class="en">produce the strongest false motion</span><span class="zh">产生最强的虚假运动感</span></li>
+          <li><span class="en">be among the commonest designs</span><span class="zh">属于最常见的设计之列</span></li>
+          <li><span class="en">mislead a hunter</span><span class="zh">误导猎手</span></li>
+          <li><span class="en">three thousand attempts in all</span><span class="zh">总共三千次尝试</span></li>
+          <li><span class="en">land behind the insect</span><span class="zh">落点在虫身之后</span></li>
+          <li><span class="en">the error a bird cannot afford</span><span class="zh">鸟赔不起的那种误差</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>谜题：蝴蝶又大又慢又艳，却比蛾子更难被空中抓住；“伪装”解释不了一副用来被看见的翅膀。</li>
+          <li>研究：《自然》2026-09-30；埃克斯特 + 埃塞克斯；每秒 1000 帧以上实拍，再把影像送进模拟鸟眼的模型。</li>
+          <li>发现一：模型里陡直上升的蝴蝶看着在向下走——理发店转筒错觉，翅膀形变让条纹每拍改角度。</li>
+          <li>发现二：不是孤例。397 个欧洲物种、757 种花纹里普遍存在，最能骗人的设计也最常见。</li>
+          <li>验证：100 名志愿者在触摸屏上抓蝶 3,000 次，最会骗人的花纹让攻击落点明显更靠后。</li>
+          <li>演化证据：从随机花纹筛选五万轮，收敛出的设计与真实翅膀高度相似。</li>
+          <li>再解释：醒目不必用毒性偿付，它本身就是防御；花纹只在飞行时生效，停下即失效。</li>
+          <li>边界：只算了翅膀正面、角度与距离有限、志愿者是人；斑马条纹与蜥蜴尾巴仍属未证实。</li>
+          <li>落点：花纹不是警告，而是关于“看它的那只眼”的一次计算，用落空的扑击付账。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Butterflies, which are large, slow and often violently coloured, ought to be the easiest prey in a meadow; yet they are caught in mid-air far more rarely than moths, and the usual explanation, camouflage, cannot account for wings designed to be seen.</div>
+        <div class="row"><b>主干：</b>Butterflies ought to be the easiest prey（蝴蝶本该是最容易得手的猎物）；yet they are caught far more rarely（可它们被抓住的概率低得多）；and the usual explanation cannot account for wings（而通常的解释说不通这双翅膀）——分号与 and 把三个分句串成“预期—现实—解释失败”。</div>
+        <div class="row"><b>难点：</b>① which are large, slow and often violently coloured 是非限制性定语从句，插在主语与谓语之间，读时先跳过；② ought to be 表“按理应当”，暗示后文一定出现反差；③ violently coloured 的 violently 不译“暴力地”，而是“强烈到刺眼”，这类“抽象副词 + 感官形容词”的搭配是外刊常见修辞；④ the usual explanation, camouflage, 是同位语，两个逗号夹住的 camouflage 就是 explanation 的内容；⑤ that appear designed to be seen 修饰 wings，appear 后接过去分词表被动，“看起来就是为被看见而设计的”。</div>
+        <div class="row tr"><b>译文：</b>蝴蝶体型大、飞得慢、颜色还往往艳得刺眼，本该是草地上最容易得手的猎物；可它们在飞行中被抓住的概率，反而远低于蛾子——而通常的那个解释“伪装”，根本说不通一副看起来就是为了被看见的翅膀。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The mechanism is the barber-pole illusion, in which a spinning cylinder seems to move upward because the eye reads diagonal stripes as motion; a butterfly's wings deform as they clap and peel apart, so their bands change angle on every stroke and point away from the body.</div>
+        <div class="row"><b>主干：</b>The mechanism is the barber-pole illusion（机制是理发店转筒错觉）＋ 分号后 wings deform, so their bands change angle and point elsewhere（翅膀形变，于是条纹改角度、指向别处）。</div>
+        <div class="row"><b>难点：</b>① in which 引导非限制性定语从句，先行词是 illusion，从句内部又套了一个 because 原因状语从句；② reads diagonal stripes as motion 的 read 是“解读、判读”，不是“阅读”——read sth as sth 是固定搭配；③ as they clap and peel apart 的 as 表“当……时”，同时带一点“随着”的意味，clap 与 peel 是一对反义动作（合拢 / 剥开）；④ so 引出结果，后面两个谓语 change 与 point 共用主语 bands；⑤ somewhere other than the body 是“身体以外的某个方向”，other than 在这里等于 apart from。</div>
+        <div class="row tr"><b>译文：</b>机制是“理发店转筒”错觉——转筒原地旋转，却因为眼睛把斜条纹读成运动而显得在向上跑；蝴蝶的翅膀在合拢与分开时会发生形变，于是条纹每一拍都改变角度，指向身体之外的方向。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">If the trick belonged to a single species it would be a curiosity, but the team found candidates for it in 757 wing patterns drawn from 397 European species.</div>
+        <div class="row"><b>主干：</b>If the trick belonged to a single species, it would be a curiosity（如果这套把戏只属于一个物种，那不过是桩趣闻）；but the team found candidates in 757 patterns（但团队在 757 种花纹里找到了候选）。</div>
+        <div class="row"><b>难点：</b>① 这是虚拟语气：if 从句用过去式 belonged，主句用 would be，表示“与事实相反的假设”——事实上它并不只属于一个物种；② 这种“先假设它微不足道，再否定这个假设”的写法叫 concession（让步），作用是给后面的证据加重量；③ drawn from 是过去分词短语作后置定语，修饰 patterns，等于 which were drawn from；④ candidates for it 的 it 回指 the trick，代词回指要往前找最近的名词性内容，不能误认成 species。</div>
+        <div class="row tr"><b>译文：</b>如果这套把戏只属于某一个物种，那不过是桩趣闻；但团队在取自 397 个欧洲物种的 757 种翅膀花纹里，都找到了它的候选。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The strongest evidence came from a simulation that began with random patterns and kept only those that confused the model most, evolving fifty thousand candidate wings.</div>
+        <div class="row"><b>主干：</b>The strongest evidence came from a simulation（最硬的证据来自一次模拟）——后面 that 从句说明这场模拟怎么做的。</div>
+        <div class="row"><b>难点：</b>① 句中有两个 that：第一个引导定语从句修饰 simulation，第二个（those that…）修饰代词 those；② kept only those that confused the model most 的结构是“keep + 宾语 + 定语从句”，省略了重复的 patterns；③ evolving fifty thousand candidate wings 是现在分词作结果状语，说明“不断筛选”这个过程产出了什么，不是伴随动作；④ 这句的时态全用过去式，但描述的是一个计算过程，译成中文不必强加“曾经”。</div>
+        <div class="row tr"><b>译文：</b>最硬的证据来自一次模拟：从随机花纹出发，只留下那些最能把模型搞糊涂的，如此演化出五万个候选翅膀。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">This reframes a fact that has always sat awkwardly in textbooks: conspicuousness, normally treated as a cost paid for in toxicity, can be a defence in its own right.</div>
+        <div class="row"><b>主干：</b>This reframes a fact（这重新解释了一个事实）＋ 冒号后给出这个事实的内容：conspicuousness can be a defence in its own right（醒目本身就可以是一种防御）。</div>
+        <div class="row"><b>难点：</b>① reframe 是“换一个框架重讲”，比 explain again 更强调“换了看的角度”，是学术写作的高频动词；② has always sat awkwardly in textbooks 用 sat（坐）形容一个事实“待在书里很别扭”，把抽象关系写成了姿势；③ normally treated as a cost 是过去分词短语作插入语，逻辑主语就是 conspicuousness；④ paid for in toxicity 是过去分词短语修饰 cost，pay for sth in sth 是“用……偿付”；⑤ in its own right 是固定短语，“本身就、独立地”，不要译成“以自己的权利”。</div>
+        <div class="row tr"><b>译文：</b>这就重新解释了一个在教科书里一直显得别扭的事实：醒目，通常被当成一种必须用毒性去偿付的代价，而它本身就可以是一种防御。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章要回答的是一个看起来早就被回答过的问题：蝴蝶为什么长得那么显眼？教科书的答案有两个版本，一个是“警告色”——我有毒，别吃我；另一个是“伪装”——我融进了背景。可这两个答案放在蝴蝶身上都不太服帖。真正有毒的蝴蝶是少数，多数蝴蝶味道普通、蛋白质丰富，对鸟来说是一顿不错的午餐；而它们的翅膀也谈不上融入背景，很多种类在黑绿之间拉出高对比的横条，飞起来比停着还扎眼。</p>
+      <p class="zh-sum">更奇怪的是数量上的事实：蝴蝶被鸟在空中抓住的概率，明显低于蛾子。蛾子几乎是所有靠视觉捕猎的鸟类的常规口粮，而专门以飞行中的蝴蝶为食的捕食者少得可怜。这个反差一直悬在那里——蝴蝶又大又慢，凭什么？</p>
+      <p class="zh-sum">2026 年 9 月 30 日《自然》刊出的论文给了一个新答案，作者是埃克斯特大学 Penryn 校区生态与保护中心的 Jolyon Troscianko 与 George Hancock 等人。他们的思路是把“蝴蝶怎么飞”和“鸟怎么看见”放进同一个模型里，而不是只在蝴蝶身上找答案。方法上分三步：先用每秒一千帧以上的高速摄影拍真实蝴蝶起飞，再把影像转换成鸟眼能看到的版本，最后让计算机判断这只蝴蝶“看起来往哪儿飞”。</p>
+      <p class="zh-sum">第一步就出了怪事。在模型里，一只正在陡直爬升的蝴蝶，被判定为在向下移动。研究者一度以为是代码写反了上下方向，核对之后才意识到：这不是错误，而是一个可以被利用的漏洞。机制是知觉心理学里经典的“理发店转筒”错觉——理发店门口那个红白斜条的圆筒明明只是原地旋转，人眼却会看到条纹在向上跑。蝴蝶的翅膀是柔性结构，上冲时两翅合拢、下扑时又剥开，条纹的角度每一拍都在变，于是眼睛读到的运动方向，与身体真正去的方向并不一致。</p>
+      <p class="zh-sum">如果只有一两种蝴蝶如此，这不过是自然史里的一条趣闻。但团队把范围铺开：他们统计了 397 个欧洲物种、757 种翅膀花纹，发现能产生明显假运动的设计在这类昆虫里相当普遍，而且最能骗人的那几种设计——高对比横条、单条宽带、带花纹的后翅——恰好也是最常见的。普遍性与高频同时出现，本身就是一条线索。</p>
+      <p class="zh-sum">接下来是行为实验。研究请一百名志愿者在触摸屏上“抓”虚拟蝴蝶，一共三千次出手，出手时记录落点。结果很干净：面对最会制造错觉的花纹，人的“攻击”落点明显更靠后，也就是说，他们瞄准的是蝴蝶“看起来要去的地方”，而不是它真正所在的地方。鸟在俯冲的最后几十毫秒里已经无法修正方向，这样的偏差足以让一次捕猎落空，或者只咬到后翅与尾突——对蝴蝶来说，这是可以承受的损失。</p>
+      <p class="zh-sum">最精彩的一步是模拟演化。研究者从随机花纹出发，只保留那些最能让模型判断出错的图案，一轮一轮筛选，最终得到五万个候选翅膀。这些“演化”出来的设计，收敛到了欧洲草地上真实在飞的那些花纹上。这个结果是全文分量最重的证据：它不是说“现有花纹恰好有这个效果”，而是说“如果只按‘骗过眼睛’这个标准去选，最后也会选出这些花纹”。</p>
+      <p class="zh-sum">于是作者提出了一个方向性的改写：醒目，未必要用毒性来偿付。传统的解释是，鲜艳的颜色必须先有化学防御撑着，否则早就被吃光；但蝴蝶提供了一个不同的样本——它们大多可食，白天活动，无法靠静止时的伪装自保，却在飞行中用“让对手看错”换到了生存空间。而且这套机制有一个精确的开关：只在翅膀运动时生效，虫一停下就消失。这解释了为什么很多蝴蝶停着时其实相当隐蔽，一起飞就像换了件衣服。</p>
+      <p class="zh-sum">论文对局限的交代也值得学习。第一，模型只处理了翅膀的正面，背面花纹没有算；第二，只取了几种角度和距离，而真实捕食发生在任意角度；第三，志愿者是人，只是被要求“像鸟一样”看，人的视觉与鸟的视觉并不相同，鸟对运动的分辨率通常更高；第四，也是最谨慎的一条——作者没有把结论推广到斑马、蛇、蜥蜴身上，只说这些长期被怀疑的例子“现在有了一个可检验的机制”。</p>
+      <p class="zh-sum">从写作角度看，这篇论文的科普版本有一个非常干净的骨架：先给一个所有人都以为已经解决的问题（蝴蝶为什么鲜艳），指出旧答案的两个漏洞（没毒、不隐蔽），再给一个反直觉的机制（视错觉），然后用三类证据把它钉住（高速摄影、跨物种统计、模拟演化），最后主动划边界。这套“旧解释失灵—新机制登场—多路证据—边界声明”的结构，是科学报道里最稳的一种，也最适合拿来仿写。</p>
+      <p class="zh-sum">更值得琢磨的是它的落点。文章最后没有说“蝴蝶很聪明”，而是说：翅膀上的花纹，是关于“正在看它的那只眼睛”的一次计算。这句话把进化从“物种适应环境”改写成了“物种适应他者的感知”——捕食者的眼睛，也是一种环境。这个视角一旦成立，很多看似浪费的装饰就都有了新的读法：不是为了好看，也不是为了吓人，而是为了在那双眼睛里制造一个错误。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. Butterfly wing patterns are a form of camouflage that becomes effective only when the insect is at rest.<br>B. A study combining high-speed filming, a bird-vision model and simulated evolution suggests that bold wing patterns create a false sense of motion in flight, so that the predator's uncorrectable final strike misses.<br>C. Because most butterflies are toxic, their bright colours serve as a warning to predators.<br>D. Zebra stripes and lizard tails have now been shown to confuse predators in the same way as butterfly wings.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是“旧解释失灵 → 视错觉机制 → 三类证据（实拍、跨物种统计、模拟演化）→ 边界”，B 完整覆盖。A 与第 7 段相反：花纹只在飞行时生效、停下即失效；C 与第 7 段“蝴蝶大多可食”矛盾，那是被作者用来推翻的旧说；D 与第 8 段明确矛盾，斑马与蜥蜴只是 plausible but unproven。</div>
+      <div class="q"><b>2. Why does the author describe the simulation as "the strongest evidence"?</b><br>A. Because it used more wing patterns than the field survey did.<br>B. Because it shows that selection for confusing the viewer alone would produce the patterns that actually exist in nature.<br>C. Because it replaced the need for any behavioural experiment with human volunteers.<br>D. Because it proved that butterflies evolved their patterns within a human lifetime.<br><br><b>答案：B</b><br>
+        <b>解析：</b>第 6 段的关键句是“只按‘骗过眼睛’这个标准去选，最后也会选出这些花纹”——即从机制出发能反推出真实结果，这比“现存花纹恰好有效果”更强。A 是数量比较，文中未做此比较；C 与第 5、6 段并列关系矛盾，模拟是补充而非替代；D 曲解，文中说的是“over millions of years”。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>这篇文章的核心是“把适应环境改写为适应他者的感知”。请你从身边找一个“因为别人的感知方式而被塑造”的例子（例如校服的颜色、商场的动线、短视频的封面、球场上的假动作），写一段 150 字以内的分析：①这个设计预设了观看者会怎么误判；②它靠什么代价维持（如果观看者变聪明了会怎样）；③你能设计一个什么样的观察或小实验，来检验这个“误判”真的存在。</div>
+      <div class="q"><b>仿写：</b>本文第 7 段用的是一个“为一个旧事实换框架”的句子：<span class="hl">This reframes a fact that has always sat awkwardly in textbooks: conspicuousness, normally treated as a cost paid for in toxicity, can be a defence in its own right.</span> 它的力量来自三个动作：① 用 This reframes a fact 开头，先声明“我要重讲一件事”，而不是“我发现了一件事”；② that has always sat awkwardly 用 sat（坐）给抽象事实一个别扭的姿势，一句就交代了“旧解释不舒服”；③ 冒号后用 normally treated as… 先复述旧框架，再用 can be…in its own right 给出新框架，两个框架并置，读者自己就完成了对比。仿写时照搬骨架：<i>This reframes a fact that has always sat awkwardly in ______: ______, normally treated as ______, can be ______ in its own right.</i> 注意最后那格必须是“正面价值”，与前文的“代价”形成翻转，否则句子没有落差。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 谜题：又大又慢又艳，却比蛾子更难被抓住</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 研究：Nature 2026-09-30，高速摄影 + 鸟眼模型</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 机制：上升看着像下降——理发店转筒错觉</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 普遍性：397 种 / 757 花纹，最能骗人的也最常见</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#2f5d3a">5 · 行为实验：100 人 / 3,000 次，落点明显靠后</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">6 · 演化证据：五万轮筛选，收敛到真实花纹</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">7 · 改写：醒目不必用毒性偿付，它本身就是防御</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">8 · 边界：只算正面 · 角度有限 · 志愿者是人 · 未推广</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：花纹是关于“看它的那只眼”的一次计算</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：最显眼的翅膀，恰恰是为了让对手看不见准</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">醒目不是代价，而是把“看错”卖给了捕食者</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3—5 段为绿色：一个机制加两路证据，先成立再谈普遍</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 6 段红色为全文最强证据；第 8 段虚线圈出边界，是科普的收尾定式</text>
+        </svg>
+        <figcaption>结构图解：文章走的是“旧解释失灵 → 新机制 → 三类证据 → 边界”的路子。第 1、2 段先造悬念再抛出研究，第 3 段给机制（视错觉），第 4、5 段用“跨物种统计”和“行为实验”两路证据把机制坐实，第 6 段用模拟演化给出最强的一击，第 7 段回头改写教科书里那个别扭的旧事实，第 8 段主动划界，第 9 段落到“适应他者的感知”。注意第 4 与第 5 段的分工：一个问“普不普遍”，一个问“有没有用”。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Jolyon Troscianko, George Hancock 等《Butterfly wing patterns in flight create powerful illusory motion cues》，Nature，2026-09-30 在线发表，DOI 10.1038/s41586-026-11062-w；埃克斯特大学 Penryn 校区生态与保护中心 + 埃塞克斯大学；方法包括每秒 1,000 帧以上高速摄影、397 个欧洲物种 / 757 种翅膀花纹的统计、100 名志愿者 / 3,000 次触摸屏“捕蝶”实验，以及五万个候选翅膀的模拟演化｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

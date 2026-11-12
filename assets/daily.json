@@ -598,6 +598,34 @@
     "注意力",
     "数字化课堂"
    ]
+  },
+  {
+   "date": "2026-11-03",
+   "en": "The butterfly survives not because it is hard to see, but because it is hard to see correctly.",
+   "zh": "蝴蝶活下来，不是因为它难看清楚，而是因为它难以被看准。",
+   "src": "外刊精读 · 蝴蝶的翅膀，是给捕食者的一记假动作（2026-11-03）",
+   "key": "hard to see correctly",
+   "keyZh": "难以被看准（see correctly 是“看得准”，不是“看得见”；correctly 把问题从可见度换成了准确度）",
+   "tip": "这一句的全部机关，是在同一个动词短语后面加了一个副词。前半句 hard to see 说的是“看不清”——那是伪装、保护色在解决的问题；后半句 hard to see correctly 说的是“看不准”——虫就在那儿，你看得见它，却算错了它要去哪儿。一个 correctly，把整篇文章的立论从“藏起来”换成了“骗过去”，也顺手否掉了教科书里那个旧答案。句式上，not because A but because B 是外刊最常用的“排除—确立”框架：先把最容易被想到的解释放到 A 的位置，再在 B 上给出真正的理由。注意两个 because 后面都是形容词短语（hard to see / hard to see correctly），结构完全对称，所以读者一眼就能看出差别只在那个副词上——这种“只改一个词”的对称，比长篇解释有力得多。仿写骨架：X survives not because it is hard to ______, but because it is hard to ______ correctly.",
+   "tags": [
+    "动物行为",
+    "进化生物学",
+    "视觉感知"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "en": "What the study establishes is a change in the kind of problem this is: not a device to be confiscated at the door, but a budget of hours that has to be negotiated across a whole week.",
+   "zh": "这项研究确立的，是这个问题性质上的改变：它不再是一台要在门口没收的设备，而是一笔必须在一整周里协商的小时预算。",
+   "src": "外刊精读 · 手机被锁进柜子之后：禁令改得了四十分钟，改不了一整天（2026-11-02）",
+   "key": "a budget of hours",
+   "keyZh": "一笔“小时预算”（budget 这里不是“预算金额”，而是可支配的总量；hours 才是本文真正的计量单位）",
+   "tip": "这句的力量来自一次“重新分类”。前半句 a change in the kind of problem this is 先把结论说成“问题换了类型”，而不是“结论有了对错”——这是学术写作里很高级的一步：不争论答案，先换问题。冒号后是两个对举的名词短语：not a device to be confiscated at the door 对 a budget of hours that has to be negotiated across a whole week。注意两边的介词短语都在做同一件事——划定战场：at the door 是空间上的一瞬（校门口没收），across a whole week 是时间上的全程（一周里协商）。一个把问题关在校门内，一个把它摊到整周，读者的立场就在这两个介词短语之间被推着走。budget 的引申也值得记：它把“时间”当成一种有额度、要分配、会超支的资源，于是“该不该收手机”就变成了“这些小时怎么花”。仿写骨架：What the study establishes is a change in the kind of problem this is: not a ______ to be ______ at the door, but a ______ that has to be ______ across a whole week.",
+   "tags": [
+    "教育",
+    "校园治理",
+    "青少年健康"
+   ]
   }
  ]
 }

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 手机被锁进柜子之后：禁令改得了四十分钟，改不了一整天</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+
+<article class="wrap">
+  <div class="eyebrow">School &amp; Screen · 人与自我 / 人与社会 / 健康与身心 / 教育 / 青少年</div>
+  <h1>手机被锁进柜子之后：禁令改得了四十分钟，改不了一整天</h1>
+  <div class="deck">England's first national evaluation of school phone policies found no wellbeing advantage in schools that ban phones all day, because a ban changes where the phone is kept, not how many hours it takes</div>
+  <div class="byline"><span><b>来源</b> The Lancet Regional Health – Europe（2025-04; 51:101211）与 Journal of the Association for Consumer Research（2017-06）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-02</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-02.jpg" alt="中学教室门口学生把手机放进收纳袋的实景照片（配图）">
+    <figcaption>配图：教室门口的手机收纳袋与正在存放手机的学生。禁令发生在门口，而使用发生在全天（图片来源：实景照片，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>这篇文章讨论的是一件几乎每个教室都在发生、却很少被认真评估的事：把手机收起来，到底有没有用。过去几年，从英国到法国、意大利、荷兰，十几个国家把"在校禁用手机"写进了法规或校规，理由听上去无可辩驳——注意力是有限的，手机在抢它，所以把手机拿走，注意力就该回到课堂上。2025 年 2 月，《柳叶刀区域健康—欧洲》刊出了英格兰第一项全国性对照评估：伯明翰大学的 Victoria Goodyear 团队调查了 30 所中学、1227 名 12 至 15 岁学生，20 所全天禁止娱乐性使用，10 所在课间和午休允许。结果是：两组的心理健康得分（47 分）几乎没有差别，焦虑、睡眠、运动、英语数学成绩、课堂扰乱行为也全部"平"；禁令真正改变的是校内使用时间——手机少约 40 分钟，社交媒体少约 30 分钟——但走出校门，这个差距就消失了，两组学生的日均屏幕时间仍落在 4 到 6 小时之间。文章随后引入十年前 Ward 等人的"脑力流失"实验补上机制：手机放在另一个房间的人，工作记忆与推理测试成绩更好；放在桌上或口袋里都更差；关机也没用——因为大脑有一部分算力始终在"盯着"它。把机制和评估放在一起，全文要处理的是一个更难的判断：一项政策在它管得到的地方生效，却在决定结果的地方失效。这篇适合练"证据强度"与"因果方向"两件事，也适合学习如何用分号把一句话的两半咬在一起。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-02.mp3" preload="none"></audio>
+        <div class="audio-hint">由英音语音合成（en-GB）朗读全文原文，共 9 段。播放时原文会随进度逐句高亮，建议先盲听抓大意，再对照下方原文跟读，留意重音、连读与停顿。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.313">At the door of an English secondary school, a teacher watches thirty phones slide into a cloth <span class="kw" data-tip="n. 小袋；收纳袋（a cloth pouch 布袋；a pencil pouch 笔袋）。也指袋鼠等动物的育儿袋">pouch</span> that will not open until the last bell.</span> <span class="s" data-t="8.313" data-e="17.908">The rule is visible and simple, and it promises something equally simple: for six hours the most distracting object a teenager owns will be out of reach.</span></span></div>
+      <p class="para-tr">在一所英格兰中学的门口，老师看着三十部手机滑进一只布袋，那只袋子要等到放学铃响才会打开。这条规定看得见、也简单，它许诺的东西同样简单：六个小时里，一个青少年拥有的最让人分心的东西，将被放到够不着的地方。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="17.908" data-e="30.211">More than a dozen countries have written that rule into law, and the reasoning feels almost too obvious to test: attention is <span class="kw" data-tip="adj. 有限的（finite resources 有限的资源；finite verb 限定动词）。反义 infinite；同根 finish、final">finite</span>, phones compete for it, so removing phones should return it to the lesson.</span> <span class="s" data-t="30.211" data-e="34.459">But a phone removed at the door is not a phone removed from the day.</span></span></div>
+      <p class="para-tr">十几个国家已经把这条规定写进法律，而它的推理几乎显得不必检验：注意力是有限的，手机在和课堂争抢它，所以把手机拿走，注意力就该回到课上。可是，在门口被拿走的手机，并不等于从一天里被拿走的手机。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="34.459" data-e="43.342">An answer arrived in February 2025, when the SMART Schools study published the first national comparison of what these policies do.</span> <span class="s" data-t="43.342" data-e="53.592">Victoria Goodyear and her colleagues at Birmingham studied thirty secondary schools, twenty of which banned recreational phone use all day and ten of which allowed it at breaks.</span> <span class="s" data-t="53.592" data-e="65.539">They surveyed 1,227 pupils aged twelve to fifteen, scored their <span class="kw" data-tip="n. 幸福感；身心健康状态（mental wellbeing 心理健康）。well-being 带连字符时更常见；well 好 + being 存在">wellbeing</span> on a standard scale, and added objective sleep and activity data from wrist-worn devices.</span></span></div>
+      <p class="para-tr">答案在 2025 年 2 月到来：SMART Schools 研究发表了第一份全国性比较，看这些政策实际起了什么作用。伯明翰大学的维多利亚·古德伊尔与同事研究了三十所中学，其中二十所全天禁止娱乐性使用手机，十所允许在课间或指定区域使用。他们调查了 1227 名 12 至 15 岁的学生，用标准量表给他们的心理健康打分，还加上了腕带设备记录的客观睡眠与活动数据。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="65.539" data-e="70.289">On the outcome that mattered most, the two groups were <span class="kw" data-tip="adj. 无法区分的（be indistinguishable from 与……难以分辨；distinguish 区分；distinct 明显的）">indistinguishable</span>.</span> <span class="s" data-t="70.289" data-e="80.171">Average wellbeing sat at 47 points, and the adjusted gap between the two kinds of school was under half a point, with <span class="kw" data-tip="n. 置信区间（confidence interval，统计上对真实值可能范围的估计；跨过零、即 straddle zero 时，通常意味着差异不显著）">confidence intervals</span> straddling zero.</span> <span class="s" data-t="80.171" data-e="87.053">Anxiety, sleep, exercise, test scores and classroom <span class="kw" data-tip="n. 扰乱；中断（classroom disruption 课堂扰乱行为；disrupt 打断、扰乱；disruptive 扰乱性的）">disruption</span> came out <span class="kw" data-tip="adj. 平的；此处引申为“毫无起伏、没有差别的”——熟词僻义。常见义：平坦的、一套公寓（a flat）；也指车胎没气">flat</span> as well.</span></span></div>
+      <p class="para-tr">在最要紧的那个结果上，两组人无法区分。心理健康的平均分停在 47 分，两类学校校正后的差距不到半分，置信区间跨过零点。焦虑、睡眠、运动、考试成绩、课堂扰乱行为，也全都是"平的"。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="87.053" data-e="97.564">What the ban did change was the school day itself, and only <span class="kw" data-tip="adv. 有限地；幅度不大地（rose modestly 小幅上升）。形容词 modest 除了“谦虚”，还常指“不大的、适度的”">modestly</span>: pupils in restrictive schools spent forty minutes less on their phones and half an hour less on social media.</span> <span class="s" data-t="97.564" data-e="105.974">Outside those hours the gap closed completely: students in both kinds of school still averaged four to six hours of screen time a day.</span></span></div>
+      <p class="para-tr">禁令确实改变了校园里的那段时间，但幅度有限：严格校的学生每天少花约四十分钟在手机上，社交媒体少半小时。走出这段时间，差距就完全消失了——两类学校的学生，日均屏幕时间仍然在四到六个小时之间。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="105.974" data-e="115.75">That average was not <span class="kw" data-tip="adj. 中性的；不带倾向的（a neutral term 中性的说法；neutral colour 中性色）。此处指“这个数字本身没有立场，但意义并不中立”">neutral</span>: across both groups, more time on phones went with poorer wellbeing, shorter sleep, less exercise and more disruption.</span> <span class="s" data-t="115.75" data-e="123.011">Because the design compares schools rather than following children over time, it cannot say which way the <span class="kw" data-tip="n. 箭头；此处指“因果的方向”——熟词僻义。which way the arrow points 即“箭头指向哪边”，比喻因果谁先谁后">arrow</span> points.</span></span></div>
+      <p class="para-tr">这个平均值并不中立：在两组里，手机用得越多，心理健康越差、睡眠越短、运动越少、课堂扰乱越多。但因为这个设计比较的是学校，而不是长期追踪同一批孩子，它说不出箭头指向哪一边。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="123.011" data-e="131.395">A decade earlier, a laboratory study by Adrian Ward had suggested why the hours matter and why a ban might matter less than it seems.</span> <span class="s" data-t="131.395" data-e="140.63">People who left their phone in another room did better on tests of working memory and reasoning than those who kept it on the desk; switching it off changed nothing.</span> <span class="s" data-t="140.63" data-e="149.763">The mere presence of the device, the authors argued, <span class="kw" data-tip="v. 消耗；占用（consume energy 消耗能量；time-consuming 耗时的）。consumer 消费者，同源">consumes</span> part of the mind's limited capacity, because some of it is always <span class="kw" data-tip="v. 监视；持续留意（monitor progress 跟踪进展）。也作名词“显示器、班长”">monitoring</span> the phone.</span></span></div>
+      <p class="para-tr">十年前，阿德里安·沃德的一项实验室研究已经提示了为什么"小时数"重要，也提示了为什么禁令的作用可能没看上去那么大。把手机留在另一个房间的人，在工作记忆与推理测试上比把手机放在桌上的人表现更好；而把手机关机，什么也没改变。作者的解释是：设备仅仅在场，就占用了心智有限的一部分容量，因为总有一部分注意力在盯着它。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="149.763" data-e="160.882">If that is right, a locker should buy back some attention in lessons, and the study cannot rule out that it does; what it can rule out is that forty minutes a day <span class="kw" data-tip="v. 推动；使发生变化（Nothing moved him. 什么也没能打动他）——熟词僻义。常见义：移动、搬动">moves</span> a score measured across a <span class="kw" data-tip="n. 学期（the autumn term 秋季学期；this term 这学期）——熟词僻义。常见义：术语（a technical term）、条件（terms and conditions）">term</span>.</span> <span class="s" data-t="160.882" data-e="169.303">The lesson is less about phones than about where the hours live: at home, on the bus, in bed, in gaps no school gate can reach.</span></span></div>
+      <p class="para-tr">如果这个解释成立，那么储物柜理应在课上换回一些注意力，而这项研究也无法排除它确实换回了；它能排除的是：每天四十分钟，足以推动一个按学期测量的分数。真正的教训不在于手机，而在于那些小时住在哪里：在家里、在公交上、在床上，在任何校门都够不到的缝隙里。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="169.303" data-e="180.316">What the study establishes is a change in the kind of problem this is: not a device to be <span class="kw" data-tip="v. 没收；收缴（confiscate a phone 没收手机）。法律与校规文本高频词">confiscated</span> at the door, but a <span class="kw" data-tip="n. 预算；此处引申为“一笔可分配的量”（a budget of hours 一笔时间预算）。常见搭配 budget for sth 为……编预算">budget</span> of hours that has to be <span class="kw" data-tip="v. 协商；商定（negotiate a deal 谈成一笔交易；negotiate with sb 与某人协商）">negotiated</span> across a whole week.</span> <span class="s" data-t="180.316" data-e="188.684">Its authors therefore ask schools to design policies with pupils rather than for them, and to teach the skills that a ban can only postpone.</span></span></div>
+      <p class="para-tr">这项研究确立的，是问题性质上的一次改变：这不再是一个要在门口没收的设备，而是一笔必须在一整周里协商分配的时间预算。所以作者请学校和学生一起设计政策，而不是替他们设计；也请学校去教那些禁令只能推迟、无法替代的能力。</p>
+
+      <p class="muted">原文出处：本文据 Victoria A. Goodyear, Amie Randhawa, Peymane Adab 等《School phone policies and their association with mental wellbeing, phone use, and social media use (SMART Schools): a cross-sectional observational study》，The Lancet Regional Health – Europe 2025; 51:101211（2025-02-05 线上；University of Birmingham 运动、锻炼与康复科学学院 / 心理健康研究所；DOI 10.1016/j.lanepe.2025.101211；PMID 40213498；由英国 NIHR 公共卫生研究计划资助）与 Adrian F. Ward, Kristen Duke, Ayelet Gneezy, Maarten W. Bos《Brain Drain: The Mere Presence of One's Own Smartphone Reduces Available Cognitive Capacity》，Journal of the Association for Consumer Research 2017; 2(2):140–154（University of Texas at Austin / UC San Diego / UC Berkeley）改写整理；30 所学校、1227 名学生、47 分、半个百分点以内、四十分钟与半小时、四到六小时等数据，以及"手机在另一个房间"的实验室结果，均引自上述两文，仅供学习使用。</p>
+    </section>
+
+    <aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <ul class="legend">
+          <li><span class="blk b-cet4"></span> CET4 · 绿色</li>
+          <li><span class="blk b-cet6"></span> CET6 · 蓝色</li>
+          <li><span class="blk b-chao"></span> 超纲 · 紫色</li>
+          <li><span class="blk b-shuci"></span> 熟词僻义 · 红色</li>
+        </ul>
+      </div>
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flat</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /flæt/ · 美 /flæt/</div>
+          <div class="wc-pos"><b>adj.</b> 平的；<b>（数据、表现）毫无起伏的、没有差别的</b>（The results came out flat. 结果毫无差别；Sales were flat. 销量持平）<br>常见义：平坦的（a flat road）；<b>n.</b> 一套公寓（英式）；<b>adj.</b> 车胎没气的<br>判断口诀：修饰 sales、growth、results、performance 时几乎都是"持平、没起色"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Anxiety, sleep and test scores came out <b>flat</b> as well.</div>
+          <div class="wc-tr">焦虑、睡眠与考试成绩也同样是"平的"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arrow</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈærəʊ/ · 美 /ˈæroʊ/</div>
+          <div class="wc-pos"><b>n.</b> 箭；<b>（讨论因果时的）方向</b>（which way the arrow points 箭头指向哪边，即因果谁先谁后；reverse the arrow 把箭头反过来）<br>常见义：箭头符号（follow the arrow 跟着箭头走）<br>学术写作里 arrow 常作因果的隐喻：A → B 表示 A 导致 B</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The design cannot say which way the <b>arrow</b> points.</div>
+          <div class="wc-tr">这个设计说不出箭头指向哪一边。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">term</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /tɜːm/ · 美 /tɜːrm/</div>
+          <div class="wc-pos"><b>n.</b> 学期（the autumn term 秋季学期；end-of-term exam 期末考）<br>常见义：术语（a technical term）；条款、条件（terms and conditions）；期限（in the long term 长期来看）<br>判断口诀：与 school、exam、holiday 连用是"学期"；与 contract、condition 连用是"条款"；in the long/short term 是"期限"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Forty minutes a day does not move a score measured across a <b>term</b>.</div>
+          <div class="wc-tr">每天四十分钟，推不动一个按学期测量的分数。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pouch</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /paʊtʃ/ · 美 /paʊtʃ/</div>
+          <div class="wc-pos"><b>n.</b> 小袋；软袋（a cloth pouch 布袋；a pencil pouch 笔袋；a mail pouch 邮袋）<br>也指袋鼠等有袋类动物的育儿袋<br>动词义：把……装进袋里；pouched 袋状的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Thirty phones slide into a cloth <b>pouch</b> that will not open until the last bell.</div>
+          <div class="wc-tr">三十部手机滑进一只布袋，那只袋子要到放学铃响才打开。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">finite</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfaɪnaɪt/ · 美 /ˈfaɪnaɪt/</div>
+          <div class="wc-pos"><b>adj.</b> 有限的；有尽的（finite resources 有限的资源；a finite number 有限的数量）<br>反义词 infinite 无限的；同根 final、finish、define<br>语法术语：finite verb 限定动词（有时态、人称变化的动词）</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Attention is <b>finite</b>, and phones compete for it.</div>
+          <div class="wc-tr">注意力是有限的，而手机在争夺它。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">permissive</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /pəˈmɪsɪv/ · 美 /pərˈmɪsɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 放任的；宽松的（a permissive policy 宽松的政策；permissive parents 放任型父母）<br>动词 permit 允许；名词 permission 许可<br>本文中 restrictive（严格禁止的）与 permissive（宽松允许的）构成一组对照标签</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Ten schools had a <b>permissive</b> policy, allowing phones at breaks.</div>
+          <div class="wc-tr">十所学校实行宽松政策，允许在课间使用手机。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">restrictive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈstrɪktɪv/ · 美 /rɪˈstrɪktɪv/</div>
+          <div class="wc-pos"><b>adj.</b> 限制性的；严格的（restrictive measures 限制性措施；restrictive policy 严控政策）<br>动词 restrict 限制；名词 restriction 限制（lift restrictions 解除限制）<br>注意与 restrictive clause（限制性定语从句）是同一个词</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Pupils in <b>restrictive</b> schools spent forty minutes less on their phones.</div>
+          <div class="wc-tr">严格校的学生每天在手机上少花四十分钟。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">wellbeing</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌwelˈbiːɪŋ/ · 美 /ˌwelˈbiːɪŋ/（亦写作 well-being）</div>
+          <div class="wc-pos"><b>n.</b> 幸福感；身心状态（mental wellbeing 心理健康；a sense of wellbeing 幸福感）<br>构词：well（好）+ being（存在、状态）<br>心理学量表 WEMWBS 即 Warwick–Edinburgh Mental Well-being Scale，本文的 47 分出自该量表</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Average <b>wellbeing</b> sat at 47 points on a standard scale.</div>
+          <div class="wc-tr">心理健康的平均分停在标准量表的 47 分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">indistinguishable</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪndɪˈstɪŋɡwɪʃəbl/ · 美 /ˌɪndɪˈstɪŋɡwɪʃəbl/</div>
+          <div class="wc-pos"><b>adj.</b> 无法区分的；难以分辨的（be indistinguishable from 与……难以区分）<br>动词 distinguish 区分；形容词 distinct 明显不同的；名词 distinction 区别<br>构词：in-（否定）+ distinguish + -able</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>On the outcome that mattered most, the two groups were <b>indistinguishable</b>.</div>
+          <div class="wc-tr">在最要紧的那个结果上，两组人无法区分。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">straddle</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈstrædl/ · 美 /ˈstrædl/</div>
+          <div class="wc-pos"><b>v.</b> 跨坐；横跨（straddle a bike 跨坐在自行车上）；（数字、区间）跨过某个值（The interval straddles zero. 区间跨过零）<br>统计语境里 straddle zero 意味着"真实差异可能是零"，即结果不显著</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The gap was under half a point, with confidence intervals <b>straddling</b> zero.</div>
+          <div class="wc-tr">差距不到半分，置信区间跨过零点。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disruption</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪsˈrʌpʃn/ · 美 /dɪsˈrʌpʃn/</div>
+          <div class="wc-pos"><b>n.</b> 扰乱；中断（classroom disruption 课堂扰乱；travel disruption 交通中断）<br>动词 disrupt 打断、扰乱；形容词 disruptive 扰乱性的（disruptive behaviour 扰乱行为）<br>注意：商业语境里 disruption 常作褒义，指"颠覆式创新"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Classroom <b>disruption</b> came out flat as well.</div>
+          <div class="wc-tr">课堂扰乱行为也同样是"平的"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">modestly</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdɪstli/ · 美 /ˈmɑːdɪstli/</div>
+          <div class="wc-pos"><b>adv.</b> 有限地；幅度不大地（rose modestly 小幅上升；modestly priced 价格不高）<br>形容词 modest 除"谦虚"外，在数据描述里几乎总指"不大的"<br>学术写作常用 modest / marginal / slight 来弱化效应，读到它们就该把预期调低</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What the ban did change was the school day, and only <b>modestly</b>.</div>
+          <div class="wc-tr">禁令确实改变了校园里的那段时间，但幅度有限。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">neutral</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈnjuːtrəl/ · 美 /ˈnuːtrəl/</div>
+          <div class="wc-pos"><b>adj.</b> 中立的；不带倾向的（a neutral observer 中立的观察者；neutral language 中性语言）；中性的（化学、色彩）<br><b>n.</b> 空挡（in neutral 挂空挡）<br>本文 That average was not neutral 意为"这个数字本身不带立场，但它说明的事情并不中性"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That average was not <b>neutral</b>: more time went with poorer wellbeing.</div>
+          <div class="wc-tr">这个平均值并不中立：用得越多，心理健康越差。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consume</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kənˈsjuːm/ · 美 /kənˈsuːm/</div>
+          <div class="wc-pos"><b>v.</b> 消耗；占用（consume energy 消耗能量；consume time 占用时间）<br>也指"吃喝"（consume alcohol 饮酒）、"烧毁"<br>同根 consumer 消费者、consumption 消费、time-consuming 耗时的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The mere presence of the device <b>consumes</b> part of the mind's limited capacity.</div>
+          <div class="wc-tr">设备仅仅在场，就占用了心智有限的一部分容量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">monitor</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈmɒnɪtə/ · 美 /ˈmɑːnɪtər/</div>
+          <div class="wc-pos"><b>v.</b> 监视；持续留意（monitor the situation 关注局势；monitor progress 跟踪进展）<br><b>n.</b> 显示器；监视器；班长（英式）<br>本文中 some of it is always monitoring the phone 指"总有一部分注意力在盯着手机"</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Some of the mind is always <b>monitoring</b> the phone.</div>
+          <div class="wc-tr">心智里总有一部分在盯着那部手机。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">confiscate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɒnfɪskeɪt/ · 美 /ˈkɑːnfɪskeɪt/</div>
+          <div class="wc-pos"><b>v.</b> 没收；收缴（confiscate a phone 没收手机；confiscate goods 查扣货物）<br>名词 confiscation 没收<br>校规、海关、法律文本高频词；语气比 take away 正式得多</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is not a device to be <b>confiscated</b> at the door.</div>
+          <div class="wc-tr">这不是一个要在门口没收的设备。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">negotiate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /nɪˈɡəʊʃieɪt/ · 美 /nɪˈɡoʊʃieɪt/</div>
+          <div class="wc-pos"><b>v.</b> 协商；谈成（negotiate a deal 谈成一笔交易；negotiate with sb 与某人协商）<br>也指"顺利通过"（negotiate a bend 顺利拐过弯）<br>名词 negotiation 谈判（enter into negotiations 开始谈判）；形容词 negotiable 可协商的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A budget of hours has to be <b>negotiated</b> across a whole week.</div>
+          <div class="wc-tr">一笔时间预算必须在一整周里协商分配。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">budget</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈbʌdʒɪt/ · 美 /ˈbʌdʒɪt/</div>
+          <div class="wc-pos"><b>n.</b> 预算（on a tight budget 预算紧张）；<b>一笔可分配的量</b>（a budget of hours 一笔时间预算；a carbon budget 碳预算）<br><b>v.</b> 编预算（budget for sth 为……预留开支）<br>把 budget 用在时间、注意力、碳排上，是近年学术写作的常见引申</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What is at stake is a <b>budget</b> of hours, not a device.</div>
+          <div class="wc-tr">真正的问题是一笔时间预算，而不是一件设备。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">postpone</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /pəˈspəʊn/ · 美 /poʊˈspoʊn/</div>
+          <div class="wc-pos"><b>v.</b> 推迟；延期（postpone the meeting 推迟会议；postpone doing sth 推迟做某事）<br>后接动名词，不接不定式<br>近义 put off、delay；反义 bring forward 提前</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Teach the skills that a ban can only <b>postpone</b>.</div>
+          <div class="wc-tr">去教那些禁令只能推迟、无法替代的能力。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attainment</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈteɪnmənt/ · 美 /əˈteɪnmənt/</div>
+          <div class="wc-pos"><b>n.</b> 学业成绩；达到（educational attainment 受教育程度；academic attainment 学业成就）<br>动词 attain 达到、获得（attain a goal 达成目标）<br>英国教育文本里 attainment 几乎专指"成绩水平"，本文的英语数学成绩即指此</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Attainment in English and mathematics showed no difference.</div>
+          <div class="wc-tr">英语与数学成绩没有差别。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">association</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˌsəʊsiˈeɪʃn/ · 美 /əˌsoʊsiˈeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> 关联；相关性（an association between A and B 两者之间的关联）；协会；联想<br>动词 associate 联系、交往；形容词 associated 相关的<br>学术写作中 association 只表示"同时出现"，不等于 cause，这是本文最关键的一个词</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The title says <b>association</b>, not cause.</div>
+          <div class="wc-tr">标题说的是"关联"，不是"因果"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">capacity</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kəˈpæsəti/ · 美 /kəˈpæsəti/</div>
+          <div class="wc-pos"><b>n.</b> 容量；能力（the capacity to do sth 做某事的能力；limited capacity 有限的容量）<br>也指"身份"（in my capacity as chairman 以主席身份）<br>同根 capable 有能力的、capacious 容量大的</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Some of the mind's limited <b>capacity</b> is spent watching the phone.</div>
+          <div class="wc-tr">心智有限的容量里，有一部分被用来盯着手机。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>短语积累</h3>
+        <ul class="phrases">
+          <li><span class="en">at the door</span><span class="zh">在门口</span></li>
+          <li><span class="en">out of reach</span><span class="zh">够不着；无法触及</span></li>
+          <li><span class="en">write sth into law</span><span class="zh">把……写进法律</span></li>
+          <li><span class="en">compete for sth</span><span class="zh">争夺某物</span></li>
+          <li><span class="en">return sth to</span><span class="zh">把……还给</span></li>
+          <li><span class="en">aged twelve to fifteen</span><span class="zh">年龄在 12 至 15 岁之间</span></li>
+          <li><span class="en">on a standard scale</span><span class="zh">用标准量表</span></li>
+          <li><span class="en">come out flat</span><span class="zh">结果持平；毫无起伏</span></li>
+          <li><span class="en">be indistinguishable from</span><span class="zh">与……难以区分</span></li>
+          <li><span class="en">under half a point</span><span class="zh">不到半分</span></li>
+          <li><span class="en">straddle zero</span><span class="zh">（置信区间）跨过零点</span></li>
+          <li><span class="en">average four to six hours a day</span><span class="zh">日均四到六小时</span></li>
+          <li><span class="en">go with sth</span><span class="zh">与……相伴出现</span></li>
+          <li><span class="en">follow sb over time</span><span class="zh">长期追踪某人</span></li>
+          <li><span class="en">which way the arrow points</span><span class="zh">箭头指向哪边（因果方向）</span></li>
+          <li><span class="en">leave sth in another room</span><span class="zh">把……留在另一个房间</span></li>
+          <li><span class="en">working memory</span><span class="zh">工作记忆</span></li>
+          <li><span class="en">make no difference</span><span class="zh">不起作用；没有差别</span></li>
+          <li><span class="en">buy back</span><span class="zh">换回；赎回</span></li>
+          <li><span class="en">rule out</span><span class="zh">排除（可能性）</span></li>
+          <li><span class="en">across a whole term</span><span class="zh">贯穿一整个学期</span></li>
+          <li><span class="en">with pupils rather than for them</span><span class="zh">与学生一起而非替他们</span></li>
+          <li><span class="en">the mere presence of sth</span><span class="zh">某物仅仅在场</span></li>
+          <li><span class="en">a change in the kind of problem</span><span class="zh">问题性质上的改变</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>段落主旨</h3>
+        <ol class="gist">
+          <li>门口：手机进袋、放学才开，禁令看得见、许诺也简单。</li>
+          <li>推理：注意力有限、手机争夺，所以拿走手机就应归还注意力——但门口拿走的手机不等于从一天里拿走。</li>
+          <li>研究：SMART Schools，30 所英格兰中学（20 严／10 宽）、1227 名 12–15 岁学生，量表＋腕带客观数据。</li>
+          <li>发现：心理健康均值 47 分，校正差距不到半分、区间跨零；焦虑、睡眠、运动、成绩、扰乱全部"平"。</li>
+          <li>唯一的改变：校内手机少 40 分钟、社交媒体少 30 分钟；校外差距归零，日均仍 4–6 小时。</li>
+          <li>关联：用得越多，结果越差；但横断面比较学校，说不出因果方向。</li>
+          <li>机制：Ward 实验室研究——手机在另一个房间者工作记忆与推理更好，关机无效，因为"在场"本身占算力。</li>
+          <li>解读：储物柜或能换回课上注意力，但每天 40 分钟推不动按学期计的分数；小时数住在校门之外。</li>
+          <li>判断：问题不是"门口没收的设备"，而是"一整周协商的小时预算"；政策要与学生共设计，并教禁令延不了的能力。</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="main-bottom">
+      <h2>三、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">More than a dozen countries have written that rule into law, and the reasoning feels almost too obvious to test: attention is finite, phones compete for it, so removing phones should return it to the lesson.</div>
+        <div class="row"><b>主干：</b>More than a dozen countries have written that rule into law（主谓宾＋into 短语作宾语补足；现在完成时强调"已写成法律"这一既成状态）</div>
+        <div class="row"><b>并列分句：</b>and the reasoning feels almost too obvious to test（主语 the reasoning，系动词 feel，表语 obvious；too ... to ... 表示"太……以至于不必/不能……"）</div>
+        <div class="row"><b>冒号后的因果链：</b>attention is finite, phones compete for it, so removing phones should return it to the lesson（三个小句用逗号和 so 串成"前提—前提—结论"；removing 是动名词作主语）</div>
+        <div class="row"><b>代词回指：</b>第一个 it 指 attention，第二个 it 仍指 attention，return it to the lesson 即"把注意力还给课堂"，不要误读成"把手机还给课堂"</div>
+        <div class="row"><b>考点：</b>too ... to ... 结构；动名词作主语；so 引导的结果；代词回指；冒号引出解释</div>
+        <div class="row tr"><b>译文：</b>十几个国家已经把这条规定写进法律，而它的推理几乎显得不必检验：注意力是有限的，手机在争夺它，所以把手机拿走，注意力就该回到课上。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Average wellbeing sat at 47 points, and the adjusted gap between the two kinds of school was under half a point, with confidence intervals straddling zero.</div>
+        <div class="row"><b>主干：</b>Average wellbeing sat at 47 points（主谓＋介词短语；sit at 用于数字时意为"停留在、处于某一水平"，比 is 更强调"读数"）</div>
+        <div class="row"><b>并列分句：</b>and the adjusted gap ... was under half a point（adjusted 意为"校正后的"，指扣除了年龄、性别、地区等混杂因素；under 表"不到"，弱于 half a point 本身）</div>
+        <div class="row"><b>with 复合结构：</b>with confidence intervals straddling zero（with + 名词 + 现在分词，作伴随状语；straddle 意为"跨过"，区间跨零即"真实差异可能是零"）</div>
+        <div class="row"><b>读法：</b>这句话的三段信息构成一条递减的判断链——均值几乎相同（47 分）、差距不到半分、区间还跨过零，三层都在说"没有差别"</div>
+        <div class="row"><b>考点：</b>sit at 表数值；adjusted 的统计含义；with 复合结构；under 的程度弱化；straddle 的引申义</div>
+        <div class="row tr"><b>译文：</b>心理健康的平均分停在 47 分，两类学校校正后的差距不到半分，置信区间还跨过零点。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">People who left their phone in another room did better on tests of working memory and reasoning than those who kept it on the desk; switching it off changed nothing.</div>
+        <div class="row"><b>主干：</b>People ... did better on tests than those ...（比较结构：did better than those who ...；on tests of ... 说明"在哪方面更好"）</div>
+        <div class="row"><b>两个定语从句：</b>who left their phone in another room 修饰 People；who kept it on the desk 修饰 those（those 是 that 的复数，指代"那些人"，避免重复 people）</div>
+        <div class="row"><b>分号后的转折：</b>switching it off changed nothing（分号把“距离有效”与“关机无效”对举；switching 是动名词短语作主语；it 指 phone；changed nothing 是全句的重心，说明“关机”这个直觉做法无效）</div>
+        <div class="row"><b>逻辑张力：</b>前半句说"距离越远越好"，后半句说"关不关机无所谓"，两句合起来推出"起作用的是物理在场，不是响铃"</div>
+        <div class="row"><b>考点：</b>比较结构中的 those who；两个限制性定语从句；动名词作主语；nothing 的否定含义</div>
+        <div class="row tr"><b>译文：</b>把手机留在另一个房间的人，在工作记忆与推理测试上比把手机放在桌上的人表现更好；而把手机关机，什么也没改变。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">If that is right, a locker should buy back some attention in lessons, and the study cannot rule out that it does; what it can rule out is that forty minutes a day moves a score measured across a term.</div>
+        <div class="row"><b>条件状语从句：</b>If that is right（that 指上一段 Ward 的机制解释；用条件句而非因果句，是学术写作里保留余地的手法）</div>
+        <div class="row"><b>两个并列分句用分号隔开：</b>a locker should buy back some attention ..., and the study cannot rule out that it does ／ what it can rule out is that ...（分号在此的功能是把"能给什么"与"不能给什么"对举，比句号更紧、比逗号更清）</div>
+        <div class="row"><b>主语从句：</b>what it can rule out is that forty minutes a day moves a score（what 引导主语从句，is 后接 that 引导的表语从句；rule out 意为"排除"，cannot rule out 即"无法排除"）</div>
+        <div class="row"><b>moves 的用法：</b>此处不是"移动"，而是"推动、使发生变化"，与 score 搭配表示"让分数发生可测量的变化"</div>
+        <div class="row"><b>考点：</b>条件句的保留语气；分号连接并列分句；what 主语从句＋that 表语从句；rule out 的搭配；熟词僻义 move</div>
+        <div class="row tr"><b>译文：</b>如果这个解释成立，那么储物柜理应在课上换回一些注意力，而这项研究也无法排除它确实换回了；它能排除的是：每天四十分钟，足以推动一个按学期测量的分数。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What the study establishes is a change in the kind of problem this is: not a device to be confiscated at the door, but a budget of hours that has to be negotiated across a whole week.</div>
+        <div class="row"><b>主干：</b>What the study establishes is a change（what 引导主语从句作主语，is 为系动词，a change 作表语；本站结论段常用的判断句骨架）</div>
+        <div class="row"><b>层层限定：</b>a change in the kind of problem this is（in 短语修饰 change；the kind of problem 后接省略关系词的定语从句 this is，意为"这属于哪一类问题"）</div>
+        <div class="row"><b>冒号后的对照：</b>not a device to be confiscated at the door, but a budget of hours（not A but B 结构；不定式被动式 to be confiscated 作后置定语，含"待处理、被处置"的意味）</div>
+        <div class="row"><b>定语从句：</b>that has to be negotiated across a whole week（that 指 a budget of hours；has to be done 表示"必须被……"，把责任从个人转到制度层面）</div>
+        <div class="row"><b>考点：</b>what 主语从句；省略关系词的定语从句；not ... but ... 对照；不定式被动式作定语；抽象名词的具体化（device / budget）</div>
+        <div class="row tr"><b>译文：</b>这项研究确立的，是问题性质上的一次改变：这不再是一个要在门口没收的设备，而是一笔必须在一整周里协商分配的时间预算。</div>
+      </div>
+
+      <h2>四、全文大意</h2>
+      <p class="zh-sum">这篇文章的切口极小：一所英格兰中学的教室门口，老师看着三十部手机滑进一只布袋。但它要处理的，是一个涉及十几个国家、上千万学生的政策判断——把手机收起来，到底有没有用。作者没有从"手机有害"讲起，而是从"这条规定的推理"讲起：注意力是有限的，手机在争夺它，所以把手机拿走，注意力就该回到课上。这个推理太顺了，顺到几乎没人去检验它。全文的张力就建在这里：一个听上去无可辩驳的直觉，被一项全国性的对照评估轻轻推翻了一半。</p>
+      <p class="zh-sum">第二段是全文最短、也最关键的一次转向：在门口被拿走的手机，并不等于从一天里被拿走的手机。这句话提前为后文的全部数据划好了读法——你要看的不是"校内发生了什么"，而是"一整天里总量有没有变"。很多政策评估的失误，都发生在把"政策管得到的时段"当成"问题发生的时段"。</p>
+      <p class="zh-sum">第三、四、五段是证据主体，也是本文最值得当作"研究设计"范本的部分。2025 年 2 月，《柳叶刀区域健康—欧洲》刊出伯明翰大学 Victoria Goodyear 团队的 SMART Schools 研究：30 所英格兰中学，20 所全天禁止娱乐性使用手机，10 所允许在课间、午休或指定区域使用；1227 名 12 至 15 岁的学生；心理健康用标准量表打分，睡眠与运动用腕带设备客观记录，再加上英语、数学成绩与课堂扰乱行为。结果非常干净——干净到近乎乏味：心理健康均值 47 分，校正后的组间差距不到半分，置信区间从负到正跨过零；焦虑、睡眠、运动、成绩、扰乱行为，全部"平"。这里有一个必须学会的读法：当一项研究的结果是"没有差别"时，它不是"什么都没发现"，而是"发现了一个足够大的样本里确实没有可测的差别"。作者随后给出唯一的正向结果：严格校的学生在校内每天少用约 40 分钟手机、少 30 分钟社交媒体；但走出校门，这个差距完全消失，两组的日均屏幕时间仍然落在 4 到 6 小时。40 分钟是真的，可它只占一天的四十分之一不到。</p>
+      <p class="zh-sum">第六段处理一个容易被误用的发现。研究者确实看到"用得越多、结果越差"的关联：屏幕时间长的学生心理健康更差、睡得更短、运动更少、课堂扰乱更多。但作者立刻补上一句限定：这个设计比较的是学校，而不是长期追踪同一批孩子，所以它说不出箭头指向哪一边——是手机让人睡不好，还是睡不好的人更依赖手机？这一句限定，是整篇文章诚实的证据。</p>
+      <p class="zh-sum">第七段转入机制，篇幅不长但很关键。十年前，Adrian Ward 等人在实验室里做过一个后来被反复引用的实验：把手机放在另一个房间的人，在工作记忆与推理测试上优于把手机放在桌上或口袋里的人；而把手机关机，结果没有任何变化。他们的解释是：设备仅仅在场，就占用了心智有限的一部分容量，因为总有一部分注意力在持续"盯着"它。这一段的作用不是给禁令辩护，而是把"小时数"和"在场"两个变量分开——如果起作用的是在场，那么储物柜应该有效；如果起作用的是总量，那么储物柜几乎无效。而研究结果恰好落在后者。</p>
+      <p class="zh-sum">第八段是全文的解读枢纽，也是最难写的一段。作者用分号把一句话劈成两半：储物柜理应在课上换回一些注意力，研究也无法排除它确实换回了；它能排除的是——每天 40 分钟推不动一个按学期测量的分数。前半句承认政策的局部有效，后半句指出它在整体上无效，两者不是矛盾，而是尺度不同。紧接着那句"教训不在于手机，而在于那些小时住在哪里"，把读者的视线从校门推到家里、公交上、床上——这些地方没有任何一道校门够得到。</p>
+      <p class="zh-sum">结尾把问题重新定性：这不再是一个要在门口没收的设备，而是一笔必须在一整周里协商分配的时间预算。设备可以被没收，预算只能被协商；前者是一次动作，后者是一套制度。所以作者请学校和学生一起设计政策，而不是替他们设计——这不是姿态，而是执行力的现实：自上而下的禁令，学生不认同，就守不住；也请学校去教那些禁令只能推迟、无法替代的能力，比如自我管理、数字素养、以及"什么时候该把手机放下"的判断力。</p>
+      <p class="zh-sum">从写作技术看，这篇示范了一种很实用的论证动作：先复述一个"太顺的推理"，再拿一份数据把它拆成两半——一半被证实（校内时间确实减少），一半被推翻（总体时间与心理健康没有变化），最后用一个更精确的提问收尾（不是"该不该禁"，而是"这些小时归谁分配"）。它没有停在"禁令没用"这种廉价结论上，也没有滑到"所以别禁"的行动号召上，而是把读者带到两者之间那个更难的层面：政策的作用半径、证据的因果强度、以及成本与收益分别落在谁的一天里。这种"既给结论又给尺子"的写法，正是高考阅读 D 篇与学术类外刊最常见的推进方式。</p>
+
+      <h2>五、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>
+        A. Banning phones in schools is harmful because students simply use them more at home.<br>
+        B. A national English study found that all-day school phone bans cut in-school use by about forty minutes but changed neither total daily screen time nor adolescent wellbeing.<br>
+        C. School phone bans should be abolished, since they place an unfair burden on teachers.<br>
+        D. Adolescents' mental health is determined mainly by how much sleep and exercise they get.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>全文由"政策推理"（第 1–2 段）、"评估结果"（第 3–6 段）、"机制与解读"（第 7–8 段）、"重新定性"（第 9 段）四段构成，第 5 段那句"校内少四十分钟、校外差距归零"与第 4 段的"全部平"合起来正是 B。A 错在因果与方向：文章说两组日均用量相当，并未说禁令让学生在家用更多；且研究未发现"更有害"。C 属过度推论：作者主张改进政策形式（与学生共设计），而非取消。D 把第 6 段的"关联"升级为"决定"，且睡眠与运动只是被测量的结果之一，不是全文论点。</div>
+      <div class="q"><b>2. What can be inferred from the sentence "the study cannot rule out that it does" (paragraph 8)?</b><br>
+        A. The researchers failed to measure attention during lessons at all.<br>
+        B. A locker may well help pupils concentrate in class, but the study's outcome measures were too broad and too slow to detect such a gain.<br>
+        C. The study proved that lockers improve working memory in the long run.<br>
+        D. The authors doubt whether attention has anything to do with phones.
+        <br><br><b>答案：B</b><br>
+        <b>解析：</b>cannot rule out 意为"无法排除"，即"有可能"，这是作者留给政策的一线余地；紧接着 what it can rule out is that forty minutes a day moves a score measured across a term 说明被排除的是"四十分钟能推动学期分数"，问题出在测量尺度（量表、学期）与效应尺度（一节课的注意力）不匹配，故 B。A 与第 3 段的测量设计矛盾：研究确实用了量表与客观设备，只是没测"某一节课的即时注意力"。C 把"无法排除"读成"已证明"，与 rule out 的语义相反。D 与第 7 段相反，作者恰恰认为手机与注意力关系紧密，只是作用路径不同。</div>
+
+      <h2>六、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>文章第 6 段说，因为研究比较的是学校而不是长期追踪同一批孩子，所以"说不出箭头指向哪一边"。请回答三个问题：（1）如果要判断因果方向，你会怎样设计一项后续研究？请写出至少两个关键要素（例如：同一批学生禁手机前后的纵向追踪、随机分配学校政策、把"入睡时间"作为中介变量同时测量）。（2）文章第 8 段承认储物柜"可能"有效，却又说"四十分钟推不动学期分数"。这两句话是否矛盾？请用"测量尺度"这个词说明你的判断。（3）结合你自己或同学的体验：如果学校把手机收走，你一天里真正减少的使用时间是多少？减少的那部分，是被别的事情替代了，还是被挪到了晚上？</div>
+      <div class="q"><b>仿写题：</b>仿照第 9 段 <span style="font-family:Georgia,serif;font-style:italic">"What the study establishes is a change in the kind of problem this is: not a device to be confiscated at the door, but a budget of hours that has to be negotiated across a whole week."</span>（先用 What ... is a change in the kind of problem this is 定性，再用 not A but B 把两类问题对照，B 处用一个更抽象、更需要制度配合的概念），就"熬夜刷手机"这个话题写一句你自己的判断句，要求 A 是一个可以在某一天强行戒掉的动作，B 是一种必须长期分配、且需要他人配合的资源。</div>
+
+      <h2>七、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <defs>
+            <marker id="larr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9c2f16"/></marker>
+          </defs>
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 门口：手机入袋、放学才开，禁令看得见、许诺也简单</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 推理：注意力有限→手机争夺→拿走手机；但门口的≠一天的</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">3 · 研究：30 所学校（20 严／10 宽）、1227 人、量表＋腕带数据</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 发现：47 分、差距不到半分、区间跨零；各项结果全“平”</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 唯一改变：校内 −40 分钟／−30 分钟；校外归零，日均 4–6 小时</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#f3e4dc" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">6 · 关联：用得越多结果越差；但横断面设计，说不出箭头方向</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">7 · 机制：Ward 实验——手机在别屋者更好，关机无效；“在场”占算力</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">8 · 解读：柜子或换来课上注意力，但 40 分钟推不动学期分数</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#fbeae4" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">9 · 判断：不是门口没收的设备，而是一整周协商的小时预算</text>
+
+          <line x1="360" y1="82" x2="360" y2="92" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="134" x2="360" y2="144" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="186" x2="360" y2="196" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="238" x2="360" y2="248" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="290" x2="360" y2="300" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="342" x2="360" y2="352" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="394" x2="360" y2="404" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+          <line x1="360" y1="446" x2="360" y2="456" stroke="#9c2f16" stroke-width="2" marker-end="url(#larr)"/>
+
+          <text x="360" y="524" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#6d685e">红＝问题与核心判断　绿＝结论与机制　蓝＝背景与研究设计</text>
+        </svg>
+        <figcaption>全文共 9 段，按「门口 → 推理 → 研究 → 发现 → 唯一改变 → 关联 → 机制 → 解读 → 判断」推进。第 5 段是全文的证据支点——40 分钟与 4–6 小时这个对照，直接决定了后面所有解读的方向；第 6 段那句"说不出箭头指向哪边"是全文最诚实的一句限定；第 8 段用分号把"局部有效"与"整体无效"并列，是本站精读文章最值得模仿的句式之一。最后一句把问题从"该不该禁"移到"这些小时归谁分配"，仍是那句话：不给口号，给判断工具。</figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+
+  <footer>
+    素材来源：Victoria A. Goodyear, Amie Randhawa, Peymane Adab 等《School phone policies and their association with mental wellbeing, phone use, and social media use (SMART Schools): a cross-sectional observational study》，The Lancet Regional Health – Europe 2025; 51:101211（University of Birmingham；DOI 10.1016/j.lanepe.2025.101211）｜与 Adrian F. Ward 等《Brain Drain: The Mere Presence of One's Own Smartphone Reduces Available Cognitive Capacity》，Journal of the Association for Consumer Research 2017; 2(2):140–154 ｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
