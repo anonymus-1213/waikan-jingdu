@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 课前收走手机，涨分最多的是垫底那批人</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Attention &amp; Class · 人与自我 / 人与社会 / 教育 / 学习科学 / 数字化课堂</div>
+  <h1>课前收走手机，涨分最多的是垫底那批人</h1>
+  <div class="deck">A randomised trial across 16,683 students in Odisha finds that collecting phones at the start of every class lifts marks by 0.073 standard deviations — far more than that for the weakest, who then become the rule's firmest supporters.</div>
+  <div class="byline"><span><b>来源</b> Science, 394(6820):178–181（2026-10-08）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-12</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-12.jpg" alt="大学阶梯教室里，前排桌上摆着一个多格的手机收纳盒，学生们低头翻着讲义（配图）">
+    <figcaption>配图：阶梯教室最前一排的那张桌子——一个多格收纳盒，每格一部手机，屏幕朝下；后排的学生低头翻讲义。研究想量出的是，这些机器离开桌面之后，那间屋子里究竟变了什么（图片来源：教学素材图库，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>几乎每个国家的教育系统都在决定“课堂上要不要收手机”，可<b>收走之后会怎样</b>，一直几乎没有实验证据。今年 10 月《科学》补上了这一块：印度奥里萨邦 <b>10 所高校、2,305 门课、16,683 名学生</b>，按课程随机分成两组，一学期，每节课前把手机放进讲台前的盒子里。</p>
+    <p>结果克制得有点扫兴：成绩平均高 <b>0.073 个标准差</b>（控制过往成绩后 0.086），大致相当于从班级中游挪到第 <b>53 百分位</b>。真正好看的不是这个平均数，而是它的<b>分布</b>——原本成绩最靠后的学生提升约为平均水平的两倍，优等生几乎没动，班里的差距因此缩小。</p>
+    <p>更反常的是态度。亲历一学期“交手机”的学生，反而<b>更支持</b>这条规矩，“课堂完全不该限制手机”的支持率明显下降——包括那些分数几乎没涨的优等生。错失恐惧略升，心理健康、学习动机、课外设备使用与网络骚扰都没有显著变化。</p>
+    <p>于是真正的问题换了：不是“手机是否有害”，而是<b>“在什么时候、对谁、值不值得”</b>。这篇值得学的也正是这一点——怎么把一个 0.073 这样“小到可以忽略”的数字，一步步说成一件值得做的事。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-12.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.287">Almost every education system on earth is arguing about whether phones should be taken away during lessons, and almost none can say what happens when they are.</span> <span class="s" data-t="9.287" data-e="26.261">A randomised trial published in <i>Science</i> this month finally offers an answer, from 16,683 students in 2,305 courses at ten institutions in Odisha, an eastern Indian state where smartphone ownership among the young passed seventy per cent.</span></span></div>
+      <p class="para-tr">几乎每个教育系统如今都在争论：上课时该不该把手机收走；可几乎没有谁能说出收走之后到底发生了什么。本月《科学》刊出的一项随机对照实验终于给了一个答案——来自印度东部奥里萨邦 10 所院校的 2,305 门课程、16,683 名学生；在那里，年轻人中拥有智能手机的比例已经超过七成。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="26.261" data-e="37.026">The design was deliberately <b class="kw" data-tip="adj. 直截了当的、不加修饰的（a blunt instrument 一把钝器；blunt talk 直话）；常见义“钝的”">blunt</b>: half of the courses were chosen by lot to begin every session with students dropping their phones into a box, while the other half carried on as before.</span> <span class="s" data-t="37.026" data-e="47.539">The experiment ran for a full semester in the spring of 2024, and the outcome came from official examination records, not from what students said about themselves.</span></span></div>
+      <p class="para-tr">设计刻意做得笨拙而直接：一半课程被抽中，每次上课前学生要把手机放进教室前面的盒子里；另一半照旧。实验持续了 2024 年春季整个学期，结果不是问学生“你觉得有用吗”，而是直接读学校的正式考试成绩。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="47.539" data-e="60.959">Marks in the phone-free courses came out 0.073 <b class="kw" data-tip="n. 标准差（standard deviation，衡量一群数据分散程度的单位）；缩写 SD">standard deviations</b> higher, or 0.086 with earlier achievement controlled — roughly the distance from the middle of a class to the fifty-third <b class="kw" data-tip="n. 百分位（the 53rd percentile 排在 53% 的位置）">percentile</b>.</span> <span class="s" data-t="60.959" data-e="67.789">That is a <b class="kw" data-tip="adj. （数量、程度）不大的、有限的（a modest gain 有限的提升）；常见义“谦虚的、朴素的”">modest</b> number, of the size cheap interventions usually produce, and the authors say so first.</span></span></div>
+      <p class="para-tr">无手机课程的成绩高出 0.073 个标准差；控制此前的学业表现后为 0.086——大致相当于从班级中游挪到第 53 百分位。这个数字不大，正落在低成本干预通常能做出的区间里；这一点作者自己抢先说了，没等别人来指出。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="67.789" data-e="79.092">What makes the average worth arguing about is how unevenly it is <b class="kw" data-tip="v. 分布、铺开（be spread unevenly 分布不均）；常见义“传播、涂抹”">spread</b>: students who arrived with the weakest records gained about twice as much as the average, while those near the top barely moved.</span> <span class="s" data-t="79.092" data-e="86.395">First-year students and those in non-science courses gained more, so the rule did not <b class="kw" data-tip="v. 提高、抬高（lift marks 提分）；常见义“举起、抬起”">lift</b> everybody but closed a gap.</span></span></div>
+      <p class="para-tr">让这个平均数值得一争的，是它分布得极不均匀：入学时成绩最靠后的学生，提升约为平均水平的两倍；而本来就靠前的那些人几乎没动。大一学生和非理工科课程的提升高于其余，所以这条规矩并不是把所有人一起抬起来，而是把一道缝给合上了。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="86.395" data-e="94.842">Attendance did not change, which rules out the simplest explanation, that phones keep people away; the gain came from inside it.</span> <span class="s" data-t="94.842" data-e="106.053">Observers at the back recorded fewer <b class="kw" data-tip="n. 干扰、扰乱课堂秩序的行为（classroom disruption 课堂违纪）">disruptions</b> and less <b class="kw" data-tip="n. 闲聊、絮语（chatter 常指不间断的碎话）">chatter</b> unrelated to the lesson and, less obviously, teachers who used their own phones less and taught with more visible <b class="kw" data-tip="n. 投入、参与（student engagement 学生投入度）；常见义“订婚”">engagement</b>.</span></span></div>
+      <p class="para-tr">出勤率没有变化，这就排除了最简单的解释——手机让人不愿来上课；提升发生在教室里。坐在后排的观察员记录到：干扰更少，与课程无关的闲聊更少；还有一个不那么显眼的变化——老师自己也更少看手机，讲课时的投入看得见。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="106.053" data-e="112.434">The second finding is the one nobody expected, because it concerns attitude rather than marks.</span> <span class="s" data-t="112.434" data-e="125.487">After a semester of handing phones in, students in the phone-free courses held more <b class="kw" data-tip="adj. 赞成的、看好的（hold a favourable view of 对……持正面看法）；英式拼写，美式 favorable">favourable</b> views of the rule, saw more benefit in it, and were <b class="kw" data-tip="adv. 显著地、明显地（marked 作形容词是“明显的”）">markedly</b> less likely to say that classrooms should be left entirely <b class="kw" data-tip="adj. 不受限制的（leave sth unrestricted 不加限制）">unrestricted</b>.</span> <span class="s" data-t="125.487" data-e="135.579">That shift included the high performers who had gained nothing in marks, and it survived a small rise in the fear of missing out, while self-reported well-being did not move.</span></span></div>
+      <p class="para-tr">第二个发现是没人预料到的，因为它说的不是分数，而是态度。交了一学期手机之后，无手机课程的学生对这条规矩的看法更为正面，从中看到的益处更多，说“课堂就该完全不加限制”的可能性明显下降。这个转变也发生在分数几乎没涨的优等生身上；它还经受住了“错失恐惧”的小幅上升——与此同时，自评心理健康没有变化。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="135.579" data-e="144.855">A fair <b class="kw" data-tip="n. 反对意见、异议（raise an objection 提出异议）；常见义“反对、反对的理由”">objection</b> is that teachers who knew about the experiment might simply have marked more generously; the authors answer with the state's examination rules.</span> <span class="s" data-t="144.855" data-e="157.393">Between sixty and eighty per cent of a course grade comes from a final paper set by outside examiners and <b class="kw" data-tip="adj. 盲评的（不知作者身份地评卷）；常见义“瞎的、看不见的”">marked</b> <b class="kw" data-tip="adj. 盲的、匿名的（marked blind 不署名评卷）；常见义“瞎的”">blind</b>, and in the non-science courses, where the effect was largest, that share reaches eighty per cent.</span></span></div>
+      <p class="para-tr">一个公道的反驳是：知道有实验的老师，可能只是打分宽松了些。作者用该邦的考试规定来回应：那里一门课的成绩有六成到八成来自校外命题、不署名盲评的期末考；而在效果最大的非理工科课程里，这个比例达到八成。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="157.393" data-e="167.803">Whether the result <b class="kw" data-tip="v. 依然成立、照样有效（the finding holds 结论站得住）；常见义“握住、举行”">holds</b> in a school of thirty children, or under a rule that bans phones all day rather than an hour, is a different question, and the paper does not pretend otherwise.</span> <span class="s" data-t="167.803" data-e="175.774">Spot checks also found phone-free students looking more distracted, which the authors read as <b class="kw" data-tip="n. 戒断（withdrawal symptoms 戒断症状）；常见义“撤回、取款”">withdrawal</b> rather than as attention.</span></span></div>
+      <p class="para-tr">这个结果在一所只有三十个孩子的学校里是否成立，或者在一条“全天禁”而非“一小时禁”的规矩下是否成立，是另一个问题；论文没有假装它是同一个问题。随堂抽查还发现，无手机班的学生看上去反而更走神——作者把这读成戒断反应，而不是“注意力回来了”。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="175.774" data-e="186.566">The conclusion is narrower than either camp would like: the argument is no longer whether phones cost attention, but when, for whom, and at what price removing them is worth the <b class="kw" data-tip="n. 取舍、权衡（the trade-off 权衡利弊）；常见义“贸易、交易”">trade</b>.</span> <span class="s" data-t="186.566" data-e="194.368">For students at the bottom of a class the price appears low, and they are the ones who, having tried it, ask for the rule to stay.</span></span></div>
+      <p class="para-tr">有用的结论比两边阵营都希望的更窄：争论已经不是“手机是否消耗注意力”，而是“在什么时机、对谁、以什么代价撤走它才值得”。对班里成绩靠后的学生来说，这个代价看起来很低——而他们，恰恰是试过之后要求把规矩留下来的人。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mark</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /mɑːk/ · 美 /mɑːrk/</div>
+          <div class="wc-pos"><b>v.</b> <b>给……评分、批改</b>，指教师给作业或试卷判分。<br>常见义：<b>n.</b> 记号、痕迹（a mark on the wall）；<b>n.</b> 分数（full marks 满分）。<br>搭配：mark papers（批卷）／mark an exam（评阅试卷）／marking scheme（评分标准）。注意英式英语里 <i>marks</i> 就是“分数”，等于美式的 <i>grades</i>——本文的 marks 一律译“成绩”，不是“记号”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a final paper set by outside examiners and <b>marked</b> blind…</div>
+          <div class="wc-tr">……由校外命题人出卷、并以盲评方式批阅的期末考卷……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">blind</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /blaɪnd/ · 美 /blaɪnd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>盲评的、匿名的</b>，指评卷者看不到答卷人的身份。<br>常见义：<b>adj.</b> 瞎的（a blind man）；<b>adj.</b> 未加思考的（blind faith）。<br>搭配：marked blind（不署名评卷）／a blind test（盲测）／double-blind（双盲）。学术写作里 blind 几乎都指“信息被刻意遮住”，而不是生理意义上的失明——这条规矩在实验设计里，正是让结论站得住的那块砖。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a final paper … <b>marked blind</b>, and in the non-science courses, where the effect was largest, that share reaches eighty per cent.</div>
+          <div class="wc-tr">……以盲评方式批阅的期末考卷；而在效果最大的非理工科课程里，这一比例达到八成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> <b>（结论、规律）依然成立、照样有效</b>，是不及物用法。<br>常见义：<b>v.</b> 握住、拿着；<b>v.</b> 举行（hold a meeting）；<b>v.</b> 认为（hold that…）。<br>搭配：the finding holds（结论站得住）／hold true for（对……同样成立）／hold up under testing（经得起检验）。本文 Whether the result holds in a school… 里的 holds 后面不接宾语，正是“成不成立”的意思，不能译成“握住”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Whether the result <b>holds</b> in a school of thirty children … is a different question…</div>
+          <div class="wc-tr">这个结果在一所只有三十个孩子的学校里是否成立……是另一个问题。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">modest</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdɪst/ · 美 /ˈmɑːdɪst/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（数量、程度）不大的、有限的</b>，用于客观描述规模，不含褒贬。<br>常见义：谦虚的、朴素的（be modest about one's success）。<br>搭配：a modest gain（有限的提升）／a modest sum（一笔不大的钱）／modest evidence（有限的证据）。学术写作极爱用它给结论“降温”——中文若一律译成“谦虚”，整句就讲不通了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That is a <b>modest</b> number, of the size cheap interventions usually produce…</div>
+          <div class="wc-tr">这个数字不大，正落在低成本干预通常能做出的区间里……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">blunt</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /blʌnt/ · 美 /blʌnt/</div>
+          <div class="wc-pos"><b>adj.</b> <b>直截了当的、不加修饰的</b>；指方法粗糙但有效，或说话不绕弯。<br>常见义：钝的（a blunt knife，与 sharp 相反）。<br>搭配：a blunt instrument（笨办法、蛮力手段）／to be blunt（直说吧）／blunt talk（直话）。本文的设计确实“钝”：不搞花哨的课堂改革，只是每节课前收手机——钝，所以没什么可争的。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The design was deliberately <b>blunt</b>: half of the courses were chosen by lot…</div>
+          <div class="wc-tr">设计刻意做得直接而笨拙：一半课程被抽中……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">standard deviation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˈstændəd ˌdiːviˈeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>标准差</b>，统计学里衡量一组数据分散程度的单位；教育研究用它表达“效应量”。<br>搭配：0.073 standard deviations higher（高出 0.073 个标准差）／within one standard deviation（在一个标准差之内）。<br>读法提示：教育干预的效应量通常很小，0.1 已属常见，0.4 算大——所以看到 0.073 先别失望，要问的是“这个小数落在谁身上”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Marks in the phone-free courses came out 0.073 <b>standard deviations</b> higher…</div>
+          <div class="wc-tr">无手机课程的成绩高出 0.073 个标准差……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">percentile</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /pəˈsentaɪl/ · 美 /pərˈsentaɪl/</div>
+          <div class="wc-pos"><b>n.</b> <b>百分位</b>，指在一群人中超过多少比例的人所处的那个位置。<br>搭配：the fifty-third percentile（第 53 百分位，即有 53% 的人在你之下）／in the top percentile（处于最高的百分位段）。<br>辨析：percent（百分比）说的是“占多少”；percentile 说的是“排第几”。第 53 百分位听上去只前进了一点点，但它意味着一个中游学生从“正好一半”挪到了“略多于一半”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…roughly the distance from the middle of a class to the fifty-third <b>percentile</b>.</div>
+          <div class="wc-tr">……大致相当于从班级中游挪到第 53 百分位。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disruption</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪsˈrʌpʃn/ · 美 /dɪsˈrʌpʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>干扰、扰乱</b>，指打断正常秩序的行为或事件。<br>搭配：classroom disruption（课堂违纪、扰课）／minimise disruption（把干扰降到最低）／disruptive behaviour（扰乱性行为）。<br>词族：disrupt（v. 打断）→ disruptive（adj.）→ disruption（n.）。注意它在中英文里都不是“破坏”，而是“把正在进行的事打断”——程度比 damage 轻得多。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Observers at the back recorded fewer <b>disruptions</b> and less chatter unrelated to the lesson…</div>
+          <div class="wc-tr">坐在后排的观察员记录到：干扰更少、与课程无关的闲聊更少……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">engagement</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈɡeɪdʒmənt/ · 美 /ɪnˈɡeɪdʒmənt/</div>
+          <div class="wc-pos"><b>n.</b> <b>投入、参与度</b>，指注意力真正放在事情上的状态。<br>常见义：订婚（their engagement）；约定、约会（a prior engagement）。<br>搭配：student engagement（学生投入度）／with more visible engagement（投入得更明显）／civic engagement（公共参与）。同一个词在教育论文里几乎只指“心思在不在场”，与“订婚”毫无关系——这是典型的靠语境定词义的词。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…teachers who used their own phones less and taught with more visible <b>engagement</b>.</div>
+          <div class="wc-tr">……老师自己也更少看手机，讲课时的投入看得见。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">objection</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əbˈdʒekʃn/ · 美 /əbˈdʒekʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>反对意见、异议</b>，尤指对某个方案提出的具体反驳。<br>搭配：raise an objection（提出异议）／a fair objection（一个公道的反驳）／have no objection to（不反对）。<br>语用提示：学术论文里 a fair objection is… 是极常见的一步——先替对手把最强的反驳说出来，再回应。这一句本身就是“论证诚意”的标志，比直接辩护有力得多。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A fair <b>objection</b> is that teachers who knew about the experiment might simply have marked more generously…</div>
+          <div class="wc-tr">一个公道的反驳是：知道有实验的老师，可能只是打分宽松了些……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">withdrawal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /wɪðˈdrɔːəl/ · 美 /wɪðˈdrɔːəl/</div>
+          <div class="wc-pos"><b>n.</b> <b>戒断（反应）</b>，指停用某种成瘾物后出现的烦躁与不适。<br>常见义：撤回、撤退（the withdrawal of troops）；取款（make a withdrawal）。<br>搭配：withdrawal symptoms（戒断症状）／nicotine withdrawal（尼古丁戒断）。本文用它解释一个反直觉的观察：手机被收走的学生表面上更走神——那不是注意力变好，而是“手痒”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…which the authors read as <b>withdrawal</b> rather than as attention.</div>
+          <div class="wc-tr">……作者把这读成戒断反应，而不是“注意力回来了”。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trade</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /treɪd/ · 美 /treɪd/</div>
+          <div class="wc-pos"><b>n.</b> <b>取舍、权衡</b>，指为了得到一样东西而接受另一样损失。<br>常见义：贸易（international trade）；行业（the book trade）。<br>搭配：a trade-off（权衡）／worth the trade（这个交换值得）。注意：本文用的是 the trade，前面加了 the、后面不加 of，意思是“这笔交换”，而不是“这门生意”。判断依据永远是上下文，不是词典第一条。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…but when, for whom, and at what price removing them is worth the <b>trade</b>.</div>
+          <div class="wc-tr">……而是“在什么时机、对谁、以什么代价撤走它才值得。”</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">markedly</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmɑːkɪdli/ · 美 /ˈmɑːrkɪdli/</div>
+          <div class="wc-pos"><b>adv.</b> <b>显著地、明显地</b>，常用于描述可测量的差异。<br>搭配：markedly less likely（明显更不可能）／markedly different（明显不同）／rise markedly（显著上升）。<br>易混：marked 作形容词是“明显的”（a marked improvement），与“做记号”无关；而 markedly 在学术句里几乎总跟着比较级或“更/少”这类词。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and were <b>markedly</b> less likely to say that classrooms should be left entirely unrestricted.</div>
+          <div class="wc-tr">……说“课堂就该完全不加限制”的可能性明显下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">favourable</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈfeɪvərəbl/ · 美 /ˈfeɪvərəbl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>赞成的、看好的</b>；也指条件有利。<br>搭配：hold a favourable view of（对……持正面看法）／favourable conditions（有利条件）／on favourable terms（以优惠条件）。<br>拼写：英式 favourable，美式 favorable，考试里两种都算对，但一篇之内要统一。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…students in the phone-free courses held more <b>favourable</b> views of the rule…</div>
+          <div class="wc-tr">……无手机课程的学生对这条规矩的看法更为正面……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">unrestricted</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˌʌnrɪˈstrɪktɪd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>不受限制的、无约束的</b>。<br>构词：un-（否定）+ restrict（限制）+ -ed。同族：restrictive（限制性的）／restriction（限制）。<br>搭配：unrestricted access（不受限的使用权）／leave sth unrestricted（对……不加限制）。本文用它精确指代“最宽松的那一档立场”，与“适度限制”区分开——调查题目的措辞，往往决定了结论能走多远。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…classrooms should be left entirely <b>unrestricted</b>.</div>
+          <div class="wc-tr">……课堂就该完全不加限制。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">spread</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /spred/ · 美 /spred/</div>
+          <div class="wc-pos"><b>v.</b> <b>分布、铺开</b>，指数据或效果在不同对象上的分散情况。<br>常见义：传播（spread news）；涂抹（spread butter）；蔓延（the fire spread）。<br>搭配：be spread unevenly（分布不均）／spread the benefit（让收益铺开）／spread across（分布于）。本文的 how unevenly it is spread 是全篇枢纽句——平均数好不好看是次要的，钱和分数落在谁身上才是关键。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What makes the average worth arguing about is how unevenly it is <b>spread</b>…</div>
+          <div class="wc-tr">让这个平均数值得一争的，是它分布得极不均匀……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lift</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /lɪft/ · 美 /lɪft/</div>
+          <div class="wc-pos"><b>v.</b> <b>提高、抬高（成绩、水平）</b>。<br>常见义：举起（lift a box）；撤销（lift a ban 解除禁令）；消散（the fog lifted）。<br>搭配：lift marks（提分）／lift people out of poverty（让人脱贫）／give sb a lift（捎一段路；也指“让某人振作”）。同一个词在“解除禁令”和“提高分数”两个义项上都很常见，只能靠宾语判断。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…so the rule did not <b>lift</b> everybody but closed a gap.</div>
+          <div class="wc-tr">……所以这条规矩并不是把所有人一起抬起来，而是把一道缝给合上了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">chatter</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtʃætə/ · 美 /ˈtʃætər/</div>
+          <div class="wc-pos"><b>n.</b> <b>闲聊、絮语</b>，指不间断的、内容琐碎的说话声。<br>常见义：<b>v.</b> （牙齿）打颤（chattering teeth）；<b>v.</b> （鸟、猴）吱吱叫。<br>搭配：idle chatter（闲扯）／cut the chatter（别闲聊了）。它与 conversation 的差别在“有没有内容”——课堂观察表里记 chatter，记的是噪音，不是交流。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Observers at the back recorded fewer disruptions and less <b>chatter</b> unrelated to the lesson…</div>
+          <div class="wc-tr">坐在后排的观察员记录到：干扰更少、与课程无关的闲聊更少……</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">argue about whether</span><span class="zh">为“是否……”而争论</span></li>
+          <li><span class="en">take sth away from sb</span><span class="zh">把某物从某人那里收走</span></li>
+          <li><span class="en">be able to say what happens</span><span class="zh">说得出会发生什么</span></li>
+          <li><span class="en">by lot / chosen by lot</span><span class="zh">抽签；被抽中</span></li>
+          <li><span class="en">begin every session with</span><span class="zh">每节课都以……开始</span></li>
+          <li><span class="en">carry on as before</span><span class="zh">照旧进行</span></li>
+          <li><span class="en">read the outcome from</span><span class="zh">从……读取结果</span></li>
+          <li><span class="en">standard deviations higher</span><span class="zh">高出……个标准差</span></li>
+          <li><span class="en">once sth is controlled</span><span class="zh">一旦控制了某变量</span></li>
+          <li><span class="en">the distance from A to B</span><span class="zh">从 A 到 B 的距离（差距）</span></li>
+          <li><span class="en">of the size … usually produce</span><span class="zh">属于……通常能产生的量级</span></li>
+          <li><span class="en">worth arguing about</span><span class="zh">值得一争的</span></li>
+          <li><span class="en">twice as much as the average</span><span class="zh">是平均水平的两倍</span></li>
+          <li><span class="en">near the top</span><span class="zh">处于前列</span></li>
+          <li><span class="en">close a gap</span><span class="zh">缩小差距、弥合缝隙</span></li>
+          <li><span class="en">rule out the simplest explanation</span><span class="zh">排除最简单的解释</span></li>
+          <li><span class="en">unrelated to the lesson</span><span class="zh">与课程无关的</span></li>
+          <li><span class="en">less obviously</span><span class="zh">不那么显眼的是</span></li>
+          <li><span class="en">hold a favourable view of</span><span class="zh">对……持正面看法</span></li>
+          <li><span class="en">be left entirely unrestricted</span><span class="zh">被完全不加限制</span></li>
+          <li><span class="en">survive a rise in</span><span class="zh">在……上升的情况下依然成立</span></li>
+          <li><span class="en">the fear of missing out</span><span class="zh">错失恐惧（FOMO）</span></li>
+          <li><span class="en">answer an objection with</span><span class="zh">用……回应一个反驳</span></li>
+          <li><span class="en">set by outside examiners</span><span class="zh">由校外命题人出卷</span></li>
+          <li><span class="en">marked blind</span><span class="zh">以盲评方式批阅</span></li>
+          <li><span class="en">pretend otherwise</span><span class="zh">假装不是这么回事</span></li>
+          <li><span class="en">at what price</span><span class="zh">以什么代价</span></li>
+          <li><span class="en">worth the trade</span><span class="zh">这笔交换值得</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：全世界都在争论收不收手机，却几乎没人说得出收走后的结果；《科学》本月给了一个。</li>
+          <li>设计：奥里萨邦 10 所院校、2,305 门课抽签分组，一学期每课前交手机；结果读正式考卷，不问自评。</li>
+          <li>总效应：+0.073 个标准差（控制前成绩 0.086），相当于中游挪到第 53 百分位；作者主动承认“不大”。</li>
+          <li>分层：垫底学生约涨两倍，优等生几乎不动；大一与非理工科受益更多——不是抬高全体，是合上一道缝。</li>
+          <li>机制：出勤没变，变化在教室里——干扰与闲聊减少，连老师也少看手机、讲得更投入。</li>
+          <li>反转一：亲历一学期后，学生更支持这条规矩，“完全不加限制”的支持率明显下降，优等生也一样。</li>
+          <li>防守：反驳“老师放水”——六到八成成绩来自校外命题、盲评的期末考，而效果最大的正是这批课。</li>
+          <li>边界：高校、印度、只收课堂一小时；随堂抽查反而更走神（戒断），不能直接推及中小学全天禁令。</li>
+          <li>落点：问题不再是“手机是否有害”，而是“何时、对谁、什么代价”；垫底那批人试过之后要求留下规矩。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Marks in the phone-free courses came out 0.073 standard deviations higher, or 0.086 with earlier achievement controlled — roughly the distance from the middle of a class to the fifty-third percentile.</div>
+        <div class="row"><b>主干：</b>Marks came out 0.073 standard deviations higher（成绩高出 0.073 个标准差）＋ or 0.086（或者 0.086）＋ 破折号后的同位语解释这个差距有多大。</div>
+        <div class="row"><b>难点：</b>① came out … higher 是“结果是……（更高）”，come out 在此不是“出来”，而是“最终显示为”；② 0.073 standard deviations 是“数量 + 单位”作状语，修饰 higher，不是宾语——中文必须补成“高出……个标准差”；③ once earlier achievement was controlled 是省略了 that 的时间状语从句，once 意为“一旦”，被动语态省掉了 by the researchers；④ roughly the distance from A to B 是名词短语作同位语，解释 0.073 这个抽象数字“大约等于什么”，这种“抽象数字 → 具体刻度”的换算，是科普写作最有效的一招。</div>
+        <div class="row tr"><b>译文：</b>无手机课程的成绩高出 0.073 个标准差；控制此前的学业表现后为 0.086——大致相当于从班级中游挪到第 53 百分位。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What makes the average worth arguing about is how unevenly it is spread: students who arrived with the weakest records gained about twice as much as the average, while those near the top barely moved.</div>
+        <div class="row"><b>主干：</b>What makes the average worth arguing about（让这个平均数值得一争的东西）is how unevenly it is spread（在于它分布得多么不均匀）——主语从句 + 表语从句。</div>
+        <div class="row"><b>难点：</b>① What 引导主语从句，本身在从句里作 makes 的主语；② make sth worth doing 是“使某事变值得做”，worth 后面必须接动名词，不能接不定式；③ how unevenly it is spread 是表语从句，unevenly 被 how 提前，正常语序是 it is spread unevenly；④ 冒号后两个分句用 while 对照：gained about twice as much as the average（约为平均水平的两倍）对 barely moved（几乎没动）；⑤ twice as much as 是倍数比较结构，第二个 as 后面接的是比较对象 the average，不是“平均地”。</div>
+        <div class="row tr"><b>译文：</b>让这个平均数值得一争的，是它分布得极不均匀：入学时成绩最靠后的学生，提升约为平均水平的两倍；而本来就靠前的那些人几乎没动。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">After a semester of handing phones in, students in the phone-free courses held more favourable views of the rule, saw more benefit in it, and were markedly less likely to say that classrooms should be left entirely unrestricted.</div>
+        <div class="row"><b>主干：</b>students held more favourable views…, saw more benefit…, and were markedly less likely to say…——三个谓语并列，共用主语 students。</div>
+        <div class="row"><b>难点：</b>① After a semester of handing phones in 中介词 of 后接动名词短语，hand in 是“上交”，此处分开写成 handing … in；② held views of / saw benefit in 是两个固定搭配，介词不同（of / in），不能互换；③ were less likely to say that… 里 that 引导宾语从句，从句用 should 表示“应该”，是英式书面语的常见虚拟语气；④ 三个谓语按“态度—认知—立场”递进排列，最后一个最长、最重，是典型的尾重（end-weight）写法，译成中文时不必强行保留这个顺序。</div>
+        <div class="row tr"><b>译文：</b>交了一学期手机之后，无手机课程的学生对这条规矩的看法更为正面，从中看到的益处更多，说“课堂就该完全不加限制”的可能性也明显下降。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A fair objection is that teachers who knew about the experiment might simply have marked more generously; the authors answer with the state's examination rules.</div>
+        <div class="row"><b>主干：</b>A fair objection is that…（一个公道的反驳是……）＋ 分号后 the authors answer it with…（作者用……来回应它）。</div>
+        <div class="row"><b>难点：</b>① that 引导表语从句，从句的主语 teachers 被 who 定语从句隔开，谓语是 might have marked——情态动词 + 完成式，表示“对过去情况的推测”；② simply 在此不是“简单地”，而是“只不过、仅仅”，暗含“用不着更复杂的解释”；③ more generously 修饰 marked，指打分宽松，不是“给钱更大方”；④ 分号连接两个独立分句，第二个用 it 回指前面的 objection，这种“先立靶再回击”的两步结构在学术写作里叫 concession-then-rebuttal。</div>
+        <div class="row tr"><b>译文：</b>一个公道的反驳是：知道有实验的老师，可能只是打分宽松了些；作者用该邦的考试规定来回应这一点。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Whether the result holds in a school of thirty children, or under a rule that bans phones all day rather than an hour, is a different question, and the paper does not pretend otherwise.</div>
+        <div class="row"><b>主干：</b>Whether…is a different question（这个结果是否成立是另一个问题）＋ and the paper does not pretend otherwise（论文没有假装不是）。</div>
+        <div class="row"><b>难点：</b>① Whether 引导主语从句，一直延伸到 one hour 才结束，谓语 is 被两个并列状语隔得很远；② or under a rule that… 与 in a school of thirty children 并列，共用 holds；③ that bans phones all day rather than for one hour 是定语从句修饰 a rule，rather than 对比的是“全天禁”与“一小时禁”；④ pretend otherwise 是固定说法，otherwise 代替“它是同一个问题”这个前提——中文若直译“假装相反”会读不懂，要还原成“假装这不是另一个问题”。</div>
+        <div class="row tr"><b>译文：</b>这个结果在一所只有三十个孩子的学校里是否成立，或者在一条“全天禁”而非“一小时禁”的规矩下是否成立，是另一个问题；论文没有假装它是同一个问题。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章要处理的是一个所有人都已经站好队、却几乎没有人有证据的问题：上课时把手机收走，究竟有没有用？过去十年，从法国到中国，从小学到大学，禁令一个接一个落地，理由说得都很顺——注意力被切碎、睡眠被推迟、网络霸凌、成瘾。可这些理由大多来自相关性研究：禁手机的学校和不禁手机的学校本来就不一样，成绩差异未必是手机造成的。真正缺的是一件事：随机分配，让两组人在其他所有方面都相同，只差一部手机。</p>
+      <p class="zh-sum">《科学》2026 年 10 月 8 日刊出的这项研究补的正是这一块。三位作者分别来自宾夕法尼亚大学沃顿商学院、印度尼赫鲁大学和哥本哈根大学；他们在印度东部奥里萨邦的十所高等院校做了一整个学期的实验，覆盖 2,305 门课程、742 位教师、16,683 名学生。奥里萨邦有四千万人口，15 到 29 岁年轻人的智能手机拥有率超过七成，这既保证了“手机确实在身边”，也让结论不至于只适用于某个富裕校园。</p>
+      <p class="zh-sum">设计的“钝”是它最聪明的地方。不搞课堂改革，不改教材，不培训教师，只在实验组每节课开始时加一道手续：学生把手机放进教室前面的收纳盒。对照组什么都不做。分组是按课程抽签的，不是按学生自选，也不是按老师自愿——这一条决定了结论能不能叫因果。结果不看问卷，直接调学校的正式成绩单；出勤记录也一并调出来，用来排除“来上课的人变多了”这个竞争性解释。</p>
+      <p class="zh-sum">数字出来，先是一个不太好看的：0.073 个标准差。控制此前的学业成绩之后是 0.086。用百分位说，大约相当于一个中游学生往前挪到第 53 位。作者没有粉饰，反而主动交代：这个量级正是低成本干预通常能做出的区间，跟“换个好老师”“缩小班额”那种大动作不在一个量级上。</p>
+      <p class="zh-sum">但真正值得读的是第二层：这个平均数是怎么分布的。入学成绩最靠后的那批学生，提升约为平均水平的两倍；而本来就靠前的学生几乎没动。大一新生和非理工科课程的收益也高于其余。合起来看，这条规矩并没有把所有人一起抬起来，它做的事情更窄、也更政治：把班级内部那道缝合上一点。这也解释了为什么作者会说，对低表现学生的益处“对推进教育公平至关重要”——同一间教室、同一位老师、同一条规矩，收益却按起点高低分配，而这恰好是“公平”最愿意看到的方向。</p>
+      <p class="zh-sum">机制部分同样值得注意，因为它排除了最省事的解释。出勤率没有变化，说明不是“讨厌上课的人干脆不来了”导致剩下的平均分变高。变化发生在教室里：坐在后排的观察员记录到，干扰行为更少，与课程无关的闲聊更少；还有一个不那么显眼、却很有意思的细节——老师自己也更少看手机，讲课时的投入更明显。也就是说，收手机不只改变了学生，也改变了站在讲台上的那个人。</p>
+      <p class="zh-sum">接下来是全文最反常的一段：态度反转。按常识，被收了一学期手机的学生应该更反感这条规矩；调查结果正好相反。他们更倾向于认为这条规矩有益，“课堂就该完全不加限制”的支持率明显下降；而且这个转变包含了那些分数几乎没涨的优等生——他们没拿到好处，却仍然支持。同时，“错失恐惧”略有上升，但自评心理健康、学习动机、课外电子设备使用、网络骚扰经历都没有显著变化。作者由此提出一个可以自我强化的循环：先执行，学生体验到好处，支持度上升，执行就更容易维持。</p>
+      <p class="zh-sum">对一篇要下因果结论的论文，最致命的质疑是“老师放水”：知道自己在参加实验的老师，会不会只是把分打松了？论文的回应不在统计里，而在制度里。奥里萨邦的高校规定，一门课的成绩有六成到八成来自校外专家命题、异地匿名评阅的期末考；非理工科课程这个比例高达八成，而效果最大的恰恰是这批课。考试期间所有学生一律不许带设备，所以“手机帮忙作弊”也解释不了差异。作者仍然承认，由于缺少教师与课程的对应标识，内部评分的那部分贡献无法完全排除。</p>
+      <p class="zh-sum">边界写得很清楚，这也是整篇文章最像“范文”的地方。第一，这是高等教育，不是中小学；大学生可以自主决定是否来上课，中小学生不行。第二，这是“每节课收一小时”，不是“全天禁”；两者的机制完全不同，后者的争议主要在课后与社交。第三，随堂抽查发现，无手机班的学生表面上反而更走神，作者把这解释为戒断反应——手被拿走了，手痒还在。第四，地点是印度一个邦，结论能否迁移到别处的课堂文化，需要另做实验。</p>
+      <p class="zh-sum">所以文章的落点比任何标题都窄：争论的重点已经从“手机是否消耗注意力”——这一点几乎没有争议——转到“在什么时机、对谁、以什么代价撤走它才值得”。对坐在最后一排、成绩垫底的那个学生来说，这笔账算得很清楚：代价是他一节课不能刷消息，收益是他终于跟得上；而正是这批人，在试过之后要求把规矩留下来。对优等生来说，代价与收益都接近于零，所以他们的支持更像是“不反对”。对学校来说，这是一个成本极低、收益集中在最需要的人身上的干预——这种形状的政策，在任何领域都不多见。</p>
+      <p class="zh-sum">从写作角度看，这篇文章最值得学的是它处理“小效应”的方式。0.073 是个容易被嘲笑的数字，作者没有把它包装成大发现，而是做了三件事：先主动承认它小，再用分布说明它落在谁身上，最后用态度反转说明它为什么会自我维持。三步走完，一个小数字就变成了一个可讨论的政策问题。这套写法可以直接迁移到任何“效果有限但方向明确”的议题上——包括你自己写议论文时，面对一个“有一点用但用处不大”的论据。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. Smartphones should be banned in all schools because they clearly damage students' mental health.<br>B. A large randomised trial shows that collecting phones before class raises marks modestly, helps the weakest students most, and wins over the students who experienced it — so the real question is when and for whom the trade is worth it.<br>C. Teachers mark more generously when they know they are taking part in an experiment.<br>D. First-year students and non-science students are the only groups that benefit from phone-free classrooms.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文主线是“实验 → 小幅提分 → 收益集中在垫底学生 → 态度反转 → 边界与落点”，B 覆盖了这条链，且末句“何时、对谁、值不值得”正对应第 9 段。A 与第 6 段“心理健康无显著变化”直接矛盾，也把“课堂收手机”扩大成了“全面禁用”；C 是第 7 段被作者用考试制度回应的质疑，不是结论；D 把“受益更多”说成“唯一受益”，与第 4 段“优等生几乎没动”并存的事实不符。</div>
+      <div class="q"><b>2. Why does the author call the second finding "the one nobody expected"?</b><br>A. Because it was about attitudes rather than marks, and it ran against the common assumption that students would resent losing their phones.<br>B. Because the researchers had not planned to measure students' attitudes at all.<br>C. Because the attitude change was larger among high performers than among low performers.<br>D. Because students who disliked the rule stopped attending classes.<br><br><b>答案：A</b><br>
+        <b>解析：</b>第 6 段开头即点明“it concerns attitude rather than marks”，随后给出与常识相反的结果——亲历禁令的学生反而更支持，且连没涨分的优等生也如此，A 对应这两层。B 无依据：态度是研究预先测量的指标之一；C 曲解原文，文中说的是这个转变“包含了”优等生，并未比较两组幅度；D 与第 5 段“出勤率没有变化”矛盾。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>这篇文章的核心论据是一个“小效应”：0.073 个标准差。请你就自己班上的某一项具体安排（早读、午休、座位轮换、自习课收手机、跑操），设计一个能在两周内做完的小实验：说明①你怎么分组，②你用什么客观指标衡量效果（不能是“感觉更有精神”），③哪一个可能的解释是你这个设计排除不掉的。要求 150 字以内，写成一个能被别人复现的方案，不要写成感想。</div>
+      <div class="q"><b>仿写：</b>本文第 4 段用的是一个“先给平均数、再说分布”的转折句：<span class="hl">What makes the average worth arguing about is how unevenly it is spread.</span> 它的力量来自三个动作：① 用 What 引导的主语从句把“这个数字值得一争”先说成结论；② 用 worth arguing about 而不是 important，把读者拉进争论而非接受结论；③ 表语从句用 how unevenly，一个副词就完成了“平均数骗人”的整个判断。仿写时照搬骨架：<i>What makes ______ worth arguing about is how unevenly ______.</i> 前半句填一个被普遍认可的数字或说法，后半句填它在人群中的分布差异——注意后半句必须是“程度”而非“事实”，否则句子会散。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 引子：人人都在禁手机，却没人说得出结果</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 设计：2,305 门课抽签，一学期每课前交手机</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 总效应：+0.073 SD，中游 → 第 53 百分位</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 分层：垫底约涨两倍，优等生不动 → 合上一道缝</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">5 · 机制：出勤没变，变的是教室内外的人</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">6 · 反转：试过之后反而更支持，优等生也一样</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">7 · 防守：六至八成成绩来自校外命题盲评</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">8 · 边界：高校 · 一小时 · 抽查更走神 · 印度一邦</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：何时 · 对谁 · 什么代价，才值得交换</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：平均数很小（0.073），但分布极陡——收益全在垫底那批人身上</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">小效应之所以重要，是因为它落在最需要的人身上，并且自己长出了支持者</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、4 段为绿色：两处“结果”，先平均再分层；第 6 段为红色：全文唯一的反转</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 7、8 段为虚线框：先挡质疑，再划边界——学术类外刊最稳的收尾法</text>
+        </svg>
+        <figcaption>结构图解：文章走的是“一个实验、三层结论”的路子——第 2 段给设计，第 3 段给平均数，第 4 段把平均数拆开，第 5 段解释机制，第 6 段给出唯一的反转（态度），第 7、8 段连挡两次（质疑与边界），第 9 段落到“何时、对谁、什么代价”。注意每一处“结果”后面都紧跟一处“限定”，这正是让一个小效应站得住的原因。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Alp Sungu, Pradeep Kumar Choudhury, Andreas Bjerre-Nielsen《Phones impede learning: Evidence from a massive phone-free classroom experiment》，Science 2026-10-08，394(6820):178–181；宾夕法尼亚大学沃顿商学院 + 印度尼赫鲁大学 + 哥本哈根大学；实验在印度奥里萨邦 10 所高等院校完成（2024 年春季学期，2,305 门课程 / 742 位教师 / 16,683 名学生）；DOI 10.1126/science.aef7249｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
