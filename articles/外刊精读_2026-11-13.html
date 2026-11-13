@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 看画不需要技巧，需要有人跟你说话</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Gallery &amp; Talk · 人与社会 / 人与自我 / 文化 / 艺术与地方生活 / 博物馆</div>
+  <h1>看画不需要技巧，需要有人跟你说话</h1>
+  <div class="deck">Two experiments — 281 visitors at the National Gallery in London, 240 at Manchester Art Gallery — find that coaching people to look slowly adds almost nothing, that a silent group does worse than a visitor standing on his own, and that what actually lifts a mood is the talking.</div>
+  <div class="byline"><span><b>来源</b> Scientific Reports 16:28690（2026-06-23）；Psychology of Aesthetics, Creativity, and the Arts 20(4):889–903（2026）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-13</span><span><b>难度</b> 难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-13.jpg" alt="深青色展墙上挂着一幅色彩浓烈的街景油画，一位母亲抱着孩子站在画前，孩子仰头看画（配图）">
+    <figcaption>配图：深青色的展墙上挂着一幅色彩浓烈的街景油画，一位母亲抱着孩子站在画前——孩子仰头看画，她低头看孩子。同一幅画，两个人在同一刻看着不同的东西，也随时可以开口；研究想量出的正是这一层：同样在画前待着，“说出来”与“不说出来”，究竟是不是一回事（图片来源：Neue Galerie 馆内实景，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>过去十年，全世界的美术馆都在做同一件事：<b>教观众“看得慢一点”</b>。四分钟的导览影片、进馆前的正念呼吸、一张写着“请在此画前停留十分钟”的卡片——这些被称为“观展增强”，据说是把艺术转化成幸福感的必要工序。</p>
+    <p>今年六月《科学报告》刊出的预注册随机对照试验，把这套工序拆开称了重量：伦敦国家美术馆 <b>281 名观众</b>，三组随机，一段讲“审美观看”的影片、一段正念呼吸影片、以及什么都不给。结果干脆得有点残酷——<b>所有人都变好了</b>（积极情绪上升、焦虑下降，效应量中等），但两段精心制作的影片，<b>没有一组比“直接走进去”多给一分</b>。</p>
+    <p>那什么才有用？曼彻斯特美术馆的第二个实验（<b>240 人</b>，三组）给出了一个让策展人不太舒服的答案：单独看、一起静默看、一起讨论看——<b>只有讨论组</b>出现显著的幸福感提升；而“一起静默”是三组里<b>最差</b>的，甚至不如一个人来。</p>
+    <p>于是结论变得很便宜，也很少有人愿意说：真正起作用的不是“慢”，是<b>“说”</b>。美术馆把观众训练成一双更耐心的眼睛，而数据说，它该把人当成一张嘴。这篇值得学的，是它如何用两个实验把一句常识（“艺术让人感觉好”）逼成一个具体的设计问题。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-13.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="11.798">Almost every great museum now sells its visitors a method for looking more slowly: a four-minute film, a breathing exercise, a card asking you to stand before one painting for ten minutes.</span> <span class="s" data-t="11.798" data-e="21.776">The advice sounds harmless and is expensive to produce, which makes it worth asking whether it adds a single point of well-being beyond what an ordinary ticket already buys.</span></span></div>
+      <p class="para-tr">几乎每一座大美术馆现在都在向观众兜售一种“看得更慢”的方法：一段四分钟的影片、一次呼吸练习、一张请你在一幅画前站上十分钟的卡片。这些建议听上去无害，制作起来却要花钱；于是值得一问的是——除了那张普通门票本来就买到的东西，它到底有没有多添一分幸福。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="21.776" data-e="32.816">A partial answer arrived in June, when a team from Vienna, Goldsmiths and the National Gallery published a pre-registered trial <b class="kw" data-tip="v. 开展、进行（run a trial 做一项试验）；常见义“跑、经营”">run</b> over ten days in December 2022.</span> <span class="s" data-t="32.816" data-e="42.13">Visitors were <b class="kw" data-tip="v. 分配、分派（assign sb to a group 把某人分到某组）；常见义“布置作业、指派任务”">assigned</b> by time slot to a four-minute video on aesthetic looking, to a five-and-a-half-minute breathing film, or to no video at all.</span> <span class="s" data-t="42.13" data-e="52.671">Of 337 <b class="kw" data-tip="n. 受试者、被招募来参加实验的人；v. 招募（recruit volunteers 招募志愿者）">recruits</b>, 281 passed the attention checks and entered the analysis, a sample that is large by the standards of gallery research.</span></span></div>
+      <p class="para-tr">一个部分答案在六月到来：来自维也纳、金匠学院与国家美术馆的一个团队，发表了 2022 年 12 月历时十天的预注册试验。观众按时间段被分到三组——看一段四分钟、讲“审美观看”的影片；看一段五分半的呼吸影片；或者什么都不看。337 名受试者中，281 人通过了注意力检验，进入分析。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="52.671" data-e="62.195">Everyone improved: positive <b class="kw" data-tip="n. （心理学）情感、情绪状态（positive affect 积极情感）；常见义 v. 影响">affect</b> rose and state <b class="kw" data-tip="n. 焦虑（state anxiety 状态性焦虑，指此刻的紧张，与 trait anxiety 特质焦虑相对）">anxiety</b> fell, with <b class="kw" data-tip="adj. 中等的、不算大也不算小的（moderate effect size 中等效应量）；常见义“温和的、适度的”">moderate</b> effect sizes that any wellbeing researcher would be glad to publish.</span> <span class="s" data-t="62.195" data-e="69.105">That is the finding a press office can use, and it is true — ten minutes among paintings measurably lifts a mood.</span></span></div>
+      <p class="para-tr">所有人都变好了：积极情感上升，状态焦虑下降，效应量中等——任何一位研究幸福感的人都乐于发表这样的数字。这正是公关部门用得上的那个发现，而且它是真的：在画中间待上十分钟，情绪确实能被抬起来。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="69.105" data-e="78.538">But the comparison that matters is between the three groups, and there the picture <b class="kw" data-tip="v. 变平淡、变得没有起伏（此处 flatten 指三组之间的差别消失）；常见义“使变平、压平”">flattens</b>, because the <b class="kw" data-tip="n. （统计）交互作用，指两个因素合在一起产生的、单看各自看不出的效果；常见义“互动、交流”">interaction</b> between time and condition was not significant.</span> <span class="s" data-t="78.538" data-e="86.987">Neither film beat the ordinary visit on well-being, on how beautiful the paintings seemed, or on how closely people believed they had looked.</span></span></div>
+      <p class="para-tr">但真正要紧的，是三个组之间的比较；而在这里，图景就摊平了——时间与条件之间的交互作用并不显著。两段影片都没有在幸福感上胜过“普通参观”，在“画看起来有多美”上没有，在“你觉得自己看得有多仔细”上也没有。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="86.987" data-e="96.947">One <b class="kw" data-tip="n. 子组、小组（sub- 表示“下、次一级”，如 subset 子集）">subgroup</b> did move: the 121 visitors who had never been to the gallery before, and who may need the <b class="kw" data-tip="n. 支架、脚手架；（教育学）学习支架，指外部提供的临时支撑，学会后撤掉">scaffolding</b> that a regular brings in his own head.</span> <span class="s" data-t="96.947" data-e="104.75">The authors are careful to call this <b class="kw" data-tip="adj. 探索性的，指事先没在主假设里写定、从数据里顺便看出来的结果，需后续验证">exploratory</b>, which is the right and rather modest word for a result found in a corner of the data.</span></span></div>
+      <p class="para-tr">有一个子组确实动了：那 121 位此前从未到过这座美术馆的人。他们也许正需要一套“支架”，而常客是自带这套支架进门的。作者很谨慎地把这称作“探索性”结果——对于一个在数据角落里被发现的结论，这个词用得恰当。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="104.75" data-e="113.5">Which leaves the obvious question, and the one the museum world has been slow to ask: if instruction is not the active <b class="kw" data-tip="n. 成分、要素（the active ingredient 有效成分，原为药学用语）；常见义“配料”">ingredient</b>, what is?</span> <span class="s" data-t="113.5" data-e="121.829">A second experiment, run at the Manchester Art Gallery, offers an answer that <b class="kw" data-tip="n. 策展人，负责筹划展览、挑选与布置展品的人；v. 策划（curate an exhibition）">curators</b> may find harder to accept than any video.</span> <span class="s" data-t="121.829" data-e="130.288">Two hundred and forty visitors looked at two paintings for ten minutes each — alone, in a silent group, or in a group invited to talk.</span></span></div>
+      <p class="para-tr">这就留下那个显然的问题，也是博物馆界一直迟迟不问的问题：如果“指导”不是那个有效成分，那什么是？曼彻斯特美术馆做的第二个实验给出了一个答案，策展人可能会觉得它比任何影片都更难接受。240 名观众，每人看两幅画，每幅十分钟——独自看；在一个静默的小组里看；或者在一个被邀请交谈的小组里看。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="130.288" data-e="139.276">Only the discussion group showed significant gains in well-being: more positive affect, more felt connection to others, more closeness to the group.</span> <span class="s" data-t="139.276" data-e="148.539">The silent group did worst of all, finishing below the people who came on their own, who at least reported deeper emotional engagement and a better visit.</span> <span class="s" data-t="148.539" data-e="156.079">Standing together without speaking, it turns out, is not a social experience at all; it is a faintly <b class="kw" data-tip="adj. 尴尬的、不自在的（an awkward silence 令人不自在的沉默）；常见义“笨拙的、难对付的”">awkward</b> one.</span></span></div>
+      <p class="para-tr">只有讨论组出现了显著的幸福感提升：积极情感更多，与他人的联结感更强，对小组的亲近感更高。而静默组是三组里最差的——甚至低于那些独自前来的人；后者至少报告了更深的情绪投入和更好的观展体验。一群人站在一起却不说话，原来根本不算一种社交经验，而是一种略显微妙的尴尬。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="156.079" data-e="166.026">The likely reason is that talk does work looking cannot: it forces a viewer to <b class="kw" data-tip="v. 明确选定、把自己绑定在某个立场上（commit to an interpretation 选定一种解读）；常见义“承诺、犯（罪）”">commit</b> to an <b class="kw" data-tip="n. 解读、诠释（a reading/interpretation of a painting 对一幅画的解读）">interpretation</b>, then defend it to someone who <b class="kw" data-tip="v. 解读、理解为（read a canvas 读一幅画）；常见义“阅读、朗读”">read</b> the same <b class="kw" data-tip="n. 画布、油画（on canvas 画在画布上）；注意此处以画布代指整幅画">canvas</b> differently.</span> <span class="s" data-t="166.026" data-e="174.803">Neither study can say how long such an effect lasts, and both were run in one country, among people who had already chosen a day in a gallery.</span></span></div>
+      <p class="para-tr">最可能的原因是：说话做了一件“看”做不到的事——它逼着观看者选定一种解读，然后向一个把同一块画布读成别的样子的人，为它辩护。两项研究都说不出这种效应能持续多久；而且它们都只在一个国家完成，参与者都是已经决定花一天去美术馆的人。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="174.803" data-e="183.961">The practical conclusion is cheap, and slightly embarrassing for the industry: stop teaching people to look slowly, and give them something to argue about.</span> <span class="s" data-t="183.961" data-e="193.538">A museum that treats its visitors as a pair of eyes will keep buying films; one that treats them as mouths will put two chairs in front of the painting and walk away.</span></span></div>
+      <p class="para-tr">实用的结论很便宜，对这门行当也略有些难堪：别再教人“慢慢看”，给他们一点可以争的东西。把观众当成一双眼睛的博物馆，会继续买影片；把观众当成一张嘴的博物馆，只会在画前摆两把椅子，然后走开。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">run</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rʌn/ · 美 /rʌn/</div>
+          <div class="wc-pos"><b>v.</b> <b>开展、进行（一项试验或研究）</b>，是学术英语里最高频的“跑”之外的意思。<br>常见义：<b>v.</b> 跑；<b>v.</b> 经营（run a shop）；<b>v.</b> 运转（the engine runs）。<br>搭配：run a trial / run an experiment（做试验）／run a test（做测试）／the study was run in…（研究在……完成）。判断方法：主语是“研究、试验、调查”时，run 一律译“开展”，不能译“跑”。正文里 trial <i>run</i> over ten days 与 both were <i>run</i> in one country 是同一用法。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…published a pre-registered trial <b>run</b> over ten days in December 2022.</div>
+          <div class="wc-tr">……发表了 2022 年 12 月历时十天的预注册试验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flatten</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈflætn/ · 美 /ˈflætn/</div>
+          <div class="wc-pos"><b>v.</b> <b>（差别、起伏）变平、消失</b>，用于描述数据或对比结果“分不出高下”。<br>常见义：把……弄平（flatten the dough）；<b>v.</b> 摧毁（the storm flattened the town）。<br>搭配：the picture flattens（局面变得没有差别）／the curve flattens（曲线走平，即增长停滞）／flatten out（趋于平缓）。本文 the picture <i>flattens</i> 说的不是画被压平，而是“三组之间的差距没了”——同一个词，靠主语是 picture 还是 dough 来定生死。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and there the picture <b>flattens</b>, because the interaction between time and condition was not significant.</div>
+          <div class="wc-tr">……而在这里，图景就摊平了——时间与条件之间的交互作用并不显著。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">read</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /riːd/ · 美 /riːd/</div>
+          <div class="wc-pos"><b>v.</b> <b>解读、理解（一幅画、一个动作、一组数据）</b>，强调“读出什么意思”。<br>常见义：阅读、朗读（read a book）；<b>v.</b> 写着（the sign reads…）。<br>搭配：read a painting（解读一幅画）／read the data as evidence of…（把数据理解为……的证据）／read sth differently（对……有不同解读）。艺术评论里 read 与 interpret 几乎同义，但 read 更轻、更像“看出来的”，因此更适合放进这类句子里。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…then defend it to someone who <b>read</b> the same canvas differently.</div>
+          <div class="wc-tr">……然后向一个把同一块画布读成别的样子的人，为它辩护。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pre-registered</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˌpriː ˈredʒɪstəd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>预注册的</b>，指在收集数据之前，就把研究假设、样本量与统计方案公开登记在案。<br>构词：pre-（前）+ register（登记）+ -ed。同族：preregistration（n. 预注册）。<br>为什么重要：预注册让研究者无法在看到结果之后偷偷改假设，是近年心理学与医学对抗“发表偏倚”的核心制度。看到这四个字，就意味着“这份结论不能事后编”——它本身就是一种可信度信号。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…published a <b>pre-registered</b> trial run over ten days in December 2022.</div>
+          <div class="wc-tr">……发表了 2022 年 12 月历时十天的预注册试验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recruit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈkruːt/ · 美 /rɪˈkruːt/</div>
+          <div class="wc-pos"><b>n.</b> <b>受试者、新招募的成员</b>；<b>v.</b> 招募。<br>搭配：recruit participants（招募参与者）／337 recruits（337 名受试者）／recruitment poster（招募海报）。<br>语域提示：日常英语里 recruit 多指招员工、招兵；但在实验报告里它专指“被招来做被试的人”。中文若译成“新兵”会完全跑偏。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Of 337 <b>recruits</b>, 281 passed the attention checks and entered the analysis.</div>
+          <div class="wc-tr">337 名受试者中，281 人通过了注意力检验，进入分析。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">assign</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈsaɪn/ · 美 /əˈsaɪn/</div>
+          <div class="wc-pos"><b>v.</b> <b>分配、分派</b>，实验里特指“把受试者随机分到某一组”。<br>搭配：be assigned to a group（被分到某组）／randomly assigned（随机分配）／assign a task（布置任务）。<br>辨析：assign 强调“由上往下分”，allocate 强调“按份额划拨”，distribute 强调“散开分发”。做实验写 randomly assigned，是方法部分最不能省的两个词——没有它，因果就无从谈起。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Visitors were <b>assigned</b> by time slot to a four-minute video on aesthetic looking…</div>
+          <div class="wc-tr">观众按时间段被分到……一段四分钟、讲“审美观看”的影片。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">affect</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈæfekt/ · 美 /ˈæfekt/</div>
+          <div class="wc-pos"><b>n.</b> <b>（心理学）情感、情绪状态</b>，与情绪（emotion）相比更泛指、更偏“基调”。<br>常见义：<b>v.</b> 影响（读 /əˈfekt/，重音在后）。<br>搭配：positive / negative affect（积极／消极情感）／affect regulation（情绪调节）。<br>⚠️ 两个坑：① 作名词时重音在<b>前</b>，作动词时重音在<b>后</b>；② 别与 effect（n. 效果）混——affect 是“你此刻的心情”，effect 是“某件事造成的结果”。本文 positive affect rose 说的是心情变好，不是“产生了正面影响”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Everyone improved: positive <b>affect</b> rose and state anxiety fell…</div>
+          <div class="wc-tr">所有人都变好了：积极情感上升，状态焦虑下降……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">anxiety</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /æŋˈzaɪəti/ · 美 /æŋˈzaɪəti/</div>
+          <div class="wc-pos"><b>n.</b> <b>焦虑、紧张</b>；也可指“渴望”。<br>搭配：state anxiety（状态性焦虑，指此刻的紧张）／trait anxiety（特质焦虑，指一贯的易紧张倾向）／ease anxiety（缓解焦虑）。<br>本文用 state anxiety 而非泛泛的 anxiety，是很讲究的一笔：它要说明的是“这一次参观前后的即时变化”，而不是“这个人天生多焦虑”。读论文时，这类限定词（state / trait）往往就是结论边界的所在。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…positive affect rose and state <b>anxiety</b> fell, with moderate effect sizes…</div>
+          <div class="wc-tr">……积极情感上升，状态焦虑下降，效应量中等……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">interaction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntərˈækʃn/ · 美 /ˌɪntərˈækʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（统计）交互作用</b>，指两个因素合在一起才产生的、单看任一因素都看不出来的效果。<br>常见义：互动、交流（social interaction）。<br>搭配：a significant interaction（交互作用显著）／time × condition interaction（时间与条件的交互）／interact with（与……相互作用）。<br>怎么读：如果“交互显著”，说明干预的效果因组而异；如果“交互不显著”，说明三组走的是同一条曲线——本文结论就靠这一句站住。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…because the <b>interaction</b> between time and condition was not significant.</div>
+          <div class="wc-tr">……因为时间与条件之间的交互作用并不显著。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">subgroup</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˈsʌbɡruːp/</div>
+          <div class="wc-pos"><b>n.</b> <b>子组、小组</b>，指从总样本里再切出来的一部分人。<br>构词：sub-（下、次一级）+ group。同族：subset（子集）、subsample（子样本）、subdivide（再分）。<br>搭配：a subgroup analysis（亚组分析）／one subgroup did move（有一个子组确实动了）。<br>⚠️ 学术写作里 subgroup 常带警告意味：亚组是从数据里“翻”出来的，样本小、假阳性风险高，所以作者往往紧跟着一句 exploratory——本文第 5 段正是这个套路。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>One <b>subgroup</b> did move: the 121 visitors who had never been to the gallery before…</div>
+          <div class="wc-tr">有一个子组确实动了：那 121 位此前从未到过这座美术馆的人……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scaffolding</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈskæfəldɪŋ/ · 美 /ˈskæfəldɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>（教育学）学习支架</b>，指外部临时提供的提示与结构，帮助学习者完成暂时做不到的事，能力上来后即撤除。<br>常见义：建筑脚手架。<br>搭配：provide scaffolding（提供支架）／instructional scaffolding（教学支架）／fade the scaffolding（逐步撤掉支架）。<br>这个词来自维果茨基的“最近发展区”，是教育心理学的核心比喻：支架不是替你盖楼，是让你够得着。本文用它解释“为什么第一次来的人更需要影片”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…who may need the <b>scaffolding</b> that a regular brings in his own head.</div>
+          <div class="wc-tr">……他们也许正需要一套“支架”，而常客是自带这套支架进门的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">exploratory</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪkˈsplɒrətri/ · 美 /ɪkˈsplɔːrətɔːri/</div>
+          <div class="wc-pos"><b>adj.</b> <b>探索性的</b>，指未写进主假设、从数据中顺带看出的分析，结论只能作为线索。<br>常见义：考察性的（an exploratory trip）。<br>搭配：exploratory analysis（探索性分析）／exploratory rather than confirmatory（探索性而非验证性）。<br>语用提示：在论文里给自己贴上 exploratory，等于主动降低结论的等级——这是学术诚实的一种写法，也是读者判断“这条能不能引用”的红绿灯。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The authors are careful to call this <b>exploratory</b>, which is the right and rather modest word for a result found in a corner of the data.</div>
+          <div class="wc-tr">作者很谨慎地把这称作“探索性”结果——对于一个在数据角落里被发现的结论，这个词用得恰当。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">curator</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kjʊəˈreɪtə/ · 美 /ˈkjʊreɪtər/</div>
+          <div class="wc-pos"><b>n.</b> <b>策展人</b>，负责筹划展览、挑选与布置展品、撰写说明的人。<br>词族：curate（v. 策划展览）→ curation（n. 策展）→ curatorial（adj. 策展的）。<br>搭配：the curator of the exhibition（该展策展人）／curate a show（策划一个展览）。<br>注意：中文常把该词误译成“馆长”，其实馆长是 director；curator 管的是“这场展览讲什么故事”，权力比馆长小、比讲解员大得多。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…offers an answer that <b>curators</b> may find harder to accept than any video.</div>
+          <div class="wc-tr">……给出了一个答案，策展人可能会觉得它比任何影片都更难接受。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ingredient</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪnˈɡriːdiənt/ · 美 /ɪnˈɡriːdiənt/</div>
+          <div class="wc-pos"><b>n.</b> <b>成分、要素</b>；the active ingredient 原为药学用语，指“有效成分”，引申为“真正起作用的那一环”。<br>常见义：（烹饪）配料。<br>搭配：the active ingredient（有效成分）／a key ingredient of success（成功的关键要素）／the missing ingredient（缺的那一味）。<br>本文用它做了一次漂亮的转场：把“博物馆该提供什么”从服务问题改写成配方问题——既然是配方，就可以一味一味地试，一味一味地删。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…if instruction is not the active <b>ingredient</b>, what is?</div>
+          <div class="wc-tr">……如果“指导”不是那个有效成分，那什么是？</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">interpretation</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɪnˌtɜːprɪˈteɪʃn/ · 美 /ɪnˌtɜːrprɪˈteɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>解读、诠释</b>，指对作品、数据或行为给出的意义说明。<br>词族：interpret（v. 解读、口译）→ interpretation（n.）→ interpretive（adj.）。<br>搭配：commit to an interpretation（选定一种解读）／an alternative interpretation（另一种解读）／open to interpretation（可供多种解读）。<br>注意：interpretation 与 translation 都译“翻译”，但前者是“理解后转述”，后者是“逐语转换”；interpret 作动词时“口译”与“解读”两义并存，靠宾语分辨。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it forces a viewer to commit to an <b>interpretation</b>…</div>
+          <div class="wc-tr">……它逼着观看者选定一种解读……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">commit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəˈmɪt/ · 美 /kəˈmɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>明确选定、把自己绑定在某个立场上</b>，此处 commit to an interpretation 意为“认下这一种说法”。<br>常见义：承诺（commit to a plan）；犯（commit a crime）；投入（commit resources）。<br>搭配：commit to a view（选定一种看法）／be committed to（致力于）／commit sth to memory（记牢）。<br>中文难点：commit to 在这里不是“承诺去做”，而是“不再含糊、把话说定”。说话之所以有用，正因为 commit 之后就有了可被反驳的东西。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it forces a viewer to <b>commit</b> to an interpretation, then defend it…</div>
+          <div class="wc-tr">……它逼着观看者选定一种解读，然后为它辩护……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">canvas</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkænvəs/ · 美 /ˈkænvəs/</div>
+          <div class="wc-pos"><b>n.</b> <b>画布；油画（以画布代指整幅作品）</b>。<br>常见义：帆布（a canvas bag）；篷布。<br>搭配：on canvas（画在画布上）／an oil on canvas（一幅布面油画）／the same canvas（同一幅画）。<br>本文用 the same canvas 而非 the same painting，是有意的换词：它把注意力从“画的是什么”挪到“这块布上留下了什么”，正好呼应 read（读）这个动词。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…then defend it to someone who read the same <b>canvas</b> differently.</div>
+          <div class="wc-tr">……然后向一个把同一块画布读成别的样子的人，为它辩护。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">moderate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɒdərət/ · 美 /ˈmɑːdərət/</div>
+          <div class="wc-pos"><b>adj.</b> <b>中等的、不算大也不算小的</b>，用于给效应量或程度定档。<br>常见义：温和的、适度的（a moderate climate）；<b>v.</b> 主持（moderate a discussion）。<br>搭配：moderate effect size（中等效应量）／a moderate rise（温和上涨）／in moderation（适度地）。<br>读法：心理学里效应量 d≈0.2 小、0.5 中、0.8 大，所以说 moderate 其实已经不错——这一点与日常语感里“中等＝一般般”正好相反。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…with <b>moderate</b> effect sizes that any wellbeing researcher would be glad to publish.</div>
+          <div class="wc-tr">……效应量中等——任何一位研究幸福感的人都乐于发表这样的数字。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">awkward</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɔːkwəd/ · 美 /ˈɔːkwərd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>令人不自在的、尴尬的</b>，形容一种说不清的别扭。<br>常见义：笨拙的（an awkward movement）；难对付的（an awkward question）。<br>搭配：an awkward silence（令人不自在的沉默）／feel awkward（觉得别扭）／a faintly awkward one（一种略显微妙的尴尬）。<br>辨析：embarrassed 说的是“人觉得丢脸”，awkward 说的是“场面本身不对劲”——本文说的是场面，所以只能用 awkward。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it is a faintly <b>awkward</b> one.</div>
+          <div class="wc-tr">……而是一种略显微妙的尴尬。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">sell sb a method for</span><span class="zh">向某人兜售……的方法</span></li>
+          <li><span class="en">stand before a painting</span><span class="zh">站在一幅画前</span></li>
+          <li><span class="en">be worth asking whether</span><span class="zh">值得一问的是……是否</span></li>
+          <li><span class="en">beyond what a ticket already buys</span><span class="zh">超出门票本来买到的东西</span></li>
+          <li><span class="en">by time slot</span><span class="zh">按时间段</span></li>
+          <li><span class="en">pass the attention checks</span><span class="zh">通过注意力检验</span></li>
+          <li><span class="en">enter the analysis</span><span class="zh">进入（统计）分析</span></li>
+          <li><span class="en">would be glad to publish</span><span class="zh">乐于发表（形容结果漂亮）</span></li>
+          <li><span class="en">the finding a press office can use</span><span class="zh">公关部门用得上的发现</span></li>
+          <li><span class="en">measurably lift a mood</span><span class="zh">可测量地提振情绪</span></li>
+          <li><span class="en">the comparison that matters</span><span class="zh">真正要紧的那种比较</span></li>
+          <li><span class="en">the picture flattens</span><span class="zh">局面变得没有差别</span></li>
+          <li><span class="en">be not significant</span><span class="zh">（统计上）不显著</span></li>
+          <li><span class="en">beat sth on …</span><span class="zh">在……方面胜过某事物</span></li>
+          <li><span class="en">a result found in a corner of the data</span><span class="zh">在数据角落里找到的结果</span></li>
+          <li><span class="en">be slow to ask</span><span class="zh">迟迟不去问</span></li>
+          <li><span class="en">the active ingredient</span><span class="zh">有效成分、真正起作用的那一环</span></li>
+          <li><span class="en">find sth harder to accept</span><span class="zh">觉得某事更难接受</span></li>
+          <li><span class="en">gains in well-being</span><span class="zh">幸福感的提升</span></li>
+          <li><span class="en">felt connection to others</span><span class="zh">与他人的联结感</span></li>
+          <li><span class="en">do worst of all</span><span class="zh">在三者（或全体）中最差</span></li>
+          <li><span class="en">come on one's own</span><span class="zh">独自前来</span></li>
+          <li><span class="en">commit to an interpretation</span><span class="zh">选定一种解读</span></li>
+          <li><span class="en">treat sb as a pair of eyes</span><span class="zh">把某人当成一双眼睛</span></li>
+          <li><span class="en">put two chairs in front of</span><span class="zh">在……前面摆两把椅子</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：每家美术馆都在卖“看得更慢”的方法——影片、呼吸、卡片；值得问的是它比普通门票多给了什么。</li>
+          <li>设计：国家美术馆十天预注册试验，337 人报名、281 人入组，按时间段随机分成影片组、呼吸组、无干预组。</li>
+          <li>结果一：三组都变好——积极情感升、焦虑降，效应量中等；这是一条真结论，也是公关最爱的一条。</li>
+          <li>结果二：组间比较摊平——交互作用不显著，两段影片在幸福感、美感、观看投入上都没赢过“直接走进去”。</li>
+          <li>例外：121 位首次到访者确实受益更多，但作者自己贴了“探索性”标签——数据角落里的发现，不能当结论用。</li>
+          <li>转场：如果“指导”不是有效成分，那什么是？把问题从服务问题改写成配方问题。</li>
+          <li>第二个实验：曼彻斯特 240 人，独看／静默同看／讨论同看，每幅画十分钟。</li>
+          <li>反转：只有讨论组幸福感显著提升；静默组最差，甚至低于独自前来的人——“一起不说话”根本不算社交。</li>
+          <li>落点：起作用的是“说”，不是“慢”；把观众当眼睛的会继续买影片，当嘴的只需摆两把椅子。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">But the comparison that matters is between the three groups, and there the picture flattens, because the interaction between time and condition was not significant.</div>
+        <div class="row"><b>主干：</b>the comparison is between the three groups（要紧的是三组之间的比较）＋ and the picture flattens（局面摊平了）＋ because 引导原因状语从句。</div>
+        <div class="row"><b>难点：</b>① that matters 是定语从句修饰 the comparison，matters 在这里是动词“要紧”，不是名词“事情”；② is between… 是“存在于……之间”，主语是 comparison 而非具体数字，中文要补成“要紧的是……之间的比较”；③ there 不是“那里”，而是“在这一环节上”，指代前面提到的组间比较；④ flatten 的主语是 the picture（局面、图景），所以它不可能译“压平”；⑤ because 从句里 the interaction between time and condition 是统计术语——“时间×条件”的交互项，若交互不显著，就意味着干预效果不随组别改变，即三段影片白做。</div>
+        <div class="row tr"><b>译文：</b>但真正要紧的，是三个组之间的比较；而在这里，图景就摊平了——时间与条件之间的交互作用并不显著。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">One subgroup did move: the 121 visitors who had never been to the gallery before, and who may need the scaffolding that a regular brings in his own head.</div>
+        <div class="row"><b>主干：</b>One subgroup did move（有一个子组确实动了）＋ 冒号后是同位语，用两组 who 定语从句把 subgroup 说清楚。</div>
+        <div class="row"><b>难点：</b>① did move 是助动词 do 的强调用法，译“确实动了”，不是“做了移动”；② 两个 who 从句并列修饰 the 121 visitors，第二个从句里还套了一个 that 从句修饰 scaffolding——三层嵌套，中文必须拆开说；③ a regular 在此是名词“常客”，不是形容词“规律的”；④ brings in his own head 是“自带在脑子里”，即常客不需要外部提示，自己心里就有一套看画的门道；⑤ 这句的修辞功能是“先给例外、再给限定”，所以后半句故意用了 may（也许），语气一软，结论的边界就出来了。</div>
+        <div class="row tr"><b>译文：</b>有一个子组确实动了：那 121 位此前从未到过这座美术馆的人——他们也许正需要一套“支架”，而常客是自带这套支架进门的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The silent group did worst of all, finishing below the people who came on their own, who at least reported deeper emotional engagement and a better visit.</div>
+        <div class="row"><b>主干：</b>The silent group did worst of all（静默组是全体里最差的）＋ finishing below…（结果排在……之下）＋ 两个 who 从句逐层补充。</div>
+        <div class="row"><b>难点：</b>① did worst of all 中 worst 是副词最高级，do worst 意为“表现最差”，不能译“做得最坏的事”；② finishing below… 是现在分词作结果状语，逻辑主语仍是 the silent group；③ below the people 是空间隐喻，指“分数排在其后”，中文用“低于”比“在……下面”自然；④ who came on their own 修饰 the people，who at least reported… 又修饰同一批人——第二个 who 从句用 at least（至少）表态，暗示“独自来的人也不算好，只是没那么差”；⑤ 整句的力量来自比较链：静默组 < 独看组 < 讨论组，一个句子把三档排完了。</div>
+        <div class="row tr"><b>译文：</b>而静默组是三组里最差的——甚至低于那些独自前来的人；后者至少报告了更深的情绪投入和更好的观展体验。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The likely reason is that talk does work looking cannot: it forces a viewer to commit to an interpretation, then defend it to someone who read the same canvas differently.</div>
+        <div class="row"><b>主干：</b>The likely reason is that…（最可能的原因是……）＋ 冒号后用 it forces… 具体解释那个“work”是什么。</div>
+        <div class="row"><b>难点：</b>① that 引导表语从句；② does work looking cannot 是省略结构，完整为 does work <i>that</i> looking cannot do——work 在此是名词“活、功”，不是动词“工作”，也不宜译“作品”；③ force sb to do 后接两个并列不定式 to commit…, (to) defend…，第二个 to 被省略；④ commit to an interpretation 的 commit 是“选定、认下”，不是“承诺”；⑤ who read the same canvas differently 中 read 是过去式，与 commit 形成“先定、再被反驳”的时序；read a canvas 是艺术评论里的固定说法“读画”，不能译“阅读画布”。</div>
+        <div class="row tr"><b>译文：</b>最可能的原因是：说话做了一件“看”做不到的事——它逼着观看者选定一种解读，然后向一个把同一块画布读成别的样子的人，为它辩护。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A museum that treats its visitors as a pair of eyes will keep buying films; one that treats them as mouths will put two chairs in front of the painting and walk away.</div>
+        <div class="row"><b>主干：</b>A museum … will keep buying films（把观众当眼睛的博物馆会继续买影片）; one … will put two chairs … and walk away（把它当嘴的，只需摆两把椅子就走开）。分号连接两个结构完全对称的分句。</div>
+        <div class="row"><b>难点：</b>① 两个 that 定语从句分别修饰 a museum 与 one，one 是代词，回指 a museum，避免重复；② treat sb as sth 是“把某人当作”，as 后接名词，此处 a pair of eyes 与 mouths 构成借代——眼睛代表“只看不说”，嘴代表“说出来”；③ keep buying 是“继续买下去”，暗示这门生意会自我延续；④ walk away 字面是“走开”，此处指“布展完毕就退场，不必再管”，与前半句“继续投入”形成成本对照；⑤ 全句没有一个评价词，却完成了褒贬，这类“以动作代替判断”的收尾，是英文评论文章最常见也最难学的一招。</div>
+        <div class="row tr"><b>译文：</b>把观众当成一双眼睛的博物馆，会继续买影片；把观众当成一张嘴的博物馆，只会在画前摆两把椅子，然后走开。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章要拆的是一个近十年在全球美术馆里迅速普及的产业：把“看画”变成一套可以教的技术。走进任何一座大馆，你都会被递上一段四分钟的导览影片、一次进馆前的正念呼吸、或者一张写着“请在此画前停留十分钟”的卡片。它们有一个共同的前提——观众不会看，需要被教；也有一个共同的承诺——教了之后，你会更幸福。这个前提听起来无可反驳，正因如此，它很少被真正检验过。</p>
+      <p class="zh-sum">今年 6 月 23 日，《科学报告》刊出了一项由维也纳大学、伦敦金匠学院与国家美术馆合作的预注册随机对照试验，把这个承诺放上了秤。实验在伦敦国家美术馆进行，2022 年 12 月的十天里招募了 337 名观众，最终 281 人通过注意力检验进入分析。观众按到达的时间段被随机分到三组：一组先看四分钟影片，用馆藏克劳德的一幅风景画演示如何放慢、如何注意风格与笔触；一组先看五分半的“正念呼吸”影片，跟着六拍吸、六拍呼；第三组什么都不看，直接进展厅——也就是一张普通门票能买到的全部。三组随后都在同一批画作前自由参观，前后各测一次情绪、焦虑与观展体验。</p>
+      <p class="zh-sum">第一层结果好得可以写进新闻稿：三组都变好了。积极情感显著上升，消极情感与状态焦虑显著下降，效应量在中等区间——用作者的话说，这是任何一位研究幸福感的人都乐于发表的数字。也就是说，“在画中间待上十分钟会让心情变好”这件事，被一次严格的实验确认了。这一条足够支撑全世界所有美术馆的宣传语。</p>
+      <p class="zh-sum">但第二层结果把这份喜悦按住了。真正有意义的比较不是“参观前 vs 参观后”，而是“三个组之间”。统计上，时间与条件的交互作用并不显著——翻译成白话就是：三组的改善幅度没有差别。两段精心制作、由专业团队与艺术科技公司共同设计的影片，没有在幸福感上赢过“什么都不看”；在“画看起来有多美”上没有赢；在“你觉得自己看得有多仔细”上也没有赢。更尴尬的是，那段落力最猛的“审美观看”影片，连它本来要操纵的东西都没操纵成功——看过影片的人并没有报告自己看得更慢、更注意风格。实验室里用平板看复制品的后续实验（33 人）重复了同一个结论。</p>
+      <p class="zh-sum">唯一的例外是 121 位首次到访者：他们从影片中受益更多，消极情绪的下降幅度明显大于对照组。作者的解释是“支架”——第一次进大馆的人不知道眼睛该往哪儿放，一段影片正好提供了临时的结构；而常客是自带这套结构进门的。但作者紧接着就给这个发现贴上了“探索性”的标签，意思是它是从数据的角落里翻出来的，样本小、假阳性风险高，只能当线索，不能当结论。</p>
+      <p class="zh-sum">至此，文章完成了一次漂亮的转身：它没有停留在“影片没用”这个略显无聊的否定上，而是把问题改写了一遍——如果“指导”不是那个有效成分，那有效成分是什么？这个改写是关键，因为它把“博物馆该提供什么服务”变成了“这套配方里到底哪一味在起作用”，而配方是可以一味一味试、一味一味删的。</p>
+      <p class="zh-sum">第二个实验来自曼彻斯特美术馆，2026 年发表于《审美、创造力与艺术心理学》。240 名观众被随机分到三种观看方式：独自看、在一个静默的小组里看、在一个被邀请交谈的小组里看；每人看两幅画，每幅十分钟，全程配有“慢看”提示。三组都变好了一点——这再次印证了第一个实验的结论。但只有讨论组出现了统计上显著的幸福感提升：积极情感更多，与他人的联结感更强，对小组的亲近感更高。</p>
+      <p class="zh-sum">真正扎人的是静默组。它是三组里最差的，甚至低于那些独自前来的人——后者至少报告了更深的情绪投入和更好的观展体验。这个结果之所以反直觉，是因为美术馆界一直把“一群人安静地站在画前”当作社交与沉思的典范画面：共享空间、共享沉默、共享美。数据说，那不是共享，那只是一群人各自被放在同一个房间里。站在一起却不说话，不构成一种社交经验，只构成一种略显微妙的尴尬。</p>
+      <p class="zh-sum">作者给出的机制解释很朴素：说话做了一件“看”做不到的事。它逼着观看者选定一种解读——不能停在“挺好看的”，必须说出“我认为它在讲什么”；然后他还要向一个把同一块画布读成别的样子的人，为这个解读辩护。这一“选定—辩护”的过程，同时调动了注意、记忆与观点采择，也自然产生了被听见、被回应的感觉。而“慢看”只调动了注意一项，其余两项没有出口。</p>
+      <p class="zh-sum">两项研究都有明确的边界：一次只测了参观前后几十分钟，说不出这种效应能持续多久；都在英国完成，参与者都是已经决定花一天去美术馆的人；美术馆本身是世界级的，可能存在天花板效应。作者也承认，操纵检验不够灵敏、统计功效有限，未来的研究该加入眼动与生理指标。但这些限定并不削弱那个最便宜的建议：与其继续投资“如何看”的教程，不如在画前多摆两把椅子。</p>
+      <p class="zh-sum">对写作者而言，这篇文章最值得学的是它处理“否定性结果”的方式。一个“精心设计的干预没有效果”的结论，很容易写成一篇泄气的报道；它却用两次转场把否定变成了发现：第一次，把“无效”转成“那什么有效”；第二次，用第二个实验把“有效”精确到“说话”这一具体动作上。整篇文章因此有了一个可以被记住、也可以被执行的落点——而落点具体到“两把椅子”这种程度，读者才真的会去搬。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. Museums should stop producing guided-viewing videos because they are too expensive to make.<br>B. Two experiments suggest that coaching visitors to look slowly adds little to well-being, and that what actually helps is talking about the work with someone who sees it differently.<br>C. Silent group viewing is the most effective way for museums to promote social connection among visitors.<br>D. First-time visitors benefit far more from gallery visits than regular visitors do.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文主线是“指导无效 → 三组都变好但无差别 → 首次到访者是例外且被标为探索性 → 那什么有效 → 只有讨论组有显著提升 → 落点是‘说’而非‘慢’”，B 覆盖了这条链，且与第 9 段“别再教人慢慢看，给他们一点可以争的东西”完全对应。A 把成本当成理由，原文说的是效果不足，成本只是一句旁白；C 与第 7 段正好相反——静默组是三组里最差的；D 把“探索性例外”升级成主结论，且原文明确说该结果需谨慎解读。</div>
+      <div class="q"><b>2. Why does the author describe the silent group as "a faintly awkward one" rather than a social experience?</b><br>A. Because the visitors in that group did not know one another before the experiment.<br>B. Because standing together in silence produced no measurable benefit and even less than viewing alone, which suggests that shared space without exchange is not the same as being together.<br>C. Because the researchers asked the silent group not to look at the paintings for more than ten minutes.<br>D. Because silent viewing made the participants report higher anxiety than before the visit.<br><br><b>答案：B</b><br>
+        <b>解析：</b>第 7 段先给数据（静默组最差、低于独看者），再用 awkward 一词下判断，B 把“数据 + 判断”两层都还原了。A 无关：是否相识并非研究变量，原文也未提及；C 曲解设计——十分钟是每幅画的观看时长，三组相同；D 与第 3 段矛盾，三组的焦虑都是下降的，差别只在幅度不显著。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>这两个实验都在测“参观结束那一刻”的感受，而博物馆真正关心的是一个月后还有没有留下什么。请你就自己学校的一次参观活动（博物馆、科技馆、校史馆、研学），设计一个能在三周内做完的追踪方案：说明①你在参观当天如何分组，②你在三周后测什么（不能是“还记得吗”这种是／否题），③哪一个可能的混杂因素你这个设计排除不掉。要求 150 字以内，写成别人能照着做的方案，不要写成感想。</div>
+      <div class="q"><b>仿写：</b>本文第 4 段用的是一个“先承认、再抽掉”的转折句：<span class="hl">But the comparison that matters is between the three groups, and there the picture flattens.</span> 它的力量来自三个动作：① 用 the comparison that matters 把读者从“前后对比”拉到“组间对比”，一个定语从句就完成了方法论的纠正；② 用 but 开头，正面接过上一段那个漂亮的结论，而不是回避它；③ 用 the picture flattens 这个视觉比喻代替“没有显著差异”这种术语，让统计结果读起来像一幅画被抹平。仿写时照搬骨架：<i>But the comparison that matters is ______, and there ______.</i> 前半句填“真正该比的那一组对象”，后半句用一个具体动作或画面描述结果——注意后半句不能再出现数字，比喻才是这句的重心。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 引子：美术馆都在卖“看得更慢”的方法</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 设计：281 人三组随机，影片 / 呼吸 / 什么都不给</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 结果一：三组都变好，效应量中等</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 结果二：组间比较摊平，影片一分没多给</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">5 · 例外：首次到访者受益，但只是“探索性”</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">6 · 转场：不是指导，那有效成分是什么？</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 第二实验：独看 / 静默 / 讨论，240 人三组</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">8 · 反转：只有讨论组有效，静默组最差</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：起作用的是“说”，不是“慢”</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：看画确实有效，但“教你怎么看”无效——差别不在速度，在有没有人接话</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">最贵的干预（影片）输给了最便宜的动作（找个说法不同的人）</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、4 段为绿色：两处结果，先肯定“有效”再抽掉“多出来的那部分”</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 5 段虚线、第 8 段红色：一是自我限定的例外，一是全文唯一的反转</text>
+        </svg>
+        <figcaption>结构图解：文章走的是“否定 → 追问 → 更小的肯定”的路子——第 2 段给设计，第 3 段先确认“看画有效”，第 4 段再把“多出来的那部分”抽掉，第 5 段用首次到访者的例外自我限定，第 6 段把问题改写一遍，第 7、8 段用第二个实验给出唯一显著的效果，第 9 段落到“两把椅子”。注意它没有停在“影片没用”，而是把否定推进成了一个可执行的动作，这正是负面结论能写成好文章的关键。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：MacKenzie D. Trupp, Shiqi Yin, Robyn Landau, Katherine Templar Lewis, Aleksandra Igdalova, Corinna Kühnapfel, Giacomo Bignardi, Lawrence Chiles, Joerg Fingerhut, Rebecca Chamberlain, Matthew Pelowski《Evaluating guided viewing strategies to enhance well-being effects of art viewing: a three-arm randomised controlled trial》，Scientific Reports 16:28690（2026-06-23），DOI 10.1038/s41598-026-56034-2，伦敦国家美术馆（337 人报名 / 281 人入组）；Aleksandra Igdalova, Safiyyah Nawaz, Rebecca Chamberlain《A view worth talking about: The influence of social interaction on aesthetic experience and well-being outcomes in the gallery》，Psychology of Aesthetics, Creativity, and the Arts 20(4):889–903（2026），DOI 10.1037/aca0000733，曼彻斯特美术馆（240 人三组）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
