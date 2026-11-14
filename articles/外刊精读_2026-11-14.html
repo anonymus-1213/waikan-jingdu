@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 把灯调暗一半，蛾子只回来两成</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Night &amp; Moths · 人与自然 / 生态与可持续 / 光污染 / 城市治理</div>
+  <h1>把灯调暗一半，蛾子只回来两成</h1>
+  <div class="deck">Two 2026 papers from the Royal Society find that white LED streetlights cut the nighttime activity of 23 moth species by 85 per cent, that amber "insect-friendly" lamps do just as much damage at the same brightness, and that dimming by half recovers only a fifth of what is lost — while a shielded, downward-aimed fixture draws barely four insects for every ten the old sodium lamp drew.</div>
+  <div class="byline"><span><b>来源</b> Proceedings of the Royal Society B 293:20252704（2026）；Journal of the Royal Society Interface 23:20250453（2026）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-14</span><span><b>难度</b> 难</span><span><b>词数</b> 约 500 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-14.jpg" alt="夜色里一盏亮着的路灯，光罩被密密麻麻的飞蛾围住，四周是长长的飞行轨迹（配图）">
+    <figcaption>配图：夜里一盏路灯，光罩被密密麻麻的蛾子围住，四周那些发亮的短线是它们在光圈里反复绕圈留下的轨迹。这是二十年前的样子——如今的灯下常常是空的，而这篇要说明的是，空掉的并不只是这个光圈（图片来源：Farmers' Almanac 实景摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>过去十年，全世界的城市在做同一件事：<b>换灯</b>。高压钠灯换成 LED，理由是电费、寿命和"光更准"。附带的好处也被反复宣讲——LED 指向性强，光不再往天上和树丛里撒，所以对昆虫更"友好"。这句话听上去无懈可击，于是很少有人去量它。</p>
+    <p>今年皇家学会的两份期刊各发了一篇，把这个说法拆开称了重量。第一篇把 <b>843 只野生蛾（23 个种）</b>放在十勒克斯的白光 LED 下，结果它们的<b>活动量平均下降 85%</b>；换成被宣传为"生态选择"的琥珀色灯，同等亮度下<b>一样糟</b>；连人眼看起来完全相同的窄带组合，也没好到哪去。</p>
+    <p>第二篇把镜头拉到城市尺度：三维模型重建埃克塞特的每一盏路灯。结论是个悖论——<b>被照亮的地面面积在缩小</b>，可剩下的那些光，对生物来说<b>正变得更"敌意"</b>。节能与"减害"在这里第一次分了岔。</p>
+    <p>那出路在哪？数据给出的答案有点反直觉：<b>调暗一半，只换回五分之一</b>；而<b>加个遮罩、把光压向路面</b>，招来的虫子只剩原来的四成，一个流明都没少给。也就是说，这是一道<b>配光题</b>，不是一道亮度题——决定夜间生态的，是灯罩的角度，不是灯泡的瓦数。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-14.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.601">Twenty years ago the lamp above a suburban bus stop would be wearing a halo of moths by ten o'clock, and the pavement beneath it would be <b class="kw" data-tip="v. 使散落、铺满（be littered with 满地都是）；常见义 n. 垃圾、杂物">littered</b> with wings by morning.</span> <span class="s" data-t="9.601" data-e="17.224">That scene has quietly gone, and the lamps that replaced it are brighter, cheaper to run and aimed more precisely at the road.</span></span></div>
+      <p class="para-tr">二十年前，郊区公交站上方那盏灯到十点就会戴上一圈蛾子的光环，天亮时灯下的路面铺满翅膀。这个画面悄悄消失了；取而代之的灯更亮、更省电，也更精准地对着路面。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="17.224" data-e="25.868">The obvious reading is that the new lights are gentler on wildlife, which is roughly what the lighting industry has told town councils for a decade.</span> <span class="s" data-t="25.868" data-e="35.564">Two papers in the Royal Society's journals this year suggest something less comfortable: fewer moths die at the lamp because the light has stopped <b class="kw" data-tip="v. 招引、吸引过来（draw insects to a light 把昆虫引来）；常见义“画、拉、拖”">drawing</b> them there at all.</span></span></div>
+      <p class="para-tr">最直接的解释是：新灯对野生动物更温和——这也正是照明行业十年来告诉市政委员会的话。今年发表在皇家学会两份期刊上的两篇论文，给出的答案没那么舒服：死在灯下的蛾子变少了，是因为那道光已经根本不把它们引过来。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="35.564" data-e="51.039">The first, from the Exeter group of E. S. Briolat and Kevin Gaston, tested 843 wild-caught moths of 23 species from three families under white LEDs at ten <b class="kw" data-tip="n. 勒克斯，照度单位；1 lux 大致相当于一支蜡烛在一米外照在桌面上的亮度">lux</b>, roughly what a suburban street throws onto a garden hedge.</span> <span class="s" data-t="51.039" data-e="60.697">Against natural night light, their activity fell by 85 per cent on average, and the <b class="kw" data-tip="n. 抑制、压制（suppression of activity 活动被压抑）；动词 suppress">suppression</b> held across species that behave very differently in the dark.</span></span></div>
+      <p class="para-tr">第一篇来自埃克塞特的 E. S. Briolat 与 Kevin Gaston 团队：他们把 843 只野生蛾（23 个种、3 个科）放在十勒克斯的白光 LED 下——大致相当于一条郊区街道洒在花园树篱上的亮度。与自然夜光相比，它们的活动量平均下降 85%；而这种压制在行为差异极大的物种之间普遍成立。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="60.697" data-e="72.132">It did not take much to produce that: at a single lux, a level many species already meet under nothing more than the glow of a distant town, activity was still significantly reduced.</span> <span class="s" data-t="72.132" data-e="79.842">A few species responded to <b class="kw" data-tip="n. 天空辉光，城市灯光散射到夜空形成的那层淡亮，没有具体灯源也能照亮乡间">skyglow</b> alone, the pale wash of a city that reaches the countryside with no lamp in sight.</span></span></div>
+      <p class="para-tr">做到这一点并不需要多少光：在一勒克斯——许多物种仅仅在远处城镇的天光下就会遇到的亮度——活动量依然显著下降。少数物种甚至只对天空辉光就有反应，那不过是城市漫到乡间的一层淡光，连一盏灯都看不见。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="79.842" data-e="88.171">The finding likely to travel furthest concerns colour, because amber lamps have been sold for a decade as the ecological compromise.</span> <span class="s" data-t="88.171" data-e="99.605">At the same intensity, amber LEDs suppressed activity just as severely as white ones, and so did combinations of <b class="kw" data-tip="adj. 窄带的，指只发出很窄一段波长范围的光；narrowband LED 窄带发光二极管">narrowband</b> LEDs chosen to look <b class="kw" data-tip="adj. 完全相同的（look identical to the human eye 在人眼里看不出区别）；与 similar 不同，identical 是“一模一样”">identical</b> to the human eye.</span></span></div>
+      <p class="para-tr">最可能被广泛引用的发现与颜色有关，因为琥珀色灯十年来一直被当作"生态折中方案"来卖。而在同等亮度下，琥珀色 LED 对活动的压制与白光一样严重；那些经过挑选、在人眼里看起来完全相同的窄带 LED 组合，结果也一样。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="99.605" data-e="109.829">Activity matters more than the body count because of what a moth is doing after dark: finding flowers, finding <b class="kw" data-tip="n. 配偶、（动物的）交配对象；v. 交配（moths mate in flight 蛾子在飞行中交配）">mates</b>, laying eggs, almost all of it in <b class="kw" data-tip="n. 飞行、飞行活动（in flight 在飞行中；flight season 飞行季）；常见义“航班、逃跑”">flight</b>.</span> <span class="s" data-t="109.829" data-e="119.368">A moth that stays put is not merely <b class="kw" data-tip="v. 使免于、使免受（spare sb sth 使某人免于某事）；常见义“抽出（时间）、饶恕”">spared</b> the lamp; it drops out of <b class="kw" data-tip="n. 传粉，花粉由雄蕊传到柱头的过程；pollinator 传粉者">pollination</b>, and out of the diet of the bats and birds that arrange their own nights around it.</span></span></div>
+      <p class="para-tr">活动量之所以比死亡数字更重要，在于蛾子入夜之后在做什么：找花、找配偶、产卵——几乎全部在飞行中完成。一只待在原地的蛾子不只是躲过了那盏灯，它退出了传粉，也退出了那些围绕它安排自己夜晚的蝙蝠与鸟类的食谱。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="119.368" data-e="130.211">The second paper, by Samuel Morrell and colleagues, models every streetlight in Exeter in three dimensions and asks what the city's light does to the plants and animals underneath it.</span> <span class="s" data-t="130.211" data-e="141.592">Its answer is a genuine <b class="kw" data-tip="n. 悖论、看似自相矛盾的现象（a genuine paradox 一个真正的悖论）；形容词 paradoxical">paradox</b>: the area lit at ground level is shrinking as LEDs replace older lamps, yet the light that remains is becoming more <b class="kw" data-tip="adj. 不利的、恶劣的（hostile to life 对生命不利）；常见义“敌对的、怀有敌意的”">hostile</b> to most organisms.</span></span></div>
+      <p class="para-tr">第二篇论文由 Samuel Morrell 与同事完成：他们用三维模型重建了埃克塞特的每一盏路灯，追问这座城市的光对灯下的动植物究竟做了什么。答案是一个真正的悖论：随着 LED 替换旧灯，地面被照亮的面积在缩小，可剩下的那些光，对大多数生物来说正变得更"敌意"。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="141.592" data-e="153.461">Which is why the most useful number in either paper is not 85 per cent but 42.6, the share of insects that a <b class="kw" data-tip="adj. 加装遮罩的、带挡板的（a shielded lamp 带遮光罩的灯）；v. shield 遮挡、保护">shielded</b>, downward-aimed LED drew against the sodium lamp it replaced.</span> <span class="s" data-t="153.461" data-e="162.105"><b class="kw" data-tip="v. 减半、把……砍掉一半（halve the dose 把剂量减半）；源自 half">Halving</b> the brightness <b class="kw" data-tip="v. 找回、挽回（recover a fifth of the loss 挽回五分之一的损失）；常见义“康复、恢复”">recovered</b> only about a fifth of what was lost, so the gain came from where the light was sent rather than from how much of it there was.</span></span></div>
+      <p class="para-tr">这就是为什么两篇论文里最有用的数字不是 85%，而是 42.6%——带遮罩、向下照射的 LED 招来的昆虫，只相当于它所替换的高压钠灯的四成出头。相比之下，把亮度减半只换回了大约五分之一的损失；可见功劳在于光被送向哪里，而不在于有多少光。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="162.105" data-e="171.658">A city that wants its insects back does not need darker streets; it needs <b class="kw" data-tip="n. 灯具、固定安装的照明装置（light fixture 灯具）；常见义“固定物、设施”">fixtures</b> that keep their <b class="kw" data-tip="n. （光的）溢散、外溢（light spill 溢散光，指照到目标之外的光）；常见义 v. 洒出、溢出、摔出">spill</b> on the pavement and off the hedge, the garden and the sky.</span> <span class="s" data-t="171.658" data-e="177.75">The moths were never loyal to the lamp, only to the dark, and we have been charging them for our safety.</span></span></div>
+      <p class="para-tr">一座想把昆虫请回来的城市不需要更黑的街道，它需要的是能把溢散光留在路面上、而不落到树篱、花园和天空里的灯具。蛾子从来没有忠于那盏灯，它们忠于的是黑暗；而我们一直在拿它们付我们自己那份安全的账。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">draw</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /drɔː/ · 美 /drɔː/</div>
+          <div class="wc-pos"><b>v.</b> <b>招引、吸引过来</b>，主语可以是光、气味、声音，宾语常是昆虫、鸟、顾客、观众。<br>常见义：<b>v.</b> 画；<b>v.</b> 拉、拖（draw a curtain）；<b>v.</b> 抽取（draw water）。<br>搭配：draw insects to a light（把昆虫引到灯下）／draw a crowd（招来一群人）／be drawn to（被……吸引）。<br>判断方法：宾语是"活物"且句子里有"朝着某个地方"的意思时，draw 一律译"招引"。它的名词形式 draw 还指"吸引力"（the draw of the city），这与"画"毫无关系，却是外刊里出现频率极高的一义。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…fewer moths die at the lamp because the light has stopped <b>drawing</b> them there at all.</div>
+          <div class="wc-tr">……死在灯下的蛾子变少了，是因为那道光已经根本不把它们引过来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flight</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /flaɪt/ · 美 /flaɪt/</div>
+          <div class="wc-pos"><b>n.</b> <b>飞行、飞行活动</b>，生态学里特指昆虫或鸟类"离地活动"这一段行为。<br>常见义：<b>n.</b> 航班（a direct flight）；<b>n.</b> 逃跑（take flight）。<br>搭配：in flight（在飞行中）／flight season（飞行季，指成虫出现的时段）／flight activity（飞行活动量）／take flight（起飞、逃走）。<br>为什么重要：本文的"活动量"测的就是 flight，因为蛾子找花、找配偶、产卵全在空中完成；一旦不飞，这些事全部停摆。读到 in flight 不要条件反射译"在飞机上"。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…finding flowers, finding mates, laying eggs, almost all of it in <b>flight</b>.</div>
+          <div class="wc-tr">……找花、找配偶、产卵——几乎全部在飞行中完成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">spill</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /spɪl/ · 美 /spɪl/</div>
+          <div class="wc-pos"><b>n.</b> <b>溢散、外溢的光</b>，照明行业的固定术语，指照到目标之外的那部分光。<br>常见义：<b>v.</b> 洒出、溢出（spill the milk）；<b>v.</b> 涌出（crowds spilled into the street）。<br>搭配：light spill（溢散光）／spill over（溢出、波及）／keep spill on the pavement（把溢散光留在路面上）。<br>这一义极其好用：谈光污染时，spill 把"光"写成了一种会漫出来的液体，于是"遮罩"就成了"接住"——一个名词换来了整幅画面，比写 light that goes where it should not 省力得多。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it needs fixtures that keep their <b>spill</b> on the pavement and off the hedge…</div>
+          <div class="wc-tr">……它需要的是能把溢散光留在路面上、而不落到树篱上的灯具……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">litter</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈlɪtə(r)/ · 美 /ˈlɪtər/</div>
+          <div class="wc-pos"><b>v.</b> <b>使散落、铺满</b>（多用被动 be littered with）。<br>常见义：<b>n.</b> 垃圾、杂物；<b>n.</b> 一窝幼崽。<br>搭配：be littered with（满地都是……）／litter bin（垃圾桶）／leave litter behind（留下垃圾）。<br>⚠️ be littered with 有两层语气：写实物时是"到处都是"（The beach was littered with plastic）；写抽象物时带贬义，指"充斥着"（a report littered with errors）。本文用第一层，但画面并不轻松：满地翅膀，是灯下那场屠杀的余证。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the pavement beneath it would be <b>littered</b> with wings by morning.</div>
+          <div class="wc-tr">……天亮时灯下的路面铺满翅膀。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">suppression</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /səˈpreʃn/ · 美 /səˈpreʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>抑制、压制</b>；实验中指"某项行为被显著压低"。<br>动词：suppress（压制、镇压、抑制）；形容词：suppressive。<br>搭配：suppression of activity（活动受抑）／immune suppression（免疫抑制）／suppress a response（压制某种反应）。<br>辨析：suppress 强调"用力按下去"，oppress 是"压迫（人）"，repress 是"压抑（情绪、记忆）"。写实验结论时 suppress 最中性，只说"被压低了"，不说"被消灭"——这个分寸正是本文结论的边界。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the <b>suppression</b> held across species that behave very differently in the dark.</div>
+          <div class="wc-tr">……而这种压制在行为差异极大的物种之间普遍成立。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lux</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /lʌks/ · 美 /lʌks/</div>
+          <div class="wc-pos"><b>n.</b> <b>勒克斯</b>，照度单位，衡量"有多少光落在某个面上"。<br>参照系：满月夜约 0.1–0.3 lux；郊区街道约 5–15 lux；办公室约 300–500 lux；晴天户外可达 100,000 lux。<br>搭配：at ten lux（在十勒克斯下）／a 4-lux road（照度 4 勒克斯的路面）。<br>⚠️ 别与 lumen（流明，光源发出的总量）混：lumen 是"发出多少"，lux 是"落到某处多少"。本文两篇论文之所以能谈"光害"，靠的正是 lux 这个"落到虫身上"的量，而不是瓦数。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…tested 843 wild-caught moths of 23 species from three families under white LEDs at ten <b>lux</b>…</div>
+          <div class="wc-tr">……把 843 只野生蛾（23 个种、3 个科）放在十勒克斯的白光 LED 下……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">skyglow</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˈskaɪɡləʊ/</div>
+          <div class="wc-pos"><b>n.</b> <b>天空辉光</b>，城市灯光经大气散射后在夜空形成的一层淡亮，即使看不见任何一盏灯也存在。<br>构词：sky（天空）+ glow（辉光）。同族：light pollution（光污染）、light dome（光穹）。<br>为什么重要：它是"城市影响乡间"的物证——离城几十公里的农田，照度表上仍有 0.1 lux 的天光。本文用它来说明：光害不需要把灯修到虫身边，灯在城里就够了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A few species responded to <b>skyglow</b> alone, the pale wash of a city that reaches the countryside with no lamp in sight.</div>
+          <div class="wc-tr">少数物种甚至只对天空辉光就有反应，那不过是城市漫到乡间的一层淡光，连一盏灯都看不见。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">narrowband</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˈnærəʊbænd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>窄带的</b>，指只发出很窄一段波长范围的光。<br>构词：narrow（窄）+ band（波段）。反义：broadband（宽带的、宽谱的）。<br>搭配：narrowband LED（窄带发光二极管）／narrowband spectrum（窄带光谱）。<br>技术背景：厂商的常规做法是把几种窄带 LED 混在一起，"骗"过人的三种视锥细胞，让眼睛觉得是白光，而昆虫的感光范围与人不同。本文第 5 段的杀招就在这里——人眼等效，不等于虫眼等效。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and so did combinations of <b>narrowband</b> LEDs chosen to look identical to the human eye.</div>
+          <div class="wc-tr">……那些经过挑选、在人眼里看起来完全相同的窄带 LED 组合，结果也一样。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">identical</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /aɪˈdentɪkl/ · 美 /aɪˈdentɪkl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>完全相同的、一模一样的</b>。<br>搭配：be identical to / with（与……完全相同）／look identical（看起来一样）／identical twins（同卵双胞胎）。<br>辨析：identical 是"完全一致"，没有程度差别，不能说 very identical；similar 才是"相似"，可以说 very similar。本文说 two kinds of light look identical to the human eye，意思是在人眼里<b>毫无差别</b>——正因为毫无差别，后面"对虫却一样糟"才显得刺人。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…combinations of narrowband LEDs chosen to look <b>identical</b> to the human eye.</div>
+          <div class="wc-tr">……那些经过挑选、在人眼里看起来完全相同的窄带 LED 组合。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /meɪt/ · 美 /meɪt/</div>
+          <div class="wc-pos"><b>n.</b> <b>配偶、（动物的）交配对象</b>；<b>v.</b> 交配。<br>常见义：<b>n.</b> 伙伴、老兄（英式口语，mate）。<br>搭配：find a mate（寻找配偶）／mate with（与……交配）／mating season（交配季）。<br>语域提示：写动物行为用 mate 最稳；写人时 mate 在英式英语里是"哥们儿"，在生物学语境里才是"配偶"，两者混用会闹笑话。本文 three 个并列动名词——finding flowers / finding mates / laying eggs——正好是蛾子一夜的三件事。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…finding flowers, finding <b>mates</b>, laying eggs, almost all of it in flight.</div>
+          <div class="wc-tr">……找花、找配偶、产卵——几乎全部在飞行中完成。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">spare</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /speə(r)/ · 美 /sper/</div>
+          <div class="wc-pos"><b>v.</b> <b>使免于、使免受</b>（spare sb sth）。<br>常见义：<b>v.</b> 抽出、腾出（spare ten minutes）；<b>adj.</b> 备用的、多余的（a spare key）。<br>搭配：spare sb the details（省得某人听细节）／be spared the worst（躲过了最坏的情况）／spare no effort（不遗余力）。<br>本句的分寸全在这个词上：not merely spared the lamp——"不只是躲过了那盏灯"。作者先用 spared 给读者一个松口气的错觉，再用分号把它推翻：躲得过灯，躲不过后果。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A moth that stays put is not merely <b>spared</b> the lamp; it drops out of pollination…</div>
+          <div class="wc-tr">一只待在原地的蛾子不只是躲过了那盏灯；它退出了传粉……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pollination</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌpɒləˈneɪʃn/ · 美 /ˌpɑːləˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>传粉</b>，花粉从雄蕊落到柱头的过程。<br>同族：pollinate（v. 给……传粉）、pollinator（n. 传粉者）、self-pollination（自花传粉）。<br>搭配：insect pollination（虫媒传粉）／pollination services（传粉服务，生态经济学用语）。<br>背景：蛾类是夜行传粉者，专门服务夜间开花的植物（如某些烟草、月见草）。它们一停飞，这条夜间通道就断了——这也是本文把"活动量"看得比"死亡数"更重的原因。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it drops out of <b>pollination</b>, and out of the diet of the bats and birds…</div>
+          <div class="wc-tr">……它退出了传粉，也退出了蝙蝠与鸟类的食谱……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">paradox</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈpærədɒks/ · 美 /ˈpærədɑːks/</div>
+          <div class="wc-pos"><b>n.</b> <b>悖论、看似自相矛盾的现象</b>。<br>形容词：paradoxical（悖论的、反常的）；副词：paradoxically（说来矛盾的是）。<br>搭配：a genuine paradox（一个真正的悖论）／the paradox of X（X 的悖论）／paradoxically, …（矛盾的是……）。<br>用法提示：学术写作里 paradox 是很重的判断词，作者说 a genuine paradox，等于在说"这不是我没想清楚，是现实本身拧着"。用之前先确认两件事确实同时成立——本文的两件事是"照亮面积缩小"与"剩余的光更毒"。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Its answer is a genuine <b>paradox</b>: the area lit at ground level is shrinking…</div>
+          <div class="wc-tr">答案是一个真正的悖论：地面被照亮的面积在缩小……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hostile</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈhɒstaɪl/ · 美 /ˈhɑːstl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>不利的、恶劣的</b>（对生命、对某项活动而言）。<br>常见义：敌对的、怀有敌意的（a hostile crowd）。<br>搭配：be hostile to life（不利于生命）／a hostile environment（恶劣环境）／hostility（n. 敌意）。<br>这一义的分寸感很好：把"光"写成有意图的对手，读者立刻明白"被照亮"对生物不是中性的。英文科普常用这套拟人手法——不是修辞装饰，而是把"剂量—反应"翻译成"态度"。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…yet the light that remains is becoming more <b>hostile</b> to most organisms.</div>
+          <div class="wc-tr">……可剩下的那些光，对大多数生物来说正变得更"敌意"。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shielded</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈʃiːldɪd/ · 美 /ˈʃiːldɪd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>加装遮罩的、带挡光板的</b>；动词 shield 遮挡、保护。<br>搭配：a shielded luminaire（带遮罩的灯具）／fully shielded（全遮蔽，即光只朝下）／shield sb from sth（使某人免受……）。<br>为什么是关键词：本文的解决方案全部落在这个形容词上。同一颗 LED，加了遮罩、把光压到路面，招虫量掉到四成；不加遮罩，就是另一回事。一个装备词决定了整篇的政策含义。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the share of insects that a <b>shielded</b>, downward-aimed LED drew against the sodium lamp it replaced.</div>
+          <div class="wc-tr">……带遮罩、向下照射的 LED 所招来的昆虫，只相当于它所替换的高压钠灯的……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">halve</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /hɑːv/ · 美 /hæv/</div>
+          <div class="wc-pos"><b>v.</b> <b>减半、把……砍掉一半</b>。<br>构词：half（一半）+ -ve，同一构词法的还有 prove、solve 一类的 -ve 结尾动词；注意发音时 l 不发音。<br>搭配：halve the dose（把剂量减半）／halve the cost（把成本砍一半）／be halved（被减半）。<br>⚠️ 中国学生常写 reduce by half，语法没错但很笨重；英文报刊几乎一律用 halve，一个词就完成"动作 + 幅度"。同理：double（翻倍）、triple（增至三倍）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Halving</b> the brightness recovered only about a fifth of what was lost…</div>
+          <div class="wc-tr">把亮度减半，只换回了大约五分之一的损失……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recover</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈkʌvə(r)/ · 美 /rɪˈkʌvər/</div>
+          <div class="wc-pos"><b>v.</b> <b>找回、挽回（失去的量）</b>。<br>常见义：康复（recover from illness）；恢复（recover consciousness）。<br>搭配：recover a fifth of the loss（挽回五分之一的损失）／recover costs（收回成本）／recover from（从……中恢复）。<br>本句 recover 的宾语是"损失的一部分"而非"人"，这一用法在数据报道里极常见：recover only a fraction of 就是"只救回一点点"。写成中文时，别译"恢复"，要译"换回／挽回"，否则读者会以为亮度自己好了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Halving the brightness <b>recovered</b> only about a fifth of what was lost…</div>
+          <div class="wc-tr">把亮度减半，只换回了大约五分之一的损失……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fixture</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfɪkstʃə(r)/ · 美 /ˈfɪkstʃər/</div>
+          <div class="wc-pos"><b>n.</b> <b>灯具、固定安装的照明装置</b>（light fixture）。<br>常见义：固定物、固定设施（ bathroom fixtures 卫浴设备）；<b>n.</b> 常驻某处的人或事（a fixture of the team）。<br>搭配：lighting fixture（灯具）／a fixture on the street（街上的固定装置）／fix（v. 固定、安装）。<br>为什么本文非得用它：政策管得住"灯具"，管不住"灯泡"——同一颗 LED 换一个灯罩就是另一回事。作者用 fixtures 而不是 lamps，等于顺手把"该改哪一层"指明了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it needs <b>fixtures</b> that keep their spill on the pavement and off the hedge…</div>
+          <div class="wc-tr">……它需要的是能把溢散光留在路面上、而不落到树篱上的灯具……</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">be wearing a halo of</span><span class="zh">罩着一圈……的光环</span></li>
+          <li><span class="en">be littered with</span><span class="zh">满地都是……</span></li>
+          <li><span class="en">cheaper to run</span><span class="zh">运行（使用）成本更低</span></li>
+          <li><span class="en">be aimed at</span><span class="zh">对准、朝向</span></li>
+          <li><span class="en">be gentler on wildlife</span><span class="zh">对野生动物更温和</span></li>
+          <li><span class="en">tell sb for a decade</span><span class="zh">十年来一直告诉某人</span></li>
+          <li><span class="en">something less comfortable</span><span class="zh">一个没那么舒服的说法</span></li>
+          <li><span class="en">at ten lux</span><span class="zh">在十勒克斯的照度下</span></li>
+          <li><span class="en">throw light onto</span><span class="zh">把光打到……上</span></li>
+          <li><span class="en">fall by 85 per cent</span><span class="zh">下降 85%</span></li>
+          <li><span class="en">hold across species</span><span class="zh">在各个物种间普遍成立</span></li>
+          <li><span class="en">behave very differently</span><span class="zh">行为方式差别很大</span></li>
+          <li><span class="en">it did not take much to produce that</span><span class="zh">造成这一点并不需要多少（代价）</span></li>
+          <li><span class="en">nothing more than</span><span class="zh">仅仅是、不过是</span></li>
+          <li><span class="en">be significantly reduced</span><span class="zh">显著下降</span></li>
+          <li><span class="en">respond to sth alone</span><span class="zh">仅对……就有反应</span></li>
+          <li><span class="en">with no lamp in sight</span><span class="zh">连一盏灯都看不见</span></li>
+          <li><span class="en">the finding likely to travel furthest</span><span class="zh">最可能被广泛引用的发现</span></li>
+          <li><span class="en">at the same intensity</span><span class="zh">在同等强度下</span></li>
+          <li><span class="en">just as severely as</span><span class="zh">和……一样严重</span></li>
+          <li><span class="en">look identical to the human eye</span><span class="zh">在人眼里看起来一模一样</span></li>
+          <li><span class="en">matter more than the body count</span><span class="zh">比死亡数字更重要</span></li>
+          <li><span class="en">stay put</span><span class="zh">待在原地不动</span></li>
+          <li><span class="en">drop out of</span><span class="zh">退出、从……中消失</span></li>
+          <li><span class="en">arrange one's nights around sth</span><span class="zh">围绕某物安排自己的夜晚</span></li>
+          <li><span class="en">model sth in three dimensions</span><span class="zh">对某物做三维建模</span></li>
+          <li><span class="en">at ground level</span><span class="zh">在地面高度上</span></li>
+          <li><span class="en">be hostile to</span><span class="zh">对……不利</span></li>
+          <li><span class="en">the share of insects that</span><span class="zh">……的昆虫占比</span></li>
+          <li><span class="en">recover a fifth of what was lost</span><span class="zh">挽回五分之一的损失</span></li>
+          <li><span class="en">rather than from how much of it there was</span><span class="zh">而不是因为光有多少</span></li>
+          <li><span class="en">keep sth off</span><span class="zh">使某物不落到……上</span></li>
+          <li><span class="en">be loyal to</span><span class="zh">忠于</span></li>
+          <li><span class="en">charge sb for sth</span><span class="zh">让某人为某事付账</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：二十年前路灯到十点就戴一圈蛾子光环，天亮满地翅膀；如今灯更亮更省电，画面却消失了。</li>
+          <li>误读：行业说新灯更"温柔"；真相是蛾子不再被引来——不是少杀，是不来。</li>
+          <li>实验：843 只野蛾、23 种、10 lux 白光 LED，活动量平均降 85%，且跨物种普遍成立。</li>
+          <li>低剂量：1 lux 仍显著压制；少数种连天空辉光都有反应——灯在城里就够。</li>
+          <li>颜色：琥珀色"生态灯"同等亮度下一样糟；人眼等效的窄带组合也不行。</li>
+          <li>机制：不飞＝不找花、不求偶、不产卵；退出传粉，也退出蝙蝠与鸟的食谱。</li>
+          <li>城市尺度：埃克塞特三维模型——被照面积缩小，但剩下的光更"敌意"。</li>
+          <li>出路：调暗一半只换回五分之一；带遮罩、向下照，招虫量只剩 42.6%，亮度不减。</li>
+          <li>落点：这是配光题不是亮度题；决定夜间生态的是灯罩角度，不是瓦数。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Two papers in the Royal Society's journals this year suggest something less comfortable: fewer moths die at the lamp because the light has stopped drawing them there at all.</div>
+        <div class="row"><b>主干：</b>Two papers … suggest something less comfortable（两篇论文给出一个没那么舒服的说法）＋ 冒号后是它的具体内容：fewer moths die（死得少了）＋ because 引导原因从句。</div>
+        <div class="row"><b>难点：</b>① something less comfortable 是"形容词后置"的something 结构，不能写成 a less comfortable thing 那样直白——后置让语气变成"某种说不太出口的东西"；② 冒号在此不是列举，而是"兑现"：前面卖了个关子，后面给出内容，读到冒号必须停半拍；③ at the lamp 是"在灯下"，不是"在灯上"；④ 关键在 drawing them there：draw 不是"画"，是"招引"，there 回指 at the lamp，at all 加强否定（"压根儿就不"）；⑤ 全句的逻辑是"因果倒置"——表面看是死得少（好事），真相是根本不来了（更坏）。这一层反转，中文若不把"根本不"译出来，整段就白读了。</div>
+        <div class="row tr"><b>译文：</b>今年发表在皇家学会两份期刊上的两篇论文，给出的答案没那么舒服：死在灯下的蛾子变少了，是因为那道光已经根本不把它们引过来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Against natural night light, their activity fell by 85 per cent on average, and the suppression held across species that behave very differently in the dark.</div>
+        <div class="row"><b>主干：</b>their activity fell by 85 per cent（活动量下降 85%）＋ and the suppression held（且这种压制成立）＋ across species（在各物种间）＋ that 定语从句修饰 species。</div>
+        <div class="row"><b>难点：</b>① Against 在此不是"反对"，而是"与……相比"（against a benchmark 以某基准对照），这是数据报道里的高频用法；② fell by 85 per cent 是"下降了 85%"（降至 15%），不是"降到 85%"，by 与 to 一字之差；③ the suppression 有定冠词，回指前半句那个 85%，中文要补成"这种压制"；④ held 是 hold 的过去式，此处意为"依然成立、没有松动"，不是"抓住"；⑤ across species that behave very differently 是本文最有力的一笔——不是挑了几个听话的物种，而是覆盖了行为差异极大的类群，说明这不是个别现象。</div>
+        <div class="row tr"><b>译文：</b>与自然夜光相比，它们的活动量平均下降 85%；而这种压制在行为差异极大的物种之间普遍成立。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A moth that stays put is not merely spared the lamp; it drops out of pollination, and out of the diet of the bats and birds that arrange their own nights around it.</div>
+        <div class="row"><b>主干：</b>A moth is not merely spared the lamp（蛾子不只是躲过了灯）＋ 分号后 it drops out of A, and out of B（它退出了 A，也退出了 B）。两个分句主语同为 a moth。</div>
+        <div class="row"><b>难点：</b>① that stays put 是定语从句，stay put 是固定搭配，"留在原地"，put 在这里不是"放置"；② spare sb sth 是双宾语，被动式 be spared sth 意为"被免于某事"；③ not merely 是"不只是"，暗示"远不止于此"，为分号后的转折铺路；④ drops out of 后接两个宾语，第二个省略了动词，只留 out of the diet——这种省略在英文里很常见，中文必须补出"退出"；⑤ arrange their own nights around it 是全句最狠的地方：蝙蝠与鸟把"蛾子几点出现"写进了自己的作息表，蛾子一停飞，这张表就作废了。around 在此是"围绕……来安排"，不是"在……周围"。</div>
+        <div class="row tr"><b>译文：</b>一只待在原地的蛾子不只是躲过了那盏灯；它退出了传粉，也退出了那些围绕它安排自己夜晚的蝙蝠与鸟类的食谱。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Its answer is a genuine paradox: the area lit at ground level is shrinking as LEDs replace older lamps, yet the light that remains is becoming more hostile to most organisms.</div>
+        <div class="row"><b>主干：</b>Its answer is a genuine paradox（它的答案是个真正的悖论）＋ 冒号后由 yet 连接两个对立分句：the area is shrinking（面积在缩小）／the light is becoming more hostile（光变得更敌意）。</div>
+        <div class="row"><b>难点：</b>① Its 回指上一句的 the second paper，不是"城市的"；② the area lit at ground level 中 lit 是过去分词后置定语，等于 the area that is lit，at ground level 限定了"地面高度"这一测量面；③ as LEDs replace older lamps 的 as 是"随着"，引导时间/伴随从句，不是"因为"；④ yet 比 but 更书面，且暗含"尽管前文如此"；⑤ hostile to most organisms 用的是拟人：光当然没有态度，但"更敌意"三个字把剂量—反应关系压缩成了态度判断，这正是英文科普最擅长的一手；⑥ 悖论的实质是：总量在减，单位剂量的伤害在增，于是"节能"与"减害"第一次分了岔。</div>
+        <div class="row tr"><b>译文：</b>答案是一个真正的悖论：随着 LED 替换旧灯，地面被照亮的面积在缩小，可剩下的那些光，对大多数生物来说正变得更"敌意"。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Halving the brightness recovered only about a fifth of what was lost, so the gain came from where the light was sent rather than from how much of it there was.</div>
+        <div class="row"><b>主干：</b>Halving the brightness recovered only about a fifth（把亮度减半只换回约五分之一）＋ so 引导结果：the gain came from A rather than from B（收益来自 A 而非 B）。</div>
+        <div class="row"><b>难点：</b>① Halving 是动名词作主语，谓语用单数 recovered；这类"动作当主语"的写法在数据句里极其常见；② recovered 的宾语是 a fifth of what was lost，即"损失量的五分之一"，不是"恢复了五分之一"，中文必须译"换回／挽回"；③ where the light was sent 与 how much of it there was 是两个名词性从句并列，一个问"往哪儿照"，一个问"照多少"——这一对提问正是全文的政策分水岭；④ rather than 后接介词短语，与前面 from 平行（from A rather than from B），省略会失去对称；⑤ so 在此是"所以"，但语气更像"可见"——作者用它把两个数字推成一个结论，这一推，就是整篇文章的落点。</div>
+        <div class="row tr"><b>译文：</b>把亮度减半，只换回了大约五分之一的损失；可见功劳在于光被送向哪里，而不在于有多少光。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章要拆的是一个几乎没人反对的常识：把高压钠灯换成 LED，对昆虫更友好。理由听上去很硬——LED 省电、寿命长、指向性强，光不再往天上撒，所以"光污染"应该减轻了。这个推论在市政报告里已经流通了十年，以至于很少有人去问：既然更友好了，为什么夏天的路灯下越来越空？</p>
+      <p class="zh-sum">今年皇家学会的两份期刊各发了一篇论文，从两个方向回答了这个问题。第一篇来自埃克塞特大学 E. S. Briolat 与 Kevin Gaston 的团队，做法很朴素：抓野生的蛾子，放到灯下，看它们还飞不飞。样本是 843 只、23 个种、3 个科，光源是十勒克斯的白光 LED——大致相当于一条郊区街道洒在花园树篱上的亮度。对照是自然夜光。结果是活动量平均下降 85%。</p>
+      <p class="zh-sum">这个 85% 需要停一下才读得懂。它不是死亡率，是活动量：蛾子没有大批死掉，它们是不飞了。而"不飞"这件事，对一只蛾子来说等于停业。它入夜后的全部工作——找花、找配偶、产卵——几乎都在飞行中完成。所以第 6 段那句话是全篇的枢纽：一只待在原地的蛾子不只是躲过了那盏灯，它退出了传粉，也退出了那些围绕它安排自己夜晚的蝙蝠与鸟类的食谱。前一句是"它没事"，后一句是"别人有事"。</p>
+      <p class="zh-sum">第二个发现更让人不舒服：造成这一切并不需要多少光。在一勒克斯——许多物种仅仅在远处城镇的天光下就会遇到的亮度——活动量依然显著下降。少数物种甚至只对天空辉光就有反应，那不过是城市漫到乡间的一层淡光，连一盏灯都看不见。换句话说，光害不需要把灯修到虫子身边；灯在城里，就够了。这一条把"乡村路灯"这种局部议题，直接升级成了"城市整体的夜间排放"。</p>
+      <p class="zh-sum">第三个发现最可能被广泛引用，因为它砸的是一个畅销十年的卖点。琥珀色灯一直被当作"生态折中方案"推销：暖黄光看起来柔和，据说昆虫不那么敏感。而在同等亮度下，琥珀色 LED 对活动的压制与白光一样严重；那些经过精心挑选、在人眼里看起来完全相同的窄带 LED 组合，结果也一样。这里的逻辑很锋利——人眼等效，不等于虫眼等效。人只有三种视锥细胞，昆虫的感光范围与人差得远；用"看起来一样"来证明"对虫一样"，是把两套视觉系统当成了一套。</p>
+      <p class="zh-sum">如果说第一篇量的是"一盏灯对一只虫"，第二篇量的就是"一座城对一整片生境"。Samuel Morrell 与同事用三维辐射传输模型重建了埃克塞特的每一盏路灯，逐点计算地面照度、褪黑素抑制程度、植物光合诱导量等指标。结论是一个真正的悖论：随着 LED 替换旧灯，地面被照亮的面积确实在缩小——这正是节能宣传的根据；但剩下的那些光，对大多数生物来说正变得更"敌意"。总量在减，单位剂量的伤害在增，于是"省电"与"减害"这两件事，第一次在数据上分了岔。</p>
+      <p class="zh-sum">那么出路在哪？文章没有停在悲观上，而是给了两个可以对比的数字。一个是 42.6%：带遮罩、向下照射的 LED，招来的昆虫数量只相当于它所替换的高压钠灯的四成出头——也就是说，减了一半还多，而路面亮度一点没少给。另一个是"五分之一"：单纯把亮度减半，只换回了大约五分之一的损失。两个数字并排放，结论就自己长出来了——真正起作用的不是"多少光"，而是"光往哪儿去"。</p>
+      <p class="zh-sum">这也解释了为什么作者在最后一段用的是 fixtures 而不是 lamps。政策管得住灯具，管不住灯泡；同一颗 LED，加不加遮罩、朝上还是朝下，是两套完全不同的生态后果。所以第 9 段那句话既是结论也是判据：一座想把昆虫请回来的城市，不需要更黑的街道，它需要的是能把溢散光留在路面上、而不落到树篱、花园和天空里的灯具。把"亮度"换成"配光"，问题的可解性立刻就变了——因为配光是设计问题，而设计是可以改的。</p>
+      <p class="zh-sum">两项研究都有边界，读的时候要自己标出来。第一，实验在受控条件下做，灯是标准灯，虫是抓来的野虫，真实街景里有树影、有遮挡、有别的光源，剂量会打折。第二，"活动量"是行为指标，不是种群指标：85% 的活动消失，不必然等于 85% 的种群消失，中间还隔着繁殖成功率、幼虫存活、天敌压力好几层。第三，42.6% 那个数字来自一项公民科学项目在郊区道路的实测，它的灯具是特定型号、特定色温，换个城市、换个安装高度，数值会动。</p>
+      <p class="zh-sum">但对高中生读者来说，这篇文章最值得学的不是这些数字，而是它处理"常识"的方式。它挑了一个所有人都在重复的说法（LED 更环保），把它拆成三个可以分别检验的小问题：蛾子还飞吗？多亮才不飞？换颜色有用吗？三个问题都不大，都能做完，做完之后，那句通行十年的常识就站不住了。这是科普写作最结实的一种结构——不是讲一个新发现，而是把一个旧说法放到秤上。</p>
+      <p class="zh-sum">还有一层可以带走的判断：节能与减害不是同一件事，它们甚至可能暂时相反。LED 让每流明的电费降下来，却让每流明的生态代价升上去；于是"总用电量下降"与"总伤害上升"可以同时为真。遇到任何"某技术更环保"的说法，都可以顺着本文的路子问三句：它以什么为单位？它在哪个尺度上测量？它有没有把"人觉得没问题"当成"别的生物也没问题"？这三问，比记住 85% 有用得多。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. LED streetlights are more harmful to insects than the sodium lamps they replaced, so cities should return to older lighting.<br>B. Two 2026 studies show that modern streetlights suppress rather than merely kill nocturnal moths, that colour makes little difference at equal brightness, and that how light is aimed matters more than how much of it there is.<br>C. Amber streetlights are the ecological compromise that lighting companies have claimed for a decade.<br>D. Skyglow from distant cities is the single largest cause of insect decline in the countryside.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是"现象（灯下空了）→ 误读（以为更温柔）→ 实验（活动降 85%，不是死而是不飞）→ 低剂量（1 lux 也够）→ 颜色无效（人眼等效≠虫眼等效）→ 机制（退出传粉与食物链）→ 城市尺度（面积缩小但更敌意）→ 出路（遮罩定向 42.6% vs 调暗 1/5）→ 落点（配光题非亮度题）"，B 覆盖了这条链的两端且用 suppressed rather than merely killed 精确复现了第 2、6 段的转折。A 把"应否回到旧灯"塞进原文，文章从未主张回退，第 8 段恰恰说亮度不必减少；C 是原文第 5 段要推翻的说法，方向相反；D 把 skyglow 夸大成"单一最大原因"，原文只说少数物种对它就有反应。</div>
+      <div class="q"><b>2. Why does the author call the second paper's answer "a genuine paradox"?</b><br>A. Because the model produced results that contradicted the field experiments on moths.<br>B. Because the total area lit at ground level is falling while the light that remains has become more damaging per unit, so less light in sum coexists with more harm per exposure.<br>C. Because Exeter replaced its streetlights faster than any other British city.<br>D. Because LEDs are cheaper to run but more expensive to manufacture.<br><br><b>答案：B</b><br>
+        <b>解析：</b>悖论指的是"总量下降"与"单位伤害上升"同时为真，B 把这两半都写出来了，也正是第 7 段 the area lit … is shrinking … yet the light that remains is becoming more hostile 的字面意思。A 无据：第二篇是模型研究，原文没有说它与第一篇冲突，反而在第 8 段把两者的数字并置。C 无关：埃克塞特只是建模的样板城市，原文未作城市间比较。D 偷换概念：制造成本不是本文议题，"悖论"修饰的是生态后果而非经济账。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的结论落在"配光"而不是"亮度"上：同一颗 LED，加不加遮罩、朝上还是朝下，招虫量相差一倍以上。请你就自己学校或小区的一处室外照明，设计一个一周内能做完的小调查：说明①你测什么（不能用"亮不亮"这种主观判断），②你至少控制住哪一个变量，③你的结果能支持哪一种改造建议、又不能支持哪一种。要求 150 字以内，写成别人能照着做的方案。</div>
+      <div class="q"><b>仿写：</b>本文第 8 段用的是一个"用数字对比代替论证"的句式：<span class="hl">Halving the brightness recovered only about a fifth of what was lost, so the gain came from where the light was sent rather than from how much of it there was.</span> 它的力量来自三个动作：① 用动名词 Halving 作主语，把"政策动作"直接摆到句首，读者先看到"减半"，才看到结果；② recovered only about a fifth 里的 only 是全句的态度词——一个词就把"减半"这个看起来很大的努力缩小成了一点点；③ so 后面的 rather than 把两个"问法"并列（where / how much），于是结论不是"某方案更好"，而是"我们问错了问题"。仿写时照搬骨架：<i>______ only ______, so the gain came from ______ rather than from ______.</i> 前半句填一个"看起来很大方"的动作 + only + 一个"很小的回收"，后半句把一个具体做法与一个笼统做法并置——注意 rather than 两边必须语法平行，否则这句的力气会漏掉一半。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 引子：灯下那圈蛾子，二十年里悄悄空了</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">2 · 误读：行业说新灯更“温柔”，其实是根本不来了</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 实验：843 只蛾 / 23 种 / 10 lux → 活动降 85%</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 低剂量：1 lux 仍压制；天空辉光就够</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 砸卖点：琥珀色一样糟，人眼等效也不行</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">6 · 机制：不飞＝不觅食、不求偶、不传粉</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">7 · 城市尺度：被照面积缩小，剩下的光更“敌意”</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">8 · 出路：调暗只回 1/5；遮罩定向只招 42.6%</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：这是配光题，不是亮度题</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：灯越省电，夜越安静——但安静不等于完好</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">85% 的活动消失，只换来一张更低的电费单</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、4 段绿色：两处结果，一是幅度，一是剂量门槛</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 5、8 段红色：砸掉一个卖点，再给出可执行的替代</text>
+        </svg>
+        <figcaption>结构图解：文章走的是“常识 → 拆解 → 更小的答案”的路子——第 1、2 段先立一个所有人都在复述的说法（LED 更环保），第 3、4 段用两个数字把它拆开（降 85%、1 lux 就够），第 5 段砸掉“换琥珀色”这条退路，第 6 段补上机制（不飞等于停业），第 7 段把尺度升到城市并给出悖论，第 8 段用 42.6% 与“五分之一”的对比指出方向，第 9 段落到“配光不是亮度”。注意全文没有一句“应该禁止路灯”——它把争论从“要不要灯”挪到了“灯罩怎么装”，这正是科普文章能推动现实的那一小步。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：E. S. Briolat, J. A. M. Galloway, E. Cornelius, C. J. Wright, J. Bennie, K. J. Gaston &amp; J. Troscianko《Severe and widespread reductions in nighttime activity of nocturnal moths under modern artificial lighting spectra》，Proceedings of the Royal Society B 293:20252704（2026），埃克塞特大学（843 只蛾 / 23 种 / 3 科）；Samuel Morrell, J. Hatchell, F. Wordingham, J. Bennie, M. J. Inston, J. Shannon, C. W. Rayner &amp; K. J. Gaston《Mitigating the environmental and ecological impacts of evolving city-scale streetlighting installations》，Journal of the Royal Society Interface 23:20250453（2026），埃克塞特三维辐射传输模型｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

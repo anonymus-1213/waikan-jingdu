@@ -641,6 +641,20 @@
     "审美经验",
     "艺术与地方生活"
    ]
+  },
+  {
+   "date": "2026-11-14",
+   "en": "The moths were never loyal to the lamp, only to the dark, and we have been charging them for our safety.",
+   "zh": "蛾子从来没有忠于那盏灯，它们忠于的是黑暗；而我们一直在拿它们付我们自己那份安全的账。",
+   "src": "外刊精读 · 把灯调暗一半，蛾子只回来两成（2026-11-14）",
+   "key": "charging them for",
+   "keyZh": "拿它们付账（charge sb for sth 本义“向某人收取某物的费用”；这里把“生态代价”写成一张寄给蛾子的账单，是全文唯一的道德判断）",
+   "tip": "这句是一条推理链的压缩包。前半句用 never … only … 这对否定—限定结构，把“蛾子爱光”这个流传了两百年的常识一次推翻：它们不是被灯吸引，只是把黑暗当成了路标，而灯恰好亮在路口。真正的刀在 and 之后——charge sb for sth 是“向某人收费”，主语却是 we。于是“我们修灯、我们安全”与“它们付账”被同一个动词缝在了一起，而这个动词自带商业语气，让一句生态评论读起来像一张账单。注意 have been charging 用现在完成进行时：这不是一次结账，是持续了上百年的分期付款。仿写骨架：X were never loyal to ______, only to ______, and we have been charging them for our ______. 填写时让最后那个名词落在“我们自己受益的东西”上（safety / convenience / comfort），句子就会自己长出讽刺。",
+   "tags": [
+    "生态",
+    "光污染",
+    "城市治理"
+   ]
   }
  ]
 }
