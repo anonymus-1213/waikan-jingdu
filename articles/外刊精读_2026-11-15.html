@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 他把电池推进卧室，因为楼下没有插座</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Battery &amp; Blame · 人与社会 / 科技与创新 / 公共政策 / 城市安全</div>
+  <h1>他把电池推进卧室，因为楼下没有插座</h1>
+  <div class="deck">A survey of 637 British delivery riders finds that 52 per cent charge their batteries in living areas and 39 per cent overnight, that one in five rides a converted bicycle, and that 73 per cent already worry about fire — evidence, the authors argue, that unsafe charging is less a character flaw than a rational response to pay-by-the-job work and a missing network of safe places to plug in.</div>
+  <div class="byline"><span><b>来源</b> University College London（土木、环境与地理工程系）&amp; Electrical Safety First，2026-10-19 发布；火灾数据另引英国消防救援统计与纽约消防局（FDNY）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-15</span><span><b>难度</b> 难</span><span><b>词数</b> 约 520 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-15.jpg" alt="公寓楼走廊里停着一辆电动自行车，墙上的插座拉着两根电线接到地上的充电器，充电器摊在门口的脚垫上（配图）">
+    <figcaption>配图：一栋公寓楼的走廊，电动自行车靠墙停着，墙上的插座拉下两根电线，充电器摊在门口的脚垫上，电线横过整条走道。门牌、信箱、消防窗都在原位——唯一不在原位的，是"这辆车该在哪里充电"这个问题（图片来源：实景摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>电梯里、楼道口、小区公告栏上，最近十年反复出现同一张纸：<b>禁止电动车进楼入户充电</b>。这张纸说得没错——锂电池一旦热失控，不是冒烟，是喷火。但纸贴了十年，事故一年比一年多，说明它只解决了一半问题。</p>
+    <p>今年十月，伦敦大学学院与慈善机构"电气安全第一"发布了一份报告，去问那张纸所针对的人：<b>637 名外卖骑手</b>。<b>52% 在起居空间充电，39% 整夜充电，十个人里有一个亲身经历过电池过热</b>。而与此同时，<b>73% 的人说自己担心起火</b>。</p>
+    <p>三个数字摆在一起，指向一个不太好受的结论：他们不是不知道，是<b>没有别的选项</b>。按单计酬，电池没电就是一个班次没了，而一个班次是房租；合租房没有一楼插座，也不许把电线拉过公共走廊。于是"海报上禁止的那一种"，成了他们手上最安全的选项。</p>
+    <p>所以这篇要拆的不是电池技术，而是<b>归责的方向</b>：把一场火灾记在一个人头上，最省钱，也最没用。真正能减少火灾的那几件事——集中充电站、电池储物柜、平台出钱的培训、覆盖网上改装件的认证与召回——一件都不便宜，但它们才是"硬件"。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-15.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.103">The battery is on the floor of a one-room <b class="kw" data-tip="n. 公寓、单元房（英式常用，a one-room flat 单间公寓）；常见义 adj. 平的、扁的">flat</b>, charging overnight beside the front door, because that is the only place a cable reaches a socket.</span> <span class="s" data-t="9.103" data-e="18.145">When a <b class="kw" data-tip="n. （电池）组、电池包，电动车里可拆下来拎走的那一整块；常见义 n. 一包、一捆；v. 打包">pack</b> like that fails, it does not <b class="kw" data-tip="v. 阴燃、无焰地慢慢烧（英式拼写，美式作 smolder）；与 burn 不同，它指看不见火苗的闷烧">smoulder</b>: it <b class="kw" data-tip="v. 喷出、排出（气体或烟），指压力下猛烈释放；常见义 n. 通风口、排气口">vents</b> a jet of flammable gas, ignites, and burns hot enough to take a room in minutes.</span></span></div>
+      <p class="para-tr">那块电池放在一间单间公寓的地板上，靠门口，整夜充电——因为在这个房间里，只有门口那个位置，一根充电线才够得到插座。这样的电池组一旦出事，不会只是闷烧：它会喷出一股可燃气体，起火，温度高到几分钟就能吞掉一个房间。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.145" data-e="28.816">The standard account of these fires is a story about carelessness, and it is told in the <b class="kw" data-tip="n. 命令式、祈使语气（the imperative 指“必须怎么做”的口吻）；adj. 紧迫必要的">imperative</b>: do not charge indoors, do not buy cheap chargers, do not block the exit.</span> <span class="s" data-t="28.816" data-e="40.579">It is a story that <b class="kw" data-tip="v. 把（过错、原因）定位于、归结于某处（locate the fault in sb 把过错安在某人身上）；常见义“确定位置、找到”">locates</b> the fault inside a person and <b class="kw" data-tip="v. 让……付账、把费用记在某人账上（charge sb for sth）；常见义“充电、收费、指控”">charges</b> that person for it, which is why it survives so well: a careless rider needs no new sockets, no new rules, no new money.</span></span></div>
+      <p class="para-tr">对此类火灾的标准解释是一个关于"粗心"的故事，而且用命令句讲出来：不要在家里充电，不要买便宜的充电器，不要堵住出口。这个故事把过错安在一个人身上，并且让这个人为此付账——正因如此它活得很好：一个粗心的骑手，不需要城市多装一个插座、多定一条规矩、多花一分钱。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.579" data-e="56.169">A report published in October by University College London and the charity Electrical Safety First tests that account against the people it describes, surveying 637 delivery riders and collecting 96 photographs of their bikes and chargers.</span> <span class="s" data-t="56.169" data-e="65.868">Its sample is not <b class="kw" data-tip="adj. 偶然的、非主要的（not incidental 不是顺带取的）；常见义“附带的、伴随的”">incidental</b>: food delivery is the primary income for about one in five of Britain's half-million <b class="kw" data-tip="adj./n. 零工的、按单计酬的（gig economy 零工经济；gig worker 零工劳动者）；常见义 n. 现场演出">gig</b> workers, whose tool is the e-bike.</span></span></div>
+      <p class="para-tr">今年十月，伦敦大学学院与慈善机构"电气安全第一"发布的一份报告，拿这套说法去对它描述的那些人做检验：调查了 637 名外卖骑手，收集了 96 张他们车辆与充电器的照片。这个样本并非随手取的：在英国约五十万零工劳动者中，约五分之一把送餐当作主要收入来源，而电动自行车正是这门生计的工具。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="65.868" data-e="77.737">What the riders reported sits badly with that story: 52 per cent charge their batteries in living areas, 39 per cent charge overnight, and one in ten has already felt a pack overheat.</span> <span class="s" data-t="77.737" data-e="86.724">Yet 73 per cent say they are worried about fire, which means most of them are doing something they can name as dangerous, every night, deliberately.</span></span></div>
+      <p class="para-tr">骑手们报告的情况，与"粗心"这个故事很难对上：52% 的人把电池放在起居空间里充电，39% 的人整夜充电，十个人里有一个亲身经历过电池过热。可是 73% 的人说自己担心起火——也就是说，绝大多数人每晚都在明知危险的情况下，仍然这么做。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="86.724" data-e="97.355">The explanation the researchers offer is economic rather than psychological: riders are paid per delivery, so a flat battery is a lost <b class="kw" data-tip="n. 班次、一轮工作（a night shift 夜班）；常见义 v. 移动、转变">shift</b>, and a lost shift is rent.</span> <span class="s" data-t="97.355" data-e="107.632">Riders in shared housing have no ground-floor socket, no locked store and no permission to run a cable through the hallway, so the safest option is the one the posters forbid.</span></span></div>
+      <p class="para-tr">研究者给出的解释是经济学的，而不是心理学的：骑手按单计酬，电池没电就等于少了一个班次，而少一个班次就是房租。住在合租房里的骑手，没有一楼插座、没有带锁的储物间，也不被允许把电线拉过公共走廊——于是"海报上禁止的那一种"，成了他们手上最安全的选项。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="107.632" data-e="121.803">A second finding complicates the picture: about a fifth of those surveyed ride ordinary bicycles fitted with <b class="kw" data-tip="adj. 售后市场的、非原厂配件的（aftermarket kit 改装套件）；after 之后 + market 市场">aftermarket</b> <b class="kw" data-tip="n. 改装、改造（把普通自行车改成电动车）；动词 convert 转换、改造">conversion</b> kits, a category prone to exposed wiring, mismatched chargers and packs that have already been recalled.</span> <span class="s" data-t="121.803" data-e="133.526">No British rule yet requires <b class="kw" data-tip="n. 热失控，电池内部温升自加速、无法靠外部降温打断的连锁反应；thermal 热的 + runaway 失控">thermal-runaway</b> protection in the packs these kits use, and the standard being drafted in Washington would cover new products only, leaving the existing fleet untouched.</span></span></div>
+      <p class="para-tr">第二个发现让画面更复杂：约五分之一的受访者骑的是用售后改装套件改装的普通自行车——这个类别最容易同时出现裸露的电线、不匹配的充电器和已被召回过的电池组。英国目前还没有任何规定要求这类套件所用电池组具备热失控防护；而华盛顿正在起草的强制性标准只管新产品，对已经在路上跑的那批车队几乎不起作用。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="133.526" data-e="146.895">The fires are counted, though not well: fire and rescue services recorded 432 e-bike and e-scooter fires in the United Kingdom in 2025, 228 of them in London alone.</span> <span class="s" data-t="146.895" data-e="161.816">New York keeps a longer, <b class="kw" data-tip="adj. 严峻的、令人不快的（a grimmer series 一串更难看的数字）；原级 grim，比较级 grimmer">grimmer</b> series: 268 fires and 18 deaths in 2023, 277 fires and six deaths in 2024, and a charging pack that killed a man in Queens last June.</span></span></div>
+      <p class="para-tr">火灾是有统计的，只是统计得不好：2025 年，英国消防救援部门记录了 432 起电动自行车与电动滑板车火灾，其中 228 起发生在伦敦。纽约有一条更长、也更难看的曲线：2023 年 268 起火灾、18 人死亡；2024 年 277 起、6 人死亡；今年六月，一块正在充电的电池在皇后区夺走了一名男子的性命。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="161.816" data-e="175.053">The report's recommendations are correspondingly physical: communal charging hubs, battery lockers, training paid for by the platforms, and a certification and recall system that reaches conversions sold online.</span> <span class="s" data-t="175.053" data-e="184.038">Told to choose between a <b class="kw" data-tip="n. 罚款、罚金（a fine of £200 二百英镑罚款）；常见义 adj. 好的、晴朗的、细的">fine</b> and a fire, most riders would choose neither, and the cheapest way to make that possible is to give them somewhere to plug in.</span></span></div>
+      <p class="para-tr">报告的建议因此都落在"硬件"上：社区共享充电站、电池储物柜、由平台出钱购买的培训，以及一套能覆盖网上售出的改装件的认证与召回体系。如果只能在"罚款"和"着火"之间选，多数骑手两个都不想要——而让这件事变得可能，最便宜的办法就是给他们一个可以安全插电的地方。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="184.038" data-e="192.908">That is the <b class="kw" data-tip="n. 重新框定，换一个框架来理解同一件事（reframe 的动名词）；frame 框架 + re- 再">reframing</b> worth carrying away: a city with nowhere to charge a battery has not failed to persuade its riders, it has failed to build.</span> <span class="s" data-t="192.908" data-e="200.079">The pack on the hallway floor is not a character flaw, but the shape of the city folded small enough to fit through a door.</span></span></div>
+      <p class="para-tr">这才是值得带走的那次"重新框定"：一座无处可充电的城市，并不是没能说服它的骑手，而是没能把该建的东西建起来。走廊地板上那块电池不是性格缺陷，它是这座城市被折小、刚好能从一扇门里塞进来的形状。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">charge</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /tʃɑːdʒ/ · 美 /tʃɑːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> <b>让……付账、把费用（或责任）记在某人账上</b>（charge sb for sth；charge sth to sb）。<br>常见义：<b>v.</b> 充电（charge a phone）；<b>v.</b> 收费（charge £5 for it）；<b>v.</b> 指控（be charged with theft）；<b>n.</b> 费用、指控。<br>搭配：charge sb for sth（让某人承担……的费用）／charge it to my account（记在我账上）／who is to be charged?（这账算谁的？）。<br>判断方法：宾语是"人"、且句子在讨论"代价由谁承担"时，charge 一律译"让……付账／把账算在……头上"。本文这一句是全篇的立场所在——它把"归责"写成了一次<b>记账</b>：先找到一个人，再把账单寄给他。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is a story that locates the fault inside a person and <b>charges</b> that person for it…</div>
+          <div class="wc-tr">这个故事把过错安在一个人身上，并且让这个人为此付账……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flat</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /flæt/ · 美 /flæt/</div>
+          <div class="wc-pos"><b>n.</b> <b>公寓、单元房</b>（英式英语，一层楼里的成套住宅）。<br>常见义：<b>adj.</b> 平的、扁的（a flat surface）；<b>adj.</b> （电池）没电的（a flat battery）；<b>adj.</b> 断然的（a flat refusal）。<br>搭配：a one-room flat（单间公寓）／a rented flat（租来的公寓）／share a flat（合租）。<br>⚠️ 本文开头两个 flat 义项其实撞在一起了：the floor of a one-room <b>flat</b>（公寓）与后文的 a <b>flat</b> battery（没电的电池）。同一个词，一个名词一个形容词，读的时候要靠位置分辨——名词前有冠词、后面跟着介词短语，就是"公寓"。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The battery is on the floor of a one-room <b>flat</b>, charging overnight beside the front door…</div>
+          <div class="wc-tr">那块电池放在一间单间公寓的地板上，靠门口整夜充电……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fine</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /faɪn/ · 美 /faɪn/</div>
+          <div class="wc-pos"><b>n.</b> <b>罚款、罚金</b>。<br>常见义：<b>adj.</b> 好的、不错的（fine, thanks）；<b>adj.</b> 晴朗的（fine weather）；<b>adj.</b> 细的（fine dust 细颗粒物）。<br>搭配：a fine of £200（二百英镑罚款）／be fined for sth（因……被罚款）／impose a fine on（对……处以罚款）。<br>为什么这句非用它不可：罚款是"归责"最典型的工具——把系统问题换算成一笔个人支出。作者把它与 fire 并置（choose between a fine and a fire），一个词就把政策的两难压成了一道选择题：要么罚他，要么烧起来，中间那第三条路（给他一个插座）需要花钱，所以最不容易被选中。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Told to choose between a <b>fine</b> and a fire, most riders would choose neither…</div>
+          <div class="wc-tr">如果只能在"罚款"和"着火"之间选，多数骑手两个都不想要……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pack</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /pæk/ · 美 /pæk/</div>
+          <div class="wc-pos"><b>n.</b> <b>（电池）组、电池包</b>，电动车里可整块拆下拎走的那一件。<br>常见义：<b>n.</b> 一包、一盒（a pack of cards）；<b>n.</b> 一群（a pack of wolves）；<b>v.</b> 打包、塞满。<br>搭配：battery pack（电池组）／a pack fails（电池组失效）／cell / module / pack（单体 → 模组 → 整包，电池的三级结构）。<br>术语提示：cell 是最小的单体电芯，pack 是装上车的那一整块；热失控通常从一颗 cell 开始，在 pack 内部蔓延。本文说 a pack like that fails，指的就是"整块"，因为烧起来的是整块，而不只是那颗出问题的电芯。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>When a <b>pack</b> like that fails, it does not smoulder: it vents a jet of flammable gas, ignites…</div>
+          <div class="wc-tr">这样的电池组一旦出事，不会只是闷烧：它会喷出一股可燃气体，起火……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">smoulder</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsməʊldə(r)/ · 美 /ˈsmoʊldər/</div>
+          <div class="wc-pos"><b>v.</b> <b>阴燃、无焰地慢慢烧</b>；美式拼作 smolder。<br>搭配：smouldering fire（阴燃的火）／a smouldering resentment（郁积的怨气，引申义）。<br>为什么这个词在这里是"反衬"：普通人以为电池起火是"先冒烟、再烧起来"，还有时间跑；smoulder 描述的正是那种"看得见、来得及"的火。作者用 not smoulder 一词把它否定掉，后面接的是 vents–ignites–burns，三个动词一个比一个快，节奏本身就是结论：<b>没有给你留时间</b>。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it does not <b>smoulder</b>: it vents a jet of flammable gas, ignites, and burns hot enough to take a room in minutes.</div>
+          <div class="wc-tr">……它不会只是闷烧：它会喷出一股可燃气体，起火，温度高到几分钟就能吞掉一个房间。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">vent</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /vent/ · 美 /vent/</div>
+          <div class="wc-pos"><b>v.</b> <b>喷出、排出（气体、烟、压力）</b>，带"受压后猛烈释放"的意味。<br>常见义：<b>n.</b> 通风口、排气口；<b>v.</b> 发泄（vent one's anger）。<br>搭配：vent gas（喷出气体）／vent into the room（泄进房间）／vent one's frustration（发泄不满）。<br>专业背景：锂电池热失控的第一波致命因素往往不是火焰，而是电池安全阀打开后喷出的可燃电解液蒸气——它在密闭房间里积聚，遇火即成爆燃。所以 vent 在这里不是修辞，是事故机理的第一个环节。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it <b>vents</b> a jet of flammable gas, ignites, and burns hot enough to take a room in minutes.</div>
+          <div class="wc-tr">……它会喷出一股可燃气体，起火，温度高到几分钟就能吞掉一个房间。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">imperative</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪmˈperətɪv/ · 美 /ɪmˈperətɪv/</div>
+          <div class="wc-pos"><b>n.</b> <b>命令式、祈使语气</b>；也指"必须做到的事"。<br><b>adj.</b> 紧迫的、必须的（It is imperative that…）。<br>搭配：in the imperative（用命令句）／a moral imperative（道义上的必须）／it is imperative to do sth。<br>语法提示：英语的祈使句（Do not charge indoors）就是 the imperative。作者说这个故事"用命令句讲"，等于指出它的语法本身就在做一件事——<b>只给指令，不给理由</b>。一个句子的语气，暴露了说话人认为谁该负责。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and it is told in the <b>imperative</b>: do not charge indoors, do not buy cheap chargers…</div>
+          <div class="wc-tr">……而且用命令句讲出来：不要在家里充电，不要买便宜的充电器……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">locate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ləʊˈkeɪt/ · 美 /ˈloʊkeɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>把（过错、原因、责任）定位于、归结于某处</b>。<br>常见义：<b>v.</b> 确定……的位置、找到（locate the leak）；<b>v.</b> 设立于（The firm is located in Lyon）。<br>搭配：locate the fault in sb（把过错归到某人身上）／locate the cause（确定原因）／be located in（位于）。<br>这一义之所以好用，是因为它把"归责"写成了一个空间动作：先划定一个范围，再把原因<b>放进去</b>。范围划得越小（一个人的性格），需要改动的东西就越少——这正是第 2 段那句话的锋利之处。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It is a story that <b>locates</b> the fault inside a person and charges that person for it…</div>
+          <div class="wc-tr">这个故事把过错安在一个人身上，并且让这个人为此付账……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">incidental</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪnsɪˈdentl/ · 美 /ˌɪnsɪˈdentl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>偶然的、非主要的、顺带发生的</b>。<br>同族：incident（n. 事件）、incidentally（adv. 顺便说一句）。<br>搭配：not incidental（不是偶然的、并非无关紧要）／incidental costs（附加费用）／incidental to（伴随……而来的）。<br>用法提示：英语里说 Its sample is not incidental，是"这个样本不是随手凑的"，一句顶一段方法论。它比 important 精确，因为它否定的不是"重要性"，而是"随意性"——样本之所以值得信，是因为它选取的理由，不是因为它大。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Its sample is not <b>incidental</b>: food delivery is the primary income for about one in five…</div>
+          <div class="wc-tr">这个样本并非随手取的：送餐是约五分之一……的主要收入来源。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gig</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɡɪɡ/ · 美 /ɡɪɡ/</div>
+          <div class="wc-pos"><b>n./adj.</b> <b>零工、按单计酬的工作</b>（gig economy 零工经济；gig worker 零工劳动者）。<br>常见义：<b>n.</b> 现场演出（a jazz gig）。<br>搭配：gig economy（零工经济）／gig worker（零工劳动者）／work gigs（接零活）。<br>词源提示：gig 原指乐手的"一场演出"——演完就结账，下一场在哪里不知道。这个词被借去描述外卖、网约车，正因为两者的处境一样：按件结算、没有底薪、工具自理。理解了词源，就理解了本文第 5 段的经济学。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…food delivery is the primary income for about one in five of Britain's half-million <b>gig</b> workers…</div>
+          <div class="wc-tr">……在英国约五十万零工劳动者中，约五分之一把送餐当作主要收入来源……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shift</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ʃɪft/ · 美 /ʃɪft/</div>
+          <div class="wc-pos"><b>n.</b> <b>班次、一轮工作</b>。<br>常见义：<b>v.</b> 移动、挪动（shift the box）；<b>v./n.</b> 转变（a shift in opinion）。<br>搭配：a night shift（夜班）／work a shift（上一个班）／a lost shift（少了一个班次）。<br>本句的分量全在最后三个词：a lost shift is rent。作者用等号把"少跑几单"直接换算成"房租"，中间省略了所有解释——读者自己就完成了那道算术。这类"用等号代替论证"的写法，在写贫富、工时、房租时极其有效，因为它不给读者留"其实没那么严重"的余地。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a flat battery is a lost <b>shift</b>, and a lost shift is rent.</div>
+          <div class="wc-tr">……电池没电就等于少了一个班次，而少一个班次就是房租。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">aftermarket</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˈɑːftəmɑːkɪt/</div>
+          <div class="wc-pos"><b>adj.</b> <b>售后市场的、非原厂配件的</b>，指整车出厂之后另行购买安装的零件。<br>构词：after（在……之后）+ market（市场）。反义：original equipment（原厂件，常缩写 OEM）。<br>搭配：aftermarket kit（改装套件）／aftermarket parts（副厂件）／the aftermarket（售后市场）。<br>为什么是关键词：安全标准通常只约束"出厂时"，而 aftermarket 正好落在标准够不到的那一段。本文第 6 段的两条隐患——裸露的电线与不匹配的充电器——都属于这一类；不是车不好，是<b>车后面那一段</b>没人管。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…about a fifth of those surveyed ride ordinary bicycles fitted with <b>aftermarket</b> conversion kits…</div>
+          <div class="wc-tr">……约五分之一的受访者骑的是装配了售后改装套件的普通自行车……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">thermal runaway</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˈθɜːml ˈrʌnəweɪ/</div>
+          <div class="wc-pos"><b>n.</b> <b>热失控</b>：电池内部温度升高后，副反应放热反过来再推高温度，形成自我加速的连锁反应，直到喷气、起火。<br>构词：thermal（热的）+ runaway（失控的、跑掉的）。<br>搭配：thermal-runaway protection（热失控防护）／trigger thermal runaway（触发热失控）／thermal propagation（热蔓延，指从一个电芯传到整包）。<br>为什么它比"爆炸"更准确：热失控描述的是<b>机制</b>——不是外部点火，而是电池自己把自己烧起来。所以消防上很难"扑灭"，只能降温、隔离、等它烧完；这也解释了为什么预防（标准、认证、充电环境）比救援更重要。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>No British rule yet requires <b>thermal-runaway</b> protection in the packs these kits use…</div>
+          <div class="wc-tr">英国目前还没有任何规定要求这类套件所用电池组具备热失控防护……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conversion</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈvɜːʃn/ · 美 /kənˈvɜːrʒn/</div>
+          <div class="wc-pos"><b>n.</b> <b>改装、改造</b>（把普通自行车改成电动车）；也指"转变、转换"。<br>动词：convert（改造、转换）；形容词：converted（改装过的）。<br>搭配：a conversion kit（改装套件）／convert A into B（把 A 改造成 B）／currency conversion（货币兑换）。<br>语域提示：中文说"改装车"常带贬义，英文的 conversion 是中性的——它只说明"改动过"，是否安全要看用了什么件。本文的分寸正在这里：作者不指责改装，只指出改装件落在监管空白里。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…ordinary bicycles fitted with aftermarket <b>conversion</b> kits…</div>
+          <div class="wc-tr">……装配了售后改装套件的普通自行车……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">grim</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɡrɪm/ · 美 /ɡrɪm/</div>
+          <div class="wc-pos"><b>adj.</b> <b>严峻的、令人不快的、惨淡的</b>；比较级 grimmer。<br>搭配：a grim series（一串难看的数字）／grim reading（读起来让人难受的材料）／the grim truth（残酷的事实）。<br>用法提示：grim 描述的是一种"不带戏剧性、只是难看"的糟——比 terrible 冷静，比 sad 硬。记者写统计数据时爱用它：a grimmer series 意为"这串数字更长，也更不好看"，既没有煽情，也没有回避。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>New York keeps a longer, <b>grimmer</b> series: 268 fires and 18 deaths in 2023…</div>
+          <div class="wc-tr">纽约有一条更长、也更难看的曲线：2023 年 268 起电池火灾、18 人死亡……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reframing</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˌriːˈfreɪmɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>重新框定</b>：不改变事实，只换一个框架去理解同一件事，从而改变"该谁做什么"。<br>构词：re-（再）+ frame（框架）+ -ing。动词 reframe，名词 frame 还可指"（问题的）提法"。<br>搭配：a reframing of the problem（对问题的重新框定）／reframe sth as…（把某事重新表述为……）。<br>为什么本文需要它：前半篇做的全部工作是拆掉"粗心"这个框架，后半篇要立的是"设施"这个框架。事实一个没变（都是那些人、那些电池、那些火灾），变的只是提问方式——从"他为什么不小心"变成"他为什么没有插座"。换框之后，答案的类型就变了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That is the <b>reframing</b> worth carrying away: a city with nowhere to charge a battery has not failed to persuade its riders, it has failed to build.</div>
+          <div class="wc-tr">这才是值得带走的那次"重新框定"：一座无处可充电的城市，并不是没能说服它的骑手，而是没能把该建的东西建起来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hub</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /hʌb/ · 美 /hʌb/</div>
+          <div class="wc-pos"><b>n.</b> <b>枢纽、集中站点</b>（charging hub 集中充电站）。<br>常见义：轮毂（自行车的花鼓）；中心（a hub of activity）。<br>搭配：a charging hub（集中充电站）／a transport hub（交通枢纽）／a hub for sth（……的中心）。<br>为什么用 hub 而不是 station：hub 强调的是"多条线汇到一点"，它暗示了一个<b>网络</b>——骑手不必把电池拎回家，而是骑到街角换、充、走。一个词的选用，就把政策从"建一个点"改成了"织一张网"。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The report's recommendations are correspondingly physical: communal charging <b>hubs</b>, battery lockers…</div>
+          <div class="wc-tr">报告的建议因此都落在"硬件"上：社区共享充电站、电池储物柜……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recall</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈkɔːl/ · 美 /rɪˈkɔːl/</div>
+          <div class="wc-pos"><b>n./v.</b> <b>召回</b>（厂商把有缺陷的产品收回）。<br>常见义：<b>v.</b> 回忆起、想起（I can't recall his name）。<br>搭配：a product recall（产品召回）／recall a batch（召回一批货）／packs that have been recalled（已被召回的电池组）。<br>为什么它在这句里格外刺眼：召回是一种"事后补救"，前提是厂商知道货在哪里、卖给了谁。而改装件大多在网上零散售出，没有序列号可追——于是"已被召回"的电池，仍然在街上跑。这句话把监管的盲区写成了一个完成时。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…mismatched chargers and packs that have already been <b>recalled</b>.</div>
+          <div class="wc-tr">……不匹配的充电器和已被召回过的电池组。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">charge overnight</span><span class="zh">整夜充电</span></li>
+          <li><span class="en">reach a socket</span><span class="zh">够得到插座</span></li>
+          <li><span class="en">a jet of flammable gas</span><span class="zh">一股可燃气体</span></li>
+          <li><span class="en">be hot enough to take a room</span><span class="zh">温度高到足以吞掉一个房间</span></li>
+          <li><span class="en">the standard account of sth</span><span class="zh">关于……的标准说法</span></li>
+          <li><span class="en">be told in the imperative</span><span class="zh">用命令句讲出来</span></li>
+          <li><span class="en">block the exit</span><span class="zh">堵住逃生通道</span></li>
+          <li><span class="en">locate the fault in sb</span><span class="zh">把过错归到某人身上</span></li>
+          <li><span class="en">charge sb for sth</span><span class="zh">让某人为某事付账</span></li>
+          <li><span class="en">test an account against</span><span class="zh">拿一套说法去检验</span></li>
+          <li><span class="en">one in five</span><span class="zh">五分之一</span></li>
+          <li><span class="en">primary income</span><span class="zh">主要收入来源</span></li>
+          <li><span class="en">sit badly with</span><span class="zh">与……格格不入、难以相合</span></li>
+          <li><span class="en">one in ten</span><span class="zh">十分之一</span></li>
+          <li><span class="en">name sth as dangerous</span><span class="zh">说出某事是危险的</span></li>
+          <li><span class="en">be paid per delivery</span><span class="zh">按单计酬</span></li>
+          <li><span class="en">a lost shift</span><span class="zh">少了一个班次</span></li>
+          <li><span class="en">no permission to do sth</span><span class="zh">不被允许做某事</span></li>
+          <li><span class="en">run a cable through</span><span class="zh">把电线拉过……</span></li>
+          <li><span class="en">the safest option available</span><span class="zh">手上最安全的选项</span></li>
+          <li><span class="en">complicate the picture</span><span class="zh">让局面更复杂</span></li>
+          <li><span class="en">be fitted with</span><span class="zh">装配有、装有</span></li>
+          <li><span class="en">exposed wiring</span><span class="zh">裸露的电线</span></li>
+          <li><span class="en">thermal-runaway protection</span><span class="zh">热失控防护</span></li>
+          <li><span class="en">leave sth untouched</span><span class="zh">使……毫发无损、不起作用</span></li>
+          <li><span class="en">fire and rescue services</span><span class="zh">消防救援部门</span></li>
+          <li><span class="en">keep a series</span><span class="zh">记录一串（数据）</span></li>
+          <li><span class="en">paid for by</span><span class="zh">由……出钱</span></li>
+          <li><span class="en">choose between A and B</span><span class="zh">在 A 与 B 之间选择</span></li>
+          <li><span class="en">plug in</span><span class="zh">插上电源</span></li>
+          <li><span class="en">be worth carrying away</span><span class="zh">值得带走（记住）</span></li>
+          <li><span class="en">fail to build</span><span class="zh">没能把（东西）建起来</span></li>
+          <li><span class="en">a character flaw</span><span class="zh">性格缺陷</span></li>
+          <li><span class="en">fold small enough to fit</span><span class="zh">折得足够小、刚好能塞进去</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：单间公寓，电池在门口充电——因为只有门口够得到插座；这类电池一坏不是闷烧，是喷气、起火、几分钟吞掉一屋。</li>
+          <li>标准说法：把火灾讲成"粗心"，用命令句（不要在家里充）；它活得好的原因很实在——不需要新插座、新规矩、新预算。</li>
+          <li>检验：UCL 与"电气安全第一"调查 637 名骑手、收 96 张实拍；样本不偶然——送餐是约五分之一英国零工者的主要收入。</li>
+          <li>反差：52% 在起居空间充、39% 整夜充、1/10 经历过过热；而 73% 明确担心起火——明知危险仍然照做。</li>
+          <li>机制：按单计酬 → 没电＝少一个班次＝房租；合租房无插座、无储物间、不许拉线过走廊 → "禁止的那一种"最安全。</li>
+          <li>第二层：1/5 骑改装车（裸线、杂牌充电器、已召回电池）；英国无强制热失控要求，华盛顿草案只覆盖新产品。</li>
+          <li>计数：2025 年英国 432 起（伦敦 228）；纽约 2023 年 268 起 18 死、2024 年 277 起 6 死、今年 6 月皇后区 1 死。</li>
+          <li>解法：集中充电站、电池柜、平台出钱的培训、能覆盖网购改装件的认证与召回——全是"硬件"，不是口号。</li>
+          <li>落点：不是没说服骑手，是没把东西建起来；走廊地板上的电池不是性格缺陷，是城市被折小的形状。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">The standard account of these fires is a story about carelessness, and it is told in the imperative: do not charge indoors, do not buy cheap chargers, do not block the exit.</div>
+        <div class="row"><b>主干：</b>The standard account is a story about carelessness（标准说法是一个关于粗心的故事）＋ and 并列第二分句 it is told in the imperative（它用命令句讲）＋ 冒号后三个祈使句作例证。</div>
+        <div class="row"><b>难点：</b>① account 在此不是"账户"，而是"说法、叙述"（the standard account of X ＝ 关于 X 的通行解释），与动词 account for（解释）同源；② in the imperative 是语法术语的活用——祈使语气（imperative mood），作者用"语法的名字"来评价这套说法，等于说"它只下指令，不给理由"；③ 冒号后的三句全是 do not 开头的否定祈使句，形式上整齐，语气上居高临下——这种"排比 + 命令"的组合，正是安全宣传的典型腔调；④ 最后一句 do not block the exit 值得单独看：海报从来不说"车不好"，只说"别堵在出口"——真正的风险不在电池本身，而在<b>电池被放进了人逃不出去的地方</b>。</div>
+        <div class="row tr"><b>译文：</b>对此类火灾的标准解释是一个关于"粗心"的故事，而且用命令句讲出来：不要在家里充电，不要买便宜的充电器，不要堵住出口。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A report published in October by University College London and the charity Electrical Safety First tests that account against the people it describes, surveying 637 delivery riders and collecting 96 photographs of their bikes and chargers.</div>
+        <div class="row"><b>主干：</b>A report tests that account against the people（一份报告拿那套说法去检验它描述的那些人）＋ it describes 定语从句修饰 people＋ surveying / collecting 两个现在分词作伴随状语，说明检验的方式。</div>
+        <div class="row"><b>难点：</b>① published in October by … 是过去分词短语后置定语，等于 which was published；② test sth against sth 是固定搭配，"拿……去对照/检验……"，against 在此不是"反对"；③ that account 的 that 是回指前一段的"粗心说"，中文必须补出"那套说法"，否则读成"那个账户"；④ it describes 里的 it 指 report，不是 account——代词连着两个可指代对象，是英文长句最常见的坑；⑤ 两个分词状语把"方法"讲清楚了：问卷（637）＋ 照片（96），一个是"他们怎么说"，一个是"他们实际怎么装"，后者才是这份报告真正的证据。</div>
+        <div class="row tr"><b>译文：</b>今年十月，伦敦大学学院与慈善机构"电气安全第一"发布的一份报告，拿这套说法去对它描述的那些人做检验：调查了 637 名外卖骑手，收集了 96 张他们车辆与充电设备的照片。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Riders in shared housing have no ground-floor socket, no locked store and no permission to run a cable through the hallway, so the safest option is the one the posters forbid.</div>
+        <div class="row"><b>主干：</b>Riders have no A, no B and no C（骑手没有 A、没有 B、也没有 C）＋ so 引导结果：the safest option is the one the posters forbid（最安全的选项正是海报禁止的那一个）。</div>
+        <div class="row"><b>难点：</b>① 三个 no 并列，节奏上像在数条件，一个比一个难以反驳——先是没有插座（物质），再是没有储物间（空间），最后是不被允许（制度），三层掐死了所有合规路径；② ground-floor socket 指一楼/底层的插座，为什么关键：电池重、不能上楼、也不该在卧室充，看似小事，其实是"有没有一个不用进家门就能充电的地方"；③ no permission to run a cable 中 run 不是"跑"，是"铺设（线路）"（run a cable / run a pipe），这是 run 的熟词僻义；④ the one the posters forbid 省略了关系代词（the one that the posters forbid），one 代指 option，全句的讽刺就落在"最安全"与"被禁止"这两个标签的重合上。</div>
+        <div class="row tr"><b>译文：</b>住在合租房里的骑手，没有一楼插座、没有带锁的储物间，也不被允许把电线拉过公共走廊——于是"海报上禁止的那一种"，成了他们手上最安全的选项。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">No British rule yet requires thermal-runaway protection in the packs these kits use, and the standard being drafted in Washington would cover new products only, leaving the existing fleet untouched.</div>
+        <div class="row"><b>主干：</b>No British rule requires protection in the packs（英国没有任何规定要求这类电池组具备防护）＋ and 并列第二分句 the standard would cover new products only（标准只管新产品）＋ leaving 分词作结果状语。</div>
+        <div class="row"><b>难点：</b>① No … yet 是"至今仍没有"，yet 一词把时间压力带进来：不是永远没有，是"还没"；② that these kits use 定语从句修饰 packs，注意它限制的是"这批套件所用的"，而不是"所有"电池组；③ being drafted 是现在分词的被动式（＝ which is being drafted），新闻英语里极常见，中文译"正在起草的"；④ leaving … untouched 的分词结构表示"结果是"；untouched 不是"没被碰过"，而是"没有受到影响、没被覆盖"；⑤ 全句的逻辑是双重落空：本国没规矩，外国的规矩只管新货——两头一夹，<b>已经在路上跑的那批</b>就成了无人区。</div>
+        <div class="row tr"><b>译文：</b>英国目前还没有任何规定要求这类套件所用电池组具备热失控防护；而华盛顿正在起草的强制性标准只管新产品，对已经在路上跑的那批车队几乎不起作用。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The pack on the hallway floor is not a character flaw, but the shape of the city folded small enough to fit through a door.</div>
+        <div class="row"><b>主干：</b>The pack is not A, but B（这块电池不是 A，而是 B）。is 后面接两个表语，not … but … 构成对照。</div>
+        <div class="row"><b>难点：</b>① not A but B 的重心永远在 B：前半句只是拆掉旧框架，后半句才是作者要你带走的判断；② a character flaw 是"性格缺陷"，这个词组把"归责于个人"的整套逻辑压缩成三个词，与前文 charge / locate 一线相承；③ the shape of the city 是全篇最大胆的一次转喻——把城市的结构性缺失说成"形状"，于是抽象的制度问题变成了可以看见、可以量的东西；④ folded small enough to fit through a door 是过去分词短语作定语（＝ which has been folded…），画面是全句的杀伤力所在：城市太大，进不了那扇门，于是它把自己折小，最后以一块电池的形式挤进了卧室。</div>
+        <div class="row tr"><b>译文：</b>走廊地板上那块电池不是性格缺陷，它是这座城市被折小、刚好能从一扇门里塞进来的形状。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章要拆的是一个几乎所有人都在复述的说法：电动车电池起火，是因为有人不小心。这个说法的载体是那些贴在楼道口的海报——不要在家里充电、不要买便宜的充电器、不要把车停在逃生通道上。它说得都对，可它有一个隐藏的前提：<b>你有别的地方可以充</b>。今年十月伦敦大学学院与慈善机构"电气安全第一"发布的报告，做的正是把这个前提掀开来看。</p>
+      <p class="zh-sum">报告的样本选得很准：637 名英国外卖骑手，另附 96 张他们自己拍的车辆与充电设备照片。为什么是这群人？因为在英国约五十万零工劳动者里，约五分之一把送餐当作主要收入来源，而电动自行车就是这门生计的生产工具。换句话说，这些人不是"喜欢把电池拎回家"的普通用户，而是<b>一天也离不开这块电池</b>的人。</p>
+      <p class="zh-sum">他们报告的数字，与"粗心"这个词几乎无法并存。52% 的人在起居空间里充电，39% 整夜充电，十个人里有一个亲身经历过电池过热——那是热失控前最典型的征兆。可同时，73% 的人说自己担心起火。这三个数字摆在一起，说明的不是无知，而是<b>明知故犯</b>：绝大多数人每晚都在做一件他们能准确说出危险在哪的事。</p>
+      <p class="zh-sum">所以研究者给出的解释是经济学的，不是心理学的。骑手按单计酬，电池没电就意味着少了一个班次；而一个班次的价值，作者用三个词就说完了——a lost shift is rent。再往下是居住条件：合租房没有一楼插座、没有带锁的储物间，房东和物业也不允许把电线拉过公共走廊。三条路一条条被堵住之后，"海报上禁止的那一种"就成了他们手上唯一还能用的选项。报告主笔 Nicola Christie 那句话说得直白：许多不安全的行为，是对不公平制度的一种理性回应。</p>
+      <p class="zh-sum">第二层问题在供应链。约五分之一的受访者骑的不是原厂电动车，而是用售后套件把普通自行车改出来的——这个类别的典型配置是裸露的电线、不匹配的充电器、以及已经被召回过的电池组。这里有一个监管的结构性漏洞：安全标准通常只约束"出厂时"，而改装件恰好落在标准够不到的那一段；英国至今没有强制要求这类电池组具备热失控防护，华盛顿正在起草的强制性标准又只管新产品。两头一夹，已经在街上跑的那批车队成了无人区。</p>
+      <p class="zh-sum">火灾本身是有统计的，只是统计得不好。2025 年，英国消防救援部门记录了 432 起电动自行车与电动滑板车火灾，其中 228 起在伦敦。纽约的数字更长也更难看：2023 年 268 起、18 人死亡；2024 年 277 起、6 人死亡；今年 6 月，一块正在充电的电池在皇后区夺走了一名 48 岁男子的性命。这些数字有一个共同的局限——它们只统计"被认定为电池起火"的案例，而认定标准各地不一，所以真实数字很可能更高。</p>
+      <p class="zh-sum">报告的建议因此全部落在"硬件"上：社区集中充电站、电池储物柜、由平台出钱购买的强制培训，以及一套能覆盖网上售出改装件的认证与召回体系。注意这些建议的共同点——它们都不要求骑手"更小心"，而是要求有人<b>花钱、建东西、改规则</b>。作者在第 8 段用了一个很狠的对照：如果只能在"罚款"和"着火"之间选，多数骑手两个都不想要；而让"两个都不要"成为可能，最便宜的办法就是给他们一个可以安全插电的地方。</p>
+      <p class="zh-sum">这也解释了为什么全文最后落在一个"重新框定"上。同一批事实——那些人、那些电池、那些火灾——换一个提问方式，答案的类型就变了。问"他为什么不小心"，答案是教育、罚款、贴海报；问"他为什么没有插座"，答案是电网、租金、城市规划、产品监管。前者便宜，所以流行；后者昂贵，所以被推迟。而火灾不会因为政策便宜就少发生一起。</p>
+      <p class="zh-sum">结尾那句话值得抄下来：一座无处可充电的城市，并不是没能说服它的骑手，而是没能把该建的东西建起来；走廊地板上那块电池不是性格缺陷，而是这座城市被折小、刚好能从一扇门里塞进来的形状。这个比喻之所以成立，是因为它把"结构"写成了一个可以被看见的物体——城市太大，进不了那扇门，于是它把自己折起来，以一块电池的形式挤进了卧室。</p>
+      <p class="zh-sum">对高中生读者来说，这篇文章最值得学的不是电池知识，而是它的<b>论证顺序</b>：先立起一个大家都在用的说法（粗心），再用三个数字让它站不住（52%／39%／73%），然后给出替代解释（按单计酬＋住房条件），补上第二层（供应链与监管空白），最后用"重建框架"收尾。整套动作里没有一句"骑手很可怜"式的抒情，全部靠数字与条件句推进——这正是议论文最结实的一种写法：不给态度，只给结构，让读者自己得出结论。</p>
+      <p class="zh-sum">还有一层可以带走的判断：当我们把某个系统性风险归因于"个人不小心"时，通常意味着有人省下了一笔钱。海报比充电桩便宜，罚款比储物柜便宜，指责比规划便宜。下次再看到"请勿……"的告示，可以先问一句：这条禁令假设我有什么？如果那个"有什么"我并没有，那么这张纸解决的不是问题，只是把问题挪到了看不见的地方。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. Delivery riders are reckless about battery safety because they are poorly educated about fire risk.<br>B. A UCL survey suggests that charging batteries at home is a rational response to pay-by-the-job work and inadequate housing, so the fires are better addressed by charging infrastructure and product rules than by blaming riders.<br>C. Lithium-ion batteries should be banned from e-bikes until a mandatory international standard is agreed.<br>D. New York has suffered more battery fires than Britain because its delivery industry is larger.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是"场景（门口充电）→ 通行说法（粗心，用命令句讲）→ 检验（637 人、96 张照片）→ 数字反差（52%／39%／73%）→ 经济机制（按单计酬＋住房条件）→ 供应链漏洞（改装件与标准空白）→ 火灾计数 → 解法（充电站、电池柜、培训、认证召回）→ 落点（重新框定：不是没说服，是没建）"。B 同时覆盖了"原因判断"与"对策方向"两端。A 与原文第 4 段直接冲突：73% 的人明确担心起火，作者恰恰否认"无知"这一解释。C 过度推论：原文从未主张禁售，第 8 段给的是设施与标准，不是禁令。D 无据：文中没有比较两国行业规模，纽约只是被用来提供一条更长的数据序列。</div>
+      <div class="q"><b>2. Why does the author describe the "carelessness" explanation as one that "survives so well"?</b><br>A. Because it has been tested in several independent surveys and repeatedly confirmed.<br>B. Because it is easy to prove with photographs of unsafe charging setups.<br>C. Because it places the fault in an individual, and therefore demands no new sockets, rules or public spending.<br>D. Because riders themselves are the first to accept it.<br><br><b>答案：C</b><br>
+        <b>解析：</b>原文第 2 段说得明白：a careless rider requires no new sockets, no new rules and no new money——它"活得这么好"不是因为对，而是因为<b>便宜</b>：把责任放在一个人身上，城市就不必动任何资源。C 正是这一句的复述。A 与事实相反：这份报告做的正是检验，而检验的结果与这套说法不符。B 偷换概念：96 张照片是用来记录真实安装状况的证据，恰恰揭示了结构性原因，而不是用来"证明粗心"。D 无据：文中没有说骑手自己接受这套说法，只说 73% 的人担心起火，反而说明他们并不认为自己"没事"。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的核心手法是"换一个提问方式，答案的类型就变了"（从"他为什么不小心"到"他为什么没有插座"）。请你就身边一个被归因于"个人不自觉"的现象（例如乱扔垃圾、抄作业、熬夜刷手机、插队），写一段 150 字以内的分析：①先写出通行的"个人归因"说法；②再提出一个"结构性"的替代提问；③说明这两种提问会分别导向什么不同的解决办法，并指出你更倾向哪一种、为什么。要求至少引用一个可观察的事实（时间、地点、数量），不要只讲道理。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段用的是"否定—肯定"的收束句式：<span class="hl">a city with nowhere to charge a battery has not failed to persuade its riders, it has failed to build.</span> 它的力量来自三个动作：① 先否定一个大家以为的原因（has not failed to persuade），否定得越像真的，后面的转折越有力；② 再用同一个动词 fail 换一个宾语（has failed to build），句子的骨架不动，只换一个词，就把责任从"人"搬到了"设施"；③ 全句没有形容词、没有感叹，语气冷，判断却极重。仿写时照搬骨架：<i>______ has not failed to ______, it has failed to ______.</i> 前半句填一个"大家常怪的那件事"，后半句填一个"真正缺的东西"——注意两个动词必须同形（都用 fail to do），否则对称就断了，句子也就不响了。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 场景：门口充电，因为只有门口够得到插座</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">2 · 通行说法：粗心 → 命令句 → 把账记在个人头上</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 检验：637 名骑手 / 96 张实拍，样本不偶然</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 反差：52% / 39% / 1/10 与 73% 同时成立</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">5 · 机制：按单计酬＋住房条件 → 理性回应</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">6 · 供应链：1/5 改装车，标准只够得到新货</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1c1a17">7 · 计数：英国 432 起（伦敦 228）／纽约两条曲线</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">8 · 解法：充电站 / 电池柜 / 培训 / 认证召回</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">9 · 落点：不是没说服，是没建起来</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：把火灾记在一个人头上，最省钱，也最没用</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">73% 担心起火的人，仍然每晚照做——这说明的不是无知</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、4、8 段绿色：一处方法与两处结果，先证伪再给方案</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 2、6、9 段红色：旧框架、监管空白、新框架</text>
+        </svg>
+        <figcaption>结构图解：文章走的是一条"拆框架—立新框架"的路。第 1 段先给画面（门口充电），第 2 段把通行说法摆上台（粗心，且用命令句讲），第 3、4 段用方法与数字把它证伪（637 人、96 张照片；52%／39% 与 73% 同时成立），第 5 段给出替代解释（按单计酬＋住房条件），第 6 段补上第二层（改装件落在监管空白里），第 7 段把尺子放到城市层面（432 起／纽约两条曲线），第 8 段端出全是"硬件"的解法，第 9 段完成重新框定。注意全文没有一个"骑手很可怜"式的抒情句——它靠条件句与数字推进，把结论留给读者自己完成。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Nicola Christie, Tatianna Rodrigues 等《E-bike delivery batteries: charging and modification practices raise fire, electrical and product safety concerns》，University College London 土木、环境与地理工程系与 Electrical Safety First 联合发布（2026-10-19；637 名骑手问卷、20 次深度访谈、10 次行业与机构访谈、96 张实拍照片）；火灾数据引自英国消防救援部门 2025 年统计与纽约市消防局（FDNY）2023—2024 年记录｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

@@ -655,6 +655,20 @@
     "光污染",
     "城市治理"
    ]
+  },
+  {
+   "date": "2026-11-15",
+   "en": "The pack on the hallway floor is not a character flaw, but the shape of the city folded small enough to fit through a door.",
+   "zh": "走廊地板上那块电池不是性格缺陷，它是这座城市被折小、刚好能从一扇门里塞进来的形状。",
+   "src": "外刊精读 · 他把电池推进卧室，因为楼下没有插座（2026-11-15）",
+   "key": "the shape of the city",
+   "keyZh": "城市的形状（把“制度的结构性缺失”说成可以看见、可以量的形状；shape 这里不是“外形”，而是“被结构决定的样子”）",
+   "tip": "这句是全篇的落点，靠一次“转喻”完成：前半句先拆掉旧框架——not a character flaw，character flaw 三个词就把“归责于个人”的整套逻辑压成了名词；后半句才是作者要你带走的东西，the shape of the city。注意 not A, but B 的重心永远在 B，前半句只是清场。真正的杀伤力在句尾的过去分词短语 folded small enough to fit through a door：城市太大，进不了那扇门，于是它把自己折小，最后以一块电池的形式挤进了卧室——一个几何动作，把“租金、规划、监管”这些抽象词全部变成了可以看见的物体。仿写骨架：X is not a character flaw, but the shape of ______ folded small enough to ______.",
+   "tags": [
+    "科技与创新",
+    "公共政策",
+    "城市安全"
+   ]
   }
  ]
 }
