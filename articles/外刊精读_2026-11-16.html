@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 第一个凹口出现在十八岁，而它从不疼</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Notch &amp; Noise · 人与自我 / 健康与身心 / 青少年听力 / 公共卫生</div>
+  <h1>第一个凹口出现在十八岁，而它从不疼</h1>
+  <div class="deck">A Rotterdam birth cohort that tested 3,347 adolescents twice — at thirteen and again at eighteen — finds that 12.9 per cent had by adulthood an audiometric "notch" of the kind clinicians read as noise damage, and 6.2 per cent a measurable sensorineural loss; that the overall proportion barely moved while the damage deepened; and that the study never measured what any of them actually listened to.</div>
+  <div class="byline"><span><b>来源</b> 鹿特丹伊拉斯谟大学医学中心（Erasmus MC）耳鼻咽喉-头颈外科，Generation R 出生队列；Otolaryngology–Head and Neck Surgery（2025 年 12 月号，DOI 10.1002/ohn.70042）；另引英国 2026-11-10 发表的耳机政策论文及听力学界回应</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-16</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 527 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-16.jpg" alt="地铁车厢里，一个戴包耳式耳机的少年靠着车窗睡着了，耳机还没摘下来（配图）">
+    <figcaption>配图：一趟夜里的地铁车厢，一个少年戴着包耳式耳机，靠着车窗睡了过去，耳机还留在耳朵上。车厢里的噪声、耳机里的音量、以及他睡着之后仍在持续的那一个多小时——这正是听力图上那道凹口开始形成的样子（图片来源：实景摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>有一类损失，是<b>不会疼的</b>。视力下降你会眯眼，牙齿坏了你会酸，而听力损失的第一阶段，什么感觉都没有——它只是让 4000 赫兹附近那一小段声音，悄悄变轻了一点。等你真的察觉“在嘈杂的地方听不清别人说话”，通常已经是十几年之后。</p>
+    <p>所以医生看听力图，看的不是“能不能听见”，而是<b>那条曲线的形状</b>。在 4000 赫兹附近出现一个窄窄的下沉，叫“切迹”（notch）——四十年来，它被读作强声的指纹：耳机、演唱会、游戏耳机、摩托车、鞭炮。</p>
+    <p>去年十二月，《耳鼻咽喉-头颈外科》刊出一项追踪了三千多名荷兰青少年的研究：<b>十八岁时，12.9% 的人有这种“疑似噪声性”的切迹，6.2% 有可测的感音神经性损失</b>。而更值得琢磨的，是那些<b>没有变化</b>的数字。</p>
+    <p>这篇要拆的正是这个“没有变化”：总比例五年几乎不动，损害却在加深；退出研究的人听力更差，所以真实数字可能被低估；而整项研究<b>从头到尾没测过任何一个人的实际暴露量</b>。切迹是一个形状，不是一句自白——这个区别，决定了我们该盯住哪个数字。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-16.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="14.68">What an audiogram shows at eighteen, once thresholds are <b class="kw" data-tip="v. 逐点标绘、把（数值）画成曲线或折线图；常见义 n. （小说、电影的）情节、阴谋，n. 一小块地">plotted</b> frequency by frequency, is often one narrow dip: normal hearing at 500 hertz, normal again at 8,000, and a soft, permanent loss around 4,000.</span> <span class="s" data-t="14.68" data-e="24.235">Clinicians call that shape a <b class="kw" data-tip="n. （听力图上的）切迹、窄凹口，曲线在此处突然下沉一小段；常见义 n. 等级、档次（top-notch 一流的），v. 刻下一道痕">notch</b>, and for forty years they have read it as the fingerprint of loud sound — the mark of hair cells <b class="kw" data-tip="v. 用光、耗尽（spend 的过去分词，此处指毛细胞被一点点消耗掉）；常见义 v. 花费（钱）、度过（时间）">spent</b> without any pain to announce it.</span></span></div>
+      <p class="para-tr">十八岁的听力图，一旦把每个频率的听阈逐点标绘出来，常常只是一道窄窄的下沉：500 赫兹正常，8000 赫兹又正常，而在 4000 附近那一小段，听力已经悄悄少了一截，而且是永久的。医生把这种形状叫“切迹”，四十年来一直把它读作强声的指纹——毛细胞被一点点用光之后留下的记号，而整个过程没有任何疼痛来提醒你。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="24.235" data-e="34.605">The evidence that this shape has become ordinary by the end of secondary school comes from Generation R, a Rotterdam birth cohort that has followed them from birth into adulthood.</span> <span class="s" data-t="34.605" data-e="49.932">Between 2016 and 2019, and again between 2020 and 2024, researchers at Erasmus University Medical Centre brought the same adolescents into soundproof booths for standard <b class="kw" data-tip="n. 纯音测听（用不同频率、不同强度的纯音测出听阈）；audio- 听 + -metry 测量">audiometry</b> at thirteen, then at eighteen.</span></span></div>
+      <p class="para-tr">这种形状到中学毕业时已经相当常见——证据来自“R 代”（Generation R），一项鹿特丹的出生队列研究，把同一批孩子从出生一直跟到成年。2016 至 2019 年，以及 2020 至 2024 年，伊拉斯谟大学医学中心的研究者把这批青少年两次请进隔声室，做标准的纯音测听——一次在十三岁，一次在十八岁。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="49.932" data-e="67.393">Of the 3,347 tested at eighteen, 6.2 per cent met the study's criteria for <b class="kw" data-tip="adj. 感音神经性的：病变在内耳（毛细胞）或听神经，而非外耳、中耳；sensory 感觉 + neural 神经">sensorineural</b> hearing loss, which involves the inner ear or auditory nerve, and 12.9 per cent met the <b class="kw" data-tip="n. 标准、判定条件（criterion 的复数形式，论文中固定用复数）；常见义 准则">criteria</b> for probable noise-induced hearing loss — roughly one in eight.</span> <span class="s" data-t="67.393" data-e="77.724">Probable is a carefully chosen word: it required a notch, or a high-frequency loss, alongside a normal middle ear, which rules out the temporary dullness of a cold.</span></span></div>
+      <p class="para-tr">在十八岁接受测听的 3,347 人中，6.2% 达到了研究中“感音神经性听力损失”的判定标准（病变在内耳或听神经），12.9% 达到了“疑似噪声性听力损失”的标准——大约八个人里有一个。“疑似”这个词用得很谨慎：判定要求既有切迹或高频损失，又要有正常的中耳功能，这就排除了感冒时那种暂时的发闷。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="77.724" data-e="81.474">The more interesting result is what refused to change.</span> <span class="s" data-t="81.474" data-e="98.092">Among the 2,847 tested twice, <b class="kw" data-tip="n. 患病率、（某人群中某状态的）占比；形容词 prevalent 流行的、普遍的">prevalence</b> barely moved between thirteen and eighteen, yet the damage deepened: notches turned up in both ears more often, high-frequency <b class="kw" data-tip="n. 阈值、临界值（hearing threshold 听阈，能听见的最小声音强度）；常见义 门槛、起点">thresholds</b> fell significantly, and those already affected at thirteen got worse.</span></span></div>
+      <p class="para-tr">更有意思的结果，是那个“不肯变”的数字。在两次都做了测听的 2,847 人中，听力损失的比例从十三岁到十八岁几乎没有动；但损害在加深——切迹更常出现在两只耳朵上，高频听阈显著变差，而十三岁就已经受影响的那部分人，到十八岁又退了一步。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="98.092" data-e="106.803">One further detail cuts against the reassuring headline: those who dropped out between the waves had poorer hearing at thirteen than those who stayed.</span> <span class="s" data-t="106.803" data-e="114.711">If those who leave a study are the ones already losing their hearing, then a stable prevalence is partly an <b class="kw" data-tip="n. 假象、人为产物：由研究方法本身（而非真实状况）造成的表象；也拼作 artifact；常见义 手工制品、文物">artefact</b> of who remained.</span></span></div>
+      <p class="para-tr">还有一个细节，正对着这个让人安心的标题切进去：两轮之间退出研究的那批人，十三岁时的听力就比留下来的人更差。如果离开研究的人，恰恰是那些已经在丧失听力的人，那么“比例稳定”这件事，有一部分只是“留下的是谁”造成的假象。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="114.711" data-e="118.053">What the study did not do is measure exposure.</span> <span class="s" data-t="118.053" data-e="128.026">No questionnaire asked how loud the headphones were, how long the gaming sessions ran, or how close the concert speakers were, so the notch is a shape and not a <b class="kw" data-tip="n. 自白、坦白（此处喻指「亲口承认的原因」）；常见义 忏悔（向神父告解）">confession</b>.</span></span></div>
+      <p class="para-tr">这项研究没有做的，是测量暴露。没有任何一份问卷去问：耳机开到了多大声、一局游戏打了多久、演唱会上离音箱站得多近。所以那个切迹只是一个形状，不是一句自白。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="128.026" data-e="137.553">The authors say as much, closing with a call for research on the role of <b class="kw" data-tip="adj. 娱乐性的、闲暇消遣的（recreational noise 娱乐性噪声，区别于职业噪声）；recreate 消遣 + -ional">recreational</b> noise — the honest way to describe a gap that press releases fill in for them.</span> <span class="s" data-t="137.553" data-e="144.788">Coverage announced that headphones were costing a generation its hearing; the paper announced that a shape had become common.</span></span></div>
+      <p class="para-tr">作者自己也这么写：文章结尾呼吁研究娱乐性噪声的作用。这是一处空缺最诚实的说法——而新闻稿通常会替他们把这块补上。关于这篇论文的报道说，耳机正在拿走一代人的听力；论文说的是，一种形状变得常见了。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="144.788" data-e="159.171">The policy argument arrived separately, in Britain, where a peer-reviewed paper published on 10 November urged national guidance on children's headphone use and compared sound exposure to sunlight: long enough and bright enough, and you burn.</span> <span class="s" data-t="159.171" data-e="168.461">A former president of the British Academy of Audiology called the <b class="kw" data-tip="adj. 因果的、涉及因果关系的（causal claim 因果论断）；cause 原因 + -al；⚠️ 别与 casual（随意的、非正式的）混">causal</b> claim <b class="kw" data-tip="adj. 危言耸听的、制造恐慌的（alarm 警报 + -ist）；常见义 n. 危言耸听者">alarmist</b> and asked for more research, while agreeing the guidance itself is thin.</span> <span class="s" data-t="168.461" data-e="177.816">The arithmetic behind it is not in dispute: eight hours at 85 <b class="kw" data-tip="n. 分贝（声压级的单位，每增加 3 dB 声能翻一倍、安全时长减半）；缩写 dB">decibels</b> is roughly a day's budget, and every extra three decibels <b class="kw" data-tip="v. 减半、把……砍掉一半（halve the risk 把风险减半）；half 的动词形式">halves</b> it.</span></span></div>
+      <p class="para-tr">政策层面的争论是另一条线，发生在英国：11 月 10 日发表的一篇同行评议论文，呼吁就儿童使用耳机出台全国性指引，并把声音暴露比作日晒——晒得够久、够烈，就会晒伤。英国听力学学会前主席称这种因果论断“危言耸听”，要求拿出更多研究；不过她也同意，现有指引确实单薄。背后的算术倒没有争议：85 分贝大约可以听八小时，这差不多是一天的额度；每再高 3 分贝，这个额度就减半。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="177.816" data-e="188.329">Hearing is the one sense that fails without a sensation to announce it, and the hair cells it depends on carry no <b class="kw" data-tip="n. 储备、余量（hearing reserve 听觉储备，指超出日常需要的那部分功能）；常见义 v. 预订、保留，n. 自然保护区">reserve</b>: what is spent at eighteen is not replaced at forty.</span> <span class="s" data-t="188.329" data-e="196.974">That is why the number worth acting on is not the notch but the exposure behind it: a volume limit, a break every hour, a test at eighteen.</span> <span class="s" data-t="196.974" data-e="201.776">Damage that arrives without a feeling will not be caught by paying attention.</span></span></div>
+      <p class="para-tr">听力是唯一一种“失效时不先通知你”的感官，而它依赖的毛细胞没有储备——十八岁用掉的那部分，四十岁不会补回来。所以真正值得动手对付的数字，不是那个切迹，而是它背后的暴露量：一个音量上限、每小时一次休息、十八岁那年的一次测听。一种不带来任何感觉的损害，靠“注意一下”是注意不到的。</p>
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">notch</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /nɒtʃ/ · 美 /nɑːtʃ/</div>
+          <div class="wc-pos"><b>n.</b> <b>（听力图上的）切迹、窄凹口</b>：曲线在某一小段频率突然下沉，随后又回升，形状像被刀刻掉一口。<br>常见义：<b>n.</b> 等级、档次（top-notch 一流的；a notch above 高出一档）；<b>n./v.</b> 刻痕、在……上刻一刀。<br>搭配：an audiometric notch（听力图切迹）／a notch at 4 kHz（4000 赫兹处的切迹）／notch up（创下、取得，如 notch up a win）。<br>为什么这个词是全文的关键：它把“听力损失”从一个<b>程度</b>问题变成了一个<b>形状</b>问题。曲线整体还行，但只要在中高频出现这一小口，医生就有理由怀疑噪声。而“怀疑”二字正是后文的裂缝——形状能被看见，原因却看不见。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Clinicians call that shape a <b>notch</b>, and for forty years they have read it as the fingerprint of loud sound…</div>
+          <div class="wc-tr">医生把这种形状叫“切迹”，四十年来一直把它读作强声的指纹……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">spend</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /spend/ · 美 /spend/ · 过去分词 spent</div>
+          <div class="wc-pos"><b>v.</b> <b>用光、耗尽</b>（资源、体力、储备），过去分词 spent 常作形容词“已耗尽的”。<br>常见义：<b>v.</b> 花费（钱）（spend £20 on sth）；<b>v.</b> 度过（时间）（spend a week in Rome）。<br>搭配：spend a fortune on（在……上花一大笔钱）／spent fuel（乏燃料、用过的核燃料）／a spent force（强弩之末、已无影响力的力量）／spent matches（划过的火柴）。<br>判断方法：宾语不是钱也不是时间，而是“某种有限的东西”（体力、燃料、细胞、信用）时，spend 一律译“耗尽”。本文用 spent 而不是 damaged，是刻意的：damaged 说的是“被打坏了”，spent 说的是“被用完了”——毛细胞不可再生，所以它们是<b>一次性资源</b>，用一点少一点。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the mark of hair cells <b>spent</b> without any pain to announce it.</div>
+          <div class="wc-tr">……毛细胞被一点点用光之后留下的记号，而整个过程没有任何疼痛来提醒你。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">plot</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /plɒt/ · 美 /plɑːt/</div>
+          <div class="wc-pos"><b>v.</b> <b>逐点标绘、把（一组数值）画成曲线或散点</b>。<br>常见义：<b>n.</b> （小说、电影的）情节（the plot of a novel）；<b>n.</b> 阴谋（a plot to overthrow）；<b>n.</b> 一小块地（a vegetable plot）。<br>搭配：plot a graph（画一张图）／plot A against B（以 B 为横轴画 A）／plot the data（把数据标出来）。<br>为什么这句非用它不可：听力图的读法不是“看一个数字”，而是“看一条线的形状”。plot 这个动作恰好点明了方法——<b>先逐点标出，形状才浮现</b>。而形状一旦成为证据，读者的注意力就从“我能不能听见”被挪到了“我这条线长得像什么”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What an audiogram shows at eighteen, once thresholds are <b>plotted</b> frequency by frequency, is often one narrow dip…</div>
+          <div class="wc-tr">十八岁的听力图，一旦把每个频率的听阈逐点标绘出来，常常只是一道窄窄的下沉……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">audiometry</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˌɔːdiˈɒmətri/</div>
+          <div class="wc-pos"><b>n.</b> <b>听力测量、纯音测听</b>：用不同频率、不同强度的声音测出人能听见的最小强度，画出听力图。<br>构词：audio-（听）+ -metry（测量）。同族：audiogram（听力图）、audiometer（听力计）、audiologist（听力师）。<br>搭配：pure-tone audiometry（纯音测听）／standard audiometry（标准测听）／conduct audiometry（做测听）。<br>背景提示：标准测听必须在<b>隔声室</b>（soundproof booth）里做，因为环境噪声会抬高听阈，把检出的损失“藏”起来。本文特意写明隔声室与“同一批人两次”，就是在告诉你：这份数据的比较是干净的。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…researchers at Erasmus University Medical Centre brought the same adolescents into soundproof booths for standard <b>audiometry</b>…</div>
+          <div class="wc-tr">……伊拉斯谟大学医学中心的研究者把这批青少年两次请进隔声室，做标准的纯音测听……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> <b>阈值、临界值</b>：此处指听阈，即刚好能听见的那个最小声音强度（单位 dB HL）。<br>常见义：门槛（cross the threshold 跨过门槛）；开端、起点（on the threshold of 即将……之际）。<br>搭配：hearing threshold（听阈）／pain threshold（痛阈）／threshold level（阈值水平）／raise / lower the threshold（提高／降低阈值）。<br>⚠️ 方向别弄反：threshold <b>fall</b>（下降）在听力语境里是坏消息吗？正好相反——听阈数值本身就是“要多响才听得见”，阈值<b>变差</b>意味着要更响。本文用 fell 配合 significantly，中文必须译成“变差／变糟”，不能照字面译“下降”。这类“数值方向与好坏方向相反”的指标（听阈、反应时、误差率）是阅读题的高频陷阱。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…notches turned up in both ears more often, high-frequency <b>thresholds</b> fell significantly…</div>
+          <div class="wc-tr">……切迹更常出现在两只耳朵上，高频听阈显著变差……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sensorineural</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˌsensəriˈnjʊərəl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>感音神经性的</b>：病变位于内耳（毛细胞）或听神经，而非外耳、中耳。<br>构词：sensory（感觉的）+ neural（神经的）。反义：conductive（传导性的，问题在外耳或中耳，多可治）。<br>搭配：sensorineural hearing loss（感音神经性听力损失，常缩写 SNHL）／mixed hearing loss（混合性）。<br>为什么必须区分这两类：传导性损失常常可以手术或用药改善；感音神经性损失一旦发生，<b>毛细胞不会再生</b>，只能靠助听器与人工耳蜗补偿。所以论文把它单列成主要结局——这一句话，决定了后面所有“预防比治疗重要”的推论。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…6.2 per cent met the study's criteria for <b>sensorineural</b> hearing loss, which involves the inner ear or auditory nerve…</div>
+          <div class="wc-tr">……6.2% 达到了研究中“感音神经性听力损失”的判定标准（病变在内耳或听神经）……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">criteria</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kraɪˈtɪəriə/ · 美 /kraɪˈtɪriə/ · 单数 criterion</div>
+          <div class="wc-pos"><b>n.</b> <b>标准、判定条件</b>（criterion 的复数，学术写作中几乎只用复数）。<br>搭配：meet the criteria for（达到……的标准）／diagnostic criteria（诊断标准）／selection criteria（筛选标准）／a set of criteria（一套标准）。<br>⚠️ 语法点：criteria 是复数，谓语用复数（the criteria <b>were</b> met）；单数是 criterion，不要说 "a criteria“。这是高考语法填空与短文改错的常客。<br>阅读提示：全文的分量有一半压在这两个 criteria 上。12.9% 不是”确诊人数“，而是”达到某套判定条件的人数“——<b>换一套标准，这个数字就会变</b>。看到百分比时先找它的定义，是读科研报道最值钱的习惯。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and 12.9 per cent met the <b>criteria</b> for probable noise-induced hearing loss — roughly one in eight.</div>
+          <div class="wc-tr">……12.9% 达到了”疑似噪声性听力损失“的标准——大约八个人里有一个。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prevalence</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈprevələns/ · 美 /ˈprevələns/</div>
+          <div class="wc-pos"><b>n.</b> <b>患病率、（某人群中某种状态的）占比</b>。<br>同族：prevalent（adj. 流行的、普遍的）；prevail（v. 盛行、占优势）。<br>搭配：the prevalence of sth among sb（某病在某人群中的患病率）／a stable prevalence（稳定的患病率）／point prevalence（时点患病率）。<br>⚠️ 与 incidence 的区别：prevalence 是”此刻有多少人处于这个状态“（存量），incidence 是”一段时间里新发多少例“（流量）。本文说 prevalence 五年不变，而损害在加深——正是”存量不变、每人的严重度上升“这种组合，才让”稳定“这两个字变得可疑。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…<b>prevalence</b> barely moved between thirteen and eighteen…</div>
+          <div class="wc-tr">……听力损失的比例从十三岁到十八岁几乎没有动……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">artefact</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɑːtɪfækt/ · 美 /ˈɑːrtɪfækt/ · 也拼作 artifact</div>
+          <div class="wc-pos"><b>n.</b> <b>假象、人为产物</b>：由研究方法本身（而非被研究的真实状况）造成的表象。<br>常见义：手工制品、（考古）人工遗物／文物。<br>搭配：a statistical artefact（统计假象）／an artefact of the method（方法造成的假象）／imaging artefact（影像伪影）。<br>为什么这个词在科研报道里极重要：它是一句很客气的指控——”你看到的那个数字，可能是你自己造出来的“。本文用它不是为了否定这项研究，恰恰相反：作者<b>主动</b>指出自己的数据里有一个 artefact，这种自我拆台在流行病学里反而是可信度的标志。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…then a stable prevalence is partly an <b>artefact</b> of who remained.</div>
+          <div class="wc-tr">……那么”比例稳定“这件事，有一部分只是”留下的是谁“造成的假象。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">confession</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈfeʃn/ · 美 /kənˈfeʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>自白、坦白</b>：此处喻指”亲口说出自己做过什么“。<br>常见义：忏悔（向神父告解）；承认（a confession of guilt）。<br>同族：confess（v. 承认、坦白）；confessed（adj. 自己承认的）。<br>搭配：make a confession（作出供述）／a full confession（彻底坦白）／confession of faith（信仰告白）。<br>为什么是这句的中心词：一个形状可以被<b>读成</b>证据，但它不会<b>开口</b>。not a confession 五个词就把整篇的方法论说完了——证据指向某个方向，却始终没有署名。这也是科学写作里最值得学的修辞：用一句极短的话，给前面所有数据划一条边界。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…so the notch is a shape and not a <b>confession</b>.</div>
+          <div class="wc-tr">……所以那个切迹只是一个形状，不是一句自白。</div>
+        </div>
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">measure</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈmeʒə(r)/ · 美 /ˈmeʒər/</div>
+          <div class="wc-pos"><b>v.</b> <b>测量、量出</b>；<b>n.</b> 措施、办法；<b>a measure of</b> 一定程度上的……<br>注意句法：What the study did not do is <b>measure</b> exposure. 这是“主语＋be＋动词原形”的强调结构——主语从句先把“没做的事”拎出来，be 后面用不带 to 的不定式补上答案。<br>词性辨析：作动词是“量”（measure hearing 测听力）；作名词 measures 在政策语境里几乎总指“措施”（safety measures 安全措施），与“测量”无关。同一篇文章里两种词性都会出现，靠搭配而不是靠词形判断。<br>为什么这句是全文的转折点：前面七段都在谈“测出了什么”，这一句谈“没测什么”。一个队列把听力测了两遍，却没测过任何人的暴露量——于是所有因果推断都停在这里。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What the study did not do is <b>measure</b> exposure.</div>
+          <div class="wc-tr">这项研究没有做的，是测量暴露量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recreational</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌrekriˈeɪʃənl/ · 美 /ˌrekriˈeɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>娱乐性的、闲暇消遣的</b>。<br>构词：recreation（消遣、娱乐；re- 再 + create 创造，本义”恢复精力“）+ -al。<br>搭配：recreational noise（娱乐性噪声，与 occupational noise 职业噪声相对）／recreational drugs（消遣性药物）／recreational facilities（休闲设施）／for recreational purposes（供娱乐之用）。<br>为什么这个形容词限定了整篇文章的适用范围：职业噪声有雇主、有标准、有赔偿；娱乐性噪声什么都没有——没有责任人，没有监测，也没有人替你记录分贝。同一个听力损失，被贴上两个不同的形容词，就落到两套完全不同的制度里去。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…closing with a call for research on the role of <b>recreational</b> noise…</div>
+          <div class="wc-tr">……文章结尾呼吁研究娱乐性噪声的作用……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">alarmist</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈlɑːmɪst/ · 美 /əˈlɑːrmɪst/</div>
+          <div class="wc-pos"><b>adj./n.</b> <b>危言耸听的（人）、制造恐慌的（人）</b>。<br>构词：alarm（警报、惊恐）+ -ist（表人或倾向）。同族：alarmism（n. 危言耸听）。<br>搭配：alarmist claims（危言耸听的说法）／dismiss sth as alarmist（斥之为危言耸听）／climate alarmism（气候恐慌论）。<br>用法提示：这是一个”立场词“而不是”事实词“——说别人 alarmist，等于承认对方举出的数字可能是真的，但认为其推论走得太远。本文第 8 段用它，是为了让读者看见争论的<b>真实层次</b>：吵的不是”有没有凹口“，而是”凹口能不能归因于耳机“。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A former president of the British Academy of Audiology called the causal claim <b>alarmist</b> and asked for more research…</div>
+          <div class="wc-tr">英国听力学学会前主席称这种因果论断”危言耸听“，要求拿出更多研究……</div>
+        </div>
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">roughly</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈrʌfli/ · 美 /ˈrʌfli/</div>
+          <div class="wc-pos"><b>adv.</b> <b>大约、粗略地</b>（＝approximately，学术写作里最常用的模糊限定词）；另义“粗暴地、粗糙地”（treat sb roughly 粗暴对待某人）。<br>用法要点：roughly 修饰数字时不表示“不确定到可以忽略”，而是明确告诉读者“这是估算，别当精确值引用”。科普写作里它是诚实的标记：roughly one in eight 比 one in eight 更准确，因为 12.9% 并不是精确的八分之一。<br>同族词：rough（adj. 粗略的、粗糙的）、roughness（n.）。比较：about / around 更口语，approximately 更正式，roughly 居中且最常用于“数量＋换算”。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…12.9 per cent met the criteria for probable noise-induced hearing loss — <b>roughly</b> one in eight.</div>
+          <div class="wc-tr">……12.9% 达到“疑似噪声性听力损失”的判定标准——大约八分之一。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decibel</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdesɪbel/ · 美 /ˈdesɪbel/ · 缩写 dB</div>
+          <div class="wc-pos"><b>n.</b> <b>分贝</b>：声压级的单位。<br>构词：deci-（十分之一）+ bel（贝尔，源自电话发明者 Bell）。<br>搭配：at 85 decibels（在 85 分贝）／a decibel level（分贝水平）／noise above 85 dB（85 分贝以上的噪声）。<br>⚠️ 最该记住的一点：分贝是<b>对数</b>单位，不是线性单位。所以”每高 3 分贝，安全时长减半“——涨 3 dB 不是”响一点点“，而是声能翻倍。85 dB 给 8 小时，88 dB 只剩 4 小时，100 dB 只剩 15 分钟。这个”3 分贝＝一半“的换算，是本文第 8 段唯一一个没有争议的算术。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…eight hours at 85 <b>decibels</b> is roughly a day's budget…</div>
+          <div class="wc-tr">……85 分贝大约可以听八小时，这差不多是一天的额度……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">halve</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /hɑːv/ · 美 /hæv/</div>
+          <div class="wc-pos"><b>v.</b> <b>减半、把……砍掉一半</b>；也可作不及物”减半“。<br>构词：half（一半）的动词形式，注意 l 不发音。<br>搭配：halve the risk（把风险减半）／halve in size（尺寸减半）／halve the cost（成本砍一半）。<br>用法提示：中文说”减少一半“要用四个字，英文一个 halve 就够了，而且能带宾语、能做谓语——这类”名词转动词“的词（halve / double / triple）是英语压缩信息的常用手段。学术写作里它们常用来表达<b>比例关系</b>而不是绝对数值，读的时候要立刻反应出”这是乘法，不是加减法“。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and every extra three decibels <b>halves</b> it.</div>
+          <div class="wc-tr">……每再高 3 分贝，这个额度就减半。</div>
+        </div>
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">budget</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈbʌdʒɪt/ · 美 /ˈbʌdʒɪt/</div>
+          <div class="wc-pos"><b>n.</b> <b>预算；可支配的额度</b>；<b>v.</b> 编预算、安排（时间或钱）：budget for sth。<br>这里是引申义：a day's budget 不是“一天的预算表”，而是“一天可以花掉的份额”——把看不见的声能换算成一笔可以花完的钱。上文的 spend（用掉、耗尽）与下文的 halves it（减半）都沿着这条“花钱”的隐喻走，三个词合起来才把 85 分贝这条规则讲成了常识。<br>搭配：on a tight budget（预算紧张）／budget airline（廉价航空）／within budget（在预算内）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…eight hours at 85 decibels is roughly a day's <b>budget</b>, and every extra three decibels halves it.</div>
+          <div class="wc-tr">……85 分贝下八小时，大约就是一天的额度；而每多 3 分贝，这个额度就减半。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reserve</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rɪˈzɜːv/ · 美 /rɪˈzɜːrv/</div>
+          <div class="wc-pos"><b>n.</b> <b>储备、余量</b>：超出日常需要、可以被动用的那一部分（hearing reserve 听觉储备）。<br>常见义：<b>v.</b> 预订、保留（reserve a table）；<b>n.</b> 自然保护区（a nature reserve）；<b>n.</b> 拘谨、矜持。<br>搭配：hearing / cognitive reserve（听觉／认知储备）／in reserve（留作备用）／reserves of energy（体力储备）／without reserve（毫无保留地）。<br>为什么这个词决定了全文的语气：如果损失只是”少一点“，那它还只是不便；但如果毛细胞是<b>没有储备</b>的一次性资源，那么十八岁用掉的每一分，都是从四十岁那里借来的。同一组数字，加不加 reserve 这个概念，结论的重量完全不同。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the hair cells it depends on carry no <b>reserve</b>: what is spent at eighteen is not replaced at forty.</div>
+          <div class="wc-tr">……而它依赖的毛细胞没有储备——十八岁用掉的那部分，四十岁不会补回来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hair cell</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/heə sel/ · 美 /her sel/</div>
+          <div class="wc-pos"><b>n.</b> <b>毛细胞</b>：内耳耳蜗里的感觉细胞，顶端的纤毛随声波振动，把声能转成神经电信号。<br>搭配：hair cell damage（毛细胞损伤）／hair cell loss（毛细胞缺失）／outer / inner hair cells（外／内毛细胞）。<br>关键事实：人类耳蜗里大约有 1.6 万个毛细胞，<b>受损后不能再生</b>——这是感音神经性听力损失不可逆的根本原因。所以”保护听力“在生理学上不是”让耳朵休息“，而是”别把一次性零件用坏“。理解了这一条，全文第 1 段的 spent 与第 9 段的 reserve 才连成一条线。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the hair cells it depends on carry no reserve: what is spent at eighteen is not replaced at forty.</div>
+          <div class="wc-tr">……而它依赖的毛细胞没有储备——十八岁用掉的那部分，四十岁不会补回来。</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">frequency by frequency</span><span class="zh">一个频率一个频率地</span></li>
+          <li><span class="en">a narrow dip</span><span class="zh">一道窄窄的下沉</span></li>
+          <li><span class="en">a soft, permanent loss</span><span class="zh">一点轻微而永久的损失</span></li>
+          <li><span class="en">read sth as sth</span><span class="zh">把……解读为……</span></li>
+          <li><span class="en">the fingerprint of sth</span><span class="zh">……的指纹、独有印记</span></li>
+          <li><span class="en">without any pain to announce it</span><span class="zh">没有任何疼痛来提示</span></li>
+          <li><span class="en">by the end of secondary school</span><span class="zh">到中学毕业时</span></li>
+          <li><span class="en">a birth cohort</span><span class="zh">出生队列（同一年出生的一批人）</span></li>
+          <li><span class="en">from before birth into adulthood</span><span class="zh">从出生前一直跟到成年</span></li>
+          <li><span class="en">soundproof booth</span><span class="zh">隔声室、隔音舱</span></li>
+          <li><span class="en">meet the criteria for</span><span class="zh">达到……的判定标准</span></li>
+          <li><span class="en">one in eight</span><span class="zh">八分之一</span></li>
+          <li><span class="en">a carefully chosen word</span><span class="zh">一个用得极谨慎的词</span></li>
+          <li><span class="en">alongside a normal middle ear</span><span class="zh">同时中耳功能正常</span></li>
+          <li><span class="en">rule out</span><span class="zh">排除（某种可能）</span></li>
+          <li><span class="en">the temporary dullness of a cold</span><span class="zh">感冒时那种暂时的发闷</span></li>
+          <li><span class="en">refuse to change</span><span class="zh">（数字、情况）不肯改变</span></li>
+          <li><span class="en">turn up in both ears</span><span class="zh">出现在两只耳朵上</span></li>
+          <li><span class="en">high-frequency thresholds</span><span class="zh">高频听阈</span></li>
+          <li><span class="en">cut against</span><span class="zh">与……相悖、对着来</span></li>
+          <li><span class="en">drop out</span><span class="zh">退出、掉队（不再参与）</span></li>
+          <li><span class="en">between the two waves</span><span class="zh">在两轮（调查／测听）之间</span></li>
+          <li><span class="en">measure exposure</span><span class="zh">测量暴露量</span></li>
+          <li><span class="en">how loud the headphones were</span><span class="zh">耳机开到了多大声</span></li>
+          <li><span class="en">a gaming session</span><span class="zh">一局游戏、一段打游戏的时间</span></li>
+          <li><span class="en">say as much</span><span class="zh">（作者）自己也是这么说的</span></li>
+          <li><span class="en">fill in a gap</span><span class="zh">把空缺补上</span></li>
+          <li><span class="en">cost a generation its hearing</span><span class="zh">拿走一代人的听力</span></li>
+          <li><span class="en">a peer-reviewed paper</span><span class="zh">一篇同行评议论文</span></li>
+          <li><span class="en">urge national guidance on</span><span class="zh">呼吁就……出台全国性指引</span></li>
+          <li><span class="en">compare A to B</span><span class="zh">把 A 比作 B</span></li>
+          <li><span class="en">ask for more research</span><span class="zh">要求拿出更多研究</span></li>
+          <li><span class="en">not in dispute</span><span class="zh">没有争议</span></li>
+          <li><span class="en">a day's budget</span><span class="zh">一天的额度</span></li>
+          <li><span class="en">fail without a sensation</span><span class="zh">失效时没有任何感觉</span></li>
+          <li><span class="en">carry no reserve</span><span class="zh">没有储备、没有余量</span></li>
+          <li><span class="en">the number worth acting on</span><span class="zh">值得动手对付的那个数字</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol style="margin:0;padding-left:20px;line-height:1.85;font-size:14px;color:#3a3733">
+          <li>引子：十八岁的听力图上，4000 赫兹附近有一道窄窄的下沉；医生叫它”切迹“，四十年来读作强声的指纹。</li>
+          <li>队列：鹿特丹 Generation R，同一批人十三岁与十八岁两次进隔声室做纯音测听（2016–19 / 2020–24）。</li>
+          <li>数字：3,347 人中 6.2% 达感音神经性损失、12.9% 达”疑似噪声性“（约八分之一）；”疑似“要求同时中耳正常。</li>
+          <li>反转一：2,847 人两次都测——总比例几乎没动，但损害加深（双侧切迹变多、高频听阈变差、十三岁已中招的继续退）。</li>
+          <li>反转二：中途退出的人十三岁时听力就更差 → ”比例稳定“里有一部分是”留下的是谁“造成的假象，真实负担可能更高。</li>
+          <li>空档：全程没测暴露量——没问音量、时长、离音箱多远；切迹是形状，不是自白。</li>
+          <li>作者自陈 + 媒体改写：论文呼吁研究娱乐性噪声的作用；报道写成”耳机正拿走一代人的听力“。</li>
+          <li>外部争论：英国 11-10 论文要全国指引（声音如日晒）；听力学界称其”危言耸听“；85 dB／8 小时、每 +3 dB 减半。</li>
+          <li>落点：该盯的不是切迹，而是它背后的暴露量——音量上限、每小时休息、十八岁测一次。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">What an audiogram shows at eighteen, once thresholds are plotted frequency by frequency, is often one narrow dip: normal hearing at 500 hertz, normal again at 8,000, and a soft, permanent loss around 4,000.</div>
+        <div class="row"><b>主干：</b>What an audiogram shows is often a single narrow dip（听力图显示出来的，常常只是一道窄窄的下沉）——主语是 what 引导的名词性从句；中间 once the thresholds are plotted 是插入的时间状语从句；冒号后是三个并列成分，具体说明”下沉“长什么样。</div>
+        <div class="row"><b>难点：</b>① 主语从句里嵌套了一个状语从句（once…）——英语习惯把”条件“塞在主语和谓语之间，读的时候要先把 What…shows 和 is 这两个骨架抓出来，否则会读到一半断线；② once 在此不是”一次“，而是连词”一旦“（once the data arrive 一旦数据到手），这是 once 的高频歧义；③ frequency by frequency 是”名词 + by + 同一名词“结构，表示逐个体进行（one by one / step by step / day by day），译”一个频率一个频率地“；④ 冒号后的三项是<b>对照式排比</b>：normal … normal … and a loss——前两个 normal 是铺垫，第三个才是信息，这种”两同一异“的排比在英文说明文里专用来制造落差；⑤ 全句的信息落点是 a soft, permanent loss：soft（轻微）与 permanent（永久）放在一起，才是这篇文章真正要你注意的组合。</div>
+        <div class="row tr"><b>译文：</b>十八岁的听力图，一旦把每个频率的听阈逐点标绘出来，常常只是一道窄窄的下沉：500 赫兹正常，8000 赫兹又正常，而在 4000 附近那一小段，听力已经悄悄少了一截，而且是永久的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Probable is a carefully chosen word: it required a notch, or a high-frequency loss, alongside a normal middle ear, which rules out the temporary dullness of a cold.</div>
+        <div class="row"><b>主干：</b>Probable is a carefully chosen word（”疑似“是一个选得很谨慎的词）＋ 冒号后解释原因：the criteria required A, or B, alongside C（判定要求 A 或 B，同时还要 C）＋ which 引导非限制性定语从句说明后果。</div>
+        <div class="row"><b>难点：</b>① 主语是一个<b>引号里的词</b>（Probable），谓语用单数 is——把被讨论的词直接提到主语位置，是学术英语里极常见的”元语言“写法（”X" is a loaded term）；② required … alongside … 是“要求 A 的同时还要求 B”，alongside 在此不是空间上的“在……旁边”，而是“与……并存、同时具备”；③ or 在此是“或者”，即切迹与高频损失二者之一即可，不是二者都要——这类 or / and 的差别在选择题里就是送分与送命的区别；④ which rules out… 的 which 指代前面整件事（既要有切迹、又要中耳正常），而不是只指 middle ear；⑤ 语法上这是一个“定义句”，功能是<b>限缩</b>：先把判定条件说清楚，“12.9%”才不至于被读成“12.9% 的青少年耳朵坏了”。</div>
+        <div class="row tr"><b>译文：</b>“疑似”这个词用得很谨慎：判定要求既有切迹或高频损失，又要有正常的中耳功能，这就排除了感冒时那种暂时的发闷。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Among the 2,847 tested twice, prevalence barely moved between thirteen and eighteen, yet the damage deepened: notches turned up in both ears more often, high-frequency thresholds fell significantly, and those already affected at thirteen got worse.</div>
+        <div class="row"><b>主干：</b>the overall prevalence barely moved（总体比例几乎没动）＋ yet 转折：the damage deepened（但损害加深了）＋ 冒号后三个并列分句作证据（notches turned up / thresholds fell / those…got worse）。</div>
+        <div class="row"><b>难点：</b>① Among the 2,847 participants tested twice 是介词短语前置，tested twice 为过去分词后置定语（＝ who were tested twice）；② barely moved 中的 barely 是“几乎没有”，语气比 not 更精确，它承认“有极小变化”但强调变化可忽略；③ yet 在此是连词“然而”，与 but 同类但更书面，且带“出乎意料”的意味——前面刚说“没变”，后面立刻说“其实在变”；④ 冒号后三项并非简单并列，而是<b>递进</b>：从“范围扩大”（双侧）到“程度加重”（阈值变差）到“个体恶化”（已中招者更糟），一层比一层具体；⑤ those already affected at thirteen 省略了 who were，英语常把“already + 过去分词”直接挂在名词后作定语，中文必须补出“十三岁就已经受影响的那部分人”。</div>
+        <div class="row tr"><b>译文：</b>在两次都做了测听的 2,847 人中，听力损失的比例从十三岁到十八岁几乎没有动；但损害在加深——切迹更常出现在两只耳朵上，高频听阈显著变差，而十三岁就已经受影响的那部分人，到十八岁又退了一步。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">No questionnaire asked how loud the headphones were, how long the gaming sessions ran, or how close the concert speakers were, so the notch is a shape and not a confession.</div>
+        <div class="row"><b>主干：</b>No questionnaire asked A, B, or C（没有一份问卷问过 A、B 或 C）＋ so 引导结果：the notch is a shape and not a confession（所以切迹是一个形状，不是一句自白）。三个 how 引导的宾语从句并列作 asked 的宾语。</div>
+        <div class="row"><b>难点：</b>① 三个宾语从句都用 how + 形容词／副词开头（how loud / how long / how close），这是英语列举“程度未知的量”的标准句式，中文要拆成三个“多……”；② the gaming sessions ran 中的 run 不是“跑”，而是“持续、进行”（the meeting ran for two hours），这是 run 的熟词僻义；③ 末句是全篇的<b>警句</b>，用 not A but B 的变体（a shape and not a confession）——注意它把 and 放在 not 之前，语序比 not…but… 更冷，也更像判词；④ shape 与 confession 的对立，本质是“物证”与“口供”的对立：形状能被看见，却始终不肯说出原因。这五个词，就是全文对“证据边界”的全部交代。</div>
+        <div class="row tr"><b>译文：</b>没有任何一份问卷去问：耳机开到了多大声、一局游戏打了多久、演唱会上离音箱站得多近。所以那个切迹只是一个形状，不是一句自白。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Hearing is the one sense that fails without a sensation to announce it, and the hair cells it depends on carry no reserve: what is spent at eighteen is not replaced at forty.</div>
+        <div class="row"><b>主干：</b>Hearing is the one sense（听力是唯一一种感官）＋ that fails without a sensation to announce it 定语从句＋ and 并列第二分句 the hair cells carry no reserve（毛细胞没有储备）＋ 冒号后 what is spent at eighteen is not replaced at forty 作解释。</div>
+        <div class="row"><b>难点：</b>① the one sense 中的 one 是“唯一的那一个”，后面必须跟定语从句，否则 one 无所指；② without a sensation to announce it 是不定式作后置定语（＝ which might announce it），“没有任何感觉来通报它”；③ it depends on 是省略了关系代词的限制性定语从句（the hair cells [that] it depends on），it 指 hearing——英文里“介词 + 关系代词”常被整个省掉，中文必须补出；④ 冒号后的 what is spent 是主语从句，“被用掉的那部分”；⑤ 这一句的修辞骨架是<b>生物学事实 + 时间对账</b>：十八岁支出、四十岁结账，中间没有任何补救环节。它把前文所有统计数字换算成了一个可感知的借贷关系。</div>
+        <div class="row tr"><b>译文：</b>听力是唯一一种“失效时不先通知你”的感官，而它依赖的毛细胞没有储备——十八岁用掉的那部分，四十岁不会补回来。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum">这篇文章要拆的是一个看起来最不需要拆的数字：八分之一的青少年有听力损失。去年十二月，《耳鼻咽喉-头颈外科》（Otolaryngology–Head and Neck Surgery）刊出一项来自荷兰的研究，随即被各家媒体写成“耳机正在拿走一代人的听力”。数字是真的，来源是硬的，作者团队来自鹿特丹伊拉斯谟大学医学中心耳鼻咽喉-头颈外科——但这项研究真正有意思的地方，恰恰不在那个八分之一上。</p>
+      <p class="zh-sum">先说研究本身。它依托的是“R 代”（Generation R），鹿特丹的一项大型出生队列，把同一批孩子从出生前一直随访到成年。测听做了两轮：2016 至 2019 年（十三岁）与 2020 至 2024 年（十八岁），都在隔声室里按标准流程进行。十八岁这一轮，共有 3,347 人完成测听；其中 2,847 人两轮都有可比的数据。判定分两类：感音神经性听力损失（SNHL），要求单耳或双耳在低频和／或高频的纯音平均听阈超过 15 dB HL，且中耳功能正常（A 型鼓室图）；疑似噪声性听力损失（probable NIHL），要求出现切迹和／或高频损失，同样要求中耳正常。结果：6.2% 达到 SNHL 标准，12.9% 达到疑似 NIHL 标准。</p>
+      <p class="zh-sum">这里有两个词必须停一下。<b>第一是“疑似”（probable）</b>。它不是“确诊”，而是一套判定条件的名字：有切迹、有高频损失、中耳正常——三条同时成立，医生才有理由怀疑是噪声干的。加入“中耳正常”这一条尤其关键，它把感冒、中耳积液这类<b>可逆</b>的传导性问题排除在外，剩下的才更可能是内耳的永久损害。<b>第二是“切迹”（notch）</b>。听力图不是一连串孤立的数字，而是一条曲线；在 3000 至 6000 赫兹之间出现一个窄窄的下凹、两侧回升，形状像被刀削掉一口，这就是切迹。它之所以被当成噪声的指纹，是因为强声最先损伤的正是耳蜗里负责这一频段的毛细胞。</p>
+      <p class="zh-sum">接下来是全文真正的转折：<b>那个“没有变化”的数字</b>。在两轮都测过的 2,847 人里，听力损失的总体比例从十三岁到十八岁几乎没动。如果只读这一句，结论会是“没事”。但同一批数据里还有三条走向相反的线：切迹更常出现在<b>双侧</b>（意味着暴露更对称、更累积）；高频听阈显著变差；而十三岁就已经有高频损失的那部分人，到十八岁又退了一步。也就是说，<b>患病率（prevalence）稳定，严重程度在上升</b>——存量没变，每个人的损失却更深了。</p>
+      <p class="zh-sum">第二条反向线索更技术，也更重要：<b>失访偏倚</b>。研究者在两轮之间失去了相当一部分参与者，而这些人十三岁时的听力，比坚持下来的人更差。这意味着“比例稳定”里混进了一个人为成分——听力不好的人更可能不再回来做第二次测听。作者自己用了“可能掩盖了真实上升”这样的表述。换句话说，真实负担大概率<b>高于</b>那个八分之一，而不是低于。</p>
+      <p class="zh-sum">第三条线索是这篇文章最想让你带走的东西：<b>这项研究从头到尾没有测量暴露量</b>。没有问卷去问耳机开到多大声、一局游戏打多久、演唱会上离音箱多近，也没有佩戴式剂量计去记录一天的分贝累积。所以论文能说的只有一句：这种形状在十八岁已经相当常见。它不能说：这是耳机造成的。作者在结尾写得很清楚——呼吁未来的研究去弄清娱乐性噪声的作用。这是一个诚实的空缺，只不过新闻稿通常会替它填上。</p>
+      <p class="zh-sum">有意思的是，政策层面的争论几乎同时在另一个国家发生。11 月 10 日，英国发表了一篇同行评议论文，呼吁就儿童使用耳机制定全国性指引，并把声音暴露比作日晒：晒得够久、够烈，就会晒伤。这个类比很有传播力，但也立刻遭到反击——英国听力学学会前主席公开表示，把青少年的听力损失归因于耳机属于“危言耸听”，证据还不足，需要更多研究；不过她也同意，现有指引确实单薄得不像话。值得注意的是，双方都<b>不否认</b>那些数字，争的是“能不能归因”。</p>
+      <p class="zh-sum">唯一没有争议的是算术。85 分贝大约可以持续八小时，这接近一天的额度；而分贝是对数单位，每增加 3 分贝，声能翻倍、安全时长减半——88 分贝只剩四小时，100 分贝只剩十五分钟。这条“3 分贝＝一半”的换算，是整场争论里唯一不需要站队的事实。也正因为它是乘法而不是加法，人在嘈杂环境里“顺手调大两格”造成的后果，往往远大于自己的直觉。</p>
+      <p class="zh-sum">把这几层叠起来，文章最后落到一个判断上：<b>听力是唯一一种失效时不先通知你的感官</b>。视力下降你会眯眼，牙齿出问题你会酸，听力损失的第一阶段什么都不发生——它只是让 4000 赫兹那一小段悄悄变轻。而毛细胞没有储备，十八岁用掉的部分，四十岁不会补回来。所以在“切迹”和“暴露量”之间，真正值得动手的是后者：一个音量上限、每小时一次休息、十八岁那年的一次测听。这些都是可以设计的，而“注意一下”不是。</p>
+      <p class="zh-sum">最后留一层可以带走的读法：下次看到“某比例高达 X%”的科研新闻，先做三个动作——<b>一看定义</b>（这个百分比是“确诊”还是“达到某套条件”）、<b>二看分母</b>（谁被算进来了、谁中途走了）、<b>三看缺项</b>（要坐实因果，还差哪一个变量没测）。这三步不需要任何专业背景，却能把绝大多数被夸大的结论退回它该在的位置。这篇文章之所以值得精读，不是因为它告诉你耳机有多危险，而是因为它示范了<b>一项诚实的研究如何主动交代自己的边界</b>。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?</b><br>A. Headphones are directly responsible for the hearing loss observed in one in eight adolescents by the age of eighteen.<br>B. A Dutch cohort found that a noise-typical audiometric notch was common by eighteen and that damage deepened even though overall prevalence stayed flat, but because exposure was never measured the study cannot attribute the pattern to headphones.<br>C. Hearing loss among adolescents is now so widespread that national bans on headphone use in schools are urgently required.<br>D. Because hair cells cannot regenerate, any hearing loss detected at eighteen will inevitably become severe by the age of forty.<br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是“场景（4000 赫兹的下沉）→ 队列与方法（两轮测听、中耳正常）→ 数字（6.2%／12.9%）→ 反转一（比例稳定但损害加深）→ 反转二（失访偏倚，真实负担可能更高）→ 关键空档（未测暴露量，”形状不是自白“）→ 外部争论（英国指引与'危言耸听'之争）→ 落点（盯暴露量而非切迹）”。B 同时覆盖了“发现了什么”与“不能推出什么”这两端，而这正是原文的重心。A 与第 6、7 段直接冲突：研究没有测量暴露，作者本人也只说“呼吁未来研究”。C 过度推论：全文没有任何禁令主张，第 8 段给出的都是音量上限、休息、测听这类措施。D 把个体风险说成必然：第 9 段讲的是“没有储备、不会补回来”，而不是“必然在四十岁变严重”。</div>
+      <div class="q"><b>2. Why does the author describe the notch as "a shape and not a confession"?</b><br>A. Because an audiogram is a visual record rather than a written statement by the patient.<br>B. Because the notch can be seen on the chart but says nothing about what caused it, since no exposure data were collected.<br>C. Because adolescents often conceal how loudly they listen to music.<br>D. Because the researchers deliberately avoided asking about headphone habits.<br><br><b>答案：B</b><br>
+        <b>解析：</b>原文第 6 段紧接在“这项研究没有做的是测量暴露”之后：没有问卷问音量、时长、距离，所以切迹只是形状。shape（可观察的形态）与 confession（亲口说出原因的供述）构成对立，B 正是这层意思。A 只解释了字面的 shape，没有触及“不能说原因”这一核心。C 偷换概念：原文说的是“没问”，不是“问了但隐瞒”。D 把“没做”说成“故意回避”，属于对动机的无据推测——作者的态度是“这是研究的边界”，不是“研究者有意规避”。</div>
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的核心判断是“形状能被看见，原因却看不见”——一项研究可以证明某种现象很常见，却未必能证明它由什么造成。请你就身边一个“被广泛归因、但因果其实没被验证”的说法（例如“喝咖啡影响长个”“熬夜导致脱发”“听轻音乐能提高成绩”），写一段 150 字以内的分析：① 写出这个说法的通行版本；② 指出要坐实因果还缺哪个关键变量（或哪类对照）；③ 说明如果这个变量测不到，我们能说的最强结论是什么。要求至少给出一个具体的数量或条件，不要只讲道理。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段用的是“唯一性 + 缺失感”的收束句式：<span class="hl">Hearing is the one sense that fails without a sensation to announce it.</span> 它的力量来自三个动作：① 用 the one 把対象<b>单独挑出来</b>（不是“一种”，是“唯一那一种”），读者立刻会去比较其他感官；② 后面紧跟的定语从句不是补充信息，而是<b>反转</b>——“失效”本来该有感觉，“没有感觉”才是异常；③ 全句没有任何形容词和感叹号，语气平，判断却极重。仿写时照搬骨架：<i>______ is the one ______ that ______ without ______.</i> 前半句填一个普通的事物，从句里填一个“本该伴随却缺失”的东西——注意 without 后面必须是名词或动名词，且要具体到能形成画面（a sensation / a warning / a sound），写抽象词（a reason）句子就空了。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 场景：4000 赫兹那一段，悄悄少了一截</text>
+
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">2 · 队列：同批人 13 岁与 18 岁，两次进隔声室</text>
+
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 数字：6.2% 感音神经性 / 12.9% 疑似噪声性</text>
+
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">4 · 反转一：比例没动，损害在加深</text>
+
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 反转二：退出者听力更差 → 真实负担更高</text>
+
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">6 · 空档：全程没测暴露 → 形状不是自白</text>
+
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">7 · 改写：论文说形状常见，报道说耳机夺听</text>
+
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">8 · 外部：英国要指引，学界说“危言耸听”</text>
+
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：该盯的不是切迹，是它背后的暴露量</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：数字很硬，归因很软——中间缺的是暴露量</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">形状能被看见，原因却看不见；缺口，不属于这一项研究</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、8 段绿色：一处结果，一处唯一无争议的算术</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 4、5、7 段红色：两次反转，加一次媒体改写</text>
+        </svg>
+        <figcaption>结构图解：文章走的是一条“先立数字、再拆归因”的路。第 1 段给画面（4000 赫兹的下沉），第 2 段交代队列与方法（同批人、两次、隔声室），第 3 段摆出两个百分比并说明“疑似”的定义，第 4、5 段连续两次反转（比例稳定但损害加深；退出者听力更差，真实负担可能被低估），第 6 段指出最关键的空白——暴露量从未测量，第 7 段对比论文原话与新闻标题的落差，第 8 段引入英国的政策争论并给出唯一无争议的算术（85 dB／8 小时，每 +3 dB 减半），第 9 段落回“盯暴露量而不是盯切迹”。注意全文没有一句“耳机有害”的判断——它把结论的边界画得比结论本身更清楚。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Stefanie N. H. Reijers, Jantien L. Vroegop, Djamila E. Paping, Marieke Pronk, André Goedegebure, Berry Kremer, Marc P. van der Schroeff《Longitudinal Insights into Sensorineural and Noise-Induced Hearing Loss in Adolescents Aged 13–18 Years》，Otolaryngology–Head and Neck Surgery（2025 年 12 月号，DOI 10.1002/ohn.70042），鹿特丹伊拉斯谟大学医学中心耳鼻咽喉-头颈外科，数据来自 Generation R 出生队列（3,347 人 / 2,847 人两次可比）｜英国耳机政策论文（2026-11-10 发表）与英国听力学学会方面的回应，据英国媒体报道（2026-11-10 至 11-12）｜ 仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

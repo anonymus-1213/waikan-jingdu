@@ -669,6 +669,20 @@
     "公共政策",
     "城市安全"
    ]
+  },
+  {
+   "date": "2026-11-16",
+   "en": "Damage that arrives without a feeling will not be caught by paying attention.",
+   "zh": "一种不带来任何感觉的损害，靠“注意一下”是注意不到的。",
+   "src": "外刊精读 · 第一个凹口出现在十八岁，而它从不疼（2026-11-16）",
+   "key": "caught by paying attention",
+   "keyZh": "靠“注意”来抓住（catch 此处是“及时发现、拦住”；整句在说：没有感觉的损害，不会被注意力捕获）",
+   "tip": "这是全篇的最后一句，也是唯一一句完整的判断。它用了三重否定来收束：without a feeling（没有感觉）、will not be caught（抓不住）、by paying attention（靠“注意”这个动作）——把最常见的那句忠告“你注意一下就好了”直接拆掉。注意 catch 的用法：不是“抓住”一个物体，而是“及时拦下”一个正在发生的过程（catch a disease early 早发现疾病），所以中文译“注意不到”比“抓不住”更贴。前半句 Damage that arrives without a feeling 用定语从句把“损害”定义成一个“悄悄的到达者”，比 preventable hearing loss 这种术语更有画面。仿写骨架：______ that arrives without a ______ will not be caught by ______.",
+   "tags": [
+    "健康与身心",
+    "青少年听力",
+    "公共卫生"
+   ]
   }
  ]
 }
