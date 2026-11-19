@@ -683,6 +683,20 @@
     "青少年听力",
     "公共卫生"
    ]
+  },
+  {
+   "date": "2026-11-19",
+   "en": "A smell is not a memory booster but a piece of scaffolding, and scaffolding is worth nothing if it goes up after the wall.",
+   "zh": "气味不是记忆的增强剂，而是一段脚手架；而脚手架如果砌在墙之后，就一文不值。",
+   "src": "外刊精读 · 香气没有让他记得更多，只让他分得更清（2026-11-19）",
+   "key": "goes up after the wall",
+   "keyZh": "砌在墙之后才立起来（go up 此处是「被搭起来、立起来」，不是「上升」；整句在说：顺序错了，工具就失去了意义）",
+   "tip": "这是全篇的落点，靠一次「换喻 + 施工顺序」完成。前半句先降级：a smaller claim than… 把结论主动缩小，气势先低下去，判断反而更硬。中段 not A but B 清场——A 是香氛行业想要的说法（booster，一支可以随时打的针），B 是自己要的（scaffolding，砌墙之前那圈钢管）。真正的杀伤力在句尾 if it goes up after the wall：它把一个统计结论（气味 × 时机的交互作用）翻译成一个能看见的<b>先后次序</b>——不是「有没有用」，而是「来不来得及」。注意 go up 的双关：脚手架 go up 是「搭起来」，价格 go up 是「上涨」，这里只能是前者。仿写骨架：____ is not a ____ but a ____, and ____ is worth nothing if it ____ after the ____.",
+   "tags": [
+    "教育与学习方式",
+    "学习科学",
+    "记忆"
+   ]
   }
  ]
 }

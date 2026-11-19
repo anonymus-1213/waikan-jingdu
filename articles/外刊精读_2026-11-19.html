@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 香气没有让他记得更多，只让他分得更清</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Scent &amp; Recall · 人与自我 / 教育与学习方式 / 学习科学 / 记忆</div>
+  <h1>香气没有让他记得更多，只让他分得更清</h1>
+  <div class="deck">Forty-seven adults encoded two sets of household objects, one in a room where a lavender diffuser had been running and one in a plain room, and were tested in a third room that smelled of nothing: the scent made no overall difference. What did matter, in the older half of the sample, was when it arrived.</div>
+  <div class="byline"><span><b>来源</b> 莱斯大学心理科学系 + 加州大学洛杉矶分校（UCLA）整合生物学与生理学系；Frontiers in Aging Neuroscience 18:1917760（2026 年 9 月 28 日，DOI 10.3389/fnagi.2026.1917760）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-19</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 529 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-19.jpg" alt="窗边木桌前，一位白发老人双手举着一小束干薰衣草凑近鼻子，桌上摊着旧相册、一副老花镜和一只白瓷杯">
+    <figcaption>配图：午后的窗边，一位老人把一小束干薰衣草凑到鼻尖，桌上摊着旧相册与老花镜。她要找的也许不是那缕香气，而是香气当年连着的那间屋子——同一缕气味，早到是框架，晚到就只是干扰（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>先给结论，免得你带着错误的期待读下去：<b>给房间散上薰衣草，并没有让任何人记得更牢</b>。</p>
+    <p>47 个人，两批各 64 张日用品图片，一间房有气味、一间没有，最后在一个<b>完全没有气味</b>的房间里测试。结果，气味对普通再认没有影响，对更细的「记忆辨别」也没有影响——两个主效应都掉进了零。</p>
+    <p>但这项研究没有到此为止。真正的发现在一个<b>交互作用</b>里：同一缕香气，在<b>第一批</b>学习时就闻到的人，后来分得更清；在<b>第二批</b>才闻到的人，反而更糟。而且这个效应几乎只发生在年长者身上。</p>
+    <p>所以这篇要拆的不是「气味有没有用」，而是<b>「什么时候有用」</b>。答案指向一个很好用的比喻：气味不是记忆的增强剂，是一段脚手架；而脚手架如果砌在墙之后，就一文不值。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-19.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="6.747">Nobody has ever walked into an examination hall and found the smell of the room where they revised waiting for them.</span> <span class="s" data-t="6.747" data-e="16.368">That <b class="kw" data-tip="n. 缺失、不在场；此处指“本该在却不在”的那种空缺">absence</b> is the oldest practical problem in memory research: what is learned in one place must be recalled in another, with only the learner's head as a bridge.</span></span></div>
+      <p class="para-tr">从来没有人走进考场，就闻到当年复习那间屋子的味道还在那儿等着他。这种空缺，是记忆研究里最老的一道实际难题：在一个地方学到的东西，必须在另一个地方被想起来，而中间唯一的桥，是学习者自己的脑袋。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="16.368" data-e="26.513">A paper in Frontiers in Aging Neuroscience, published on 28 September 2026, asked whether smell could be made part of that bridge.</span> <span class="s" data-t="26.513" data-e="41.132">Renae Mannion and Alexis Bailey at Rice University, with Stephanie Leal at UCLA, had 24 younger and 23 older adults <b class="kw" data-tip="v. （记忆的）编码、登记：把外界信息转成大脑可以存储的形式；常见义 v. 把……译成密码">encode</b> two blocks of 64 household objects, one in a lavender-scented room, one in a plain room.</span> <span class="s" data-t="41.132" data-e="50.132">All 192 test images were then shown in a third room that smelled of nothing, so any advantage had to be carried by memory alone.</span></span></div>
+      <p class="para-tr">《衰老神经科学前沿》（Frontiers in Aging Neuroscience）2026 年 9 月 28 日的一篇论文，问的正是：气味能不能被做成那座桥的一部分。莱斯大学的 Renae Mannion 与 Alexis Bailey，加上加州大学洛杉矶分校的 Stephanie Leal，让 24 位较年轻的成人与 23 位较年长的成人，各自在两个房间里学习两批各 64 件日常用品：一间散着薰衣草香气，一间什么味道也没有。随后，全部 192 张测试图片在第三个、完全没有气味的房间里呈现——任何优势都只能由记忆本身带过去。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="50.132" data-e="60.355">The expected result did not arrive: across all 47 participants the scented room changed neither plain recognition nor the finer judgement the task measured.</span> <span class="s" data-t="60.355" data-e="71.197">That measure, <b class="kw" data-tip="adj. 记忆的、助记的；mnemonic discrimination 记忆辨别，指区分“相似但不同”的经历">mnemonic</b> discrimination, asks whether someone can tell a hairdryer they have just seen from a slightly different one, and it is the one most closely tied to the <b class="kw" data-tip="n. 海马体：大脑中负责把相似经历分开存储、并与嗅觉紧密相连的结构">hippocampus</b>.</span></span></div>
+      <p class="para-tr">期待中的结果没有出现：把 47 个人合起来看，有气味的房间既没有改变普通再认，也没有改变这项任务真正想测的那一层更细的判断。那层更细的指标叫「记忆辨别」（mnemonic discrimination），它问的是：你能不能把刚看过的那只吹风机，和另一只只是略作改动的吹风机分开——而这正是指标里与海马体关系最紧的一个。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="71.197" data-e="79.211">Age arrived at once: older adults scored far lower on it, and the gap widened as the <b class="kw" data-tip="n. 诱饵：记忆测试里“看起来像、其实不是”的图片；常见义 v. 引诱、诱骗">lures</b> grew more similar to what had been seen.</span> <span class="s" data-t="79.211" data-e="85.724">Their sense of smell was weaker too, which leaves open whether the two declines are one process or two.</span></span></div>
+      <p class="para-tr">年龄的效果倒是立刻到场：年长者的这项得分明显更低，而且当「诱饵」与原件越来越像时，差距还进一步拉大。他们的嗅觉也更弱——这留下一个问题：这两种衰退，是同一场衰退的两张脸，还是两件彼此独立的事。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="85.724" data-e="91.434">What did arrive, and what makes the paper worth reading, was not the scent but its timing.</span> <span class="s" data-t="91.434" data-e="111.579">Those who met the lavender in their first encoding block later discriminated those objects better than those who met it in their second, an <b class="kw" data-tip="n. （统计上的）交互作用：两个因素合在一起的效果，不等于各自效果相加">interaction</b> that held across the sample (p = 0.027) and, split by group, was driven almost entirely by the older adults (p = 0.043).</span> <span class="s" data-t="111.579" data-e="119.461">For the younger participants the scent made no difference in either position; a system still working well has little need of props.</span></span></div>
+      <p class="para-tr">真正到场、也真正让这篇论文值得读的，不是气味本身，而是它的时机。在第一批学习时就闻到薰衣草的人，后来对这些物件的辨别成绩，好过在第二批才闻到的人；这个交互作用在全样本上成立（p = 0.027），分组之后，又几乎完全由年长者承担（p = 0.043）。对年轻被试来说，气味放在哪一批都没有差别——一个还运转良好的系统，本来也不太需要道具。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="119.461" data-e="127.513">The most economical reading is that a smell helps only if it is there while the frame is built, <b class="kw" data-tip="v. 预先启动、使处于“待发”状态：先给一个线索，让大脑在处理信息之前就准备好；常见义 adj. 首要的、最好的">priming</b> the room, not the objects.</span> <span class="s" data-t="127.513" data-e="141.776">A context present from the start can be <b class="kw" data-tip="v. 捆绑、绑定（bind 的过去分词）：把两样东西系成一个整体；此处指把房间与物件存成同一条记忆">bound</b> into the memory itself, so that objects and room become one retrievable unit, whereas a context arriving late has nothing to attach to and, being <b class="kw" data-tip="adj. 新异的、此前没接触过的；常见义 n. 小说">novel</b>, may simply compete for attention.</span></span></div>
+      <p class="para-tr">最省事的解读是：气味只有在「框架正在搭建」的时候在场，才帮得上忙，它预先启动的是房间，不是物件。从一开始就在的语境，可以被一并编进记忆本身，物件与房间于是成了同一个可提取的单位；而晚到的语境没有东西可附着，又因为「新」，反而可能只是来抢注意力的。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="141.776" data-e="151.553">There is a catch: only 8 of the 47 named the scent as lavender, 31 offered something <b class="kw" data-tip="adj. 邻近的、相近的；此处指“差不多但不对”的答案">adjacent</b> such as flowers or soap, and 8 smelled nothing.</span> <span class="s" data-t="151.553" data-e="160.211">That cuts both ways: it rules out expectation, while leaving the effect dependent on a cue most people never consciously <b class="kw" data-tip="v. 被察觉、在意识里留下记录；常见义 v. 登记、注册、（仪表）显示">registered</b>.</span></span></div>
+      <p class="para-tr">但有一个坎，而且不小：47 个人里只有 8 个把气味认成薰衣草，31 个给出了「花」「肥皂」这类相近的答案，还有 8 个人什么也没闻到。这一点两面都割：它排除了「期待」作为解释，因为几乎没人知道自己在闻什么；同时它也意味着，这个效应所依赖的线索，大多数人从未在意识层面登记过。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="160.211" data-e="170.553">The paper is <b class="kw" data-tip="adj. 坦率的、直言不讳的：愿意把自己方法的短处说出来">candid</b> about the rest: 47 people, one <b class="kw" data-tip="n. 一次实验时段、一场（测试）；常见义 n. 会议、一届会期">session</b>, an unmeasured <b class="kw" data-tip="n. 扩香器、散香装置：靠挥发把香气送进空气，本身不加热">diffuser</b>, and two rooms whose light and furniture may have done part of the work.</span> <span class="s" data-t="170.553" data-e="176.382">Without brain imaging, the hippocampal account remains a hypothesis rather than a finding.</span></span></div>
+      <p class="para-tr">论文对其余部分相当坦白：47 个人、一次实验、一台强度从未测过的扩香器，还有两个学习房间——它们在光线与家具上的差异，本身也可能做了一部分工作。没有脑成像，海马体那套解释就还只是假设，不是发现。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="176.382" data-e="187.171">What survives is a smaller claim than the scent industry would like: a smell is not a memory <b class="kw" data-tip="n. 增强剂、助推物：让某样东西变强的一剂；常见义 n. （火箭的）助推器、支持者">booster</b> but a piece of <b class="kw" data-tip="n. 脚手架；（认知上的）支架：临时搭起来、帮助把东西立住的结构">scaffolding</b>, and <b class="kw" data-tip="n. 脚手架；（认知上的）支架：临时搭起来、帮助把东西立住的结构">scaffolding</b> is worth nothing if it goes up after the wall.</span> <span class="s" data-t="187.171" data-e="192.434">Anyone who wants the room to come back with the material has to put the room there first.</span></span></div>
+      <p class="para-tr">留下来的，是一个比香氛行业想要的更小的判断：气味不是记忆的增强剂，而是一段脚手架；而脚手架如果砌在墙之后，就一文不值。想让房间跟着材料一起回来，就得先把房间放在那儿。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">absence</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈæbsəns/ · 美 /ˈæbsəns/</div>
+          <div class="wc-pos"><b>n.</b> <b>缺失、不在场</b>：此处指「本该在却不在」的那种空缺——考场里没有复习那间屋子的气味。<br>常见义：<b>n.</b> 缺席（absence from school 缺课）；<b>n.</b> 缺乏（in the absence of evidence 在缺乏证据的情况下）。<br>搭配：in the absence of（在没有……的情况下）／absence of mind（心不在焉）／conspicuous by its absence（因缺席而格外显眼）。<br>为什么开篇用这个词：它把「气味不在」写成了一件<b>可以测量的东西</b>，而不是一句抒情。整篇文章要讨论的，正是「在场的语境」与「缺席的语境」对记忆的不同作用。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That <b>absence</b> is the oldest practical problem in memory research…</div>
+          <div class="wc-tr">这种空缺，是记忆研究里最老的一道实际难题……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">recall</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈkɔːl/ · 美 /rɪˈkɔːl/</div>
+          <div class="wc-pos"><b>v.</b> <b>回想起、提取（记忆）</b>：把存进去的东西重新调出来。<br>常见义：<b>v.</b> 召回（recall a product 召回产品）；<b>v.</b> 使想起（The sight recalled his childhood）。<br>搭配：recall doing sth（记得做过某事）／beyond recall（无法挽回）／product recall（产品召回）。<br>与 remember 的区别：remember 偏「记得有这么回事」，recall 偏「主动把它调出来」。本文用的是 recall，因为考场上的动作是<b>提取</b>，不是「记得」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…what is learned in one place must be <b>recalled</b> in another…</div>
+          <div class="wc-tr">……在一个地方学到的东西，必须在另一个地方被想起来……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attach</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əˈtætʃ/ · 美 /əˈtætʃ/</div>
+          <div class="wc-pos"><b>v.</b> <b>附着、系上</b>：此处指「没有东西可以挂靠」。<br>常见义：<b>v.</b> 附上（attach a file 附上文件）；<b>v.</b> 认为有重要性（attach importance to）。<br>搭配：attach sth to sth（把……系在……上）／be attached to（依恋、隶属于）／attach to（归属于）。<br>本句的 have nothing to attach to 是全文机制的枢轴：气味要起作用，必须<b>有东西可以挂上去</b>——挂在「正在形成的框架」上，而不是挂在已经封口的记忆上。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…whereas a context arriving late has nothing to <b>attach</b> to…</div>
+          <div class="wc-tr">……而晚到的语境没有东西可附着……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">candid</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkændɪd/ · 美 /ˈkændɪd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>坦率的、直言不讳的</b>：愿意把自己方法的短处摆出来。<br>常见义：<b>adj.</b> （照片）抓拍的、不加摆布的（a candid shot）。<br>搭配：be candid about sth（对……坦诚）／to be candid（老实说）／a candid assessment（坦率的评估）。<br>为什么用这个词评价论文：它把「局限」从缺点变成了<b>可信度的一部分</b>。一项肯把 47 人、单次实验、强度未测写进正文的研究，比一项只报显著结果的研究更值得引用。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The paper is <b>candid</b> about the rest: 47 people, one session…</div>
+          <div class="wc-tr">论文对其余部分相当坦白：47 个人、一次实验……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">adjacent</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈdʒeɪsnt/ · 美 /əˈdʒeɪsnt/</div>
+          <div class="wc-pos"><b>adj.</b> <b>邻近的、相近的</b>：此处指「差不多但不对」的答案。<br>常见义：<b>adj.</b> 毗邻的（adjacent rooms 相邻的房间）；<b>adj.</b> （领域）邻近的（adjacent fields）。<br>搭配：adjacent to（与……相邻）／in adjacent seats（在邻座）。<br>这个词在本文里承担了一个精确的区分：<b>不是答错，而是答得「差一点」</b>。而「差一点」恰恰说明气味被闻到了、只是没被命名——这正好支撑下一句「不能用期待来解释」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…31 offered something <b>adjacent</b> such as flowers or soap…</div>
+          <div class="wc-tr">……31 个给出了「花」「肥皂」这类相近的答案……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">interaction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntərˈækʃn/ · 美 /ˌɪntərˈækʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（统计上的）交互作用</b>：两个因素合在一起的效果，不等于各自效果相加——也就是说，一个因素的效果<b>取决于</b>另一个因素处在什么水平。<br>常见义：<b>n.</b> 交流、互动（social interaction 社交）。<br>搭配：a significant interaction（显著的交互作用）／interaction between A and B／interact with（与……相互作用）。<br>读懂统计论文的关键词：本文「气味」主效应不显著，「年龄」主效应显著，但「气味 × 时机」的交互显著——意思是<b>气味有没有用，要看它什么时候出现</b>。只看主效应，就会得出「气味无用」的错误结论。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…an <b>interaction</b> that held across the sample (p = 0.027)…</div>
+          <div class="wc-tr">……这个交互作用在全样本上成立（p = 0.027）……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">bind</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /baɪnd/ · 美 /baɪnd/ · 过去分词 bound</div>
+          <div class="wc-pos"><b>v.</b> <b>捆绑、绑定</b>：把两样东西系成一个整体；此处指把「房间」与「物件」存成同一条记忆。<br>常见义：<b>v.</b> 装订（bind a book）；<b>v.</b> 约束（be bound by rules 受规则约束）；<b>adj.</b> 注定的（be bound to）。<br>搭配：bind A to B／be bound up with（与……密不可分）／binding agreement（有约束力的协议）。<br>认知科学里的 binding 是个术语：记忆不是把物件单独存起来，而是把物件<b>连同它出现时的场景</b>一起打包。这篇论文的机制解释，全部建立在这个「打包」动作上。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A context present from the start can be <b>bound</b> into the memory itself…</div>
+          <div class="wc-tr">从一开始就在的语境，可以被一并编进记忆本身……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">booster</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbuːstə(r)/ · 美 /ˈbuːstər/</div>
+          <div class="wc-pos"><b>n.</b> <b>增强剂、助推物</b>：让某样东西变强的一剂。<br>常见义：<b>n.</b> （火箭的）助推器；<b>n.</b> 支持者、拥护者；<b>n.</b> 加强针（booster shot）。<br>搭配：a memory booster（记忆增强剂）／a confidence booster（提升信心的事）／booster seat（儿童增高座）。<br>这个词是全文的靶子：市面上「香气提升记忆」的宣传，默认气味是一支<b>可以随时打的针</b>；而论文的结论是，它更像一段<b>脚手架</b>——必须先于墙存在。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a smell is not a memory <b>booster</b> but a piece of scaffolding…</div>
+          <div class="wc-tr">……气味不是记忆的增强剂，而是一段脚手架……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">measurable</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmeʒərəbl/ · 美 /ˈmeʒərəbl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>可测量的、达到可测程度的</b>：此处指「小到测不出来」。<br>常见义：<b>adj.</b> 显著的、明显的（a measurable improvement）。<br>搭配：no measurable difference（没有可测的差别）／measurable success（看得见的成效）／beyond measure（无法估量）。<br>注意这个说法比 no difference 更谨慎：它不说「完全一样」，而说「在本研究的精度下测不出差别」——样本只有 47 人，这句话留了一道门。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the scent made no <b>measurable</b> difference in either position…</div>
+          <div class="wc-tr">……气味放在哪一批都没有可测的差别……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">encode</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈkəʊd/ · 美 /ɪnˈkoʊd/</div>
+          <div class="wc-pos"><b>v.</b> <b>（记忆的）编码、登记</b>：把外界信息转换成大脑可以存储的形式，是记忆三阶段（编码—存储—提取）的第一环。<br>常见义：<b>v.</b> 把……译成密码、编码（encode data 给数据编码）。<br>搭配：encode information／encoding stage（编码阶段）／encode sth into（把……编进……）。<br>为什么这个词在本文里是关键词：气味只在<b>编码</b>阶段出现才有效，在提取阶段出现再好也没用——「时机」这个结论，本质上是一句关于编码的话。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…had 24 younger and 23 older adults <b>encode</b> two blocks of 64 household objects…</div>
+          <div class="wc-tr">……让 24 位较年轻的成人与 23 位较年长的成人编码两批各 64 件日常用品……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hippocampus</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/ˌhɪpəˈkæmpəs/ · 复数 hippocampi</div>
+          <div class="wc-pos"><b>n.</b> <b>海马体</b>：位于大脑内侧颞叶，负责把相似经历<b>分开存储</b>（模式分离），也是嗅觉信息最早抵达的高级脑区之一。<br>构词：harp + horse + sea-monster（希腊语 hippokampos，形似海马）。<br>搭配：hippocampal（adj. 海马体的）／hippocampal pattern separation（海马模式分离）。<br>为什么它能解释「气味 + 记忆」：嗅觉皮层与海马之间有极短的通路，所以气味是少数能<b>直接</b>碰到记忆系统的感官输入——这也是「气味唤起往事」比其他感官更强烈的解剖学理由。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…it is the one most closely tied to the <b>hippocampus</b>.</div>
+          <div class="wc-tr">……而这正是指标里与海马体关系最紧的一个。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lure</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /lʊə(r)/ · 美 /lʊr/</div>
+          <div class="wc-pos"><b>n.</b> <b>诱饵</b>：记忆测试里「看起来像、其实不是」的图片；相似度分五级（L1 最像、L5 最不像）。<br>常见义：<b>v.</b> 引诱、诱骗（lure sb into doing sth）；<b>n.</b> 诱惑物。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the gap widened as the <b>lures</b> grew more similar to what had been seen.</div>
+          <div class="wc-tr">……而且当「诱饵」与原件越来越像时，差距还进一步拉大。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diffuser</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪˈfjuːzə(r)/ · 美 /dɪˈfjuːzər/</div>
+          <div class="wc-pos"><b>n.</b> <b>扩香器、散香装置</b>：靠自然挥发或超声把香气送进空气，不加热、不燃烧。<br>常见义：<b>n.</b> 扩散器、散流器（空调、灯光用的）。<br>搭配：reed diffuser（藤条扩香）／ultrasonic diffuser（超声波扩香器）。<br>本文的实验条件正是「被动扩香」：作者自己承认，这种方式可能<b>强度不够、也不够显眼</b>——所以阴性结果未必等于气味无效，只等于「这个浓度下无效」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…an unmeasured <b>diffuser</b>, and two rooms whose light and furniture may have done part of the work.</div>
+          <div class="wc-tr">……一台强度从未测过的扩香器……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scaffolding</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈskæfəldɪŋ/ · 美 /ˈskæfəldɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>脚手架</b>；在教育与认知科学里引申为「支架」：临时搭起来、帮助学习者把新东西立住的结构，用完就撤。<br>常见义：<b>n.</b> 建筑工地上的脚手架。<br>搭配：put up scaffolding（搭脚手架）／scaffolded instruction（支架式教学）。<br>为什么结尾用它：脚手架有两个性质，恰好对上本文结论——①它必须<b>先于</b>建筑存在；②它是<b>临时</b>的，不是建筑本身。气味就是这样的东西：不是墙，是墙砌起来之前那圈钢管。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a smell is not a memory booster but a piece of <b>scaffolding</b>…</div>
+          <div class="wc-tr">……气味不是记忆的增强剂，而是一段脚手架……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">retrievable</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈtriːvəbl/ · 美 /rɪˈtriːvəbl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>可提取的、可以调出来的</b>：存储没问题，但能不能在需要时取出来是另一回事。<br>构词：retrieve（取回、检索）+ -able。同族：retrieval（n. 提取）、retrieval cue（提取线索）。<br>搭配：easily retrievable／retrievable from memory／retrieval failure（提取失败）。<br>记忆研究里最容易被忽略的一层：很多「忘了」不是没存进去，而是<b>取不出来</b>。本文的「一个可提取的单位」正指向这一点——气味把房间和物件打包，等于多给了一个可以下手的把手。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…so that objects and room become one <b>retrievable</b> unit…</div>
+          <div class="wc-tr">……物件与房间于是成了同一个可提取的单位……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mnemonic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">/nɪˈmɒnɪk/ · 美 /nɪˈmɑːnɪk/</div>
+          <div class="wc-pos"><b>adj.</b> <b>记忆的、助记的</b>：mnemonic discrimination 指「记忆辨别」，即区分两段相似经历的能力。<br>常见义：<b>n.</b> 助记法、记忆口诀（a mnemonic for the planets）。<br>搭配：mnemonic device（助记手段）／mnemonic similarity task（记忆相似性任务，MST）。<br>为什么这里是全文的技术核心：普通再认只问「见过没有」，记忆辨别问「是不是<b>这一个</b>」。后者才是老年记忆最早出问题的地方，也才是气味可能起作用的地方。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That measure, <b>mnemonic</b> discrimination, asks whether someone can tell a hairdryer…</div>
+          <div class="wc-tr">那层更细的指标叫「记忆辨别」，它问的是：你能不能把刚看过的那只吹风机……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prime</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /praɪm/ · 美 /praɪm/</div>
+          <div class="wc-pos"><b>v.</b> <b>预先启动、使处于「待发」状态</b>：先给一个线索，让大脑在真正处理信息之前就已经准备好。心理学里的 priming（启动效应）即由此而来。<br>常见义：<b>adj.</b> 首要的、最好的（the prime suspect 头号嫌疑人；prime time 黄金时段）；<b>n.</b> 全盛期（in the prime of life）。<br>搭配：prime sb to do sth（事先让某人准备好做某事）／prime the pump（注资启动）／be primed for（对……已有准备）。<br>为什么这句非用它不可：宾语是 the room，不是 the objects——气味不是给某件物品「打标记」，而是先让<b>整个房间</b>进入待发状态。这一个介词的选择，就是全文机制的全部。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a smell helps only if it is there while the frame is built, <b>priming</b> the room, not the objects.</div>
+          <div class="wc-tr">……气味只有在「框架正在搭建」的时候在场，才帮得上忙，它预先启动的是房间，不是物件。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">register</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈredʒɪstə(r)/ · 美 /ˈredʒɪstər/</div>
+          <div class="wc-pos"><b>v.</b> <b>被察觉、在意识里留下记录</b>：信息进到了系统里，但未必被命名。<br>常见义：<b>v.</b> 登记、注册（register for a course）；<b>v.</b> （仪表）显示（The thermometer registered 30°C）；<b>n.</b> 登记簿、语域。<br>搭配：barely register（几乎没被注意到）／register as（显现为）／fail to register（没被察觉）。<br>与 recognize 的分工：recognize 是「认出是什么」，register 只是「进了系统」。本文的关键正是这条缝——气味被<b>登记</b>了（所以有效应），却没被<b>认出</b>（所以不是期待）。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…while leaving the effect dependent on a cue most people never consciously <b>registered</b>.</div>
+          <div class="wc-tr">……同时它也意味着，这个效应所依赖的线索，大多数人从未在意识层面登记过。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">novel</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈnɒvl/ · 美 /ˈnɑːvl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>新异的、此前没接触过的</b>：心理学里的 novel stimulus 指「第一次遇到的刺激」。<br>常见义：<b>n.</b> 小说（a novel by Dickens）——注意词性一变，重音与搭配全变。<br>搭配：a novel stimulus／a novel environment／novelty（n. 新异性）／novelty seeking（求新）。<br>为什么这里的「新」是负面的：在记忆里，「新」意味着<b>没有旧记忆可以挂靠</b>，于是它只能去抢注意力。同一缕香气，早到是框架，晚到就是干扰——差别不在气味，在它相对框架的先后。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and, being <b>novel</b>, may simply compete for attention.</div>
+          <div class="wc-tr">……又因为「新」，反而可能只是来抢注意力的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">discrimination</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /dɪˌskrɪmɪˈneɪʃn/ · 美 /dɪˌskrɪmɪˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>辨别、区分（的能力）</b>：此处指分辨两个相似刺激是否为同一个。<br>常见义：<b>n.</b> 歧视（racial discrimination；age discrimination）——这是学生最熟、也最容易套错的那个义项。<br>搭配：discrimination between A and B／make a discrimination（作出区分）／discriminate A from B（把 A 与 B 区分开）。<br>判断方法：后面跟着 between / from，或与 task、threshold、ability 连用，一律译「辨别」；与 against 连用、主语是人或群体，才是「歧视」。本文的 mnemonic discrimination 是术语，读成「记忆歧视」就整段崩了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That measure, mnemonic <b>discrimination</b>, asks whether someone can tell a hairdryer…</div>
+          <div class="wc-tr">那层更细的指标叫「记忆辨别」，它问的是……</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">waiting for them</span><span class="zh">在那儿等着他（拟人写法）</span></li>
+          <li><span class="en">with only the learner's head as a bridge</span><span class="zh">唯一的桥是学习者自己的脑袋</span></li>
+          <li><span class="en">be made part of</span><span class="zh">被做成……的一部分</span></li>
+          <li><span class="en">household objects</span><span class="zh">日常用品、家用物件</span></li>
+          <li><span class="en">smell of nothing</span><span class="zh">什么味道也没有</span></li>
+          <li><span class="en">the expected result</span><span class="zh">期待中的结果</span></li>
+          <li><span class="en">plain recognition</span><span class="zh">普通再认（只问「见过没有」）</span></li>
+          <li><span class="en">be built to measure</span><span class="zh">专门用来测量……的</span></li>
+          <li><span class="en">tell A from B</span><span class="zh">把 A 与 B 区分开</span></li>
+          <li><span class="en">be tied to</span><span class="zh">与……紧密相关</span></li>
+          <li><span class="en">at once</span><span class="zh">立刻、同时（此处不是「一次」）</span></li>
+          <li><span class="en">widen the gap</span><span class="zh">拉大差距</span></li>
+          <li><span class="en">leave open whether</span><span class="zh">使……仍然悬而未决</span></li>
+          <li><span class="en">two faces of one decline</span><span class="zh">同一场衰退的两张脸</span></li>
+          <li><span class="en">worth reading</span><span class="zh">值得一读</span></li>
+          <li><span class="en">hold across the sample</span><span class="zh">在全样本上成立</span></li>
+          <li><span class="en">split by group</span><span class="zh">按组分开分析</span></li>
+          <li><span class="en">have little need of props</span><span class="zh">不太需要道具</span></li>
+          <li><span class="en">the most economical reading</span><span class="zh">最省事的解读</span></li>
+          <li><span class="en">be bound into</span><span class="zh">被编进、被绑定进</span></li>
+          <li><span class="en">have nothing to attach to</span><span class="zh">没有东西可以附着</span></li>
+          <li><span class="en">compete for attention</span><span class="zh">争夺注意力</span></li>
+          <li><span class="en">cut both ways</span><span class="zh">两面都割、有利也有弊</span></li>
+          <li><span class="en">rule out</span><span class="zh">排除（某种解释）</span></li>
+          <li><span class="en">be candid about</span><span class="zh">对……很坦白</span></li>
+          <li><span class="en">do part of the work</span><span class="zh">起了一部分作用</span></li>
+          <li><span class="en">a memory booster</span><span class="zh">记忆增强剂</span></li>
+          <li><span class="en">be worth nothing</span><span class="zh">一文不值</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：考场里没有复习那间屋子的味道——记忆最老的实际难题。</li>
+          <li>第 2 段：47 人、两批图片、两间房，测试在第三间无味房。</li>
+          <li>第 3 段：零结果——气味既没改善再认，也没改善辨别。</li>
+          <li>第 4 段：年龄效应显著，老人辨别与嗅觉双双更差。</li>
+          <li>第 5 段：转折——关键是「什么时候」闻到，且只对老人成立。</li>
+          <li>第 6 段：机制——气味预先启动的是房间，不是物件。</li>
+          <li>第 7 段：反证——只有 8 人认出薰衣草，故排除期待效应。</li>
+          <li>第 8 段：边界——47 人、单次、强度未测、房间也变了。</li>
+          <li>第 9 段：落点——脚手架要在砌墙之前搭好。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">That absence is the oldest practical problem in memory research: what is learned in one place must be recalled in another, with only the learner's head as a bridge.</div>
+        <div class="row"><b>主干：</b>That absence is the oldest practical problem（这种空缺是最老的一道实际难题）＋ 冒号后是对「难题」的定义：what is learned in one place must be recalled in another（在一个地方学到的，必须在另一个地方被想起）。</div>
+        <div class="row"><b>难点：</b>① 主语 That absence 指上一句的「考场里没有复习那间屋子的味道」——指示代词跨句回指，是学术英语最常见的开头方式，读不懂就要回头看上一句；② 冒号在这里不是列举，而是<b>解释</b>（A: B 意为「A 就是 B」）；③ what is learned 是主语从句，谓语是 must be recalled，中间隔着地点状语，容易把 learned 误当成谓语；④ with only the learner's head as a bridge 是 with 复合结构（with + 名词 + as + 名词），表「仅以……作为」；⑤ only 的位置决定了全句的语气：它把「桥」缩到只剩一个脑袋，为后文「气味能不能当桥」留出空间。</div>
+        <div class="row tr"><b>译文：</b>这种空缺，是记忆研究里最老的一道实际难题：在一个地方学到的东西，必须在另一个地方被想起来，而中间唯一的桥，是学习者自己的脑袋。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Renae Mannion and Alexis Bailey at Rice University, with Stephanie Leal at UCLA, had 24 younger and 23 older adults encode two blocks of 64 household objects, one in a lavender-scented room, one in a plain room.</div>
+        <div class="row"><b>主干：</b>Renae Mannion and Alexis Bailey … had 24 younger and 23 older adults encode two blocks of 64 household objects（两位研究者让 47 位成人编码两批各 64 件物品）——have sb do sth 的使役结构。</div>
+        <div class="row"><b>难点：</b>① 主语后面挂了两串同位语（at Rice University / with Stephanie Leal at UCLA），把主谓隔开了 9 个词，读的时候要跳过机构名先找 had；② had … encode 是<b>使役</b>，不是过去完成时——判断依据是 encode 用原形；③ two blocks of 64 household objects 是「两批、每批 64 件」，不是「两批共 64 件」；④ 两个 one in a room … 是独立主格式的补充说明（one 指 block），分别对应上一句提到的两种房间；⑤ where a lavender diffuser had been running 用过去完成进行时，强调「在受试进来之前就已经在散香」，这个时态细节正是实验控制的关键。</div>
+        <div class="row tr"><b>译文：</b>莱斯大学的 Renae Mannion 与 Alexis Bailey，加上加州大学洛杉矶分校的 Stephanie Leal，让 24 位较年轻的成人与 23 位较年长的成人编码两批各 64 件日常用品：一批在一间散着薰衣草香气的房间里，一批在什么味道也没有的房间里。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Those who met the lavender in their first encoding block later discriminated those objects better than those who met it in their second, an interaction that held across the sample (p = 0.027) and, split by group, was driven almost entirely by the older adults (p = 0.043).</div>
+        <div class="row"><b>主干：</b>Those who met the lavender in their first block later discriminated those objects better than those who met it in their second（第一批就闻到的人，后来辨别得更好）＋ 逗号后 an interaction 作同位语，把整句结论重新命名为一个统计对象。</div>
+        <div class="row"><b>难点：</b>① Those who … 是「那些……的人」，两个 those 分指两组，第二个 who 从句里的 it 指 lavender；② later 是副词「后来」，不是 late 的比较级；③ an interaction 是<b>同位语</b>而非新句子，作用是把「谁更好」翻译成「什么效应」——这是学术英语里极常见的「先讲人话、再给术语」结构；④ and 后接 split by group 是过去分词作状语（= when split by group），主语仍是 an interaction；⑤ 括号里的 p 值是<b>证据强度</b>的标记，不是修饰语，读到括号可以直接跳过去再回头对。</div>
+        <div class="row tr"><b>译文：</b>在第一批学习时就闻到薰衣草的人，后来对这些物件的辨别成绩，好过在第二批才闻到的人；这个交互作用在全样本上成立（p = 0.027），分组之后，又几乎完全由年长者承担（p = 0.043）。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A context present from the start can be bound into the memory itself, so that objects and room become one retrievable unit, whereas a context arriving late has nothing to attach to and, being novel, may simply compete for attention.</div>
+        <div class="row"><b>主干：</b>A context … can be bound into the memory（语境可以被编进记忆），so that … become one unit（结果是两者合成一个单位），whereas a context … has nothing to attach to（而晚到的语境没有可附着之物）。</div>
+        <div class="row"><b>难点：</b>① A context present from the start 中 present 是<b>后置形容词</b>（= that is present），不是动词；② be bound into 是被动，bound 是 bind 的过去分词，不是「边界」；③ so that 在此表<b>结果</b>（以至于），不是目的；④ whereas 引出对比分句，是全文的转折枢纽——前半句讲「早到的好处」，后半句讲「晚到的坏处」；⑤ being novel 是现在分词短语作原因状语（= because it is novel），且与主句主语 a context 逻辑一致；⑥ simply 在此不是「简单地」，而是「只不过、仅仅是」，用来压低语气。</div>
+        <div class="row tr"><b>译文：</b>从一开始就在的语境，可以被一并编进记忆本身，物件与房间于是成了同一个可提取的单位；而半途才到的语境没有东西可附着，又因为「新」，反而可能只是来抢注意力的。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">What survives is a smaller claim than the scent industry would like: a smell is not a memory booster but a piece of scaffolding, and scaffolding is worth nothing if it goes up after the wall.</div>
+        <div class="row"><b>主干：</b>What survives is a smaller claim（留下来的，是一个更小的判断）＋ 冒号后给出这个判断：a smell is not A but B（气味不是 A 而是 B），and B is worth nothing if …（而 B 若……就一文不值）。</div>
+        <div class="row"><b>难点：</b>① What survives 是主语从句，survives 在此不是「幸存」，而是「（删去一切站不住的部分之后）还留下来的」；② smaller than the scent industry would like 是<b>比较从句</b>，省略了 would like (it to be)，语气里带一点冷；③ not A but B 的重心永远在 B，A 只是用来清场；④ a piece of scaffolding 用「一段」而非「一个」，暗示它是<b>过程性</b>的东西；⑤ 末尾 if it goes up after the wall 是全篇的落点：把「时机」这个统计结论，翻译成一个能看见的施工顺序。</div>
+        <div class="row tr"><b>译文：</b>留下来的，是一个比香氛行业想要的更小的判断：气味不是记忆的增强剂，而是一段脚手架；而脚手架如果砌在墙之后，就一文不值。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章要拆的，是一个「本来应该成功、结果没有成功」的实验。</b>《衰老神经科学前沿》（Frontiers in Aging Neuroscience）2026 年 9 月 28 日刊出莱斯大学与加州大学洛杉矶分校的联合研究，第一作者 Renae Mannion，通讯作者 Stephanie Leal，研究的是：学习时闻到的一缕气味，能不能成为记忆的一部分。</p>
+      <p class="zh-sum"><b>研究设计相当干净。</b>47 位健康成人，24 位平均 24 岁，23 位平均 67 岁，先在无气味房间做嗅觉基线测试，然后把 64 张日常用品图片分两批学习（每张 3 秒，判断「室内还是室外」）：一批在有薰衣草气味的房间，一批在没有气味的房间，两批分别在两个独立房间进行，以免气味互相污染。学完之后，全部 192 张图片在一个<b>完全没有气味</b>的房间里呈现——其中 64 张是原图，64 张是「只改了一点」的相似图（诱饵，按相似度分五级），64 张是全新的。这个任务叫记忆相似性任务（MST），测两件事：普通再认（见过没有），以及记忆辨别（是不是<b>这一个</b>）。</p>
+      <p class="zh-sum"><b>第一个结果是零。</b>把 47 个人合起来看，有气味的房间既没有提高普通再认，也没有提高记忆辨别——两个主效应都不显著。这与「气味能增强记忆」的流行说法相反，也与作者自己的预期相反。</p>
+      <p class="zh-sum"><b>第二个结果是年龄。</b>年长者的记忆辨别显著低于年轻人（F(1,45) = 21.2，p < 0.001），而且当诱饵与原件越来越像时，差距进一步拉大——高相似度条件下的差异最大，这正说明问题出在「把相似的东西分开」这一步，也就是海马体的模式分离。他们的嗅觉识别分数也显著更低，但两者在个体层面并不强相关：嗅觉与记忆的关联，很大程度上是被「年龄」这个共同原因带出来的。</p>
+      <p class="zh-sum"><b>第三个结果才是全文的转折。</b>真正显著的，是「气味 × 出现顺序」的交互作用（p = 0.027）。在<b>第一批</b>学习时就闻到薰衣草的人，后来对这些物件的辨别成绩更好；在<b>第二批</b>才闻到的人，反而更差。分组之后，这个效应几乎完全由年长者承担（p = 0.043），年轻人两组之间没有可测差别。</p>
+      <p class="zh-sum"><b>为什么时机比气味本身更重要？</b>作者给出的解释是「语境绑定」：如果气味从一开始就在，它会和正在形成的记忆<b>一起被打包</b>，物件与房间于是成为同一个可提取的单位，提取时多了一个可以下手的把手；如果气味半途才到，它没有东西可以附着，又因为「新」，反而只会跟学习材料抢注意力。一句话：它预先启动的是<b>房间</b>，不是物件。</p>
+      <p class="zh-sum"><b>但这项研究有一个自己承认的坎。</b>47 个人里，只有 8 个把气味认成薰衣草，31 个给出「花」「肥皂」这类相近答案，8 个什么也没闻到。这一点两面都割：好的一面是排除了「期待效应」——几乎没人知道自己在闻什么，所以不可能是「觉得有用所以有用」；坏的一面是，效应依赖的线索弱到大多数人从未在意识层面察觉，换个浓度、换个气味，结论未必成立。此外还有 47 人的小样本、单次实验、被动扩香器强度未测、两个学习房间在光线与家具上的差异本身也可能是混淆因素、以及没有脑成像因而海马体机制仍属推测。</p>
+      <p class="zh-sum"><b>所以，这篇文章真正的价值，不在于「香气有没有用」，而在于它示范了一种<b>更精确的问法</b>。</b>「有没有用」是一个是非题，答案往往含混；「在什么条件下、对谁、什么时候有用」才是一个可以被检验的问题。同一缕薰衣草，早到是框架，晚到是干扰；对年轻人无所谓，对老人才有分量。这种「条件化」的结论听起来不够响亮，却比任何一句「气味能提升记忆」都更接近真相，也更难被商家拿去当广告语。</p>
+      <p class="zh-sum"><b>最后一层，是它与我们每个人的关系。</b>我们都有过这样的经验：某首歌一响，某个下午就整块回来了；某种洗衣粉的味道，能把一间早就拆掉的房子重新立起来。这些经验是真的，但它们同时也说明——气味之所以能唤起记忆，是因为它<b>当初就在那里</b>，和那件事一起被存了进去。你无法在二十年后再补一缕香气，去把当年的事「增强」一遍。脚手架必须在砌墙之前搭好；这也是为什么，真正有效的记忆策略，几乎都指向同一个方向：在你还在场的时候，把该在场的东西放进去。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. A lavender scent improved memory in both age groups, and the effect was strongest among participants who could identify the smell.<br>B. A lavender scent produced no overall memory benefit, but in older adults its effect depended on when it appeared, which suggests a scent works as a frame rather than as a booster.<br>C. Because most participants failed to name the scent, the study shows that odours cannot influence memory at all.<br>D. Older adults have such poor senses of smell that scent-based memory interventions should be abandoned.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景（考场里没有那间屋子的味道）→ 设计（47 人、两批、两间房、第三间无味房测试）→ 零结果（气味既不改善再认，也不改善辨别）→ 年龄（老人辨别与嗅觉都更差）→ 转折（气味 × 时机交互显著，且由老人承担）→ 机制（气味启动的是房间，不是物件）→ 反证（47 人里仅 8 人认出薰衣草，故不能用期待解释）→ 边界（47 人、单次、强度未测）→ 落点（脚手架要在砌墙之前搭）」。B 同时覆盖「没有总体效果」与「有时机效应」这两端，正是原文的重心。A 与第 3 段直接冲突，且「能认出气味的人效果更强」原文并未报告。C 把「无总体效应」夸成「完全无效」，忽略了显著的交互作用。D 把「老人嗅觉更差」推成「应当放弃」，原文恰恰指出早期接触气味对老人<b>更</b>有用。</div>
+
+      <div class="q"><b>2. Why does the author say the finding "cuts both ways"?<br>A. Because the scent helped older adults but harmed younger ones.<br>B. Because the low identification rate weakens the study's credibility while also proving that the effect was not produced by expectation.<br>C. Because the scent was pleasant to some participants and unpleasant to others.<br>D. Because the study was both published in a good journal and based on a small sample.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>原文紧接在「只有 8 人认出是薰衣草」之后：That cuts both ways: it rules out expectation as the explanation, while leaving the effect dependent on a cue most people never consciously registered. 一面是<b>好事</b>（没人知道自己在闻什么，所以不可能是「以为有用所以有用」的期待效应），一面是<b>隐患</b>（效应依赖的线索弱到几乎没被察觉，换个浓度可能就没了）。B 完整复述了这层双刃。A 与原文相反：年轻人两组都没有可测差别，不是「受害」。C 偷换概念：愉悦度只出现在调节分析里，不是 cuts both ways 所指。D 把「坦率交代局限」误读为双刃，方向错了。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的核心判断是「气味不是增强剂，是脚手架」——同一件事物，出现得早是框架，出现得晚就是干扰。请你就身边一个「被当成万能增强剂」的东西（例如考前听某段音乐、喝某种饮料、换一支笔、坐在固定座位），写一段 150 字以内的分析：① 它在你的经验里到底「增强了什么」（是记忆本身，还是情绪、注意力、仪式感）；② 如果要检验它是否真的帮到了记忆，你会怎样安排「有时有、有时无」的对照；③ 说明如果它只在某一种条件下有效，你能说的最强结论是什么。要求至少给出一个具体条件，不要只讲道理。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段用的是「降级 + 换喻」的收束句式：<span class="hl">What survives is a smaller claim than the scent industry would like: a smell is not a memory booster but a piece of scaffolding, and scaffolding is worth nothing if it goes up after the wall.</span> 它的力量来自三个动作：① 先用 What survives 把「所有站不住的部分都删掉」，只留一点，语气立刻变冷；② 再用 not A but B 清场，A 是别人想要的那个说法（booster），B 是自己要的那个（scaffolding）；③ 最后用一个<b>施工顺序</b>把抽象结论变成能看见的动作——goes up after the wall。仿写时照搬骨架：<i>What survives is a smaller claim than ______ would like: ______ is not a ______ but a ______, and ______ is worth nothing if ______.</i> 注意 B 必须是一个<b>具体的物件或结构</b>（scaffolding / ladder / door frame），不能是抽象名词；最后一句的 if 从句要给出一个<b>顺序或条件</b>，而不是原因。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">1 · 场景：考场里没有那间自习室的味道</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">2 · 设计：47 人，两批图片，一间有味一间无味</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">3 · 零结果：气味既没帮上再认，也没帮上辨别</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">4 · 年龄：老人辨别更差，嗅得也更差</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">5 · 转折：真正起作用的是「什么时候」闻到</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">6 · 机制：气味启动的是房间，不是物件</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">7 · 反证：47 人里只有 8 人认出是薰衣草</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">8 · 边界：47 人、一次、强度未测、房间也变了</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">9 · 落点：脚手架要在砌墙之前搭</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：主效应是零，交互作用是显著的</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">气味不是「有没有用」，而是「什么时候到场」</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、4 段绿色：两个主效应，一个是零，一个属于年龄</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 5 段红色：唯一的转折——气味 × 时机的交互</text>
+        </svg>
+        <figcaption>结构图解：文章走的是一条「先报零、再报条件」的路。第 1 段给场景（考场里没有那间屋子的味道），第 2 段交代设计与三间房（两间学习、一间无味测试），第 3 段摆出两个主效应的零结果，第 4 段给出年龄效应并指出「嗅觉与记忆的关联其实由年龄带出」，第 5 段是全篇唯一的转折——气味 × 顺序的交互显著，且几乎只由年长者承担，第 6 段给出机制（气味预先启动的是房间不是物件），第 7 段用「只有 8 人认出薰衣草」做反证（排除期待效应，同时埋下隐患），第 8 段列边界（小样本、单次、强度未测、房间混淆、无脑成像），第 9 段落到「脚手架必须在砌墙之前」。注意全文没有一句「香气有益记忆」——它把「在什么条件下」写得比「有没有用」更清楚。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Renae Mannion, Alexis Bailey, Stephanie L. Leal《Olfactory context and memory across the adult lifespan: effects on mnemonic discrimination and olfactory function》，Frontiers in Aging Neuroscience 18:1917760（2026-09-28，DOI 10.3389/fnagi.2026.1917760），莱斯大学心理科学系 + 加州大学洛杉矶分校整合生物学与生理学系｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
