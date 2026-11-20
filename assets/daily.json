@@ -691,11 +691,25 @@
    "src": "外刊精读 · 香气没有让他记得更多，只让他分得更清（2026-11-19）",
    "key": "goes up after the wall",
    "keyZh": "砌在墙之后才立起来（go up 此处是「被搭起来、立起来」，不是「上升」；整句在说：顺序错了，工具就失去了意义）",
-   "tip": "这是全篇的落点，靠一次「换喻 + 施工顺序」完成。前半句先降级：a smaller claim than… 把结论主动缩小，气势先低下去，判断反而更硬。中段 not A but B 清场——A 是香氛行业想要的说法（booster，一支可以随时打的针），B 是自己要的（scaffolding，砌墙之前那圈钢管）。真正的杀伤力在句尾 if it goes up after the wall：它把一个统计结论（气味 × 时机的交互作用）翻译成一个能看见的<b>先后次序</b>——不是「有没有用」，而是「来不来得及」。注意 go up 的双关：脚手架 go up 是「搭起来」，价格 go up 是「上涨」，这里只能是前者。仿写骨架：____ is not a ____ but a ____, and ____ is worth nothing if it ____ after the ____.",
+   "tip": "这是全篇的落点，靠一次「换喻 + 施工顺序」完成。前半句先降级：a smaller claim than… 把结论主动缩小，气势先低下去，判断反而更硬。中段 not A but B 清场——A 是香氛行业想要的说法（booster，一支可以随时打的针），B 是自己要的（scaffolding，砌墙之前那圈钢管）。真正的杀伤力在句尾 if it goes up after the wall：它把一个统计结论（气味 × 时机的交互作用）翻译成一个能看见的先后次序——不是「有没有用」，而是「来不来得及」。注意 go up 的双关：脚手架 go up 是「搭起来」，价格 go up 是「上涨」，这里只能是前者。仿写骨架：____ is not a ____ but a ____, and ____ is worth nothing if it ____ after the ____.",
    "tags": [
     "教育与学习方式",
     "学习科学",
     "记忆"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "en": "A beaver is not a component that can be specified, delivered and installed. It is a neighbour that reads the site, ignores the drawing, and then, given time and a measure of tolerance, does the job the drawing was for.",
+   "zh": "河狸不是一个可以写进规格、按期交付、现场安装的部件。它是一个邻居——它读现场，不理图纸，然后在给了它时间和一点容忍之后，把那张图纸本来要做的事做成了。",
+   "src": "外刊精读 · 河狸筑起六座坝，人类修的坝塌了一半（2026-11-20）",
+   "key": "a measure of tolerance",
+   "keyZh": "一定程度的容忍（measure 此处是「程度、份额」，不是「措施」；整句在说：宽容是有配额的，给到某个程度为止）",
+   "tip": "这是全篇的落点，靠的是一次「工程词 → 生活词」的替换。前半句先清场：a component that can be specified, delivered and installed——specify（写进规格）、deliver（交付）、install（安装）三个动词全来自供应链，连起来就是「可以下单的东西」。后半句换成 a neighbour，一个不能下单、只能相处的身份，立场立刻清楚。真正的技术活在中间的 given time and a measure of tolerance：这是插入的过去分词状语（= if it is given…），把「需要什么条件」压进句子主干之间，既不打断节奏，又让条件无法被忽略。注意 measure 的熟词僻义：不是「措施」（take measures），而是「一定的量」——a measure of 就是「几分、一定程度」。仿写骨架：____ is not a ____ that can be ____, ____ and ____. It is a ____ that ____, ____, and then, given ____, ____.",
+   "tags": [
+    "生态与可持续",
+    "洪水治理",
+    "再野化"
    ]
   }
  ]

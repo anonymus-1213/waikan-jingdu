@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 河狸筑起六座坝，人类修的坝塌了一半</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Dam &amp; Spill · 人与自然 / 生态与可持续 / 洪水治理 / 再野化</div>
+  <h1>河狸筑起六座坝，人类修的坝塌了一半</h1>
+  <div class="deck">Six dams, five years and one fenced stream in North Yorkshire: peak flows fell by 46.6 per cent and baseflow rose by 417 per cent, while the engineered dams the beavers ignored lost more than half their storage. The flood defence that worked was the one nobody had drawn.</div>
+  <div class="byline"><span><b>来源</b> 利兹大学地理学院河盆过程与管理组 + 英国生态水文中心（UKCEH）等 13 位作者；Ecohydrology 19(4):e70238（2026 年 6 月 7 日在线，DOI 10.1002/eco.70238）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-20</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 502 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-20.jpg" alt="暮色中的林地溪流，一只欧亚河狸站在用树枝和泥垒成的坝上，身后是被拦起的静水">
+    <figcaption>配图：林地溪流里，一只欧亚河狸站在自己垒起的坝上，枝条和泥把水拦成一片静水。它没有看过那张防洪图纸，却把图纸想做的事做成了——只是工期、位置和规模，都由它自己决定（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>先把这个数字摆出来：一条溪流，五年，六座坝，洪峰流量的中位数下降了 <b>46.6%</b>，枯水期的基流上升了 <b>417%</b>。筑坝的不是工程队，是一窝<b>河狸</b>。</p>
+    <p>更值得读的是过程里那个难堪的部分。这段溪流上，人类早就按方案修好了一串「漏水坝」；河狸来了以后，<b>完全不理它们</b>——那些坝朽坏、蓄水能力掉了过半。最后把窟窿填上的，是河狸自己筑的坝。</p>
+    <p>所以这篇要拆的不是「河狸有没有用」，而是<b>「为什么有用的那个，恰好是没法写进标书的那个」</b>。答案是：它是一个会读现场的邻居，不是一个可以下单的部件。</p>
+    <p>本期另附一处高频熟词僻义：<b>flashy</b> 在水文学里不是「花哨」，是「陡涨陡落」。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-20.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="13.405">On a spring day in 2019, a family of Eurasian beavers was carried to a fenced <b class="kw" data-tip="n. 围场、封闭区域：此处指用围栏圈出的一段溪流，河狸在其中活动但尚未完全野放；常见义 v. 围住">enclosure</b> in Cropton Forest, North Yorkshire, and released into a stream that engineers had already fitted with a chain of leaky dams.</span> <span class="s" data-t="13.405" data-e="18.92">Two kinds of builder were now working the same water, and only one of them had a drawing.</span></span></div>
+      <p class="para-tr">2019 年春天，一窝欧亚河狸被装进木箱，运到北约克郡克罗普顿森林一段围起来的溪流里放归；而这段溪流上，工程师早已布下一串「漏水坝」。自此，两种建造者在同一条水上作业——其中只有一种手里有图纸。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.92" data-e="32.274">For five years a team from the University of Leeds and the UK Centre for Ecology &amp; Hydrology watched what followed, pairing species surveys and fixed-point photography with mobile LiDAR and environmental DNA.</span> <span class="s" data-t="32.274" data-e="41.237">Their <b class="kw" data-tip="n. 衡量标准、准绳：原指丈量用的木尺；常见义 n. 码尺（长度单位 yard 的量具）">yardstick</b> was the flow record at an upstream <b class="kw" data-tip="n. 水文站、量水断面：河道上固定测水位与流量的站点；常见义 v. 估计、判断（gauge the mood）">gauge</b>, which let them compare the beaver reach with a stretch of the same river the animals had not touched.</span></span></div>
+      <p class="para-tr">此后五年，利兹大学与英国生态水文中心（UKCEH）的团队记录下发生的一切：物种调查与固定点重复摄影，配上移动激光雷达与环境 DNA。他们的衡量标准，是上游一处水文站的流量记录——这让他们能把河狸占用的那一段河道，与同一条河里河狸没碰过的另一段作比较。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="41.237" data-e="46.197">The beavers built six dams, and the stream stopped behaving like a drain.</span> <span class="s" data-t="46.197" data-e="60.13">Median peak flows fell by 46.6 per cent against the pre-beaver period, baseflow rose by 417 per cent, and turbidity dropped by 31 per cent as sediment settled out of water that no longer hurried.</span> <span class="s" data-t="60.13" data-e="66.895">In the hydrologists' word, the flow had become less <b class="kw" data-tip="adj. 水文上的「暴涨暴落」：流量来得快去得也快；常见义 adj. 花哨的、俗艳的（a flashy car）">flashy</b>: rain still arrived, but it left slowly.</span></span></div>
+      <p class="para-tr">河狸筑起了六座坝，这条溪流不再像一根排水管。与河狸到来之前相比，洪峰流量的中位数下降了 46.6%，基流上升了 417%，浊度下降了 31%——泥砂从不再匆忙的水里沉了下去。用水文学家的话说，这条水的「暴涨暴落」变弱了：雨照样来，但它走得慢了。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="66.895" data-e="72.118">The awkward part is what the beavers did with the human structures: they ignored them.</span> <span class="s" data-t="72.118" data-e="84.895">The leaky dams, built under a natural flood management scheme to hold water back, <b class="kw" data-tip="v. 退化、劣化：结构或功能逐步变差；常见义 v. 降低（身份）、贬低">degraded</b> and lost more than half their storage <b class="kw" data-tip="n. 容量、蓄水量：这里指一座坝能存下多少水；常见义 n. 能力、产能（capacity to work）">capacity</b>, and for a while the project looked like a lesson in how not to engineer a stream.</span></span></div>
+      <p class="para-tr">难堪的地方在于，河狸怎么对待这些人造结构：它不理会。那些按「自然洪水管理」方案修起来、专门用来拦水的漏水坝逐渐朽坏，蓄水能力损失过半；有一段时间，这个项目看上去像是在示范「如何错误地治理一条溪流」。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="84.895" data-e="92.171">Then the arithmetic changed, because the beaver dams <b class="kw" data-tip="v. 蓄住、容纳（水）：hold water 指把水拦在境内不走；常见义 v. 握住、举行（hold a meeting）">held</b> far more water than the timber structures had ever been meant to.</span> <span class="s" data-t="92.171" data-e="103.853">Their surplus covered the loss, and the most recent surveys show the animals beginning to patch and extend the failing dams themselves, keeping a piece of modern engineering alive with mud and willow.</span></span></div>
+      <p class="para-tr">然后账目变了：河狸坝蓄下的水，远远超过那些木结构本来打算拦的量。多出来的容量盖住了损失；而最新的调查显示，河狸开始自己去修补并延长那些正在失效的坝——用泥和柳枝，让一段现代工程继续活下去。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="103.853" data-e="115.789">Life followed the water: aquatic plant diversity rose, vertebrate <b class="kw" data-tip="n. 丰富度：某一区域内物种种数的多寡；常见义 n. 富裕、富饶（the richness of the soil）">richness</b> in the beaver reach exceeded that of a neighbouring stream, and bats appeared at the places and hours when beaver activity peaked.</span> <span class="s" data-t="115.789" data-e="120.724">None of this was in the flood-risk model, and all of it was in the survey data.</span></span></div>
+      <p class="para-tr">生命跟着水走：水生植物多样性上升，河狸那一段的脊椎动物丰富度超过了邻近的一条溪流，蝙蝠出现的地点与时段，与河狸活动的高峰严丝合缝。这些内容没有一项在洪水风险模型里，却全部躺在调查数据里。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="120.724" data-e="123.908">That gap is why beavers stay <b class="kw" data-tip="adj. 有争议的、容易引发争论的；常见义 adj. 诉讼的（contentious business）">contentious</b>.</span> <span class="s" data-t="123.908" data-e="139.75">Defra now licenses wild releases under an A69 licence, but asks each project for a ten-year plan, an exit strategy and the <b class="kw" data-tip="n. 同意、许可：法律语境里指相关方正式表示同意；常见义 v. 同意（consent to do sth）">consent</b> of the farmers and landowners <b class="kw" data-tip="adv./adj. 下游的：沿水流方向往下；常见义 adv. 向下（look down）">downstream</b>; a dam that floods a field is a legal problem before it is an ecological one.</span></span></div>
+      <p class="para-tr">正是这道缝，让河狸始终是个有争议的对象。英国环境、食品与农村事务部（Defra）现在按 A69 许可受理野放申请，但要求每个项目提交十年计划、退出方案，以及下游农户与地主的同意；一座淹了田的坝，在成为生态问题之前，先是一个法律问题。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="139.75" data-e="148.974">The study is candid about its scale: one fenced site, one family of animals, five years, and no second catchment to serve as a control.</span> <span class="s" data-t="148.974" data-e="158.776">A single upstream gauge is a thin <b class="kw" data-tip="n. 替代品、代用品：此处指「远远不够的替代」；常见义 v. 用……代替（substitute A for B）">substitute</b> for a <b class="kw" data-tip="adj. 随机化的：把处理随机分配给对象以避免人为选择带来的偏差；常见义 v. 随机（randomise the order）">randomised</b> world, and a beaver that floods a maize field will not be thanked for the fish it eventually brings back.</span></span></div>
+      <p class="para-tr">论文对自己的规模相当坦白：一个围起来的场址、一窝动物、五年时间，也没有第二个集水区可以充作对照。一处上游水文站，远不足以替代一个「被随机化」的世界；而一头淹了玉米田的河狸，不会因为它日后带回了鱼就得到感谢。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="158.776" data-e="168.421">What the trial <b class="kw" data-tip="v. 证明、表明：通过证据展示；常见义 v. 演示、示范（demonstrate a machine）">demonstrates</b> is narrower and more useful than a flood defence: a beaver is not a component that can be specified, delivered and installed.</span> <span class="s" data-t="168.421" data-e="176.842">It is a neighbour that reads the site, ignores the drawing, and then, given time and a measure of <b class="kw" data-tip="n. 容忍、宽容：愿意接受不便而不加干预；常见义 n. 公差、耐受力（tolerance to heat）">tolerance</b>, does the job the drawing was for.</span></span></div>
+      <p class="para-tr">这项试验真正证明的东西，比一道防洪工程更窄，也更有用：河狸不是一个可以写进规格、按期交付、现场安装的部件。它是一个邻居——它读现场，不理图纸，然后在给了它时间和一点容忍之后，把那张图纸本来要做的事做成了。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">release</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈliːs/ · 美 /rɪˈliːs/</div>
+          <div class="wc-pos"><b>v.</b> <b>放归、释放</b>：把圈养的野生动物放回自然环境，是本篇的政策动词。<br>常见义：<b>v.</b> 释放（release a prisoner 释放囚犯）；<b>v.</b> 发布（release a report 发布报告）；<b>n.</b> 发行、新片（a new release）。<br>搭配：release sth into the wild（把……放归野外）／release sb from（把某人从……中解放）／press release（新闻稿）。<br>为什么这个词在本文里特别重要：英国把「放进围栏」（release into an enclosure）与「野放」（release into the wild）分成两种许可——前者是 A03，后者是 A69。一个介词之差，就是一整套法律程序。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and <b>released</b> into a stream that engineers had already fitted with a chain of leaky dams.</div>
+          <div class="wc-tr">……放归到一条工程师早已布下漏水坝的溪流里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">capacity</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /kəˈpæsəti/ · 美 /kəˈpæsəti/</div>
+          <div class="wc-pos"><b>n.</b> <b>容量、蓄水量</b>：一座坝能存下多少水。<br>常见义：<b>n.</b> 能力（capacity to work 工作能力）；<b>n.</b> 产能、负载量（factory capacity）；<b>n.</b> 身份（in my capacity as 以我……的身份）。<br>搭配：storage capacity（蓄水／存储容量）／at full capacity（满负荷）／capacity for（……的能力）。<br>读懂水库与电池类文章的必备词：它几乎总是指「装得下多少」，而不是「有多强」。本文用它算了一笔账——人修的坝丢了过半容量，河狸坝多出来的容量把窟窿填上了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and lost more than half their storage <b>capacity</b>…</div>
+          <div class="wc-tr">……蓄水能力损失过半……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">demonstrate</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈdemənstreɪt/ · 美 /ˈdemənstreɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>证明、表明</b>：用证据把一件事摆出来，让读者自己看见。<br>常见义：<b>v.</b> 演示、示范（demonstrate a machine 演示一台机器）；<b>v.</b> 示威（demonstrate against 抗议）。<br>搭配：demonstrate that…／demonstrate how to do sth／as demonstrated by（正如……所显示的）。<br>为什么结尾用它：本文最后一段要收窄结论，用 demonstrate 而不是 prove——prove 是逻辑上的「证毕」，demonstrate 只是「摆出来了」。一项单点、五年的研究，只能做后者。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What the trial <b>demonstrates</b> is narrower and more useful than a flood defence…</div>
+          <div class="wc-tr">这项试验真正证明的东西，比一道防洪工程更窄，也更有用……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">degrade</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈɡreɪd/ · 美 /dɪˈɡreɪd/</div>
+          <div class="wc-pos"><b>v.</b> <b>退化、劣化</b>：结构或功能随时间一步步变差，不需要外力摧毁。<br>常见义：<b>v.</b> 降低（身份）、贬低（degrade sb to 把某人降为）；<b>v.</b> （化学）降解（plastics that degrade slowly）。<br>搭配：degraded land（退化土地）／environmental degradation（环境退化）／degrade into（退化为）。<br>本文的关键反转靠这个词完成：那些坝不是被洪水冲垮的，而是在水里「慢慢烂掉」——这恰恰是自然洪水管理最容易被忽略的维护成本。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The leaky dams … <b>degraded</b> and lost more than half their storage capacity…</div>
+          <div class="wc-tr">那些漏水坝……逐渐朽坏，蓄水能力损失过半……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">consent</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈsent/ · 美 /kənˈsent/</div>
+          <div class="wc-pos"><b>n.</b> <b>同意、许可</b>：法律语境里指相关方正式表示同意，缺了它项目就推不动。<br>常见义：<b>v.</b> 同意（consent to do sth）——注意名词与动词同形，读音不同。<br>搭配：with the consent of（经……同意）／informed consent（知情同意）／consent to（对……表示同意）。<br>为什么它在本文里是政策核心：野放河狸在英国要的不只是生态评估，还要下游农户与地主的 consent。也就是说，一项「对自然有益」的工程，必须先通过「对人无害」这一关。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the <b>consent</b> of the farmers and landowners downstream…</div>
+          <div class="wc-tr">……以及下游农户与地主的同意……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">downstream</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdaʊnˈstriːm/ · 美 /ˌdaʊnˈstriːm/</div>
+          <div class="wc-pos"><b>adv./adj.</b> <b>下游的</b>：沿水流方向往下，本文既指河道位置，也指「受影响的那一方」。<br>常见义：<b>adj.</b> （产业链）下游的（downstream processing 下游加工）；<b>adv.</b> 顺流而下。<br>搭配：downstream of（在……的下游）／upstream and downstream（上下游）／downstream users（下游用户）。<br>为什么本文要把它点出来：河狸筑坝的好处留在原地，成本却顺着水流送到别人田里——这种「收益与损失不同人承担」的结构，是所有环境争议的共同骨架。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the consent of the farmers and landowners <b>downstream</b>…</div>
+          <div class="wc-tr">……以及下游农户与地主的同意……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">richness</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈrɪtʃnəs/ · 美 /ˈrɪtʃnəs/</div>
+          <div class="wc-pos"><b>n.</b> <b>丰富度</b>：生态学里指某一区域内物种种数的多寡，是「有多少种」，不是「有多少只」。<br>常见义：<b>n.</b> 富裕、富饶（the richness of the soil）；<b>n.</b> （色彩、音色）浓郁。<br>搭配：species richness（物种丰富度）／evenness（均匀度，常与它成对出现）／a richness of（大量的）。<br>读生态论文要先分清两个词：richness 数「种数」，abundance 数「个体数」。本文说 vertebrate richness 更高，只说明种类更多，没说数量更多。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…vertebrate <b>richness</b> in the beaver reach exceeded that of a neighbouring stream…</div>
+          <div class="wc-tr">……河狸那一段的脊椎动物丰富度超过了邻近的一条溪流……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">substitute</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsʌbstɪtjuːt/ · 美 /ˈsʌbstɪtuːt/</div>
+          <div class="wc-pos"><b>n.</b> <b>替代品、代用品</b>：此处是「远远不够的替代」。<br>常见义：<b>v.</b> 用……代替（substitute A for B 用 A 代替 B）；<b>n.</b> 替补队员。<br>搭配：a substitute for（……的替代）／substitute A with B／no substitute for（……无可替代）。<br>注意这个句子的修辞：a thin substitute 不是中性说法，而是带判断的——作者用 thin（薄）暗示「一处水文站撑不起因果结论」，为下一句的「淹了玉米田」预留张力。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A single upstream gauge is a thin <b>substitute</b> for a randomised world…</div>
+          <div class="wc-tr">一处上游水文站，远不足以替代一个「被随机化」的世界……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">tolerance</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtɒlərəns/ · 美 /ˈtɑːlərəns/</div>
+          <div class="wc-pos"><b>n.</b> <b>容忍、宽容</b>：愿意接受某种不便而不加干预。<br>常见义：<b>n.</b> 公差（工程上允许的误差）；<b>n.</b> 耐受力（tolerance to heat 耐热性）；<b>n.</b> 耐药物性。<br>搭配：a measure of tolerance（一定程度的容忍）／zero tolerance（零容忍）／tolerance for（对……的容忍度）。<br>为什么结尾用「a measure of」：它把宽容写成了一个<b>可计量的配额</b>——不是无限忍让，而是给到某个程度为止。这恰好对应 Defra 那套「先容忍、再许可干预、最后才移走」的五步管理。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…given time and a measure of <b>tolerance</b>, does the job the drawing was for.</div>
+          <div class="wc-tr">……在给了它时间和一点容忍之后，把那张图纸本来要做的事做成了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">enclosure</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪnˈkləʊʒə(r)/ · 美 /ɪnˈkloʊʒər/</div>
+          <div class="wc-pos"><b>n.</b> <b>围场、封闭区域</b>：此处指用围栏圈出的一段溪流，河狸在其中活动，但尚未完全野放。<br>常见义：<b>n.</b> 圈地（历史上的 enclosure movement 圈地运动）；<b>n.</b> 附件、随信附上之物（法律、商务语境）。<br>搭配：a fenced enclosure／beaver enclosure（河狸围栏区）／enclose sth with（用……围住）。<br>为什么本文开头要点明它：围栏意味着「边界」，而河狸最擅长的恰恰是改边界——水一蓄，围栏内的湿地就开始往围栏外长。这也是为什么英国 2025 年起把政策重心从「围栏放养」转向「野放许可」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…carried to a fenced <b>enclosure</b> in Cropton Forest, North Yorkshire…</div>
+          <div class="wc-tr">……运到北约克郡克罗普顿森林一段围起来的溪流里……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">yardstick</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈjɑːdstɪk/ · 美 /ˈjɑːrdstɪk/</div>
+          <div class="wc-pos"><b>n.</b> <b>衡量标准、准绳</b>：用来判断别的量「算大还是算小」的那把尺。<br>构词：yard（码，约 0.91 米）+ stick（棍）——字面就是一把三尺长的木尺。<br>搭配：the yardstick for（……的标准）／by the same yardstick（用同一把尺子衡量）／a useful yardstick。<br>为什么这里用它而不是 standard：yardstick 带一点「临时借来的、可比的参照物」的意味——本文正是拿上游那条没被河狸碰过的河段当尺子，而不是拿一个理想化的对照组。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their <b>yardstick</b> was the flow record at an upstream gauge…</div>
+          <div class="wc-tr">他们的衡量标准，是上游一处水文站的流量记录……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">turbidity</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /tɜːˈbɪdəti/ · 美 /tɜːrˈbɪdəti/</div>
+          <div class="wc-pos"><b>n.</b> <b>浊度</b>：水中悬浮颗粒（泥沙、藻类）导致的不透明程度，是水质的基本指标之一。<br>构词：turbid（浑浊的）+ -ity；拉丁语 turba（骚动、混乱）。<br>搭配：turbidity measurement（浊度测量）／high turbidity（高浊度）／reduce turbidity（降低浊度）。<br>为什么它在本文明智地出现：浊度下降并不是河狸「净水」的结果，而是水慢下来、泥沙沉下去的副产品。同一件事在指标上是「水质改善」，在机制上只是「流速变了」——这类区分正是读科学报道的关键。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and <b>turbidity</b> dropped by 31 per cent as sediment settled out of water that no longer hurried.</div>
+          <div class="wc-tr">……浊度下降了 31%——泥砂从不再匆忙的水里沉了下去。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">baseflow</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈbeɪsfləʊ/ · 美 /ˈbeɪsfloʊ/</div>
+          <div class="wc-pos"><b>n.</b> <b>基流</b>：河流在无降雨补给时、由地下水缓慢释放维持的那部分流量，是「旱季河里还有没有水」的关键。<br>构词：base（基底）+ flow（流量）。<br>搭配：baseflow index（基流指数）／baseflow recession（基流退水）／Q95（95% 保证流量，本文用的就是它）。<br>为什么 +417% 这个数字重要：洪峰下降容易被理解成「把水挡住了」，但基流上升说明水并没有消失，而是<b>被存起来慢慢放</b>——这两件事合起来，才是「海绵」而不是「墙」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…baseflow rose by 417 per cent…</div>
+          <div class="wc-tr">……基流上升了 417%……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">contentious</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈtenʃəs/ · 美 /kənˈtenʃəs/</div>
+          <div class="wc-pos"><b>adj.</b> <b>有争议的、容易引发争论的</b>：一碰就会有人反对。<br>常见义：<b>adj.</b> 诉讼的、爱争辩的（a contentious lawyer）。<br>搭配：a contentious issue（争议话题）／remain contentious（仍有争议）／contentious decision。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That gap is why beavers stay <b>contentious</b>.</div>
+          <div class="wc-tr">正是这道缝，让河狸始终是个有争议的对象。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">randomised</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrændəmaɪzd/ · 美 /ˈrændəmaɪzd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>随机化的</b>：把处理随机分配给对象，以避免人为挑选带来的偏差，是因果推断的黄金标准。<br>构词：randomise（随机化）+ -ed；randomized controlled trial（RCT，随机对照试验）。<br>搭配：randomised controlled trial／randomly assigned（随机分配）／randomisation（n.）。<br>为什么这里提它：野外生态学几乎不可能做随机对照——你没法随机决定哪条河该有河狸。所以本文只能「上游 vs 下游」地比，因果强度天然弱一档。作者主动说出这一点，反而让结论更可信。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…a thin substitute for a <b>randomised</b> world…</div>
+          <div class="wc-tr">……远不足以替代一个「被随机化」的世界……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">leaky</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈliːki/ · 美 /ˈliːki/</div>
+          <div class="wc-pos"><b>adj.</b> <b>漏的、渗漏的</b>：此处 leaky dam 是自然洪水管理里的专有做法——故意让水缓慢渗过、而不是彻底拦住的结构。<br>常见义：<b>adj.</b> 爱泄密的（a leaky department）；<b>adj.</b> （屋顶、管道）漏的。<br>搭配：leaky dam（渗漏坝）／leaky bucket（漏桶，经济学里形容政策效果流失）／a leaky roof。<br>这个词是全文的对照点：人修的坝「设计成漏」，河狸的坝「设计成堵」。可结果反而是后者让水流得更稳——因为河狸把整段河漫滩都变成了蓄水体，而不只是河道上的几道坎。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…released into a stream that engineers had already fitted with a chain of <b>leaky</b> dams.</div>
+          <div class="wc-tr">……放归到一条工程师早已布下漏水坝的溪流里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flashy</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈflæʃi/ · 美 /ˈflæʃi/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（水文）暴涨暴落的</b>：流量对降雨反应极快，来得猛、退得也快，河床像被冲刷过的排水沟。<br>常见义：<b>adj.</b> 花哨的、俗艳的（a flashy car 一辆花里胡哨的车）；<b>adj.</b> 卖弄的、浮华的。<br>搭配：a flashy hydrograph（陡涨陡落的流量过程线）／flash flooding（暴洪）／less flashy response（更平缓的响应）。<br>为什么这是全文最值得学的一个词：学生见到 flashy 第一反应一定是「花哨」，可在水文与生态学里它指的是<b>流量的形状</b>。判断依据看主语——主语是 river / flow / response，就是「陡涨陡落」；主语是人、车、衣服，才是「花哨」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>In the hydrologists' word, the flow had become less <b>flashy</b>: rain still arrived, but it left slowly.</div>
+          <div class="wc-tr">用水文学家的话说，这条水的「暴涨暴落」变弱了：雨照样来，但它走得慢了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gauge</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ɡeɪdʒ/ · 美 /ɡeɪdʒ/</div>
+          <div class="wc-pos"><b>n.</b> <b>水文站、量水断面</b>：河道上固定测水位与流量的站点，也指那套量水设备。<br>常见义：<b>v.</b> 估计、判断（gauge the mood 揣摩情绪）；<b>n.</b> 计量器（fuel gauge 油表）；<b>n.</b> 口径、规格（12-gauge shotgun）。<br>搭配：stream gauge（水文站）／rain gauge（雨量计）／gauge station（测站）。<br>本文的判断全靠这个词：上游有没有一个 gauge，决定了这项研究能不能算「有对照」。读的时候要看清它是名词还是动词——an upstream gauge 是站，gauge the effect 才是估。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Their yardstick was the flow record at an upstream <b>gauge</b>…</div>
+          <div class="wc-tr">他们的衡量标准，是上游一处水文站的流量记录……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hold</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /həʊld/ · 美 /hoʊld/</div>
+          <div class="wc-pos"><b>v.</b> <b>蓄住、容纳（水）</b>：把水拦在境内不让它走。<br>常见义：<b>v.</b> 握住、拿着；<b>v.</b> 举行（hold a meeting）；<b>v.</b> 认为（hold that…）；<b>v.</b> 保持（hold steady）。<br>搭配：hold water（蓄水；另有一个习语义「站得住脚」，The argument doesn't hold water）／hold back（拦住）／holding capacity（蓄水能力）。<br>注意本文用的是<b>字面义</b>「蓄水」，而同一短语在议论文里常作「论点站得住」——读到 hold water 先看主语是坝还是论证，再决定译法。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…because the beaver dams <b>held</b> far more water than the timber structures had ever been meant to.</div>
+          <div class="wc-tr">……因为河狸坝蓄下的水，远远超过那些木结构本来打算拦的量。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">settle</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈsetl/ · 美 /ˈsetl/</div>
+          <div class="wc-pos"><b>v.</b> <b>沉淀、沉降</b>：悬浮颗粒在静水里落到河床。<br>常见义：<b>v.</b> 解决（settle a dispute）；<b>v.</b> 定居（settle in London）；<b>v.</b> 安顿、平静（settle down）。<br>搭配：sediment settles（泥沙沉降）／settle out（析出、沉出）／settle for（勉强接受）。<br>为什么本文非用它不可：浊度下降的因果链只有三个动作——水慢下来、颗粒沉下去、水变清。「沉」这个动作是物理的，与「解决问题」无关；一旦译成「解决」，整段机制就散了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…as sediment <b>settled</b> out of water that no longer hurried.</div>
+          <div class="wc-tr">……泥砂从不再匆忙的水里沉了下去。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">a chain of leaky dams</span><span class="zh">一串「漏水坝」（自然洪水管理做法）</span></li>
+          <li><span class="en">only one of them had a drawing</span><span class="zh">其中只有一种手里有图纸</span></li>
+          <li><span class="en">what followed</span><span class="zh">随后发生的一切</span></li>
+          <li><span class="en">pair A with B</span><span class="zh">把 A 与 B 配合使用</span></li>
+          <li><span class="en">fixed-point photography</span><span class="zh">固定点重复摄影（定点对比）</span></li>
+          <li><span class="en">environmental DNA</span><span class="zh">环境 DNA（从水样里检出物种）</span></li>
+          <li><span class="en">the flow record</span><span class="zh">流量记录</span></li>
+          <li><span class="en">the beaver reach</span><span class="zh">河狸活动的那一段河道</span></li>
+          <li><span class="en">against the pre-beaver period</span><span class="zh">与河狸到来之前相比</span></li>
+          <li><span class="en">median peak flows</span><span class="zh">洪峰流量中位数</span></li>
+          <li><span class="en">settle out of</span><span class="zh">从……中沉淀出来</span></li>
+          <li><span class="en">in the hydrologists' word</span><span class="zh">用水文学家的话说</span></li>
+          <li><span class="en">the awkward part is</span><span class="zh">难堪的地方在于</span></li>
+          <li><span class="en">hold water back</span><span class="zh">把水拦住</span></li>
+          <li><span class="en">storage capacity</span><span class="zh">蓄水容量</span></li>
+          <li><span class="en">a lesson in how not to do sth</span><span class="zh">一堂「如何不该做某事」的课</span></li>
+          <li><span class="en">the arithmetic changed</span><span class="zh">账目变了、算法变了</span></li>
+          <li><span class="en">be meant to</span><span class="zh">本来是打算用来……的</span></li>
+          <li><span class="en">cover the loss</span><span class="zh">弥补损失</span></li>
+          <li><span class="en">patch and extend</span><span class="zh">修补并延长</span></li>
+          <li><span class="en">a piece of engineering</span><span class="zh">一项工程、一件工程作品</span></li>
+          <li><span class="en">follow the water</span><span class="zh">跟着水走</span></li>
+          <li><span class="en">exceed that of</span><span class="zh">超过……（的那个数字）</span></li>
+          <li><span class="en">at the places and hours when</span><span class="zh">在……的地点和时段</span></li>
+          <li><span class="en">flood-risk model</span><span class="zh">洪水风险模型</span></li>
+          <li><span class="en">stay contentious</span><span class="zh">始终有争议</span></li>
+          <li><span class="en">under an A69 licence</span><span class="zh">依据 A69 许可（英国野放河狸的许可类别）</span></li>
+          <li><span class="en">an exit strategy</span><span class="zh">退出方案、退出预案</span></li>
+          <li><span class="en">a thin substitute for</span><span class="zh">远远不够的替代</span></li>
+          <li><span class="en">a measure of tolerance</span><span class="zh">一定程度的容忍</span></li>
+          <li><span class="en">read the site</span><span class="zh">读现场（按现场条件作判断）</span></li>
+          <li><span class="en">do the job the drawing was for</span><span class="zh">把图纸本来要做的事做成</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：两种建造者同处一条溪——只有一种带着图纸。</li>
+          <li>第 2 段：五年监测的多种手段，上游水文站充当「尺子」。</li>
+          <li>第 3 段：硬指标——洪峰 −46.6%、基流 +417%、浊度 −31%。</li>
+          <li>第 4 段：反转——河狸不理人修的坝，那些坝朽坏、蓄水掉过半。</li>
+          <li>第 5 段：补位——河狸坝的富余容量盖过损失，还替人修坝。</li>
+          <li>第 6 段：生物多样性上升，全在洪水风险模型之外。</li>
+          <li>第 7 段：政策——A69 许可、十年计划、下游同意。</li>
+          <li>第 8 段：边界——单点、五年、无随机对照、无人替淹田说话。</li>
+          <li>第 9 段：落点——河狸不是可下单的部件，是一个会读现场的邻居。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Their yardstick was the flow record at an upstream gauge, which let them compare the beaver reach with a stretch of the same river the animals had not touched.</div>
+        <div class="row"><b>主干：</b>Their yardstick was the flow record（他们的尺子是流量记录）＋ which 引导非限制性定语从句，说明这把尺子能干什么：let them compare A with B（让他们把 A 与 B 作比较）。</div>
+        <div class="row"><b>难点：</b>① 主语补足语是 the flow record at an upstream gauge，中心词在 record，不在 gauge——先抓住「记录」，再看它来自哪里；② which 指代的是<b>整个前面这件事</b>（有这条流量记录），不是 gauge，所以从句谓语用单数 let 的过去式、逻辑主语是「这把尺子」；③ compare A with B 中的 B 带了两层后置修饰：a stretch of the same river + the animals had not touched（省略了关系代词 that/which 的定语从句）；④ 全句的信息结构是「尺子 → 用途 → 对照对象」，而这正是野外研究里最脆弱的一环，后文第 8 段会回来拆它。</div>
+        <div class="row tr"><b>译文：</b>他们的衡量标准，是上游一处水文站的流量记录——这让他们能把河狸占用的那一段河道，与同一条河里河狸没碰过的另一段作比较。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The leaky dams, built under a natural flood management scheme to hold water back, degraded and lost more than half their storage capacity, and for a while the project looked like a lesson in how not to engineer a stream.</div>
+        <div class="row"><b>主干：</b>The leaky dams … degraded and lost more than half their storage capacity（那些漏水坝朽坏，并失去了过半蓄水能力）＋ and 引出第二个分句：the project looked like a lesson（项目看起来像一堂课）。</div>
+        <div class="row"><b>难点：</b>① 主语与谓语之间插了一个过去分词短语 built under … to hold water back，把主谓隔开 12 个词——读到 built 不要当谓语，它是修饰 dams 的；② degraded 与 lost 是并列谓语（都是过去式），不是「degraded 作形容词 + lost 作谓语」；③ more than half their capacity 是「过半」，不是「多一半再加一点」，数量修饰语在 more than 之后直接接名词；④ a lesson in how not to do sth 是英语里很常见的反讽结构，字面「关于如何不做的课」，实际意思是「反面教材」；⑤ for a while 放在句首，暗示后面必有转折——第 5 段第一句 Then the arithmetic changed 正是它的回应。</div>
+        <div class="row tr"><b>译文：</b>那些按「自然洪水管理」方案修起来、专门用来拦水的漏水坝逐渐朽坏，蓄水能力损失过半；有一段时间，这个项目看上去像是在示范「如何错误地治理一条溪流」。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Their surplus covered the loss, and the most recent surveys show the animals beginning to patch and extend the failing dams themselves, keeping a piece of modern engineering alive with mud and willow.</div>
+        <div class="row"><b>主干：</b>Their surplus covered the loss（多出来的容量盖住了损失）＋ and 引出：surveys show the animals beginning to …（调查显示这些动物开始……）。</div>
+        <div class="row"><b>难点：</b>① Their surplus 指河狸坝多出来的蓄水容量，their 的指代必须回到上一句的 the beaver dams，否则会误读成人修的坝；② show sb doing sth 是「显示某人正在做」，用现在分词而非不定式，强调<b>过程正在进行</b>；③ the failing dams 中 failing 是现在分词作定语，意思是「正在失效的」，不是「失败的」；④ 句末 keeping … alive 是现在分词作结果状语，逻辑主语是 the animals；⑤ with mud and willow 是方式状语，把「工程维护」这件抽象事落到了两种具体材料上——这是全文最像画面的一句。</div>
+        <div class="row tr"><b>译文：</b>多出来的容量盖住了损失；而最新的调查显示，河狸开始自己去修补并延长那些正在失效的坝——用泥和柳枝，让一段现代工程继续活下去。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Defra now licenses wild releases under an A69 licence, but asks each project for a ten-year plan, an exit strategy and the consent of the farmers and landowners downstream; a dam that floods a field is a legal problem before it is an ecological one.</div>
+        <div class="row"><b>主干：</b>Defra licenses … but asks …（Defra 发放许可，但要求……）——一个主语带两个谓语，转折落在 but 上；分号后再起一个独立判断句。</div>
+        <div class="row"><b>难点：</b>① licenses 在这里是<b>动词</b>（发放许可），不是名词复数，判断依据是后面直接跟宾语 wild releases；② wild releases 与 an A69 licence 是「行为 + 依据」的关系，不是同位语；③ ask sb for sth 的三项并列中，第三项 the consent of … downstream 最长，downstream 后置修饰 landowners，也可能被误读成修饰 consent；④ 分号后的 a dam that floods a field 是「一座淹了田的坝」，that 从句限制 dam；⑤ before it is an ecological one 用了 before 的「先后」义，one 替代 an ecological problem——这句是全篇的价值判断：生态账要排在法律账后面算。</div>
+        <div class="row tr"><b>译文：</b>英国环境、食品与农村事务部（Defra）现在按 A69 许可受理野放申请，但要求每个项目提交十年计划、退出方案，以及下游农户与地主的同意；一座淹了田的坝，在成为生态问题之前，先是一个法律问题。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">It is a neighbour that reads the site, ignores the drawing, and then, given time and a measure of tolerance, does the job the drawing was for.</div>
+        <div class="row"><b>主干：</b>It is a neighbour that …（它是一个邻居）——that 引导定语从句，里面并列三个谓语：reads、ignores、does。</div>
+        <div class="row"><b>难点：</b>① It 指上句的 a beaver，用 it 而不是 a beaver 是为了让「邻居」这个隐喻直接落到主语位置上；② that 从句里三个动词并列，中间的 given time … 是<b>插入的过去分词状语</b>（= if it is given），插在 and then 与 does 之间，最容易读断；③ the site 在工程语境里指「现场、场地」，reads the site 是拟人写法，意思是「按现场条件作判断」；④ the job the drawing was for 中，the drawing was for 是省略了关系代词的限制性定语从句，for 的宾语就是前面的 the job——for 悬空是英语里常见但中文没有的结构；⑤ 全句把「部件」与「邻居」对举，正是本文对「自然解决方案」的态度：可以合作，不能下单。</div>
+        <div class="row tr"><b>译文：</b>它是一个邻居——它读现场，不理图纸，然后在给了它时间和一点容忍之后，把那张图纸本来要做的事做成了。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章要回答一个看起来很朴素的问题：把河狸放回一条河，洪水会不会真的变小？</b>答案是有条件的「会」，而且条件比数字更有意思。《生态水文学》（Ecohydrology）2026 年 6 月号（19 卷 4 期，e70238）刊出利兹大学与英国生态水文中心等 13 位作者的五年追踪研究，第一作者 Mark W. Smith，研究地点是北约克郡克罗普顿森林里一段被围栏圈住的溪流。</p>
+      <p class="zh-sum"><b>先看现场是怎么搭起来的。</b>2019 年春天，一窝欧亚河狸被放归到这段溪流。特别之处在于，这段溪流并不是「空白」的：在此之前，工程师已经按「自然洪水管理」（natural flood management）的方案，在河道里布下一串 leaky dams——故意做成「漏水」的木结构，让水缓慢渗过，而不是彻底拦住。于是同一条水上出现了两种建造者：一种有图纸，一种没有。</p>
+      <p class="zh-sum"><b>监测手段相当杂。</b>团队同时用了几套办法：传统的物种调查与固定点重复摄影（同一机位反复拍，看地形与植被怎么变），加上移动激光雷达（扫出毫米级的地形变化）、环境 DNA（从水样里检出有哪些物种来过），以及一处上游水文站的连续流量记录。上游那条没被河狸碰过的河段，就成了整项研究的「尺子」。</p>
+      <p class="zh-sum"><b>五年之后，硬指标全部指向同一个方向。</b>河狸筑了六座坝。与河狸到来之前相比，洪峰流量的中位数下降了 <b>46.6%</b>，基流（Q95，也就是枯水期的保底流量）上升了 <b>417%</b>，浊度下降了 <b>31%</b>，其他水质指标也普遍改善。用水文学家的话说，这条水的响应变得「不那么 flashy」了——不是雨少了，而是雨落下来之后，水走得慢了。洪峰降下去、基流升上来这两件事放在一起看，才说明水并没有被「挡住」，而是被<b>存起来慢慢放</b>：这正是「海绵」与「墙」的区别。</p>
+      <p class="zh-sum"><b>但研究里最值得读的，是那个难堪的部分。</b>河狸对人类的坝做了什么？什么也没做——它完全不理。那些按方案修起来的漏水坝逐渐朽坏，蓄水能力损失过半。有一段时间，这个项目看上去更像是反面教材：花了钱修的坝烂在水里，而一群啮齿动物在旁边看着。</p>
+      <p class="zh-sum"><b>然后是账目的反转。</b>河狸坝蓄下的水，远远超过那些木结构本来打算拦的量；多出来的容量不但盖住了损失，还有富余。更意外的是，最新的调查显示河狸开始自己去修补、延长那些正在失效的人造坝——用泥和柳枝，让一段现代工程继续活下去。换句话说，人类修的东西没能按设计工作，是另一个建造者把它接了过去。</p>
+      <p class="zh-sum"><b>生态上的收获，则几乎全在模型之外。</b>水生植物多样性上升；河狸那一段的脊椎动物丰富度，高于邻近一条没被河狸改过的溪流；小型哺乳类、两栖类、蜻蜓与豆娘的记录都增加了；蝙蝠出现的地点与时段，与河狸活动的高峰严丝合缝。这些没有一项写在洪水风险模型里，却全部躺在调查数据里——这也解释了为什么「自然解决方案」的评估总是低估：它只算它建模的那一项。</p>
+      <p class="zh-sum"><b>那么，为什么河狸至今仍是个有争议的对象？</b>因为收益与成本落在了不同人身上。英国环境、食品与农村事务部（Defra）自 2025 年起受理野放申请，但要求每个项目提交十年计划、退出方案，并取得下游农户与地主的同意；管理上还分五步走——先容忍、再不加许可地处置、必要时申请许可、最后才是捕捉转移。一座淹了玉米田的坝，在成为生态问题之前，先是一个法律问题。</p>
+      <p class="zh-sum"><b>论文自己也很坦白地列了边界。</b>一个围起来的场址、一窝动物、五年时间；没有第二个集水区可作对照，只有上游一段河道作参照；野外研究几乎不可能「随机化」——你没法随机决定哪条河该有河狸。所以严格说，这项研究证明的是「在这条溪、这五年、这窝河狸身上发生了什么」，而不是「河狸一定能减少洪水」。此外，一头淹了玉米田的河狸，不会因为它日后带回了鱼就得到感谢。</p>
+      <p class="zh-sum"><b>于是，结论需要被收窄，而收窄之后反而更有用。</b>这项试验真正说明的，不是「河狸可以替代混凝土」，而是：<b>河狸不是一个可以写进规格、按期交付、现场安装的部件</b>。它是一个邻居——它读现场，不理图纸，然后在给了它时间和一点容忍之后，把那张图纸本来要做的事做成了。这对所有「自然解决方案」都成立：你可以买一段围栏、一份许可、一支监测队，但你买不到「它一定按你设想的方式工作」。政策真正要买的，是这种不确定性，以及与之配套的耐心。</p>
+      <p class="zh-sum"><b>最后一层，是关于我们如何读这类新闻。</b>「河狸减少洪水 46.6%」是一句极易被引用、也极易被误用的话。把它读全，需要三步：先看它跟<b>什么</b>比（河狸到来之前，以及上游未受影响的河段）；再看它<b>怎么</b>测出来的（流量站、激光雷达、环境 DNA，多套独立证据）；最后看作者自己承不承认局限（承认，而且写得很清楚）。三步走完，这句话会变成一个更长、更弱、但也更可靠的句子：在这条被围栏圈住的溪流上，五年之内，河狸筑的六座坝把洪峰削掉了将近一半，而这与它们对人类图纸的完全无视，是同一件事的两面。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. Beavers should replace engineered flood defences because they are cheaper and require no maintenance.<br>B. In a five-year fenced trial, beaver dams cut peak flows sharply and raised biodiversity, while the engineered dams the animals ignored decayed; the benefit came from a builder that could not be specified in advance.<br>C. The trial failed because the leaky dams lost more than half of their storage capacity, leaving the site worse protected than before.<br>D. Beaver reintroduction is mainly a legal question, since farmers downstream can block any release.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「两种建造者同处一条溪（第 1 段）→ 五年监测与上游对照（第 2 段）→ 硬指标：洪峰 −46.6%、基流 +417%、浊度 −31%（第 3 段）→ 反转：河狸不理人修的坝，那些坝塌了一半（第 4 段）→ 补位：河狸坝的容量盖过损失，还替人修坝（第 5 段）→ 生物多样性在模型之外出现（第 6 段）→ 政策要十年计划与下游同意（第 7 段）→ 单点、五年、无随机对照的边界（第 8 段）→ 落点：河狸不是可下单的部件（第 9 段）」。B 同时抓住了「有效」与「不可规格化」这两端。A 把结论推到「替代」与「免维护」，原文第 7、8 段恰恰强调要管、要许可、要补偿。C 与第 5 段冲突：损失被河狸坝的额外容量盖住了。D 把第 7 段的一个条件当成全文主旨，且「可以一票否决」原文未说，原文说的是申请须附下游同意。</div>
+
+      <div class="q"><b>2. The author says the flow became "less flashy". What does this mean in context?<br>A. The stream reflected less light because the water had become clearer.<br>B. The stream's response to rain became less abrupt, so water left the catchment more slowly.<br>C. The beavers made the stream look less attractive to visitors.<br>D. The gauges recorded less data because the equipment had degraded.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>原文紧接着自己作了解释：rain still arrived, but it left slowly（雨照样来，但走得慢）。flashy 在 Hydrology 里专指「陡涨陡落」，与「花哨」无关——这正是本期的熟词僻义。A 把 flashy 读成「反光」，且把浊度下降与流速混为一谈；C 用了常见义「花哨、好看」，是把主语看错了；D 与原文无关，degrade 指的是坝体，不是仪器。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的核心张力是「有效的那个，恰好是不合规可规范的那个」。请你就身边一个「按图纸/规格做却不灵、放手反而成」的例子（例如社团活动的流程表、班里的自习安排、家里的收纳方案、某款学习 App 的打卡机制），写一段 150 字以内的分析：① 图纸（或规格）原本要解决的具体问题是什么；② 实际起作用的是哪一部分——是图纸上的某个环节，还是图纸之外、有人「读现场」后临时调整的部分；③ 如果要让这种「临时调整」可复制，你会把它写成什么样的规则（写清触发条件，而不是写口号）。要求至少给出一个具体条件。</div>
+      <div class="q"><b>仿写：</b>本文第 9 段用的是「降级定义 + 拟人收束」的写法：<span class="hl">What the trial demonstrates is narrower and more useful than a flood defence: a beaver is not a component that can be specified, delivered and installed. It is a neighbour that reads the site, ignores the drawing, and then, given time and a measure of tolerance, does the job the drawing was for.</span> 它的力量来自三个动作：① 先用 narrower and more useful 把结论<b>主动收窄</b>，反而抬高了可信度；② 再用 not A but B 的变体（不是 component，是 neighbour）完成概念替换——A 是工程词，B 是生活词，一换就把全文立场说清了；③ 最后用一个插入语 given time and a measure of tolerance，把「需要什么条件」悄悄写进句子里。仿写时照搬骨架：<i>What ______ demonstrates is narrower and more useful than ______: ______ is not a ______ that can be ______, ______ and ______. It is a ______ that ______, ______, and then, given ______, ______.</i> 注意 B 必须是一个<b>描述关系或身份的名词</b>（neighbour / colleague / tenant），不能是另一个功能词；given 后面要接<b>两个具体条件</b>，不要写抽象美德。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">2019：河狸被放进一条已修过坝的溪流</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">五年监测：雷达、eDNA、定点摄影、水尺</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">洪峰中位数 −46.6%，基流 +417%</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#2f5d3a">浊度 −31%：水变清，是慢下来的副产品</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">反转：河狸不理人的坝，那些坝塌了一半</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">补位：河狸坝盖过损失，还替人修坝</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">多样性与蝙蝠：出现在没人建模的地方</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">政策：A69 许可、十年计划、下游同意</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">落点：能交付的不是坝，是一个邻居</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：图纸上的坝塌了，没图纸的坝立住了</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">自然解决方案真正交付的，是「不确定」而不是「规格」</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、4、6 段绿色：可量测的收益——水、泥沙、物种</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 5 段红色：唯一的反转——损失由另一个建造者补上</text>
+        </svg>
+        <figcaption>结构图解：文章走的是一条「先给硬数字、再给难堪、最后收窄」的路。第 1 段立起对峙——同一条溪上有两种建造者，只有一种带图纸；第 2 段交代五年监测的多种手段与「上游水尺」这个参照；第 3 段一口气给出三个硬指标（洪峰 −46.6%、基流 +417%、浊度 −31%），并说明「水变清」只是「水变慢」的副产品；第 4 段是全篇的难堪处——河狸对人修的漏水坝完全不理会，那些坝朽坏、蓄水能力掉了过半；第 5 段完成反转，河狸坝的富余容量盖住损失，甚至开始替人修补旧坝；第 6 段把镜头拉宽到生物多样性，指出这些收益全在洪水风险模型之外；第 7 段落到政策，交代 A69 许可、十年计划与下游同意这道法律门槛；第 8 段由作者自己列边界（单点、五年、无随机对照、淹田无人代言）；第 9 段收窄结论——河狸不是可以写进规格的部件，而是一个会读现场、不理图纸的邻居。注意全文没有一处说「河狸可以替代混凝土」，它把「为什么有效的偏偏是不可规范的那个」写得比「有没有用」更清楚。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Mark W. Smith, Alan Puttock, Megan J. Klaar 等 13 位作者《Whole System Ecohydrological Change Following Natural Flood Management and a Five-Year Beaver Reintroduction Trial》，Ecohydrology 19(4):e70238（2026-06-07 在线，DOI 10.1002/eco.70238），利兹大学地理学院河盆过程与管理组 + 英国生态水文中心（UKCEH）等｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
