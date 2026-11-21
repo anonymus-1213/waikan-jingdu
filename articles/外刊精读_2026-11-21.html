@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 机器人卸下了重物，却拿走了慢的权利</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Pace &amp; Robots · 人与社会 / 科技与创新 / 劳动 / 仓库自动化</div>
+  <h1>机器人卸下了重物，却拿走了慢的权利</h1>
+  <div class="deck">Warehouse robots took the heaviest lifts, and serious injuries fell by 40 per cent. The minor ones rose by 77 per cent, because the machines also set the pace — and the standard safety metric was never built to see them.</div>
+  <div class="byline"><span><b>来源</b> 波士顿大学 / 乔治梅森大学 Costello 商学院 / IE 大学；ILR Review 78(4):587–613（2025）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-21</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-21.jpg" alt="大型配送仓库的拣货区，一名工人站在固定工位前，从机器人送来的货架上取货装进箱子">
+    <figcaption>配图：配送仓库的拣货区，工人站在工位前不动，货架由机器送到跟前。走动与搬抬确实交给了机器——但节拍也一并交了出去（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>先看一组方向相反的数字：美国 150 多个亚马逊履约中心，2016—2019 年，引入机器人的站点<b>重伤下降 40%</b>，<b>轻伤上升 77%</b>。</p>
+    <p>两个数字都是真的。重伤会让人误工、会上报、会进头条；轻伤只会把人调去「上轻体力岗」，于是它在以误工天数为核心的安全统计里，几乎不存在。</p>
+    <p>这篇要拆的不是「机器人安不安全」，而是<b>「我们用什么尺子量安全」</b>：当风险从搬抬搬到节奏，旧尺子量不到新伤。</p>
+    <p>本期另附一处高频熟词僻义：<b>strain</b> 在工伤报告里不是「压力」，是「劳损」。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-21.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="4.432">At a robotic fulfilment centre, the shelves come to the picker.</span> <span class="s" data-t="4.432" data-e="14.658">A mobile unit lifts a rack and carries it to a station where a worker, standing still, takes items off it and drops them into a bin, again and again, all <b class="kw" data-tip="n. 班次、轮班：一个人连续上班的那一段时间；常见义 v. 转移、改变（shift the blame）">shift</b>.</span></span></div>
+      <p class="para-tr">在机器人化的履约中心里，是货架来找拣货员。一台移动机器人把整架货从地面抬起，送到工位前；工人站着不动，从架上取货、扔进箱子，一遍又一遍，一整班。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="14.658" data-e="25.408">The arrangement looks like the obvious answer to one of the most <b class="kw" data-tip="adj. 容易致伤的：injury-prone 是「容易受伤的」复合形容词，-prone 表示「倾向于……的」；常见义 adj. 俯卧的（lie prone）">injury-prone</b> jobs in rich economies: the walking and the lifting have gone to machines, and the human is left with <b class="kw" data-tip="adj. 轻的、轻体力的：light work / light duty 指不需要搬抬的岗位；常见义 n. 光、灯（turn on the light）">light</b> work.</span> <span class="s" data-t="25.408" data-e="34.276">A study of Amazon's warehouse network suggests that this is half true, and that the false half is the one safety statistics were designed to record.</span></span></div>
+      <p class="para-tr">这个安排看上去是一个显而易见的答案——它针对的是富裕经济体里最容易致伤的职业之一：走动与搬运交给了机器，人只剩下轻活。一项针对亚马逊仓储网络的研究表明，这话只对了一半；而错掉的那一半，恰好是安全统计体系被设计出来专门记录的那一半。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="34.276" data-e="49.603">Burtch, Greenwood and Ravindran compared injury reports filed with the US <b class="kw" data-tip="n. 监管机构：负责监督某一行业的政府机关，此处指美国职业安全与健康管理局（OSHA）；常见义 n. 调节器、稳压器">regulator</b> for more than 150 Amazon fulfilment centres between 2016 and 2019, setting automated sites against sites that had not been automated.</span> <span class="s" data-t="49.603" data-e="59.013">Their paper, in ILR Review, takes its title from the scene in which Lucy and Ethel try to keep up with a <b class="kw" data-tip="n. 传送带：工厂或仓库里连续运送物品的机械带；常见义 v. 传达、表达（convey a message）">conveyor</b> belt and end up eating the chocolates.</span></span></div>
+      <p class="para-tr">伯特奇、格林伍德与拉文德兰比较了 2016 至 2019 年间向美国监管机构报送的工伤报告，覆盖亚马逊 150 多个履约中心，把已自动化的站点与未自动化的站点对照起来。他们的论文发表在《ILR Review》上，标题取自那个著名场景：露西和埃塞尔拼命跟上一条传送带，最后把巧克力塞进了自己嘴里。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="59.013" data-e="69.237">At the level of the individual task, the robots did what the company promised: <b class="kw" data-tip="adj. 严重的：severe injury 指骨折、摔伤这类需要就医甚至误工的伤；常见义 adj. 严厉的（severe punishment）、剧烈的（severe pain）">severe</b> injuries, the fractures and falls that cost days off, fell by 40 per cent.</span> <span class="s" data-t="69.237" data-e="82.697">At the level of the process, the remaining manual tasks became narrower and faster, and non-severe injuries, the sprains and <b class="kw" data-tip="n. 劳损、扭伤：strains and sprains 是工伤报告里的固定搭配，指肌肉与韧带被过度拉伸；常见义 n. 压力、紧张（under strain）、v. 拉紧、竭力（strain every nerve）">strains</b> that send people to <b class="kw" data-tip="adj. 轻体力的：light duty 指因伤被调去做的不搬不抬的岗位，通常不减薪也不误工；常见义 n. 光、灯">light</b> duty without costing a shift, rose by 77 per cent.</span></span></div>
+      <p class="para-tr">在单个任务的层面，机器人兑现了公司的承诺：重伤——那些让人误工的骨折与摔伤——下降了 40%。但在流程的层面，剩下的手工任务变得更单一、更快；而轻伤，也就是那些把人送去上轻体力岗、却不耽误一个班的扭伤与劳损，上升了 77%。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="82.697" data-e="86.803">The authors tested the explanation instead of assuming it.</span> <span class="s" data-t="86.803" data-e="100.171">If pace were the <b class="kw" data-tip="n. 路径、传导渠道：此处指「影响经由哪条通道起作用」；常见义 n. 频道（Channel 5）、海峡（the English Channel）">channel</b>, the gap should widen when demand peaks and managers push the line harder, and in injury-level records from 26 centres in 2018 it <b class="kw" data-tip="v. 集中于：concentrate in 表示「集中在某处出现」；常见义 v. 专心（concentrate on）、n. 浓缩物">concentrated</b> in the weeks of Prime Day and the winter holidays.</span></span></div>
+      <p class="para-tr">作者没有把这个解释当成结论，而是去检验它。如果「节奏」真是那条传导路径，那么差距就应该在需求高峰、管理者把产线压得更紧的时候才扩大；而在 2018 年 26 个中心的逐条伤情记录里，它恰恰集中在「会员日」和冬季假期的几周。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="100.171" data-e="103.908">Workers described the same split in their own words.</span> <span class="s" data-t="103.908" data-e="119.169">In thousands of posts analysed, staff at automated sites called the job “not physically exhausting” and “better than a legacy FC”, then added that pick targets were two or three times higher, that the <b class="kw" data-tip="n. 例行流程、固定套路：此处指每天重复的那套动作；常见义 adj. 例行的、常规的（a routine check）">routine</b> had lost its variety and that they sometimes zoned out.</span></span></div>
+      <p class="para-tr">工人用自己的话描述了同一种分裂。在研究者读过的数千条帖子里，自动化站点的员工说这份活「身体上不累」「比传统履约中心强」，随后又补上：拣货指标高出两三倍，例行流程失去了原有的变化，人有时候会走神。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="119.169" data-e="124.789">None of this makes the company's <b class="kw" data-tip="n. 数字、数据：figures 指统计出来的数值，不是「人物」；常见义 n. 人物（a public figure）、身材（keep a good figure）">figures</b> wrong; it makes them an answer to a different question.</span> <span class="s" data-t="124.789" data-e="136.263">A safety <b class="kw" data-tip="n. 指标、度量：metrics 是管理学里对「用什么量、怎么量」的统称；常见义 adj. 公制的（the metric system）">metric</b> built around lost workdays registers a broken wrist and ignores a shoulder that aches for two years, and the second kind of harm is what a faster, more <b class="kw" data-tip="adj. 重复性的：repetitive work 指同一动作反复做上千次；常见义 v. 重复（repeat）">repetitive</b> job produces.</span></span></div>
+      <p class="para-tr">这些发现并没有让公司的数字变成错的；它只是让那些数字变成了另一个问题的答案。一套以「误工天数」为核心的安全指标，会记下一次手腕骨折，却看不见一个疼了两年的肩膀——而后一种伤害，恰恰是更快、更重复的工作所生产的。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="136.263" data-e="146.961">The useful conclusion is not that robots are dangerous, but that the risk was relocated rather than removed, and that the relocation happened in the design of the job, not the machine.</span> <span class="s" data-t="146.961" data-e="162.434">A 2026 study in the International Journal of Production Economics models how orders should be <b class="kw" data-tip="v. 分批处理：batch 作动词指把订单攒成一批一起处理；常见义 n. 一批、一炉（a batch of cookies）">batched</b> and <b class="kw" data-tip="v. 分配、指派：assign 把任务分给具体的人；常见义 v. 布置（assign homework）">assigned</b> so that a picker walks to the racks less often, cutting those trips by up to 11.86 per cent and evening out the <b class="kw" data-tip="n. 工作量、工作负荷：workload 指一个人被分到的活有多少；常见义 n. 负载、装载量（a heavy load）">workload</b> at negligible cost.</span></span></div>
+      <p class="para-tr">有用的结论不是「机器人很危险」，而是「风险被搬了家，而不是被消除」；而且这次搬家发生在岗位设计里，不在机器设计里。2026 年《国际生产经济学杂志》上的一项研究，为「订单该如何分批、如何分配」建立了模型：让拣货员少走几趟货架，最多可把这类走动减少 11.86%，同时把工作量摊平，而代价小到可以忽略。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="162.434" data-e="172.342">You cannot ask a robot to slow down, but you can decide how many times a person has to meet it, and that decision is made in an office, not on a factory floor.</span> <span class="s" data-t="172.342" data-e="183.474">The lesson travels beyond warehouses: when a machine takes over the dangerous part of a job, we <b class="kw" data-tip="v. 测量、衡量：measure 在这里是「用指标去量」，不是「采取措施」；常见义 n. 措施（take measures）、n. 尺度">measure</b> what it removed with the ruler we already had, and stop looking at what it left behind.</span></span></div>
+      <p class="para-tr">你没法要求一台机器人放慢速度，但你可以决定一个人一天要跟它碰多少次面——而这个决定是在办公室里做出的，不是在车间地面上。这个教训不止适用于仓库：当机器接管了一份工作里危险的那部分，我们习惯用手里原有的尺子去量它拿走了什么，然后就不再去看它留下了什么。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">severe</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /sɪˈvɪə(r)/ · 美 /sɪˈvɪr/</div>
+          <div class="wc-pos"><b>adj.</b> <b>严重的</b>：在工伤统计里，severe injury 专指骨折、摔伤、需要就医甚至导致误工的那一类，是分级用词，不是修辞。<br>常见义：<b>adj.</b> 严厉的（severe punishment 严厉的惩罚）；<b>adj.</b> 剧烈的（severe pain 剧痛）；<b>adj.</b> 严峻的（severe weather 恶劣天气）。<br>搭配：severe injury／severe shortage（严重短缺）／severe enough to（严重到足以……）。<br>为什么本文非用它不可：全文的整个张力就架在 severe 与 non-severe 这一对分级上——同一批数据，重的一头降了四成，轻的一头涨了七成七。读这类文章，先找它用的是哪一套分级，比数字本身更要紧。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…<b>severe</b> injuries, the fractures and falls that cost days off, fell by 40 per cent.</div>
+          <div class="wc-tr">……重伤——那些让人误工的骨折与摔伤——下降了 40%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">figure</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈfɪɡə(r)/ · 美 /ˈfɪɡjər/</div>
+          <div class="wc-pos"><b>n.</b> <b>数字、数据</b>：指统计出来的数值，常用复数 figures。<br>常见义：<b>n.</b> 人物（a public figure 公众人物）；<b>n.</b> 身材（keep a good figure）；<b>v.</b> 认为、估计（I figure that…）。<br>搭配：official figures（官方数据）／the figures show（数据显示）／figure out（弄明白、算出）。<br>为什么这里用 figures 而不是 numbers：figures 带「经过统计、有出处、可以被引用」的意味，正对应本文那句「数字没错，只是回答了另一个问题」。争论从来不在数字上，而在数字指的是什么。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>None of this makes the company's <b>figures</b> wrong; it makes them an answer to a different question.</div>
+          <div class="wc-tr">这些发现并没有让公司的数字变成错的；它只是让那些数字变成了另一个问题的答案。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">measure</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈmeʒə(r)/ · 美 /ˈmeʒər/</div>
+          <div class="wc-pos"><b>v.</b> <b>测量、衡量</b>：用一个标准去量某个东西有多大。<br>常见义：<b>n.</b> 措施（take measures 采取措施）；<b>n.</b> 尺度、程度（a measure of 一定程度的）；<b>v.</b> 量度为（The room measures 4 metres）。<br>搭配：measure sth by（用……来衡量）／measure up to（达到……的标准）／in large measure（在很大程度上）。<br>为什么结尾落在这个词上：本文真正批评的不是机器人，而是「我们用什么去量」。measure 在这里既是动作也是立场——你选择量什么，就等于选择看不见什么。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…we <b>measure</b> what it removed with the ruler we already had, and stop looking at what it left behind.</div>
+          <div class="wc-tr">……我们习惯用手里原有的尺子去量它拿走了什么，然后就不再去看它留下了什么。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pace</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /peɪs/ · 美 /peɪs/</div>
+          <div class="wc-pos"><b>n.</b> <b>节奏、速度</b>：一件事推进的快慢，本文特指流水线被设定成多快。<br>常见义：<b>n.</b> 一步（take a pace forward）；<b>v.</b> 踱步（pace up and down）。<br>搭配：set the pace（定节奏、领跑）／keep pace with（跟上）／at a slow pace（以缓慢的速度）。<br>为什么它是全篇的关键词：机器人带来的伤害不是「砸到人」，而是「把人调到它的速度上」。set the pace 这个短语值得记住——定节奏的那个人，才是真正掌握工作强度的人。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>If <b>pace</b> were the channel, the gap should widen when demand peaks and managers push the line harder…</div>
+          <div class="wc-tr">如果「节奏」真是那条传导路径，那么差距就应该在需求高峰、管理者把产线压得更紧的时候才扩大……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">repetitive</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈpetətɪv/ · 美 /rɪˈpetətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> <b>重复性的</b>：同一个动作反复做上千次，缺少变化。医学上 repetitive strain injury（RSI，重复性劳损）是一类独立的职业病。<br>常见义：<b>adj.</b> 重复啰嗦的（a repetitive speech 翻来覆去的话）。<br>搭配：repetitive work／repetitive motion（重复动作）／repetitive strain injury。<br>注意它与 repeated 的区别：repeated 是「发生了好几次」，repetitive 是「本质上就是重复的、单调的」。本文说的是后者——不是伤了好几次，而是这份工作本身只剩下一个动作。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and the second kind of harm is what a faster, more <b>repetitive</b> job produces.</div>
+          <div class="wc-tr">……而后一种伤害，恰恰是更快、更重复的工作所生产的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">routine</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ruːˈtiːn/ · 美 /ruːˈtiːn/</div>
+          <div class="wc-pos"><b>n.</b> <b>例行流程、固定套路</b>：每天照做的那一套动作，本身带有「不需要思考」的意味。<br>常见义：<b>adj.</b> 例行的、常规的（a routine check 例行检查）；<b>n.</b> 日常生活规律（daily routine）。<br>搭配：a daily routine／break the routine（打破常规）／routine work（事务性工作）。<br>为什么这个词在本文里是负面的：routine 一旦「失去变化」（lose its variety），人就不需要判断了；不需要判断的岗位，注意力会自己溜走。作者引工人那句 zone out，正是 routine 的心理学后果。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…that the <b>routine</b> had lost its variety and that they sometimes zoned out.</div>
+          <div class="wc-tr">……例行流程失去了原有的变化，人有时候会走神。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">concentrate</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkɒnsntreɪt/ · 美 /ˈkɑːnsntreɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>集中（于某处、某时）</b>：在数据里指某一现象扎堆出现在特定时段，而不是平均分布。<br>常见义：<b>v.</b> 专心、集中注意力（concentrate on the task）；<b>n.</b> 浓缩物（orange concentrate）；<b>v.</b> 使浓缩。<br>搭配：concentrate on（专心于）／be concentrated in（集中于某地／某时）／concentration（n. 浓度、集中）。<br>为什么它的用法值得留意：本文不是「研究者集中在某件事上」，而是「伤情集中在某几周」——主语是数据，不是人。同一个动词，主语一换，意思就从「专心」变成「扎堆」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…and in injury-level records from 26 centres in 2018 it <b>concentrated</b> in the weeks of Prime Day and the winter holidays.</div>
+          <div class="wc-tr">……而在 2018 年 26 个中心的逐条伤情记录里，它恰恰集中在「会员日」和冬季假期的几周。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">assign</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈsaɪn/ · 美 /əˈsaɪn/</div>
+          <div class="wc-pos"><b>v.</b> <b>分配、指派</b>：把具体的任务分给具体的人，是管理动作，也是本文给方案的关键动词。<br>常见义：<b>v.</b> 布置（assign homework）；<b>v.</b> 确定（assign a date）。<br>搭配：assign sth to sb／assign sb to do sth／be assigned to（被分配到）。<br>为什么方案落在 assign 上：机器人不能放慢，但「哪一单派给哪个人」是可以设计的。本文的转折就在这里——把「技术问题」翻译成「排班问题」，事情才有解。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…models how orders should be batched and <b>assigned</b> so that a picker walks to the racks less often…</div>
+          <div class="wc-tr">……为「订单该如何分批、如何分配」建立了模型：让拣货员少走几趟货架……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">workload</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈwɜːkləʊd/ · 美 /ˈwɜːrkloʊd/</div>
+          <div class="wc-pos"><b>n.</b> <b>工作量、工作负荷</b>：一个人被分到的活有多少、有多重。<br>构词：work（工作）+ load（负载）——把它想成「压在人身上的重量」就很准。<br>搭配：a heavy workload（繁重的工作量）／balance the workload（平衡工作量）／workload distribution（工作量分配）。<br>本文用它收束方案：真正要摊平的不是速度，而是 workload——同样的速度，如果活分得匀，走神与劳损都会少一些。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…cutting those trips by up to 11.86 per cent and evening out the <b>workload</b> at negligible cost.</div>
+          <div class="wc-tr">……最多可把这类走动减少 11.86%，同时把工作量摊平，而代价小到可以忽略。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fulfilment</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /fʊlˈfɪlmənt/ · 美 /fʊlˈfɪlmənt/</div>
+          <div class="wc-pos"><b>n.</b> <b>（订单）履约、配送履行</b>：电商语境里 fulfilment centre 指专门负责拣货、打包、发货的仓库，不是「实现理想」的那个 fulfillment。<br>常见义：<b>n.</b> 实现、履行（the fulfilment of a promise）。<br>搭配：fulfilment centre（履约中心）／order fulfilment（订单履约）／fulfil an order。<br>为什么必须分清：同一个词在两种语境里情感色彩完全相反——「实现梦想」是褒义，「履约中心」是工业词。看到 fulfilment 先看后面跟的是 centre 还是 dream。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>At a robotic <b>fulfilment</b> centre, the shelves come to the picker.</div>
+          <div class="wc-tr">在机器人化的履约中心里，是货架来找拣货员。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">regulator</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈreɡjuleɪtə(r)/ · 美 /ˈreɡjuleɪtər/</div>
+          <div class="wc-pos"><b>n.</b> <b>监管机构</b>：负责监督某一行业的政府机关，本文指美国职业安全与健康管理局（OSHA）。<br>常见义：<b>n.</b> 调节器、稳压器（a pressure regulator）。<br>搭配：the industry regulator／financial regulator（金融监管机构）／regulatory body。<br>为什么这个词决定证据强度：报告是企业按规定<b>报送</b>给 regulator 的，不是研究者自己测的。这既让数据覆盖 150 多个站点，也意味着它只包含「规定要报的」那部分伤——统计口径本身就是研究边界。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…compared injury reports filed with the US <b>regulator</b> for more than 150 Amazon fulfilment centres…</div>
+          <div class="wc-tr">……比较了 2016 至 2019 年间向美国监管机构报送的工伤报告，覆盖亚马逊 150 多个履约中心……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sprain</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /spreɪn/ · 美 /spreɪn/</div>
+          <div class="wc-pos"><b>n./v.</b> <b>扭伤</b>：关节被强行掰过角度，韧带被拉伤，通常不骨折、不一定误工。<br>构词：与 strain（劳损）常成对出现，sprains and strains 是工伤报告里的固定搭配。<br>搭配：a sprained ankle（扭伤的脚踝）／sprain one's wrist／sprains and strains。<br>为什么要把 sprain 和 fracture 分开记：本文的全部结论都建立在这个区分上——骨折会误工、会上报、会进头条；扭伤不会。分不清这两个词，就读不懂「40% 下降」和「77% 上升」为什么能同时为真。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the <b>sprains</b> and strains that send people to light duty without costing a shift, rose by 77 per cent.</div>
+          <div class="wc-tr">……那些把人送去上轻体力岗、却不耽误一个班的扭伤与劳损，上升了 77%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">metric</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmetrɪk/ · 美 /ˈmetrɪk/</div>
+          <div class="wc-pos"><b>n.</b> <b>指标、度量</b>：管理学里对「用什么量、怎么量」的统称，一个 metric 就是一把尺子。<br>常见义：<b>adj.</b> 公制的（the metric system 公制）。<br>搭配：a key metric（关键指标）／safety metric／meet the metrics（达标）。<br>为什么本文反复回到这个词：争论的双方用的不是同一个 metric。企业看「误工率」，研究者看「伤情分级」，工会看「严重伤害率」——三把尺子量同一批仓库，结论当然不同。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>A safety <b>metric</b> built around lost workdays registers a broken wrist and ignores a shoulder that aches for two years…</div>
+          <div class="wc-tr">一套以「误工天数」为核心的安全指标，会记下一次手腕骨折，却看不见一个疼了两年的肩膀……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">batch</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /bætʃ/ · 美 /bætʃ/</div>
+          <div class="wc-pos"><b>v./n.</b> <b>分批（处理）、一批</b>：把许多小任务攒成一批一起做，以减少重复动作——仓储与生产管理里的基本手法。<br>常见义：<b>n.</b> 一炉、一锅（a batch of cookies 一炉饼干）；<b>n.</b> 一批（a new batch of students）。<br>搭配：batch processing（批处理）／in batches（分批地）／batch orders（订单分批）。<br>为什么本文的方案从这里入手：一次走货架只取一单，是最费腿的做法；把顺路的单攒成一批，走动次数就降下来了。11.86% 的改善，靠的就是这个朴素的动作。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…models how orders should be <b>batched</b> and assigned so that a picker walks to the racks less often…</div>
+          <div class="wc-tr">……为「订单该如何分批、如何分配」建立了模型：让拣货员少走几趟货架……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">conveyor</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kənˈveɪə(r)/ · 美 /kənˈveɪər/</div>
+          <div class="wc-pos"><b>n.</b> 传送带：工厂或仓库里连续运送物品的机械带。<br>常见义：<b>n.</b> 运送者、传达者（a conveyor of news）。<br>搭配：conveyor belt（传送带）／on the conveyor／assembly line（装配线，常与它混用但不同）。<br>为什么论文用这个标题：露西那一幕的喜剧性全在「人被机器的速度接管」——手忙脚乱、最后把巧克力塞进嘴里。一篇讲工伤的论文拿它当标题，本身就是论点：笑点所在，正是痛点所在。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the scene in which Lucy and Ethel try to keep up with a <b>conveyor</b> belt and end up eating the chocolates.</div>
+          <div class="wc-tr">……那个著名场景：露西和埃塞尔拼命跟上一条传送带，最后把巧克力塞进了自己嘴里。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">injury-prone</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɪndʒəri prəʊn/ · 美 /ˈɪndʒəri proʊn/</div>
+          <div class="wc-pos"><b>adj.</b> <b>容易致伤的、容易受伤的</b>：-prone 是「倾向于……的」后缀，可与名词或动词连用。<br>同族词：accident-prone（易出事故的）、error-prone（易出错的）、flood-prone（易涝的）。<br>搭配：an injury-prone job／an injury-prone area／be prone to（易于……）。<br>为什么这个词值得记：高考阅读里 -prone 复合词出现频率不低，而它几乎总是带「统计上更容易发生坏事」的意思——不是「已经受伤了」，而是「风险更高」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The arrangement looks like the obvious answer to one of the most <b>injury-prone</b> jobs in rich economies…</div>
+          <div class="wc-tr">这个安排看上去是一个显而易见的答案——它针对的是富裕经济体里最容易致伤的职业之一……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shift</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ʃɪft/ · 美 /ʃɪft/</div>
+          <div class="wc-pos"><b>n.</b> <b>班次、轮班</b>：一个人连续上班的那一段时间，是工厂与仓库的基本计时单位。<br>常见义：<b>v.</b> 转移、改变（shift the blame 甩锅）；<b>v.</b> 换挡（shift gears）；<b>n.</b> 转变（a shift in policy）。<br>搭配：the night shift（夜班）／work a shift／shift work（轮班制）／all shift（一整班）。<br>学生几乎只认识它作动词「转变」，于是 all shift 会被读成「所有的转变」。判断办法看冠词与介词：a shift、on shift、all shift 都是「班」；shift to、shift from 才是「转」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…takes items off it and drops them into a bin, again and again, all <b>shift</b>.</div>
+          <div class="wc-tr">……从架上取货、扔进箱子，一遍又一遍，一整班。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">light</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /laɪt/ · 美 /laɪt/</div>
+          <div class="wc-pos"><b>adj.</b> <b>轻的、轻体力的</b>：light work、light duty 指不需要搬抬的岗位，是工伤管理里的正式说法。<br>常见义：<b>n.</b> 光、灯（turn on the light）；<b>adj.</b> 明亮的、浅色的（light blue）；<b>v.</b> 点燃（light a fire）。<br>搭配：light duty（轻体力岗）／light work／on light duties。<br>为什么本文需要它两次：第一次是「人只剩下轻活」——听上去是好事；第二次是「被送去上轻体力岗」——听上去是工伤处理。同一个词在两句里一褒一中，正好对应「任务层面变好、流程层面变坏」这条主线。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the sprains and strains that send people to <b>light</b> duty without costing a shift…</div>
+          <div class="wc-tr">……那些把人送去上轻体力岗、却不耽误一个班的扭伤与劳损……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">channel</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈtʃænl/ · 美 /ˈtʃænl/</div>
+          <div class="wc-pos"><b>n.</b> <b>路径、传导渠道</b>：一件事经由哪条通路影响另一件事，是因果分析里的核心词。<br>常见义：<b>n.</b> 电视频道（Channel 5）；<b>n.</b> 海峡（the English Channel）；<b>v.</b> 引导、输送（channel funds into…）。<br>搭配：through the channel of（经由……渠道）／a channel for（……的通道）／channel sth into。<br>为什么这里用虚拟语气配它：If pace were the channel 不是陈述，而是提出一条待检验的假设——「如果节奏是那条通道」。这半句是全文的方法论姿态：先立一条可被推翻的路径，再去数据里找它。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>If pace were the <b>channel</b>, the gap should widen when demand peaks…</div>
+          <div class="wc-tr">如果「节奏」真是那条传导路径，那么差距就应该在需求高峰时才扩大……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">strain</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /streɪn/ · 美 /streɪn/</div>
+          <div class="wc-pos"><b>n.</b> <b>劳损、扭伤</b>：肌肉或肌腱被过度拉伸造成的损伤，与 sprain（韧带扭伤）常并列出现。<br>常见义：<b>n.</b> 压力、紧张（under strain 承受压力）；<b>v.</b> 拉紧、竭力（strain every nerve）；<b>n.</b>  strain 还可指「（病毒的）株」。<br>搭配：sprains and strains（扭伤与劳损）／repetitive strain injury（重复性劳损）／put a strain on（给……造成压力）。<br>为什么这个词最容易读错：它在新闻里九成是抽象的「压力」，可在工伤报告里是具体的「伤」。判断依据看它是否与 sprain、injury 并列——一旦并列，就是身体的伤，不是心理的压力。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>…the sprains and <b>strains</b> that send people to light duty without costing a shift…</div>
+          <div class="wc-tr">……那些把人送去上轻体力岗、却不耽误一个班的扭伤与劳损……</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">come to the picker</span><span class="zh">（货架）自己走到拣货员跟前</span></li>
+          <li><span class="en">lift a rack off the floor</span><span class="zh">把整架货从地面抬起来</span></li>
+          <li><span class="en">again and again, all shift</span><span class="zh">一遍又一遍，一整班</span></li>
+          <li><span class="en">the obvious answer to</span><span class="zh">对……而言显而易见的答案</span></li>
+          <li><span class="en">one of the most injury-prone jobs</span><span class="zh">最容易致伤的职业之一</span></li>
+          <li><span class="en">go to machines</span><span class="zh">交给机器去做</span></li>
+          <li><span class="en">leave sb with sth</span><span class="zh">只给某人剩下……</span></li>
+          <li><span class="en">be half true</span><span class="zh">只对了一半</span></li>
+          <li><span class="en">be designed to do sth</span><span class="zh">被设计成专门做某事</span></li>
+          <li><span class="en">compare A against B</span><span class="zh">把 A 与 B 作比较</span></li>
+          <li><span class="en">set A against B</span><span class="zh">把 A 与 B 对照起来</span></li>
+          <li><span class="en">at the level of the individual task</span><span class="zh">在单个任务的层面</span></li>
+          <li><span class="en">at the level of the process</span><span class="zh">在流程的层面</span></li>
+          <li><span class="en">cost sb days off</span><span class="zh">让某人误工</span></li>
+          <li><span class="en">send sb to light duty</span><span class="zh">把某人调去做轻体力岗</span></li>
+          <li><span class="en">without costing a shift</span><span class="zh">不耽误一个班</span></li>
+          <li><span class="en">test the explanation instead of assuming it</span><span class="zh">去检验这个解释，而不是直接假定它</span></li>
+          <li><span class="en">push the line harder</span><span class="zh">把产线压得更紧</span></li>
+          <li><span class="en">demand peaks</span><span class="zh">需求达到高峰</span></li>
+          <li><span class="en">in one's own words</span><span class="zh">用自己的话</span></li>
+          <li><span class="en">pick targets</span><span class="zh">拣货指标、拣货定额</span></li>
+          <li><span class="en">lose its variety</span><span class="zh">失去原有的变化</span></li>
+          <li><span class="en">zone out</span><span class="zh">走神、放空</span></li>
+          <li><span class="en">an answer to a different question</span><span class="zh">对另一个问题的回答</span></li>
+          <li><span class="en">be built around</span><span class="zh">以……为核心构建</span></li>
+          <li><span class="en">ache for two years</span><span class="zh">疼了两年</span></li>
+          <li><span class="en">be relocated rather than removed</span><span class="zh">被搬了家，而不是被消除</span></li>
+          <li><span class="en">batch and assign</span><span class="zh">分批并分配</span></li>
+          <li><span class="en">even out the workload</span><span class="zh">把工作量摊平</span></li>
+          <li><span class="en">at negligible cost</span><span class="zh">代价小到可以忽略</span></li>
+          <li><span class="en">take over the dangerous part of a job</span><span class="zh">接管一份工作里危险的那部分</span></li>
+          <li><span class="en">travel beyond</span><span class="zh">超出……的范围（同样适用于）</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：场景——货架自己走过来，人站着不动，一整班。</li>
+          <li>第 2 段：反常识——「机器干了重活，人就安全了」只对一半。</li>
+          <li>第 3 段：研究设计——150 多个站点，2016—2019 年的工伤报告。</li>
+          <li>第 4 段：两组数字——重伤 −40%，轻伤 +77%。</li>
+          <li>第 5 段：机制检验——差距在会员日与年末几周最大。</li>
+          <li>第 6 段：工人自述——身体不累，但指标翻倍、动作单调、会走神。</li>
+          <li>第 7 段：指标失灵——只数误工，看不见疼了两年的肩膀。</li>
+          <li>第 8 段：方案——改订单分批与分配，少走 11.86%。</li>
+          <li>第 9 段：落点——风险被搬家，不在机器里，在岗位设计里。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Burtch, Greenwood and Ravindran compared injury reports filed with the US regulator for more than 150 Amazon fulfilment centres between 2016 and 2019, setting automated sites against sites that had not been automated.</div>
+        <div class="row"><b>主干：</b>Burtch, Greenwood and Ravindran compared injury reports（三位作者比较了工伤报告）——主语是三个人名并列，谓语 compared 只有一个，后面全是修饰。</div>
+        <div class="row"><b>难点：</b>① 宾语 injury reports 后挂了两个后置成分：filed with the US regulator（过去分词短语，说明「谁报送的」）与 for more than 150 Amazon fulfilment centres（说明「覆盖哪些站点」），中间还夹了一个 between 2016 and 2019 的时间状语，四个成分叠在一起最容易读乱；② setting automated sites against sites that had not been automated 是现在分词作伴随状语，set A against B 意为「把 A 与 B 对照」，不是「设置」；③ 第二个 sites 后面跟了 that 定语从句，用「没有自动化的站点」来给对照组下定义——这一句就把研究设计说完了；④ 注意 filed 的被动含义：报告是<b>企业按法规报送</b>给监管机构的，这个细节决定了数据只包含「规定要报的」那一部分伤。</div>
+        <div class="row tr"><b>译文：</b>伯特奇、格林伍德与拉文德兰比较了 2016 至 2019 年间向美国监管机构报送的工伤报告，覆盖亚马逊 150 多个履约中心，把已自动化的站点与未自动化的站点对照起来。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">At the level of the process, the remaining manual tasks became narrower and faster, and non-severe injuries, the sprains and strains that send people to light duty without costing a shift, rose by 77 per cent.</div>
+        <div class="row"><b>主干：</b>the remaining manual tasks became narrower and faster（剩下的手工任务变得更单一、更快）＋ and 引出第二个分句：non-severe injuries … rose by 77 per cent（轻伤上升了 77%）。</div>
+        <div class="row"><b>难点：</b>① At the level of the process 与上一段的 At the level of the individual task 构成一组对照，是全篇的结构支点——同一个仓库，换一个层级看，结论就反过来；② 第二个分句里，主语 injuries 与谓语 rose 之间插了一个同位语 the sprains and strains（扭伤与劳损），而这个同位语又带了 that 定语从句，主谓被隔开 17 个词；③ without costing a shift 是介词短语作状语，修饰 send 而不是 rose——「送去上轻岗，且不耽误一个班」，这两件事合起来才解释了为什么这类伤在统计里几乎隐形；④ narrower 用的是「更窄」而不是「更简单」，暗示失去的是<b>任务的变化</b>，不是难度。</div>
+        <div class="row tr"><b>译文：</b>但在流程的层面，剩下的手工任务变得更单一、更快；而轻伤，也就是那些把人送去上轻体力岗、却不耽误一个班的扭伤与劳损，上升了 77%。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">If pace were the channel, the gap should widen when demand peaks and managers push the line harder, and in injury-level records from 26 centres in 2018 it concentrated in the weeks of Prime Day and the winter holidays.</div>
+        <div class="row"><b>主干：</b>If pace were the channel, the gap should widen …（如果节奏是那条通道，差距就应该扩大）——虚拟语气提出假设；and 之后用真实数据回应这个假设。</div>
+        <div class="row"><b>难点：</b>① 全句是「假设 + 检验」的典型写法：前半句用 were / should（虚拟），后半句换成 it concentrated（陈述），时态与语气的切换就是「从推理走进证据」的信号；② when 引导时间状语从句，从句里主语是 demand 与 managers 两个并列成分，谓语分别是 peaks 与 push；③ push the line harder 中的 line 指生产线，harder 修饰 push（压得更紧），不是修饰 line；④ it 指代前面的 the gap，不是 pace，也不是 channel——代词跳过了最近的三个名词，只能靠逻辑判断；⑤ concentrated in 的主语是数据现象，译成「它集中在」而不是「它专心于」，这是 concentrate 的常见误读点。</div>
+        <div class="row tr"><b>译文：</b>如果「节奏」真是那条传导路径，那么差距就应该在需求高峰、管理者把产线压得更紧的时候才扩大；而在 2018 年 26 个中心的逐条伤情记录里，它恰恰集中在「会员日」和冬季假期的几周。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">In thousands of posts analysed, staff at automated sites called the job “not physically exhausting” and “better than a legacy FC”, then added that pick targets were two or three times higher, that the routine had lost its variety and that they sometimes zoned out.</div>
+        <div class="row"><b>主干：</b>staff at automated sites called the job … then added that …（自动化站点的员工先说这份活……然后补充说……）——一个主语带两个谓语，中间用 then 表示时间与态度的递进。</div>
+        <div class="row"><b>难点：</b>① 句首 In thousands of posts analysed 把状语提前，其中 analysed 是过去分词作后置定语（= posts that were analysed），不是谓语；② called the job A and B 是「把这份工作称为 A 和 B」的复合宾语结构，引号里的两个评价都是正面词；③ then added 后面跟了<b>三个并列的 that 从句</b>，第一个说指标高、第二个说流程单调、第三个说人会走神——正面评价在前、负面补充在后，这个顺序本身就是作者的态度；④ zoned out 是口语表达，指注意力突然飘走，与前面 lost its variety 构成因果：不 need 判断的动作做久了，注意力会自己溜号；⑤ 注意这批证据的性质：员工自述的帖子，未经独立核实，作者用它来解释机制，而不是用来证明因果。</div>
+        <div class="row tr"><b>译文：</b>在研究者读过的数千条帖子里，自动化站点的员工说这份活「身体上不累」「比传统履约中心强」，随后又补上：拣货指标高出两三倍，例行流程失去了原有的变化，人有时候会走神。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A 2026 study in the International Journal of Production Economics models how orders should be batched and assigned so that a picker walks to the racks less often, cutting those trips by up to 11.86 per cent and evening out the workload at negligible cost.</div>
+        <div class="row"><b>主干：</b>A 2026 study … models how orders should be batched and assigned（一项 2026 年的研究为「订单该如何分批与分配」建模）——主语中心词是 study，谓语 models。</div>
+        <div class="row"><b>难点：</b>① how orders should be batched and assigned 是宾语从句，用的是<b>被动 + should</b>，表示「应当如何处理」，不是过去时；② so that 引导目的状语从句，walks 用一般现在时，表示这是一种常态而非某次动作；③ cutting … and evening out … 是两个并列的现在分词作结果状语，逻辑主语是前面的整套做法，不是 study；④ by up to 11.86 per cent 中 up to 是「最多可达」，不能读成「正好 11.86%」；⑤ at negligible cost 的 cost 泛指代价，原文特指计算成本——即这套算法几乎不增加运算负担，可以在排班系统里实时跑。</div>
+        <div class="row tr"><b>译文：</b>2026 年《国际生产经济学杂志》上的一项研究，为「订单该如何分批、如何分配」建立了模型：让拣货员少走几趟货架，最多可把这类走动减少 11.86%，同时把工作量摊平，而代价小到可以忽略。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇要回答的问题很朴素：把机器人放进仓库，工人是不是更安全了？</b>答案是一个「是，也不是」，而且这两半都能在同一批数据里被验证。《ILR Review》2025 年第 78 卷第 4 期（587–613 页）刊出 Gordon Burtch、Brad Greenwood 与 Kiron Ravindran 的论文，标题叫《露西与巧克力工厂：仓储机器人与工人安全》——取自那个著名喜剧场景：露西和埃塞尔在流水线旁拼命跟上巧克力，最后把来不及包的糖塞进自己嘴里。</p>
+      <p class="zh-sum"><b>数据来源值得先说清楚。</b>研究者用的不是自己测的数据，而是亚马逊各履约中心按法规向美国职业安全与健康管理局（OSHA）报送的年度工伤报告，覆盖 2016 至 2019 年间 150 多个站点。这类「机构层面」数据的价值在于：它比行业平均数据细得多，也更少被各种不可观测的差异污染。研究者把已经引入机器人的站点（robotic FC）与尚未引入的站点（legacy FC）对照，另外还拿到了 2018 年 26 个中心的<b>逐条伤情记录</b>，可以按伤的类型细分。</p>
+      <p class="zh-sum"><b>结果是一个漂亮的分裂。</b>在单个任务的层面，机器人确实兑现了承诺：那些最危险的活——长距离走动、反复搬抬重物——交给了机器，重伤（骨折、摔伤、任何导致误工的事故）下降了 <b>40%</b>。但在流程的层面，剩下的手工任务变得<b>更窄、更快</b>，而轻伤——扭伤、劳损、重复动作造成的损伤——上升了 <b>77%</b>。</p>
+      <p class="zh-sum"><b>为什么这两件事能同时为真？</b>因为「伤」不是一个东西，而是一组按严重程度分层的事件。重伤会让人缺勤、会上报、会进头条；轻伤通常只让人被调去做「轻体力岗」（light duty），既不缺勤也不减薪，于是在以「误工天数」为核心的统计里几乎隐形。同一个仓库，用两把尺子量，得到两个相反的结论——而两把尺子量的都是真的。</p>
+      <p class="zh-sum"><b>研究没有停在解释上，而是去检验它。</b>如果「节奏变快」真是那条传导路径，那么差距就应该在<b>业务高峰</b>时扩大：需求暴涨、管理者把产线压得更紧，人被迫跟上机器的速度。作者用了三重差分的设计，把「高负荷周」与平常周对比，结果差距确实集中在「会员日」（Prime Day）和冬季假期那几周。这一步很关键——它把「相关」往「机制」推了一格。</p>
+      <p class="zh-sum"><b>工人自己的话，补上了机制的另一半。</b>研究者还分析了数千条仓库员工的网络发帖。自动化站点的员工说这份活「身体上不累」「比传统履约中心强」，可紧接着就补上：拣货指标高出两三倍，有的说两三倍；每日动作变得极其单调；人有时候会「走神」（zone out）。也就是说，<b>体力负担下降，认知负担与节奏压力上升</b>——这正是「任务变好、流程变坏」的通俗版本。当然，帖子是自述、未经独立核实，作者用它来解释机制，而不是拿它当因果证据。</p>
+      <p class="zh-sum"><b>于是争论的双方其实都没说错。</b>企业强调的是「严重伤害下降」，这是真的；媒体与工会强调的是「伤害总量上升」，这也是真的。分歧不在事实，而在<b>口径</b>：一套以误工为核心的安全指标，会记下一次手腕骨折，却看不见一个疼了两年的肩膀。而后一种伤害，恰恰是更快、更重复的工作所生产的。这也解释了一个普遍现象——技术带来的新风险，往往先落在旧指标看不见的地方。</p>
+      <p class="zh-sum"><b>那么，出路在哪里？</b>不在机器，而在岗位设计。2026 年《国际生产经济学杂志》（第 296 卷，109999）刊出李枭伟、华国伟、T. C. E. Cheng 与刘帅的研究，从「以人为本的智慧仓储」出发，为订单的分批（batching）与批次分配（assignment）建立联合优化模型：目标不是让系统更快，而是让拣货员<b>少走几趟货架</b>，同时把工作量在人与人之间摊平。结果显示，优化后的分批策略最多可把货架访问次数减少 <b>11.86%</b>，从而降低人体工学风险；而分配策略改善负荷均衡的代价，几乎可以忽略。</p>
+      <p class="zh-sum"><b>这个方案的分量，在于它换了一个可调的旋钮。</b>你没法要求一台机器人放慢速度，但你可以决定一个人一天要跟它碰多少次面——而这个决定是在办公室里做出的，不在车间地面上。换句话说，自动化把风险从「搬抬」搬到了「节奏」，而「节奏」是可以被排班、被分批、被工作量分配重新设计的。</p>
+      <p class="zh-sum"><b>最后是那个可以带走的判断。</b>当机器接管了一份工作里危险的那部分，我们习惯用手里原有的尺子去量它拿走了什么，然后就不再去看它留下了什么。<b>风险很少被消除，它更常被搬家</b>——搬到统计看不见的格子、搬到另一个岗位、搬到另一个班次。要发现它，靠的不是更灵敏的仪器，而是愿意换一把尺子的问题意识：这次搬家，搬到了谁的肩上？</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. Warehouse robots are dangerous and should be withdrawn until regulators can prove they are safe.<br>B. Robots cut the most serious warehouse injuries by taking over heavy lifting, but they also raise the pace and narrow the remaining tasks, so milder injuries rise — and the standard safety metric cannot see them.<br>C. Amazon's injury figures are unreliable because the company reports them itself to a government regulator.<br>D. Automation has no effect on injury rates; the apparent differences come from how researchers classify injuries.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景：货架自己走过来（第 1 段）→ 反常识：这话只对一半（第 2 段）→ 研究设计：150 多个站点、七年报告（第 3 段）→ 两组数字：重伤 −40%、轻伤 +77%（第 4 段）→ 机制检验：高峰周差距最大（第 5 段）→ 工人自述：不累但更快更单调（第 6 段）→ 指标失灵：只数误工（第 7 段）→ 方案：改的是岗位设计（第 8 段）→ 落点：风险被搬家（第 9 段）」。B 同时抓住了「有效」与「代价」两端，并且点出指标的问题。A 把结论推到「撤回机器人」，原文说的是重新设计岗位。C 攻击的是数据来源，可原文恰恰认为这批企业报送的数据比行业层面数据更细、更少受不可观测因素干扰。D 与第 4 段直接冲突：两组数字都是显著的，只是方向相反。</div>
+
+      <div class="q"><b>2. The author says non-severe injuries "rose by 77 per cent" and that a safety metric "registers a broken wrist and ignores a shoulder that aches for two years". What is the point of this contrast?<br>A. Light injuries are not real injuries and should not be counted at all.<br>B. The same body of evidence can look like success or failure depending on which injuries a metric counts, so the choice of metric is itself a judgement.<br>C. Hospitals report minor injuries more often than serious ones, which inflates the second figure.<br>D. Robots cause shoulder pain but never cause broken wrists.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>这一处对照的作用是把「数字之争」翻译成「口径之争」：误工天数只记录让人缺勤的伤，而重复性劳损通常不误工，于是它在指标里几乎不存在。A 与原文相反，原文特意强调 non-severe 不等于 consequential-free（会造成调岗、限工）。C 引入了原文没有的医院上报机制。D 把两类伤对立起来，而原文说的是同一批站点里两类伤同时发生、方向相反。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的核心操作是把「技术问题」翻译成「指标问题」：同一批仓库，用「误工天数」量是进步，用「伤情分级」量是退步。请你就身边一个「换个指标结论就反过来」的例子（例如班级卫生评比只看扣分项、运动 App 只看步数、家庭开支只看总额、学校评优只看平均分），写一段 150 字以内的分析：① 这个指标原本想保护的是什么；② 它系统性地看不见什么（举一个具体的行为或后果）；③ 如果加一个互补指标，你会加什么，怎么量，多久看一次。</div>
+      <div class="q"><b>仿写：</b>本文第 7 段的写法是「先承认对方没错，再指出口径不同」：<span class="hl">None of this makes the company's figures wrong; it makes them an answer to a different question. A safety metric built around lost workdays registers a broken wrist and ignores a shoulder that aches for two years.</span> 它的力量来自三个动作：① 用 None of this makes … wrong 先<b>让一步</b>，把对方的证据完整接住，读者才不会觉得你在抬杠；② 再用 it makes them … 完成<b>归位</b>——不是「错」，而是「回答了另一个问题」，一句话把争论从对错移到口径；③ 最后用一个具体对照（a broken wrist / a shoulder that aches for two years）把抽象的口径问题变成两个能看见的画面。仿写时照搬骨架：<i>None of this makes ______ wrong; it makes it ______. A ______ built around ______ registers ______ and ignores ______.</i> 注意第二步的空必须是<b>「换了一个问题」类的表述</b>（an answer to a different question / a measure of something else），不要写成「但还是有问题」；第三步的两个例子要一大一小、一显一隐。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">场景：货架自己走到拣货员跟前</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">2016–2019：150+ 履约中心的工伤报告</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">任务层面：重伤 −40%（骨折、摔伤、误工）</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">流程层面：轻伤 +77%（扭伤、劳损、上轻岗）</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#2f5d3a">机制检验：差距在会员日与年末几周最大</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">工人原话：不累，但指标翻倍、动作变单调</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">指标失灵：只数误工，看不见疼两年的肩</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#2f5d3a">方案：订单分批与分配，少走 11.86%</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">落点：风险被搬家，尺子还是那把旧尺</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：重活交给了机器，节拍也一起交了出去</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">风险没有被消除，只是搬到了旧指标看不见的格子里</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、4、5 段绿色：被证据支撑的变化——重伤降、机制明</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 4、7 段红色：被指标漏掉的那一半——轻伤与慢性劳损</text>
+        </svg>
+        <figcaption>结构图解：文章走的是一条「先给反常识、再给机制、最后换尺子」的路。第 1 段先把场景立住——货架自己走过来，人站着不动，一整班；第 2 段抛出反常识判断：「机器干了重活，人就安全了」这话只对一半，而错的那一半恰恰是统计专门记录的那一半；第 3 段交代研究设计（150 多个站点、2016—2019 年企业报送的工伤报告、自动化与非自动化对照）；第 4 段给出两组方向相反的数字，重伤 −40%、轻伤 +77%，并点明重伤与轻伤的分级差别；第 5 段做机制检验，用三重差分证明差距在业务高峰周最大，把「相关」推向「机制」；第 6 段引工人自述补上另一半——身体不累、指标翻倍、动作单调、会走神；第 7 段转入指标层面，指出以误工天数为核心的 metric 系统性地看不见慢性劳损；第 8 段给出方案，落在岗位设计（订单分批与工作量分配，少走 11.86%）而不是机器本身；第 9 段收束到可迁移的判断——风险很少被消除，更常被搬家，而搬家往往落在旧尺子量不到的格子里。全文没有一句说「机器人有害」，它更想说的是：<b>你量什么，就决定你看见什么</b>。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Gordon Burtch, Brad N. Greenwood, Kiron Ravindran《Lucy and the Chocolate Factory: Warehouse Robotics and Worker Safety》，ILR Review 78(4):587–613（2025，DOI 10.1177/00197939251333754），波士顿大学 / 乔治梅森大学 Costello 商学院 / IE 大学；另参 Xiaowei Li, Guowei Hua, T. C. E. Cheng, Shuai Liu《Human-Centric Order Batching and Allocation When Picking With Robot Teammates in the Warehouse》，International Journal of Production Economics 296:109999（2026，DOI 10.1016/j.ijpe.2026.109999），中国地质大学（北京）/ 北京交通大学｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

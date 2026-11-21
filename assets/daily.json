@@ -711,6 +711,20 @@
     "洪水治理",
     "再野化"
    ]
+  },
+  {
+   "date": "2026-11-21",
+   "en": "None of this makes the company's figures wrong; it makes them an answer to a different question.",
+   "zh": "这些发现并没有让公司的数字变成错的；它只是让那些数字变成了另一个问题的答案。",
+   "src": "外刊精读 · 机器人卸下了重物，却拿走了慢的权利（2026-11-21）",
+   "key": "an answer to a different question",
+   "keyZh": "对另一个问题的回答（不是「错的」，而是「量的是另一件事」——争论从对错移到口径）",
+   "tip": "这句话是全文的转轴，用的是「先让一步、再归位」的写法。前半句 None of this makes the figures wrong 把对方的证据完整接住，读者不会觉得你在抬杠；后半句 it makes them an answer to a different question 一句把争论从「谁对谁错」挪到「量的是哪件事」。注意 none of this 是「这一切都不」，不是「没有一个是」；代词 them 指 figures（复数），不能用 it。这句可以整句背下来，用在所有「两边数据都真、结论相反」的议论文里：先承认，再换框。仿写骨架：None of this makes ______ wrong; it makes it ______.",
+   "tags": [
+    "科技与创新",
+    "劳动",
+    "仓库自动化"
+   ]
   }
  ]
 }
