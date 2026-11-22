@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 图书馆的疗效，落在了最不像它的地方</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Shelves &amp; Company · 人与社会 / 文化 / 地方生活 / 公共卫生</div>
+  <h1>图书馆的疗效，落在了最不像它的地方</h1>
+  <div class="deck">A study of 12,000 older Australians ties weekly library visits to less dementia, a better diet and lower mortality, and to nothing at all on loneliness. The gap between the two halves is the story.</div>
+  <div class="byline"><span><b>来源</b> 莫纳什大学公共卫生与预防医学学院；Journal of Public Health（2026-10-02 上线）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-22</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 530 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-22.jpg" alt="社区公共图书馆的阅览区，一位老人坐在窗边读报，旁边有书架与还书台">
+    <figcaption>配图：工作日上午的社区图书馆，靠窗的位置被报纸和保温杯占满。这里既是阅览室，也是取暖的地方、约人的地方、独自待着的地方（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>一项追踪 12,000 多名 70 岁以上澳大利亚人、一次性检验 <b>44 个结局</b>的研究，把「图书馆有益健康」这句话拆开看了：</p>
+    <p>每周去的人，<b>痴呆风险更低、蔬果吃得更多、女性「社会隔离」更少</b>；但在<b>孤独感、抑郁、生活满意度</b>上，他们与从不去的人分不出差别。</p>
+    <p>更奇怪的是，去得最勤的女性两年后<b>跌倒更多</b>。这不是「图书馆摔断髋骨」，而是「常出门的人有更多机会绊一下」——一个坏结果，可能只是好行为的影子。</p>
+    <p>这篇要练的不是结论，而是<b>读结论的分寸</b>：一条相关，怎么就被读成了一根杠杆。本期重点熟词僻义：<b>adjust for</b>（校正变量）、<b>significant</b>（统计显著）。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-22.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.747">On a Tuesday morning a public library in a Melbourne <b class="kw" data-tip="n. 郊区：城市外围的居住区，通常比市中心安静、绿地多；派生词 suburban（郊区的）、suburbia（郊区生活的总称）">suburb</b> does three jobs at once: car park, reading room and somewhere warm to sit without buying anything.</span> <span class="s" data-t="9.747" data-e="16.882">The woman at the returns desk greets a man in a cardigan by name and asks whether his wife is out of hospital yet.</span></span></div>
+      <p class="para-tr">周二上午，墨尔本郊区的一家公共图书馆同时在干三件事：停车场、阅览室，和一个不用花钱就能坐着的暖和地方。还书台后的女士叫得出那位穿开衫的老人的名字，并问他妻子出院了没有。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="16.882" data-e="29.868">For a decade, public health researchers have been pointing at rooms like this one and calling them <b class="kw" data-tip="n. 基础设施：本指道路、水电等公共设施，此处被借用来指「一个社区赖以运转的场所」，是政策话语里的抬升用法">infrastructure</b>, borrowing Ray Oldenburg's phrase and describing the library as a third place, neither home nor work.</span> <span class="s" data-t="29.868" data-e="40.053">In Britain a link worker can now <b class="kw" data-tip="v. 转介、把（病人）转给专科或机构：refer a patient to a specialist 是医疗系统的固定说法；常见义 v. 提到、参考（refer to）、v. 查阅">refer</b> a lonely patient to a library much as a doctor refers one to a <b class="kw" data-tip="n. 理疗师：通过运动、按摩、手法帮助恢复关节与肌肉功能的人，属于康复科；physio- 前缀表示「身体、自然」">physiotherapist</b>, an arrangement known as social <b class="kw" data-tip="n. 开处方；social prescribing 指医生或社工把病人「开」给合唱团、图书馆、园艺小组这类非医疗活动，是英国 NHS 近年推行的做法">prescribing</b>.</span></span></div>
+      <p class="para-tr">十年来，公共卫生研究者一直指着这样的房间，把它称作「基础设施」；他们借用雷·奥登伯格的措辞，把图书馆叫作「第三空间」——既不是家，也不是单位。在英国，一位「链接工作者」（link worker）如今可以把一个孤独的病人转介到图书馆，就像医生把病人转给理疗师一样；这套安排叫「社会处方」。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="40.053" data-e="46.395">A paper in the Journal of Public Health in October tests the idea at a scale hard to wave away.</span> <span class="s" data-t="46.395" data-e="60.237">Htet Lin Htun and six colleagues at Monash University followed more than 12,000 Australians aged 70 to 95, all living at home, and asked how often they used a public library: never, monthly, or weekly.</span> <span class="s" data-t="60.237" data-e="71.368">They then tested forty-four outcomes, from <b class="kw" data-tip="n. 痴呆、失智症：一组以记忆、判断与日常生活能力持续下降为特征的疾病，阿尔茨海默病是最常见的一种；注意不是「疯癫」">dementia</b> and <b class="kw" data-tip="n. 失能、残疾：disability 在老年研究里常指 ADL（日常生活活动）受损，即洗澡、穿衣、行走需要人帮">disability</b> to diet and loneliness, <b class="kw" data-tip="v. 校正、控制（变量）：统计学里 adjust for X 指「把 X 的影响扣掉再看」，不是「调整 X」；常见义 v. 调整、适应（adjust to the cold）">adjusting</b> for education, income and each participant's own score at the start.</span></span></div>
+      <p class="para-tr">《公共卫生杂志》十月上线的一篇论文，把这个说法放在了一个很难挥手带过的规模上检验。莫纳什大学的赫特·林·吞与六位同事追踪了 12,000 多名 70 至 95 岁的澳大利亚人，他们全部住在自己家里；研究者问他们多久去一次公共图书馆：从不去、每月一次，还是每周一次。随后他们检验了四十四个结局，从痴呆、失能到饮食与孤独感，并对教育、收入以及每位参与者基线的得分做了校正。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="71.368" data-e="82.171">The results the sector will quote: weekly visitors were less likely to develop dementia, ate more fruit and vegetables and, among women, reported less social <b class="kw" data-tip="n. 隔离、孤立：social isolation 指客观上缺少社会联系（朋友少、见面少），与主观的 loneliness（孤独感）不是一回事">isolation</b>.</span> <span class="s" data-t="82.171" data-e="87.658">Men who used a library had lower rates of disability and death over seven years.</span></span></div>
+      <p class="para-tr">最抓眼球的结论，是这一行会拿去引用的那几条：每周去图书馆的人更不容易患上痴呆，吃的水果蔬菜更多；在女性当中，自报「社会隔离」的比例更低。用图书馆的男性，七年里的失能与死亡比例都更低。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="87.658" data-e="99.842">Then comes the part that rarely reaches a funding bid: on most psychological outcomes, loneliness and life satisfaction among them, weekly visitors were indistinguishable from people who never went.</span> <span class="s" data-t="99.842" data-e="106.329">An institution sold as a remedy for isolation produced no detectable effect on isolation.</span></span></div>
+      <p class="para-tr">接着是那部分很少被写进经费申请的内容：在大多数心理类结局上——孤独感、抑郁症状、生活满意度——每周去的人与从不去的人分不出差别。一个被当作「抗孤独良方」来推销的机构，在「孤独」这项指标上交不出可检测的效果。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="106.329" data-e="112.105">There are three ways to read that <b class="kw" data-tip="adj./n. 零结果、无差异的：null result 指统计上没有发现显著关系，是研究结论的一种，不等于「研究失败」；常见义 adj. 无效的、零值的（null and void 无效）">null</b> result, and only one of them is bad news for libraries.</span> <span class="s" data-t="112.105" data-e="123.132">The first is a healthy-user effect: a woman of seventy-eight who catches a bus twice a week is, by that fact alone, more mobile and less <b class="kw" data-tip="adj. 虚弱的、衰弱的：frail 特指老年人身体机能下降、容易跌倒和失能的状态，医学上有 frailty（衰弱综合征）">frail</b> than the neighbour who cannot leave the house.</span> <span class="s" data-t="123.132" data-e="133.408">The second is arithmetic: forty-four outcomes tested at the usual <b class="kw" data-tip="n. 阈值、门槛：统计学里指判定「显著」的那条线，通常取 p<0.05；常见义 n. 起点、临界点（on the threshold of）">threshold</b> will throw up two or three apparently <b class="kw" data-tip="adj. 统计上显著的：significant 在论文里几乎只表示「不太可能是偶然」，与「重要」无关；常见义 adj. 重要的、意义重大的">significant</b> findings even if the <b class="kw" data-tip="n. 暴露、接触：流行病学里指「被研究的那个因素」，此处即「去不去图书馆」；常见义 n. 曝光、揭露（the exposure of a scandal）">exposure</b> did nothing.</span></span></div>
+      <p class="para-tr">这个「零结果」至少有三种读法，其中只有一种对图书馆是坏消息。第一种是「健康使用者效应」：一位七十八岁的女性，每周能坐两趟公交去图书馆，仅凭这一点，她就比出不了门的邻居更能走动、更不衰弱。第二种是算术：四十四个结局按常规门槛逐一检验，即便「去不去图书馆」什么都没做，也会冒出两三个看起来显著的结果。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="133.408" data-e="141.316">The third is that the benefit may run less through company than through a reason to leave the house on a fixed day, and the walk that follows.</span> <span class="s" data-t="141.316" data-e="150.237">A room that asks nothing of you, not a purchase, not a booking, not an explanation, is also a room you can enter without feeling managed.</span></span></div>
+      <p class="para-tr">第三种是：好处若真存在，可能不是经由「有人陪」，而是经由「每周有一个固定理由出门」，以及随之而来的那段路。一个对你毫无要求的房间——不用消费、不用预约、不用解释自己——也是一个你走进去不会觉得自己「被管理」的房间。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="150.237" data-e="157.355">One result looks like a mistake: women who visited libraries most often <b class="kw" data-tip="v. 跌倒：fall 作不及物动词指人摔倒，是老年医学的核心事件之一，跌倒是 65 岁以上人群意外伤害的首位原因；常见义 v. 下降、落下（prices fell）">fell</b> more in the following two years.</span> <span class="s" data-t="157.355" data-e="170.75">Read quickly, it says libraries break hips; read properly, it probably says that women who go out have more chances to trip, which is a reminder that in <b class="kw" data-tip="adj. 观察性的：observational study 指不干预、只记录的研究，只能说明相关，不能证明因果，与实验研究相对">observational</b> data a bad outcome can be the shadow of a good behaviour.</span></span></div>
+      <p class="para-tr">有一条结果看起来像弄错了：去图书馆最勤的女性，在随后两年里跌倒得更多。粗读一遍，它说的是「图书馆会摔断髋骨」；正经读一遍，它大概说的是「常出门的女性有更多机会绊一下」——这也提醒我们，在观察性数据里，一个坏结果可能只是一种好行为的影子。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="170.75" data-e="179.421">A council should not announce that libraries pay for themselves in hospital beds saved, since the study shows an association, not a lever.</span> <span class="s" data-t="179.421" data-e="189.893">But the numbers do describe something easy to lose, and if it is worth defending it is worth measuring honestly, which means admitting that those who use it may already be those who could.</span></span></div>
+      <p class="para-tr">一个地方议会至少不该宣布「图书馆能靠省下的病床费自己养活自己」，因为这项研究给出的是一条相关，不是一根杠杆。但这些数字确实描述了一件很容易失去的东西；如果它值得守护，就值得被诚实地测量——而诚实的测量必须承认：那些正在使用它的人，可能本来就是「能够使用它」的那批人。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">suburb</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈsʌbɜːb/ · 美 /ˈsʌbɜːrb/</div>
+          <div class="wc-pos"><b>n.</b> <b>郊区</b>：城市外围以居住为主的区域，通常比市中心安静、绿化多、通勤远。<br>常见义：即此义；注意它是可数名词，住的「一个郊区」用 a suburb。<br>搭配：in the suburbs（在郊区）／a suburb of Melbourne（墨尔本的一个郊区）／suburban（adj. 郊区的）。<br>为什么本文从一个郊区写起：公共图书馆的分布密度在郊区最高、在市中心反而被商业空间挤走；写郊区，是因为那里的图书馆同时承担了托儿、取暖、看报、蹭网四件事，最能说明它为什么被叫作「基础设施」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>On a Tuesday morning a public library in a Melbourne <b>suburb</b> does three jobs at once</div>
+          <div class="wc-tr">周二上午，墨尔本郊区的一家公共图书馆同时在干三件事。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diet</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈdaɪət/ · 美 /ˈdaɪət/</div>
+          <div class="wc-pos"><b>n.</b> <b>日常饮食、膳食结构</b>：一个人长期吃的东西的整体，不是「减肥」；研究里说 diet 一般指营养结构。<br>常见义：<b>n.</b> 节食、减肥食谱（be on a diet 在节食）；<b>v.</b> 节食。<br>搭配：a balanced diet（均衡饮食）／diet and exercise（饮食与运动）／dietary（adj. 饮食的）。<br>为什么这个词在这里很关键：饮食是「行为类结局」里最硬的一个——它比自报的孤独感更难被心情影响。本文真正有分量的证据，恰恰长在这些不起眼的行为指标上。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>They then tested forty-four outcomes, from dementia and disability to <b>diet</b> and loneliness</div>
+          <div class="wc-tr">随后他们检验了四十四个结局，从痴呆、失能到饮食与孤独感。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">income</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈɪnkʌm/ · 美 /ˈɪnkʌm/</div>
+          <div class="wc-pos"><b>n.</b> <b>收入</b>：一段时间内进账的钱，通常是家庭收入（household income）。<br>常见义：即此义；注意重音在第一个音节，与 inˈcome（走进来）不同。<br>搭配：low-income families（低收入家庭）／disposable income（可支配收入）／income inequality（收入不平等）。<br>为什么会出现在校正变量里：去不去图书馆与收入高度相关——穷人靠它蹭空调、蹭网、给孩子找书，富人可以直接买。不把收入扣掉，任何「图书馆有益」的结论都可能只是「有钱有益」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>adjusting for education, <b>income</b> and each participant's own score at the start</div>
+          <div class="wc-tr">并对教育、收入以及每位参与者基线的得分做了校正。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">isolation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌaɪsəˈleɪʃn/ · 美 /ˌaɪsəˈleɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>隔离、孤立</b>：social isolation 指客观上社会联系很少（见面少、朋友少、无人可求助）。<br>常见义：<b>n.</b> 隔离（医学上的隔离病房、地理上的孤立）。<br>搭配：social isolation／in isolation（孤立地、单独地）／isolate sb from（把某人与……隔开）。<br>⚠️ 必须与 loneliness 分开：isolation 是<b>客观</b>的联系数量，loneliness 是<b>主观</b>的痛苦感受。一个人可以联系很多却依然孤独，也可以独居而不觉孤独。本文的结论正是建立在这个区分上——客观上「没那么孤立」，主观上「没更不孤独」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>ate more fruit and vegetables and, among women, reported less social <b>isolation</b></div>
+          <div class="wc-tr">吃的水果蔬菜更多；在女性当中，自报「社会隔离」的比例更低。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">disability</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdɪsəˈbɪləti/ · 美 /ˌdɪsəˈbɪləti/</div>
+          <div class="wc-pos"><b>n.</b> <b>失能、残疾</b>：在老年研究里通常指日常生活活动（洗澡、穿衣、行走、如厕）需要他人帮助的状态。<br>常见义：<b>n.</b> 无能力、缺陷（a disability in the system）。<br>搭配：people with disabilities（残障人士）／disability rate／learning disability（学习障碍）。<br>为什么它是一个「硬结局」：失能不靠自报心情，而靠能不能自己洗澡这种可核实的事。所以「男性失能更低」这条，比任何满意度打分都更值得认真对待。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Men who used a library had lower rates of <b>disability</b> and death over seven years</div>
+          <div class="wc-tr">用图书馆的男性，七年里的失能与死亡比例都更低。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> <b>阈值、门槛</b>：统计里指判定「显著」的那条线，惯例取 p<0.05。<br>常见义：<b>n.</b> 起点、临界点（on the threshold of a new era 新时代的门槛上）；<b>n.</b> 门口、门槛（实物）。<br>搭配：the poverty threshold（贫困线）／a high threshold for pain（对疼痛的高耐受）／cross the threshold（跨过门槛）。<br>为什么这个词是本文的方法论按钮：门槛定在哪里，决定多少结果「显著」。四十四个结局、每个都拿 0.05 去量，光靠偶然就该有两三个过关——这不是造假，是算术。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>forty-four outcomes tested at the usual <b>threshold</b> will throw up two or three apparently significant findings</div>
+          <div class="wc-tr">四十四个结局按常规门槛逐一检验，会冒出两三个看起来显著的结果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">association</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˌsəʊsiˈeɪʃn/ · 美 /əˌsoʊsiˈeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（统计上的）相关、关联</b>：两件事一起变化，但未证明谁引起谁。<br>常见义：<b>n.</b> 协会、社团（the Library Association）；<b>n.</b> 联想（by association）。<br>搭配：an association between A and B／be associated with（与……相关）／positive association（正相关）。<br>为什么结尾非用它不可：全文的分寸全在这一个词上。论文说的是 association，政策话术会把它读成 effect——「相关」到「有效」这一步，是健康新闻最常跨越、也最不该跨越的那一步。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>since the study shows an <b>association</b>, not a lever</div>
+          <div class="wc-tr">这项研究给出的是一条相关，不是一根杠杆。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">prescribing</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɪˈskraɪbɪŋ/ · 美 /prɪˈskraɪbɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>开处方</b>：social prescribing 指医生或社工把病人「开」给合唱团、园艺小组、图书馆这类非医疗活动。<br>常见义：<b>v.</b> 开（药）、医嘱（prescribe antibiotics）；<b>v.</b> 规定（prescribe the rules）。<br>搭配：social prescribing／prescribe sth for sb／prescription（n. 处方）。<br>⚠️ 别与 describe 混淆：pre-（在前）+ scribe（写）＝事先写下该怎么做；de-（向下）+ scribe＝描述。为什么英国推它：它便宜、可规模化，而且不占医院床位——这也正是它需要被严格检验的原因。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>an arrangement known as social <b>prescribing</b></div>
+          <div class="wc-tr">这套安排叫「社会处方」。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arithmetic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əˈrɪθmətɪk/ · 美 /əˈrɪθmətɪk/</div>
+          <div class="wc-pos"><b>n.</b> <b>算术、计算</b>：此处转指「纯粹的数量关系」，即不涉及机制、只由数字本身导致的结果。<br>常见义：<b>n.</b> 算术（学科）；注意作名词重音在第二音节，作形容词（arithmetic mean 算术平均）重音移到第三音节。<br>搭配：do the arithmetic（算一算）／mental arithmetic（心算）／the arithmetic of（……的算术）。<br>为什么用「算术」来解释假阳性：作者不是说研究者算错了，而是说这种设计天然会产出一些「显著」；把原因归给算术，比归给品德更准确，也更难反驳。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The second is <b>arithmetic</b>: forty-four outcomes tested at the usual threshold</div>
+          <div class="wc-tr">第二种是算术：四十四个结局按常规门槛逐一检验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dementia</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /dɪˈmenʃə/ · 美 /dɪˈmenʃə/</div>
+          <div class="wc-pos"><b>n.</b> <b>痴呆、失智症</b>：一组以记忆、判断与日常生活能力持续下降为特征的疾病总称，阿尔茨海默病最常见。<br>构词：de-（去除）+ ment（心智）+ -ia（病）＝「心智被拿走」。<br>搭配：develop dementia（患上痴呆）／dementia risk／vascular dementia（血管性痴呆）。<br>为什么它是本文最有分量的结局：痴呆的诊断不依赖病人的心情，且有明确的临床标准；一项观察性研究能在七年随访里看到「风险更低」，比任何满意度问卷都更难被自我报告偏差解释。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>weekly visitors were less likely to develop <b>dementia</b></div>
+          <div class="wc-tr">每周去图书馆的人更不容易患上痴呆。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">frail</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /freɪl/ · 美 /freɪl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>虚弱的、衰弱的</b>：特指老年人身体机能整体下降、容易跌倒与失能的状态，医学上有 frailty（衰弱综合征）这一独立概念。<br>常见义：<b>adj.</b> 脆弱的、易碎的（a frail wooden bridge）。<br>搭配：frail elderly people／become frail／frailty（n.）。<br>为什么本文用它而不说 old：old 只说明年龄，frail 说明<b>身体还剩多少余量</b>。能每周坐公交去图书馆的人，未必更年轻，但一定更不 frail——这正是「健康使用者效应」的入口。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a woman of seventy-eight who catches a bus twice a week is, by that fact alone, more mobile and less <b>frail</b> than the neighbour</div>
+          <div class="wc-tr">一位七十八岁的女性，每周能坐两趟公交，仅凭这一点，她就比出不了门的邻居更不衰弱。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">null</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /nʌl/ · 美 /nʌl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>零结果的、无差异的</b>：null result 指统计上没发现显著关系，是研究结论的一种，不等于「研究失败」。<br>常见义：<b>adj.</b> 无效的、零值的（null and void 法律上无效）；<b>n.</b> 零（编程里的空值）。<br>搭配：a null result／null hypothesis（零假设：假定「没有关系」）／null and void。<br>为什么这个词值得单独记：中文报道几乎不翻译它，于是「没发现差异」常被写成「没有效果」或干脆不写。可对科学来说，一个可靠的零结果与一个阳性结果同样有信息量——它划出了「此路不通」的边界。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>There are three ways to read that <b>null</b> result</div>
+          <div class="wc-tr">这个「零结果」至少有三种读法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">exposure</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪkˈspəʊʒə(r)/ · 美 /ɪkˈspoʊʒər/</div>
+          <div class="wc-pos"><b>n.</b> <b>暴露、接触（被研究的因素）</b>：流行病学里指研究对象「有没有、有多少」接触到某个因素，此处即「去不去图书馆」。<br>常见义：<b>n.</b> 曝光、揭露（the exposure of a scandal）；<b>n.</b> 受寒、日晒（exposure to cold）。<br>搭配：exposure to（接触……）／long-term exposure／be exposed to。<br>为什么它是个「中性词」：在论文里它不带褒贬，吸烟是 exposure，去图书馆也是 exposure。看懂这一点，就不会把「暴露于图书馆」当成玩笑，而会明白研究者必须用同一套语言处理好事与坏事。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>even if the <b>exposure</b> did nothing</div>
+          <div class="wc-tr">即便「去不去图书馆」什么都没做。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">infrastructure</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɪnfrəstrʌktʃə(r)/ · 美 /ˈɪnfrəstrʌktʃər/</div>
+          <div class="wc-pos"><b>n.</b> <b>基础设施</b>：本指道路、水电、通信等社会运转所依赖的公共设施；社科里被扩展指「社会基础设施」，如图书馆、公园、社区中心。<br>构词：infra-（在下）+ structure（结构）＝「底下的那层结构」。<br>搭配：public infrastructure／social infrastructure／transport infrastructure。<br>为什么这个词是本文的争论焦点：一旦图书馆被叫作 infrastructure，它就开始与桥梁、医院争夺同一笔预算，也必须接受同一套评估标准——包括本文这种「有没有健康回报」的盘问。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>have been pointing at rooms like this one and calling them <b>infrastructure</b></div>
+          <div class="wc-tr">公共卫生研究者一直指着这样的房间，把它称作「基础设施」。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">physiotherapist</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌfɪziəʊˈθerəpɪst/ · 美 /ˌfɪzioʊˈθerəpɪst/</div>
+          <div class="wc-pos"><b>n.</b> <b>理疗师</b>：通过运动、手法、按摩帮助病人恢复关节与肌肉功能的人，属康复科。<br>构词：physio-（身体、自然）+ therapist（治疗师）；美式常说 physical therapist（PT）。<br>搭配：see a physiotherapist／physiotherapy（n. 物理治疗）。<br>为什么拿它作类比：把病人「转给理疗师」是医疗系统里再正常不过的动作；作者用同一个动词 refer 把图书馆放在这个位置上，句子的语法就在替政策说话——「转介到图书馆」听上去和「转介到康复科」一样正当。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>much as a doctor refers one to a <b>physiotherapist</b>, an arrangement known as social prescribing</div>
+          <div class="wc-tr">就像医生把病人转给理疗师一样。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">observational</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɒbzəˈveɪʃənl/ · 美 /ˌɑːbzərˈveɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>观察性的</b>：只观察、记录，不施加干预的研究类型，能显示相关，不能证明因果。<br>常见义：<b>adj.</b> 观察的、善于观察的（an observational comic 冷面滑稽演员）。<br>搭配：observational study／observational data／observational learning（观察学习）。<br>为什么这个词决定全文的分寸：它一出现，读者就该自动加一句「所以可能是反过来的」。本文最漂亮的一步，就是用这个限定把「跌倒是图书馆的错」翻译成「跌倒是出门的影子」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>in <b>observational</b> data a bad outcome can be the shadow of a good behaviour</div>
+          <div class="wc-tr">在观察性数据里，一个坏结果可能只是一种好行为的影子。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">adjust</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /əˈdʒʌst/ · 美 /əˈdʒʌst/</div>
+          <div class="wc-pos"><b>v.</b> <b>校正、控制（变量）</b>：统计学里 adjust for X 指「把 X 的影响先扣掉，再看剩下的关系」，是观察性研究的常规动作。<br>常见义：<b>v.</b> 调整、调节（adjust the volume）；<b>v.</b> 适应（adjust to city life）。<br>搭配：adjust for age and sex（校正年龄与性别）／adjusted odds ratio（校正后比值比）／adjust to。<br>⚠️ 这是全篇最容易读错的一个词：中文「调整教育程度」听起来像在改数据，其实是在<b>扣掉</b>它的影响。也要知道它的限度——校正只能处理「测得到的差异」，处理不了「没测到的选择」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>adjusting</b> for education, income and each participant's own score at the start</div>
+          <div class="wc-tr">并对教育、收入以及每位参与者基线的得分做了校正。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">significant</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /sɪɡˈnɪfɪkənt/ · 美 /sɪɡˈnɪfɪkənt/</div>
+          <div class="wc-pos"><b>adj.</b> <b>统计上显著的</b>：在论文语境里几乎只表示「这个差别不太可能是偶然造成的」，与「重要」「有意义」无关。<br>常见义：<b>adj.</b> 重要的、意义重大的（a significant change 重大变化）；<b>adj.</b> 意味深长的（a significant look）。<br>搭配：statistically significant／significantly higher（显著更高）／significance level（显著性水平）。<br>⚠️ 读论文的第一课：一个「显著」的效应可以小到毫无实际价值，一个「不显著」的效应也可能因为样本不够而漏掉。本文那句「两三个看起来显著」，用的正是这个技术的、冷冰冰的含义。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>two or three apparently <b>significant</b> findings even if the exposure did nothing</div>
+          <div class="wc-tr">即便「去不去图书馆」什么都没做，也会冒出两三个看起来显著的结果。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fall</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /fɔːl/ · 美 /fɔːl/</div>
+          <div class="wc-pos"><b>v.</b> <b>跌倒</b>：指人摔倒，是老年医学的核心事件之一；名词 a fall（一次跌倒）在临床里是独立记录项。<br>常见义：<b>v.</b> 下降、落下（prices fell 物价下跌）；<b>n.</b> 秋天（美式）；<b>n.</b> 垮台（the fall of Rome）。<br>搭配：fall over／fall down the stairs／a fall risk（跌倒风险）／falls clinic（防跌倒门诊）。<br>为什么这个词在本文里最容易被误读：中文读者看见 fell 第一反应是「下降」，于是「女性跌得更多」会被读成「女性去得更多」。判断办法看主语——主语是人的时候，fall 是摔倒；主语是价格、温度、比率时，才是下降。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>women who visited libraries most often <b>fell</b> more in the following two years</div>
+          <div class="wc-tr">去图书馆最勤的女性，在随后两年里跌倒得更多。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">refer</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rɪˈfɜː(r)/ · 美 /rɪˈfɜːr/</div>
+          <div class="wc-pos"><b>v.</b> <b>转介、把（病人）转给专科或机构</b>：医疗与社工系统的核心动作，意味着「我处理不了这一层，交给更合适的人」。<br>常见义：<b>v.</b> 提到、谈及（refer to）；<b>v.</b> 参考、查阅（refer to a dictionary）；<b>v.</b> 指的是（What does this refer to?）。<br>搭配：refer sb to a specialist／be referred to as（被称为）／refer to。<br>为什么这个动词值得盯住：refer 隐含一条责任链——转出去的人仍然在系统里。社会处方要成立，靠的正是这条链；一旦图书馆只是「建议你去」，refer 就退化成了「推荐」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a link worker can now <b>refer</b> a lonely patient to a library</div>
+          <div class="wc-tr">一位「链接工作者」如今可以把一个孤独的病人转介到图书馆。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">do three jobs at once</span><span class="zh">同时干三件事</span></li>
+          <li><span class="en">without buying anything</span><span class="zh">不用花钱买东西</span></li>
+          <li><span class="en">a man in a cardigan</span><span class="zh">一位穿开衫的老人</span></li>
+          <li><span class="en">be out of hospital</span><span class="zh">出院</span></li>
+          <li><span class="en">point at sth and call it …</span><span class="zh">指着某物把它称作……</span></li>
+          <li><span class="en">borrow a phrase from sb</span><span class="zh">借用某人的说法</span></li>
+          <li><span class="en">neither home nor work</span><span class="zh">既不是家，也不是单位</span></li>
+          <li><span class="en">a link worker</span><span class="zh">（英国）链接工作者，负责把病人与社区资源对接</span></li>
+          <li><span class="en">refer a patient to</span><span class="zh">把病人转介到……</span></li>
+          <li><span class="en">much as a doctor does</span><span class="zh">正如医生所做的那样</span></li>
+          <li><span class="en">an arrangement known as</span><span class="zh">一套被称为……的安排</span></li>
+          <li><span class="en">at a scale that is hard to wave away</span><span class="zh">规模大到难以挥手带过</span></li>
+          <li><span class="en">aged 70 to 95</span><span class="zh">年龄在 70 至 95 岁之间</span></li>
+          <li><span class="en">living at home</span><span class="zh">住在自己家里（而非养老机构）</span></li>
+          <li><span class="en">adjust for</span><span class="zh">对……作校正</span></li>
+          <li><span class="en">be less likely to do sth</span><span class="zh">更不容易做某事</span></li>
+          <li><span class="en">among women</span><span class="zh">在女性当中</span></li>
+          <li><span class="en">across seven years</span><span class="zh">在七年时间里</span></li>
+          <li><span class="en">the part that rarely reaches a funding bid</span><span class="zh">很少被写进经费申请的那部分</span></li>
+          <li><span class="en">be indistinguishable from</span><span class="zh">与……分不出差别</span></li>
+          <li><span class="en">satisfaction with life</span><span class="zh">生活满意度</span></li>
+          <li><span class="en">a remedy for</span><span class="zh">对……的良方</span></li>
+          <li><span class="en">no detectable effect on</span><span class="zh">在……上没有可检测的效果</span></li>
+          <li><span class="en">a healthy-user effect</span><span class="zh">健康使用者效应：健康的人本来就更可能使用某项服务</span></li>
+          <li><span class="en">by that fact alone</span><span class="zh">仅凭这一点</span></li>
+          <li><span class="en">no amount of adjustment</span><span class="zh">再怎么校正也无法</span></li>
+          <li><span class="en">throw up a finding</span><span class="zh">冒出一个结论</span></li>
+          <li><span class="en">even if … did nothing</span><span class="zh">即便……完全没起作用</span></li>
+          <li><span class="en">run through</span><span class="zh">经由……起作用</span></li>
+          <li><span class="en">a reason to leave the house</span><span class="zh">一个出门的理由</span></li>
+          <li><span class="en">ask nothing of you</span><span class="zh">对你毫无要求</span></li>
+          <li><span class="en">a bad outcome can be the shadow of a good behaviour</span><span class="zh">坏结果可能只是好行为的影子</span></li>
+          <li><span class="en">pay for itself in hospital beds saved</span><span class="zh">靠省下的病床费回本</span></li>
+          <li><span class="en">an association, not a lever</span><span class="zh">一条相关，不是一根杠杆</span></li>
+          <li><span class="en">be worth defending</span><span class="zh">值得守护</span></li>
+          <li><span class="en">measure honestly</span><span class="zh">诚实地测量</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：场景——周二上午的图书馆，同时当停车场、阅览室和暖房。</li>
+          <li>第 2 段：说法——第三空间、社会处方，图书馆被写成「基础设施」。</li>
+          <li>第 3 段：设计——12,000 多人，44 个结局，按性别分组、校正基线。</li>
+          <li>第 4 段：阳性——痴呆风险低、蔬果多、女性社会隔离少。</li>
+          <li>第 5 段：零结果——孤独感、抑郁、满意度，分不出差别。</li>
+          <li>第 6 段：解释一、二——健康使用者效应，与 44 次检验的算术。</li>
+          <li>第 7 段：解释三——机制可能是「固定理由出门」，而不是「有人陪」。</li>
+          <li>第 8 段：反常——女性跌倒更多；坏结果可能是好行为的影子。</li>
+          <li>第 9 段：落点——相关不是杠杆，诚实的测量要承认选择。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">For a decade, public health researchers have been pointing at rooms like this one and calling them infrastructure, borrowing Ray Oldenburg's phrase and describing the library as a third place, neither home nor work.</div>
+        <div class="row"><b>主干：</b>public health researchers have been pointing … and calling …（公共卫生研究者一直在指着……并把它称作……）——现在完成进行时，强调「持续了十年且仍在继续」。</div>
+        <div class="row"><b>难点：</b>① pointing at rooms like this one 与 calling them infrastructure 共用主语 researchers，是两个并列的现在分词/动词形式，第二个宾语 them 回指 rooms；② borrowing Ray Oldenburg's phrase 与 describing the library as … 都是现在分词作伴随状语，逻辑主语仍是 researchers，说明「借用措辞」和「给出定义」是同一个动作的两面；③ a third place 后的 neither home nor work 是同位语式补充，用 neither … nor 把定义收窄——不是「第三个地方」，而是「既非家也非工作场所」；④ 全句没有一个表示因果的连词，但 pointing / calling / borrowing / describing 四个动作层层递进，句法本身就在完成一次「命名的政治」。</div>
+        <div class="row tr"><b>译文：</b>十年来，公共卫生研究者一直指着这样的房间，把它称作「基础设施」；他们借用雷·奥登伯格的措辞，把图书馆叫作「第三空间」——既不是家，也不是单位。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Htet Lin Htun and six colleagues at Monash University followed more than 12,000 Australians aged 70 to 95, all living at home, and asked how often they used a public library: never, monthly, or weekly.</div>
+        <div class="row"><b>主干：</b>Htet Lin Htun and six colleagues followed more than 12,000 Australians and asked how often they used a public library（七人追踪了 12,000 多名澳大利亚人，并问他们多久去一次图书馆）——一个主语、两个谓语，用 and 并列。</div>
+        <div class="row"><b>难点：</b>① aged 70 to 95 是过去分词短语作后置定语（= who were aged 70 to 95），不是谓语；② all living at home 是独立主格结构，逻辑主语是 Australians，用来说明「样本全是社区居民，不含养老院住户」——这一条决定了结论的适用范围；③ how often 引导宾语从句，从句用一般过去时，因为问的是基线时的情况；④ 冒号后 never, monthly, or weekly 是三个并列的选项，把连续变量切成三档，这是流行病学把「频率」变成「分组」的标准做法；⑤ 注意 followed 的含义：不是「跟随」，而是「随访、追踪观察若干年」。</div>
+        <div class="row tr"><b>译文：</b>莫纳什大学的赫特·林·吞与六位同事追踪了 12,000 多名 70 至 95 岁的澳大利亚人，他们全部住在自己家里；研究者问他们多久去一次公共图书馆：从不去、每月一次，还是每周一次。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">They then tested forty-four outcomes, from dementia and disability to diet and loneliness, adjusting for education, income and each participant's own score at the start.</div>
+        <div class="row"><b>主干：</b>They tested forty-four outcomes（他们检验了四十四个结局）——主干极短，其余全是修饰与补充。</div>
+        <div class="row"><b>难点：</b>① from dementia and disability to diet and loneliness 是 from A to B 的范围结构，用两组反差极大的例子（痴呆/失能与饮食/孤独）把「四十四个结局」的跨度一次说清；② adjusting for … 是现在分词作伴随状语，逻辑主语是 they，指研究者在每个模型里都扣掉了这些变量的影响；③ each participant's own score at the start 是全文方法上最关键的一处细节——把<b>基线值</b>放进模型，等于在问「两年后的变化」，而不是「两年后的水平」；④ 但要注意它的限度：基线校正能处理「起点不同」，处理不了「谁在选择去图书馆」这种未被测量的差异。</div>
+        <div class="row tr"><b>译文：</b>随后他们检验了四十四个结局，从痴呆、失能到饮食与孤独感，并对教育、收入以及每位参与者基线的得分做了校正。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The first is a healthy-user effect: a woman of seventy-eight who catches a bus twice a week is, by that fact alone, more mobile and less frail than the neighbour who cannot leave the house.</div>
+        <div class="row"><b>主干：</b>a woman … is more mobile and less frail than the neighbour（一位女性比那位邻居更能走动、更不衰弱）——比较结构，than 后面才是参照对象。</div>
+        <div class="row"><b>难点：</b>① 冒号前是术语，冒号后是解释，这是英文学术写作最典型的「先命名、再举例」结构；② who catches a bus twice a week 是定语从句，修饰 a woman，注意 catches 用一般现在时表示习惯；③ is, by that fact alone, more mobile … 中 by that fact alone 是插入状语，意为「仅凭这一个事实」，它在句法上是插入语，在逻辑上却是全句的重点——因果方向可能正好相反；④ less frail than the neighbour who cannot leave the house：比较的不是年龄，而是「身体余量」；⑤ 这一句没有出现任何统计术语，却把「选择效应」讲得比定义更清楚，值得整句背下来。</div>
+        <div class="row tr"><b>译文：</b>第一种是「健康使用者效应」：一位七十八岁的女性，每周能坐两趟公交去图书馆，仅凭这一点，她就比出不了门的邻居更能走动、更不衰弱。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Read quickly, it says libraries break hips; read properly, it probably says that women who go out have more chances to trip, which is a reminder that in observational data a bad outcome can be the shadow of a good behaviour.</div>
+        <div class="row"><b>主干：</b>it says … ; it probably says that …（它说的是……；它大概说的是……）——两个分句用分号并置，构成「粗读／细读」的对照。</div>
+        <div class="row"><b>难点：</b>① Read quickly / Read properly 是<b>祈使句作条件状语</b>（= If you read it quickly），不是命令读者去读；② break hips 是「摔断髋骨」的口语化表达，hip 指髋关节，老年人跌倒后最常见、也最致命的骨折部位；③ have more chances to trip 中的 trip 是动词「绊倒」，不是名词「旅行」——这是本句最容易读错的地方；④ which 引导非限制性定语从句，指代前面整个「细读之后的解释」，而不是某一个词；⑤ a bad outcome can be the shadow of a good behaviour 是全文的比喻句：影子与物体方向相反，正如「跌倒多」可能正是「出门多」的投影。</div>
+        <div class="row tr"><b>译文：</b>粗读一遍，它说的是「图书馆会摔断髋骨」；正经读一遍，它大概说的是「常出门的女性有更多机会绊一下」——这也提醒我们，在观察性数据里，一个坏结果可能只是一种好行为的影子。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章要检验的，是一句听上去无须检验的话：图书馆对老人有好处。</b>更准确地说，它检验的是一个政策版本——过去十年，公共卫生领域把图书馆称作「第三空间」（third place，既不是家也不是单位），并把它纳入「社会处方」（social prescribing）：在英国，链接工作者可以把一个孤独的老人「转介」到图书馆，就像医生把病人转给理疗师。这个说法之所以流行，一半因为它在理，一半因为它便宜：不用药、不占床位、不用排队。</p>
+      <p class="zh-sum"><b>论文发表在《公共卫生杂志》（Journal of Public Health），2026 年 10 月上线。</b>第一作者是莫纳什大学公共卫生与预防医学学院的赫特·林·吞（Htet Lin Htun），合作者共七人。数据来自 12,000 多名（12,124—12,896 人）居住在自己家中的澳大利亚老年人，年龄 70 至 95 岁，基线平均 75.2 岁，女性占 54.5%。研究者只问了一个极简单的问题：你多久去一次公共图书馆——从不去、每月不超过三次、每周至少一次。</p>
+      <p class="zh-sum"><b>研究的野心在「结局」这一端。</b>他们没有只量一个指标，而是采用了「全结局」（outcome-wide）策略，一次性检验 <b>44 个结局</b>，覆盖身体、认知与重大健康事件、心理、社会、行为五个领域；多数结局在约两年后测量，需要等待的事件类结局（如死亡、失能）中位随访 6 至 9 年。所有分析按性别分开跑，并对教育、收入以及<b>每位参与者基线的得分</b>做了校正。</p>
+      <p class="zh-sum"><b>阳性的那一半，是这一行会拿去引用的。</b>每周去图书馆的人，认知结局更好（痴呆风险更低），社会参与更多（女性自报「社会隔离」的比例更低），行为也更健康（水果蔬菜摄入更高）。男性这边，七年内失能与死亡的比例更低。有意思的是使用率本身：70.6% 的女性说自己去过图书馆，男性只有 59.9%——这个差距在后面会变得重要。</p>
+      <p class="zh-sum"><b>然后是全篇的转折：心理那一栏几乎是空的。</b>在大多数心理类结局上——包括孤独感、抑郁症状、生活满意度——每周去的人与从不去的人<b>分不出差别</b>。这是全文最值得停一下的地方：一个被当作「抗孤独基础设施」来推销的机构，在「孤独」这项指标上没有交出可检测的效果。它并不是说图书馆没用，而是说<b>它起效的方式，可能和我们推销它时说的方式不一样</b>。</p>
+      <p class="zh-sum"><b>对这个零结果，作者与读者至少有三条路可走。</b>第一条是「健康使用者效应」：一位七十八岁的女性每周能坐两趟公交去图书馆，仅凭这一点，她就比出不了门的邻居更能走动、更不衰弱；不是图书馆让她健康，而是健康让她去得成。把基线值放进模型能削弱这种偏差，但不能消除——因为「谁在选择去图书馆」这件事，本身没有被测量。</p>
+      <p class="zh-sum"><b>第二条是算术。</b>44 个结局、每个都按惯例的 p<0.05 去判，即便「去不去图书馆」什么都没做，也会有两三个结果「显著」——这不是造假，是概率。所以读这类论文，真正该看的不是「有几个星号」，而是<b>哪些结果在多重比较校正后仍然站得住</b>，以及它们是否落在同一条机制上。</p>
+      <p class="zh-sum"><b>第三条，也是最有意思的一条：机制可能不在「有人陪」。</b>如果好处真实存在，它也许不是经由聊天，而是经由「每周有一个固定理由出门」，以及那一段路。一个对你毫无要求的房间——不用消费、不用预约、不用解释自己——提供的不只是社交，而是一种<b>低门槛的日常结构</b>：固定的日子、固定的路线、柜台上那三句闲话。这也解释了为什么「社会隔离」下降而「孤独感」不变：前者是联系的数量，后者是感受的质量，而图书馆能改的，可能只是前者。</p>
+      <p class="zh-sum"><b>最反常的一条，需要单独说。</b>去图书馆最勤的女性，在随后两年里<b>跌倒得更多</b>。粗读像笑话（图书馆摔断髋骨），细读则近乎相反：常出门的人有更多机会绊一下。这正是观察性数据的读法——一个「坏」结果，可能只是一种「好」行为的影子；方向一旦反过来，因果就完全不成立了。</p>
+      <p class="zh-sum"><b>所以，一个地方议会该拿这份报告怎么办？</b>至少不该宣布「图书馆能靠省下的病床费自己养活自己」。这项研究给出的是一条<b>相关</b>，不是一根杠杆：它没有随机分配谁去图书馆，也无法排除「能去的人本来就更健康」。但它确实描述了一件很容易失去的东西——一个免费、无需预约、可以独自待两小时的地方，和一群老人两年后的状态，在统计上连在一起。</p>
+      <p class="zh-sum"><b>最后是那个可以带走的判断。</b>当我们用健康指标为一个文化场所辩护时，我们同时也就接受了这些指标的反向审问：它会问「你到底治好了谁」。诚实的回答是两句：<b>也许我们高估了它</b>（把健康人的选择当成了疗效），<b>也许我们低估了它</b>（「还能出门」这件事，从来没进过任何量表）。而一个社会愿意为「没有产出的一小时」保留一个房间，本身就是一个判断——只是这个判断，不该伪装成一条医学结论。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. Public libraries have been proved to cure loneliness among older people, and governments should fund them as they fund hospitals.<br>B. A large cohort study links weekly library visits to better cognitive, social and behavioural outcomes in older adults, yet finds no effect on most psychological measures — which says as much about how such places work and are measured as about libraries themselves.<br>C. The health benefits of libraries are entirely an artefact of healthy-user bias, so no public money should be spent on them.<br>D. Older women should visit libraries less often, because frequent visits increase the risk of falling.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景：周二上午的图书馆（第 1 段）→ 说法：第三空间与社会处方（第 2 段）→ 设计：12,000 人、44 个结局（第 3 段）→ 阳性结果：痴呆、饮食、女性隔离（第 4 段）→ 零结果：孤独与满意度无差异（第 5 段）→ 三种读法：选择效应、算术、机制（第 6—7 段）→ 反常信号：女性跌倒（第 8 段）→ 落点：相关不是杠杆（第 9 段）」。B 同时容纳了「有效」与「无效」两半，并点出测量问题。A 把观察性相关说成「已证明」，且忽略了零结果。C 走到另一个极端，原文明确说「只有一种读法是坏消息」，且阳性结果并非全由偏倚解释。D 误读了 fall：原文说的是「常出门的人有更多机会绊倒」，不是「去图书馆导致跌倒」。</div>
+
+      <div class="q"><b>2. The author describes the study's finding on falls as "a bad outcome [that] can be the shadow of a good behaviour". What does this suggest about reading observational studies?<br>A. Any result that looks harmful should be discarded as measurement error.<br>B. Because the exposure and the outcome can both be produced by the same underlying behaviour, the direction of an association may be the reverse of what the numbers first suggest.<br>C. Falls are not a serious health outcome for older people and can be ignored in such studies.<br>D. Observational studies are useless because they never adjust for baseline differences.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>「影子」这个比喻的要害是方向：物体在这边，影子在那边。常出门（好行为）会同时带来更多步行（益处）与更多绊倒的机会（坏结果），于是「跌倒多」成了「活动多」的投影。A 把它当成误差丢掉，恰恰放弃了这条线索。C 与常识相反，跌倒是老年意外伤害的首位原因。D 绝对化，原文说校正「只能削弱、不能消除」，并未否定这类研究——本文全部证据正来自它。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的核心动作，是把「一个地方好不好」翻译成「一个指标动不动」。请你就身边一个「指标一动，结论就反过来」的例子（例如班级评优只看平均分、体检只看体重、图书馆评估只看借阅量、社区活动只看参与人数），写一段 150 字以内的分析：① 这个指标原本想保护的是什么；② 它系统性地看不见什么（举一个具体的人或行为）；③ 如果加一个互补指标，你会加什么、怎么量、多久看一次。再补一句：这个新指标会不会也被「会用它的人」挑走？</div>
+      <div class="q"><b>仿写：</b>本文第 6 段的写法是「先给术语，再给一个人」：<span class="hl">The first is a healthy-user effect: a woman of seventy-eight who catches a bus twice a week is, by that fact alone, more mobile and less frail than the neighbour who cannot leave the house.</span> 它的力量来自三个动作：① 冒号前只给<b>一个术语</b>，不解释，读者被迫往下读；② 冒号后立刻换成<b>一个具体的人</b>——七十八岁、坐公交、穿开衫的邻居，抽象概念瞬间有了体温；③ 最后用 by that fact alone 把因果<b>轻轻掉转</b>：不是图书馆让她能走动，而是能走动让她去得成。仿写时照搬骨架：<i>The first is a ______ effect: a ______ who ______ is, by that fact alone, ______ than the ______ who ______.</i> 注意第三步的空必须是<b>「反向解释」</b>（more … than / less … than the person who cannot），如果写成「所以我们应该支持它」，句子就塌了——这一段的任务只是把因果摆正，不下结论。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">场景：周二上午，郊区图书馆的三份工作</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">说法：第三空间 · 社会处方 · 转介到图书馆</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">样本：12,000+ 名 70–95 岁澳洲社区居民</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">暴露：从不去 / 每月≤3 次 / 每周≥1 次</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">结局：44 项，覆盖身体·认知·心理·社会·行为</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a" stroke-width="2"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">有差异：痴呆↓ 蔬果↑ 女性社会隔离↓</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">无差异：孤独感、抑郁、生活满意度</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">反常：女性跌倒↑；男性失能·死亡↓</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">落点：相关不是杠杆；能出门的人才走得到</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：一个「抗孤独」的地方，在孤独这项上没有交出效果</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">能改的是联系的数量，改不了的是感受的质量</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 4 段绿色：站得住的阳性结果——落在行为与认知上</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 5、8 段红色：零结果与反常信号——最值得停下来的两处</text>
+        </svg>
+        <figcaption>结构图解：文章走的是一条「先立说法、再拆说法」的路。第 1 段用三个细节把场景立住——停车场、阅览室、不用花钱就能坐的暖和地方；第 2 段交代被检验的说法：图书馆被称作「第三空间」与「社会处方」的一环，医生可以把孤独的病人转介过去；第 3 段给出研究设计：12,000 多名 70 至 95 岁的澳大利亚社区居民，按「从不去／每月／每周」分三档，一次检验 44 个结局，并按性别分组、校正基线得分；第 4 段列阳性结果——痴呆风险更低、蔬果摄入更高、女性社会隔离更少；第 5 段是全篇的转折，绝大多数心理类结局没有差异，一个「抗孤独」的机构在「孤独」上失效；第 6、7 段给出三种读法：健康使用者效应（能去的人本来就更健康）、算术（44 次检验必然冒出假阳性）、以及机制可能不在「有人陪」而在「每周有个固定理由出门」；第 8 段处理最反常的一条，女性跌倒更多，并用「影子」这个比喻把因果方向掉转过来；第 9 段收束到可迁移的判断——研究给出的是一条相关，不是一根杠杆，而用健康指标为文化场所辩护，就得接受这些指标反过来审问它。全文没有一句话说「图书馆没用」，它更想说的是：<b>一个地方起效的方式，可能和我们推销它时说的方式不一样</b>。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Htet Lin Htun, Achamyeleh Birhanu Teshale, Alice J. Owen, Joanne Ryan, Melissa Whitrow, James R. Baker, Rosanne Freak-Poli《Public library visits and later-life health and well-being: evidence from a longitudinal study of older adults in Australia》，Journal of Public Health（2026-10-02 上线，DOI 10.1007/s10389-026-02676-5），莫纳什大学公共卫生与预防医学学院 / 南澳癌症委员会 / 澳大利亚商学院；会议摘要见 Journal of Public Health and Emergency, AB149｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

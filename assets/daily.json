@@ -725,6 +725,20 @@
     "劳动",
     "仓库自动化"
    ]
+  },
+  {
+   "date": "2026-11-22",
+   "en": "An institution sold as a remedy for isolation produced no detectable effect on isolation.",
+   "zh": "一个被当作「抗孤独良方」来推销的机构，在「孤独」这项指标上交不出可检测的效果。",
+   "src": "外刊精读 · 图书馆的疗效，落在了最不像它的地方（2026-11-22）",
+   "key": "sold as a remedy",
+   "keyZh": "被当作良方来推销（sold as 暗示「包装」与「承诺」，不是「确实如此」）",
+   "tip": "这是全文的转折句，只有十四个词，力量全在两个结构上。第一处是被动语态 sold as a remedy for isolation：主语 institution 被「当作」良方来卖，作者没有说谁在卖，但那层怀疑已经在了；sold as 后面跟的是标签，不是事实。第二处是句尾的 repetition：isolation 在一句里出现两次，前一次是它承诺要治的东西，后一次是它没治成的东西，同一个词首尾照应，落差自己就说话了。注意 effect on 的搭配：on 后面是被作用的对象，不能用 for。仿写骨架：A ______ sold as a remedy for ______ produced no detectable effect on ______.",
+   "tags": [
+    "文化",
+    "地方生活",
+    "公共卫生"
+   ]
   }
  ]
 }
