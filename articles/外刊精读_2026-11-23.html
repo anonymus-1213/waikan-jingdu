@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 它值一万亿美元，前提是你先同意几个假设</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="../index.html">← 返回外刊精读首页</a></nav>
+
+<article class="wrap">
+  <div class="eyebrow">Tide &amp; Ledger · 人与自然 / 生态与可持续 / 蓝碳 / 海洋修复</div>
+  <h1>它值一万亿美元，前提是你先同意几个假设</h1>
+  <div class="deck">A five-author model prices the carbon locked in the world's seagrass at up to $2.27 trillion. Then the authors cut their own estimate by a factor of ten, and the cut is the more useful half.</div>
+  <div class="byline"><span><b>来源</b> npj Ocean Sustainability（2026-06-21 在线发表）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-23</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 534 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-23.jpg" alt="浅海海草床实景：阳光透进清澈海水，成片的绿色带状叶片铺在沙质海底，其间有小鱼游过">
+    <figcaption>配图：一片浅海海草床。叶片在沙质海底连成带状，退潮时露出水面，涨潮时被整片淹没——蓝碳的全部账目，都埋在它脚下那层缺氧的泥沙里（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>今年六月，五位作者在《npj 海洋可持续性》上给全球海草算了一笔账：若恢复到它可能占据的最大面积，碳信用值 <b>1.13 万亿至 2.27 万亿美元</b>。</p>
+    <p>然后他们自己把上限调低了两次：<b>3.29 亿吨级 → 1.64 亿吨级</b>，估值掉到 <b>0.13 万亿至 0.27 万亿美元</b>。同一个模型，十倍落差。</p>
+    <p>这篇要练的不是那个大数字，而是<b>数字的性格</b>：它是估值，不是测量；它对「种下去的东西能不能活」最敏感，而不是对碳价。</p>
+    <p>本期重点熟词僻义：<b>meadow</b>（海草床）、<b>credit</b>（碳信用）、<b>run</b>（持续多久）。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-23.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="8.524">At low tide the <b class="kw" data-tip="n. 潟湖：被沙洲或礁石与外海隔开、水很浅的一带水域，常是海草与幼鱼的育幼场；注意与 lake（湖）不同，潟湖与外海仍有水道相通">lagoon</b> becomes a shallow brown plain whose only green is a band of narrow leaves lying on the mud like hair on a wet floor.</span> <span class="s" data-t="8.524" data-e="18.564">Twenty years ago that band was bare sand; now a boat must lift its propeller to cross it, which is roughly what a recovered seagrass <b class="kw" data-tip="n. 草甸、草地：本指开满野花的牧草地，被借来形容成片生长的海草（seagrass meadow）与海藻床——不是「牧场」，而是「一整片连着长的草」">meadow</b> looks like from the surface.</span></span></div>
+      <p class="para-tr">退潮时，这片潟湖变成一片浅浅的褐色平原，唯一的绿色是躺在泥上的一带窄叶，像湿地板上的一缕头发。二十年前那带绿还只是裸沙；如今船要过去，得先把螺旋桨抬起来——从水面上看，一片恢复过来的海草床大概就是这个样子。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="18.564" data-e="26.303">In June a five-author team put a price on that band, and on every meadow like it, in <i>npj Ocean Sustainability</i>.</span> <span class="s" data-t="26.303" data-e="37.092">Restore the world's seagrass to the maximum extent it could occupy, they calculated, and the <b class="kw" data-tip="n. 碳信用、可交易的减排量：一吨二氧化碳的「收据」，企业可以买来抵掉自己的排放；常见义 n. 学分、赊账、赞扬（get credit for），此处是气候金融里的专门义">credits</b> would be worth between 1.13 and 2.27 trillion dollars.</span></span></div>
+      <p class="para-tr">今年六月，一个五位作者的团队在《npj 海洋可持续性》上给那一带海草、也给全世界所有这样的海草床定了价。他们的计算是：若把全球海草恢复到它有可能占据的最大面积，由此产生的碳信用将值 1.13 万亿至 2.27 万亿美元。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="37.092" data-e="46.316">Seagrass is an odd candidate for a climate asset: it covers less than a fifth of one per cent of the sea floor, and most people have never seen it alive.</span> <span class="s" data-t="46.316" data-e="57.447">What it has is throughput: the leaves trap mud and the roots hold it, so the <b class="kw" data-tip="n. 沉积物、泥沙：水流带到水底并堆积下来的细颗粒，海草床的碳就锁在这层缺氧的泥沙里；常见义 n. 沉淀（医学）、沉淀物">sediment</b> beneath a healthy meadow can lock carbon away for centuries instead of releasing it as the plant <b class="kw" data-tip="v. 腐烂、衰败：指有机物被微生物分解；常见义 v. 衰退、衰落（a decaying industry）、n. 蛀牙（tooth decay）">decays</b>.</span> <span class="s" data-t="57.447" data-e="66.474">With <b class="kw" data-tip="n. 红树林：生长在热带、亚热带海岸潮间带的耐盐树木，根系泡在海水里，是蓝碳三件套之一">mangroves</b> and salt <b class="kw" data-tip="n. 盐沼：潮间带上被耐盐草本覆盖的泥滩，涨潮时被海水淹没，退潮时露出，碳埋藏速率很高">marshes</b> it forms the small club called blue carbon, the only ecosystems that bury carbon under water rather than in wood.</span></span></div>
+      <p class="para-tr">海草是个奇怪的「气候资产」候选：它覆盖的海底不到千分之二，而且大多数人从没见过活着的它。它有的是「吞吐量」——叶片拦住泥沙，根系把泥沙按住，于是一片健康海草床底下的沉积物可以把碳锁上几百年，而不是等植株腐烂时又放回去。它和红树林、盐沼一起，组成了那个小小的俱乐部：蓝碳——唯一一类把碳埋在水下而不是木头里的生态系统。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="66.474" data-e="72.579">The paper is a model, not a measurement, and that distinction matters before the number travels.</span> <span class="s" data-t="72.579" data-e="85.382">The authors began with the million square kilometres seagrass could plausibly occupy, assumed recovery spreads <b class="kw" data-tip="adj. 指数式的：这里指每一年扩张的面积按固定比例放大（1→2→4→8），前期看不出、后期突然暴涨；常见义 adj. 指数的、由指数表示的（exponential function）">exponentially</b> through <b class="kw" data-tip="adj. 克隆的、无性繁殖的：clonal growth 指植物靠根茎、匍匐枝长出新株，基因与母株完全相同，不经过种子">clonal</b> growth, and multiplied that area by a <b class="kw" data-tip="n. 固碳、碳封存：把二氧化碳从大气里拿走并长期储存起来的过程，动词 sequester；常见义 n. 扣押、隔离（sequestration of jurors）">sequestration</b> rate and a price per tonne.</span> <span class="s" data-t="85.382" data-e="96.171">The result was 17.8 <b class="kw" data-tip="n. 十亿吨：giga-（十亿）+ tonne（公吨），气候报道里量级最常用的单位，1 Gt = 10 亿吨 = 1 Pg">gigatonnes</b> of carbon dioxide, or 1.13 to 2.27 trillion dollars depending on how long the exponential phase <b class="kw" data-tip="v. 持续、延续（一段时间）：指某个过程在时间上展开，如 the contract runs for two years；常见义 v. 跑、经营、运转（run a shop），此处不看「跑」，看「持续多久」">runs</b>.</span></span></div>
+      <p class="para-tr">这篇论文是模型，不是测量；在这个数字开始旅行之前，这个区别值得先说清楚。作者从一个「海草有可能占据的 100 万平方公里」出发，假设恢复过程靠克隆生长指数式铺开，再用面积乘以固碳速率和每吨碳的价格。结果得到 178 亿吨二氧化碳，对应 1.13 万亿至 2.27 万亿美元——区间之所以宽，取决于那段指数增长被允许持续多久。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="96.171" data-e="106.853">Then they did something rarer than publishing a headline: they lowered their own ceiling, substituting newer, smaller sequestration rates and assuming only a fifth of it is recovered.</span> <span class="s" data-t="106.853" data-e="123.945">That version yields 3.29 gigatonnes and 0.28 to 0.57 trillion dollars; set against a 1970 <b class="kw" data-tip="n. 基线、基准值：用来比较的起点状态，「以 1970 年为基线」即拿今天的状况与 1970 年比；常见义 n. 底线、基础（baseline data 基线数据）">baseline</b> instead of a theoretical maximum, it falls to 1.64 gigatonnes and 0.13 to 0.27 trillion.</span></span></div>
+      <p class="para-tr">接着，他们做了一件比发布头条更少见的事：把自己的上限调低了——换上更新的、更小的固碳速率，并假设实际恢复的只有那个面积的五分之一。这一版给出 32.9 亿吨与 0.28 万亿至 0.57 万亿美元；若不与理论最大值比，而与 1970 年的基线比，数字再降到 16.4 亿吨与 0.13 万亿至 0.27 万亿美元。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="123.945" data-e="130.947">A tenfold spread is not a scandal; it is what a <b class="kw" data-tip="n. 估值：给一项资产算出「值多少钱」的过程与结果，动词 value；常见义 n. 评价、价值判断（moral valuation）">valuation</b> looks like when the quantity has never been measured.</span> <span class="s" data-t="130.947" data-e="142.092">Nothing in the model is invented and almost everything in it is uncertain: the extent, the growth rate, the carbon price decades from now, and the survival of whatever gets planted.</span></span></div>
+      <p class="para-tr">十倍的落差不是丑闻；当被估的那件事从来没有被测量过，估值看起来就是这样。模型里没有一处是编的，但几乎每一处都不确定：面积、增长速率、几十年后的碳价，以及种下去的东西能不能活。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="142.092" data-e="150.829">The team's purpose is easier to defend than its number: two of its authors have spent a decade arguing that nature belongs in national accounts.</span> <span class="s" data-t="150.829" data-e="159.0">A price is not a promise of revenue; it is a way of making an unpriced loss <b class="kw" data-tip="adj. 可辨认、可读懂的：legible 本指字迹清楚，此处指「能被看懂、能被纳入决策」，比 visible 更强调「读得进去」；常见义 adj. 字迹清晰的（legible handwriting）">legible</b> to <b class="kw" data-tip="n. 部、政府部门：如 the Ministry of Finance 财政部；常见义 n. （神职人员的）职务、牧师职位">ministries</b> that only read balance sheets.</span></span></div>
+      <p class="para-tr">这个团队的用意比它的数字更容易辩护：其中两位作者已经论证了十年——自然应当出现在国民账户里。一个价格不是收入的承诺；它是一种让「没有被定价的损失」变得可被读懂的办法，好让那些只读资产负债表的部门看见它。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="159.0" data-e="167.829">The trouble is that carbon markets <b class="kw" data-tip="v. 审计、核查：由第三方核对账目或数据是否真实、是否合规，名词 audit；常见义 n. 审计、查账，v. 旁听（audit a course）">audit</b> rather than admire, and a blue-carbon credit must survive three questions a big estimate tends to skip.</span> <span class="s" data-t="167.829" data-e="179.197">Was the removal <b class="kw" data-tip="adj. 额外的：碳市场术语 additionality 指「这笔减排是项目带来的、本来不会发生」，若那片海草本来就会自己长回来，这笔碳就不算「额外」">additional</b>, or would the meadow have come back anyway; will the carbon stay for a century, given how <b class="kw" data-tip="n. 锚：船锚；抛锚会撕开海草床，是近岸海草退化最直接的人为原因之一；常见义 n. 主播（新闻节目）、v. 使固定、主持">anchors</b> and heat tear meadows apart; and has the same tonne been sold twice?</span></span></div>
+      <p class="para-tr">麻烦在于：碳市场是来审计的，不是来欣赏的。一笔蓝碳信用必须扛住三个问题，而万亿美元级别的估算往往会跳过它们。这笔减排真的是「额外」的吗，还是那片海草本来就会长回来；碳能不能待满一百年，考虑到船锚和热浪会把海草床撕开；以及，同一吨碳是不是已经被卖过两次。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="179.197" data-e="184.737">Those questions decide whether the estimate becomes a budget line or a press release.</span> <span class="s" data-t="184.737" data-e="194.237">The honest way to read such a figure is to ask what it is most sensitive to, and here the answer is not the price of carbon but whether what gets planted survives.</span></span></div>
+      <p class="para-tr">这些问题决定这个估算会变成一行预算，还是一份新闻稿。读这样一个数字，老实的办法是问：它对什么最敏感。而在这里，答案不是碳价，是种下去的东西能不能活下来。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lagoon</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ləˈɡuːn/ · 美 /ləˈɡuːn/</div>
+          <div class="wc-pos"><b>n.</b> <b>潟湖</b>：被沙洲、沙嘴或珊瑚礁与外海隔开的一片浅水，通常有水道与外海相通，是海草、幼鱼和候鸟的育幼场。<br>词源：来自意大利语 laguna，与 lake（湖）同源，但潟湖是<b>海水</b>的，湖是淡水的。<br>搭配：a coastal lagoon（海岸潟湖）／a lagoon off the Adriatic（亚得里亚海外的潟湖）。<br>为什么从潟湖写起：蓝碳研究真正能落地的地方，往往不是开阔大洋，而是这种半封闭、水浅、人类活动密集的浅水湾——海草在这里长得起来，也最容易被挖掉。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>At low tide the <b>lagoon</b> becomes a shallow brown plain</div>
+          <div class="wc-tr">退潮时，这片潟湖变成一片浅浅的褐色平原。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">meadow</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈmedəʊ/ · 美 /ˈmedoʊ/</div>
+          <div class="wc-pos"><b>n.</b> <b>（海草的）连片草床</b>：seagrass meadow 是海洋生态学的固定说法，指一大片连成整体的海草，像陆上的草甸。<br>常见义：<b>n.</b> 草地、牧场（a field of wild flowers）。<br>搭配：seagrass meadow／a meadow of seagrass／meadow grass。<br>⚠️ 这是本篇第一个「熟词僻义」：meadow 不是「牧场」，它强调的是<b>连成一片的覆盖</b>。生态学家用陆地的词去说海里的东西，是因为海里没有「田」这个概念——而这一借，恰好也让海草听起来像可以被「耕种」和「收割」的资产。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>what a recovered seagrass <b>meadow</b> looks like from the surface</div>
+          <div class="wc-tr">从水面上看，一片恢复过来的海草床大概就是这个样子。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">credit</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈkredɪt/ · 美 /ˈkredɪt/</div>
+          <div class="wc-pos"><b>n.</b> <b>碳信用</b>：代表「一吨二氧化碳当量」的可交易凭证，企业买来抵销自身排放。<br>常见义：<b>n.</b> 学分（earn credits）；<b>n.</b> 赊账、信用（buy on credit）；<b>n.</b> 赞扬（give sb credit for）；<b>v.</b> 把……归于（credit A with B）。<br>搭配：carbon credit／credit market／generate credits。<br>⚠️ 注意这个词的双重身份：在气候金融里它是<b>资产</b>，在会计里是<b>贷方</b>。本文全篇的张力都挂在这个词上——一旦一片海草被算成 credit，它就要接受 credit 世界的一切规则：可核查、可追责、可被重复出售。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the <b>credits</b> would be worth between 1.13 and 2.27 trillion dollars</div>
+          <div class="wc-tr">由此产生的碳信用将值 1.13 万亿至 2.27 万亿美元。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">run</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rʌn/ · 美 /rʌn/</div>
+          <div class="wc-pos"><b>v.</b> <b>（一段时间）持续、延续</b>：指某个过程在时间轴上展开多久，如 the course runs for six weeks。<br>常见义：<b>v.</b> 跑；<b>v.</b> 经营、管理（run a factory）；<b>v.</b> 运转（the engine runs）；<b>v.</b> 竞选（run for office）。<br>搭配：run for two years／run its course（自然走完过程）／in the long run（从长远看）。<br>为什么这句话里它是关键词：估值区间之所以从 1.13 到 2.27 万亿，唯一变量就是「指数增长能持续多久」。一个动词决定了上万亿美元的差距，这就是模型估值的性格。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>depending on how long the exponential phase <b>runs</b></div>
+          <div class="wc-tr">取决于那段指数增长被允许持续多久。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">extent</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪkˈstent/ · 美 /ɪkˈstent/</div>
+          <div class="wc-pos"><b>n.</b> <b>范围、面积、程度</b>：指某事物在空间或程度上铺开有多大。<br>常见义：即此义；注意 to some extent（在某种程度上）是高频短语，与「面积」无关。<br>搭配：to a large extent（在很大程度上）／the extent of the damage（损害的范围）／maximum extent（最大范围）。<br>为什么本文反复用它：extent 是一个可以被「假设」的量——你没法假设一个测量值，但你可以假设一片海草「最多能长到多大」。全文的分歧正从这里开始。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Restore the world's seagrass to the maximum <b>extent</b> it could occupy</div>
+          <div class="wc-tr">把全球海草恢复到它有可能占据的最大面积。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">restoration</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌrestəˈreɪʃn/ · 美 /ˌrestəˈreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（生态）修复、恢复</b>：指人为干预，把退化的生态系统拉回到能自我维持的状态。<br>常见义：<b>n.</b> 修复、复原（艺术品、建筑）；<b>n.</b> 复位、归还。<br>搭配：ecological restoration／seagrass restoration／restore sth to sth。<br>⚠️ 与 conservation（保护）不同：保护是「别动它」，修复是「已经坏了，动手救」。这个区别在预算上很实在——保护便宜，修复极贵，而且经常失败。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Restore the world's seagrass to the maximum extent</div>
+          <div class="wc-tr">把全球海草恢复到最大面积。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sediment</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈsedɪmənt/ · 美 /ˈsedɪmənt/</div>
+          <div class="wc-pos"><b>n.</b> <b>沉积物、泥沙</b>：水流搬运后沉到水底的细颗粒，海草床的碳就锁在这层缺氧的泥沙里。<br>常见义：<b>n.</b> 沉淀物（瓶底的渣）；<b>n.</b> 沉淀、积习（the sediment of history）。<br>搭配：sediment core（沉积柱样）／sedimentation（n. 沉积）／sedimentary（adj. 沉积的）。<br>为什么碳会「锁」在里头：泥沙一旦缺氧，微生物分解得极慢，碳就被埋住；可一旦被网具翻起来、见了氧，几千年存下的碳会在几年内被吃掉。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the <b>sediment</b> beneath a healthy meadow can lock carbon away for centuries</div>
+          <div class="wc-tr">一片健康海草床底下的沉积物可以把碳锁上几百年。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sequestration</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌsiːkwesˈtreɪʃn/ · 美 /ˌsiːkwesˈtreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>固碳、碳封存</b>：把二氧化碳从大气中拿走并长期储存的过程。动词 sequester。<br>常见义：<b>n.</b> 扣押、查封（财产）；<b>n.</b> 隔离（陪审团 sequestration）。<br>搭配：carbon sequestration／sequester carbon in soil／a sequestration rate（固碳速率）。<br>为什么它的数值会「更新」：固碳速率靠现场测量，测法一变、样本一换，数字就动。本文第二版把速率调低，正是把「旧文献里的乐观值」换成「新测量的保守值」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>multiplied that area by a <b>sequestration</b> rate and a price per tonne</div>
+          <div class="wc-tr">用面积乘以固碳速率和每吨碳的价格。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">clonal</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkləʊnl/ · 美 /ˈkloʊnl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>克隆的、无性繁殖的</b>：clonal growth 指植物靠根茎、匍匐枝长出新株，基因与母株完全相同，不经过种子。<br>构词：clone（克隆）+ -al；源自希腊语 klōn（嫩枝）。<br>搭配：clonal growth／clonal reproduction／a clone（n. 克隆体）。<br>为什么海草「能自己铺开」：一片海草可以靠匍匐枝一年扩出几十厘米，几十年连成一片；这也是为什么它能被当成「可自我扩张的资产」——扩张速度，直接决定估值。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>assumed recovery spreads exponentially through <b>clonal</b> growth</div>
+          <div class="wc-tr">假设恢复过程靠克隆生长指数式铺开。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">exponential</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌekspəˈnenʃl/ · 美 /ˌekspəˈnenʃl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>指数式的</b>：每一轮都按固定比例放大（1→2→4→8），前期几乎看不出，后期突然暴涨。<br>常见义：<b>adj.</b> 指数的（数学）；日常英语里常被宽松地用来表示「极快的」。<br>搭配：exponential growth／grow exponentially／an exponential function。<br>为什么这个词是估值的技术核心：如果扩张是指数式的，那么「允许它长多少年」这一个参数，就能把总额翻一倍——这正是 1.13 与 2.27 万亿的差别所在。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>assumed recovery spreads <b>exponentially</b> through clonal growth</div>
+          <div class="wc-tr">假设恢复过程靠克隆生长指数式铺开。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gigatonne</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɡɪɡətʌn/ · 美 /ˈɡɪɡətʌn/</div>
+          <div class="wc-pos"><b>n.</b> <b>十亿吨</b>：1 Gt = 10 亿吨 = 1 Pg（皮克），气候报道里最常用的量级单位。<br>构词：giga-（十亿，同 gigabyte）+ tonne（公吨）。<br>搭配：gigatonnes of CO2／a gigatonne-scale removal（十亿吨级的移除）。<br>为什么必须对它敏感：全球年排放约 400 亿吨 CO2，所以 17.8 Gt 大致相当于全球五个多月的排放——「很大」是真的，「能扭转气候」是另一回事。看到 Gt，先换算成年排放的几个月。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The result was 17.8 <b>gigatonnes</b> of carbon dioxide</div>
+          <div class="wc-tr">结果得到 178 亿吨二氧化碳。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mangrove</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmæŋɡrəʊv/ · 美 /ˈmæŋɡroʊv/</div>
+          <div class="wc-pos"><b>n.</b> <b>红树林</b>：生长在热带、亚热带海岸潮间带的耐盐树木，根系泡在海水里，是蓝碳三件套之一。<br>词源：可能来自葡萄牙语 mangue 与英语 grove（小树林）的混合。<br>搭配：mangrove forest／mangrove swamp／mangrove restoration。<br>为什么它总与海草并列：红树林、盐沼、海草床是唯一三类「长在水里、把碳埋在水下泥沙里」的生态系统，合称蓝碳；它们的面积都极小，单位面积的埋碳速率却极高。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>With <b>mangroves</b> and salt marshes it forms the small club called blue carbon</div>
+          <div class="wc-tr">它和红树林、盐沼一起组成了那个小小的俱乐部：蓝碳。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">marsh</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /mɑːʃ/ · 美 /mɑːrʃ/</div>
+          <div class="wc-pos"><b>n.</b> <b>盐沼、沼泽</b>：salt marsh 指潮间带上被耐盐草本覆盖的泥滩，涨潮被淹、退潮露出。<br>常见义：<b>n.</b> 湿地、沼泽（marshland）；<b>adj.</b> 沼泽的（marsh gas 沼气）。<br>搭配：salt marsh／marshland／a marsh bird（沼泽鸟类）。<br>为什么它与海草不同：盐沼是「露出水面的草」，海草是「完全泡在水里的草」；两者的碳埋藏机制相似，但盐沼更容易被围垦，海草更容易被船锚和浊度毁掉。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>With mangroves and salt <b>marshes</b> it forms the small club called blue carbon</div>
+          <div class="wc-tr">它和红树林、盐沼一起组成了那个小小的俱乐部。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">throughput</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈθruːpʊt/ · 美 /ˈθruːpʊt/</div>
+          <div class="wc-pos"><b>n.</b> <b>吞吐量、处理量</b>：单位时间内「流进—流出」的总量，本是工业与计算机术语。<br>构词：through（穿过）+ put（放）= 有多少东西被「过了一遍」。<br>搭配：high throughput／throughput capacity／a throughput of 10 tonnes a day。<br>为什么用它来说海草：海草自己并不「存」很多碳，它厉害在<b>不停地过</b>——年年拦泥沙、年年埋一点，几百年攒下来才是那个数。用吞吐量而不是容量，说的正是这个「慢而持续」的机制。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What it has is <b>throughput</b>: the leaves trap mud and the roots hold it</div>
+          <div class="wc-tr">它有的是「吞吐量」——叶片拦住泥沙，根系把泥沙按住。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">decay</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /dɪˈkeɪ/ · 美 /dɪˈkeɪ/</div>
+          <div class="wc-pos"><b>v.</b> <b>腐烂、分解</b>：有机物被微生物吃掉、分解的过程。<br>常见义：<b>v.</b> 衰退、衰落（a decaying neighbourhood）；<b>n.</b> 腐烂、衰败；<b>n.</b> 蛀牙（tooth decay）。<br>搭配：decaying leaves／radioactive decay（放射性衰变）／in decay（在衰败中）。<br>为什么它是本文的对照项：碳要么被埋进缺氧的泥沙，要么在植株腐烂时回到水里和空气里。海草的价值，恰恰取决于这两条路哪条更长。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>instead of releasing it as the plant <b>decays</b></div>
+          <div class="wc-tr">而不是等植株腐烂时又放回去。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">baseline</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈbeɪslaɪn/ · 美 /ˈbeɪslaɪn/</div>
+          <div class="wc-pos"><b>n.</b> <b>基线、基准值</b>：用来比较的起点状态；「以 1970 年为基线」即拿今天的状况与 1970 年比。<br>常见义：<b>n.</b> 底线、基础（baseline data）；<b>n.</b> （网球场的）底线。<br>搭配：against a 1970 baseline／baseline data／set a baseline。<br>⚠️ 这是本文最容易被忽略的一个技术选择：与「理论最大值」比，得出的潜力很大；与「1970 年的实际状况」比，才是人类真正弄丢的那部分。同一片海草，换一条基线，估值掉一半。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>set against a 1970 <b>baseline</b> instead of a theoretical maximum</div>
+          <div class="wc-tr">若不与理论最大值比，而与 1970 年的基线比。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">valuation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌvæljuˈeɪʃn/ · 美 /ˌvæljuˈeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>估值</b>：给一项资产算出「值多少钱」的过程与结果。<br>常见义：<b>n.</b> 评价、价值判断（a moral valuation）。<br>搭配：asset valuation／a valuation of $2bn／over-valued（被高估的）。<br>为什么这个词决定了全文的读法：估值不是测量。测量回答「有多少」，估值回答「按这套假设，值多少」。把估值当测量读，就会把 2.27 万亿当成事实；知道它是估值，才会去问「哪条假设一动，数字就塌」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>it is what a <b>valuation</b> looks like when the quantity has never been measured</div>
+          <div class="wc-tr">当被估的那件事从来没有被测量过，估值看起来就是这样。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">legible</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈledʒəbl/ · 美 /ˈledʒəbl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>可辨认、可读懂的</b>：本指字迹清楚，此处指「能被看懂、能被纳入决策」，比 visible 更强调「读得进去」。<br>常见义：<b>adj.</b> 字迹清晰的（legible handwriting）；反义 illegible。<br>搭配：legible to sb／make sth legible／legibility（n. 可读性）。<br>为什么用它而不用 clear：clear 只说「不模糊」，legible 说的是「有一套格式，能被人按惯例读」——一个数字要进预算，就必须是 legible 的，而不只是真实的。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a way of making an unpriced loss <b>legible</b> to ministries</div>
+          <div class="wc-tr">一种让「没有被定价的损失」变得可被读懂的办法。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ministry</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈmɪnɪstri/ · 美 /ˈmɪnɪstri/</div>
+          <div class="wc-pos"><b>n.</b> <b>（政府的）部</b>：如 the Ministry of Finance（财政部）、the Ministry of Education。<br>常见义：<b>n.</b> （神职人员的）职务、牧师职位（enter the ministry 成为牧师）。<br>搭配：the finance ministry／a ministry spokesperson／ministerial（adj. 部长的）。<br>为什么本文要点名它：估值的真正读者不是公众，而是财政部与计划部门——他们按资产负债表思考，一件「没有价格的好东西」在他们的表格里就等于零。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>making an unpriced loss legible to <b>ministries</b> that only read balance sheets</div>
+          <div class="wc-tr">好让那些只读资产负债表的部门看见它。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">audit</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈɔːdɪt/ · 美 /ˈɔːdɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>审计、核查</b>：由第三方核对数据或账目是否真实、是否合规。<br>常见义：<b>n.</b> 审计、查账；<b>v.</b> 旁听（audit a course，美式用法）。<br>搭配：carbon audit／audit a claim／an independent audit。<br>为什么这个词是全篇的转折点：admire（欣赏）与 audit（审计）是两种完全不同的看世界的方式。海草作为风景值得欣赏，作为碳信用必须被审计——而审计要的是凭证，不是潜力。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>carbon markets <b>audit</b> rather than admire</div>
+          <div class="wc-tr">碳市场是来审计的，不是来欣赏的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">additional</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈdɪʃənl/ · 美 /əˈdɪʃənl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（减排）额外的</b>：碳市场术语 additionality 指「这笔减排是项目带来的、本来不会发生」。<br>常见义：<b>adj.</b> 额外的、附加的（additional costs）。<br>搭配：additionality test（额外性检验）／additional to business as usual。<br>⚠️ 一条容易忽略的规则：如果那片海草本来就会自己长回来，那么你「保护」它所产生的碳，不算额外减排。这一条把大量「纸面上的蓝碳」挡在门外。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Was the removal <b>additional</b>, or would the meadow have come back anyway</div>
+          <div class="wc-tr">这笔减排真的是「额外」的吗，还是那片海草本来就会长回来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">anchor</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈæŋkə(r)/ · 美 /ˈæŋkər/</div>
+          <div class="wc-pos"><b>n.</b> <b>锚</b>：船停泊时抛入水底固定船身的重物。<br>常见义：<b>n.</b> （新闻节目）主播；<b>v.</b> 使固定（anchor the shelves to the wall）；<b>v.</b> 主持（anchor a show）。<br>搭配：drop anchor（抛锚）／weigh anchor（起锚）／anchor damage（锚害）。<br>为什么它是海草最直接的天敌：一片海草被船锚拖一次，可能撕开几平方米，而它靠匍匐枝一年只扩几十厘米。这也是为什么「修复」比「保护」贵得多——破坏只要几秒。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>given how <b>anchors</b> and heat tear meadows apart</div>
+          <div class="wc-tr">考虑到船锚和热浪会把海草床撕开。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">at low tide</span><span class="zh">退潮时</span></li>
+          <li><span class="en">a shallow brown plain</span><span class="zh">一片浅浅的褐色平原</span></li>
+          <li><span class="en">a band of narrow leaves</span><span class="zh">一带窄叶</span></li>
+          <li><span class="en">lie flat on the mud</span><span class="zh">平铺在泥上</span></li>
+          <li><span class="en">lift the propeller</span><span class="zh">把螺旋桨抬起来（以免打到海底）</span></li>
+          <li><span class="en">from the surface</span><span class="zh">从水面上看</span></li>
+          <li><span class="en">put a price on sth</span><span class="zh">给某物定价</span></li>
+          <li><span class="en">at the maximum extent</span><span class="zh">在最大范围上</span></li>
+          <li><span class="en">be worth between A and B</span><span class="zh">值 A 到 B 之间</span></li>
+          <li><span class="en">a fifth of one per cent</span><span class="zh">千分之二（0.2%）</span></li>
+          <li><span class="en">lock carbon away for centuries</span><span class="zh">把碳锁住几百年</span></li>
+          <li><span class="en">form a club called</span><span class="zh">组成一个被称为……的俱乐部</span></li>
+          <li><span class="en">bury carbon under water</span><span class="zh">把碳埋在水下</span></li>
+          <li><span class="en">a model rather than a measurement</span><span class="zh">是模型，不是测量</span></li>
+          <li><span class="en">plausibly occupy</span><span class="zh">有可能占据（的面积）</span></li>
+          <li><span class="en">multiply A by B</span><span class="zh">用 A 乘以 B</span></li>
+          <li><span class="en">a price per tonne</span><span class="zh">每吨的价格</span></li>
+          <li><span class="en">depending on how long … runs</span><span class="zh">取决于……持续多久</span></li>
+          <li><span class="en">lower one's own ceiling</span><span class="zh">调低自己的上限</span></li>
+          <li><span class="en">substitute A for B</span><span class="zh">用 A 替换 B</span></li>
+          <li><span class="en">set against a baseline</span><span class="zh">与基线相比</span></li>
+          <li><span class="en">a tenfold spread</span><span class="zh">十倍的落差</span></li>
+          <li><span class="en">be sensitive to</span><span class="zh">对……敏感</span></li>
+          <li><span class="en">survive three questions</span><span class="zh">扛住三个问题</span></li>
+          <li><span class="en">come back anyway</span><span class="zh">反正也会自己长回来</span></li>
+          <li><span class="en">tear sth apart</span><span class="zh">把某物撕开</span></li>
+          <li><span class="en">has the same tonne been sold twice</span><span class="zh">同一吨碳是否被卖了两次</span></li>
+          <li><span class="en">a budget line</span><span class="zh">一行预算</span></li>
+          <li><span class="en">a press release</span><span class="zh">一份新闻稿</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：场景——退潮的潟湖，一带窄叶就是一片恢复中的海草床。</li>
+          <li>第 2 段：数字——1.13 至 2.27 万亿美元的碳信用估值。</li>
+          <li>第 3 段：机制——面积不到千分之二，靠「吞吐量」把碳锁进泥沙。</li>
+          <li>第 4 段：方法——面积 × 速率 × 碳价，得到 17.8 Gt；区间宽窄取决于扩张年数。</li>
+          <li>第 5 段：自我下修——3.29 Gt；换成 1970 基线后剩 1.64 Gt。</li>
+          <li>第 6 段：解释——估值即假设的函数，十倍落差不是丑闻。</li>
+          <li>第 7 段：用意——让没有价格的损失变得可读，进入预算。</li>
+          <li>第 8 段：反问——额外性、持久性、重复计算，审计三道门。</li>
+          <li>第 9 段：落点——看它对什么敏感：种下去的东西能否活下来。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">What it has is throughput: the leaves trap mud and the roots hold it, so the sediment beneath a healthy meadow can lock carbon away for centuries instead of releasing it as the plant decays.</div>
+        <div class="row"><b>主干：</b>What it has is throughput（它有的是「吞吐量」）——主语是 what 引导的名词性从句，系动词 is 后面是表语。</div>
+        <div class="row"><b>难点：</b>① What it has 是「主语从句」，字面「它所拥有的东西」，这种把宾语提前的写法自带对比意味：上一句刚说它「面积小、没人见过」，这一句立刻反驳「可它有吞吐量」；② 冒号后面不是解释词义，而是<b>展开论证</b>——先给机制（叶拦泥、根固泥），再给结果（碳锁几百年）；③ the leaves trap mud and the roots hold it 是两个并列的主谓结构，it 回指 mud，注意 trap 与 hold 的分工：一个「截住」，一个「按住」；④ instead of releasing it as the plant decays 是介词短语作状语，as 引导时间状语从句，decays 用一般现在时表示「必然发生的过程」；⑤ 全句最后落在 decay 上，与前面的 lock away 形成一对反义动作，句子的重量因此压在「埋住 vs 烂掉」这条分岔上。</div>
+        <div class="row tr"><b>译文：</b>它有的是「吞吐量」——叶片拦住泥沙，根系把泥沙按住，于是一片健康海草床底下的沉积物可以把碳锁上几百年，而不是等植株腐烂时又放回去。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The authors began with the million square kilometres seagrass could plausibly occupy, assumed recovery spreads exponentially through clonal growth, and multiplied that area by a sequestration rate and a price per tonne.</div>
+        <div class="row"><b>主干：</b>The authors began with … , assumed … , and multiplied …（作者从……出发，假设……，再乘以……）——一个主语带三个并列谓语，是一句话讲完整套方法的标准写法。</div>
+        <div class="row"><b>难点：</b>① the million square kilometres seagrass could plausibly occupy 中，seagrass could … occupy 是省略了关系代词 that 的定语从句，修饰 square kilometres——注意不是「一百万平方公里海草」，而是「海草可能占据的一百万平方公里」；② plausibly 是全文的态度词：它不说「海草曾占据」，只说「有可能占据」，一个副词就把「历史事实」换成了「模型上限」；③ spreads exponentially through clonal growth 是 assumed 的宾语从句（省略 that），exponentially 与 clonal 两个技术词叠在一起，正是估值最脆弱的两个假设；④ multiplied that area by a rate and a price 用 multiply A by B 把「面积 × 速率 × 价格」三步并作一句；⑤ 三个动词 begin / assume / multiply 按时间顺序排列，读者可以照着这句话把整篇论文的方法复述一遍。</div>
+        <div class="row tr"><b>译文：</b>作者从一个「海草有可能占据的 100 万平方公里」出发，假设恢复过程靠克隆生长指数式铺开，再用面积乘以固碳速率和每吨碳的价格。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">That version yields 3.29 gigatonnes and 0.28 to 0.57 trillion dollars; set against a 1970 baseline instead of a theoretical maximum, it falls to 1.64 gigatonnes and 0.13 to 0.27 trillion.</div>
+        <div class="row"><b>主干：</b>That version yields … ; it falls to …（那一版给出……；它降到……）——两个分句用分号并置，构成「保守版」与「更保守版」的连续下修。</div>
+        <div class="row"><b>难点：</b>① That version 指上一句那个「调低上限」的版本，用指示代词而不是重复描述，是学术写作里节省篇幅的常规做法；② set against a 1970 baseline 是<b>过去分词短语作条件状语</b>（= if it is set against …），逻辑主语是 it，不是作者；③ instead of a theoretical maximum 把两种参照系并排：一个是「理论上能长到多大」，一个是「1970 年实际有多少」；④ it falls to 后面跟两组数字，gigatonnes 与 trillion dollars 分别对应物理量与货币量，读的时候要成对看；⑤ 整句没有一个转折连词，但两次「下修」按顺序排列，本身就在说一件事：<b>同一片海草，换一套假设，价格掉一个量级</b>。</div>
+        <div class="row tr"><b>译文：</b>这一版给出 32.9 亿吨与 0.28 万亿至 0.57 万亿美元；若不与理论最大值比，而与 1970 年的基线比，数字再降到 16.4 亿吨与 0.13 万亿至 0.27 万亿美元。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Was the removal additional, or would the meadow have come back anyway; will the carbon stay for a century, given how anchors and heat tear meadows apart; and has the same tonne been sold twice?</div>
+        <div class="row"><b>主干：</b>三个并列的一般疑问句，用分号串成一个长句——这是修辞上的「三连问」，不是语法上的复合句。</div>
+        <div class="row"><b>难点：</b>① 三个问句分别对应碳市场的三条铁律：额外性（additional）、持久性（stay for a century）、重复计算（sold twice）；② or would the meadow have come back anyway 用<b>虚拟语气</b>（would have come back），因为说的是「本来会发生、但被假设没发生」的情形；③ given how anchors and heat tear meadows apart 是 given + 从句作条件状语，意为「考虑到……」；④ how 引导的从句在这里不是疑问，而是程度/方式（「船锚和热浪是怎么把海草床撕开的」）；⑤ 全句以问号收尾，但作者并不期待回答——他要的是让读者意识到：一个万亿数字过不了这三道门，就不算数。</div>
+        <div class="row tr"><b>译文：</b>这笔减排真的是「额外」的吗，还是那片海草本来就会长回来；碳能不能待满一百年，考虑到船锚和热浪会把海草床撕开；以及，同一吨碳是不是已经被卖过两次？</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The honest way to read such a figure is to ask what it is most sensitive to, and here the answer is not the price of carbon but whether what gets planted survives.</div>
+        <div class="row"><b>主干：</b>The honest way … is to ask …（老实的读法是去问……）——主语是 way，表语是不定式，中间插了一个定语从句。</div>
+        <div class="row"><b>难点：</b>① to read such a figure 是不定式作 way 的定语（= the way in which one should read），不是目的状语；② what it is most sensitive to 是宾语从句，介词 to 留在句末（介词悬空），这是英语口语与学术写作都常见的结构；③ not the price of carbon but whether … 是 not A but B 的对比，把「你以为的关键变量」与「真正的关键变量」调换位置；④ whether what gets planted survives 里套了两层：whether 从句里又有 what gets planted 作主语，读法是「种下去的东西能不能活」；⑤ 全句用「敏感度」这个工程学的词替代「不确定性」，把抽象的怀疑变成可操作的提问方式——这正是可以迁移到任何数据新闻上的读法。</div>
+        <div class="row tr"><b>译文：</b>读这样一个数字，老实的办法是问：它对什么最敏感。而在这里，答案不是碳价，是种下去的东西能不能活下来。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章从一个很具体的画面开始，然后把它换算成钱。</b>退潮之后，潟湖露出一片浅褐色的泥滩，唯一活着的东西是一带窄叶；二十年前那里还是裸沙，如今船要过去得先抬起螺旋桨。这就是一片恢复中的海草床。今年 6 月，五位作者在《npj 海洋可持续性》（npj Ocean Sustainability）上发表论文，给这样的海草床算了一笔账：若把全球海草恢复到它有可能占据的最大面积，由此产生的碳信用值 <b>1.13 万亿至 2.27 万亿美元</b>。</p>
+      <p class="zh-sum"><b>先要弄清海草为什么会被算进「气候资产」。</b>它覆盖的海底不到千分之二，绝大多数人从没见过活着的它；但它有极高的「吞吐量」——叶片截住泥沙，根系把泥沙按住，缺氧的沉积层让碳分解得极慢，于是一片健康的海草床可以把碳锁上几百年，而不是等植株腐烂时又放回去。它和红树林、盐沼一起被称为<b>蓝碳</b>，是唯一把碳埋在水下而非木头里的三类生态系统。面积小、单位效率高，这正是它既珍贵又容易被忽略的原因。</p>
+      <p class="zh-sum"><b>然后是方法：这篇论文是模型，不是测量。</b>作者从「海草有可能占据的 100 万平方公里」出发，假设恢复靠<b>克隆生长</b>指数式铺开（靠匍匐枝而不是种子，一片草一年扩出几十厘米），再把面积乘以固碳速率和每吨碳价，得到 <b>178 亿吨二氧化碳</b>。这里有一个必须盯住的细节：1.13 与 2.27 万亿的差别，唯一来源是「那段指数增长被允许持续多久」。一个时间参数，就能让总额翻倍。</p>
+      <p class="zh-sum"><b>接着，作者做了一件比发头条更少见的事：他们把自己的上限调低了。</b>第二版换上更新的、更小的固碳速率，并假设实际恢复的只有那个面积的五分之一，得到 <b>32.9 亿吨</b>、<b>0.28 万亿至 0.57 万亿美元</b>；第三版不再与「理论最大值」比，而与 <b>1970 年的基线</b>比——也就是人类真正弄丢的那部分——数字再降到 <b>16.4 亿吨</b>、<b>0.13 万亿至 0.27 万亿美元</b>。</p>
+      <p class="zh-sum"><b>十倍的落差不是丑闻，而是估值的本性。</b>模型里没有一处是编的，但几乎每一处都不确定：面积、扩张速率、几十年后的碳价、以及种下去的东西能不能活。测量回答「有多少」，估值回答「按这套假设值多少」。把估值当测量读，2.27 万亿就成了事实；知道它是估值，才会去问「哪条假设一动，数字就塌」。这也是本文最想教的读法：<b>先找敏感参数，再看结论</b>。</p>
+      <p class="zh-sum"><b>那作者为什么要算这笔账？</b>因为这个团队的用意比数字更容易辩护：其中两位作者已经论证了十年——自然应当出现在国民账户里。一件「没有价格的好东西」，在只读资产负债表的部门那里等于零；给它定价，不是承诺收入，而是让「没有被定价的损失」变得可被读懂（legible），从而进入预算、规划和谈判。</p>
+      <p class="zh-sum"><b>但定价之后，就要接受定价世界的规则。</b>作者自己的比喻很准：碳市场是来<b>审计</b>的，不是来<b>欣赏</b>的。一笔蓝碳信用必须扛住三个问题。第一，<b>额外性</b>：这笔减排真的是项目带来的吗，还是那片海草本来就会长回来？第二，<b>持久性</b>：碳能不能待满一百年——考虑到船锚一拖就撕开几平方米、热浪会让整片草床死亡，而海草靠匍匐枝一年只扩几十厘米。第三，<b>重复计算</b>：同一吨碳，是不是已经被卖过两次？</p>
+      <p class="zh-sum"><b>这三问为什么致命，值得多说一句。</b>因为它们把「潜力」换成了「凭证」。潜力可以按最大面积、最优速率、最长期限去算；凭证必须按实际发生、实际留存、实际归属去核。这也是蓝碳信用在国际市场上长期争议不断的原因：种下去容易，活下来难；算出来容易，核得住难。论文在讨论部分也承认，估值对面积与速率的假设高度敏感，而这两项恰恰是现场数据最薄的地方。</p>
+      <p class="zh-sum"><b>所以，这篇论文的正确用法是什么？</b>不是引用「万亿美元」去说服财政拨款，也不是因为「只是模型」就把它扔掉。它更像一张地图：告诉我们哪几个参数决定成败（恢复面积、单位速率、扩张年限、存活率），从而告诉政策和资金应该往哪里使劲——如果种下去的东西活不下来，再漂亮的碳价也换不来一吨碳。</p>
+      <p class="zh-sum"><b>最后是可以带走的一句判断。</b>把生态翻译成钱，能换来注意，也会招来审计；而真正决定这笔账成立与否的，往往不是那个最响亮的数字，而是最不起眼的一件事：<b>它能不能活到被算进去的那一天</b>。读任何一个「万亿级」的环保估算，都可以先问三句：它测的是存量还是潜力？它的基线选在哪一年？它对哪个参数最敏感？</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. Seagrass restoration will generate more than a trillion dollars in carbon credits, making it the most profitable climate solution available.<br>B. A modelled valuation puts the carbon-credit value of global seagrass recovery between 0.13 and 2.27 trillion dollars; the tenfold range, not the headline, is what the paper is really about.<br>C. Carbon markets have rejected blue-carbon credits because seagrass meadows cannot be restored at scale.<br>D. Because the estimate is a model rather than a measurement, the study has no policy value at all.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景：退潮的潟湖（第 1 段）→ 数字：1.13—2.27 万亿（第 2 段）→ 机制：为什么海草能埋碳（第 3 段）→ 方法：面积×速率×价格，17.8 Gt（第 4 段）→ 自我下修：3.29 Gt、1.64 Gt（第 5 段）→ 解释：估值即假设（第 6 段）→ 用意：让无价的损失可读（第 7 段）→ 反问：额外性、持久性、重复计算（第 8 段）→ 落点：看它对什么敏感（第 9 段）」。B 同时抓住「大数字」与「十倍区间」两半。A 把上限当成预期收益，且忽略第 8 段的三道审计。C 与原文相反，论文正是在论证蓝碳可以被纳入市场。D 走另一极端，第 7 段明确说估值能把「无价的损失」变成可读的账目。</div>
+
+      <div class="q"><b>2. The author says carbon markets "audit rather than admire". What is the point of that contrast?<br>A. Markets are indifferent to the beauty of nature, so restoration should be funded by governments instead.<br>B. A scenic or ecological value is not the same as a verifiable claim: once a meadow is sold as credits, it must prove additionality, durability and uniqueness, not merely be worth admiring.<br>C. Carbon credits are fraudulent and should not exist.<br>D. Scientists should stop modelling and only measure things that can be audited.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>admire 与 audit 是两种看世界的方式：前者接受「它很好」，后者要求「拿证据来」。第 8 段紧接着列出三个问题——额外性、能否待满一百年、是否被重复出售——正是审计的三道门。A 把对比读成「市场无情」，但原文并未主张改由财政出钱，第 7 段说的是让损失「可读」以进入决策。C 绝对化，原文只说「必须扛住三个问题」，并未断言全部造假。D 也不是作者立场：他自己引用的正是一篇模型研究。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的手法，是给一件「没有价格的好东西」定价，然后自己拆掉一半估值。请你就身边一个「一旦被换算成钱，就立刻变形」的例子（例如：一棵校园老树的「固碳价值」、一次家访的「工时折算」、一段方言录音的「版权估值」、一个社团的「人均产出」），写一段 150 字以内的分析：① 换算时你选了哪个参数（面积？时长？单价？）；② 这个参数一动，结论会变多少；③ 有什么东西在换算里被彻底丢掉，且无法用任何参数补回。最后一句请用「它不是不值钱，而是 ______」的句式收束。</div>
+      <div class="q"><b>仿写：</b>本文第 5 段的写法是「先给一个数，再自己把它砍一刀」，靠的是三个动作：① 用 rarer than publishing a headline 这类<b>对比状语</b>，把「下修」写成一个罕见的动作；② 用 substituting / assuming 两个分词，把「换了什么假设」说得极其具体；③ 最后用 <span class="hl">set against a 1970 baseline instead of a theoretical maximum</span> 把参照系一换，数字应声而落，全程不给形容词。仿写时照搬骨架：<i>The authors then did something rarer than ______: they ______, substituting ______ and assuming ______; set against ______ instead of ______, it falls to ______.</i> 注意最后两个空必须是<b>两种参照系的对照</b>（基线 vs 上限、实际 vs 理论），若写成「所以这个数字不准」，句子就塌了——这一段的任务只是让数字自己往下走，评价留给读者。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">场景：退潮的潟湖，一带窄叶 = 一片恢复中的海草床</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">数字：碳信用 1.13—2.27 万亿美元（头条）</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">机制：叶拦泥 · 根固泥 · 缺氧沉积层锁碳数百年</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">方法：面积 × 固碳速率 × 碳价 → 17.8 Gt</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">自我下修：3.29 Gt → 1.64 Gt（换基线）</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">解释：估值 = 假设的函数，十倍落差是常态</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#2f5d3a"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#2f5d3a">用意：让「无价的损失」可读，进入预算</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">反问：额外性 · 持久性 · 重复计算（审计三问）</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">落点：看它对什么敏感——种下去的东西能否活</text>
+
+          <rect x="60" y="512" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="532" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：同一个模型，从 2.27 万亿一路降到 0.13 万亿</text>
+          <text x="360" y="549" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">落差不是错误，是「估值」与「测量」的区别</text>
+
+          <text x="360" y="592" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 2 段橙色：头条数字——最容易被引用、也最容易被误读</text>
+          <text x="360" y="614" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 5、8 段红色：两次下修与三道审计——全文真正的分量所在</text>
+        </svg>
+        <figcaption>结构图解：文章走的是一条「先给大数、再砍大数」的路。第 1 段用两个细节把场景立住——退潮后的褐色泥滩，和必须抬起螺旋桨才能通过的船；第 2 段抛出头条数字：1.13 万亿至 2.27 万亿美元；第 3 段解释机制：海草只覆盖不到千分之二的海底，却靠「叶拦泥、根固泥」把碳锁进缺氧的沉积层，与红树林、盐沼并称蓝碳；第 4 段交代方法：从 100 万平方公里的潜在面积出发，假设克隆生长的指数扩张，乘以固碳速率与碳价，得到 17.8 Gt，而区间的宽窄只由「扩张持续多久」决定；第 5 段是全篇的转折，作者自己把上限调低两次——换更小的速率、只算五分之一的面积，得 3.29 Gt，再换成 1970 年基线，得 1.64 Gt；第 6 段点明这不是丑闻，而是估值与测量的区别；第 7 段解释用意：给自然定价，是让「没有价格的损失」进入只读资产负债表的部门；第 8 段转向审计的三道门——额外性、持久性、重复计算，并用船锚与热浪说明「种下去容易、活下来难」；第 9 段收束到可迁移的判断：读这类数字，先问它对什么最敏感，而这里的答案不是碳价，是存活率。全文没有否定这个估值，它更想说的是：<b>一个数字的说服力，取决于它敢不敢把自己的假设摊开</b>。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Ralph Chami, Thomas Cosimano, Connel Fullenkamp, Dinah Nieburg, Carlos M. Duarte《Assessing the carbon market potential of global seagrass recovery》，npj Ocean Sustainability（2026-06-21 在线发表，DOI 10.1038/s44183-026-00218-w；开放获取），Williams College 经济系 / Blue Green Future / Duke University 经济系 / 阿卜杜拉国王科技大学（KAUST）海洋科学项目｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,744 +1,758 @@
 {
- "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
- "sentences": [
-  {
-   "date": "2026-11-11",
-   "en": "An hour a week is a cheap prescription; the plot of land that makes it possible is not.",
-   "zh": "每周一小时是一张廉价的处方；让这张处方成立的那块地，可不便宜。",
-   "src": "外刊精读 · 每周一小时的公园，值多少钱（2026-11-11）",
-   "key": "a cheap prescription",
-   "keyZh": "一张廉价的处方（prescription 由“药方”引申为“方案”；与后半句的地价形成反差）",
-   "tip": "这句话的全部力量来自三处。第一，prescription 的引申：把“每周走一小时”说成医生开的处方，读者立刻明白这是一个可执行、有剂量的小动作。第二，分号：不加 but、however 之类的连接词，把“便宜”和“贵”硬接在一起，反差自己说话——中文里若写成“但是那块地很贵”，力量立刻减半。第三，结尾的省略：the plot of land that makes it possible is not (cheap)，把“贵”这个词根本不写出来，让读者自己在句号处补完，补出来的那一下就是这一句的重量。注意 plot 在这里不是“情节”，而是一块地皮；that makes it possible 是定语从句修饰 the plot of land，读时先跳过再回填。仿写骨架：X is a cheap Y; the Z that makes it possible is not.",
-   "tags": [
-    "健康与身心",
-    "城市自然",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-11-10",
-   "en": "The question worth asking about the bag by the door is therefore not where the clothes will go, but who will have the hours to turn them into something else.",
-   "zh": "因此，关于门口那只袋子，真正值得问的不是这些衣服会去哪儿，而是谁会有那几个小时，把它们变成别的东西。",
-   "src": "外刊精读 · 捐出去的那件外套，一半没人要（2026-11-10）",
-   "key": "who will have the hours",
-   "keyZh": "谁会有那几个小时（关键在 the hours：时间才是真正的成本，不是材料、不是技术）",
-   "tip": "这句话的全部重量压在最后那个 who 上。前半句 the bag by the door 是一个极具体的画面——你家门口那只待送走的袋子，比 any donated clothing 这种抽象说法有力得多；中间的 not where…but who… 是本文反复使用的对照框架：先排除一个看起来最自然的问题（衣服去哪儿了），再立起一个真正的问题（谁有时间）。注意 where the clothes will go 是将来时，who will have the hours 也是将来时，两个 will 并置，把“责任”从一个空间问题改造成了一个时间问题。最后 to turn them into something else 用不定式表目的，something else 故意含糊——因为答案本来就是“看情况”。仿写时可以整句替换宾语：not where the money went, but who had the hours to check it。",
-   "tags": [
-    "生态与可持续",
-    "消费",
-    "循环经济"
-   ]
-  },
-  {
-   "date": "2026-11-09",
-   "en": "So the question worth asking is not whether the writing got better, but whether the person who wrote it is still there to be found.",
-   "zh": "所以值得问的不是“这篇文章有没有变好”，而是“写它的那个人，是否还找得到”。",
-   "src": "外刊精读 · AI 把文章改好了，也把“谁写的”改掉了（2026-11-09）",
-   "key": "still there to be found",
-   "keyZh": "还在不在、是否仍然找得到（不是“仍然在那里”这么平淡；to be found 强调“可被发现”）",
-   "tip": "这句话的结构值得整句背下来：The question worth asking is not whether A, but whether B。三个动作各有讲究。第一，worth asking 是形容词短语后置修饰 question，等于“值得问的那个问题”，比 which we should ask 干净得多。第二，not whether…but whether… 是“排除一个假问题、立起一个真问题”的标准框架——先承认“有没有变好”这个问法很自然，再说明它问偏了。第三，结尾的 is still there to be found 用了被动不定式：如果只写 is still there，意思是“人还在原地”；加上 to be found，意思变成“还找得到”——差别在于读者是否还认得出作者。全文的落脚点就压在这个被动上：文章没有被毁掉，只是作者变得不可检索了。仿写时可以把 A、B 换成任何一组“表面指标 vs 真正问题”，例如 not whether the score went up, but whether the student is still in the sentence。",
-   "tags": [
-    "科技与创新",
-    "语言",
-    "人工智能"
-   ]
-  },
-  {
-   "date": "2026-11-08",
-   "en": "Once a week measured the same as four days a week, which dismantles the folk version of the finding, where the brain is a muscle and a grandchild is the gym.",
-   "zh": "一周一次，和一周四天，测出来是一样的——这就把这条发现的民间版本拆掉了。那个版本里，大脑是一块肌肉，孙辈就是健身房。",
-   "src": "外刊精读 · 带孙辈的老人更聪明，可箭头也许是反的（2026-11-08）",
-   "key": "dismantles",
-   "keyZh": "拆掉、拆解（不是“驳倒”，而是把结构拆散——零件还在，但组合散了）",
-   "tip": "这句话的力量分两层。第一层是 which 引导的非限制性定语从句：它不修饰某个名词，而是回指前面整个“一周等于四天”的事实，等于用一个从句给整句定性。第二层是 dismantle 这个动词的选择——作者本可以写 refute（驳倒）或 disprove（证伪），但他选了“拆”：民间版本并没有被证明是假的，它只是被拆成了零件，而零件（大脑会变、孙辈有用）本身还在。最后那个比喻 the brain is a muscle and a grandchild is the gym，用 where 从句轻轻一摆，就把“剂量越大越好”的直觉说完了，也顺手判了它死刑——因为健身房的理论前提是练得越多越强，而这篇文章恰恰发现频率无关。",
-   "tags": [
-    "代际关系",
-    "认知老化",
-    "家庭"
-   ]
-  },
-  {
-   "date": "2026-11-07",
-   "en": "A bell can be pushed back by an hour, but what a child actually sleeps is settled later, by a homework deadline, a bus schedule, a screen and a family.",
-   "zh": "铃声可以往后推一小时，但一个孩子实际睡多久，是更晚的时候由一份作业截止时间、一趟班车、一块屏幕和一个家庭决定的。",
-   "src": "外刊精读 · 把上课时间推后一小时，多出来的二十六分钟（2026-11-07）",
-   "key": "settled later",
-   "keyZh": "（结果）是在更晚的时候被决定的；settle 在此不是“安顿下来”，而是“尘埃落定、被定下来”",
-   "tip": "这句的力气全在 but 之后的语序：先说“铃声可以推后”（承认杠杆存在），再说“实际睡多久是被……决定的”，四个名词依次排开，把杠杆的长度量了出来。settled 是熟词僻义——不是“定居／安顿”，而是“（结果）被最终确定”，比 decided 多一层“不由某一方单独说了算”的意思。仿写可套：A rule can be written in a week, but what a classroom actually feels like is settled later, by a deadline, a corridor, a lunch queue and a tired teacher.",
-   "tags": [
-    "健康与身心",
-    "教育",
-    "青少年睡眠"
-   ]
-  },
-  {
-   "date": "2026-11-06",
-   "en": "The lesson is uncomfortable for a sector that has always counted its emissions and rarely its debris: a machine is only as clean as the least recoverable thing it leaves behind.",
-   "zh": "这对一个历来只统计排放、很少统计残骸的行业来说并不舒服：一台机器有多干净，取决于它留下的、最难回收的那件东西。",
-   "src": "外刊精读 · 风停了以后，那片叶子去哪儿（2026-11-06）",
-   "key": "only as clean as",
-   "keyZh": "只和……一样干净（设上限的比较，言下之意：不会更干净）",
-   "tip": "这句的分量全在 only as … as 这个结构：它不是夸一台机器“很干净”，而是给清洁度设了一个上限——最脏的那一环有多脏，整台机器就只能有多干净。前半句的 counted 也是熟词僻义：不是“数”，而是“把……计入账”，与 rarely its debris 里的省略（rarely counted）合起来，把一篇材料学的报道一刀切成了会计学的追问。仿写时可套：A city is only as walkable as its worst crossing / A school is only as fair as its quietest student.",
-   "tags": [
-    "生态与可持续",
-    "再生能源",
-    "材料循环",
-    "环境政策"
-   ]
-  },
-  {
-   "date": "2026-11-05",
-   "en": "A coating can win the first measurement and lose the second in the same afternoon.",
-   "zh": "同一件涂料，可以在同一个下午赢下第一个测量、输掉第二个。",
-   "src": "外刊精读 · 屋顶凉了二十二度，路上的人呢（2026-11-05）",
-   "key": "win the first measurement and lose the second",
-   "keyZh": "赢下第一个测量、输掉第二个（同一件事在两个指标上一正一反）",
-   "tip": "整句的力气全在 win 与 lose 的对举：同一个主语（a coating），两个反义动词，各自带一个 measurement，把“同样一件东西，在甲指标上得分、在乙指标上失分”压缩进一行。真正要学的是后半截 in the same afternoon——它把矛盾从“两种研究打架”改写成“同一时刻的两种读数”，矛盾感立刻具体了。写议论文时可用同一句式给结论加限定：X can win A and lose B，读者会自己明白为什么不能只报一个数字。",
-   "tags": [
-    "科技与创新",
-    "城市治理",
-    "气候适应"
-   ]
-  },
-  {
-   "date": "2026-10-31",
-   "en": "What it establishes is where the argument now sits: the limit on AI's water use is less engineering than who pays for a disposal that has always been someone else's problem.",
-   "zh": "它真正确立的，是这场争论现在的位置：AI 用水的上限，与其说是工程问题，不如说是“谁为那笔一直被当成别人麻烦的处置费买单”的问题。",
-   "src": "外刊精读 · 最脏的水，喂最贵的机器（2026-10-31）",
-   "key": "someone else's problem",
-   "keyZh": "别人的麻烦（把成本推给别人＝经济学里的“外部性” externality）",
-   "tip": "前半句是本站常用的判断句骨架「What it establishes is where the argument now sits」，用 what 主语从句加 where 表语从句，先说“它确立的不是结论，而是争论的位置”，再用冒号落地。真正要学的是 less A than B：字面是“较少是 A”，实际意思是“与其说是 A，不如说是 B”，A 与 B 词性还可以不对称（此处 A 是名词 engineering，B 是 who 从句）。写作时可套用「The limit on X is less a question of technology than of who pays for Y.」来把讨论从“能不能做”转到“谁来承担代价”。",
-   "tags": [
-    "水资源",
-    "科技与创新",
-    "环境政策"
-   ]
-  },
-  {
-   "date": "2026-10-30",
-   "en": "The decisive shift is in what a visitor now buys: the islands once sold knitwear as a product, whereas the festival sells the hour in which you learn to make it.",
-   "zh": "决定性的转变在于游客现在买的是什么：这些岛曾经把针织品当作产品来卖，而节庆卖的是“你学着把它做出来的那一小时”。",
-   "src": "外刊精读 · 一门老手艺的两种价钱（2026-10-30）",
-   "key": "decisive shift",
-   "keyZh": "决定性的转变（the decisive shift in sth 某事上的决定性转变）",
-   "tip": "句子骨架是「The decisive shift is in + 宾语从句」，把“转变”钉在一个具体问题上——买什么。冒号后用 once ... whereas ... 造出前后对照，once 是“曾经”，与后半句的现在时形成时间断层；in which 引导定语从句修饰 the hour，it 回指 knitwear。写作时可套用「The decisive shift is in what people now pay for: X once sold A, whereas Y sells the hour in which you do it.」来写任何“从卖产品到卖体验”的行业变化。",
-   "tags": [
-    "非遗",
-    "地方经济",
-    "手工艺"
-   ]
-  },
-  {
-   "date": "2026-10-29",
-   "en": "For a teacher the implication is almost mundane: a game is a door, not a room; points and time pressure will get a class through it, but only argument, error and reflection will keep them there.",
-   "zh": "对教师而言，结论几乎平淡无奇：游戏是一道门，不是一个房间；积分与时间压力能把一个班带进门，但只有争论、出错与反思才能让他们留下来。",
-   "src": "外刊精读 · 学习科学与游戏化课堂（2026-10-29）",
-   "key": "mundane",
-   "keyZh": "平淡的；不起眼的（原义“尘世的、世俗的”，与 heavenly 相对）",
-   "tip": "mundane 本义是“尘世的”，由此引申为“平淡无奇的”——用来形容一个“本该惊艳却意外朴素”的结论，语气里带着一丝自嘲，比 boring 精确得多。冒号后是全文的落点，靠一个比喻撑住：a game is a door, not a room（门与房间），再用分号把两种力量对照起来——will get … through it 是“带进门”，keep them there 是“留下来”；同一动词 keep 从“保持”滑向“留住”，正是英语里最省力的双关。写作时可套用“X is a door, not a room: A will get you through it, but only B will keep you there.”",
-   "tags": [
-    "学习科学",
-    "教育"
-   ]
-  },
-  {
-   "date": "2026-10-27",
-   "en": "Measles is unforgiving of averages, because protection has to be continuous rather than merely high: a national figure of 92 per cent can conceal a district at 75, and the virus will find that district.",
-   "zh": "麻疹对平均数毫不宽容，因为保护必须是连续的，而不仅仅是“高”的：一个 92% 的全国数字，可以盖住某个只有 75% 的区县，而病毒一定会找到那个区县。",
-   "src": "外刊精读 · 全球健康与麻疹疫苗（2026-10-27）",
-   "key": "conceal",
-   "keyZh": "掩盖；遮住（不让看见）",
-   "tip": "先记住 unforgiving of 这个搭配——“对……毫不宽容”，比 doesn't forgive 更有判断力。中间用 rather than 否掉“高就够了”的直觉，冒号后立刻给一个具体场景（92% 盖住 75%）。最后 will find 把病毒写成有意志的猎手：情态动词 will 在此表“必然”，不是将来。写作时可套用“A is unforgiving of B: [具体场景], and [主语] will find [它]”。",
-   "tags": [
-    "公共卫生",
-    "全球健康"
-   ]
-  },
-  {
-   "date": "2026-10-26",
-   "en": "The body keeps the receipt even when the mind tears it up, so a night nobody remembers is not a night that cost nothing.",
-   "zh": "身体留着收据，哪怕头脑把它撕了——所以一个没人记得的夜晚，并不是一个没有代价的夜晚。",
-   "src": "外刊精读 · 交通噪声、睡眠与心血管风险（2026-10-26）",
-   "key": "receipt",
-   "keyZh": "n. 收据；此处喻指身体留下的生理凭证（keeps the receipt 留下了证据）",
-   "tip": "「keeps the receipt even when the mind tears it up」把“身体记账、意识销毁”写成一张被撕掉的收据，抽象的实验结果立刻有了画面。注意 tear up 是“撕碎”，与 tear（眼泪）同形不同音。仿写：The liver keeps the receipt even when the glass is forgotten, so a night nobody remembers is not a night that cost nothing.",
-   "tags": [
-    "环境健康",
-    "睡眠",
-    "流行病学"
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "en": "A society that measures adulthood by a front door of one's own will keep finding young people who fail the test.",
-   "zh": "一个用“自己的一扇前门”来衡量成年的社会，会不断发现年轻人没通过这场考试。",
-   "src": "外刊精读 · 搬回家住的年轻人与住房成本（2026-10-25）",
-   "key": "measure",
-   "keyZh": "衡量；以……为标准（measure A by B 用 B 来衡量 A）",
-   "tip": "measure 常见义是“测量长度”，此处是抽象的“拿什么当尺子”：measure adulthood by a front door，即“用有没有自己的房子来定义成年”。前半句用 that 定语从句把“社会”限定住，后半句 keep finding 的进行时暗示这不是一次误判，而是反复发生；fail the test 也不是“考试不及格”，而是“通不过这场人生考核”。整句的力量来自一个反差：尺子是社会给的，不及格的却是年轻人。仿写：A school that measures success by test scores will keep finding students who fail the test.",
-   "tags": [
-    "代际关系",
-    "住房"
-   ]
-  },
-  {
-   "date": "2026-10-24",
-   "en": "The question is not whether artificial intelligence will take the desk jobs, but whether a society still keeps a door open for the young people who would rather work with their hands.",
-   "zh": "问题不是人工智能会不会拿走那些坐办公室的岗位，而是一个社会是否还给那些更愿意用手干活的年轻人留着一扇门。",
-   "src": "外刊精读 · 九十个人抢四个学徒位（2026-10-24）",
-   "key": "would rather",
-   "keyZh": "宁愿；更愿意（后接动词原形）",
-   "tip": "would rather do sth 表示主观偏好，比 prefer to 更有‘自己的选择’的意味；与 had better（建议）不同，它不带劝告。全句用 not whether ... but whether ... 把讨论从‘技术会不会’移到‘社会留不留’，两个 whether 从句并列作表语——这是议论文里把话题重心搬走的标准句式。仿写：The question is not whether screens will replace books, but whether a school still keeps a quiet hour for the ones who would rather read on paper.",
-   "tags": [
-    "职业教育",
-    "自动化"
-   ]
-  },
-  {
-   "date": "2026-10-23",
-   "en": "None of this makes the advice wrong; it makes it unfinished.",
-   "zh": "这一切并不能说明那句建议是错的，只能说明它还没写完。",
-   "src": "外刊精读 · 运动处方的证据等级（2026-10-23）",
-   "key": "unfinished",
-   "keyZh": "未完成的；还没写完的",
-   "tip": "「None of this makes A wrong; it makes A unfinished.」先用否定替对方卸下“对错”之争，再用分号把判断改到“完成度”维度——这是学术写作里极省力的一种让步式反驳。仿写：None of this makes the plan wrong; it makes it untested.",
-   "tags": [
-    "循证医学",
-    "心理健康"
-   ]
-  },
-  {
-   "date": "2026-10-22",
-   "en": "What the study ultimately suggests is that emotion is less a highlighter than a conductor, and that memory is less a filing cabinet than an orchestra that sounds different every time it plays.",
-   "zh": "这项研究最终提示的是：情绪更像一位指挥，而不是一支高亮笔；记忆更像一支每次演奏都略有不同的乐队，而不是一只档案柜。",
-   "src": "外刊精读 · 情绪与记忆的神经机制（2026-10-22）",
-   "key": "conductor",
-   "keyZh": "指挥（乐队指挥）；也指导体、列车员",
-   "tip": "less A than B 是「与其说是 A，不如说是 B」的对照句式；本句连用两次，把抽象机制换成「高亮笔 vs 指挥」「档案柜 vs 乐队」两组具体物象。写作时可借「双比喻对照」把观点形象化。",
-   "tags": [
-    "认知科学",
-    "心理学"
-   ]
-  },
-  {
-   "date": "2026-10-20",
-   "en": "A market is not revived by the crowd it draws on opening day but by the door it keeps open afterwards.",
-   "zh": "一座市场不是被开张那天的热闹救活的，而是被此后一直开着的那扇门救活的。",
-   "src": "外刊精读 · 五万人来了，摊位却少了（2026-10-20）",
-   "key": "revive",
-   "keyZh": "使复兴；重新活起来",
-   "tip": "「not by A but by B」把两个判据并排：A 是 opening day 的那一刻热闹，B 是 afterwards 的长期开放。crowd 与 door 押头韵，draw（吸引）与 keep open（保持开着）一动一静。revive 与 restore 常被混用：restore 是修回原样，revive 是重新活过来——修好一座建筑不等于让它活起来。仿写：A library is not revived by the day it opens but by the hour it stays open when nobody is watching.",
-   "tags": [
-    "城市更新",
-    "公共空间"
-   ]
-  },
-  {
-   "date": "2026-10-18",
-   "en": "The study's contribution is to move the question from how much the world consumes to how well that consumption fits the disease it is meant to treat.",
-   "zh": "这项研究的贡献，是把问题从“世界用了多少”改写为“这些用量与它要治的病有多匹配”。",
-   "src": "外刊精读 · 抗生素的“用多”与“用不上”（2026-10-18）",
-   "key": "fits the disease",
-   "keyZh": "与要治的病相匹配（fit 此处为“契合、对得上”，不是“合身”）",
-   "tip": "move the question from A to B 是学术写作里“重新定义议题”的常用句式：不直接反驳旧问题，而是把它换成另一个更准确的问题。fit 在这里是熟词僻义——常见义“（衣服）合身、合适”，此处指“用药与病情对得上”。be meant to do 表示“本来是为了做”，暗含“本意与结果”的对照。",
-   "tags": [
-    "公共卫生",
-    "抗生素耐药",
-    "全球健康"
-   ]
-  },
-  {
-   "date": "2026-10-17",
-   "en": "Solar power's next leap may come less from discovering new crystals than from learning to seal the ones we already have.",
-   "zh": "太阳能的下一次跃迁，或许更多来自学会把我们已经拥有的晶体封好，而不是去发现新的晶体。",
-   "src": "外刊精读 · 给太阳能电池镀一层“特氟龙”（2026-10-17）",
-   "key": "seal",
-   "keyZh": "封住；密封（此处指把材料层与层之间的界面封好）",
-   "tip": "本句用 come less from A than from B（与其说来自 A，不如说来自 B）做取舍式对比：A 是“发现新晶体”，B 是“封好已有的晶体”。seal 在这里不只是“密封容器”，而是工程意义上的“把界面封住、阻断离子迁移与外界侵蚀”。注意 the ones 是代词，回指前面的 crystals；already have 作后置定语，暗含“不必另寻新材料”的态度。",
-   "tags": [
-    "能源",
-    "材料科学",
-    "科技"
-   ]
-  },
-  {
-   "date": "2026-10-16",
-   "en": "Feeding a growing population may depend less on growing more food than on growing better food.",
-   "zh": "要养活不断增长的人口，与其说取决于种出更多的粮食，不如说取决于种出更好的粮食。",
-   "src": "外刊精读 · 餐桌上的“隐性饥饿”（2026-10-16）",
-   "key": "growing better food",
-   "keyZh": "种出更好的粮食",
-   "tip": "depend less on A than on B 意为「与其说取决于 A，不如说取决于 B」，是本句的骨架；growing more food 与 growing better food 构成一组对照——前者求「量」，后者求「质」，恰好点出全文主旨：真正的问题不只是种得够不够多，而是每一粒粮食里留下了多少营养。",
-   "tags": [
-    "农业",
-    "粮食安全",
-    "植物科学"
-   ]
-  },
-  {
-   "date": "2026-10-15",
-   "en": "Canopy targets are easiest to meet on average and hardest to meet where they matter, so the useful measure is not a city-wide percentage but the distribution of shade across the streets where elderly and poor residents actually live.",
-   "zh": "树冠目标在平均值上最容易达成，在真正要紧的地方却最难达成；因此真正有用的指标不是全市的百分比，而是树荫在老人与穷人真正居住的那些街道上的分布。",
-   "src": "外刊精读 · 一条街的树荫（2026-10-15）",
-   "key": "where they matter",
-   "keyZh": "在真正要紧的地方",
-   "tip": "matter 在此是动词「要紧、重要」，不是名词「事情」。全句用 not A but B 把评价口径从「平均」换成「分布」，是本篇的论点句。",
-   "tags": [
-    "城市生态",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-10-14",
-   "en": "PFAS exist because industry wanted molecules that would not break down, and the properties that make them valuable are inseparable from the properties that make them dangerous.",
-   "zh": "PFAS 之所以存在，是因为工业界想要不会分解的分子；而让它们有价值的性质，与让它们危险的性质本就无法切割。",
-   "src": "外刊精读 · 永久化学品（2026-10-14）",
-   "key": "inseparable from",
-   "keyZh": "与……不可分割",
-   "tip": "break down 在此是「分解」，不是「出故障」。两个 the properties that... 结构并列，句子靠 inseparable 一词把「有用」与「有害」焊死在一起。",
-   "tags": [
-    "环境化学",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-10-13",
-   "en": "Each step up in code size roughly halved the logical error rate, so that more hardware bought less noise rather than more, which is the exact reverse of how every conventional computer behaves.",
-   "zh": "编码规模每提高一档，逻辑错误率就大致减半；于是更多硬件换来的是更少噪声而不是更多——这与每一台传统计算机的表现恰好相反。",
-   "src": "外刊精读 · 量子纠错（2026-10-13）",
-   "key": "the exact reverse of",
-   "keyZh": "与……恰好相反",
-   "tip": "step up 是「提高一档」；bought 在此是 buy 的比喻用法「换来」。rather than 后接对比项，the exact reverse of 则把这种反差推到「恰好相反」。",
-   "tags": [
-    "物理",
-    "量子计算"
-   ]
-  },
-  {
-   "date": "2026-10-12",
-   "en": "We may speak in trees on paper, but in the mind we seem to build with bricks.",
-   "zh": "纸面上，我们也许在“说一棵树”；但在心智里，我们更像是在用一块块现成的砖，搭起一句句话。",
-   "src": "外刊精读 · 语言不是一棵树（2026-10-12）",
-   "key": "build with bricks",
-   "keyZh": "用砖块搭建（比喻由现成的小块拼装）",
-   "tip": "speak in trees 与 build with bricks 是一组对照比喻：前者指「按语法层级（树状结构）组句」的理论图景，后者指「用记忆中熟悉的词块逐块拼装」的实际情况。介词 in 与 with 都表「用……的方式/材料」。全句用 may ... but ... 构成让步转折，点出全文主旨：语言也许比我们以为的更「扁平」。",
-   "tags": [
-    "语言学",
-    "认知科学",
-    "心理科学"
-   ]
-  },
-  {
-   "date": "2026-10-11",
-   "en": "The broader lesson is that time, deliberately managed, can be treated as a strategic resource rather than a fixed cost, and that rest and performance need not be rivals.",
-   "zh": "更广义的教训是：时间若被有意识地加以管理，可以被当作一种战略资源，而不是一笔固定成本；休息与绩效也未必是彼此对立的两方。",
-   "src": "外刊精读 · 四天工作制与员工福祉（2026-10-11）",
-   "key": "rivals",
-   "keyZh": "对手；对立的两方（形容词 rival 意为竞争的）",
-   "tip": "rivals 在此作名词，本义是「对手、竞争者」，此处引申为「彼此对立、非此即彼的两方」——need not be rivals 即「未必是互相对立的」。deliberately managed 是过去分词短语作后置定语，修饰 time，意为「被有意识地管理的」；rather than a fixed cost 则构成对比。全句主干为 The lesson is that ... and that ...，由两个 that 引导的并列表语从句共同说明「教训」的内容，句式工整，适合背诵。",
-   "tags": [
-    "劳动",
-    "工作制度",
-    "组织行为学"
-   ]
-  },
-  {
-   "date": "2026-10-10",
-   "en": "For poorly instrumented explosive volcanoes, where a single sensor may be the only realistic option, such a tool could buy the hours needed to evacuate.",
-   "zh": "对于那些监测薄弱的爆炸式火山——在那里，一台传感器也许就是唯一现实的选择——这样的工具能够争取到疏散所需的数小时。",
-   "src": "Nature Communications · IPGP / GFZ Potsdam",
-   "key": "buy",
-   "keyZh": "争取到；换来（熟词僻义：购买）",
-   "tip": "buy 的常见义是“购买”，但在书面语中常引申为“（以某种代价）换取、争取到”，宾语多为抽象名词：buy time（争取时间）、buy influence（换取影响力）、buy the hours needed to evacuate（争得疏散所需的数小时）。这句的妙处在于：一台仪器并不能阻止喷发，它唯一能“买”到的，是时间——而时间恰恰是防灾中最昂贵的东西。注意别与 buy into（接受、相信某观念）混淆。",
-   "tags": [
-    "地球科学",
-    "火山",
-    "自然灾害"
-   ]
-  },
-  {
-   "date": "2026-10-09",
-   "en": "A sweeping new analysis, however, argues that the body keeps several distinct clocks, and that they tick at very different speeds in men and women.",
-   "zh": "然而一项涵盖广泛的新分析认为，人体拥有好几座彼此不同的「时钟」，而且它们在男女身上的走速大不一样。",
-   "src": "外刊精读 · 衰老时钟与男女差异（2026-10-09）",
-   "key": "distinct",
-   "keyZh": "截然不同的；各自独立的",
-   "tip": "distinct 意为「截然不同的、清楚可辨的」，此处修饰 clocks，强调人体并非只有一座时钟，而是多座互不相同的时钟。sweeping 意为「涵盖广泛的、影响面大的」，常用来形容覆盖面很广的研究或改革；tick 在此以「钟表走动」比喻衰老的速度。",
-   "tags": [
-    "人口",
-    "衰老",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-10-08",
-   "en": "A tightly controlled new experiment suggests that this tidy equation leaves out a variable that may matter enormously: how heavily the food itself has been processed.",
-   "zh": "一项控制极严的新实验提示，这个整洁的等式漏掉了一个或许关系重大的变量——食物本身被加工的程度。",
-   "src": "外刊精读 · 超加工食品与身体反应（2026-10-08）",
-   "key": "matter",
-   "keyZh": "要紧；有重大影响（熟词僻义）",
-   "tip": "matter 在此作动词，意为「要紧、关系重大」，而非名词「事情、物质」——典型的熟词僻义。leaves out 意为「遗漏、略去」；冒号之后是对 variable 的解释说明，即「加工的程度」。",
-   "tags": [
-    "营养",
-    "代谢",
-    "神经科学"
-   ]
-  },
-  {
-   "date": "2026-10-06",
-   "en": "A society that lets its most capable citizens rise, whatever family they were born into, is not merely a fairer place to live but also, the data suggest, a more inventive one.",
-   "zh": "一个能让最有能力的公民无论出身何种家庭都能向上流动的社会，不仅更公平宜居；数据表明，它也更具创造力。",
-   "src": "外刊精读 · 社会流动与创新（2026-10-06）",
-   "key": "whatever family they were born into",
-   "keyZh": "无论出生于何种家庭（让步状语从句，插入主谓之间）",
-   "tip": "whatever 引导让步状语从句，插在主句主语与谓语之间，起「无论怎样都成立」的强调作用；not merely ... but also ... 构成递进并列。",
-   "tags": [
-    "经济",
-    "社会流动"
-   ]
-  },
-  {
-   "date": "2026-10-05",
-   "en": "Brain aging doesn't suddenly begin when we get older, but the biological signals may be detectable decades earlier.",
-   "zh": "大脑老化并非在我们变老的那一刻才突然开始；它的生物学信号，也许早在几十年前就已经可以被察觉。",
-   "src": "eBioMedicine · UCLA Health",
-   "key": "detectable",
-   "keyZh": "可察觉的；可检测到的",
-   "tip": "detectable 由动词 detect（察觉、检测）加 -able 构成，表示'能够被察觉的'。注意它与 sensible（可感知的）、perceptible 近义，但 detectable 更强调借助仪器或方法'检测得出'，常用于科研语境——如 detectable levels（可检测到的水平）、no detectable trace（检测不到的痕迹）。这里是'熟词僻义'的反向提醒：detect 最常见的搭配是 detect a problem / detect a change，书面语中却常用来指机器、实验对微弱信号的捕捉。",
-   "tags": [
-    "健康",
-    "神经科学",
-    "微生物组"
-   ]
-  },
-  {
-   "date": "2026-10-04",
-   "en": "Beneath a thin layer of vegetation, the Arctic holds one of the planet's largest stores of carbon — frozen, quiet, and, until recently, safely sealed away.",
-   "zh": "在薄薄一层植被之下，北极封存着地球上最大的碳库之一——它冻结着、静默着，直到不久之前，还被安稳地锁在其中。",
-   "src": "外刊精读 · 冻土苏醒（2026-10-04）",
-   "key": "seal away",
-   "keyZh": "封存；把…锁藏起来",
-   "tip": "「stores of carbon」中 store 是熟词僻义（n. 储存量），不是「商店」；hold 在此意为「容纳、拥有」。",
-   "tags": [
-    "气候",
-    "生态"
-   ]
-  },
-  {
-   "date": "2026-10-03",
-   "en": "A study reconciling 50 satellite estimates finds the two ice sheets lost 11,309 billion tonnes of ice between 1979 and 2023 — a loss that has lifted global sea level by about three centimetres.",
-   "zh": "一项把约 50 份卫星估测「对账」的研究发现，1979 至 2023 年间两大冰盖共流失 11,309 亿吨冰，使全球海平面上升约三厘米。",
-   "src": "外刊精读 · 格陵兰与南极冰盖（2026-10-03）",
-   "key": "reconcile",
-   "keyZh": "使一致；对账（熟词僻义）",
-   "tip": "reconcile 常见义为「和解」，此处指把相互不一致的数据「调和、对账」成一个统一记录。",
-   "tags": [
-    "气候",
-    "卫星观测"
-   ]
-  },
-  {
-   "date": "2026-10-02",
-   "en": "Wheat, barley, cattle and sheep crossed Eurasia into northwest China roughly 4,000 years ago — yet left no detectable trace of the western farmers who first domesticated them.",
-   "zh": "约四千年前，小麦、大麦、牛与羊跨越欧亚大陆传入中国西北——却没有留下任何可检测到的、最早驯化它们的西方农耕人群的痕迹。",
-   "src": "外刊精读 · 麦子西来，人未东迁（2026-10-02）",
-   "key": "detectable",
-   "keyZh": "可检测到的；可察觉的",
-   "tip": "破折号后的 yet 是「然而」，构成强烈的对比：作物来了，人却没来。leave no trace of 是固定表达「不留痕迹」。",
-   "tags": [
-    "考古",
-    "古基因组"
-   ]
-  },
-  {
-   "date": "2026-10-01",
-   "en": "The brain does not simply file memories away while we sleep; it replays them, in fast, rhythmic bursts, deciding which to keep and which to let fade.",
-   "zh": "大脑在我们睡眠时并非只是把记忆归档了事——它会以快速而有节律的爆发式活动重放这些记忆，决定哪些该留下、哪些任其消褪。",
-   "src": "外刊精读 · 记忆与睡眠（2026-10-01）",
-   "key": "file away",
-   "keyZh": "把…归档保存",
-   "tip": "file away 字面是「归档」，此处与 replays（重放）形成对照，强调记忆不是被动存放而是主动加工。",
-   "tags": [
-    "神经科学",
-    "学习"
-   ]
-  },
-  {
-   "date": "2026-09-30",
-   "en": "For a generation raised on glowing screens, the paper book can look like a technology whose day is done.",
-   "zh": "对在屏幕前长大的一代而言，纸质书看起来可能像是一项早已过时的技术。",
-   "src": "外刊精读 · 屏幕之困（2026-09-29）",
-   "key": "whose day is done",
-   "keyZh": "…的时代已经结束",
-   "tip": "此句以「过时之物」的成见开篇，随后用 Yet 转折引出研究结论，是议论文「先立靶、再反驳」的经典开头。",
-   "tags": [
-    "教育",
-    "认知科学"
-   ]
-  },
-  {
-   "date": "2026-09-29",
-   "en": "What looks like a simple choice — paper or screen — turns out to shape not only what we understand but how deeply we think.",
-   "zh": "看似简单的选择——读纸还是读屏——原来不仅影响我们理解了什么，更影响我们思考得有多深。",
-   "src": "外刊精读 · 阅读的媒介（2026-09-29）",
-   "key": "turn out to",
-   "keyZh": "结果是；原来是",
-   "tip": "not only A but B 结构中，B 往往是作者真正想强调的重点（此处为 how deeply we think）。",
-   "tags": [
-    "教育",
-    "认知科学"
-   ]
-  },
-  {
-   "date": "2026-09-28",
-   "en": "Cities that plant trees for shade today are, in effect, writing a public-health policy for the century to come.",
-   "zh": "今天为遮荫而植树的城市，实际上是在为未来一百年拟定一份公共卫生政策。",
-   "src": "外刊精读 · 城市与热浪（2026-09-28）",
-   "key": "in effect",
-   "keyZh": "实际上；事实上",
-   "tip": "in effect 是高频插入语，用「换句话说」的语气把具体行为提升到政策高度。",
-   "tags": [
-    "城市",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-09-27",
-   "en": "The most striking finding is not that the machines can write, but that readers so often cannot tell — and, worse, do not much care.",
-   "zh": "最引人注目的发现不是机器会写作，而是读者常常分辨不出——更糟的是，他们并不太在意。",
-   "src": "外刊精读 · 人工智能与写作（2026-09-27）",
-   "key": "tell",
-   "keyZh": "分辨；辨别（熟词僻义）",
-   "tip": "tell 在此不是「告诉」而是「分辨」（tell A from B）。破折号后递进加重了批评语气。",
-   "tags": [
-    "科技",
-    "人工智能"
-   ]
-  },
-  {
-   "date": "2026-10-21",
-   "en": "A toll can be shown to work; it cannot be shown to work miracles, and the distance between those claims is what measurement exists to mark.",
-   "zh": "收费可以被证明有效；它不能被证明有奇效，而这两种说法之间的距离，正是测量存在的意义。",
-   "src": "外刊精读 · 城市政策与拥堵收费（2026-10-21）",
-   "key": "mark",
-   "keyZh": "标示；划出（界线）",
-   "tip": "两个分句以分号对照「work / work miracles」，最后用 what measurement exists to mark 收束：mark 在此不是「做记号」，而是「标定、划出界线」。写作时可套用「A can be shown to X; it cannot be shown to Y」的让步句式。",
-   "tags": [
-    "城市",
-    "公共政策"
-   ]
-  },
-  {
-   "date": "2026-10-28",
-   "en": "Treated as a deadline, it turns a guess into an instruction, and a decision that belongs to the senses — look, smell, taste — into one that belongs to a printer.",
-   "zh": "一旦被当成截止线，猜测就变成了指令——本该由感官作出的判断（看、闻、尝），被交给了一台打印机。",
-   "src": "外刊精读 · 包装上的日期（2026-10-28）",
-   "key": "belong to",
-   "keyZh": "属于；归……所有",
-   "tip": "这句用 turn A into B 的两次平行完成对照：a guess→an instruction、the senses→a printer。破折号里三个动词原形 look, smell, taste 并列（省略 and），让节奏变急促；one 替代 a decision，避免重复。写作时可套用「Treated as X, it turns A into B, and C into D」的句式，用来批评某个被误用的工具。",
-   "tags": [
-    "食物浪费",
-    "消费习惯"
-   ]
-  },
-  {
-   "date": "2026-10-19",
-   "en": "Both claims are true, and neither settles the question, because the choice is not between a mine and no mine but between two kinds of damage whose costs fall on different people and different centuries.",
-   "zh": "两个说法都成立，而两者都终结不了这个问题：因为真正的选择不是“采矿”与“不采矿”，而是两种伤害——它们的代价落在不同的人、不同的世纪身上。",
-   "src": "外刊精读 · 深海采矿与底栖生态（2026-10-19）",
-   "key": "settle",
-   "keyZh": "解决；了结（settle a question 终结一个问题）",
-   "tip": "settle 在此不是“定居”，而是“了结、定论”。句式值得背：not between A and B but between C and D，把二选一的问题替换成“两种代价”的对比；whose 引导定语从句修饰 two kinds of damage，最后落到 people 与 centuries 两个维度，一句话把伦理与时间同时交代完。",
-   "tags": [
-    "深海采矿",
-    "生态"
-   ]
-  },
-  {
-   "date": "2026-11-01",
-   "en": "A twelve per cent shortfall in photosynthetic rate is not a twelve per cent shortfall in the grain inside a silo.",
-   "zh": "光合速率下降 12%，并不等于粮仓里的谷物少 12%。",
-   "src": "外刊精读 · 土里的塑料碎片与光合作用（2026-11-01）",
-   "key": "shortfall",
-   "keyZh": "缺口；短缺（a shortfall in supply 供应缺口）",
-   "tip": "shortfall 是“应到未到”的那部分，比 shortage 更强调“差了多少”。句式更值得记：同一个数字在两端各说一次，用 not A ... B 的结构把“实验室效应量”和“真实收成”隔开——这正是评估任何外推结论时最该先问的一句。shortfall 常与 in 搭配：a shortfall in revenue / in grain。",
-   "tags": [
-    "微塑料",
-    "光合作用",
-    "农业",
-    "生态与可持续"
-   ]
-  },
-  {
-   "date": "2026-11-04",
-   "en": "That is the uncomfortable part: the lights at half past six are not a decoration on a healthy city but one of the things that make it one.",
-   "zh": "这才是让人不太舒服的地方：六点半亮起的那些灯，不是一座健康城市上的装饰，而是让它成为健康城市的东西之一。",
-   "src": "外刊精读 · 周五晚上那场戏，值三十一天（2026-11-04）",
-   "key": "decoration",
-   "keyZh": "装饰（不是必需品，可有可无）；勋章（award a decoration 授勋）",
-   "tip": "这句话的分量全在 not A but B：A（decoration，装饰）是可有可无的表象，B（one of the things that make it one）是缺了就不成立的条件——一个词之差，把因果方向掉了个头。注意两个 one 都是代词：第一个回指 a healthy city，第二个在 make it one 里仍回指 a healthy city，不是数词“一个”。这种收尾句式极好用：先用 not A but B 定性，再让 B 落到一个可被检验的条件上。",
-   "tags": [
-    "文化",
-    "艺术与地方生活",
-    "衰老",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-11-12",
-   "en": "The conclusion is narrower than either camp would like: the argument is no longer whether phones cost attention, but when, for whom, and at what price removing them is worth the trade.",
-   "zh": "这个结论比两边阵营都希望的更窄：争论已经不是“手机是否消耗注意力”，而是“在什么时机、对谁、以什么代价撤走它才值得”。",
-   "src": "外刊精读 · 课前收走手机，涨分最多的是垫底那批人（2026-11-12）",
-   "key": "trade",
-   "keyZh": "取舍、权衡（worth the trade 这笔交换值得）；常见义“贸易”",
-   "tip": "这里的 trade 不是“贸易”，而是“拿一样东西换另一样”的那笔交换：你想让学生多考几分，就得拿走他一节课的消息。判断依据是参数——at what price 已经把“代价”摆出来了，后面的 the trade 只能读成“这笔交换”。句式也值得记：no longer whether A, but when, for whom, and at what price B——把一个是非题改写成三个条件题，是所有政策讨论真正变专业的时刻。",
-   "tags": [
-    "教育",
-    "学习科学",
-    "注意力",
-    "数字化课堂"
-   ]
-  },
-  {
-   "date": "2026-11-03",
-   "en": "The butterfly survives not because it is hard to see, but because it is hard to see correctly.",
-   "zh": "蝴蝶活下来，不是因为它难看清楚，而是因为它难以被看准。",
-   "src": "外刊精读 · 蝴蝶的翅膀，是给捕食者的一记假动作（2026-11-03）",
-   "key": "hard to see correctly",
-   "keyZh": "难以被看准（see correctly 是“看得准”，不是“看得见”；correctly 把问题从可见度换成了准确度）",
-   "tip": "这一句的全部机关，是在同一个动词短语后面加了一个副词。前半句 hard to see 说的是“看不清”——那是伪装、保护色在解决的问题；后半句 hard to see correctly 说的是“看不准”——虫就在那儿，你看得见它，却算错了它要去哪儿。一个 correctly，把整篇文章的立论从“藏起来”换成了“骗过去”，也顺手否掉了教科书里那个旧答案。句式上，not because A but because B 是外刊最常用的“排除—确立”框架：先把最容易被想到的解释放到 A 的位置，再在 B 上给出真正的理由。注意两个 because 后面都是形容词短语（hard to see / hard to see correctly），结构完全对称，所以读者一眼就能看出差别只在那个副词上——这种“只改一个词”的对称，比长篇解释有力得多。仿写骨架：X survives not because it is hard to ______, but because it is hard to ______ correctly.",
-   "tags": [
-    "动物行为",
-    "进化生物学",
-    "视觉感知"
-   ]
-  },
-  {
-   "date": "2026-11-02",
-   "en": "What the study establishes is a change in the kind of problem this is: not a device to be confiscated at the door, but a budget of hours that has to be negotiated across a whole week.",
-   "zh": "这项研究确立的，是这个问题性质上的改变：它不再是一台要在门口没收的设备，而是一笔必须在一整周里协商的小时预算。",
-   "src": "外刊精读 · 手机被锁进柜子之后：禁令改得了四十分钟，改不了一整天（2026-11-02）",
-   "key": "a budget of hours",
-   "keyZh": "一笔“小时预算”（budget 这里不是“预算金额”，而是可支配的总量；hours 才是本文真正的计量单位）",
-   "tip": "这句的力量来自一次“重新分类”。前半句 a change in the kind of problem this is 先把结论说成“问题换了类型”，而不是“结论有了对错”——这是学术写作里很高级的一步：不争论答案，先换问题。冒号后是两个对举的名词短语：not a device to be confiscated at the door 对 a budget of hours that has to be negotiated across a whole week。注意两边的介词短语都在做同一件事——划定战场：at the door 是空间上的一瞬（校门口没收），across a whole week 是时间上的全程（一周里协商）。一个把问题关在校门内，一个把它摊到整周，读者的立场就在这两个介词短语之间被推着走。budget 的引申也值得记：它把“时间”当成一种有额度、要分配、会超支的资源，于是“该不该收手机”就变成了“这些小时怎么花”。仿写骨架：What the study establishes is a change in the kind of problem this is: not a ______ to be ______ at the door, but a ______ that has to be ______ across a whole week.",
-   "tags": [
-    "教育",
-    "校园治理",
-    "青少年健康"
-   ]
-  },
-  {
-   "date": "2026-11-13",
-   "en": "The practical conclusion is cheap, and slightly embarrassing for the industry: stop teaching people to look slowly, and give them something to argue about.",
-   "zh": "实用的结论很便宜，对这门行当也略有些难堪：别再教人“慢慢看”，给他们一点可以争的东西。",
-   "src": "外刊精读 · 看画不需要技巧，需要有人跟你说话（2026-11-13）",
-   "key": "argue about",
-   "keyZh": "有可争之处、值得一辩（give sb something to argue about 给某人一个可以反驳的抓手）；不是“为……吵架”",
-   "tip": "argue about 的本义是“为某事争吵”，但 something to argue about 在这里是褒义：一件作品如果只有一种正确读法，就没有对话，也就没有那个把心情抬起来的动作。注意 cheap 也不是“便宜”，而是“代价很低、几乎不花钱”——它与后半句 embarrassing（让业界难堪）构成一对反差：最省钱的解法和最贵的解法，效果反过来。句式可迁移：The practical conclusion is cheap, and slightly embarrassing for X: stop doing A, and give them B.",
-   "tags": [
-    "文化",
-    "博物馆",
-    "审美经验",
-    "艺术与地方生活"
-   ]
-  },
-  {
-   "date": "2026-11-14",
-   "en": "The moths were never loyal to the lamp, only to the dark, and we have been charging them for our safety.",
-   "zh": "蛾子从来没有忠于那盏灯，它们忠于的是黑暗；而我们一直在拿它们付我们自己那份安全的账。",
-   "src": "外刊精读 · 把灯调暗一半，蛾子只回来两成（2026-11-14）",
-   "key": "charging them for",
-   "keyZh": "拿它们付账（charge sb for sth 本义“向某人收取某物的费用”；这里把“生态代价”写成一张寄给蛾子的账单，是全文唯一的道德判断）",
-   "tip": "这句是一条推理链的压缩包。前半句用 never … only … 这对否定—限定结构，把“蛾子爱光”这个流传了两百年的常识一次推翻：它们不是被灯吸引，只是把黑暗当成了路标，而灯恰好亮在路口。真正的刀在 and 之后——charge sb for sth 是“向某人收费”，主语却是 we。于是“我们修灯、我们安全”与“它们付账”被同一个动词缝在了一起，而这个动词自带商业语气，让一句生态评论读起来像一张账单。注意 have been charging 用现在完成进行时：这不是一次结账，是持续了上百年的分期付款。仿写骨架：X were never loyal to ______, only to ______, and we have been charging them for our ______. 填写时让最后那个名词落在“我们自己受益的东西”上（safety / convenience / comfort），句子就会自己长出讽刺。",
-   "tags": [
-    "生态",
-    "光污染",
-    "城市治理"
-   ]
-  },
-  {
-   "date": "2026-11-15",
-   "en": "The pack on the hallway floor is not a character flaw, but the shape of the city folded small enough to fit through a door.",
-   "zh": "走廊地板上那块电池不是性格缺陷，它是这座城市被折小、刚好能从一扇门里塞进来的形状。",
-   "src": "外刊精读 · 他把电池推进卧室，因为楼下没有插座（2026-11-15）",
-   "key": "the shape of the city",
-   "keyZh": "城市的形状（把“制度的结构性缺失”说成可以看见、可以量的形状；shape 这里不是“外形”，而是“被结构决定的样子”）",
-   "tip": "这句是全篇的落点，靠一次“转喻”完成：前半句先拆掉旧框架——not a character flaw，character flaw 三个词就把“归责于个人”的整套逻辑压成了名词；后半句才是作者要你带走的东西，the shape of the city。注意 not A, but B 的重心永远在 B，前半句只是清场。真正的杀伤力在句尾的过去分词短语 folded small enough to fit through a door：城市太大，进不了那扇门，于是它把自己折小，最后以一块电池的形式挤进了卧室——一个几何动作，把“租金、规划、监管”这些抽象词全部变成了可以看见的物体。仿写骨架：X is not a character flaw, but the shape of ______ folded small enough to ______.",
-   "tags": [
-    "科技与创新",
-    "公共政策",
-    "城市安全"
-   ]
-  },
-  {
-   "date": "2026-11-16",
-   "en": "Damage that arrives without a feeling will not be caught by paying attention.",
-   "zh": "一种不带来任何感觉的损害，靠“注意一下”是注意不到的。",
-   "src": "外刊精读 · 第一个凹口出现在十八岁，而它从不疼（2026-11-16）",
-   "key": "caught by paying attention",
-   "keyZh": "靠“注意”来抓住（catch 此处是“及时发现、拦住”；整句在说：没有感觉的损害，不会被注意力捕获）",
-   "tip": "这是全篇的最后一句，也是唯一一句完整的判断。它用了三重否定来收束：without a feeling（没有感觉）、will not be caught（抓不住）、by paying attention（靠“注意”这个动作）——把最常见的那句忠告“你注意一下就好了”直接拆掉。注意 catch 的用法：不是“抓住”一个物体，而是“及时拦下”一个正在发生的过程（catch a disease early 早发现疾病），所以中文译“注意不到”比“抓不住”更贴。前半句 Damage that arrives without a feeling 用定语从句把“损害”定义成一个“悄悄的到达者”，比 preventable hearing loss 这种术语更有画面。仿写骨架：______ that arrives without a ______ will not be caught by ______.",
-   "tags": [
-    "健康与身心",
-    "青少年听力",
-    "公共卫生"
-   ]
-  },
-  {
-   "date": "2026-11-19",
-   "en": "A smell is not a memory booster but a piece of scaffolding, and scaffolding is worth nothing if it goes up after the wall.",
-   "zh": "气味不是记忆的增强剂，而是一段脚手架；而脚手架如果砌在墙之后，就一文不值。",
-   "src": "外刊精读 · 香气没有让他记得更多，只让他分得更清（2026-11-19）",
-   "key": "goes up after the wall",
-   "keyZh": "砌在墙之后才立起来（go up 此处是「被搭起来、立起来」，不是「上升」；整句在说：顺序错了，工具就失去了意义）",
-   "tip": "这是全篇的落点，靠一次「换喻 + 施工顺序」完成。前半句先降级：a smaller claim than… 把结论主动缩小，气势先低下去，判断反而更硬。中段 not A but B 清场——A 是香氛行业想要的说法（booster，一支可以随时打的针），B 是自己要的（scaffolding，砌墙之前那圈钢管）。真正的杀伤力在句尾 if it goes up after the wall：它把一个统计结论（气味 × 时机的交互作用）翻译成一个能看见的先后次序——不是「有没有用」，而是「来不来得及」。注意 go up 的双关：脚手架 go up 是「搭起来」，价格 go up 是「上涨」，这里只能是前者。仿写骨架：____ is not a ____ but a ____, and ____ is worth nothing if it ____ after the ____.",
-   "tags": [
-    "教育与学习方式",
-    "学习科学",
-    "记忆"
-   ]
-  },
-  {
-   "date": "2026-11-20",
-   "en": "A beaver is not a component that can be specified, delivered and installed. It is a neighbour that reads the site, ignores the drawing, and then, given time and a measure of tolerance, does the job the drawing was for.",
-   "zh": "河狸不是一个可以写进规格、按期交付、现场安装的部件。它是一个邻居——它读现场，不理图纸，然后在给了它时间和一点容忍之后，把那张图纸本来要做的事做成了。",
-   "src": "外刊精读 · 河狸筑起六座坝，人类修的坝塌了一半（2026-11-20）",
-   "key": "a measure of tolerance",
-   "keyZh": "一定程度的容忍（measure 此处是「程度、份额」，不是「措施」；整句在说：宽容是有配额的，给到某个程度为止）",
-   "tip": "这是全篇的落点，靠的是一次「工程词 → 生活词」的替换。前半句先清场：a component that can be specified, delivered and installed——specify（写进规格）、deliver（交付）、install（安装）三个动词全来自供应链，连起来就是「可以下单的东西」。后半句换成 a neighbour，一个不能下单、只能相处的身份，立场立刻清楚。真正的技术活在中间的 given time and a measure of tolerance：这是插入的过去分词状语（= if it is given…），把「需要什么条件」压进句子主干之间，既不打断节奏，又让条件无法被忽略。注意 measure 的熟词僻义：不是「措施」（take measures），而是「一定的量」——a measure of 就是「几分、一定程度」。仿写骨架：____ is not a ____ that can be ____, ____ and ____. It is a ____ that ____, ____, and then, given ____, ____.",
-   "tags": [
-    "生态与可持续",
-    "洪水治理",
-    "再野化"
-   ]
-  },
-  {
-   "date": "2026-11-21",
-   "en": "None of this makes the company's figures wrong; it makes them an answer to a different question.",
-   "zh": "这些发现并没有让公司的数字变成错的；它只是让那些数字变成了另一个问题的答案。",
-   "src": "外刊精读 · 机器人卸下了重物，却拿走了慢的权利（2026-11-21）",
-   "key": "an answer to a different question",
-   "keyZh": "对另一个问题的回答（不是「错的」，而是「量的是另一件事」——争论从对错移到口径）",
-   "tip": "这句话是全文的转轴，用的是「先让一步、再归位」的写法。前半句 None of this makes the figures wrong 把对方的证据完整接住，读者不会觉得你在抬杠；后半句 it makes them an answer to a different question 一句把争论从「谁对谁错」挪到「量的是哪件事」。注意 none of this 是「这一切都不」，不是「没有一个是」；代词 them 指 figures（复数），不能用 it。这句可以整句背下来，用在所有「两边数据都真、结论相反」的议论文里：先承认，再换框。仿写骨架：None of this makes ______ wrong; it makes it ______.",
-   "tags": [
-    "科技与创新",
-    "劳动",
-    "仓库自动化"
-   ]
-  },
-  {
-   "date": "2026-11-22",
-   "en": "An institution sold as a remedy for isolation produced no detectable effect on isolation.",
-   "zh": "一个被当作「抗孤独良方」来推销的机构，在「孤独」这项指标上交不出可检测的效果。",
-   "src": "外刊精读 · 图书馆的疗效，落在了最不像它的地方（2026-11-22）",
-   "key": "sold as a remedy",
-   "keyZh": "被当作良方来推销（sold as 暗示「包装」与「承诺」，不是「确实如此」）",
-   "tip": "这是全文的转折句，只有十四个词，力量全在两个结构上。第一处是被动语态 sold as a remedy for isolation：主语 institution 被「当作」良方来卖，作者没有说谁在卖，但那层怀疑已经在了；sold as 后面跟的是标签，不是事实。第二处是句尾的 repetition：isolation 在一句里出现两次，前一次是它承诺要治的东西，后一次是它没治成的东西，同一个词首尾照应，落差自己就说话了。注意 effect on 的搭配：on 后面是被作用的对象，不能用 for。仿写骨架：A ______ sold as a remedy for ______ produced no detectable effect on ______.",
-   "tags": [
-    "文化",
-    "地方生活",
-    "公共卫生"
-   ]
-  }
- ]
+  "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
+  "sentences": [
+    {
+      "date": "2026-11-23",
+      "en": "Was the removal additional, or would the meadow have come back anyway; will the carbon stay for a century, given how anchors and heat tear them apart; and has the same tonne been sold twice?",
+      "zh": "这笔减排真的是「额外」的吗，还是那片海草本来就会长回来；碳能不能待满一百年，考虑到船锚和热浪会把海草床撕开；以及，同一吨碳是不是已经被卖过两次？",
+      "src": "外刊精读 · 它值一万亿美元，前提是你先同意几个假设（2026-11-23）",
+      "key": "additional",
+      "keyZh": "额外的（碳市场术语 additionality：这笔减排是项目带来的、本来不会发生；若那片海草本就会自己长回来，就不算「额外」）",
+      "tip": "这句话值得整句背下来，因为它用三个问号完成了对一整个产业的审问。第一，靠分号而非 and 串起三问：分号让三个问题各自独立、互不遮蔽，读者被逼着一个个过；用 and 就会读成「顺便还有两件事」。第二，虚拟语气 would have come back：说的不是「会不会长回来」，而是「本来就会长回来、只是被假设成不会」——语法本身就在质疑这笔账。第三，三个问题恰好对应碳市场的三条铁律：额外性（additional）、持久性（stay for a century）、重复计算（sold twice）；写议论文时把三个同构的短问句并排，是最省力的排比。注意 given how … 是「考虑到……」；tear them apart 的 them 回指 meadows，靠匍匐枝一年只扩几十厘米，而船锚拖一次就撕开几平方米——这个对比正是「种下去容易、活下来难」的全部含义。仿写骨架：Was the X really Y, or would it have ______ anyway; will it ______, given how ______; and has the same ______ already been ______?",
+      "tags": [
+        "生态与可持续",
+        "蓝碳",
+        "气候金融"
+      ]
+    },
+    {
+      "date": "2026-11-11",
+      "en": "An hour a week is a cheap prescription; the plot of land that makes it possible is not.",
+      "zh": "每周一小时是一张廉价的处方；让这张处方成立的那块地，可不便宜。",
+      "src": "外刊精读 · 每周一小时的公园，值多少钱（2026-11-11）",
+      "key": "a cheap prescription",
+      "keyZh": "一张廉价的处方（prescription 由“药方”引申为“方案”；与后半句的地价形成反差）",
+      "tip": "这句话的全部力量来自三处。第一，prescription 的引申：把“每周走一小时”说成医生开的处方，读者立刻明白这是一个可执行、有剂量的小动作。第二，分号：不加 but、however 之类的连接词，把“便宜”和“贵”硬接在一起，反差自己说话——中文里若写成“但是那块地很贵”，力量立刻减半。第三，结尾的省略：the plot of land that makes it possible is not (cheap)，把“贵”这个词根本不写出来，让读者自己在句号处补完，补出来的那一下就是这一句的重量。注意 plot 在这里不是“情节”，而是一块地皮；that makes it possible 是定语从句修饰 the plot of land，读时先跳过再回填。仿写骨架：X is a cheap Y; the Z that makes it possible is not.",
+      "tags": [
+        "健康与身心",
+        "城市自然",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "en": "The question worth asking about the bag by the door is therefore not where the clothes will go, but who will have the hours to turn them into something else.",
+      "zh": "因此，关于门口那只袋子，真正值得问的不是这些衣服会去哪儿，而是谁会有那几个小时，把它们变成别的东西。",
+      "src": "外刊精读 · 捐出去的那件外套，一半没人要（2026-11-10）",
+      "key": "who will have the hours",
+      "keyZh": "谁会有那几个小时（关键在 the hours：时间才是真正的成本，不是材料、不是技术）",
+      "tip": "这句话的全部重量压在最后那个 who 上。前半句 the bag by the door 是一个极具体的画面——你家门口那只待送走的袋子，比 any donated clothing 这种抽象说法有力得多；中间的 not where…but who… 是本文反复使用的对照框架：先排除一个看起来最自然的问题（衣服去哪儿了），再立起一个真正的问题（谁有时间）。注意 where the clothes will go 是将来时，who will have the hours 也是将来时，两个 will 并置，把“责任”从一个空间问题改造成了一个时间问题。最后 to turn them into something else 用不定式表目的，something else 故意含糊——因为答案本来就是“看情况”。仿写时可以整句替换宾语：not where the money went, but who had the hours to check it。",
+      "tags": [
+        "生态与可持续",
+        "消费",
+        "循环经济"
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "en": "So the question worth asking is not whether the writing got better, but whether the person who wrote it is still there to be found.",
+      "zh": "所以值得问的不是“这篇文章有没有变好”，而是“写它的那个人，是否还找得到”。",
+      "src": "外刊精读 · AI 把文章改好了，也把“谁写的”改掉了（2026-11-09）",
+      "key": "still there to be found",
+      "keyZh": "还在不在、是否仍然找得到（不是“仍然在那里”这么平淡；to be found 强调“可被发现”）",
+      "tip": "这句话的结构值得整句背下来：The question worth asking is not whether A, but whether B。三个动作各有讲究。第一，worth asking 是形容词短语后置修饰 question，等于“值得问的那个问题”，比 which we should ask 干净得多。第二，not whether…but whether… 是“排除一个假问题、立起一个真问题”的标准框架——先承认“有没有变好”这个问法很自然，再说明它问偏了。第三，结尾的 is still there to be found 用了被动不定式：如果只写 is still there，意思是“人还在原地”；加上 to be found，意思变成“还找得到”——差别在于读者是否还认得出作者。全文的落脚点就压在这个被动上：文章没有被毁掉，只是作者变得不可检索了。仿写时可以把 A、B 换成任何一组“表面指标 vs 真正问题”，例如 not whether the score went up, but whether the student is still in the sentence。",
+      "tags": [
+        "科技与创新",
+        "语言",
+        "人工智能"
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "en": "Once a week measured the same as four days a week, which dismantles the folk version of the finding, where the brain is a muscle and a grandchild is the gym.",
+      "zh": "一周一次，和一周四天，测出来是一样的——这就把这条发现的民间版本拆掉了。那个版本里，大脑是一块肌肉，孙辈就是健身房。",
+      "src": "外刊精读 · 带孙辈的老人更聪明，可箭头也许是反的（2026-11-08）",
+      "key": "dismantles",
+      "keyZh": "拆掉、拆解（不是“驳倒”，而是把结构拆散——零件还在，但组合散了）",
+      "tip": "这句话的力量分两层。第一层是 which 引导的非限制性定语从句：它不修饰某个名词，而是回指前面整个“一周等于四天”的事实，等于用一个从句给整句定性。第二层是 dismantle 这个动词的选择——作者本可以写 refute（驳倒）或 disprove（证伪），但他选了“拆”：民间版本并没有被证明是假的，它只是被拆成了零件，而零件（大脑会变、孙辈有用）本身还在。最后那个比喻 the brain is a muscle and a grandchild is the gym，用 where 从句轻轻一摆，就把“剂量越大越好”的直觉说完了，也顺手判了它死刑——因为健身房的理论前提是练得越多越强，而这篇文章恰恰发现频率无关。",
+      "tags": [
+        "代际关系",
+        "认知老化",
+        "家庭"
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "en": "A bell can be pushed back by an hour, but what a child actually sleeps is settled later, by a homework deadline, a bus schedule, a screen and a family.",
+      "zh": "铃声可以往后推一小时，但一个孩子实际睡多久，是更晚的时候由一份作业截止时间、一趟班车、一块屏幕和一个家庭决定的。",
+      "src": "外刊精读 · 把上课时间推后一小时，多出来的二十六分钟（2026-11-07）",
+      "key": "settled later",
+      "keyZh": "（结果）是在更晚的时候被决定的；settle 在此不是“安顿下来”，而是“尘埃落定、被定下来”",
+      "tip": "这句的力气全在 but 之后的语序：先说“铃声可以推后”（承认杠杆存在），再说“实际睡多久是被……决定的”，四个名词依次排开，把杠杆的长度量了出来。settled 是熟词僻义——不是“定居／安顿”，而是“（结果）被最终确定”，比 decided 多一层“不由某一方单独说了算”的意思。仿写可套：A rule can be written in a week, but what a classroom actually feels like is settled later, by a deadline, a corridor, a lunch queue and a tired teacher.",
+      "tags": [
+        "健康与身心",
+        "教育",
+        "青少年睡眠"
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "en": "The lesson is uncomfortable for a sector that has always counted its emissions and rarely its debris: a machine is only as clean as the least recoverable thing it leaves behind.",
+      "zh": "这对一个历来只统计排放、很少统计残骸的行业来说并不舒服：一台机器有多干净，取决于它留下的、最难回收的那件东西。",
+      "src": "外刊精读 · 风停了以后，那片叶子去哪儿（2026-11-06）",
+      "key": "only as clean as",
+      "keyZh": "只和……一样干净（设上限的比较，言下之意：不会更干净）",
+      "tip": "这句的分量全在 only as … as 这个结构：它不是夸一台机器“很干净”，而是给清洁度设了一个上限——最脏的那一环有多脏，整台机器就只能有多干净。前半句的 counted 也是熟词僻义：不是“数”，而是“把……计入账”，与 rarely its debris 里的省略（rarely counted）合起来，把一篇材料学的报道一刀切成了会计学的追问。仿写时可套：A city is only as walkable as its worst crossing / A school is only as fair as its quietest student.",
+      "tags": [
+        "生态与可持续",
+        "再生能源",
+        "材料循环",
+        "环境政策"
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "en": "A coating can win the first measurement and lose the second in the same afternoon.",
+      "zh": "同一件涂料，可以在同一个下午赢下第一个测量、输掉第二个。",
+      "src": "外刊精读 · 屋顶凉了二十二度，路上的人呢（2026-11-05）",
+      "key": "win the first measurement and lose the second",
+      "keyZh": "赢下第一个测量、输掉第二个（同一件事在两个指标上一正一反）",
+      "tip": "整句的力气全在 win 与 lose 的对举：同一个主语（a coating），两个反义动词，各自带一个 measurement，把“同样一件东西，在甲指标上得分、在乙指标上失分”压缩进一行。真正要学的是后半截 in the same afternoon——它把矛盾从“两种研究打架”改写成“同一时刻的两种读数”，矛盾感立刻具体了。写议论文时可用同一句式给结论加限定：X can win A and lose B，读者会自己明白为什么不能只报一个数字。",
+      "tags": [
+        "科技与创新",
+        "城市治理",
+        "气候适应"
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "en": "What it establishes is where the argument now sits: the limit on AI's water use is less engineering than who pays for a disposal that has always been someone else's problem.",
+      "zh": "它真正确立的，是这场争论现在的位置：AI 用水的上限，与其说是工程问题，不如说是“谁为那笔一直被当成别人麻烦的处置费买单”的问题。",
+      "src": "外刊精读 · 最脏的水，喂最贵的机器（2026-10-31）",
+      "key": "someone else's problem",
+      "keyZh": "别人的麻烦（把成本推给别人＝经济学里的“外部性” externality）",
+      "tip": "前半句是本站常用的判断句骨架「What it establishes is where the argument now sits」，用 what 主语从句加 where 表语从句，先说“它确立的不是结论，而是争论的位置”，再用冒号落地。真正要学的是 less A than B：字面是“较少是 A”，实际意思是“与其说是 A，不如说是 B”，A 与 B 词性还可以不对称（此处 A 是名词 engineering，B 是 who 从句）。写作时可套用「The limit on X is less a question of technology than of who pays for Y.」来把讨论从“能不能做”转到“谁来承担代价”。",
+      "tags": [
+        "水资源",
+        "科技与创新",
+        "环境政策"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "en": "The decisive shift is in what a visitor now buys: the islands once sold knitwear as a product, whereas the festival sells the hour in which you learn to make it.",
+      "zh": "决定性的转变在于游客现在买的是什么：这些岛曾经把针织品当作产品来卖，而节庆卖的是“你学着把它做出来的那一小时”。",
+      "src": "外刊精读 · 一门老手艺的两种价钱（2026-10-30）",
+      "key": "decisive shift",
+      "keyZh": "决定性的转变（the decisive shift in sth 某事上的决定性转变）",
+      "tip": "句子骨架是「The decisive shift is in + 宾语从句」，把“转变”钉在一个具体问题上——买什么。冒号后用 once ... whereas ... 造出前后对照，once 是“曾经”，与后半句的现在时形成时间断层；in which 引导定语从句修饰 the hour，it 回指 knitwear。写作时可套用「The decisive shift is in what people now pay for: X once sold A, whereas Y sells the hour in which you do it.」来写任何“从卖产品到卖体验”的行业变化。",
+      "tags": [
+        "非遗",
+        "地方经济",
+        "手工艺"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "en": "For a teacher the implication is almost mundane: a game is a door, not a room; points and time pressure will get a class through it, but only argument, error and reflection will keep them there.",
+      "zh": "对教师而言，结论几乎平淡无奇：游戏是一道门，不是一个房间；积分与时间压力能把一个班带进门，但只有争论、出错与反思才能让他们留下来。",
+      "src": "外刊精读 · 学习科学与游戏化课堂（2026-10-29）",
+      "key": "mundane",
+      "keyZh": "平淡的；不起眼的（原义“尘世的、世俗的”，与 heavenly 相对）",
+      "tip": "mundane 本义是“尘世的”，由此引申为“平淡无奇的”——用来形容一个“本该惊艳却意外朴素”的结论，语气里带着一丝自嘲，比 boring 精确得多。冒号后是全文的落点，靠一个比喻撑住：a game is a door, not a room（门与房间），再用分号把两种力量对照起来——will get … through it 是“带进门”，keep them there 是“留下来”；同一动词 keep 从“保持”滑向“留住”，正是英语里最省力的双关。写作时可套用“X is a door, not a room: A will get you through it, but only B will keep you there.”",
+      "tags": [
+        "学习科学",
+        "教育"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "en": "Measles is unforgiving of averages, because protection has to be continuous rather than merely high: a national figure of 92 per cent can conceal a district at 75, and the virus will find that district.",
+      "zh": "麻疹对平均数毫不宽容，因为保护必须是连续的，而不仅仅是“高”的：一个 92% 的全国数字，可以盖住某个只有 75% 的区县，而病毒一定会找到那个区县。",
+      "src": "外刊精读 · 全球健康与麻疹疫苗（2026-10-27）",
+      "key": "conceal",
+      "keyZh": "掩盖；遮住（不让看见）",
+      "tip": "先记住 unforgiving of 这个搭配——“对……毫不宽容”，比 doesn't forgive 更有判断力。中间用 rather than 否掉“高就够了”的直觉，冒号后立刻给一个具体场景（92% 盖住 75%）。最后 will find 把病毒写成有意志的猎手：情态动词 will 在此表“必然”，不是将来。写作时可套用“A is unforgiving of B: [具体场景], and [主语] will find [它]”。",
+      "tags": [
+        "公共卫生",
+        "全球健康"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "en": "The body keeps the receipt even when the mind tears it up, so a night nobody remembers is not a night that cost nothing.",
+      "zh": "身体留着收据，哪怕头脑把它撕了——所以一个没人记得的夜晚，并不是一个没有代价的夜晚。",
+      "src": "外刊精读 · 交通噪声、睡眠与心血管风险（2026-10-26）",
+      "key": "receipt",
+      "keyZh": "n. 收据；此处喻指身体留下的生理凭证（keeps the receipt 留下了证据）",
+      "tip": "「keeps the receipt even when the mind tears it up」把“身体记账、意识销毁”写成一张被撕掉的收据，抽象的实验结果立刻有了画面。注意 tear up 是“撕碎”，与 tear（眼泪）同形不同音。仿写：The liver keeps the receipt even when the glass is forgotten, so a night nobody remembers is not a night that cost nothing.",
+      "tags": [
+        "环境健康",
+        "睡眠",
+        "流行病学"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "en": "A society that measures adulthood by a front door of one's own will keep finding young people who fail the test.",
+      "zh": "一个用“自己的一扇前门”来衡量成年的社会，会不断发现年轻人没通过这场考试。",
+      "src": "外刊精读 · 搬回家住的年轻人与住房成本（2026-10-25）",
+      "key": "measure",
+      "keyZh": "衡量；以……为标准（measure A by B 用 B 来衡量 A）",
+      "tip": "measure 常见义是“测量长度”，此处是抽象的“拿什么当尺子”：measure adulthood by a front door，即“用有没有自己的房子来定义成年”。前半句用 that 定语从句把“社会”限定住，后半句 keep finding 的进行时暗示这不是一次误判，而是反复发生；fail the test 也不是“考试不及格”，而是“通不过这场人生考核”。整句的力量来自一个反差：尺子是社会给的，不及格的却是年轻人。仿写：A school that measures success by test scores will keep finding students who fail the test.",
+      "tags": [
+        "代际关系",
+        "住房"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "en": "The question is not whether artificial intelligence will take the desk jobs, but whether a society still keeps a door open for the young people who would rather work with their hands.",
+      "zh": "问题不是人工智能会不会拿走那些坐办公室的岗位，而是一个社会是否还给那些更愿意用手干活的年轻人留着一扇门。",
+      "src": "外刊精读 · 九十个人抢四个学徒位（2026-10-24）",
+      "key": "would rather",
+      "keyZh": "宁愿；更愿意（后接动词原形）",
+      "tip": "would rather do sth 表示主观偏好，比 prefer to 更有‘自己的选择’的意味；与 had better（建议）不同，它不带劝告。全句用 not whether ... but whether ... 把讨论从‘技术会不会’移到‘社会留不留’，两个 whether 从句并列作表语——这是议论文里把话题重心搬走的标准句式。仿写：The question is not whether screens will replace books, but whether a school still keeps a quiet hour for the ones who would rather read on paper.",
+      "tags": [
+        "职业教育",
+        "自动化"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "en": "None of this makes the advice wrong; it makes it unfinished.",
+      "zh": "这一切并不能说明那句建议是错的，只能说明它还没写完。",
+      "src": "外刊精读 · 运动处方的证据等级（2026-10-23）",
+      "key": "unfinished",
+      "keyZh": "未完成的；还没写完的",
+      "tip": "「None of this makes A wrong; it makes A unfinished.」先用否定替对方卸下“对错”之争，再用分号把判断改到“完成度”维度——这是学术写作里极省力的一种让步式反驳。仿写：None of this makes the plan wrong; it makes it untested.",
+      "tags": [
+        "循证医学",
+        "心理健康"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "en": "What the study ultimately suggests is that emotion is less a highlighter than a conductor, and that memory is less a filing cabinet than an orchestra that sounds different every time it plays.",
+      "zh": "这项研究最终提示的是：情绪更像一位指挥，而不是一支高亮笔；记忆更像一支每次演奏都略有不同的乐队，而不是一只档案柜。",
+      "src": "外刊精读 · 情绪与记忆的神经机制（2026-10-22）",
+      "key": "conductor",
+      "keyZh": "指挥（乐队指挥）；也指导体、列车员",
+      "tip": "less A than B 是「与其说是 A，不如说是 B」的对照句式；本句连用两次，把抽象机制换成「高亮笔 vs 指挥」「档案柜 vs 乐队」两组具体物象。写作时可借「双比喻对照」把观点形象化。",
+      "tags": [
+        "认知科学",
+        "心理学"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "en": "A market is not revived by the crowd it draws on opening day but by the door it keeps open afterwards.",
+      "zh": "一座市场不是被开张那天的热闹救活的，而是被此后一直开着的那扇门救活的。",
+      "src": "外刊精读 · 五万人来了，摊位却少了（2026-10-20）",
+      "key": "revive",
+      "keyZh": "使复兴；重新活起来",
+      "tip": "「not by A but by B」把两个判据并排：A 是 opening day 的那一刻热闹，B 是 afterwards 的长期开放。crowd 与 door 押头韵，draw（吸引）与 keep open（保持开着）一动一静。revive 与 restore 常被混用：restore 是修回原样，revive 是重新活过来——修好一座建筑不等于让它活起来。仿写：A library is not revived by the day it opens but by the hour it stays open when nobody is watching.",
+      "tags": [
+        "城市更新",
+        "公共空间"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "en": "The study's contribution is to move the question from how much the world consumes to how well that consumption fits the disease it is meant to treat.",
+      "zh": "这项研究的贡献，是把问题从“世界用了多少”改写为“这些用量与它要治的病有多匹配”。",
+      "src": "外刊精读 · 抗生素的“用多”与“用不上”（2026-10-18）",
+      "key": "fits the disease",
+      "keyZh": "与要治的病相匹配（fit 此处为“契合、对得上”，不是“合身”）",
+      "tip": "move the question from A to B 是学术写作里“重新定义议题”的常用句式：不直接反驳旧问题，而是把它换成另一个更准确的问题。fit 在这里是熟词僻义——常见义“（衣服）合身、合适”，此处指“用药与病情对得上”。be meant to do 表示“本来是为了做”，暗含“本意与结果”的对照。",
+      "tags": [
+        "公共卫生",
+        "抗生素耐药",
+        "全球健康"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "en": "Solar power's next leap may come less from discovering new crystals than from learning to seal the ones we already have.",
+      "zh": "太阳能的下一次跃迁，或许更多来自学会把我们已经拥有的晶体封好，而不是去发现新的晶体。",
+      "src": "外刊精读 · 给太阳能电池镀一层“特氟龙”（2026-10-17）",
+      "key": "seal",
+      "keyZh": "封住；密封（此处指把材料层与层之间的界面封好）",
+      "tip": "本句用 come less from A than from B（与其说来自 A，不如说来自 B）做取舍式对比：A 是“发现新晶体”，B 是“封好已有的晶体”。seal 在这里不只是“密封容器”，而是工程意义上的“把界面封住、阻断离子迁移与外界侵蚀”。注意 the ones 是代词，回指前面的 crystals；already have 作后置定语，暗含“不必另寻新材料”的态度。",
+      "tags": [
+        "能源",
+        "材料科学",
+        "科技"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "en": "Feeding a growing population may depend less on growing more food than on growing better food.",
+      "zh": "要养活不断增长的人口，与其说取决于种出更多的粮食，不如说取决于种出更好的粮食。",
+      "src": "外刊精读 · 餐桌上的“隐性饥饿”（2026-10-16）",
+      "key": "growing better food",
+      "keyZh": "种出更好的粮食",
+      "tip": "depend less on A than on B 意为「与其说取决于 A，不如说取决于 B」，是本句的骨架；growing more food 与 growing better food 构成一组对照——前者求「量」，后者求「质」，恰好点出全文主旨：真正的问题不只是种得够不够多，而是每一粒粮食里留下了多少营养。",
+      "tags": [
+        "农业",
+        "粮食安全",
+        "植物科学"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "en": "Canopy targets are easiest to meet on average and hardest to meet where they matter, so the useful measure is not a city-wide percentage but the distribution of shade across the streets where elderly and poor residents actually live.",
+      "zh": "树冠目标在平均值上最容易达成，在真正要紧的地方却最难达成；因此真正有用的指标不是全市的百分比，而是树荫在老人与穷人真正居住的那些街道上的分布。",
+      "src": "外刊精读 · 一条街的树荫（2026-10-15）",
+      "key": "where they matter",
+      "keyZh": "在真正要紧的地方",
+      "tip": "matter 在此是动词「要紧、重要」，不是名词「事情」。全句用 not A but B 把评价口径从「平均」换成「分布」，是本篇的论点句。",
+      "tags": [
+        "城市生态",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "en": "PFAS exist because industry wanted molecules that would not break down, and the properties that make them valuable are inseparable from the properties that make them dangerous.",
+      "zh": "PFAS 之所以存在，是因为工业界想要不会分解的分子；而让它们有价值的性质，与让它们危险的性质本就无法切割。",
+      "src": "外刊精读 · 永久化学品（2026-10-14）",
+      "key": "inseparable from",
+      "keyZh": "与……不可分割",
+      "tip": "break down 在此是「分解」，不是「出故障」。两个 the properties that... 结构并列，句子靠 inseparable 一词把「有用」与「有害」焊死在一起。",
+      "tags": [
+        "环境化学",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "en": "Each step up in code size roughly halved the logical error rate, so that more hardware bought less noise rather than more, which is the exact reverse of how every conventional computer behaves.",
+      "zh": "编码规模每提高一档，逻辑错误率就大致减半；于是更多硬件换来的是更少噪声而不是更多——这与每一台传统计算机的表现恰好相反。",
+      "src": "外刊精读 · 量子纠错（2026-10-13）",
+      "key": "the exact reverse of",
+      "keyZh": "与……恰好相反",
+      "tip": "step up 是「提高一档」；bought 在此是 buy 的比喻用法「换来」。rather than 后接对比项，the exact reverse of 则把这种反差推到「恰好相反」。",
+      "tags": [
+        "物理",
+        "量子计算"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "en": "We may speak in trees on paper, but in the mind we seem to build with bricks.",
+      "zh": "纸面上，我们也许在“说一棵树”；但在心智里，我们更像是在用一块块现成的砖，搭起一句句话。",
+      "src": "外刊精读 · 语言不是一棵树（2026-10-12）",
+      "key": "build with bricks",
+      "keyZh": "用砖块搭建（比喻由现成的小块拼装）",
+      "tip": "speak in trees 与 build with bricks 是一组对照比喻：前者指「按语法层级（树状结构）组句」的理论图景，后者指「用记忆中熟悉的词块逐块拼装」的实际情况。介词 in 与 with 都表「用……的方式/材料」。全句用 may ... but ... 构成让步转折，点出全文主旨：语言也许比我们以为的更「扁平」。",
+      "tags": [
+        "语言学",
+        "认知科学",
+        "心理科学"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "en": "The broader lesson is that time, deliberately managed, can be treated as a strategic resource rather than a fixed cost, and that rest and performance need not be rivals.",
+      "zh": "更广义的教训是：时间若被有意识地加以管理，可以被当作一种战略资源，而不是一笔固定成本；休息与绩效也未必是彼此对立的两方。",
+      "src": "外刊精读 · 四天工作制与员工福祉（2026-10-11）",
+      "key": "rivals",
+      "keyZh": "对手；对立的两方（形容词 rival 意为竞争的）",
+      "tip": "rivals 在此作名词，本义是「对手、竞争者」，此处引申为「彼此对立、非此即彼的两方」——need not be rivals 即「未必是互相对立的」。deliberately managed 是过去分词短语作后置定语，修饰 time，意为「被有意识地管理的」；rather than a fixed cost 则构成对比。全句主干为 The lesson is that ... and that ...，由两个 that 引导的并列表语从句共同说明「教训」的内容，句式工整，适合背诵。",
+      "tags": [
+        "劳动",
+        "工作制度",
+        "组织行为学"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "en": "For poorly instrumented explosive volcanoes, where a single sensor may be the only realistic option, such a tool could buy the hours needed to evacuate.",
+      "zh": "对于那些监测薄弱的爆炸式火山——在那里，一台传感器也许就是唯一现实的选择——这样的工具能够争取到疏散所需的数小时。",
+      "src": "Nature Communications · IPGP / GFZ Potsdam",
+      "key": "buy",
+      "keyZh": "争取到；换来（熟词僻义：购买）",
+      "tip": "buy 的常见义是“购买”，但在书面语中常引申为“（以某种代价）换取、争取到”，宾语多为抽象名词：buy time（争取时间）、buy influence（换取影响力）、buy the hours needed to evacuate（争得疏散所需的数小时）。这句的妙处在于：一台仪器并不能阻止喷发，它唯一能“买”到的，是时间——而时间恰恰是防灾中最昂贵的东西。注意别与 buy into（接受、相信某观念）混淆。",
+      "tags": [
+        "地球科学",
+        "火山",
+        "自然灾害"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "en": "A sweeping new analysis, however, argues that the body keeps several distinct clocks, and that they tick at very different speeds in men and women.",
+      "zh": "然而一项涵盖广泛的新分析认为，人体拥有好几座彼此不同的「时钟」，而且它们在男女身上的走速大不一样。",
+      "src": "外刊精读 · 衰老时钟与男女差异（2026-10-09）",
+      "key": "distinct",
+      "keyZh": "截然不同的；各自独立的",
+      "tip": "distinct 意为「截然不同的、清楚可辨的」，此处修饰 clocks，强调人体并非只有一座时钟，而是多座互不相同的时钟。sweeping 意为「涵盖广泛的、影响面大的」，常用来形容覆盖面很广的研究或改革；tick 在此以「钟表走动」比喻衰老的速度。",
+      "tags": [
+        "人口",
+        "衰老",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "en": "A tightly controlled new experiment suggests that this tidy equation leaves out a variable that may matter enormously: how heavily the food itself has been processed.",
+      "zh": "一项控制极严的新实验提示，这个整洁的等式漏掉了一个或许关系重大的变量——食物本身被加工的程度。",
+      "src": "外刊精读 · 超加工食品与身体反应（2026-10-08）",
+      "key": "matter",
+      "keyZh": "要紧；有重大影响（熟词僻义）",
+      "tip": "matter 在此作动词，意为「要紧、关系重大」，而非名词「事情、物质」——典型的熟词僻义。leaves out 意为「遗漏、略去」；冒号之后是对 variable 的解释说明，即「加工的程度」。",
+      "tags": [
+        "营养",
+        "代谢",
+        "神经科学"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "en": "A society that lets its most capable citizens rise, whatever family they were born into, is not merely a fairer place to live but also, the data suggest, a more inventive one.",
+      "zh": "一个能让最有能力的公民无论出身何种家庭都能向上流动的社会，不仅更公平宜居；数据表明，它也更具创造力。",
+      "src": "外刊精读 · 社会流动与创新（2026-10-06）",
+      "key": "whatever family they were born into",
+      "keyZh": "无论出生于何种家庭（让步状语从句，插入主谓之间）",
+      "tip": "whatever 引导让步状语从句，插在主句主语与谓语之间，起「无论怎样都成立」的强调作用；not merely ... but also ... 构成递进并列。",
+      "tags": [
+        "经济",
+        "社会流动"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "en": "Brain aging doesn't suddenly begin when we get older, but the biological signals may be detectable decades earlier.",
+      "zh": "大脑老化并非在我们变老的那一刻才突然开始；它的生物学信号，也许早在几十年前就已经可以被察觉。",
+      "src": "eBioMedicine · UCLA Health",
+      "key": "detectable",
+      "keyZh": "可察觉的；可检测到的",
+      "tip": "detectable 由动词 detect（察觉、检测）加 -able 构成，表示'能够被察觉的'。注意它与 sensible（可感知的）、perceptible 近义，但 detectable 更强调借助仪器或方法'检测得出'，常用于科研语境——如 detectable levels（可检测到的水平）、no detectable trace（检测不到的痕迹）。这里是'熟词僻义'的反向提醒：detect 最常见的搭配是 detect a problem / detect a change，书面语中却常用来指机器、实验对微弱信号的捕捉。",
+      "tags": [
+        "健康",
+        "神经科学",
+        "微生物组"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "en": "Beneath a thin layer of vegetation, the Arctic holds one of the planet's largest stores of carbon — frozen, quiet, and, until recently, safely sealed away.",
+      "zh": "在薄薄一层植被之下，北极封存着地球上最大的碳库之一——它冻结着、静默着，直到不久之前，还被安稳地锁在其中。",
+      "src": "外刊精读 · 冻土苏醒（2026-10-04）",
+      "key": "seal away",
+      "keyZh": "封存；把…锁藏起来",
+      "tip": "「stores of carbon」中 store 是熟词僻义（n. 储存量），不是「商店」；hold 在此意为「容纳、拥有」。",
+      "tags": [
+        "气候",
+        "生态"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "en": "A study reconciling 50 satellite estimates finds the two ice sheets lost 11,309 billion tonnes of ice between 1979 and 2023 — a loss that has lifted global sea level by about three centimetres.",
+      "zh": "一项把约 50 份卫星估测「对账」的研究发现，1979 至 2023 年间两大冰盖共流失 11,309 亿吨冰，使全球海平面上升约三厘米。",
+      "src": "外刊精读 · 格陵兰与南极冰盖（2026-10-03）",
+      "key": "reconcile",
+      "keyZh": "使一致；对账（熟词僻义）",
+      "tip": "reconcile 常见义为「和解」，此处指把相互不一致的数据「调和、对账」成一个统一记录。",
+      "tags": [
+        "气候",
+        "卫星观测"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "en": "Wheat, barley, cattle and sheep crossed Eurasia into northwest China roughly 4,000 years ago — yet left no detectable trace of the western farmers who first domesticated them.",
+      "zh": "约四千年前，小麦、大麦、牛与羊跨越欧亚大陆传入中国西北——却没有留下任何可检测到的、最早驯化它们的西方农耕人群的痕迹。",
+      "src": "外刊精读 · 麦子西来，人未东迁（2026-10-02）",
+      "key": "detectable",
+      "keyZh": "可检测到的；可察觉的",
+      "tip": "破折号后的 yet 是「然而」，构成强烈的对比：作物来了，人却没来。leave no trace of 是固定表达「不留痕迹」。",
+      "tags": [
+        "考古",
+        "古基因组"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "en": "The brain does not simply file memories away while we sleep; it replays them, in fast, rhythmic bursts, deciding which to keep and which to let fade.",
+      "zh": "大脑在我们睡眠时并非只是把记忆归档了事——它会以快速而有节律的爆发式活动重放这些记忆，决定哪些该留下、哪些任其消褪。",
+      "src": "外刊精读 · 记忆与睡眠（2026-10-01）",
+      "key": "file away",
+      "keyZh": "把…归档保存",
+      "tip": "file away 字面是「归档」，此处与 replays（重放）形成对照，强调记忆不是被动存放而是主动加工。",
+      "tags": [
+        "神经科学",
+        "学习"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "en": "For a generation raised on glowing screens, the paper book can look like a technology whose day is done.",
+      "zh": "对在屏幕前长大的一代而言，纸质书看起来可能像是一项早已过时的技术。",
+      "src": "外刊精读 · 屏幕之困（2026-09-29）",
+      "key": "whose day is done",
+      "keyZh": "…的时代已经结束",
+      "tip": "此句以「过时之物」的成见开篇，随后用 Yet 转折引出研究结论，是议论文「先立靶、再反驳」的经典开头。",
+      "tags": [
+        "教育",
+        "认知科学"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "en": "What looks like a simple choice — paper or screen — turns out to shape not only what we understand but how deeply we think.",
+      "zh": "看似简单的选择——读纸还是读屏——原来不仅影响我们理解了什么，更影响我们思考得有多深。",
+      "src": "外刊精读 · 阅读的媒介（2026-09-29）",
+      "key": "turn out to",
+      "keyZh": "结果是；原来是",
+      "tip": "not only A but B 结构中，B 往往是作者真正想强调的重点（此处为 how deeply we think）。",
+      "tags": [
+        "教育",
+        "认知科学"
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "en": "Cities that plant trees for shade today are, in effect, writing a public-health policy for the century to come.",
+      "zh": "今天为遮荫而植树的城市，实际上是在为未来一百年拟定一份公共卫生政策。",
+      "src": "外刊精读 · 城市与热浪（2026-09-28）",
+      "key": "in effect",
+      "keyZh": "实际上；事实上",
+      "tip": "in effect 是高频插入语，用「换句话说」的语气把具体行为提升到政策高度。",
+      "tags": [
+        "城市",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-09-27",
+      "en": "The most striking finding is not that the machines can write, but that readers so often cannot tell — and, worse, do not much care.",
+      "zh": "最引人注目的发现不是机器会写作，而是读者常常分辨不出——更糟的是，他们并不太在意。",
+      "src": "外刊精读 · 人工智能与写作（2026-09-27）",
+      "key": "tell",
+      "keyZh": "分辨；辨别（熟词僻义）",
+      "tip": "tell 在此不是「告诉」而是「分辨」（tell A from B）。破折号后递进加重了批评语气。",
+      "tags": [
+        "科技",
+        "人工智能"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "en": "A toll can be shown to work; it cannot be shown to work miracles, and the distance between those claims is what measurement exists to mark.",
+      "zh": "收费可以被证明有效；它不能被证明有奇效，而这两种说法之间的距离，正是测量存在的意义。",
+      "src": "外刊精读 · 城市政策与拥堵收费（2026-10-21）",
+      "key": "mark",
+      "keyZh": "标示；划出（界线）",
+      "tip": "两个分句以分号对照「work / work miracles」，最后用 what measurement exists to mark 收束：mark 在此不是「做记号」，而是「标定、划出界线」。写作时可套用「A can be shown to X; it cannot be shown to Y」的让步句式。",
+      "tags": [
+        "城市",
+        "公共政策"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "en": "Treated as a deadline, it turns a guess into an instruction, and a decision that belongs to the senses — look, smell, taste — into one that belongs to a printer.",
+      "zh": "一旦被当成截止线，猜测就变成了指令——本该由感官作出的判断（看、闻、尝），被交给了一台打印机。",
+      "src": "外刊精读 · 包装上的日期（2026-10-28）",
+      "key": "belong to",
+      "keyZh": "属于；归……所有",
+      "tip": "这句用 turn A into B 的两次平行完成对照：a guess→an instruction、the senses→a printer。破折号里三个动词原形 look, smell, taste 并列（省略 and），让节奏变急促；one 替代 a decision，避免重复。写作时可套用「Treated as X, it turns A into B, and C into D」的句式，用来批评某个被误用的工具。",
+      "tags": [
+        "食物浪费",
+        "消费习惯"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "en": "Both claims are true, and neither settles the question, because the choice is not between a mine and no mine but between two kinds of damage whose costs fall on different people and different centuries.",
+      "zh": "两个说法都成立，而两者都终结不了这个问题：因为真正的选择不是“采矿”与“不采矿”，而是两种伤害——它们的代价落在不同的人、不同的世纪身上。",
+      "src": "外刊精读 · 深海采矿与底栖生态（2026-10-19）",
+      "key": "settle",
+      "keyZh": "解决；了结（settle a question 终结一个问题）",
+      "tip": "settle 在此不是“定居”，而是“了结、定论”。句式值得背：not between A and B but between C and D，把二选一的问题替换成“两种代价”的对比；whose 引导定语从句修饰 two kinds of damage，最后落到 people 与 centuries 两个维度，一句话把伦理与时间同时交代完。",
+      "tags": [
+        "深海采矿",
+        "生态"
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "en": "A twelve per cent shortfall in photosynthetic rate is not a twelve per cent shortfall in the grain inside a silo.",
+      "zh": "光合速率下降 12%，并不等于粮仓里的谷物少 12%。",
+      "src": "外刊精读 · 土里的塑料碎片与光合作用（2026-11-01）",
+      "key": "shortfall",
+      "keyZh": "缺口；短缺（a shortfall in supply 供应缺口）",
+      "tip": "shortfall 是“应到未到”的那部分，比 shortage 更强调“差了多少”。句式更值得记：同一个数字在两端各说一次，用 not A ... B 的结构把“实验室效应量”和“真实收成”隔开——这正是评估任何外推结论时最该先问的一句。shortfall 常与 in 搭配：a shortfall in revenue / in grain。",
+      "tags": [
+        "微塑料",
+        "光合作用",
+        "农业",
+        "生态与可持续"
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "en": "That is the uncomfortable part: the lights at half past six are not a decoration on a healthy city but one of the things that make it one.",
+      "zh": "这才是让人不太舒服的地方：六点半亮起的那些灯，不是一座健康城市上的装饰，而是让它成为健康城市的东西之一。",
+      "src": "外刊精读 · 周五晚上那场戏，值三十一天（2026-11-04）",
+      "key": "decoration",
+      "keyZh": "装饰（不是必需品，可有可无）；勋章（award a decoration 授勋）",
+      "tip": "这句话的分量全在 not A but B：A（decoration，装饰）是可有可无的表象，B（one of the things that make it one）是缺了就不成立的条件——一个词之差，把因果方向掉了个头。注意两个 one 都是代词：第一个回指 a healthy city，第二个在 make it one 里仍回指 a healthy city，不是数词“一个”。这种收尾句式极好用：先用 not A but B 定性，再让 B 落到一个可被检验的条件上。",
+      "tags": [
+        "文化",
+        "艺术与地方生活",
+        "衰老",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "en": "The conclusion is narrower than either camp would like: the argument is no longer whether phones cost attention, but when, for whom, and at what price removing them is worth the trade.",
+      "zh": "这个结论比两边阵营都希望的更窄：争论已经不是“手机是否消耗注意力”，而是“在什么时机、对谁、以什么代价撤走它才值得”。",
+      "src": "外刊精读 · 课前收走手机，涨分最多的是垫底那批人（2026-11-12）",
+      "key": "trade",
+      "keyZh": "取舍、权衡（worth the trade 这笔交换值得）；常见义“贸易”",
+      "tip": "这里的 trade 不是“贸易”，而是“拿一样东西换另一样”的那笔交换：你想让学生多考几分，就得拿走他一节课的消息。判断依据是参数——at what price 已经把“代价”摆出来了，后面的 the trade 只能读成“这笔交换”。句式也值得记：no longer whether A, but when, for whom, and at what price B——把一个是非题改写成三个条件题，是所有政策讨论真正变专业的时刻。",
+      "tags": [
+        "教育",
+        "学习科学",
+        "注意力",
+        "数字化课堂"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "en": "The butterfly survives not because it is hard to see, but because it is hard to see correctly.",
+      "zh": "蝴蝶活下来，不是因为它难看清楚，而是因为它难以被看准。",
+      "src": "外刊精读 · 蝴蝶的翅膀，是给捕食者的一记假动作（2026-11-03）",
+      "key": "hard to see correctly",
+      "keyZh": "难以被看准（see correctly 是“看得准”，不是“看得见”；correctly 把问题从可见度换成了准确度）",
+      "tip": "这一句的全部机关，是在同一个动词短语后面加了一个副词。前半句 hard to see 说的是“看不清”——那是伪装、保护色在解决的问题；后半句 hard to see correctly 说的是“看不准”——虫就在那儿，你看得见它，却算错了它要去哪儿。一个 correctly，把整篇文章的立论从“藏起来”换成了“骗过去”，也顺手否掉了教科书里那个旧答案。句式上，not because A but because B 是外刊最常用的“排除—确立”框架：先把最容易被想到的解释放到 A 的位置，再在 B 上给出真正的理由。注意两个 because 后面都是形容词短语（hard to see / hard to see correctly），结构完全对称，所以读者一眼就能看出差别只在那个副词上——这种“只改一个词”的对称，比长篇解释有力得多。仿写骨架：X survives not because it is hard to ______, but because it is hard to ______ correctly.",
+      "tags": [
+        "动物行为",
+        "进化生物学",
+        "视觉感知"
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "en": "What the study establishes is a change in the kind of problem this is: not a device to be confiscated at the door, but a budget of hours that has to be negotiated across a whole week.",
+      "zh": "这项研究确立的，是这个问题性质上的改变：它不再是一台要在门口没收的设备，而是一笔必须在一整周里协商的小时预算。",
+      "src": "外刊精读 · 手机被锁进柜子之后：禁令改得了四十分钟，改不了一整天（2026-11-02）",
+      "key": "a budget of hours",
+      "keyZh": "一笔“小时预算”（budget 这里不是“预算金额”，而是可支配的总量；hours 才是本文真正的计量单位）",
+      "tip": "这句的力量来自一次“重新分类”。前半句 a change in the kind of problem this is 先把结论说成“问题换了类型”，而不是“结论有了对错”——这是学术写作里很高级的一步：不争论答案，先换问题。冒号后是两个对举的名词短语：not a device to be confiscated at the door 对 a budget of hours that has to be negotiated across a whole week。注意两边的介词短语都在做同一件事——划定战场：at the door 是空间上的一瞬（校门口没收），across a whole week 是时间上的全程（一周里协商）。一个把问题关在校门内，一个把它摊到整周，读者的立场就在这两个介词短语之间被推着走。budget 的引申也值得记：它把“时间”当成一种有额度、要分配、会超支的资源，于是“该不该收手机”就变成了“这些小时怎么花”。仿写骨架：What the study establishes is a change in the kind of problem this is: not a ______ to be ______ at the door, but a ______ that has to be ______ across a whole week.",
+      "tags": [
+        "教育",
+        "校园治理",
+        "青少年健康"
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "en": "The practical conclusion is cheap, and slightly embarrassing for the industry: stop teaching people to look slowly, and give them something to argue about.",
+      "zh": "实用的结论很便宜，对这门行当也略有些难堪：别再教人“慢慢看”，给他们一点可以争的东西。",
+      "src": "外刊精读 · 看画不需要技巧，需要有人跟你说话（2026-11-13）",
+      "key": "argue about",
+      "keyZh": "有可争之处、值得一辩（give sb something to argue about 给某人一个可以反驳的抓手）；不是“为……吵架”",
+      "tip": "argue about 的本义是“为某事争吵”，但 something to argue about 在这里是褒义：一件作品如果只有一种正确读法，就没有对话，也就没有那个把心情抬起来的动作。注意 cheap 也不是“便宜”，而是“代价很低、几乎不花钱”——它与后半句 embarrassing（让业界难堪）构成一对反差：最省钱的解法和最贵的解法，效果反过来。句式可迁移：The practical conclusion is cheap, and slightly embarrassing for X: stop doing A, and give them B.",
+      "tags": [
+        "文化",
+        "博物馆",
+        "审美经验",
+        "艺术与地方生活"
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "en": "The moths were never loyal to the lamp, only to the dark, and we have been charging them for our safety.",
+      "zh": "蛾子从来没有忠于那盏灯，它们忠于的是黑暗；而我们一直在拿它们付我们自己那份安全的账。",
+      "src": "外刊精读 · 把灯调暗一半，蛾子只回来两成（2026-11-14）",
+      "key": "charging them for",
+      "keyZh": "拿它们付账（charge sb for sth 本义“向某人收取某物的费用”；这里把“生态代价”写成一张寄给蛾子的账单，是全文唯一的道德判断）",
+      "tip": "这句是一条推理链的压缩包。前半句用 never … only … 这对否定—限定结构，把“蛾子爱光”这个流传了两百年的常识一次推翻：它们不是被灯吸引，只是把黑暗当成了路标，而灯恰好亮在路口。真正的刀在 and 之后——charge sb for sth 是“向某人收费”，主语却是 we。于是“我们修灯、我们安全”与“它们付账”被同一个动词缝在了一起，而这个动词自带商业语气，让一句生态评论读起来像一张账单。注意 have been charging 用现在完成进行时：这不是一次结账，是持续了上百年的分期付款。仿写骨架：X were never loyal to ______, only to ______, and we have been charging them for our ______. 填写时让最后那个名词落在“我们自己受益的东西”上（safety / convenience / comfort），句子就会自己长出讽刺。",
+      "tags": [
+        "生态",
+        "光污染",
+        "城市治理"
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "en": "The pack on the hallway floor is not a character flaw, but the shape of the city folded small enough to fit through a door.",
+      "zh": "走廊地板上那块电池不是性格缺陷，它是这座城市被折小、刚好能从一扇门里塞进来的形状。",
+      "src": "外刊精读 · 他把电池推进卧室，因为楼下没有插座（2026-11-15）",
+      "key": "the shape of the city",
+      "keyZh": "城市的形状（把“制度的结构性缺失”说成可以看见、可以量的形状；shape 这里不是“外形”，而是“被结构决定的样子”）",
+      "tip": "这句是全篇的落点，靠一次“转喻”完成：前半句先拆掉旧框架——not a character flaw，character flaw 三个词就把“归责于个人”的整套逻辑压成了名词；后半句才是作者要你带走的东西，the shape of the city。注意 not A, but B 的重心永远在 B，前半句只是清场。真正的杀伤力在句尾的过去分词短语 folded small enough to fit through a door：城市太大，进不了那扇门，于是它把自己折小，最后以一块电池的形式挤进了卧室——一个几何动作，把“租金、规划、监管”这些抽象词全部变成了可以看见的物体。仿写骨架：X is not a character flaw, but the shape of ______ folded small enough to ______.",
+      "tags": [
+        "科技与创新",
+        "公共政策",
+        "城市安全"
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "en": "Damage that arrives without a feeling will not be caught by paying attention.",
+      "zh": "一种不带来任何感觉的损害，靠“注意一下”是注意不到的。",
+      "src": "外刊精读 · 第一个凹口出现在十八岁，而它从不疼（2026-11-16）",
+      "key": "caught by paying attention",
+      "keyZh": "靠“注意”来抓住（catch 此处是“及时发现、拦住”；整句在说：没有感觉的损害，不会被注意力捕获）",
+      "tip": "这是全篇的最后一句，也是唯一一句完整的判断。它用了三重否定来收束：without a feeling（没有感觉）、will not be caught（抓不住）、by paying attention（靠“注意”这个动作）——把最常见的那句忠告“你注意一下就好了”直接拆掉。注意 catch 的用法：不是“抓住”一个物体，而是“及时拦下”一个正在发生的过程（catch a disease early 早发现疾病），所以中文译“注意不到”比“抓不住”更贴。前半句 Damage that arrives without a feeling 用定语从句把“损害”定义成一个“悄悄的到达者”，比 preventable hearing loss 这种术语更有画面。仿写骨架：______ that arrives without a ______ will not be caught by ______.",
+      "tags": [
+        "健康与身心",
+        "青少年听力",
+        "公共卫生"
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "en": "A smell is not a memory booster but a piece of scaffolding, and scaffolding is worth nothing if it goes up after the wall.",
+      "zh": "气味不是记忆的增强剂，而是一段脚手架；而脚手架如果砌在墙之后，就一文不值。",
+      "src": "外刊精读 · 香气没有让他记得更多，只让他分得更清（2026-11-19）",
+      "key": "goes up after the wall",
+      "keyZh": "砌在墙之后才立起来（go up 此处是「被搭起来、立起来」，不是「上升」；整句在说：顺序错了，工具就失去了意义）",
+      "tip": "这是全篇的落点，靠一次「换喻 + 施工顺序」完成。前半句先降级：a smaller claim than… 把结论主动缩小，气势先低下去，判断反而更硬。中段 not A but B 清场——A 是香氛行业想要的说法（booster，一支可以随时打的针），B 是自己要的（scaffolding，砌墙之前那圈钢管）。真正的杀伤力在句尾 if it goes up after the wall：它把一个统计结论（气味 × 时机的交互作用）翻译成一个能看见的先后次序——不是「有没有用」，而是「来不来得及」。注意 go up 的双关：脚手架 go up 是「搭起来」，价格 go up 是「上涨」，这里只能是前者。仿写骨架：____ is not a ____ but a ____, and ____ is worth nothing if it ____ after the ____.",
+      "tags": [
+        "教育与学习方式",
+        "学习科学",
+        "记忆"
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "en": "A beaver is not a component that can be specified, delivered and installed. It is a neighbour that reads the site, ignores the drawing, and then, given time and a measure of tolerance, does the job the drawing was for.",
+      "zh": "河狸不是一个可以写进规格、按期交付、现场安装的部件。它是一个邻居——它读现场，不理图纸，然后在给了它时间和一点容忍之后，把那张图纸本来要做的事做成了。",
+      "src": "外刊精读 · 河狸筑起六座坝，人类修的坝塌了一半（2026-11-20）",
+      "key": "a measure of tolerance",
+      "keyZh": "一定程度的容忍（measure 此处是「程度、份额」，不是「措施」；整句在说：宽容是有配额的，给到某个程度为止）",
+      "tip": "这是全篇的落点，靠的是一次「工程词 → 生活词」的替换。前半句先清场：a component that can be specified, delivered and installed——specify（写进规格）、deliver（交付）、install（安装）三个动词全来自供应链，连起来就是「可以下单的东西」。后半句换成 a neighbour，一个不能下单、只能相处的身份，立场立刻清楚。真正的技术活在中间的 given time and a measure of tolerance：这是插入的过去分词状语（= if it is given…），把「需要什么条件」压进句子主干之间，既不打断节奏，又让条件无法被忽略。注意 measure 的熟词僻义：不是「措施」（take measures），而是「一定的量」——a measure of 就是「几分、一定程度」。仿写骨架：____ is not a ____ that can be ____, ____ and ____. It is a ____ that ____, ____, and then, given ____, ____.",
+      "tags": [
+        "生态与可持续",
+        "洪水治理",
+        "再野化"
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "en": "None of this makes the company's figures wrong; it makes them an answer to a different question.",
+      "zh": "这些发现并没有让公司的数字变成错的；它只是让那些数字变成了另一个问题的答案。",
+      "src": "外刊精读 · 机器人卸下了重物，却拿走了慢的权利（2026-11-21）",
+      "key": "an answer to a different question",
+      "keyZh": "对另一个问题的回答（不是「错的」，而是「量的是另一件事」——争论从对错移到口径）",
+      "tip": "这句话是全文的转轴，用的是「先让一步、再归位」的写法。前半句 None of this makes the figures wrong 把对方的证据完整接住，读者不会觉得你在抬杠；后半句 it makes them an answer to a different question 一句把争论从「谁对谁错」挪到「量的是哪件事」。注意 none of this 是「这一切都不」，不是「没有一个是」；代词 them 指 figures（复数），不能用 it。这句可以整句背下来，用在所有「两边数据都真、结论相反」的议论文里：先承认，再换框。仿写骨架：None of this makes ______ wrong; it makes it ______.",
+      "tags": [
+        "科技与创新",
+        "劳动",
+        "仓库自动化"
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "en": "An institution sold as a remedy for isolation produced no detectable effect on isolation.",
+      "zh": "一个被当作「抗孤独良方」来推销的机构，在「孤独」这项指标上交不出可检测的效果。",
+      "src": "外刊精读 · 图书馆的疗效，落在了最不像它的地方（2026-11-22）",
+      "key": "sold as a remedy",
+      "keyZh": "被当作良方来推销（sold as 暗示「包装」与「承诺」，不是「确实如此」）",
+      "tip": "这是全文的转折句，只有十四个词，力量全在两个结构上。第一处是被动语态 sold as a remedy for isolation：主语 institution 被「当作」良方来卖，作者没有说谁在卖，但那层怀疑已经在了；sold as 后面跟的是标签，不是事实。第二处是句尾的 repetition：isolation 在一句里出现两次，前一次是它承诺要治的东西，后一次是它没治成的东西，同一个词首尾照应，落差自己就说话了。注意 effect on 的搭配：on 后面是被作用的对象，不能用 for。仿写骨架：A ______ sold as a remedy for ______ produced no detectable effect on ______.",
+      "tags": [
+        "文化",
+        "地方生活",
+        "公共卫生"
+      ]
+    }
+  ]
 }
