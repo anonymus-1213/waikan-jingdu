@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 同一个家里，快乐的那个，十年后睡得更沉</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<article class="wrap">
+  <div class="eyebrow">Mood &amp; Sleep · 人与自我 / 成长叙事 / 青少年发展 / 睡眠与健康</div>
+  <h1>同一个家里，快乐的那个，十年后睡得更沉</h1>
+  <div class="deck">A Dutch twin study followed 14,518 adolescents for a decade. Between families the links look large; compare siblings raised together and most of them shrink — sleep is the one that holds.</div>
+  <div class="byline"><span><b>来源</b> Nature Communications（2026，17: 4109）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-24</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 533 词 / 10 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-24.jpg" alt="写实场景：清晨微光里的青少年卧室，一个十几岁的男孩侧身熟睡，被子堆在一侧，床头柜上的手机屏幕朝下">
+    <figcaption>配图：清晨的青少年卧室。十年之后被统计进去的那件事——睡得沉不沉——此刻正发生在一间普通的房间里，没有仪器，也没有问卷（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>荷兰双生子登记追踪了 <b>14,518</b> 名双胞胎与兄弟姐妹：十四到十六岁问一次「你过得怎么样」，十年后再看他们的睡眠、健康与情绪。</p>
+    <p>家庭之间比，关联很强（睡眠 <b>0.59</b>）；换成同一个家里比，数字集体缩水（<b>0.46</b>）——只有睡眠站得最稳。</p>
+    <p>这篇要练的不是结论，而是<b>证据怎么变弱</b>：每多校正一层，关联就小一圈，而缩小的幅度本身就是信息。</p>
+    <p>本期重点熟词僻义：<b>flourish</b>（心理上的蓬勃）、<b>rate</b>（v. 评价、自评）、<b>account for</b>（把……计算在内）。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-24.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="7.392">Ask a fifteen-year-old how life is going and you will usually get a shrug, a mumble, and a number that sounds invented.</span> <span class="s" data-t="7.392" data-e="19.632">That shrug is the raw material of a small industry: three questions about satisfaction, happiness and where the respondent stands on a ten-<b class="kw" data-tip="n. 梯级：梯子的一级，ten-rung ladder 即「十级阶梯」，此处指 Cantril 阶梯量表，让受试者在 1 到 10 级之间标出自己的生活质量；常见义 n. （楼梯的）横档、梯级，也可引申为「等级」中的一级">rung</b> ladder, asked in classrooms and filed away as a <b class="kw" data-tip="n. 心情、情绪状态：指一时一地的心理状态，与 disposition（性情）、emotion（情绪）都不同，强调「短暂、可被记录」；常见义 n. 气氛、基调（the mood of the room）">mood</b>.</span></span></div>
+      <p class="para-tr">问一个十五岁的孩子「最近过得怎么样」，你多半会得到一个耸肩、一句含糊的嘟囔，和一个听起来像编出来的数字。那个耸肩，其实是一个小产业的原材料：三道关于满意程度、快乐程度、以及「你认为自己站在十级阶梯的第几级」的问题，在教室里被反复问，然后被归档为一种「心情」。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.632" data-e="33.445">In May a two-author team at the Netherlands Twin Register gave those questions an unusually long follow-up: 14,518 twins and <b class="kw" data-tip="n. 兄弟姐妹：brother 或 sister，不区分性别时统称 sibling，社会学与心理学文献里的固定词；注意它不包含父母，与 relative（亲戚）不同">siblings</b>, questioned at fourteen to sixteen and again in their twenties and thirties.</span> <span class="s" data-t="33.445" data-e="44.105">The result, in <i>Nature Communications</i>, is that the shrug was not noise — adolescent <b class="kw" data-tip="n. 幸福感、身心良好状态：比 happiness 宽，既含「快乐」，也含「生活满意、有意义、运作良好」，是公共卫生与心理学的标准指标">wellbeing</b> predicted sleep, self-<b class="kw" data-tip="v. 评价、评级：rate 作动词是「给……打分」，self-rated health 即「自评健康」，由受访者自己给自己的健康状况打分；常见义 n. 比率、速度（birth rate），v. 评价（rate a film）">rated</b> health and emotional steadiness a decade later.</span></span></div>
+      <p class="para-tr">今年五月，荷兰双生子登记的两位作者，给这三道题配上了异常长的随访：14,518 名双胞胎与兄弟姐妹，先在十四到十六岁被问一次，再在二十多岁与三十多岁时被问一次。发表在《自然·通讯》上的结果是：那个耸肩并不是噪音——青少年的幸福感，能预测十年之后的睡眠、自评健康与情绪稳定。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="44.105" data-e="53.276">The exposure was a single <b class="kw" data-tip="adj. 潜在的、隐性的：统计学里的 latent variable 指无法直接观测、只能由多个题目共同推断出的变量，如「幸福感」本身；常见义 adj. 潜伏的（latent infection）、潜在的（latent demand）">latent</b> score from three scales — satisfaction, happiness, a ten-step ladder — measured once in mid-adolescence.</span> <span class="s" data-t="53.276" data-e="67.526">The outcomes were far broader: adult wellbeing and <b class="kw" data-tip="v./n. （心理上的）蓬勃、繁荣：心理学专指「正向功能充分展开」的状态, 由关系、意义、投入、成就感等维度构成, 不等于「开心」；常见义 v. 茂盛、繁荣（the business flourished）, n. 花体字、挥舞">flourishing</b>, the five personality <b class="kw" data-tip="n. 特质、性格特征：人格心理学里指相对稳定的行为倾向, 如尽责性、神经质；常见义 n. 特点、特征（a family trait）">traits</b>, self-rated health, smoking, <b class="kw" data-tip="n. 大麻：正式与科研语境用 cannabis, 口语用 marijuana, 工业用途的品种称 hemp；不可数名词, 不能说 a cannabis">cannabis</b>, exercise and sleep quality, each measured twice, in their twenties and thirties.</span></span></div>
+      <p class="para-tr">被当作「原因」的，是一个单一的潜变量分数：由生活满意度、主观快乐与那道十级阶梯三个量表合成，在青春期中期只测一次。被当作「结果」的则宽得多：成年期的幸福感与「蓬勃感」、五大人格特质、自评健康、吸烟、大麻使用、运动与睡眠质量——各项都测两次，一次在二十多岁，一次在三十多岁。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="67.526" data-e="71.591">Between families, the associations were <b class="kw" data-tip="adj. 可观的、幅度不小的：形容效应量时的常用词，强调「不是小打小闹」，但不等于「显著」；常见义 adj. 大量的、实质的（a substantial meal）、坚固的（a substantial building）">substantial</b>.</span> <span class="s" data-t="71.591" data-e="88.195">A teenager one standard deviation higher on wellbeing scored 0.32 to 0.38 higher on adult wellbeing and 0.59 higher on sleep quality, while scoring 0.34 lower on <b class="kw" data-tip="n. 神经质：大五人格之一，指情绪不稳定、易焦虑、易波动的倾向，不是「神经病」；形容词 neurotic 神经质的；与之相对的是 emotional stability（情绪稳定性）">neuroticism</b>, the trait behind anxiety and mood swings.</span> <span class="s" data-t="88.195" data-e="99.132">Much of that survives <b class="kw" data-tip="n. 校正、修正：统计学里指「把某个已知的干扰因素从结果中扣掉」，如 correction for baseline（基线校正）；常见义 n. 改正、纠正（error correction）、批改（correction of homework）">correction</b> for how the same teenager already slept and felt at fifteen, which rules out the simplest explanation: that one <b class="kw" data-tip="adj. 稳定的：此处指「不随时间大幅变动」的性格倾向，与 changeable 相对；常见义 adj. 稳固的（a stable government）、n. 马厩">stable</b> trait was measured twice.</span></span></div>
+      <p class="para-tr">在家庭之间做比较时，这些关联相当可观。幸福感比同龄人高一个标准差的青少年，成年后的幸福感高出 0.32 到 0.38，睡眠质量高出 0.59；与此同时，他们的神经质——焦虑与情绪波动背后的那项特质——低 0.34。这些数字有相当一部分，在「校正同一个青少年十五岁时本来就有的睡眠与感受」之后依然成立，这就排除了最简单的解释：所谓预测，不过是把同一个稳定的特质测了两遍。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="99.132" data-e="110.051">But every comparison sets family against family, and families differ in ways no <b class="kw" data-tip="n. 问卷：一组标准化问题构成的测量工具，比 survey（调查）更强调「同一套题、同一套计分」；注意拼写双 n、结尾 -naire">questionnaire</b> can <b class="kw" data-tip="v. 捕捉到、记录下：此处指「把某种差异反映进数据里」，不是「抓住」；常见义 v. 俘获、夺取（capture a city）、吸引（capture attention）">capture</b>: genes, income, a parent's <b class="kw" data-tip="n. 气质、性情：心理学指与生俱来的情绪反应风格，比 personality 更偏「天生、底层」；常见义 n. 脾气（a fiery temperament）、（音乐的）调律">temperament</b>, the street they live on.</span></span></div>
+      <p class="para-tr">但到目前为止的每一次比较，都是把一个家庭与另一个家庭对立起来；而家庭之间的差异，有许多是问卷捕捉不到的：基因、收入、父母的性情、他们住的那条街。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="110.051" data-e="121.171">So the authors compared siblings raised under the same roof — identical twins included, who share every gene — and asked whether the happier child ended up sleeping better than the less happy one.</span></span></div>
+      <p class="para-tr">于是作者改为比较在同一个屋檐下长大的兄弟姐妹——包括共享每一个基因的同卵双胞胎——去问：家里更快乐的那一个，后来是不是睡得比不那么快乐的那一个更好。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="121.171" data-e="123.342">Nearly everything shrank.</span> <span class="s" data-t="123.342" data-e="146.236">Adult wellbeing fell from 0.38 to 0.12, flourishing from 0.34 to 0.17 and neuroticism from −0.34 to −0.12; only sleep quality held its ground, easing from 0.59 to 0.46 and 0.87 to 0.71 a decade later.</span></span></div>
+      <p class="para-tr">几乎一切都缩小了。成年幸福感从 0.38 掉到 0.12，蓬勃感从 0.34 掉到 0.17，神经质从 −0.34 掉到 −0.12；只有睡眠质量守住了阵地——从 0.59 降到 0.46，十年后再从 0.87 降到 0.71。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="146.236" data-e="151.354">Two readings of that pattern are available, and the paper declines to choose.</span> <span class="s" data-t="151.354" data-e="161.566">The first is that much of what looks like a reward for being a happy teenager is really a reward for being born into one family; subtract the family, and little remains.</span> <span class="s" data-t="161.566" data-e="170.684">The second is that sleep sits closest to daily mood: a fifteen-year-old who cannot settle at night already lives what the adult questionnaire asks about.</span></span></div>
+      <p class="para-tr">对这样一幅图，有两种读法，而论文拒绝在两者之间选一个。第一种是：那些看起来像「当个快乐少年」的回报，其实大部分是「生在某一类家庭」的回报；把家庭减掉，剩下的就不多了。第二种是：睡眠是所有结果里离日常心情最近的一项，所以一个夜里安顿不下来的十五岁少年，其实已经在过成年问卷日后要问的那种生活。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="170.684" data-e="173.656">A third correction sharpens the caution.</span> <span class="s" data-t="173.656" data-e="189.366">When the authors also <b class="kw" data-tip="v. 把……计算在内、纳入考量：account for 在此不是「解释」，而是「把某个变量算进模型」；常见义 v. 解释（account for the delay）、占（比例）（women account for 40%）">accounted for</b> how each teenager slept and felt at the <b class="kw" data-tip="n. 开端、起初：at the outset 即「一开始」，比 at the beginning 更书面；常见义 n. 开始（from the outset）">outset</b>, the within-family links to sleep, health and neuroticism <b class="kw" data-tip="v. 减弱、变小：统计学里指效应量随校正而缩小，名词 attenuation；常见义 v. 使变细、使变薄（attenuated virus 减毒病毒）">attenuated</b> to <b class="kw" data-tip="n. （统计上）不显著：指结果无法与「零效应」区分，而不是「毫无意义」；常见义 n. 无足轻重、微不足道（a matter of insignificance）">insignificance</b>, leaving a picture in which wellbeing predicts where a person starts rather than how far they travel.</span> <span class="s" data-t="189.366" data-e="198.842">The authors concede as much: the design separates prediction from cause but not shared genes from shared <b class="kw" data-tip="n. 教养、养育方式：家庭在孩子成长中提供的照料与价值传递，比 education（学校教育）更偏家庭；常见义 n. 培养、抚育（a strict upbringing）">upbringing</b>, both held constant by construction.</span></span></div>
+      <p class="para-tr">第三重校正让这份谨慎更锋利。当作者再把每个青少年「一开始」的睡眠与感受一并计入，家庭内部那些与睡眠、健康、神经质相关的关联，就弱到了不显著的程度；剩下的图景是：青少年的幸福感，很大程度上预测的是一个人从哪里起步，而不是他能走多远。作者自己也这么说：这个设计能分开「预测」与「因果」，却分不开共享的基因与共享的教养——因为比较兄弟姐妹时，这两样在设计上就被固定住了。</p>
+
+      <div class="para"><span class="idx">【10】</span><span class="en"><span class="s" data-t="198.842" data-e="204.053">None of this makes the finding useless; it makes it a signal rather than a <b class="kw" data-tip="n. 杠杆、可施加影响的把手：此处是比喻，指「可以撬动结果的手段」；常见义 n. 杠杆（物理）、操纵杆，v. 用杠杆撬动（lever the lid off）">lever</b>.</span> <span class="s" data-t="204.053" data-e="216.671">A teenager's answer to three soft questions is worth recording not because it grows a healthier adult, but because it is one of the few cheap readings before the tenth year, when the bill for ignoring it is already in the sleep diary.</span></span></div>
+      <p class="para-tr">这些都不让这个发现变得无用；它只是让这个发现成为「信号」，而不是「杠杆」。一个青少年对三道软问题的回答值得记下来，不是因为它能养出一个更健康的成年人，而是因为在第十年之前，这是少数几种便宜的读数之一——而到那时，忽视它的账单已经写在睡眠记录里了。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">wellbeing</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌwelˈbiːɪŋ/ · 美 /ˌwelˈbiːɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>幸福感、身心良好状态</b>：比 happiness 更宽，既包含「快乐」，也包含「对生活满意、觉得有意义、功能运作良好」，是公共卫生与心理学的标准指标。<br>构词：well（好）+ being（存在、状态）＝「处在好的状态里」。<br>搭配：adolescent wellbeing／subjective wellbeing（主观幸福感）／a sense of wellbeing。<br>为什么本文用它而不用 happiness：论文测的是生活满意度、快乐感与「十级阶梯」三项的合成，恰恰是「宽口径」的幸福感；用 happiness 会把「有意义但不开心」的那部分人漏掉。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>adolescent <b>wellbeing</b> predicted sleep</div>
+          <div class="wc-tr">青少年的幸福感，能预测睡眠。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sibling</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈsɪblɪŋ/ · 美 /ˈsɪblɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>兄弟姐妹</b>：不分性别的统称，brother 与 sister 的上位词。<br>词源：古英语 sibling 原义「亲属」，20 世纪被心理学与社会学重新启用，专指同胞。<br>搭配：siblings／sibling rivalry（同胞竞争）／sibling comparison（同胞比较）。<br>为什么这个词是本文的钥匙：全篇最关键的一步分析，就是把「不同家庭的孩子比」换成「同一个家庭的兄弟姐妹比」。一个词，决定了整篇证据的强弱。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>14,518 twins and <b>siblings</b></div>
+          <div class="wc-tr">14,518 名双胞胎与兄弟姐妹。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flourish</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈflʌrɪʃ/ · 美 /ˈflɜːrɪʃ/</div>
+          <div class="wc-pos"><b>v./n.</b> <b>（心理上的）蓬勃、繁荣</b>：心理学里的 flourishing 指「正向功能充分展开」——有投入、有意义、有关系、有成就感，比「开心」更像「活得舒展」。<br>常见义：<b>v.</b> 茂盛、繁茂（plants flourish）；<b>v.</b> 事业兴旺（the business flourished）；<b>n.</b> 花体字、夸张的挥动动作。<br>搭配：human flourishing／a flourishing life／flourish under pressure。<br>⚠️ 本篇第一个熟词僻义：如果把它读成「繁荣」，会以为在讲经济；其实它测的是一个人「日子过得有没有展开」。这也是为什么它与幸福感并列、却不是同一个东西。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>adult wellbeing and <b>flourishing</b></div>
+          <div class="wc-tr">成年期的幸福感与蓬勃感。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rate</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /reɪt/ · 美 /reɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>评价、给……评级</b>：self-rated health 即「自评健康」，由受访者自己给自己的健康状况打分（1 差 — 5 极好）。<br>常见义：<b>n.</b> 比率、速率（birth rate, heart rate）；<b>n.</b> 价格、费用（nightly rate）；<b>v.</b> 认为、把……列为（be rated highly）。<br>搭配：self-rated health／rate sth as／a rating scale。<br>⚠️ 本篇第二个熟词僻义：这里没有「速率」的意思。它在提醒读者：这份数据里有一半的变量是<b>主观自评</b>的，包括「你健康吗」这种本该由体检回答的问题。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>self-<b>rated</b> health</div>
+          <div class="wc-tr">自评健康。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">account for</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /əˈkaʊnt/ · 美 /əˈkaʊnt/</div>
+          <div class="wc-pos"><b>v.</b> <b>把……计算在内、纳入模型加以控制</b>：account for 在统计语境里是「把某个变量算进去」，而不是「解释」。<br>常见义：<b>v.</b> 解释、说明（account for the delay）；<b>v.</b> 占（比例）（women account for 40%）；<b>n.</b> 账户、账目、叙述。<br>搭配：account for baseline levels／account for shared environment／take sth into account。<br>⚠️ 本篇第三个熟词僻义：读懂它，才能读懂本文三次「数字变小」——每一次变小，都是因为又多算进了一个变量。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the authors also <b>accounted for</b> how each teenager slept</div>
+          <div class="wc-tr">作者再把每个青少年一开始的睡眠……一并计入。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">neuroticism</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /njʊˈrɒtɪsɪzəm/ · 美 /nʊˈrɑːtəˌsɪzəm/</div>
+          <div class="wc-pos"><b>n.</b> <b>神经质</b>：大五人格之一，指情绪不稳定、容易焦虑、容易波动的倾向。它不是「神经病」，也不是临床诊断。<br>构词：neuro-（神经）+ -osis（病症）+ -ism；形容词 neurotic。<br>搭配：high neuroticism／neuroticism score／emotional stability（反义）。<br>为什么本文盯住它：人格里与「心情」最贴的一项就是神经质。它的关联从 −0.34 一路缩到 −0.12，是全文「关联在收缩」最直观的一条证据。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>0.34 lower on <b>neuroticism</b></div>
+          <div class="wc-tr">神经质低 0.34。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">attenuate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /əˈtenjueɪt/ · 美 /əˈtenjuˌeɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>减弱、变小</b>：统计学与流行病学里指效应量随校正或随访而缩小，名词 attenuation（衰减）。<br>常见义：<b>v.</b> 使变细、使变薄；<b>adj.</b> 减毒的（attenuated vaccine 减毒疫苗）。<br>搭配：the association attenuated／attenuation of effect／attenuated virus。<br>为什么这个词值得记：读任何观察性研究，最该找的动词就是它——「关联减弱了」通常意味着「原来的效应里混着别的东西」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>attenuated</b> to insignificance</div>
+          <div class="wc-tr">弱到了不显著的程度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">latent</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈleɪtnt/ · 美 /ˈleɪtnt/</div>
+          <div class="wc-pos"><b>adj.</b> <b>潜在的、隐性的</b>：统计学里的 latent variable（潜变量）指无法直接观测、只能由多个题目共同推断的变量，比如「幸福感」本身。<br>常见义：<b>adj.</b> 潜伏的（latent infection）；<b>adj.</b> 潜在的、尚未显现的（latent demand）。<br>搭配：latent variable／latent class analysis／latent heat。<br>为什么它重要：三道题之所以能合成一个分数，靠的就是「它们共同指向一个看不见的东西」。潜变量不是事实，是模型对事实的猜测。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a single <b>latent</b> score</div>
+          <div class="wc-tr">一个单一的潜变量分数。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">rung</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rʌŋ/ · 美 /rʌŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>梯级、横档</b>：梯子上供脚踏的一级；ten-rung ladder 即「十级阶梯」。<br>常见义：<b>n.</b> 等级、层级（the bottom rung of society）；注意它同时也是 ring 的过去分词之一，但此处是名词。<br>搭配：the top rung／climb the rungs／a rung on the ladder。<br>为什么这道题长这样：Cantril 阶梯量表让受试者在 1 到 10 级之间标出「你认为自己现在站在哪一级」——一道画着梯子的题，比十道文字题更少受语言能力影响。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a ten-<b>rung</b> ladder</div>
+          <div class="wc-tr">一道十级阶梯。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">trait</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /treɪt/ · 美 /treɪt/</div>
+          <div class="wc-pos"><b>n.</b> <b>特质、性格特征</b>：人格心理学里指相对稳定的行为倾向，如尽责性、神经质。<br>常见义：<b>n.</b> 特点、特征（a family trait 家族特征）；<b>n.</b> 一丝、少许（a trait of irony）。<br>搭配：personality trait／a genetic trait／trait theory。<br>为什么它与「心情」不同：trait 是慢慢看才看得出的底色，mood 是一时的天气。本文的全部争论，都围绕着「测到的到底是天气还是底色」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the five personality <b>traits</b></div>
+          <div class="wc-tr">五大人格特质。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cannabis</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkænəbɪs/ · 美 /ˈkænəbɪs/</div>
+          <div class="wc-pos"><b>n.</b> <b>大麻</b>：科研与正式文本用 cannabis，口语多用 marijuana，工业用途的品种称 hemp。<br>用法：不可数名词，不能说 a cannabis；计量用 a gram of cannabis。<br>搭配：cannabis use／cannabis dependence／recreational cannabis。<br>为什么论文会测它：青春期的大麻使用是「成年早期结局」里最常见的混杂项之一；本文发现幸福感与后期使用呈负相关，但在校正家庭因素后这一条不再稳健。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>smoking, <b>cannabis</b>, exercise</div>
+          <div class="wc-tr">吸烟、大麻使用、运动。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">correction</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kəˈrekʃn/ · 美 /kəˈrekʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（统计）校正</b>：把某个已知干扰因素从结果中扣掉，如 correction for baseline（基线校正）。<br>常见义：<b>n.</b> 改正、纠正（error correction）；<b>n.</b> 批改（correction of homework）；<b>n.</b> 惩罚、训斥。<br>搭配：correction for multiple testing／after correction for age／a correction。<br>为什么本文数「三次校正」：每一次校正都对应一个「本来可能冒充原因的东西」——青少年本来的状态、家庭的共同背景、以及统计上的偶然。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Much of that survives <b>correction</b> for how the same teenager already slept</div>
+          <div class="wc-tr">这些数字有相当一部分，在校正同一个青少年本来的睡眠之后依然成立。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stable</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈsteɪbl/ · 美 /ˈsteɪbl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>稳定的</b>：此处指「不随时间大幅变动的性格倾向」。<br>常见义：<b>adj.</b> 稳固的（a stable government）；<b>n.</b> 马厩；<b>n.</b> 同一马房的一群赛马。<br>搭配：a stable trait／remain stable／stability（n. 稳定性）。<br>为什么它出现在这一段：文章要排除的最简单解释就是「你测了两次同一个稳定的东西」——如果真是这样，那就什么也没预测到。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>that one <b>stable</b> trait was measured twice</div>
+          <div class="wc-tr">把同一个稳定的特质测了两遍。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">substantial</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səbˈstænʃl/ · 美 /səbˈstænʃl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>可观的、幅度不小的</b>：形容效应量时的常用词，强调「不是小打小闹」，但不等于「显著」。<br>常见义：<b>adj.</b> 大量的、实质的（a substantial meal）；<b>adj.</b> 坚固的、结实的（a substantial building）。<br>搭配：a substantial effect／substantially higher／substantial evidence。<br>⚠️ 注意它与 significant 的分工：significant 说的是「不太可能是巧合」，substantial 说的是「这件事本身够大」。本文前半用 substantial，后半用 shrink，正好构成一对。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the associations were <b>substantial</b></div>
+          <div class="wc-tr">这些关联相当可观。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">questionnaire</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkwestʃəˈneə(r)/ · 美 /ˌkwestʃəˈner/</div>
+          <div class="wc-pos"><b>n.</b> <b>问卷</b>：一组标准化问题构成的测量工具，比 survey 更强调「同一套题、同一套计分」。<br>词源：法语 questionner（提问）；注意拼写双 n、结尾 -naire。<br>搭配：fill in a questionnaire／a self-report questionnaire／questionnaire data。<br>为什么本文要提它的局限：家庭之间的差异有很大一部分<b>根本不进问卷</b>——收入可以问，父母的性情和那条街就未必。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>in ways no <b>questionnaire</b> can capture</div>
+          <div class="wc-tr">在问卷捕捉不到的方面。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">capture</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkæptʃə(r)/ · 美 /ˈkæptʃər/</div>
+          <div class="wc-pos"><b>v.</b> <b>捕捉到、记录下</b>：此处指「把某种差异反映进数据里」。<br>常见义：<b>v.</b> 俘获、夺取（capture a city）；<b>v.</b> 吸引（capture attention）；<b>n.</b> 捕获。<br>搭配：capture the variation／capture attention／be captured in data。<br>为什么用这个词：它承认了测量的边界——不是「没测」，而是「测不进去」。这正是后文要换一种比较方式的原因。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>no questionnaire can <b>capture</b></div>
+          <div class="wc-tr">问卷捕捉不到的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">temperament</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈtemprəmənt/ · 美 /ˈtemprəmənt/</div>
+          <div class="wc-pos"><b>n.</b> <b>气质、性情</b>：心理学指与生俱来的情绪反应风格，比 personality 更偏「天生、底层」。<br>常见义：<b>n.</b> 脾气（a fiery temperament）；<b>n.</b> （音乐的）调律。<br>搭配：an even temperament／by temperament／temperamental（adj. 喜怒无常的）。<br>为什么它出现在「家庭差异」的清单里：父母的性情会同时影响基因与养育方式——这是观察性研究最难拆开的一团线。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a parent's <b>temperament</b></div>
+          <div class="wc-tr">父母的性情。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">outset</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈaʊtset/ · 美 /ˈaʊtset/</div>
+          <div class="wc-pos"><b>n.</b> <b>开端、起初</b>：at the outset 即「一开始」，比 at the beginning 更书面。<br>常见义：即此义；from the outset（从一开始）为固定搭配。<br>搭配：at the outset／from the outset／the outset of the project。<br>为什么本文需要它：第三次校正扣的是「一开始的状态」——十五岁那年的睡眠与得分。扣掉它，剩下的才叫「变化」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>at the <b>outset</b></div>
+          <div class="wc-tr">在一开始。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">insignificance</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌɪnsɪɡˈnɪfɪkəns/ · 美 /ˌɪnsɪɡˈnɪfɪkəns/</div>
+          <div class="wc-pos"><b>n.</b> <b>（统计上）不显著</b>：指结果无法与「零效应」区分，而不是「毫无意义」。<br>常见义：<b>n.</b> 无足轻重、微不足道（a matter of insignificance）。<br>搭配：fade into insignificance／statistical insignificance／attenuate to insignificance。<br>⚠️ 这是一个典型的「看起来是评价、其实是术语」的词。论文说 not significant，是在说证据不够，不是在说这件事不重要。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>attenuated to <b>insignificance</b></div>
+          <div class="wc-tr">弱到了不显著的程度。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">upbringing</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈʌpbrɪŋɪŋ/ · 美 /ˈʌpbrɪŋɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>教养、养育方式</b>：家庭在孩子成长中提供的照料与价值传递，比 education（学校教育）更偏家庭。<br>构词：up（向上）+ bring（带）＝「把孩子带大」。<br>搭配：a strict upbringing／family upbringing／bring sb up（动词短语）。<br>为什么本文非用它不可：双胞胎比较固定住了「共享的基因」与「共享的教养」，可这两样恰恰是作者最想分开的东西。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>shared genes from shared <b>upbringing</b></div>
+          <div class="wc-tr">共享的基因与共享的教养。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lever</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈliːvə(r)/ · 美 /ˈlevər/</div>
+          <div class="wc-pos"><b>n.</b> <b>杠杆、可施加影响的把手</b>：此处是比喻，指「可以撬动结果的手段」。<br>常见义：<b>n.</b> 杠杆（物理）、操纵杆；<b>v.</b> 用杠杆撬动（lever the lid off）；<b>v.</b> 利用（lever private money）。<br>搭配：a policy lever／pull the levers／leverage（n./v. 杠杆作用）。<br>为什么收在这个词上：全文的结论不是「幸福感没用」，而是「它不是把手」。信号告诉你风向，把手才改变方向——把两者搞混，是大多数「研究说 X 有益」的误读来源。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a signal rather than a <b>lever</b></div>
+          <div class="wc-tr">是信号，而不是杠杆。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">get a shrug</span><span class="zh">得到一个耸肩（的回应）</span></li>
+          <li><span class="en">a number that sounds invented</span><span class="zh">一个听起来像编出来的数字</span></li>
+          <li><span class="en">the raw material of</span><span class="zh">……的原材料</span></li>
+          <li><span class="en">file sth away as</span><span class="zh">把某物归档为……</span></li>
+          <li><span class="en">a ten-rung ladder</span><span class="zh">一道十级阶梯</span></li>
+          <li><span class="en">an unusually long follow-up</span><span class="zh">异常长的随访</span></li>
+          <li><span class="en">twins and siblings</span><span class="zh">双胞胎与兄弟姐妹</span></li>
+          <li><span class="en">in their twenties and thirties</span><span class="zh">在二十多岁与三十多岁时</span></li>
+          <li><span class="en">a decade later</span><span class="zh">十年之后</span></li>
+          <li><span class="en">a single latent score</span><span class="zh">一个单一的潜变量分数</span></li>
+          <li><span class="en">be measured twice</span><span class="zh">被测两次</span></li>
+          <li><span class="en">the five personality traits</span><span class="zh">五大人格特质</span></li>
+          <li><span class="en">between families</span><span class="zh">在家庭之间（做比较）</span></li>
+          <li><span class="en">one standard deviation higher</span><span class="zh">高出一个标准差</span></li>
+          <li><span class="en">score lower on</span><span class="zh">在……上得分更低</span></li>
+          <li><span class="en">the trait behind anxiety and mood swings</span><span class="zh">焦虑与情绪波动背后的那项特质</span></li>
+          <li><span class="en">survive correction for</span><span class="zh">在对……的校正之后依然成立</span></li>
+          <li><span class="en">rule out the simplest explanation</span><span class="zh">排除最简单的解释</span></li>
+          <li><span class="en">set family against family</span><span class="zh">把一个家庭与另一个家庭相对照</span></li>
+          <li><span class="en">differ in ways no questionnaire can capture</span><span class="zh">在问卷捕捉不到的方面存在差异</span></li>
+          <li><span class="en">under the same roof</span><span class="zh">在同一个屋檐下</span></li>
+          <li><span class="en">identical twins</span><span class="zh">同卵双胞胎</span></li>
+          <li><span class="en">share every gene</span><span class="zh">共享每一个基因</span></li>
+          <li><span class="en">end up doing</span><span class="zh">最终（成为／落到）</span></li>
+          <li><span class="en">hold its ground</span><span class="zh">守住阵地、不退缩</span></li>
+          <li><span class="en">decline to choose</span><span class="zh">拒绝做选择</span></li>
+          <li><span class="en">be born into a family</span><span class="zh">出生在某个家庭</span></li>
+          <li><span class="en">subtract the family</span><span class="zh">把家庭因素减掉</span></li>
+          <li><span class="en">sit closest to</span><span class="zh">离……最近</span></li>
+          <li><span class="en">at the outset</span><span class="zh">在一开始</span></li>
+          <li><span class="en">attenuate to insignificance</span><span class="zh">减弱到不显著</span></li>
+          <li><span class="en">predict where a person starts</span><span class="zh">预测一个人从哪里起步</span></li>
+          <li><span class="en">hold sth constant</span><span class="zh">使某物保持不变</span></li>
+          <li><span class="en">by construction</span><span class="zh">由设计本身所决定</span></li>
+          <li><span class="en">a signal rather than a lever</span><span class="zh">是信号，而不是杠杆</span></li>
+          <li><span class="en">be worth recording</span><span class="zh">值得被记录</span></li>
+          <li><span class="en">the bill for ignoring it</span><span class="zh">忽视它所要付的账单</span></li>
+          <li><span class="en">a number that can be filed away</span><span class="zh">可以被归档的数字</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：场景——三道软问题被当作噪音，被归档为「一种心情」。</li>
+          <li>第 2 段：研究——14,518 名双胞胎与兄弟姐妹，随访十年以上。</li>
+          <li>第 3 段：设计——一个潜变量作暴露，两组年龄、几十个结局。</li>
+          <li>第 4 段：家庭间——幸福感 0.32—0.38，睡眠 0.59，看起来很强。</li>
+          <li>第 5 段：质疑——家庭之间不可比，很多差异进不了问卷。</li>
+          <li>第 6 段：换算法——只比同一个屋檐下的兄弟姐妹。</li>
+          <li>第 7 段：家庭内——几乎全部缩小，只有睡眠守住阵地。</li>
+          <li>第 8 段：两种读法——出身的好处，还是睡眠离心情最近。</li>
+          <li>第 9 段：第三重校正——连睡眠也不显著，只剩「预测起点」。</li>
+          <li>第 10 段：落点——它是早期读数，不是可以拧的把手。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">In May a two-author team at the Netherlands Twin Register gave those questions an unusually long follow-up: 14,518 twins and siblings, questioned at fourteen to sixteen and again in their twenties and thirties.</div>
+        <div class="row"><b>主干：</b>a two-author team gave those questions a follow-up（一个两人团队给这些问题配上了随访）——give sb sth 双宾语结构，这里 give 的间接宾语是「问题」，直接宾语是「随访」，属于学术写作里常见的拟物化表达。</div>
+        <div class="row"><b>难点：</b>① an unusually long follow-up 中的 unusually 是全句的态度词：一般追踪研究随访三五年，这次拉到十年以上，一个副词就交代了这项研究的分量；② 冒号后面不是解释「随访」是什么，而是<b>直接给出规格</b>——人数、年龄、次数；③ 14,518 twins and siblings 是同位语，补充说明「谁被随访」；④ questioned at … and again in … 是<b>过去分词短语作后置定语</b>，逻辑主语是 14,518 人，省略了 who were；⑤ 注意 fourteen to sixteen 与 twenties and thirties 之间的时间跨度：前者是暴露（原因）的测量点，后者是结局（结果）的测量点，一句话把「十年」压缩成两个年龄区间。</div>
+        <div class="row tr"><b>译文：</b>今年五月，荷兰双生子登记的两位作者，给这三道题配上了异常长的随访：14,518 名双胞胎与兄弟姐妹，先在十四到十六岁被问一次，再在二十多岁与三十多岁时被问一次。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A teenager one standard deviation higher on wellbeing scored 0.32 to 0.38 higher on adult wellbeing and 0.59 higher on sleep quality, while scoring 0.34 lower on neuroticism, the trait behind anxiety and mood swings.</div>
+        <div class="row"><b>主干：</b>A teenager … scored 0.32 to 0.38 … and 0.59 … , while scoring 0.34 lower on neuroticism（一个青少年……得分高出……，同时……低 0.34）——一个主语，靠 while 分成「正」与「负」两半。</div>
+        <div class="row"><b>难点：</b>① one standard deviation higher on wellbeing 是<b>后置定语</b>修饰 teenager，不是状语；读法是「幸福感比同龄人高一个标准差的那个青少年」；② 三个 higher 后面全部省略了 standard deviations——英语为了避免重复而省略，读者必须自己补回，否则会误以为 0.59 是「59%」；③ while scoring 是<b>分词状语表对比</b>，while 在这里不是「当……时」，而是「而、同时」；④ the trait behind anxiety and mood swings 是同位语，用来给不懂「神经质」的读者一个通俗定义；⑤ 整句的修辞目的很清楚：两正一负，把「幸福感高的人后来怎样」一次说完，为下一句的「校正」留出全部空间。</div>
+        <div class="row tr"><b>译文：</b>幸福感比同龄人高一个标准差的青少年，成年后的幸福感高出 0.32 到 0.38，睡眠质量高出 0.59；与此同时，他们的神经质——焦虑与情绪波动背后的那项特质——低 0.34。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">So the authors compared siblings raised under the same roof — identical twins included, who share every gene — and asked whether the happier child ended up sleeping better than the less happy one.</div>
+        <div class="row"><b>主干：</b>the authors compared siblings … and asked whether …（作者比较了兄弟姐妹……并追问……）——一个主语带两个并列谓语，主干极短，信息全在修饰里。</div>
+        <div class="row"><b>难点：</b>① raised under the same roof 是过去分词短语作后置定语，修饰 siblings，字面「在同一片屋顶下被养大的」，即「同一个家庭」；② 破折号里的 identical twins included 是<b>独立主格</b>（= with identical twins included），插进来强调「连基因都相同的人也被比过」；③ who share every gene 是非限制性定语从句，补充说明同卵双胞胎的特殊性；④ whether 从句里 the happier child 与 the less happy one 形成<b>比较级对照</b>，把统计语言翻译成日常语言；⑤ 注意 asked 与 compared 的先后关系：先换比法，再问问题——这一句其实是全篇方法论的浓缩。</div>
+        <div class="row tr"><b>译文：</b>于是作者改为比较在同一个屋檐下长大的兄弟姐妹——包括共享每一个基因的同卵双胞胎——去问：家里更快乐的那一个，后来是不是睡得比不那么快乐的那一个更好。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">When the authors also accounted for how each teenager slept and felt at the outset, the within-family links to sleep, health and neuroticism attenuated to insignificance, leaving a picture in which wellbeing predicts where a person starts rather than how far they travel.</div>
+        <div class="row"><b>主干：</b>the within-family links attenuated（家庭内部的关联减弱了）——主句只有三个词的主谓，前面挂一个状语从句，后面挂一个分词短语。</div>
+        <div class="row"><b>难点：</b>① When 引导的是<b>时间/条件状语从句</b>，但逻辑上更接近「如果」；② accounted for 后面接了三个并列成分（how each teenager slept and felt），此处 account for 是「把……算进去」，不是「解释」；③ attenuated to insignificance 是「弱到不显著」，注意 insignificance 是统计术语，不是评价；④ leaving a picture in which … 是<b>分词结果状语</b>，in which 引导定语从句修饰 picture，这种「留下这样一幅图景」是英文评论的常见收尾法；⑤ predicts where a person starts rather than how far they travel 用两个名词性从句对举，把抽象的统计结论变成一个可以记住的比喻：<b>它预测起点，不预测行程</b>。</div>
+        <div class="row tr"><b>译文：</b>当作者再把每个青少年「一开始」的睡眠与感受一并计入，家庭内部那些与睡眠、健康、神经质相关的关联，就弱到了不显著的程度；剩下的图景是：青少年的幸福感，很大程度上预测的是一个人从哪里起步，而不是他能走多远。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">A teenager's answer to three soft questions is worth recording not because it grows a healthier adult, but because it is one of the few cheap readings before the tenth year, when the bill for ignoring it is already in the sleep diary.</div>
+        <div class="row"><b>主干：</b>A teenager's answer is worth recording（一个青少年的回答值得被记录）——be worth doing 结构，后面用 not because … but because … 给出两个理由的对举。</div>
+        <div class="row"><b>难点：</b>① three soft questions 中的 soft 是全文的关键形容词：不是「软弱的」，而是「主观的、不精确的、不疼不痒的」；② not because … but because … 是<b>原因对举</b>，先否掉「能养出一个更健康的成年人」这个功利理由，再给出真正的理由；③ one of the few cheap readings 里 readings 不是「阅读」，而是「读数」——这是仪表盘的语言；④ when the tenth year 里的 when 等于「而到了那时」；⑤ the bill for ignoring it 是<b>动名词短语</b>作介词宾语，「因为忽视它而收到的账单」；全句最后落在 sleep diary 这个具体物件上，把一个统计结论收回到了日常。</div>
+        <div class="row tr"><b>译文：</b>一个青少年对三道软问题的回答值得记下来，不是因为它能养出一个更健康的成年人，而是因为在第十年之前，这是少数几种便宜的读数之一——而到那时，忽视它的账单已经写在睡眠记录里了。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章要处理一个被大人反复忽略的问题：一个十五岁孩子说「还行」，这句话值不值得记下来。</b>几乎所有中学都在意成绩、竞赛和升学去向，很少有人把「你最近过得怎么样」当成一项需要测量的数据。可荷兰的一项研究偏要这么做：把三道极软的问题——生活满意度、主观快乐、以及「你认为自己站在十级阶梯的第几级」——合成为一个分数，然后等上十年。结果发表在 2026 年的《自然·通讯》上，作者是 Geijsen 与 Bartels，数据来自荷兰双生子登记，共 14,518 名双胞胎与兄弟姐妹。</p>
+      <p class="zh-sum"><b>先看它测了什么、怎么测。</b>「原因」只有一个：十四到十六岁之间测一次的幸福感潜变量。「结果」则宽得多，包括成年期的幸福感与蓬勃感、五大人格特质、自评健康、吸烟、大麻使用、运动与睡眠质量，而且在二十到二十五岁、二十五到三十五岁各测一次。这种「一个原因、几十个结果」的设计，是大型队列研究的典型做法：先广撒网，再看哪几条线真的连得上。</p>
+      <p class="zh-sum"><b>第一层结果看起来很强。</b>在家庭与家庭之间比较，幸福感高一个标准差的青少年，成年后的幸福感高 0.32 到 0.38，睡眠质量高 0.59，神经质低 0.34。更关键的是，这些关联里有相当一部分在「校正同一个青少年十五岁时本来的状态」之后仍然成立——这就排除了最廉价的解释：研究只是把同一个稳定特质测了两遍。到这里，一个漂亮的结论已经可以写出标题了。</p>
+      <p class="zh-sum"><b>然后是全文的转折：作者自己拆自己的台。</b>每一次「家庭之间」的比较，都把一整个家庭当成一个单位。可家庭与家庭之间的差异，很多东西根本无法进入问卷：基因、收入、父母的性情、住在哪条街。于是作者换了算法，比较同一个屋檐下长大的兄弟姐妹，包括基因完全相同的同卵双胞胎。问法也变了：家里更快乐的那一个，后来是不是睡得比不那么快乐的那一个好？</p>
+      <p class="zh-sum"><b>答案让数字集体缩水。</b>成年幸福感从 0.38 掉到 0.12，蓬勃感从 0.34 掉到 0.17，神经质从 −0.34 掉到 −0.12。唯一的例外是睡眠质量：从 0.59 降到 0.46，十年后再从 0.87 降到 0.71——它没有全身而退，但明显比别的变量站得稳。换句话说，前面那些漂亮的相关，有一大半其实在说另一件事：<b>不是「快乐让你更健康」，而是「某些家庭既让孩子更快乐，也让孩子更健康」</b>。</p>
+      <p class="zh-sum"><b>论文对这种现象给了两种读法，并且拒绝选边。</b>第一种更冷：幸福感的好处，很大一部分只是家庭出身的好处；把家庭减掉，剩下的不多。第二种更暖：睡眠是所有结局里离日常心情最近的一项，一个夜里翻来覆去安顿不下来的少年，其实已经在过成年问卷要问的那种生活——所以它守得住，是因为它离得近，而不是因为它特别重要。两种读法都成立，论文把它们并列，是诚实，也是留白。</p>
+      <p class="zh-sum"><b>第三重校正把谨慎推到极限。</b>作者又扣了一次：把每个青少年「一开始」的睡眠与感受也算进去。这一次，家庭内部那些与睡眠、健康、神经质有关的关联，全部弱到不显著。于是整篇文章最硬的一句话出现了——<b>青少年的幸福感，很大程度上预测的是一个人从哪里起步，而不是他能走多远</b>。作者自己也承认：设计能分开「预测」与「因果」，却分不开「共享的基因」与「共享的教养」，因为比较兄弟姐妹时，这两样在设计上就被固定住了。</p>
+      <p class="zh-sum"><b>那这项研究还有什么用？</b>用处在于它把一个模糊的常识变成了有刻度的东西。第一，它告诉我们「青少年期的感受不是过眼云烟」——即便在同一个家庭里，更快乐的那个后来确实睡得更好；第二，它同时告诉我们「别把它当把手」——它不是可以拧一下就把孩子调健康的那种杠杆。这两句话合起来，才是完整的结论：<b>它是一个早期的读数，不是一个可以操作的按钮</b>。</p>
+      <p class="zh-sum"><b>读这类研究，可以带走三个具体的习惯。</b>① 看它比较的是谁：家庭之间，还是家庭之内？后者更严格，也更少见到大数字。② 看它校正了什么：每多校正一层，关联通常就小一圈，缩小的幅度本身就是信息。③ 看它对哪个结果最稳：本文是睡眠，而不是幸福感本身，这个细节比任何一个 β 值都更值得记住。</p>
+      <p class="zh-sum"><b>最后是一个可以迁移的判断。</b>所有「A 导致 B」的健康新闻，都值得先问一句：这个 A 是不是只是某件更大的事情的影子？在这篇文章里，那件更大的事情叫家庭。承认影子的存在，并不会让光变得不重要；它只是提醒我们，把影子当成开关，往往会白费力气。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. Adolescent wellbeing is the single strongest predictor of adult health, so schools should teach happiness instead of academic subjects.<br>B. A ten-year study of 14,518 twins and siblings finds that adolescent wellbeing tracks adult sleep, self-rated health and emotional steadiness; but most of those links shrink once siblings raised together are compared, and sleep is the one that holds best.<br>C. Because the study cannot prove causation, its findings about adolescent wellbeing and adult outcomes should be disregarded.<br>D. Identical twins are happier than other children, which explains why the within-family estimates are smaller than the between-family ones.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景：三道软问题被当作噪音（第 1 段）→ 研究：14,518 人、随访十年（第 2 段）→ 设计：一个潜变量暴露、两组年龄结局（第 3 段）→ 家庭间结果：0.32—0.38、睡眠 0.59（第 4 段）→ 质疑：家庭之间不可比（第 5 段）→ 家庭内结果：几乎全部缩小，睡眠守住（第 6、7 段）→ 第三重校正：连睡眠也不显著（第 9 段）→ 落点：是信号，不是杠杆（第 10 段）」。B 同时抓住「有关联」与「关联会缩水」两半。A 把相关性读成因果，且原文没有课程建议。C 走另一极端，最后一段明确说它仍有价值。D 与原文相反：同卵双胞胎恰恰是被拿来<b>控制</b>基因差异的，不是用来比较快乐程度的。</div>
+
+      <div class="q"><b>2. The authors compare siblings raised in the same family rather than only comparing children from different families. Why?<br>A. Because siblings are easier to recruit than unrelated teenagers of the same age.<br>B. Because a between-family comparison folds shared genes and shared upbringing into what looks like the effect of wellbeing; comparing siblings holds those shared factors constant, so the question becomes whether the happier child still does better.<br>C. To prove that identical twins are emotionally more similar to each other than to other children.<br>D. To double the sample size and so make the results statistically significant.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>第 5 段说得很清楚：家庭之间的比较，无法排除基因、收入、父母性情这些「问卷捕捉不到」的差异；第 9 段又补一句，比较兄弟姐妹会「由设计本身」把共享基因与共享教养固定住。所以这一步的目的是<b>把混杂因素扣掉</b>，看关联还剩多少——结果是几乎全部缩小，只有睡眠守得较好。A 与原文无关，样本是现成的登记库。C 把手段当目的，双胞胎在这里是被用来控制变量，不是研究对象本身。D 也不是理由：家庭内比较的样本量并未翻倍，反而因为要成对使用而更小，这也正是 25—35 岁那一段很多结果不显著的原因之一。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文的方法论只有一句话：把「不同家庭的孩子比」换成「同一个家庭的兄弟姐妹比」，看看还剩多少。请你就身边一个「看起来是 A 导致了 B」的说法（例如：上了补习班所以成绩好、参加了社团所以更外向、住得离学校近所以更自律），写一段 150 字以内的分析：① 这个说法里，A 和 B 背后有没有一个「更大的东西」（家庭？地段？同伴？）；② 如果只比较「同一个环境里的两个人」，差距会缩小到什么程度；③ 缩小之后，剩下的那部分还能叫因果吗？最后一句请用「它没有说谎，只是 ______」的句式收束。</div>
+      <div class="q"><b>仿写：</b>本文第 7 段是全篇最省力也最有力的一段：先说 Nearly everything shrank，然后用一串「从 X 掉到 Y」把证据摊开，最后用一个 only 把例外挑出来。骨架是：<i>Nearly everything ______. A fell from ______ to ______, B from ______ to ______ and C from ______ to ______; only ______ held its ground, easing from ______ to ______.</i> 注意三件事：① 每个数字都必须成对出现（原值 + 新值），只给一个新值就读不出「缩水」；② 三个分句用分号并列，不要加多余的连接词，让数字自己排队；③ only 后面的那一项必须是<b>具体的变量名</b>（sleep quality），不能写成 something，否则例外就变成了悬念而不是发现。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 10 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 10 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">① 场景：三道软问题，被归档为「一种心情」</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">② 研究：14,518 人，随访十年以上（NTR）</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">③ 设计：一个潜变量，两组年龄、几十个结局</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">④ 家庭间：幸福感 0.38 · 睡眠 0.59（很强）</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">⑤ 质疑：家庭之间不可比，问卷漏掉的太多</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">⑥ 家庭内：几乎全部缩小，只有睡眠守住</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-dasharray="5 4"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑦ 两种读法：出身的好处 / 睡眠离得最近</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">⑧ 第三重校正：连睡眠也弱到不显著</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">⑨ 落点：是早期读数，不是可以拧的把手</text>
+
+          <rect x="60" y="564" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="584" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：同一批数据，换一种比法，关联就从 0.38 掉到 0.12</text>
+          <text x="360" y="601" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">缩水不是造假，是「家庭」这个变量被扣掉之后的真实形状</text>
+
+          <text x="360" y="646" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 4 段橙色：家庭之间的漂亮数字——最容易被写成标题的那一版</text>
+          <text x="360" y="668" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 6、7、9 段红色：三次收紧——换比法、换参照、扣基线，关联几乎消失</text>
+        </svg>
+        <figcaption>结构图解：全文走的是一条「先立后破」的路。第 1 段用三道软问题和一声耸肩把场景立住，说明这类数据平时被当成噪音；第 2 段交代研究规格：14,518 名双胞胎与兄弟姐妹、随访十年以上；第 3 段拆开设计：一个潜变量作暴露，两组年龄、几十个结局作结果；第 4 段给出家庭之间的漂亮数字——幸福感 0.32 到 0.38、睡眠 0.59，而且校正青少年基线之后仍有部分成立；第 5 段转向质疑：家庭之间的比较把基因、收入、父母性情全都算了进去，问卷根本捕捉不到；第 6 段换算法，只比同一个屋檐下的兄弟姐妹；第 7 段是全篇的转折，几乎每个数字都缩水，只有睡眠从 0.59 降到 0.46，站得最稳；第 8 段给出两种读法并且拒绝选边——一种是「出身的好处」，一种是「睡眠离心情最近」；第 9 段再加一重校正，把十五岁那年的基线也扣掉，结果连睡眠也不显著，只剩「预测起点、不预测行程」；第 10 段收束到可迁移的判断：它是早期的读数，不是可以拧的把手。全文没有否定这项研究，它更想说的是：<b>一个关联的说服力，取决于它敢不敢换一种更严格的比法再算一遍</b>。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Geijsen, A.J. &amp; Bartels, M.《Adolescent wellbeing is associated with positive outcomes in early adulthood in a sibling comparison study》，<i>Nature Communications</i> 17, 4109（2026；DOI 10.1038/s41467-026-72459-9，开放获取），阿姆斯特丹自由大学（VU Amsterdam）荷兰双生子登记（Netherlands Twin Register，NTR）｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-11-24",
+      "en": "A teenager's answer to three soft questions is worth recording not because it grows a healthier adult, but because it is one of the few cheap readings before the tenth year, when the bill for ignoring it is already in the sleep diary.",
+      "zh": "一个青少年对三道软问题的回答值得记下来，不是因为它能养出一个更健康的成年人，而是因为在第十年之前，这是少数几种便宜的读数之一——而到那时，忽视它的账单已经写在睡眠记录里了。",
+      "src": "外刊精读 · 同一个家里，快乐的那个，十年后睡得更沉（2026-11-24）",
+      "key": "readings",
+      "keyZh": "读数（不是「阅读」）：仪表盘上的数字，指可以被反复读取的测量值；此处把「一句软回答」比作一次可以读出来的数据",
+      "tip": "这句话的力气全在 not because … but because … 这个对举上：先删掉一个功利理由（能养出一个更健康的成年人），再给出一个听起来更弱、其实更扎实的理由（它是便宜的读数）。写议论文时，先否掉「最容易被接受的那个理由」，往往比直接论证更有说服力。三个细节值得记：① three soft questions 里的 soft 指「主观的、不精确的、不疼不痒的」，与硬指标（体检、成绩）相对；② readings 在科学语境里是「读数」而非「阅读」，仪表盘、温度计、心率表给的都是 readings；③ the bill for ignoring it 是「因为曾经忽视它而收到的账单」——把抽象的「后悔」写成了可以寄到家里的东西，最后落在 sleep diary 这个具体物件上，一个统计结论就被收回到日常。仿写骨架：X is worth ______ not because it can ______, but because it is one of the few ______ before ______, when the bill for ______ is already ______.",
+      "tags": [
+        "成长叙事",
+        "青少年",
+        "睡眠"
+      ]
+    },
+    {
       "date": "2026-11-23",
       "en": "Was the removal additional, or would the meadow have come back anyway; will the carbon stay for a century, given how anchors and heat tear them apart; and has the same tonne been sold twice?",
       "zh": "这笔减排真的是「额外」的吗，还是那片海草本来就会长回来；碳能不能待满一百年，考虑到船锚和热浪会把海草床撕开；以及，同一吨碳是不是已经被卖过两次？",
