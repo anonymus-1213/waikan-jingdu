@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-11-25",
+      "en": "What a text cannot do is hear an answer, notice that it is wrong, and change the next question accordingly.",
+      "zh": "短信做不到的事是——听见一个回答，发现它错了，然后据此换下一个问题。",
+      "src": "外刊精读 · 电话有用，因为它知道孩子站在第几级（2026-11-25）",
+      "key": "accordingly",
+      "keyZh": "相应地、据此：表示「根据刚才那件事，做出对应的调整」，不是「因此」那么简单，它强调的是动作随情况而变",
+      "tip": "这句话的力量来自一个否定式的定义：what a text cannot do。要说明「某样东西为什么不够」，最省力的写法不是列举它缺什么，而是直接说它做不到的那一个动作。三个动词串成一条链——hear（听见）、notice（察觉）、change（调整）——恰好是一条完整的教学回路；短信只完成了前半截的「发送」，回路在第二步就断了。注意末尾的 accordingly：它不是「因此」，而是「据此、相应地」，暗含「下一个问题因这个错误而改变」。这也是本文的分水岭：能跑完这条链的，是那个先做诊断的人，而不是那根管子。仿写骨架：What ______ cannot do is ______, ______ that it is ______, and ______ the next ______ accordingly.",
+      "tags": [
+        "教育与学习方式",
+        "远程教学",
+        "技术"
+      ]
+    },
+    {
       "date": "2026-11-24",
       "en": "A teenager's answer to three soft questions is worth recording not because it grows a healthier adult, but because it is one of the few cheap readings before the tenth year, when the bill for ignoring it is already in the sleep diary.",
       "zh": "一个青少年对三道软问题的回答值得记下来，不是因为它能养出一个更健康的成年人，而是因为在第十年之前，这是少数几种便宜的读数之一——而到那时，忽视它的账单已经写在睡眠记录里了。",

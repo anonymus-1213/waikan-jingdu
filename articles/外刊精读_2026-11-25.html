@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 电话有用，因为它知道孩子站在第几级</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<article class="wrap">
+  <div class="eyebrow">Call &amp; Level · 人与社会 / 教育与学习方式 / 教育公平 / 远程教学</div>
+  <h1>电话有用，因为它知道孩子站在第几级</h1>
+  <div class="deck">Five randomised trials across five countries gave 16,936 households a twenty-minute phone tutorial a week. The calls worked; the texts did not. What made the difference was not the phone but knowing which level each child was on.</div>
+  <div class="byline"><span><b>来源</b> Nature（2026, 657: 689–696）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-25</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 552 词 / 10 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-25.jpg" alt="写实场景：非洲乡村土屋门前的院子里，一位女教师蹲在小板凳旁，一手拿练习本一手指着纸上的除法算式，一个十岁左右的女孩握着铅笔低头看题，旁边放着一部老式按键手机">
+    <figcaption>配图：院子里的一对一电话辅导。没有屏幕，没有应用，只有一道题、一支笔和一个愿意等的人（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>五国五场随机对照试验、<b>16,936</b> 户家庭：每周一次二十分钟的电话辅导，让学习成绩提高 <b>0.32</b> 个标准差。</p>
+    <p>只发短信的一组只有 <b>0.078</b>。真正的变量不是手机，而是<b>定向</b>——每通电话都从孩子实际达到的那一级开始。</p>
+    <p>这篇要练的是「把功劳归给谁」：设备、内容、还是那个先做诊断的人。难度在细节里，结论在顺序里。</p>
+    <p>本期重点熟词僻义：<b>arm</b>（试验的一个分支）、<b>pitch</b>（把课定在某个难度）、<b>operation</b>（数学运算）、<b>compliance</b>（顺从，而非合规）。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-25.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.761">Last spring a teacher in rural Uganda dialled a ten-year-old who had been out of school for four months, and began not with her class's page but with a division problem the girl had missed.</span> <span class="s" data-t="10.761" data-e="16.961">The call lasted twenty minutes: no screen, no app, no cost beyond a little airtime.</span></span></div>
+      <p class="para-tr">去年春天，乌干达乡村的一位老师拨通了一个十岁女孩的电话——她已经停课四个月。老师没有从班上讲到的那一页开始，而是从那女孩上周做错的一道除法题开始。这通电话打了二十分钟：没有屏幕，没有应用，除了一点点话费，没有任何成本。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="16.961" data-e="29.776">That call was one <b class="kw" data-tip="n. （试验的）一个分支、一组：临床试验与随机试验里，一个 arm 就是接受某一种处理的一组受试者，如 the phone arm（电话组）；常见义 n. 手臂、胳膊，n. 武器（arms）">arm</b> of a broad experiment: five randomised trials across India, Kenya, Nepal, the Philippines and Uganda, covering 16,936 <b class="kw" data-tip="n. 家庭、住户：统计口径里的「一户人家」，比 family 更偏经济单位（同一口锅、同一份收入）；常见义 adj. 家用的、家喻户晓的（a household name）">households</b>.</span> <span class="s" data-t="29.776" data-e="36.472">Children got a weekly twenty-minute phone tutorial plus texts, or texts alone, for eight weeks.</span> <span class="s" data-t="36.472" data-e="49.974">The results, published in <i>Nature</i> on 9 September 2026, are stark: the calls lifted learning by 0.32 standard deviations; the messages managed 0.078.</span></span></div>
+      <p class="para-tr">这通电话，只是一个庞大实验里的一个分支：五场随机对照试验，分别在印度、肯尼亚、尼泊尔、菲律宾和乌干达进行，覆盖 16,936 户家庭。孩子们每周接到一次二十分钟的电话辅导，另配短信；或者只收短信；持续八周。结果发表在 2026 年 9 月 9 日的《自然》上，非常干脆：电话把学习成绩抬高了 0.32 个标准差，而短信只做到 0.078。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="49.974" data-e="64.276">To read 0.32 you need a <b class="kw" data-tip="n. 衡量的标尺、参照尺度：原指裁缝量布用的码尺，引申为「判断大小所用的基准」；常见义 n. 码尺（实物）、评判标准">yardstick</b>: the <b class="kw" data-tip="adj./n. 中位数的、中位数：把一组数从大到小排好，正中间那个；教育研究里常用它当「典型干预」的代表，比平均数更不容易被极端值拉偏；常见义 adj. 中间的、中央的（the median strip 道路中央分隔带）">median</b> education <b class="kw" data-tip="n. 干预、干预措施：在社会科学与医学里指「人为加进去、试图改变结果的那件事」，如一项课程、一次补贴；常见义 n. 介入、干涉（military intervention）">intervention</b> moves the needle by about 0.10, so the calls were three times as effective as the typical programme, at about US$11 per child.</span> <span class="s" data-t="64.276" data-e="76.882">On the standard <b class="kw" data-tip="adj. 成本效益高的：花的每一块钱换回的成效多，不是「便宜」，也不是「有效」——它同时比较分子与分母；常见搭配 cost-effectiveness（n. 成本效益）">cost-effective</b> metric the programme returned 3.6 learning-adjusted years of schooling per US$100, among the ten best of 150 interventions ever costed that way.</span></span></div>
+      <p class="para-tr">要读懂 0.32，你需要一把尺子：教育类干预的中位数效应大约是 0.10，也就是说，这些电话的效果约为典型项目的三倍，而成本约为每名儿童 11 美元。按通行的成本效益口径计算，该项目每花 100 美元，可换回 3.6 个「学习调整学年」，在 150 项被这样计价过的干预里排进前十。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="76.882" data-e="88.158">The temptation is to file this under technology, and the paper quietly refuses: text messages, the cheapest part of the package, worked only where schools stayed shut longest.</span> <span class="s" data-t="88.158" data-e="94.908">What a text cannot do is hear an answer, notice that it is wrong, and change the next question accordingly.</span></span></div>
+      <p class="para-tr">人很容易把这件事归档到「技术」名下，而论文偏偏不肯：短信是这个方案里最便宜、最容易规模化的部分，却只在停课最久的国家起了作用。短信做不到的事是——听见一个回答，发现它错了，然后换下一个问题。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="94.908" data-e="105.0">That difference has a name in the paper: <b class="kw" data-tip="n. 定向、对准特定对象：教学里指「按每个孩子当前的实际水平出题」，区别于按年级、按教材统一推进；常见义 n. 瞄准、靶向（targeting of subsidies 补贴的精准投放）">targeting</b>, which meant starting each call at the level the child had actually reached rather than the level the <b class="kw" data-tip="n. 课程体系、教学大纲：一个年级或一个学科规定要教的内容与顺序，是「应该学到哪」的官方说法；常见义 n. （学校的）全部课程（the school curriculum）">curriculum</b> said the class was on.</span> <span class="s" data-t="105.0" data-e="117.776">Accuracy climbed from 50.9% in Nepal to 81.5% in Uganda, and the effect sizes climbed with it, from 0.1 grade levels in Kenya to 1.19 in Uganda.</span> <span class="s" data-t="117.776" data-e="127.211">The counter-example is blunt: in Sierra Leone, lessons broadcast to everyone at once, with no targeting, produced no measurable effect.</span></span></div>
+      <p class="para-tr">这个差别，论文给了它一个名字：定向。意思是，每一通电话都从孩子「真实的水平」开始，而不是从教学大纲说这个班「应该到」的地方开始。定向的准确率从尼泊尔的 50.9% 升到乌干达的 81.5%，效应量也跟着水涨船高：肯尼亚 0.1 个年级水平，乌干达 1.19。反例很直白：塞拉利昂用广播同时向所有人播课，完全没有定向，结果是零。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="127.211" data-e="134.932"><b class="kw" data-tip="v. 把（课程、讲解）定在某个难度或水平上：pitch a lesson at a level 即「按某个水平来设计、来讲」，源自音乐里的「定音高」；常见义 n. 音高、球场，v. 投掷、搭（帐篷），v. 推销（pitch an idea）">Pitch</b> a lesson two grades above a child and she does not struggle; she goes quiet, and the silence looks like <b class="kw" data-tip="n. 顺从、配合：此处指「不说话＝听话」这种被误读的安静，是行为管理里的术语；常见义 n. 合规、遵守（compliance with the law）、（标准的）符合">compliance</b>.</span> <span class="s" data-t="134.932" data-e="144.408">The tutor's first job is therefore not explanation but <b class="kw" data-tip="n. 诊断、查明症结: 教育评估里指「先弄清楚这个孩子会什么、卡在哪」，再决定教什么；常见义 n. （医学）诊断（a diagnosis of pneumonia）">diagnosis</b>: finding the highest <b class="kw" data-tip="n. 立足点、可以站稳的地方: 攀岩用语，指脚能踩住、使上力的那个点；引申为「一个人现有的、可以据以继续往上走的能力位置」；常见义 n. 据点、根据地（a foothold in the market）">foothold</b> the child can stand on, then starting one step below.</span></span></div>
+      <p class="para-tr">把一节课定在比孩子高出两个年级的位置，她不会「有挑战地挣扎」，她只会安静下来；而那阵安静，看上去很像听话。所以辅导者的第一件事不是讲解，是诊断：找到这个孩子能站稳的那个最高立足点，然后从它下面一级开始。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="144.408" data-e="160.987">The paper also tests the objection that dooms most such programmes, that they work only while outsiders run them: in Nepal and the Philippines, lessons <b class="kw" data-tip="v. 交付、授课：deliver a lesson 即「把一节课真正上到学生面前」，强调「送到」而不是「设计」；常见义 v. 递送（deliver a parcel）、发表（deliver a speech）、兑现（deliver on a promise）">delivered</b> by government teachers produced 0.40 <b class="kw" data-tip="n. （数学）运算、运算等级：operation level 是这项研究自创的指标，指孩子能正确完成的运算层级，如加法、减法、除法；常见义 n. 操作、运行（in operation）、手术（an operation）">operation</b> levels of gain against 0.30 for NGOs.</span> <span class="s" data-t="160.987" data-e="169.156">Teachers who made these calls were also 9.3 percentage points more likely to give pupils feedback pitched to their actual level.</span></span></div>
+      <p class="para-tr">论文还检验了那个让大多数教育项目功亏一篑的质疑：这类项目是不是只有在外人操办时才有效？在尼泊尔和菲律宾，由政府教师授课带来的增益是 0.40 个运算等级，而 NGO 教员是 0.30。更值得注意的是，做过这些电话的教师，按学生真实水平给出反馈的可能性高出了 9.3 个百分点。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="169.156" data-e="180.592">Three limits deserve stating: the trials covered <b class="kw" data-tip="n. 算术能力、基本运算素养：指对数字与运算的掌握，与 literacy（读写能力）并列，是基础教育评估的两项基本功；常见义即此义，形容词 numerate（会算数的）">numeracy</b> only, ran for eight weeks, and measured learning rather than schooling; the households already had phones, though few had internet.</span> <span class="s" data-t="180.592" data-e="188.224">Nor is 0.32 a <b class="kw" data-tip="n. （陪审团的）裁决、定论：此处指「对手机这件事下的最终判断」；常见义 n. 判决（reach a verdict）、正式意见">verdict</b> on phones, since with classrooms shut the comparison was against nothing at all.</span></span></div>
+      <p class="para-tr">有三条边界必须说清：试验只测了算术，只跑了八周，而且测的是「学到了多少」而非「上了多少学」；这些家庭本来就有手机，但能上网的不到 15%。所以 0.32 不是对手机的判决——教室都关着的时候，它比较的对象是「什么都没有」。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="188.224" data-e="201.263">Still, the economics point somewhere uncomfortable for an industry that sells software: the <b class="kw" data-tip="adj. 稀缺的、供不应求的：经济学的核心词，指「想要的人多于现有的量」；常见义 adj. 稀少的（scarce resources），副词 scarcely（几乎不）">scarce</b> input was twenty minutes of a trained adult's attention aimed at one child's level, and the phone was merely the pipe that carried it.</span> <span class="s" data-t="201.263" data-e="206.645">Bandwidth gets cheaper every year; diagnosis does not scale by download.</span></span></div>
+      <p class="para-tr">尽管如此，这套经济学对一个卖软件的行业并不客气：这里真正稀缺的投入，是一个受过训练的大人二十分钟的注意力，并且用在某一个孩子当下的水平上；手机只是把这份注意力送过去的那根管子。带宽一年比一年便宜；诊断不会因为下载而规模化。</p>
+
+      <div class="para"><span class="idx">【10】</span><span class="en"><span class="s" data-t="206.645" data-e="212.592">None of this makes a phone call a cure for broken schools, and the authors do not claim it is.</span> <span class="s" data-t="212.592" data-e="222.513">The finding is narrower and more useful: a lesson works when it starts where the learner actually is, and knowing where that is remains the part of teaching no app can <b class="kw" data-tip="v. 假装、伪造：此处指「装出自己知道孩子在哪个水平」，即模仿诊断；常见义 v. 伪造（fake a signature）、adj. 假的（fake news）">fake</b>.</span></span></div>
+      <p class="para-tr">这些都不足以让一通电话成为破败学校的解药，作者也没有这么说。这个发现更窄，也更有用：一节课只有在「学习者真正所在的地方」开始时才起作用，而弄清那到底是哪里，仍是教学里没有任何应用学会伪造的那一部分。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dial</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈdaɪəl/ · 美 /ˈdaɪəl/</div>
+          <div class="wc-pos"><b>v.</b> <b>拨（电话号码）</b>：dial a number／dial a child，比 call 更具体，强调「按下号码」这个动作。<br>常见义：<b>n.</b> 表盘、刻度盘（the dial of a watch）；<b>v.</b> 调（旋钮）（dial down the heat）。<br>搭配：dial a number／dial in／speed dial。<br>为什么用这个词：全文的第一个动作是「拨号」而不是「打开某个应用」——一个动词就把技术含量交代完了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>dialled</b> a ten-year-old</div>
+          <div class="wc-tr">拨通了一个十岁孩子的电话。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">household</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈhaʊshəʊld/ · 美 /ˈhaʊshoʊld/</div>
+          <div class="wc-pos"><b>n.</b> <b>家庭、住户</b>：统计口径里的「一户人家」，比 family 更偏经济单位——同一口锅、同一份收入。<br>常见义：<b>adj.</b> 家用的（household goods）；<b>adj.</b> 家喻户晓的（a household name）。<br>搭配：household income／a household survey／per household。<br>为什么本文用 households 而不是 children：抽样单位是「户」，一个号码背后可能坐着两三个孩子，这决定了后面所有数字的分母。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>covering 16,936 <b>households</b></div>
+          <div class="wc-tr">覆盖 16,936 户家庭。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">randomise</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈrændəmaɪz/ · 美 /ˈrændəmaɪz/</div>
+          <div class="wc-pos"><b>v.</b> <b>随机分配</b>：把受试者按抽签的方式分到不同组，使各组在已知与未知的因素上都大致相同——这是「因果」与「相关」之间的分水岭。<br>构词：random（随机）+ -ise（使……化）；名词 randomisation。<br>搭配：randomised controlled trial（RCT，随机对照试验）／randomise participants。<br>为什么它值一个词卡：只要看到 randomised，这篇文章的证据等级就上了一个台阶；没有它，五国数据只能叫「相关」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>five <b>randomised</b> trials across India</div>
+          <div class="wc-tr">在印度等地开展的五场随机试验。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">arm</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ɑːm/ · 美 /ɑːrm/</div>
+          <div class="wc-pos"><b>n.</b> <b>（试验的）一个分支、一组</b>：临床试验里，一个 arm 就是接受某一种处理的一组受试者，如 the phone arm（电话组）、the control arm（对照组）。<br>常见义：<b>n.</b> 手臂、胳膊；<b>n.</b> 武器（arms，常用复数）；<b>v.</b> 武装。<br>搭配：the treatment arm／a three-arm trial／arm in arm。<br>⚠️ 本篇第一个熟词僻义：它在句子里不指「手臂」。读成「那只手臂」会彻底读不通，而读成「试验的一个组」，整段设计就清楚了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>one <b>arm</b> of a broad experiment</div>
+          <div class="wc-tr">一个庞大的实验里的一个分支。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">deviation</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdiːviˈeɪʃn/ · 美 /ˌdiːviˈeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（统计）标准差</b>：standard deviation 衡量的是一组数据「离平均值平均有多远」，教育研究用它把不同量表的分数换成同一把尺子。<br>常见义：<b>n.</b> 偏离、偏差（deviation from the plan）；<b>n.</b> 偏差行为。<br>搭配：one standard deviation higher／a deviation of 0.2／deviate（v. 偏离）。<br>为什么本文的数字都长这样：0.32 后面省略了 standard deviations，读的时候要自己补上，否则会误以为它是百分比。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>0.32 standard <b>deviations</b></div>
+          <div class="wc-tr">0.32 个标准差。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">yardstick</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈjɑːdstɪk/ · 美 /ˈjɑːrdstɪk/</div>
+          <div class="wc-pos"><b>n.</b> <b>衡量的标尺、参照尺度</b>：原指裁缝量布用的码尺，引申为「判断大小所用的基准」。<br>构词：yard（码，约 0.91 米）+ stick（棍）。<br>搭配：a yardstick for／by the yardstick of／serve as a yardstick。<br>为什么本文需要它：0.32 这个数字本身没有意义，必须回答「跟什么比」。作者给的参照是「中位干预 0.10」——先立尺子，再报数，是学术写作最值得学的动作。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>you need a <b>yardstick</b></div>
+          <div class="wc-tr">你需要一把尺子。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">median</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmiːdiən/ · 美 /ˈmiːdiən/</div>
+          <div class="wc-pos"><b>adj./n.</b> <b>中位数的、中位数</b>：把一组数从大到小排好，正中间那个。教育研究常用它代表「典型干预」，因为它不像平均数那样容易被几个极端值拉偏。<br>常见义：<b>adj.</b> 中央的、中间的（the median strip 道路中央分隔带）。<br>搭配：the median income／median effect size／above the median。<br>为什么它与 average 不同：如果 150 项干预里有 3 项效应大得离谱，平均数会被抬高，中位数不会。作者用中位数，是在刻意选一个「不吹牛」的参照。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the <b>median</b> education intervention</div>
+          <div class="wc-tr">教育类干预的中位数效应。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">intervention</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪntəˈvenʃn/ · 美 /ˌɪntərˈvenʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>干预、干预措施</b>：社会科学与医学里指「人为加进去、试图改变结果的那件事」，如一项课程、一次补贴、一通电话。<br>常见义：<b>n.</b> 介入、干涉（military intervention）。<br>搭配：an effective intervention／early intervention／intervene（v. 介入）。<br>为什么这个词在本文出现多次：整篇文章讨论的不是「教育」，而是「哪一种干预在什么条件下有效」——换一个词，视角就从抒情变成了评估。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the median education <b>intervention</b> moves the needle</div>
+          <div class="wc-tr">教育类干预的中位数效应。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cost-effective</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌkɒst ɪˈfektɪv/ · 美 /ˌkɔːst ɪˈfektɪv/</div>
+          <div class="wc-pos"><b>adj.</b> <b>成本效益高的</b>：花的每一块钱换回的成效多。它不是「便宜」，也不是「有效」，而是同时比较分子与分母。<br>构词：cost（成本）+ effective（有效的）；名词 cost-effectiveness。<br>搭配：a cost-effective way to／highly cost-effective／cost per child。<br>为什么本文要专门算它：一项干预可以既有效又昂贵（一对一补习），也可以既便宜又没用（广播）。本文的稀缺点在于<b>又便宜又有用</b>，这才是它能进前十的原因。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>On the standard <b>cost-effective</b> metric</div>
+          <div class="wc-tr">按通行的成本效益口径计算。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">targeting</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈtɑːɡɪtɪŋ/ · 美 /ˈtɑːrɡɪtɪŋ/</div>
+          <div class="wc-pos"><b>n.</b> <b>定向、对准特定对象</b>：教学里指「按每个孩子当前的实际水平出题、讲课」，区别于按年级、按教材统一推进。<br>常见义：<b>n.</b> 瞄准、靶向（targeting of subsidies 补贴的精准投放）；<b>v.</b> target（以……为目标、把……对准）。<br>搭配：targeted instruction／targeting accuracy／target the weakest pupils。<br>为什么它是全文的关键词：五国数据真正证明的不是「手机有用」，而是「按水平定向有用」——手机只是让它变得便宜。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a name in the paper: <b>targeting</b></div>
+          <div class="wc-tr">论文给了它一个名字：定向。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">curriculum</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kəˈrɪkjələm/ · 美 /kəˈrɪkjələm/</div>
+          <div class="wc-pos"><b>n.</b> <b>课程体系、教学大纲</b>：一个年级或一个学科规定要教的内容与顺序，是「应该学到哪」的官方说法。<br>常见义：<b>n.</b> （学校的）全部课程（the school curriculum）；复数 curricula 或 curriculums。<br>搭配：the national curriculum／on the curriculum／a curriculum vitae（CV，简历）。<br>为什么本文要把它与「孩子的真实水平」对立：大纲回答的是「这个班应该到哪」，定向回答的是「这个孩子实际在哪」。两者一旦错位，课就白上了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the level the <b>curriculum</b> said the class was on</div>
+          <div class="wc-tr">大纲说这个班应该到的水平。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">pitch</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /pɪtʃ/ · 美 /pɪtʃ/</div>
+          <div class="wc-pos"><b>v.</b> <b>把（课程、讲解）定在某个难度或水平上</b>：pitch a lesson at a level 即「按某个水平来设计、来讲」，源自音乐里的「定音高」。<br>常见义：<b>n.</b> 音高、球场、沥青；<b>v.</b> 投掷；<b>v.</b> 搭（帐篷）；<b>v.</b> 推销（pitch an idea）。<br>搭配：pitch sth at sb／be pitched too high／pitch a tent。<br>⚠️ 本篇第二个熟词僻义：句子里没有「球场」，也没有「投球」。读成「把一节课定在两个年级之上」，后面那句「她只会安静下来」才接得上。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Pitch</b> a lesson two grades above a child</div>
+          <div class="wc-tr">把一节课定在比孩子高出两个年级的位置。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">compliance</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /kəmˈplaɪəns/ · 美 /kəmˈplaɪəns/</div>
+          <div class="wc-pos"><b>n.</b> <b>顺从、配合</b>：此处指「不说话＝听话」这种被误读的安静。<br>常见义：<b>n.</b> 合规、遵守（compliance with the law）；（标准的）符合。<br>搭配：in compliance with／ensure compliance／compliant（adj. 顺从的）。<br>⚠️ 本篇第三个熟词僻义：日常语境里它是「合规」，在课堂语境里它是「配合」。而本文最锋利的观察是——<b>沉默既可能是配合，也可能是掉队</b>，两者从外面看一模一样。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the silence looks like <b>compliance</b></div>
+          <div class="wc-tr">那阵安静看上去很像听话。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">foothold</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈfʊthəʊld/ · 美 /ˈfʊthoʊld/</div>
+          <div class="wc-pos"><b>n.</b> <b>立足点、可以站稳的地方</b>：攀岩用语，指脚能踩住、使得上力的那个点；引申为「一个人现有的、可以据以继续往上走的能力位置」。<br>构词：foot（脚）+ hold（抓握处）。<br>搭配：gain a foothold／a foothold in the market／lose one's foothold。<br>为什么这个比喻贴切：教学不是把孩子往上拽，而是找到他能站稳的那一级，再从那里往上搭——找错了，他会滑下去，而且不会告诉你。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the highest <b>foothold</b> the child can stand on</div>
+          <div class="wc-tr">孩子能站稳的那个最高立足点。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diagnosis</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌdaɪəɡˈnəʊsɪs/ · 美 /ˌdaɪəɡˈnoʊsɪs/</div>
+          <div class="wc-pos"><b>n.</b> <b>诊断、查明症结</b>：教育评估里指「先弄清楚这个孩子会什么、卡在哪」，再决定教什么。<br>常见义：<b>n.</b> （医学）诊断（a diagnosis of pneumonia）；复数 diagnoses。<br>搭配：make a diagnosis／a diagnosis of／diagnose（v. 诊断）。<br>为什么本文把它放在「讲解」的对面：讲解是把知识送出去，诊断是先把接收端测一遍。多数课堂默认接收端是统一的，所以只做前者。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>not explanation but <b>diagnosis</b></div>
+          <div class="wc-tr">不是讲解，而是诊断。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">operation</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˌɒpəˈreɪʃn/ · 美 /ˌɑːpəˈreɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（数学）运算</b>：operation level 是这项研究自创的指标，指孩子能正确完成的运算层级，如加法、减法、除法。<br>常见义：<b>n.</b> 操作、运行（in operation）；<b>n.</b> 手术（an operation）；<b>n.</b> 行动、作战。<br>搭配：basic operations／order of operations／operation levels gained。<br>⚠️ 本篇第四个熟词僻义：这里的 operation 与医院、与机器都无关，它是数学课上那个「运算」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>0.40 <b>operation</b> levels of gain</div>
+          <div class="wc-tr">0.40 个运算等级的增益。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">numeracy</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈnjuːmərəsi/ · 美 /ˈnuːmərəsi/</div>
+          <div class="wc-pos"><b>n.</b> <b>算术能力、基本运算素养</b>：指对数字与运算的掌握，与 literacy（读写能力）并列，是基础教育评估的两项基本功。<br>构词：由 numerate（会算数的）仿 literacy 造出，-cy 表能力。<br>搭配：basic numeracy／numeracy skills／adult literacy and numeracy。<br>为什么本文要限定它：三项基本功里只测了一项。这意味着「电话辅导能让阅读也进步」目前<b>没有证据</b>，读者不该自己补完。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the trials covered <b>numeracy</b> only</div>
+          <div class="wc-tr">试验只测了算术。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">verdict</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈvɜːdɪkt/ · 美 /ˈvɜːrdɪkt/</div>
+          <div class="wc-pos"><b>n.</b> <b>裁决、定论</b>：此处指「对手机这件事下的最终判断」。<br>常见义：<b>n.</b> （陪审团的）判决（reach a verdict）、正式意见。<br>词源：古法语 ver（真）+ dit（说）＝「说出真相」。<br>搭配：reach a verdict／a verdict on／return a verdict of。<br>为什么作者要用否定句：0.32 只说明「在停课、什么都没有的情况下，电话比没有好」，它不能回答「平时上课时手机有没有用」——这个界限，一句话就划清了。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a <b>verdict</b> on phones</div>
+          <div class="wc-tr">对手机下的定论。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">scarce</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /skeəs/ · 美 /skers/</div>
+          <div class="wc-pos"><b>adj.</b> <b>稀缺的、供不应求的</b>：经济学的核心词，指「想要的人多于现有的量」。<br>常见义：<b>adj.</b> 稀少的（scarce resources）；副词 scarcely（几乎不）；名词 scarcity（稀缺）。<br>搭配：scarce resources／become scarce／scarce attention。<br>为什么本文的结论落在这个词上：一个方案能不能推广，取决于它消耗的那样东西稀不稀缺。带宽越来越不稀缺，受过训练的大人的二十分钟越来越稀缺。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the <b>scarce</b> input was twenty minutes</div>
+          <div class="wc-tr">真正稀缺的投入是二十分钟。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">fake</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /feɪk/ · 美 /feɪk/</div>
+          <div class="wc-pos"><b>v.</b> <b>假装、伪造</b>：此处指「装出自己知道孩子在哪个水平」，即模仿诊断。<br>常见义：<b>adj.</b> 假的（fake news）；<b>n.</b> 赝品。<br>搭配：fake it／fake a smile／fake news。<br>为什么收尾用它：全文的结论不是「技术无用」，而是「技术最擅长的那一段（把内容送出去）已经不难了，最难的那一段（判断他在哪）还假装不了」。一个动词，把整篇文章的重量压在最后。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>no app can <b>fake</b></div>
+          <div class="wc-tr">没有任何应用学会伪造。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">dial a ten-year-old</span><span class="zh">拨通一个十岁孩子的电话</span></li>
+          <li><span class="en">be out of school for four months</span><span class="zh">停课四个月</span></li>
+          <li><span class="en">begin not with A but with B</span><span class="zh">不从 A 开始，而从 B 开始</span></li>
+          <li><span class="en">her class's page</span><span class="zh">她班上讲到的那一页</span></li>
+          <li><span class="en">a division problem the girl had missed</span><span class="zh">女孩做错的一道除法题</span></li>
+          <li><span class="en">no cost beyond a little airtime</span><span class="zh">除一点话费外没有成本</span></li>
+          <li><span class="en">one arm of an experiment</span><span class="zh">实验的一个分支（一个试验组）</span></li>
+          <li><span class="en">a broad experiment</span><span class="zh">一个庞大的实验</span></li>
+          <li><span class="en">randomised trials</span><span class="zh">随机对照试验</span></li>
+          <li><span class="en">covering 16,936 households</span><span class="zh">覆盖 16,936 户家庭</span></li>
+          <li><span class="en">a weekly twenty-minute phone tutorial</span><span class="zh">每周一次、每次二十分钟的电话辅导</span></li>
+          <li><span class="en">texts alone</span><span class="zh">只发短信（不含电话）</span></li>
+          <li><span class="en">lift learning by 0.32 standard deviations</span><span class="zh">把学习成绩抬高 0.32 个标准差</span></li>
+          <li><span class="en">to read 0.32 you need a yardstick</span><span class="zh">要读懂 0.32，你需要一把尺子</span></li>
+          <li><span class="en">move the needle by about 0.10</span><span class="zh">把指标推动约 0.10</span></li>
+          <li><span class="en">three times as effective as</span><span class="zh">效果是……的三倍</span></li>
+          <li><span class="en">at roughly US$11 per child</span><span class="zh">每名儿童约 11 美元</span></li>
+          <li><span class="en">on the standard cost-effectiveness metric</span><span class="zh">按通行的成本效益口径</span></li>
+          <li><span class="en">learning-adjusted years of schooling</span><span class="zh">学习调整学年</span></li>
+          <li><span class="en">among the ten best of 150 interventions</span><span class="zh">在 150 项干预中排进前十</span></li>
+          <li><span class="en">gain 1.19 grade levels</span><span class="zh">提升 1.19 个年级水平</span></li>
+          <li><span class="en">file sth under</span><span class="zh">把某物归到……名下</span></li>
+          <li><span class="en">the cheapest and most scalable part</span><span class="zh">最便宜、最容易规模化的部分</span></li>
+          <li><span class="en">hear an answer, notice that it is wrong</span><span class="zh">听见一个回答，发现它错了</span></li>
+          <li><span class="en">change the next question accordingly</span><span class="zh">据此换下一个问题</span></li>
+          <li><span class="en">have a name in the paper</span><span class="zh">论文给它起了个名字</span></li>
+          <li><span class="en">at the level the child had actually reached</span><span class="zh">在孩子实际已达到的水平上</span></li>
+          <li><span class="en">the level the curriculum said the class was on</span><span class="zh">大纲说这个班应该到的水平</span></li>
+          <li><span class="en">climb from 50.9% to 81.5%</span><span class="zh">从 50.9% 升到 81.5%</span></li>
+          <li><span class="en">the effect sizes climbed with it</span><span class="zh">效应量也随之上升</span></li>
+          <li><span class="en">the counter-example is blunt</span><span class="zh">反例很直白</span></li>
+          <li><span class="en">broadcast to everyone at once</span><span class="zh">同时向所有人播</span></li>
+          <li><span class="en">with no targeting</span><span class="zh">没有定向</span></li>
+          <li><span class="en">produce no measurable effect</span><span class="zh">没有产生可测量的效果</span></li>
+          <li><span class="en">pitch a lesson two grades above a child</span><span class="zh">把课定在比孩子高两个年级的位置</span></li>
+          <li><span class="en">she does not struggle</span><span class="zh">她不会（有效地）挣扎</span></li>
+          <li><span class="en">look like compliance</span><span class="zh">看上去像听话</span></li>
+          <li><span class="en">not explanation but diagnosis</span><span class="zh">不是讲解，而是诊断</span></li>
+          <li><span class="en">find the highest foothold</span><span class="zh">找到最高的立足点</span></li>
+          <li><span class="en">start one step below it</span><span class="zh">从它下面一级开始</span></li>
+          <li><span class="en">the objection that dooms most programmes</span><span class="zh">让大多数项目功亏一篑的那个质疑</span></li>
+          <li><span class="en">work only while outsiders run them</span><span class="zh">只有外人操办时才有效</span></li>
+          <li><span class="en">operation levels of gain</span><span class="zh">运算等级的增益</span></li>
+          <li><span class="en">against 0.30 for NGOs</span><span class="zh">而 NGO 是 0.30</span></li>
+          <li><span class="en">9.3 percentage points more likely</span><span class="zh">可能性高出 9.3 个百分点</span></li>
+          <li><span class="en">feedback pitched to the level</span><span class="zh">按（学生真实）水平给出的反馈</span></li>
+          <li><span class="en">three limits deserve stating</span><span class="zh">有三条边界必须说清</span></li>
+          <li><span class="en">measure learning rather than schooling</span><span class="zh">测的是「学到多少」而非「上了多少学」</span></li>
+          <li><span class="en">fewer than 15% had internet</span><span class="zh">能上网的不到 15%</span></li>
+          <li><span class="en">a verdict on phones</span><span class="zh">对手机的定论</span></li>
+          <li><span class="en">the comparison was against nothing at all</span><span class="zh">比较的对象是「什么都没有」</span></li>
+          <li><span class="en">point somewhere uncomfortable for</span><span class="zh">对……指向一个不太舒服的地方</span></li>
+          <li><span class="en">twenty minutes of a trained adult's attention</span><span class="zh">一个受过训练的大人二十分钟的注意力</span></li>
+          <li><span class="en">aimed at one child's level</span><span class="zh">对准某一个孩子的水平</span></li>
+          <li><span class="en">the pipe that carried it</span><span class="zh">把它送过去的那根管子</span></li>
+          <li><span class="en">bandwidth gets cheaper every year</span><span class="zh">带宽一年比一年便宜</span></li>
+          <li><span class="en">scale by download</span><span class="zh">靠下载来规模化</span></li>
+          <li><span class="en">a cure for a broken school system</span><span class="zh">破败学校体系的解药</span></li>
+          <li><span class="en">start where the learner actually is</span><span class="zh">从学习者真正所在的地方开始</span></li>
+          <li><span class="en">the part of teaching no app has learned to fake</span><span class="zh">教学里没有任何应用学会伪造的那一部分</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：场景——停课四个月，老师从上周那道错题开始讲。</li>
+          <li>第 2 段：研究——五国五场随机试验，16,936 户；电话 0.32，短信 0.078。</li>
+          <li>第 3 段：尺子——中位干预 0.10，每童 11 美元，百美元 3.6 学年。</li>
+          <li>第 4 段：反驳——短信几乎无效，因为它听不见回答。</li>
+          <li>第 5 段：变量——真正的名字是「定向」，从真实水平开始。</li>
+          <li>第 6 段：机制——难度错位时，孩子只会安静，而安静像听话。</li>
+          <li>第 7 段：交付——政府教师 0.40 ＞ NGO 0.30，教师也被改变。</li>
+          <li>第 8 段：边界——只测算术、只跑八周，比较对象是「什么都没有」。</li>
+          <li>第 9 段：经济学——稀缺的是注意力，手机只是管子。</li>
+          <li>第 10 段：落点——先诊断，再定向，最后才谈输送。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">That call was one arm of a broad experiment: five randomised trials across India, Kenya, Nepal, the Philippines and Uganda, covering 16,936 households.</div>
+        <div class="row"><b>主干：</b>That call was one arm of an experiment（那通电话是一个实验的一个分支）——主谓表结构，极短；冒号后面的全部是 experiment 的同位说明。</div>
+        <div class="row"><b>难点：</b>① one arm of 是本文第一个熟词僻义，arm 在此指「试验组」而不是「手臂」，读错则整句崩塌；② broad 紧跟 experiment，强调的不是「宽」，而是覆盖面：一般随机试验做一国、几百人，这里做五国、一万六千户，一个形容词就把野心交代完了；③ 冒号后不是完整句，而是一串名词短语——five randomised trials ... covering ...，用分词 covering 挂出规模；④ across 后并列五个国家，注意 Nepal 与 the Philippines 的冠词差异（国家名一般不加 the，菲律宾、荷兰等例外）；⑤ 整句的修辞功能：用一个具体的动作（打电话）把读者带进一个抽象的试验设计，是英文科普最常用的开场法。</div>
+        <div class="row tr"><b>译文：</b>那通电话，只是一个庞大实验里的一个分支：五场随机对照试验，分别在印度、肯尼亚、尼泊尔、菲律宾和乌干达进行，覆盖 16,936 户家庭。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">On the standard cost-effective metric the programme returned 3.6 learning-adjusted years of schooling per US$100, among the ten best of 150 interventions ever costed that way.</div>
+        <div class="row"><b>主干：</b>the programme returned 3.6 ... years（该项目换回了 3.6 个学年）——主谓宾；句首是状语，句末是并列的第二个主谓。</div>
+        <div class="row"><b>难点：</b>① 介词短语前置作状语（On the standard ... metric），比 In terms of ... 更紧凑，是学术写作的常见起手；② learning-adjusted years of schooling 是一个专有指标（LAYS），意思是「把上学年数按实际学到的东西折算之后的年数」，不能逐字译成「学习调整的学年」就完事；③ among the ten best of 150 interventions 是<b>插入语式的后置评价</b>，用逗号隔开，位置在数字之后，起「盖章」作用；④ ever costed that way 是过去分词短语作后置定语，修饰 interventions——只有被这样计过价的 150 项才参与排名，这是作者在悄悄限定比较范围；⑤ 全句到「排进前十」就收尾，没有再补一句某个国家的具体进步——数字越具体，越容易被读成个案；把结论停在一个<b>排名</b>上，是为了让读者记住的是可比性，而不是某个孩子。</div>
+        <div class="row tr"><b>译文：</b>按通行的成本效益口径计算，该项目每花 100 美元，可换回 3.6 个「学习调整学年」，在 150 项被这样计价过的干预里排进前十。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">That difference has a name in the paper: targeting, which meant starting each call at the level the child had actually reached rather than the level the curriculum said the class was on.</div>
+        <div class="row"><b>主干：</b>That difference has a name（那个差别有个名字）——主谓宾，后面用冒号 + 同位语展开。</div>
+        <div class="row"><b>难点：</b>① has a name in the paper 是「论文里给它起了个名字」，不是「在纸上有名字」，介词 in the paper 指「在这篇论文中」；② targeting 后面跟 which 引导的<b>非限制性定语从句</b>，用来定义前面这个术语；③ meant starting 里 mean 后接动名词，表示「意味着（实际做法是）」，与 mean to do（打算做）不同；④ at the level ... rather than the level ... 是<b>平行结构对比</b>，两个 level 后面各带一个定语从句（省略了 that），对比的两端一个是「孩子实际达到的」，一个是「大纲规定该班所在的」；⑤ 注意 said the class was on 里的 on 不能省——be on a level 是固定搭配，「处在某一级上」。</div>
+        <div class="row tr"><b>译文：</b>这个差别，论文给了它一个名字：定向。意思是，每一通电话都从孩子「真实的水平」开始，而不是从教学大纲说这个班「应该到」的地方开始。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The paper also tests the objection that dooms most such programmes, that they work only while outsiders run them: in Nepal and the Philippines, lessons delivered by government teachers produced 0.40 operation levels of gain against 0.30 for NGOs.</div>
+        <div class="row"><b>主干：</b>The paper also tests the objection（论文还检验了那个质疑）——主谓宾，后面两个 that 从句层层展开，最后用冒号落到数据。</div>
+        <div class="row"><b>难点：</b>① 第一个 that 从句（that dooms most such programmes）修饰 objection，是<b>定语从句</b>；第二个 that 从句（that they work only while ...）是 objection 的<b>同位语从句</b>，说明质疑的内容——两个 that 挨在一起但功能不同，是本文最容易被读崩的一处；② doom 作动词是「使注定失败」，比 destroy 更书面；③ while outsiders run them 里的 while 是「在……期间」，不是对比；④ lessons delivered by government teachers 是过去分词短语作后置定语，deliver 在此是「授课」而不是「递送」；⑤ against 0.30 for NGOs 用 against 表对比，是数据陈述里的高频介词，等于 compared with。</div>
+        <div class="row tr"><b>译文：</b>论文还检验了那个让大多数教育项目功亏一篑的质疑：这类项目是不是只有在外人操办时才有效？在尼泊尔和菲律宾，由政府教师授课带来的增益是 0.40 个运算等级，而 NGO 教员是 0.30。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Still, the economics point somewhere uncomfortable for an industry that sells software: the scarce input was twenty minutes of a trained adult's attention aimed at one child's level, and the phone was merely the pipe that carried it.</div>
+        <div class="row"><b>主干：</b>the economics point somewhere uncomfortable（这套经济学指向一个不太舒服的地方）——point 在此是不及物动词「指向」；冒号后是两个并列分句，给出具体所指。</div>
+        <div class="row"><b>难点：</b>① the economics 是「经济学层面的账」，用复数形式加定冠词表示「这门学问在本案中的算法」；② point somewhere 的 somewhere 是副词，表示「某个（不好明说的）方向」，比 point to a place 更含蓄、更有态度；③ an industry that sells software 是<b>借代</b>：不点名，但读者都知道说的是教育科技公司；④ aimed at one child's level 是过去分词短语，逻辑主语是 twenty minutes of attention；⑤ the pipe that carried it 是全文最重要的比喻——把手机降格为「管道」，把注意力升格为「内容物」，一个名词就完成了价值排序；⑥ merely 是全句的态度词，等于 only，但更书面、更冷。</div>
+        <div class="row tr"><b>译文：</b>尽管如此，这套经济学对一个卖软件的行业并不客气：这里真正稀缺的投入，是一个受过训练的大人二十分钟的注意力，并且用在某一个孩子当下的水平上；手机只是把这份注意力送过去的那根管子。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章从一个极小的动作开始：一通电话。</b>去年春天，乌干达乡村的一位老师拨通了一个停课四个月的十岁女孩的电话。他没有从班上讲到的那一页开始，而是从她上周做错的一道除法题开始。二十分钟，没有屏幕，没有应用；除了一点话费，几乎没有成本。这个开场很重要，因为它先把「教育技术」这个庞大的话题，压缩成了一个可以看见的场景：一个大人，一个孩子，一道错题。</p>
+      <p class="zh-sum"><b>然后是规模。</b>这通电话是五场随机对照试验里的一个分支：印度、肯尼亚、尼泊尔、菲律宾、乌干达，共 16,936 户家庭。孩子们每周接到一次二十分钟的电话辅导，并配短信；或者只收短信；持续八周。结果 2026 年 9 月 9 日发表在《自然》上，作者是 Angrist 等十一人，试验注册号 AEARCTR-0009779。结论非常干脆：电话组的学习成绩提高 0.32 个标准差，短信组只有 0.078。</p>
+      <p class="zh-sum"><b>0.32 需要一把尺子才读得懂。</b>教育类干预的中位数效应大约是 0.10，所以这通电话的效果约为典型项目的三倍。成本约为每名儿童 11 美元；按通行的成本效益口径，每 100 美元换回 3.6 个「学习调整学年」，在 150 项被这样计价过的干预里排进前十。乌干达的表现最突出：接受干预的四年级学生提升了 1.19 个年级水平，除法正确率的提升幅度，相当于对照组基线的九成以上。</p>
+      <p class="zh-sum"><b>但真正有意思的部分，是那个「没有起作用」的对照组。</b>短信是这个方案里最便宜、最容易规模化的部分，却只在停课最久的两个国家起了作用，而且效应只有电话的零头。原因不难理解：短信做不到的是<b>听见</b>。它不能听一个孩子怎么回答，不能发现这个答案是错的，也不能据此换下一个问题。这就把「技术有没有用」这个笼统的问题，换成了一个具体的问题——有用的是哪一段？</p>
+      <p class="zh-sum"><b>答案在第五段：定向。</b>每一通电话，都从孩子「真实的水平」开始，而不是从大纲说这个班「应该到」的地方开始。研究团队让一次简短的测评来决定起点。定向的准确率，从尼泊尔的 50.9% 升到乌干达的 81.5%；效应量也同步上升，从肯尼亚的 0.1 个年级水平，到最后一轮乌干达的 1.19。反例很直白：塞拉利昂用广播同时向所有人播课，完全没有定向，结果是零。</p>
+      <p class="zh-sum"><b>为什么定向这么关键？第六段给了一个很锋利的解释。</b>把一节课定在比孩子高出两个年级的位置，她不会「有挑战地挣扎」，她只会安静下来。而那阵安静，从教室后面看，和听话没有区别。所以辅导者的第一件事不是讲解，是诊断：找到这个孩子能站稳的那个最高立足点，然后从它下面一级开始。这一段其实是全文的方法论核心——<b>教学的第一步不是输送，是测量</b>。</p>
+      <p class="zh-sum"><b>第七段处理的是最常见的悲观论调。</b>很多教育项目只在「外人操办」时有效，一旦交给本地政府就崩掉。这项研究专门测了这一点：在尼泊尔和菲律宾，政府教师授课带来的增益是 0.40 个运算等级，NGO 教员是 0.30。更值得注意的是溢出效应——做过这些电话的教师，按学生真实水平给出反馈的可能性高出了 9.3 个百分点。也就是说，这套方法不只是把孩子教会了一点，还把老师「看得更准」了一点。</p>
+      <p class="zh-sum"><b>第八段是作者自己划的三条边界。</b>第一，只测了算术，没有测阅读；第二，只跑了八周，属于短期；第三，测的是「学到了多少」，不是「上了多少学」。还有一个容易被忽略的前提：这些家庭本来就有手机（普及率超过 70%），可能上网的不到 15%——所以这绝不是一篇「给孩子配平板」的文章。更重要的是，教室都关着的时候，它比较的对象是「什么都没有」，而不是「一堂好课」。</p>
+      <p class="zh-sum"><b>于是结论落在一个不太舒服的地方。</b>对一个卖软件的行业来说，这套经济学并不客气：这里真正稀缺的投入，是一个受过训练的大人二十分钟的注意力，而且要用在某个孩子当下的水平上；手机只是把这份注意力送过去的那根管子。带宽一年比一年便宜，诊断却不会因为下载而规模化。这也解释了为什么大量教育应用的使用率很高、效果却很难看——它们优化的是那根管子，而瓶颈在另一头。</p>
+      <p class="zh-sum"><b>最后是一个可以迁移的判断。</b>这篇文章表面上在讲「低成本教育应急方案」，实际上在讲一件更普遍的事：<b>任何帮助，都要先知道对方站在哪里</b>。补习班、健身计划、心理疏导，失效的原因往往不是内容不好，而是难度错位——太难，人会安静；太易，人会走神；两种安静和走神，从外面看都像「还行」。所以读这类研究，最该带走的不是 0.32 这个数，而是那个顺序：先诊断，再定向，最后才谈输送。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. Phone calls are a cheaper substitute for schools, and governments should replace classroom teaching with weekly tutorials during normal times.<br>B. In five randomised trials covering 16,936 households, weekly twenty-minute phone tutorials produced large learning gains while text messages alone did not; the decisive ingredient was not the phone but targeting each lesson to the level the child had actually reached.<br>C. Text messages failed in three of five countries because most families had no internet access, which shows that digital education depends on bandwidth.<br>D. Because the trials lasted only eight weeks and measured numeracy alone, their findings cannot support any conclusion about education in emergencies.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景：一通从错题开始的电话（第 1 段）→ 研究：五国五场随机试验、16,936 户（第 2 段）→ 结果：电话 0.32，短信 0.078（第 2 段）→ 尺子：中位干预 0.10，每童 11 美元（第 3 段）→ 反驳「这是技术故事」：短信几乎无效（第 4 段）→ 真正的变量：定向（第 5 段）→ 机制：难度错位的沉默（第 6 段）→ 交付：政府教师 0.40 ＞ NGO 0.30（第 7 段）→ 边界：八周、只测算术、比较对象是「什么都没有」（第 8 段）→ 落点：稀缺的是诊断，不是带宽（第 9、10 段）」。B 同时抓住「电话有效」与「有效的原因不是电话」两半。A 把「应急替代」读成「日常替代」，原文没有这个建议。C 与原文相反：短信失效的原因是它听不见回答，而不是没网——家庭手机普及率超过 70%，无网只占 15% 以下。D 走另一极端：第 8 段是限定范围，不是否定结论，第 10 段明确说这个发现「更窄，也更有用」。</div>
+
+      <div class="q"><b>2. The passage says the counter-example of Sierra Leone is 'blunt'. What does that example prove?<br>A. That radio is an outdated technology which cannot carry a lesson.<br>B. That lessons delivered to everyone at the same level, with no targeting, produced no measurable learning gain — so it was the match between lesson and level, not the device, that mattered.<br>C. That Sierra Leone's schools stayed open longer than those in the other five countries.<br>D. That government delivery is less effective than delivery by non-governmental organisations.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>第 5 段的结构是「正例 → 数字 → 反例」：正例是五国电话（定向准确率从 50.9% 升到 81.5%，效应从 0.1 升到 1.19），反例是塞拉利昂的广播（同时向所有人播、完全没有定向、零效应）。一正一反，把「设备」与「定向」这两个变量拆开了——这正是 blunt（直白、不绕弯）的含义。A 错在把结论归给技术新旧：广播是旧技术，但真正的差别是有没有定向。C 与原文无关，文中没提塞拉利昂的停课时长。D 与第 7 段相反：政府教师 0.40，高于 NGO 的 0.30。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文最有说服力的一步，是把「手机有没有用」换成了「有用的是哪一段」：电话有效，短信无效，于是问题从「设备」转向了「定向」。请你就身边一个「某某方法很有效」的说法（例如：刷题 App 提分、早起背单词、看美剧学口语），写一段 150 字以内的拆解：① 这个方法里，真正起作用的到底是哪一小段？② 如果把它换成一个更便宜、更笨的版本（不许用屏幕、不许用软件），那一小段还在不在？③ 那一小段里，有没有一个「必须先知道对方在哪」的动作？最后一句请用「它不是输在工具上，是输在 ______」的句式收束。</div>
+      <div class="q"><b>仿写：</b>本文第 3 段是全篇最值得模仿的「报数」段：先给数字（0.32），再说「要读懂它需要一把尺子」（the median ... 0.10），然后用 three times as effective 把它翻译成人话，最后补上成本（US$11 per child）。骨架是：<i>To read ______ you need a ______: the ______ moves the needle by about ______, so this was ______ times as effective as ______, at roughly ______ per ______.</i> 注意三件事：① 数字必须先落地再解释，顺序反了就成了自夸；② 参照物必须是「同类的中位数」，而不是「最差的案例」，否则三倍这个说法会注水；③ 成本一定要给单位（per child），只报总额读不出可比性。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 10 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 10 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">① 场景：停课四个月，一通电话从「上次那道错题」开始</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">② 研究：五国五场随机试验，16,936 户，每周 20 分钟 × 8 周</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">③ 结果：电话 0.32 SD，短信 0.078 SD（差四倍）</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">④ 尺子：中位干预 0.10，每童 11 美元，100 美元换 3.6 学年</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑤ 反驳：短信只在停课最久的国家有效——它听不见回答</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" font-weight="600"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">⑥ 变量：定向——从孩子真实水平开始，而非大纲位置</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" font-weight="600"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">⑦ 证据：准确率 50.9% → 81.5%，效应 0.1 → 1.19 同步上涨</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑧ 反例：塞拉利昂广播无定向 → 零效应</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">⑨ 交付：政府教师 0.40 ＞ NGO 0.30，溢出 +9.3 个百分点</text>
+          <rect x="60" y="510" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2" font-weight="600"/>
+          <text x="360" y="535" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">⑩ 落点：稀缺的不是带宽，是那二十分钟的诊断</text>
+
+          <rect x="60" y="564" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="584" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：同一套设备，加上「定向」就是 0.32，去掉就是零</text>
+          <text x="360" y="601" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">设备只是管子，先做诊断的人才决定这根管子送出去什么</text>
+
+          <text x="360" y="646" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、4、8 段橙色：数字与边界——先立尺子，再划范围</text>
+          <text x="360" y="668" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 5、6、7 段红色：机制与证据——定向怎么被证明是那个变量</text>
+        </svg>
+        <figcaption>结构图解：全文走的是一条「先给结果、再换变量」的路。第 1 段用一个具体场景把话题压缩成一通电话：停课四个月，从上周那道错题讲起；第 2 段交代规模与结果，五国五场随机试验、16,936 户，电话 0.32、短信 0.078；第 3 段补上参照与成本，中位干预 0.10、每童 11 美元、百美元换 3.6 学年；第 4 段先否掉最容易的读法——这不是一个「技术好用」的故事，因为最便宜的那部分技术几乎无效；第 5 段给出真正的变量「定向」，并用准确率 50.9％ → 81.5％ 与效应 0.1 → 1.19 的同步上升把它钉住，再用塞拉利昂的广播作反例；第 6 段解释机制：难度错位时孩子只会安静，而安静像听话；第 7 段处理「只有外人操办才有效」的质疑，政府教师 0.40 高于 NGO 0.30，还带出教师行为的溢出；第 8 段划出三条边界，并说明比较对象是「什么都没有」；第 9 段把结论推到经济学层面：稀缺的是注意力，不是带宽；第 10 段收束为可迁移的判断：先诊断，再定向，最后才谈输送。全文真正想说的是：<b>一项干预的功劳，往往不属于那个最显眼的工具，而属于那个最容易被省略的步骤</b>。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Angrist, N., Ainomugisha, M., Bathena, S.P., Bergman, P., Crossley, C., Cullen, C., Letsomo, T., Matsheng, M., Panti, R.M., Sabarwal, S. &amp; Sullivan, T.《Mobile education builds resilience during shocks in five countries》，<i>Nature</i> 657, 689–696（2026-09-09；DOI 10.1038/s41586-026-10990-x），五国随机对照试验，注册号 AEARCTR-0009779｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
