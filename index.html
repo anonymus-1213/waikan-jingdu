@@ -73,8 +73,12 @@ body.dark .daily .d-en .hl-key{color:var(--accent);}
 .list-head h3{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:-.01em;}
 .list-head .count{font-size:12px;color:var(--muted);letter-spacing:.08em;}
 
-.article{border-bottom:1px solid var(--line);padding:24px 2px;display:grid;grid-template-columns:78px 1fr;gap:20px;transition:background .15s;}
+.article{border-bottom:1px solid var(--line);padding:24px 2px;display:grid;grid-template-columns:78px 1fr;gap:20px;transition:background .15s;cursor:pointer;}
 .article:hover{background:rgba(156,47,22,.035);}
+.article:active{background:rgba(156,47,22,.07);}
+.article.is-clicking{background:rgba(156,47,22,.07);}
+.article:hover .body h4 a{color:var(--accent);}
+.article:hover .body .read{color:var(--accent);}
 .article .date{font-family:var(--serif);font-size:15px;color:var(--muted);text-align:right;padding-top:3px;}
 .article .date .d{font-size:26px;line-height:1;color:var(--ink);display:block;font-weight:400;}
 .article .date .m{font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
@@ -1488,6 +1492,29 @@ body.dark .tag{border-color:var(--accent);}
         });
       })
       .catch(function(){ box.style.display='none'; });
+  })();
+
+  // 7) 整卡可点：点卡片任意位置都进入对应文章
+  (function(){
+    var list=document.getElementById('list');
+    if(!list) return;
+    var hadSel=false;
+    // 记录按下时是否有选中文字，避免「拖选复制」被当成点击
+    document.addEventListener('mousedown',function(){
+      var s=window.getSelection();
+      hadSel=!!(s&&String(s).length);
+    });
+    list.addEventListener('click',function(e){
+      if(!e.target||!e.target.closest) return;
+      var card=e.target.closest('.article');
+      if(!card||!list.contains(card)) return;
+      if(e.target.closest('a,button')) return;   // 标题与「精读全文」保持原生行为
+      if(hadSel) return;                          // 正在选文字则不跳转
+      var a=card.querySelector('.body h4 a')||card.querySelector('a.read');
+      if(!a||!a.href) return;
+      if(e.metaKey||e.ctrlKey||e.shiftKey){ window.open(a.href,'_blank','noopener'); return; }
+      window.location.href=a.href;
+    });
   })();
 
   apply();
