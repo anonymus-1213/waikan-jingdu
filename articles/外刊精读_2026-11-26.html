@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 屋顶刷白是对的，只要它知道现在几月</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<article class="wrap">
+  <div class="eyebrow">Roof &amp; Season · 人与社会 / 科技与创新 / 城市气候适应 / 建筑节能</div>
+  <h1>屋顶刷白是对的，只要它知道现在几月</h1>
+  <div class="deck">A white roof cools a city in July and chills it in January. A Tsinghua team gave the coating a thermostat, then asked which colour each of six cities should actually use.</div>
+  <div class="byline"><span><b>来源</b> Energy &amp; Environmental Science（2026-11-03）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-26</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 526 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-26.jpg" alt="写实场景：盛夏正午，一名工人站在城市老式居民楼的平屋顶上，用滚筒把白色涂料刷开，屋顶一半还是原来的灰色沥青，远处是密集的楼顶与空调外机">
+    <figcaption>配图：刷到一半的屋顶。左边还是原来的灰色沥青，右边已经刷白——两种表面在同一个中午会走到两个不同的温度（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>把屋顶刷白，能让城市在七月凉下来 <b>1.1–2.3 ℃</b>；但它不看日历，一月照旧散热，把区域供暖需求推高 <b>7.2％–38.3％</b>。</p>
+    <p>清华团队在六座中国城市、<b>6,811</b> 栋建筑上算了一整年的账：按季加权后，净死亡人数<b>全部上升</b>。修法不是换材料，而是让发射率随温度切换。</p>
+    <p>更有意思的是：以省电为目标，各城最优反射率不同（能耗降 7.7％–22.2％）；以保命为目标，六城却全部收敛到 <b>0.2</b>。目标一换，颜色就换。</p>
+    <p>本期重点熟词僻义：<b>window</b>（大气窗口，不是窗户）、<b>couple</b>（把模型耦合起来）、<b>penalty</b>（代价，不是罚款）、<b>dial</b>（可调节的参数）。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-26.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="10.221">In July the flat roof of a six-storey walk-up in Shanghai can pass sixty degrees, and the families below learn to time their fans around the heat, not the clock.</span> <span class="s" data-t="10.221" data-e="19.145">The remedy engineers keep returning to is embarrassingly simple: paint the roof white, bounce sunlight back, let the building sweat less.</span></span></div>
+      <p class="para-tr">七月，上海一栋六层老式无电梯楼房的平屋顶能烤过六十度；住在下面的人家，学会了按热浪而不是按钟点来安排电扇。城市工程师反复回到的那个办法简单到有点不好意思：把屋顶刷白，把阳光弹回去，让这栋楼少出点汗。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="19.145" data-e="23.592">The physics is elegant: a surface has two ways to <b class="kw" data-tip="v. 散发、排出（热量）：shed heat 是热学里的标准搭配，指主动把热量释放出去，而不是漏掉；常见义 n. 棚屋（a garden shed），v. 脱落（shed leaves）、摆脱（shed weight）">shed</b> heat.</span> <span class="s" data-t="23.592" data-e="36.382">It can reflect the sun's visible light, and it can radiate its own warmth through a narrow atmospheric <b class="kw" data-tip="n. （可利用的）窗口、波段：此处指大气对某些红外波长几乎不吸收的那一段，热量可以从这个「窗口」直接逸向太空；常见义 n. 窗户、窗口期（a window of opportunity）">window</b> between eight and thirteen micrometres, a band the sky barely blocks, so the energy leaves for deep space.</span> <span class="s" data-t="36.382" data-e="44.605">Engineers call this passive radiative cooling, and it runs without a compressor, a refrigerant or a single watt of electricity.</span></span></div>
+      <p class="para-tr">物理上确实漂亮：一个表面有两条散热通道。它可以把太阳的可见光反射掉，也可以把自己的热量以八到十三微米波段的红外辐射送出去——那一段天空几乎不拦，能量就这么直接去了深空。工程师管这叫被动辐射制冷，不需要压缩机，不需要制冷剂，一瓦电也不用。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="44.605" data-e="54.393">What a roof cannot do is read a calendar, and a coating tuned to dump heat in July keeps dumping it in January, when the same building is paying to keep warmth in.</span></span></div>
+      <p class="para-tr">屋顶做不到的是看日历。一层为七月设计、拼命散热的涂层，到了一月照旧拼命散热；而那时，同一栋楼正花着钱想把暖气留住。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="54.393" data-e="66.774">That <b class="kw" data-tip="n. 不对称：指同一件事在两个方向上代价不同——本文里就是「夏天得利、冬天受损」这种不成比例的交换；构词 a-（不）+ symmetry（对称）">asymmetry</b> is what a paper published on 3 November in <i>Energy &amp; Environmental Science</i> set out to test: what happens when such coatings cover a whole city, judged over a year rather than a summer?</span> <span class="s" data-t="66.774" data-e="82.329">Led by Borong Lin, Shuai Lu and Kaichen Dong, with Tiancheng Zeng as first author, the group <b class="kw" data-tip="couple 的过去式，v. 把（两个模型、系统）耦合起来：科研里指让两套模型互相读取对方的输出，而不是各算各的；常见义 n. 一对、情侣，v. 连接、结合（couple A with B）">coupled</b> climate, energy and health models, then ran them over six climatically distinct Chinese cities and 6,811 buildings.</span></span></div>
+      <p class="para-tr">这个不对称，正是 11 月 3 日发表在《能源与环境科学》上的一篇论文要检验的事：当这种涂层铺满一座城市，并以「一整年」而不是「一个夏天」来结算，会发生什么？论文由林波荣、吕帅、董恺琛共同通讯，曾天成第一作者；团队把城市气候、建筑能耗与健康三套模型耦合起来，在六座气候各异的中国城市、6,811 栋建筑上跑了一遍。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="82.329" data-e="92.632">The simulation confirmed both halves of the worry: during heat waves, ordinary roofs lowered peak urban temperatures by 1.1 to 2.3 °C.</span> <span class="s" data-t="92.632" data-e="107.669">During cold waves, they pushed district heating demand up by 7.2 to 38.3 per cent and, weighted across both seasons, net mortality rose in all six cities: a technology sold as protection had become a small net harm.</span></span></div>
+      <p class="para-tr">模拟把好消息与坏消息的两半都证实了：热浪期间，普通反射屋顶把城市峰值气温压低了 1.1 到 2.3 摄氏度；寒潮期间，它把区域供暖需求推高了 7.2％ 到 38.3％，而按两季天数加权之后，六座城市的净死亡人数全部上升。一项被当作「保护」来卖的技术，按年结算，成了一个小小的净损害。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="107.669" data-e="119.316">The team's answer is to make <b class="kw" data-tip="n. 发射率：材料向外辐射热量的本领，取值 0–1，越高越容易把热量送出去；它是 passive radiative cooling 里与「反射率」并列的第二个关键参数">emissivity</b> temperature-dependent rather than fixed: below a threshold the coating behaves like a wall, and above it the infrared window opens and the surface dumps heat.</span> <span class="s" data-t="119.316" data-e="126.329">The switch is chemical and reversible, needing no sensor, no circuit, no tenant who closes anything.</span></span></div>
+      <p class="para-tr">团队的答案是：让发射率随温度变化，而不是固定不变。低于某个阈值，涂层像一堵普通的墙；高于阈值，红外窗口打开，表面开始散热。这个开关是化学的、可逆的，不需要传感器，不需要电路，也不需要哪个住户记得去关什么。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="126.329" data-e="140.853">With that one change the winter <b class="kw" data-tip="n. 代价、副作用：winter penalty 指「为了夏天凉快而被迫在冬天付的那笔账」，不是罚款；常见义 n. 处罚、罚款（a penalty for speeding）、（足球）点球">penalty</b> largely vanished while the summer benefit survived, and the researchers then did something more useful than inventing a better material: they treated solar reflectivity as a free <b class="kw" data-tip="n. （可自由调节的）旋钮、参数：把某个量当成 dial，意思是它可以从低到高连续调，供人按需设定；常见义 n. （仪表）表盘、拨号盘，v. 拨（电话号码）">dial</b> and swept it city by city.</span> <span class="s" data-t="140.853" data-e="155.16">Warmer cities gained most from pale, reflective roofs and colder ones from darker roofs, and the best local setting cut annual demand by 7.7 to 22.2 per cent while mortality fell by 1.0 to 4.2 per cent.</span></span></div>
+      <p class="para-tr">只改了这一处，冬季代价基本消失，夏季收益保留下来。接下来，研究者做了一件比「发明更好的材料」更有用的事：他们把太阳反射率当成一个可以自由拧的旋钮，逐城扫了一遍。偏暖的城市从浅色、高反射的屋顶里获益最多，偏冷的城市则相反；每座城市取自己的最优值，全年建筑能耗可降 7.7％ 到 22.2％，死亡人数降 1.0％ 到 4.2％。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="155.16" data-e="168.616">Energy, however, is not the same target as survival: asked to minimise deaths rather than kilowatt-hours, all six cities converged on a reflectivity near 0.2, close to an ordinary grey roof.</span> <span class="s" data-t="168.616" data-e="176.289">The two goals pull in different directions, which is why the authors report them separately rather than folding them into one number.</span></span></div>
+      <p class="para-tr">但「省电」与「保命」并不是同一个目标。如果把目标从千瓦时换成死亡人数，六座城市全部收敛到 0.2 左右的反射率——接近一顶普通的灰色屋顶。两个目标指向不同方向，这也正是作者把它们分开报、不肯折成一个头条数字的原因。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="176.289" data-e="190.592">The lesson travels beyond roofing: a design that looks optimal in a laboratory, and even in one season, can be <b class="kw" data-tip="adj. 平庸的、不好不坏的：比 bad 温和、比 average 更带贬义，暗示「本可以更好」；名词 mediocrity（平庸）">mediocre</b> across a year and quietly harmful across a city, and the fix is less often a cleverer gadget than a better question.</span> <span class="s" data-t="190.592" data-e="198.421">There is no universally correct colour for a roof, only a correct colour for a particular place, climate and purpose.</span></span></div>
+      <p class="para-tr">这个教训不止适用于屋顶：一个在实验室里、甚至在单一季节里看起来很优的设计，放到一整年里可能平庸，放到一座城市里可能悄悄有害；而要修正它，往往不需要更聪明的器件，只需要一个更好的问题。屋顶没有放之四海而皆准的颜色，只有某地、某种气候、某个明确目的之下正确的那一种颜色。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">walk-up</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈwɔːk ʌp/ · 美 /ˈwɔːk ʌp/</div>
+          <div class="wc-pos"><b>n.</b> <b>无电梯的老式楼房</b>：指没有电梯、只能走楼梯的住宅，通常是五六层的旧公寓楼。<br>构词：walk up（走上去）+ 名词化；美式城市口语常见。<br>搭配：a fifth-floor walk-up／a walk-up apartment。<br>为什么本文用它开头：一个词就把场景钉住了——不是新建的高档公寓，而是那种屋顶裸露、没有中央空调、住户要靠电扇过夏天的老楼。后面所有政策的现实重量，都压在这个词上。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the flat roof of a six-storey <b>walk-up</b></div>
+          <div class="wc-tr">一栋六层无电梯楼房的平屋顶。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">shed</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ʃed/ · 美 /ʃed/</div>
+          <div class="wc-pos"><b>v.</b> <b>散发、排出（热量、水、重量）</b>：shed heat 是热学里的标准搭配，指把热量释放出去，与 absorb（吸收）相对。<br>常见义：<b>n.</b> 棚屋、小屋（a garden shed）；<b>v.</b> 脱落（shed leaves）、摆脱（shed tears／shed weight）。<br>搭配：shed heat／shed light on（阐明）／shed skin。<br>为什么不用 lose：lose heat 是「漏掉了热」，shed heat 是「主动把热送出去」——被动辐射制冷的关键正在于它是<b>设计出来的排出</b>，而不是失温。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>two ways to <b>shed</b> heat</div>
+          <div class="wc-tr">两条散热通道。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">window</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈwɪndəʊ/ · 美 /ˈwɪndoʊ/</div>
+          <div class="wc-pos"><b>n.</b> <b>（可利用的）窗口、波段</b>：此处指大气对某些红外波长几乎不吸收的那一段，热量可以从这个「窗口」直接逸向太空。<br>常见义：<b>n.</b> 窗户；<b>n.</b> 窗口期、时机（a window of opportunity）。<br>搭配：the atmospheric window／a narrow window／open a window of opportunity。<br>⚠️ 本篇第一个熟词僻义：句子里没有玻璃，也没有窗框。读成「一扇窗」会以为在讲建筑，读成「一个波段」才明白整段讲的是热辐射怎么绕过大气跑掉。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a narrow atmospheric <b>window</b></div>
+          <div class="wc-tr">一段很窄的大气窗口。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reflect</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /rɪˈflekt/ · 美 /rɪˈflekt/</div>
+          <div class="wc-pos"><b>v.</b> <b>反射（光、热）</b>：指光线打到表面后被弹回，不进入材料内部；反射率越高，表面吸热越少。<br>常见义：<b>v.</b> 反映（the figures reflect a trend）、<b>v.</b> 深思（reflect on）。<br>搭配：reflect sunlight／reflectivity（n. 反射率）／be reflected in。<br>为什么它是全文的第一个杠杆：文章后面反复出现的 reflectivity（反射率），就是这个词的名词化——白色屋顶的「白」，本质上是一个反射率数值。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>It can <b>reflect</b> the sun's visible light</div>
+          <div class="wc-tr">它可以把太阳的可见光反射掉。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">micrometre</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈmaɪkrəʊmiːtə/ · 美 /ˈmaɪkroʊmiːtər/</div>
+          <div class="wc-pos"><b>n.</b> <b>微米</b>：一百万分之一米，记作 μm。热辐射的波长常用它来标，人体与常温物体发出的红外多在 8–13 μm。<br>构词：micro-（百万分之一）+ metre（米）；美式拼作 micrometer。<br>搭配：8 to 13 micrometres／a few micrometres thick。<br>为什么本文必须给出这个数：整篇文章的技术可能性都藏在这个波段里——只有在这个宽度上「开门」，热量才能绕过大气走掉。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>between eight and thirteen <b>micrometres</b></div>
+          <div class="wc-tr">在八到十三微米之间。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">radiative</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈreɪdiətɪv/ · 美 /ˈreɪdiətɪv/</div>
+          <div class="wc-pos"><b>adj.</b> <b>辐射的、靠辐射完成的</b>：radiative cooling 指物体以红外辐射的方式把热量送出去，不需要空气或水当介质。<br>构词：radiate（辐射）+ -ive；同源词 radiation（n. 辐射）、radiator（n. 散热器）。<br>搭配：radiative cooling／radiative transfer（辐射传输）／radiative forcing（辐射强迫）。<br>为什么它是本文的技术底色：正因为靠辐射而不靠传导，屋顶才可能在四十度的空气里，把自己的表面降到空气温度以下。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>passive <b>radiative</b> cooling</div>
+          <div class="wc-tr">被动辐射制冷。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">asymmetry</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌeɪˈsɪmətri/ · 美 /ˌeɪˈsɪmətri/</div>
+          <div class="wc-pos"><b>n.</b> <b>不对称</b>：指同一件事在两个方向上代价不同——本文里就是「夏天得利、冬天受损」这种不成比例的交换。<br>构词：a-（不）+ symmetry（对称）；形容词 asymmetric。<br>搭配：a striking asymmetry／the asymmetry between A and B。<br>为什么它是全文的转折词：第 3 段说完「屋顶不看日历」，第 4 段立刻用这个词把话题收进论文——研究者要检验的不是「凉不凉」，而是<b>这笔账两边是否对等</b>。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>That <b>asymmetry</b> is what a paper</div>
+          <div class="wc-tr">这个不对称，正是一篇论文要检验的东西。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">couple</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈkʌpl/ · 美 /ˈkʌpl/</div>
+          <div class="wc-pos"><b>v.</b> <b>把（两个模型、系统）耦合起来</b>：科研里指让两套模型互相读取对方的输出，而不是各算各的。<br>常见义：<b>n.</b> 一对、情侣；<b>v.</b> 连接、结合（couple A with B）。<br>搭配：be coupled to／coupled with（再加上）／a coupled model。<br>⚠️ 本篇第二个熟词僻义：主语是「团队」，couple 在这里是动作而不是「一对」。读懂它，才明白为什么这篇文章敢同时谈气温、电费和死亡人数——三套模型被接成了一根链条。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the group <b>coupled</b> climate, energy</div>
+          <div class="wc-tr">团队把气候、能耗与健康（模型）耦合起来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">climatically</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /klaɪˈmætɪkli/ · 美 /klaɪˈmætɪkli/</div>
+          <div class="wc-pos"><b>adv.</b> <b>在气候上、按气候划分</b>：climatically distinct 指这些城市分属不同的气候区，而不是地理上离得远。<br>构词：climate（气候）+ -atic + -ally。<br>搭配：climatically diverse／climatically similar／a climatically distinct region。<br>为什么作者强调这一点：如果六座城市都在南方，结论就只能是「南方适用」。选了严寒、寒冷、夏热冬冷、夏热冬暖四类气候区，才有资格说「不同城市该配不同的屋顶」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>six <b>climatically</b> distinct Chinese cities</div>
+          <div class="wc-tr">六座气候各异的中国城市。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mortality</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /mɔːˈtæləti/ · 美 /mɔːrˈtæləti/</div>
+          <div class="wc-pos"><b>n.</b> <b>死亡、死亡率</b>：公共卫生里的核心指标，heat-related mortality 即「与高温相关的死亡」。<br>常见义：<b>n.</b> 必死性、凡人的身份（多用于文学）；形容词 mortal（会死的、致命的）。<br>搭配：net mortality／excess mortality（超额死亡）／infant mortality。<br>为什么本文把它当结算货币：能耗可以用钱换算，健康不能，所以作者选了一个最硬、也最不体面的单位——人数。一项技术的账，最后是用它来平的。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>net <b>mortality</b> rose in all six cities</div>
+          <div class="wc-tr">六座城市的净死亡人数全部上升。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">penalty</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈpenəlti/ · 美 /ˈpenəlti/</div>
+          <div class="wc-pos"><b>n.</b> <b>代价、副作用</b>：winter penalty 指「为了夏天凉快而被迫在冬天付的那笔账」，是工程与政策文献里的固定说法。<br>常见义：<b>n.</b> 处罚、罚款（a penalty for speeding）；<b>n.</b> （足球）点球。<br>搭配：pay the penalty／a winter penalty／the penalty of success。<br>⚠️ 本篇第三个熟词僻义：它不是法律意义上的罚，而是一笔<b>被忽略的隐性成本</b>。理解这个词，就理解了整篇文章在纠正什么——不是技术不灵，是账单只算了一半。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>winter <b>penalty</b> largely vanished</div>
+          <div class="wc-tr">那笔（冬季）代价基本消失了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> <b>阈值、临界点</b>：指越过之后系统行为发生改变的那个数值；本文里是涂层「开始散热」的温度。<br>常见义：<b>n.</b> 门槛（实物）、<b>n.</b> 起点、入门线（the threshold of pain）。<br>搭配：below／above a threshold／cross the threshold／a threshold temperature。<br>为什么它是自适应材料的关键：固定发射率的材料没有阈值，全天一个样；有了阈值，同一层涂料才能在一月与七月表现相反。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>below a <b>threshold</b> the coating behaves</div>
+          <div class="wc-tr">低于某个阈值时，涂层表现得（像一堵普通的墙）。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reversible</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /rɪˈvɜːsəbl/ · 美 /rɪˈvɜːrsəbl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>可逆的</b>：指变化能按原路退回去，且不损耗材料——化学上区别于「一次性反应」。<br>常见义：<b>adj.</b> 可撤销的（a reversible decision）、（衣服）双面可穿的。<br>搭配：a reversible reaction／fully reversible／reversibility（n. 可逆性）。<br>为什么这个词决定了它能不能上屋顶：一层涂料要在屋顶待十年、经历上千次冷热循环；可逆，才意味着第两千次升温时它还会「开」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>chemical and <b>reversible</b></div>
+          <div class="wc-tr">是化学的、可逆的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">dial</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈdaɪəl/ · 美 /ˈdaɪəl/</div>
+          <div class="wc-pos"><b>n.</b> <b>（可自由调节的）旋钮、参数</b>：把某个量当成 dial，意思是它可以从低到高连续调，供人按需设定。<br>常见义：<b>n.</b> （仪表）表盘、拨号盘；<b>v.</b> 拨（电话号码）、调节（dial down the heat）。<br>搭配：a free dial／turn the dial／dial up／dial back。<br>⚠️ 本篇第四个熟词僻义：句子里没有人打电话。反射率被当成一个旋钮，意味着政策不必二选一——不是「刷白或不刷白」，而是「刷到多少」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>as a free <b>dial</b></div>
+          <div class="wc-tr">当成一个可以自由拧的旋钮。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">converge</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /kənˈvɜːdʒ/ · 美 /kənˈvɜːrdʒ/</div>
+          <div class="wc-pos"><b>v.</b> <b>（从不同起点）汇聚到同一点</b>：本文指六座差异很大的城市，在同一个目标下算出了几乎相同的答案。<br>常见义：<b>v.</b> 聚集（crowds converged on the square）、<b>v.</b> 趋于一致（opinions converged）。<br>搭配：converge on／converge to a value／convergence（n. 收敛、趋同）。<br>为什么这个结果值得注意：如果六座城市各算各的、结果散得很开，说明答案是「地方性的」；偏偏它们在健康目标下收在 0.2 附近，这才让作者有底气说「以健康为目标时，各城市都该取低反射率」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>all six cities <b>converged</b> on a reflectivity</div>
+          <div class="wc-tr">六座城市全部收敛到（同一个）反射率。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">kilowatt-hour</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈkɪləwɒt aʊə/ · 美 /ˈkɪləwɑːt aʊər/</div>
+          <div class="wc-pos"><b>n.</b> <b>千瓦时、度</b>：电费的计价单位，1 千瓦时就是一台一千瓦的电器用一小时。<br>构词：kilo-（千）+ watt（瓦）+ hour（小时）；缩写 kWh。<br>搭配：per kilowatt-hour／a 15,800 kilowatt-hour saving。<br>为什么本文要把它拎出来对立：能耗是可以折算成钱的量，死亡不能。文章最锋利的一句，就是把这两个单位摆在一起——目标一换，最优解就换。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>deaths rather than <b>kilowatt-hours</b></div>
+          <div class="wc-tr">死亡人数，而不是千瓦时。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">mediocre</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌmiːdiˈəʊkə/ · 美 /ˌmiːdiˈoʊkər/</div>
+          <div class="wc-pos"><b>adj.</b> <b>平庸的、不好不坏的</b>：比 bad 温和，比 average 更带贬义，暗示「本可以更好」。<br>常见义：即此义；名词 mediocrity（平庸）。<br>搭配：a mediocre performance／mediocre results／decidedly mediocre。<br>为什么结尾用它而不是 bad：实验室里的最优设计并不会变成灾难，它只是<b>变得平常</b>——而恰恰是这种「还行」，最容易通过评审、铺满屋顶，然后在十年里悄悄把账算歪。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>can be <b>mediocre</b> across a year</div>
+          <div class="wc-tr">放到一整年里可能就平庸了。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">survive</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /səˈvaɪv/ · 美 /sərˈvaɪv/</div>
+          <div class="wc-pos"><b>v.</b> <b>（优势、效果）保留下来、没被抵消</b>：此处 benefit survived 指「夏季的好处没有因为改动而丢掉」。<br>常见义：<b>v.</b> 存活、幸存（survive a crash）；<b>v.</b> 比……活得久。<br>搭配：the effect survived／survive scrutiny（经得起推敲）／survival（n. 存活）。<br>为什么用 survive 而不是 remain：remain 是中性的「还在」，survive 暗含「经历了一次可能把它抹掉的改动，仍然在」——这正是本文想说的：修掉冬季代价，并没有牺牲夏季收益。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the summer benefit <b>survived</b></div>
+          <div class="wc-tr">夏季的收益保留了下来。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">demand</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /dɪˈmɑːnd/ · 美 /dɪˈmænd/</div>
+          <div class="wc-pos"><b>n.</b> <b>需求、用量</b>：heating demand 指一栋楼、一座城在某个时段需要的供热量，是能源模型的基本输出。<br>常见义：<b>v.</b> 要求、强烈要求（demand an answer）；<b>n.</b> 要求（a demand for change）。<br>搭配：energy demand／peak demand（峰值负荷）／meet demand。<br>注意：这里 demand 不是「有人要求供暖」，而是「建筑为了维持温度必须消耗的热量」——把人的意愿换成了物理量。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>district heating <b>demand</b> up by 7.2</div>
+          <div class="wc-tr">把区域供暖需求推高了 7.2（个百分点）。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">the flat roof of a six-storey walk-up</span><span class="zh">一栋六层无电梯楼房的平屋顶</span></li>
+          <li><span class="en">pass sixty degrees</span><span class="zh">超过六十度</span></li>
+          <li><span class="en">time their fans around the heat</span><span class="zh">按热浪而不是钟点来安排电扇</span></li>
+          <li><span class="en">the remedy engineers keep returning to</span><span class="zh">工程师反复回到的那个办法</span></li>
+          <li><span class="en">embarrassingly simple</span><span class="zh">简单到有点不好意思</span></li>
+          <li><span class="en">bounce the sunlight back</span><span class="zh">把阳光弹回去</span></li>
+          <li><span class="en">let the building sweat less</span><span class="zh">让这栋楼少出点汗</span></li>
+          <li><span class="en">two ways to shed heat</span><span class="zh">两条散热通道</span></li>
+          <li><span class="en">the sun's visible light</span><span class="zh">太阳的可见光</span></li>
+          <li><span class="en">radiate its own warmth</span><span class="zh">把自己的热量辐射出去</span></li>
+          <li><span class="en">a narrow atmospheric window</span><span class="zh">一段很窄的大气窗口</span></li>
+          <li><span class="en">between eight and thirteen micrometres</span><span class="zh">在八到十三微米之间</span></li>
+          <li><span class="en">a band the sky barely blocks</span><span class="zh">一段天空几乎不拦的波段</span></li>
+          <li><span class="en">leave for deep space</span><span class="zh">逸向深空</span></li>
+          <li><span class="en">passive radiative cooling</span><span class="zh">被动辐射制冷</span></li>
+          <li><span class="en">without a compressor, a refrigerant or a single watt</span><span class="zh">不要压缩机、不要制冷剂、不要一瓦电</span></li>
+          <li><span class="en">read a calendar</span><span class="zh">看日历（知道现在几月）</span></li>
+          <li><span class="en">a coating tuned to dump heat</span><span class="zh">一层被调成「拼命散热」的涂层</span></li>
+          <li><span class="en">spend money to keep warmth in</span><span class="zh">花钱把暖气留住</span></li>
+          <li><span class="en">set out to test</span><span class="zh">着手检验</span></li>
+          <li><span class="en">judged over a year rather than a summer</span><span class="zh">按一整年而不是一个夏天来结算</span></li>
+          <li><span class="en">climatically distinct cities</span><span class="zh">气候各异的城市</span></li>
+          <li><span class="en">both halves of the promise and both halves of the worry</span><span class="zh">好消息与坏消息的两半</span></li>
+          <li><span class="en">lower peak urban temperatures</span><span class="zh">压低城市峰值气温</span></li>
+          <li><span class="en">push heating demand up by 7.2 to 38.3 per cent</span><span class="zh">把供暖需求推高 7.2％ 到 38.3％</span></li>
+          <li><span class="en">weighted across both seasons</span><span class="zh">按两季（天数）加权</span></li>
+          <li><span class="en">net mortality rose in all six cities</span><span class="zh">六座城市的净死亡人数全部上升</span></li>
+          <li><span class="en">sold as protection</span><span class="zh">被当作「保护」来卖</span></li>
+          <li><span class="en">on an annual accounting</span><span class="zh">按年结算</span></li>
+          <li><span class="en">a small net harm</span><span class="zh">一个小小的净损害</span></li>
+          <li><span class="en">temperature-dependent rather than fixed</span><span class="zh">随温度变化，而不是固定不变</span></li>
+          <li><span class="en">below a threshold</span><span class="zh">低于某个阈值</span></li>
+          <li><span class="en">the infrared window opens</span><span class="zh">红外窗口打开</span></li>
+          <li><span class="en">needs no sensor, no circuit</span><span class="zh">不需要传感器，不需要电路</span></li>
+          <li><span class="en">with that one change</span><span class="zh">只改了这一处</span></li>
+          <li><span class="en">largely vanish</span><span class="zh">基本消失</span></li>
+          <li><span class="en">something more useful than inventing a better material</span><span class="zh">比「发明更好的材料」更有用的事</span></li>
+          <li><span class="en">treat sth as a free dial</span><span class="zh">把某物当成一个可以自由拧的旋钮</span></li>
+          <li><span class="en">sweep it city by city</span><span class="zh">逐城扫一遍</span></li>
+          <li><span class="en">gain most from pale, reflective roofs</span><span class="zh">从浅色、高反射的屋顶里获益最多</span></li>
+          <li><span class="en">the best local setting</span><span class="zh">当地的最优设定</span></li>
+          <li><span class="en">cut annual energy demand by 7.7 to 22.2 per cent</span><span class="zh">全年能耗降 7.7％ 到 22.2％</span></li>
+          <li><span class="en">not the same target as survival</span><span class="zh">与「保命」不是同一个目标</span></li>
+          <li><span class="en">minimise deaths rather than kilowatt-hours</span><span class="zh">把死亡人数而不是千瓦时降到最低</span></li>
+          <li><span class="en">converge on a reflectivity near 0.2</span><span class="zh">收敛到 0.2 左右的反射率</span></li>
+          <li><span class="en">pull in different directions</span><span class="zh">指向不同方向</span></li>
+          <li><span class="en">fold them into one headline number</span><span class="zh">把它们折成一个头条数字</span></li>
+          <li><span class="en">the lesson travels beyond roofing</span><span class="zh">这个教训不止适用于屋顶</span></li>
+          <li><span class="en">look optimal in a laboratory</span><span class="zh">在实验室里看起来很优</span></li>
+          <li><span class="en">quietly harmful across a city</span><span class="zh">在一座城市里悄悄有害</span></li>
+          <li><span class="en">a cleverer gadget than a better question</span><span class="zh">更聪明的器件，而不是更好的问题</span></li>
+          <li><span class="en">a correct colour for a particular place</span><span class="zh">某地正确的那一种颜色</span></li>
+          <li><span class="en">for a stated purpose</span><span class="zh">为了一个明确的目的</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：场景——七月的老楼平屋顶，刷白是最省事的办法。</li>
+          <li>第 2 段：物理——反射可见光 + 8–13 μm 红外窗口，零耗电散热。</li>
+          <li>第 3 段：反常——屋顶不看日历，一月照旧散热，冬季代价被漏算。</li>
+          <li>第 4 段：研究——清华团队耦合三套模型，六城 6,811 栋。</li>
+          <li>第 5 段：数字——热浪降温 1.1–2.3 ℃，寒潮供暖 +7.2–38.3％，净死亡全升。</li>
+          <li>第 6 段：机制——发射率随温度切换，可逆、无需传感器。</li>
+          <li>第 7 段：调节——反射率当成旋钮，逐城取值，能耗 −7.7–22.2％。</li>
+          <li>第 8 段：张力——以健康为目标，六城收敛到 0.2，省电≠保命。</li>
+          <li>第 9 段：落点——没有普适的颜色，只有为某个目的算出的颜色。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">It can reflect the sun's visible light, and it can radiate its own warmth through a narrow atmospheric window between eight and thirteen micrometres, a band the sky barely blocks, so the energy leaves for deep space.</div>
+        <div class="row"><b>主干：</b>It can reflect ... and it can radiate ...（它可以反射……也可以辐射……）——两个并列的主谓结构，中间用 and 连接，是英语里最典型的「两条通道」句式。</div>
+        <div class="row"><b>难点：</b>① 第一个 it 指 surface，第二个 it 仍指 surface，英文允许这样连续指代，中文若不补出「它」会读不清主语；② a narrow atmospheric window 后面跟 between ... micrometres，是<b>后置定语</b>，先给名词再给区间，符合英文「先说是什么、再说多大」的顺序；③ a band the sky barely blocks 是<b>同位语</b>，band 复指前面的 window，省略了关系词 that／which，barely 表示「几乎不」，比 hardly 更书面；④ so the energy leaves for deep space 是结果状语从句，leave for 是「动身前往」，用在这里把热量写成了一位旅客；⑤ 整句的信息结构是「两个动作 + 一个条件 + 一个结果」，四段信息压在一句里，正是本站「极难」档的句长来源。</div>
+        <div class="row tr"><b>译文：</b>它可以把太阳的可见光反射掉，也可以把自己的热量以八到十三微米波段的红外辐射送出去——那一段天空几乎不拦，能量就这么直接去了深空。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">That asymmetry is what a paper published on 3 November in Energy &amp; Environmental Science set out to test: what happens when such coatings cover a whole city, judged over a year rather than a summer?</div>
+        <div class="row"><b>主干：</b>That asymmetry is what a paper ... set out to test（这个不对称，正是一篇论文要检验的东西）——主系表结构，表语是 what 引导的名词性从句。</div>
+        <div class="row"><b>难点：</b>① published on 3 November in ... 是<b>过去分词短语作后置定语</b>，插在 a paper 与谓语之间，把主谓拆开了，读的时候要先跳过它找到 set out to test；② set out to do 是「着手做、力图做」，不是「出发」；③ 冒号后面不是陈述句而是<b>疑问句</b>——what happens when ...?，作者把论文的研究问题原样抛给读者，这是学术写作里很有效的「代入」手法；④ judged over a year rather than a summer 是过去分词短语作状语，逻辑主语是 such coatings，rather than 表取舍而非否定；⑤ 注意时态：主句用 is（现在时），因为「这个不对称仍然是一篇论文的研究对象」，而定语里的 published 用过去分词，时间信息由它承担。</div>
+        <div class="row tr"><b>译文：</b>这个不对称，正是 11 月 3 日发表在《能源与环境科学》上的一篇论文要检验的事：当这种涂层铺满一座城市，并以「一整年」而不是「一个夏天」来结算，会发生什么？</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">During cold waves, they pushed district heating demand up by 7.2 to 38.3 per cent and, weighted across both seasons, net mortality rose in all six cities: a technology sold as protection had become a small net harm.</div>
+        <div class="row"><b>主干：</b>they pushed demand up ... and net mortality rose（它们推高了需求……而净死亡人数上升了）——两个并列分句，主语却换了人：前一个是 they（反射屋顶），后一个是 mortality。</div>
+        <div class="row"><b>难点：</b>① 这是本文最容易被读错的一句：and 后面换了主语，很多读者会以为「屋顶上升了」；判断依据是 rose 后面跟 in all six cities，只有「人数」才会这样表达；② weighted across both seasons 是<b>过去分词短语作条件状语</b>，意思是「把两季按天数加权之后」，省略了 being；③ 冒号后的分句是对前半句的<b>定性</b>，不是补充数据——从「数字」跳到「判断」，是英文学术写作常用的收束动作；④ had become 用<b>过去完成时</b>，因为「变成净损害」发生在结算完成之后，比 pushed、rose 更晚；⑤ on an annual accounting 是「按年结算」的固定说法，accounting 在此不是「会计学」，而是「记账口径」。</div>
+        <div class="row tr"><b>译文：</b>寒潮期间，它把区域供暖需求推高了 7.2％ 到 38.3％，而按两季天数加权之后，六座城市的净死亡人数全部上升：一项被当作「保护」来卖的技术，按年结算，成了一个小小的净损害。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Warmer cities gained most from pale, reflective roofs and colder ones from darker roofs, and the best local setting cut annual demand by 7.7 to 22.2 per cent while mortality fell by 1.0 to 4.2 per cent.</div>
+        <div class="row"><b>主干：</b>Warmer cities gained most ... and the best local setting cut demand ...（偏暖城市获益最多……而当地最优设定削减了需求）——两个并列分句。</div>
+        <div class="row"><b>难点：</b>① 前半句有<b>省略</b>：colder ones from darker roofs 后面省掉了 gained most，理解时要补回，否则会误以为「冷城市来自深色屋顶」；② ones 替代 cities，避免重复，是指代类考题的高频点；③ pale 与 darker 构成对照，注意 pale 指「颜色浅」，不是「苍白」；④ while 在此是<b>对比连词</b>（而），不是「当……时」，两个数字一升一降，正是它要表达的对照；⑤ 全句把「按城市调参」这件事写成了两个结果：能耗降、死亡也降——注意后者是相对基线下降，不是相对反射屋顶。</div>
+        <div class="row tr"><b>译文：</b>偏暖的城市从浅色、高反射的屋顶里获益最多，偏冷的城市则相反；每座城市取自己的最优值，全年建筑能耗可降 7.7％ 到 22.2％，死亡人数降 1.0％ 到 4.2％。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The lesson travels beyond roofing: a design that looks optimal in a laboratory, and even in one season, can be mediocre across a year and quietly harmful across a city, and the fix is less often a cleverer gadget than a better question.</div>
+        <div class="row"><b>主干：</b>The lesson travels beyond roofing（这个教训不止适用于屋顶）——主谓结构，极短；冒号后是一个长句，用两个 and 串起三层意思。</div>
+        <div class="row"><b>难点：</b>① travel 在此是「适用、通行」，不是「旅行」，beyond roofing 意为「超出屋顶这个范围」；② a design that looks optimal ... 是主语，后面跟两个并列谓语 can be 与（第二个分句的）is，中间的 and even in one season 是<b>插入语</b>，删掉不影响结构；③ mediocre 与 quietly harmful 是<b>递进</b>而不是并列：先「平庸」，再「有害」，且 harmful 前加 quietly，暗示这种害处不会报警；④ less often A than B 是「与其说是 A，不如说是 B」的比较结构，比 not A but B 更留余地；⑤ 冒号前后的关系是「一句判断 + 一句展开」，这种「短句领起、长句落地」的节奏，是英文议论文最好用的收尾方式。</div>
+        <div class="row tr"><b>译文：</b>这个教训不止适用于屋顶：一个在实验室里、甚至在单一季节里看起来很优的设计，放到一整年里可能平庸，放到一座城市里可能悄悄有害；而要修正它，往往不需要更聪明的器件，只需要一个更好的问题。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章从一个很小的场景开始：七月的屋顶。</b>上海一栋六层老式无电梯楼房的平屋顶，下午能烤过六十度；住在下面的人家，学会了按热浪而不是按钟点来安排电扇。城市工程师反复回到的办法简单到有点不好意思：把屋顶刷白，把阳光弹回去，让这栋楼少出点汗。这个开场很重要，因为它先让读者站到一个具体的、烫手的地方，再谈政策与技术。</p>
+      <p class="zh-sum"><b>接着是物理。</b>一个表面有两条彼此独立的散热通道：把太阳的可见光反射掉，以及把自己的热量以八到十三微米波段的红外辐射送出去。后一条通道之所以成立，是因为大气在这一段几乎是透明的，热量可以直接逸向深空。工程师称之为被动辐射制冷——不需要压缩机，不需要制冷剂，一瓦电也不用。这就是「冷屋顶」的全部底气：它不耗能，只借物理。</p>
+      <p class="zh-sum"><b>然后是最容易被忽略的一句：屋顶不看日历。</b>一层为七月设计、拼命散热的涂层，到了一月照旧拼命散热；而那时，同一栋楼正花着钱想把暖气留住。这个不对称，正是论文要检验的东西。清华大学团队把城市气候、建筑能耗与健康三套模型耦合起来，在六座气候各异的中国城市、6,811 栋建筑上跑了一遍，问的问题很朴素：当这种涂层铺满一座城市，并按一整年结算，会发生什么？</p>
+      <p class="zh-sum"><b>数字把两半都证实了。</b>热浪期间，普通反射屋顶把城市峰值气温压低了 1.1 到 2.3 摄氏度——这是它的功劳。寒潮期间，它把区域供暖需求推高了 7.2％ 到 38.3％；而按两季天数加权之后，六座城市的净死亡人数全部上升。换言之，一项被当作「保护」来卖的技术，按年结算，成了一个小小的净损害。这不是说冷屋顶错了，而是说<b>它的账只被算了一半</b>。</p>
+      <p class="zh-sum"><b>团队的解法不是换材料，而是让材料「知道几月」。</b>他们把发射率做成随温度变化的：低于某个阈值，涂层像一堵普通的墙；高于阈值，红外窗口打开，表面开始散热。开关是化学的、可逆的，不需要传感器，不需要电路，也不需要哪个住户记得去关什么。只改了这一处，冬季代价基本消失，夏季收益保留下来。这类材料在文献里叫温度自适应辐射涂层（TARC），本文的价值不在于发明它，而在于第一次把它放到城市尺度上算总账。</p>
+      <p class="zh-sum"><b>第二个发现更像一条政策建议。</b>研究者把太阳反射率当成一个可以自由拧的旋钮，逐城扫了一遍：偏暖的城市从浅色、高反射的屋顶里获益最多，偏冷的城市则相反；每座城市取自己的最优值，全年建筑能耗可降 7.7％ 到 22.2％，死亡人数降 1.0％ 到 4.2％。这意味着「刷白」不是一个是非题，而是一个<b>取值题</b>——真正要决定的不是刷不刷，而是刷到多少。</p>
+      <p class="zh-sum"><b>但接下来出现了全文最锋利的一处转折：省电不等于保命。</b>如果把目标从千瓦时换成死亡人数，六座城市全部收敛到 0.2 左右的反射率，接近一顶普通的灰色屋顶。也就是说，为了少死几个人，夏天那点降温反而要让出去一部分。两个目标指向不同方向，这正是作者把它们分开报、不肯折成一个头条数字的原因。任何一份把「节能」和「健康」写成同一个百分比的政策文件，都在偷偷替公众做一次价值排序。</p>
+      <p class="zh-sum"><b>这项研究也有它自己的边界。</b>它跑的是模型，不是十年期的真实屋顶；它给出的死亡人数变化，来自温度—死亡关系曲线的推算，而不是登记数据；它假设涂层能长期保持光学性能，而灰尘、老化、施工质量都会让实际效果打折。此外，六座城市都在中国，气候区覆盖得不错，但「0.2 是健康最优」这个结论能否直接搬到别的大陆，仍需验证。</p>
+      <p class="zh-sum"><b>于是落点回到一个更普遍的地方。</b>一个在实验室里、甚至在单一季节里看起来很优的设计，放到一整年里可能平庸，放到一座城市里可能悄悄有害；而要修正它，往往不需要更聪明的器件，只需要一个更好的问题——比如「冬天怎么办」。这句话可以迁移到很多地方：一项只在一个季节被评估的补贴，一款只在一个场景被测试的功能，一种只在晴天有效的交通方案。</p>
+      <p class="zh-sum"><b>最后一层，是关于「标准答案」的错觉。</b>屋顶没有放之四海而皆准的颜色，只有某地、某种气候、某个明确目的之下正确的那一种颜色。这听上去像退让，其实是更硬的结论：它要求政策放弃「全国一个参数」的便利，转而承认差异、承认目标需要被说清。读这类研究，最该带走的不是 7.7％ 或 0.2 这些数字，而是那个顺序：<b>先说清为谁而算，再决定刷成什么颜色</b>。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. White roofs are an outdated technology, and cities should replace them with green roofs and street trees.<br>B. Because a reflective coating keeps shedding heat in winter, its annual benefit can turn negative; making emissivity temperature-dependent, and tuning reflectivity city by city, restores the gain — but the best setting depends on whether a city is optimising energy or survival.<br>C. A Tsinghua team proved that white roofs raise winter heating bills by up to 38.3 per cent, so the technology should be banned in northern China.<br>D. Passive radiative cooling can now be designed by machine learning, which makes laboratory results unnecessary.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景：七月的白屋顶（第 1 段）→ 物理：两条散热通道（第 2 段）→ 反常识：屋顶不看日历（第 3 段）→ 研究：清华团队、六城 6,811 栋（第 4 段）→ 数字：热浪降温 1.1–2.3 ℃，寒潮供暖 +7.2–38.3％，净死亡全升（第 5 段）→ 机制：发射率随温度切换（第 6 段）→ 第二个发现：反射率是可调的旋钮，能耗 −7.7–22.2％（第 7 段）→ 张力：以健康为目标时六城都取 0.2（第 8 段）→ 落点：没有普适的颜色（第 9 段）」。B 同时保住「技术被修正」与「最优解随目标而变」两层。A 把「需要改进」读成「应该淘汰」，且原文没提绿色屋顶。C 把「有代价」夸成「该禁用」，忽略了 TARC 已经把这个代价基本消除。D 与原文无关：本文靠的是多尺度物理模型，没有用机器学习设计材料。</div>
+
+      <div class="q"><b>2. What does the passage imply by saying that all six cities 'converged on a reflectivity near 0.2' when the goal is health?<br>A. That a reflectivity of 0.2 is the single correct answer for every city in every situation.<br>B. That once the objective changes from saving electricity to saving lives, the optimum shifts towards a darker, less reflective roof — so a policy cannot be judged without naming its goal.<br>C. That 0.2 is the value that minimises both energy demand and mortality at the same time.<br>D. That reflective roofs are useless for protecting health.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>第 7 段给出的能耗最优是「暖城高反射、冷城低反射」，各城不同；第 8 段换一个目标（死亡人数而非千瓦时），六座城市的答案却全部收到 0.2 附近——接近普通灰屋顶。这个对比的用意不是「0.2 是标准答案」，而是<b>目标一换，最优解就换</b>：同一批模型、同一批城市，只因结算单位不同，就给出了相反的屋顶颜色。A 把「某个目标下的收敛」误读成「普适最优」，而第 9 段明确说「没有放之四海而皆准的颜色」。C 与第 7 段矛盾：0.2 并不是能耗最优，能耗最优各城不同且更高。D 走另一个极端：低反射率不等于「没用」，它是在健康目标下牺牲一点夏季降温、换取冬季不过冷。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文最有说服力的一步，是把「白屋顶好不好」换成了「按一整年、按整座城算好不好」：只算夏天，它是好技术；算上冬天，它变成一个小净损害。请你就身边一个「公认有利」的做法（例如：夏天全程开空调、教室整天拉窗帘、小区夜里常亮路灯、通勤改骑电动车），写一段 150 字以内的重算：① 这个做法在哪个时段/哪个人群上明显有利？② 被它顺手推高的那笔成本落在谁身上、什么时候结算？③ 如果只允许改一个参数（不是换方案），你会改哪一个？最后一句请用「它不是在某一刻错了，是在 ______ 那本账上错了」的句式收束。</div>
+      <div class="q"><b>仿写：</b>本文第 5 段是全篇最值得模仿的「双向报数」段：先承认功劳（lowered peak temperatures by 1.1 to 2.3 °C），再用 During cold waves 把镜头翻面（pushed heating demand up by 7.2 to 38.3 per cent），最后用 weighted across both seasons 把两半合成一句判决（net mortality rose in all six cities）。骨架是：<i>During ______, ______ lowered ______ by ______; during ______, they pushed ______ up by ______ and, weighted across ______, ______ rose in ______.</i> 注意三件事：① 好话与坏话必须用<b>同一个句式</b>说，读者才会感到这是同一件事的两面；② 合成判决前一定要交代加权口径（weighted across …），否则两个数字无法相加；③ 判决句要用具体单位（in all six cities），不要写成「效果有待观察」这类空话。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">① 场景：七月，老楼平屋顶烤过六十度，住户按热浪安排电扇</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">② 物理：两条散热通道——反射可见光 + 8–13 μm 红外窗口</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">③ 反常：屋顶不看日历，一月照旧散热 → 冬季代价</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">④ 研究：清华团队，六城 6,811 栋，气候—能耗—健康三模型</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑤ 数字：热浪 −1.1~2.3 ℃；寒潮供暖 +7.2~38.3％；净死亡全升</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" font-weight="600"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">⑥ 机制：发射率随温度切换，化学可逆、无需供电</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" font-weight="600"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">⑦ 调节：反射率是旋钮，暖城取高、冷城取低 → 能耗 −7.7~22.2％</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑧ 张力：以健康为目标，六城全收敛到 0.2（近灰屋顶）</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2" font-weight="600"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">⑨ 落点：没有普适的颜色，只有「为谁而算」的颜色</text>
+
+          <rect x="60" y="564" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="584" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：同一层涂料，只算夏天是净收益，算满一年是净损害</text>
+          <text x="360" y="601" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">而「最优」也不是一个数：为省电是一种颜色，为保命是另一种</text>
+
+          <text x="360" y="646" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 2、4 段蓝色：物理与设计——先把机制说清，再谈规模</text>
+          <text x="360" y="668" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、5、6、7、8 段橙红：代价、机制、调节与目标冲突</text>
+        </svg>
+        <figcaption>结构图解：全文走的是一条「先给好处、再翻面」的路。第 1 段用一个具体场景把话题压到一顶屋顶上：七月、老楼、六十度；第 2 段交代物理，两条散热通道，重点是 8–13 微米那段「大气窗口」；第 3 段立刻翻面——屋顶不看日历，一月照旧散热；第 4 段请出研究：清华团队把气候、能耗、健康三套模型耦合，六座气候各异的城市、6,811 栋建筑；第 5 段双向报数，热浪降温 1.1–2.3 ℃，寒潮供暖 +7.2–38.3％，加权后六城净死亡全升；第 6 段给机制，发射率随温度切换，化学可逆、无需供电；第 7 段给出第二个、也是更实用的一层：反射率是可调的旋钮，暖城取高、冷城取低，能耗可降 7.7–22.2％；第 8 段制造张力——目标换成死亡人数，六城全部收敛到 0.2；第 9 段收束为可迁移的判断：没有普适的颜色，只有为某个目的算出来的颜色。全文真正想说的是：<b>一项技术的账，取决于你把它结到哪一天、算给谁看</b>。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：Zeng, T., Zeng, P., Tai, H., de Dear, R., Santamouris, M., You, Y., Ma, X., Lin, B., Dong, K. &amp; Lu, S.《Temperature-adaptive emissivity resolves the winter penalty of conventional cool-roof strategies》，<i>Energy &amp; Environmental Science</i>（2026-11-03；DOI 10.1039/d6ee04639h），六座中国城市、6,811 栋建筑的多尺度耦合评估｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

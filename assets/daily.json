@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-11-26",
+      "en": "What a roof cannot do is read a calendar, and a coating tuned to dump heat in July keeps dumping it in January, when the same building is paying to keep warmth in.",
+      "zh": "屋顶做不到的是看日历：一层为七月调好、拼命散热的涂层，到了一月照旧拼命散热；而那时，同一栋楼正花着钱想把暖气留住。",
+      "src": "外刊精读 · 屋顶刷白是对的，只要它知道现在几月（2026-11-26）",
+      "key": "tuned",
+      "keyZh": "调校好的、设定成某个状态的：tune 原指给乐器调音，工程与算法里引申为「把某个参数调到合适值」，tune A to do B 即「把 A 调成做 B 的样子」",
+      "tip": "这句话的力量来自一个反差：主语是屋顶，谓语却是 read a calendar——用「读日历」这个人类动作，说明它缺少的是「知道现在几月」这层时间感知。后半句的 tuned to 是关键：它不是「自然如此」，而是「被调到如此」，暗含人的设计意图在一个错误的时间尺度上生效了。注意 keeps dumping 的进行意味：不是散一次，而是持续地、不知停歇地散，这才让冬季代价变成一笔持续支出。仿写骨架：What ______ cannot do is ______, and a ______ tuned to ______ in ______ keeps ______ in ______, when the same ______ is ______.",
+      "tags": [
+        "科技与创新",
+        "城市气候",
+        "建筑节能"
+      ]
+    },
+    {
       "date": "2026-11-25",
       "en": "What a text cannot do is hear an answer, notice that it is wrong, and change the next question accordingly.",
       "zh": "短信做不到的事是——听见一个回答，发现它错了，然后据此换下一个问题。",
