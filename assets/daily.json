@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-11-27",
+      "en": "Print a number beside a choice and people will use it, but the unit you print decides what you are entitled to claim, and a per-gram ratio will always flatter a kitchen selling more.",
+      "zh": "在选项旁边印一个数字，人就会用；但你印的是哪个单位，决定了你有资格主张什么；而一个「每百克」的比率，永远会偏袒一个只是在多卖的厨房。",
+      "src": "外刊精读 · 盘子变绿了，食堂的碳没变（2026-11-27）",
+      "key": "entitled",
+      "keyZh": "有资格的：be entitled to do 不是「想要做」，而是「被赋予资格做」，暗示这种权利有边界、有出处——所以这句话说的不是「你能说什么」，而是「这套指标允许你说什么」",
+      "tip": "这句是全篇的收束，力量来自三个动作的递进：先用祈使句加 and 造成「一印就有人用」的直觉，再用 but 把话题从「人」移到「单位」，最后用 always 把结论钉死。注意 entitled to claim 这个搭配：claim 在这里不是「声称所有权」，而是「主张某个结论成立」；把 entitled 换成 able，句子的锋芒就全没了——able 只说能力，entitled 说的是资格与边界。仿写骨架：Do ______ and people will ______, but the ______ you choose decides what you are entitled to ______, and a ______ will always ______.",
+      "tags": [
+        "生态与可持续",
+        "食物系统",
+        "碳标签"
+      ]
+    },
+    {
       "date": "2026-11-26",
       "en": "What a roof cannot do is read a calendar, and a coating tuned to dump heat in July keeps dumping it in January, when the same building is paying to keep warmth in.",
       "zh": "屋顶做不到的是看日历：一层为七月调好、拼命散热的涂层，到了一月照旧拼命散热；而那时，同一栋楼正花着钱想把暖气留住。",

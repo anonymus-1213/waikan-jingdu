@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 盘子变绿了，食堂的碳没变</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<article class="wrap">
+  <div class="eyebrow">Plate &amp; Label · 人与自然 / 生态与可持续 / 公共政策 / 食物系统</div>
+  <h1>盘子变绿了，食堂的碳没变</h1>
+  <div class="deck">A Beijing canteen printed a carbon number beside every dish, and diners changed their trays. Waste fell and spending rose — yet the kitchen's total emissions barely moved.</div>
+  <div class="byline"><span><b>来源</b> Nature Food / COP31 案例集（2026-11-09）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-27</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 529 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-27.jpg" alt="写实场景：大学食堂自助取餐台前，一名教师端着餐盘在玻璃柜台前停下，柜台里每道菜旁都竖着一张白色小标牌，头顶是暖色灯管与排队的人群">
+    <figcaption>配图：决定发生的那一米。柜台里每道菜都插着一张小牌，牌上除了菜名和价钱，还有一个以克计的碳数字——这一米之内完成的选择，最后会汇成整个食堂的排放账（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>一所北京高校给 1,005 道菜算出了碳足迹，做成红黄绿三色标签，只动信息、不动价格。四周、<b>38,078</b> 份订单之后：低碳菜多卖了，厨余每餐少 <b>23.8 升</b>，客单价还涨了 <b>0.373 元</b>。</p>
+    <p>但按整个食堂来算，总排放<b>没有显著下降</b>。原因是标签的单位：一个「每百克」的比率，可以在总量变大时继续变好看。</p>
+    <p>对照组来自蒙特利尔一家医院——它不等就餐者，直接改配方，一年少排 <b>225 吨</b>。改信息与改供给，作用半径不同。</p>
+    <p>本期重点熟词僻义：<b>run</b>（做实验，不是跑步）、<b>govern</b>（决定总量，不是治理）、<b>furniture</b>（没人再看的背景，不是家具）。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-27.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="13.024">At 11:40 the queue in the staff canteen of a Beijing university bends past a glass case where every dish carries a small card: name, price, and grams of carbon dioxide equivalent per hundred grams.</span> <span class="s" data-t="13.024" data-e="25.171">Bean paste aubergine reads 117; braised beef with tomato 5,308 — a gap of forty-five times, printed at eye level, eight seconds before a <b class="kw" data-tip="n. 就餐者、用餐的人：diner 指「来吃饭的人」，而不是「餐厅」；注意与 dinner（晚餐）只差一个字母，含义完全不同">diner</b> decides.</span></span></div>
+      <p class="para-tr">十一点四十，北京一所高校的教工食堂里，队伍绕过一个玻璃柜；柜里每一道菜都插着一张小牌：菜名、单价，以及一个以「克二氧化碳当量／每百克」为单位的数字。豆角烧茄子是 117，西红柿牛腩是 5,308——四十五倍的差距，印在视线高度上，出现在一个人做决定之前的八秒钟。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="25.171" data-e="39.132">Food systems generate roughly a third of global greenhouse-gas emissions, and a canteen is an unusually clean place to test an idea: the same kitchen, the same menu and nearly the same people return every weekday at the same hour.</span></span></div>
+      <p class="para-tr">食物系统排放了全球约三分之一的温室气体；而食堂恰好是一个异常干净的实验场：同一个厨房、同一份菜单、几乎是同一批人，每个工作日都在同一个钟点回来。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="39.132" data-e="51.789">Between June and July 2026 a team led by Xian Yang at the China University of Petroleum, Beijing, did exactly that, calculating life-cycle emissions for 1,005 dishes.</span> <span class="s" data-t="51.789" data-e="60.13">Each dish then got a red, amber or green grade, and a line translating its figure into the trees needed to <b class="kw" data-tip="v. 吸收（二氧化碳）：这里指树木把空气中的二氧化碳固定下来；常见义 v. 吸收（液体、热量）、v. 理解并消化（信息）、v. 使全神贯注（be absorbed in）">absorb</b> it for a day.</span> <span class="s" data-t="60.13" data-e="66.868">One canteen was labelled; two comparable ones were not, and no price was touched and no dish withdrawn.</span> <span class="s" data-t="66.868" data-e="79.84">After four weeks and 38,078 orders the comparison was <b class="kw" data-tip="v. 开展、进行（实验、测算）：run a study／run a model 是科研写作里的固定搭配，相当于 carry out；常见义 v. 跑、经营（run a shop）、运转（the engine runs）">run</b> as a difference-in-differences design, which asks not whether the labelled canteen improved but whether it improved more than the two left alone.</span></span></div>
+      <p class="para-tr">2026 年 6 月到 7 月，中国石油大学（北京）杨弦带领的团队做的正是这件事：他们核算了 1,005 道菜的全生命周期碳排放，在每道菜旁标上红、黄、绿三档，并附一行字，把那个数字换算成「多少棵树吸收一天」；一个食堂贴了标签，另外两个条件相当的食堂没贴，没有动任何价格，也没有撤下任何一道菜。四周、38,078 份订单之后，比较用双重差分的方式来做——它问的不是「贴了标签的食堂有没有变好」，而是「它是不是比那两个没被碰过的食堂好得更多」。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="79.84" data-e="90.553">The first block looks like a clean win: diners chose more green-labelled dishes, in both weight and money, and the kitchen discarded 23.8 litres less food per meal.</span> <span class="s" data-t="90.553" data-e="100.474">Spending per order rose by 0.373 yuan, a small, <b class="kw" data-tip="adj. （数字）顽固的、压不下去的：说一个数字 stubborn，意思是它小、却不肯变成零，暗示改动并没有真正撬动它；常见义 adj. 固执的、倔强的（a stubborn child）、难对付的（a stubborn stain）">stubborn</b> figure that matters because it disarms the objection that green must be paid for.</span></span></div>
+      <p class="para-tr">第一组结果像一场干净的胜利：就餐者更多地选择了带绿色标签的菜，重量和金额都上升；厨房每餐倒掉的食物少了 23.8 升。每笔订单的消费额涨了 0.373 元——这个数字很小，却相当顽固，因为它顺手拆掉了那个老反对意见：可持续总要有人买单。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="100.474" data-e="103.395">The second block is the one worth teaching.</span> <span class="s" data-t="103.395" data-e="110.5">Counted across the whole canteen, rather than per dish or per yuan, total emissions did not fall significantly.</span></span></div>
+      <p class="para-tr">第二组结果才是值得讲的那一组。按整个食堂来算，而不是按一道菜、一元钱来算，总排放并没有显著下降。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="110.5" data-e="127.603">The explanation hides in the unit: a label ranking dishes by emissions per hundred grams is a ratio, and a ratio can improve while the quantity it describes grows, so a diner who swaps beef for aubergine and then takes a second helping has made the greener choice and left the larger footprint.</span> <span class="s" data-t="127.603" data-e="136.274">Because the grade compares dishes rather than meals, it never asks what <b class="kw" data-tip="v. 决定、支配：govern 在这里不是「治理国家」，而是「决定某个结果怎么走」，相当于 determine；常见义 v. 统治、管理（govern a country）、v. 约束、规范（rules governing trade）">governs</b> the total: how much, in the end, went onto the tray?</span></span></div>
+      <p class="para-tr">答案藏在单位里：一个按「每百克排放」给菜排名的标签，本质是一个比率；而比率可以在它描述的那个总量变大的同时继续变好看——一个把牛肉换成茄子、然后又添了一份的人，做出了更绿的选择，留下了更大的足迹。又因为这一档比较的是「菜」而不是「一餐」，它始终没有问出那个真正决定总量的问句：你最后到底往盘子里装了多少？</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="136.274" data-e="141.684">None of this makes the label useless; it makes it precise about what it claims.</span> <span class="s" data-t="141.684" data-e="162.158">At a Montreal hospital, where a similar A-to-E grading covered about twenty recipes, the kitchen did not wait for diners at all: it reformulated the menu, halved the beef in its most popular dish, and stopped buying almost 500 kilograms of beef a month — some 225 tonnes of carbon dioxide equivalent a year.</span></span></div>
+      <p class="para-tr">这并不是说标签没用，而是说标签得对自己能主张什么保持精确。在蒙特利尔的一家医院，近二十道菜被贴上类似的 A 到 E 分级，厨房压根没有等就餐者：它改了配方，把最受欢迎那道菜里的牛肉减了一半，并悄悄停掉了每月近 500 公斤的牛肉采购——一年少排约 225 吨二氧化碳当量。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="162.158" data-e="174.211">Four weeks is also short: novelty fades, staff diners are not students, waste was recorded in litres rather than weighed, and one campus cannot say what happens once a label becomes <b class="kw" data-tip="n. 习以为常、成为背景的一部分（东西）：说某物 becomes furniture，指它不再被注意，就像房间里的桌椅；常见义 n. 家具（a piece of furniture，不可数）">furniture</b>.</span></span></div>
+      <p class="para-tr">四周也是很短的窗口，短到什么都难测准：新鲜感会退，教工不是学生，厨余是按升记录而不是称重的，而且一所校园说不了「当标签变成家具之后」会发生什么。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="174.211" data-e="183.276">The honest reading is narrower, and more useful, than either the press release or the sceptic allows: information moves the plate, not the sky.</span> <span class="s" data-t="183.276" data-e="193.711">Print a number beside a choice and people will use it, but the unit you print decides what you are entitled to claim, and a per-gram ratio will always flatter a kitchen selling more.</span> <span class="s" data-t="193.711" data-e="197.789">The next label should count the tray, not the hundred grams.</span></span></div>
+      <p class="para-tr">诚实的读法比通稿和怀疑者都更窄，也更有用：信息挪得动盘子，挪不动天空。在选项旁边印一个数字，人就会用；但你印的是哪个单位，决定了你有资格主张什么——一个「每百克」的比率，永远会偏袒一个只是在多卖的厨房。下一个标签，也许该数整只餐盘，而不是那一百克。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">canteen</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /kænˈtiːn/ · 美 /kænˈtiːn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（单位、学校的）食堂、餐厅</b>：指集体供餐的场所，通常自助取餐、价格低廉。<br>常见义：<b>n.</b> （军营、工厂的）小卖部；<b>n.</b> 水壶（英式，行军用水壶）。<br>搭配：a staff canteen／a school canteen／eat in the canteen。<br>为什么本文从它开始：食堂是一个「可控实验场」——菜单、价格、人流都由一方掌握，研究者才可能在不动价格的前提下只动信息。换成街边餐馆，这个实验根本做不成。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the queue in the staff <b>canteen</b></div>
+          <div class="wc-tr">教工食堂里的队伍。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">equivalent</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ɪˈkwɪvələnt/ · 美 /ɪˈkwɪvələnt/</div>
+          <div class="wc-pos"><b>n.</b> <b>当量</b>：carbon dioxide equivalent（CO₂e）是把甲烷、氧化亚氮等不同温室气体按增温能力折算成二氧化碳之后的统一单位，不折算就无法相加。<br>常见义：<b>adj.</b> 相等的、等同的（be equivalent to）；<b>n.</b> 对应物、等价物。<br>搭配：CO₂ equivalent／the equivalent of／be equivalent to doing sth。<br>为什么本文离不开它：一道菜的碳排放里混着甲烷（养牛）与二氧化碳（运输、烹饪），只有换成「二氧化碳当量」，5,308 这个数才有意义。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>grams of carbon dioxide <b>equivalent</b> per hundred grams</div>
+          <div class="wc-tr">每百克的二氧化碳当量克数。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">aubergine</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈəʊbəʒiːn/ · 美 /ˈoʊbərʒiːn/</div>
+          <div class="wc-pos"><b>n.</b> <b>茄子</b>：英式说法，美式多用 eggplant；本文指那道「豆角烧茄子」。<br>常见义：即此义；<b>n.</b> 紫红色（英式，颜色名）。<br>搭配：bean paste aubergine／grilled aubergine。<br>为什么作者专挑这道菜：它和西红柿牛腩在同一柜台上、同一价位带，却便宜四十五倍的碳——标签要起作用，必须让对比发生在「你本来会犹豫的那两样东西」之间。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Bean paste <b>aubergine</b> reads 117</div>
+          <div class="wc-tr">豆角烧茄子（标签上）是 117。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">diner</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdaɪnə/ · 美 /ˈdaɪnər/</div>
+          <div class="wc-pos"><b>n.</b> <b>就餐者、用餐的人</b>：指「来吃饭的人」，而不是「餐厅」。<br>常见义：<b>n.</b> （美式）小餐馆、路边餐厅（a roadside diner）。<br>⚠️ 拼写陷阱：diner（吃饭的人／小餐馆）与 dinner（晚餐）只差一个字母，读音也不同（/ˈdaɪnə/ vs /ˈdɪnə/）。<br>为什么本文反复用它：文章的因果链是「标签→人→盘子」，diner 是这条链上唯一会改变行为的一环；写成 customer 就丢掉了「正在吃这一餐」的现场感。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>eight seconds before a <b>diner</b> decides</div>
+          <div class="wc-tr">在一个就餐者做决定之前的八秒钟。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">footprint</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈfʊtprɪnt/ · 美 /ˈfʊtprɪnt/</div>
+          <div class="wc-pos"><b>n.</b> <b>足迹、（碳排放的）总量</b>：carbon footprint 指一个人、一件产品、一次活动所对应的温室气体总量，常以二氧化碳当量计。<br>常见义：<b>n.</b> 脚印、脚印状的痕迹（footprints in the snow）。<br>搭配：carbon footprint／ecological footprint／leave a footprint。<br>为什么结尾用它：footprint 是「总量」的语言，而标签给的是「单位」的语言——两者在这句话里正面相撞，正是全文的枢纽。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>left the larger <b>footprint</b></div>
+          <div class="wc-tr">留下了更大的（碳）足迹。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">difference-in-differences</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈdɪfrəns ɪn ˈdɪfrənsɪz/</div>
+          <div class="wc-pos"><b>n.</b> <b>双重差分</b>：一种政策评估方法，把「处理组的变化」减去「对照组的变化」，从而扣掉季节、天气、整体趋势等共同影响。缩写 DID。<br>构词：difference（差）+ in + differences（差），字面即「差的差」。<br>搭配：a difference-in-differences design／DID estimate。<br>为什么本文必须点出它：只比较「贴标签前后」，任何变化都可能来自六月到七月的天气或学期节奏；减去两个未贴标签食堂的同期变化，才谈得上因果。这也是全文唯一一处方法论硬功夫。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>as a <b>difference-in-differences</b> design</div>
+          <div class="wc-tr">作为一项双重差分设计。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reformulate</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌriːˈfɔːmjuleɪt/ · 美 /ˌriːˈfɔːrmjuleɪt/</div>
+          <div class="wc-pos"><b>v.</b> <b>重新配制、改配方</b>：指在不改变菜品身份的前提下调整原料比例，比如把一半牛肉换成植物蛋白。<br>构词：re-（再）+ formulate（配制、表述）。<br>搭配：reformulate a product／reformulate the menu／a reformulated recipe。<br>为什么它与标签形成对照：标签改变的是「人选什么」，改配方改变的是「有什么可选」——后者不需要任何人配合，因此更可靠，也更不显眼。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>it <b>reformulated</b> the menu</div>
+          <div class="wc-tr">它改了菜单的配方。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">ratio</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈreɪʃiəʊ/ · 美 /ˈreɪʃioʊ/</div>
+          <div class="wc-pos"><b>n.</b> <b>比率、比值</b>：两个量相除的结果，如「每百克排放」。比率的麻烦在于分子分母可以同时变化。<br>常见义：<b>n.</b> 比例（the ratio of A to B）。<br>搭配：the ratio of A to B／in the ratio 3:1／a high ratio。<br>为什么它是全文的关键词：作者用一句话点破了整件事——比率可以变好，而它描述的总量在变大。凡是「单位指标」类的宣传，都该被这句话检验一次。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>is a <b>ratio</b>, and a ratio can improve</div>
+          <div class="wc-tr">是一个比率，而比率可以（在总量变大时）继续变好。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">objection</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /əbˈdʒekʃn/ · 美 /əbˈdʒekʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>反对意见、异议</b>：指对某个方案提出的具体反对理由，常与 raise／meet／disarm 搭配。<br>常见义：<b>n.</b> 反对、不赞成（have no objection to）。<br>搭配：raise an objection／disarm an objection（拆掉反对意见）／overrule an objection。<br>为什么本文需要它：环保措施最常被挡住的不是技术，而是「谁来付钱」这一条；0.373 元的作用不是赚钱，而是把这条反对意见提前消掉。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>disarms the <b>objection</b> that green</div>
+          <div class="wc-tr">拆掉了「绿色（必须有人买单）」这条反对意见。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">sceptic</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈskeptɪk/ · 美 /ˈskeptɪk/</div>
+          <div class="wc-pos"><b>n.</b> <b>怀疑者</b>：指对某个说法持怀疑态度的人；美式拼作 skeptic。<br>常见义：<b>n.</b> 怀疑论者（哲学意义上的）。<br>搭配：a climate sceptic／sceptics argue that／be sceptical of。<br>为什么结尾把它和「通稿」并列：一边是过度乐观的官方叙述，一边是全盘否定的怀疑，作者要站的是中间那条更窄、也更能站住的路。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>than either the press release or the <b>sceptic</b> allows</div>
+          <div class="wc-tr">比通稿或怀疑者所允许的（范围）都要（窄）。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">stubborn</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈstʌbən/ · 美 /ˈstʌbərn/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（数字、问题）顽固的、压不下去的</b>：说一个数字 stubborn，意思是它小、却不肯变成零，暗示改动没有真正撬动它。<br>常见义：<b>adj.</b> 固执的、倔强的（a stubborn child）；<b>adj.</b> 难对付的、难除的（a stubborn stain）。<br>搭配：a stubborn figure／stubborn resistance／stubbornly high。<br>为什么用它形容 0.373：作者本可以说 small，但 small 只是「小」；stubborn 多了一层「怎么弄都不消失」，暗示这笔钱是被结构性带出来的，不是运气。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a small, <b>stubborn</b> figure</div>
+          <div class="wc-tr">一个很小、却很顽固的数字。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">grade</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɡreɪd/ · 美 /ɡreɪd/</div>
+          <div class="wc-pos"><b>n.</b> <b>等级、（分级的）档</b>：本文指红、黄、绿三档碳排等级，也指医院那套 A 到 E 的分级。<br>常见义：<b>n.</b> 年级、成绩（get good grades）；<b>v.</b> 分级、评分（grade the papers）。<br>搭配：a grade A／grade the dishes／a grading system。<br>为什么分级比数字更好用：精确到克的数字需要读者自己换算，而一个颜色只需要一次比较——这是行为干预里最省认知成本的一种设计。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a red, amber or green <b>grade</b></div>
+          <div class="wc-tr">一个红、黄或绿的等级。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">precise</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /prɪˈsaɪs/ · 美 /prɪˈsaɪs/</div>
+          <div class="wc-pos"><b>adj.</b> <b>（表述）精确的、界限清楚的</b>：be precise about what it may claim 指「把话说小、说准」，而不是「技术上更精细」。<br>常见义：<b>adj.</b> 精确的、准确的（precise measurements）；<b>adj.</b> 恰好的（at that precise moment）。<br>搭配：to be precise／precise about／a precise figure。<br>为什么本文用它而不是 accurate：accurate 说的是「对不对」，precise 说的是「范围划得清不清」——作者要的是后者：标签没错，只是它只能主张一部分效果。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>makes it <b>precise</b> about what it claims</div>
+          <div class="wc-tr">让标签对自己能主张什么保持精确。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">govern</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈɡʌvn/ · 美 /ˈɡʌvərn/</div>
+          <div class="wc-pos"><b>v.</b> <b>决定、支配</b>：govern a total 指「决定总量怎么走」，相当于 determine；在学术写作里常用来指「真正起作用的那个变量」。<br>常见义：<b>v.</b> 统治、治理（govern a country）；<b>v.</b> 约束、规范（rules governing trade）。<br>搭配：the factors that govern／be governed by／governing equation。<br>⚠️ 本篇第一个熟词僻义：句子里没有政府。读成「治理总量」会莫名，读成「决定总量」才明白作者在说：真正管住排放的，是「装了多少」，而不是「选了哪道」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>what <b>governs</b> the total</div>
+          <div class="wc-tr">那个真正决定总量的问句。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">furniture</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈfɜːnɪtʃə/ · 美 /ˈfɜːrnɪtʃər/</div>
+          <div class="wc-pos"><b>n.</b> <b>习以为常、成为背景的一部分（东西）</b>：说某物 becomes furniture，指它不再被注意，就像房间里的桌椅，天天在那里却没人看。<br>常见义：<b>n.</b> 家具（不可数名词，a piece of furniture）。<br>搭配：become part of the furniture／part of the furniture。<br>⚠️ 本篇第二个熟词僻义：标签变成家具，不是「标签变成了桌子」，而是「没人再抬头看它」。这句话点出了所有信息干预的共同命运：新鲜感一过，效应就跟着退潮，而四周的实验量不到这一段。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>once a label becomes <b>furniture</b></div>
+          <div class="wc-tr">一旦标签变成了（没人注意的）家具。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">run</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rʌn/ · 美 /rʌn/</div>
+          <div class="wc-pos"><b>v.</b> <b>开展、进行（实验、测算、模型）</b>：run a study／run a model／run the numbers 是科研与商业写作里的固定搭配，相当于 carry out。<br>常见义：<b>v.</b> 跑（run fast）；<b>v.</b> 经营（run a shop）；<b>v.</b> 运转（the engine runs）；<b>v.</b> 竞选（run for office）。<br>搭配：run a trial／run a regression／run the comparison。<br>⚠️ 本篇第三个熟词僻义：the comparison was run 里没有人跑步。这是全篇唯一一处「方法」被压缩进一个动词的地方，读懂它，才知道结论不是观察来的，是算出来的。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the comparison was <b>run</b> as a difference-in-differences design</div>
+          <div class="wc-tr">这项比较是以双重差分的方式做的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">waste</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /weɪst/ · 美 /weɪst/</div>
+          <div class="wc-pos"><b>n.</b> <b>浪费、（厨余）垃圾</b>：food waste 是政策与环保文本里的固定说法，指本可食用却被丢弃的食物。<br>常见义：<b>v.</b> 浪费（waste time）；<b>n.</b> 废物、废料（industrial waste）。<br>搭配：food waste／household waste／a waste of time。<br>注意：本文的厨余是按「升」记录的，不是按公斤——体积好量、重量难称，这个细节后面会变成一条方法论上的保留。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>waste was recorded in litres</div>
+          <div class="wc-tr">厨余是按升记录的。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">label</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈleɪbl/ · 美 /ˈleɪbl/</div>
+          <div class="wc-pos"><b>v.</b> <b>给……贴标签、标注</b>：本文既指物理上贴那张小牌，也指「给一道菜挂上某个等级」。<br>常见义：<b>n.</b> 标签、标牌（a price label）；<b>n.</b> 唱片公司（a record label）。<br>搭配：label A as B／be labelled with／a warning label。<br>为什么全文围着它转：一个标签同时是三样东西——信息（数字）、比较（三档颜色）和规范（暗示你该选哪个），三者混在一起，效果就很难拆开归因。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>One canteen was <b>labelled</b></div>
+          <div class="wc-tr">一个食堂被贴上了标签。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">absorb</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /əbˈzɔːb/ · 美 /əbˈzɔːrb/</div>
+          <div class="wc-pos"><b>v.</b> <b>吸收（二氧化碳）</b>：这里指树木通过光合作用把空气中的二氧化碳固定下来。<br>常见义：<b>v.</b> 吸收（液体、热量、光）；<b>v.</b> 理解并消化（信息）；<b>v.</b> 使全神贯注（be absorbed in）。<br>搭配：absorb carbon dioxide／absorb heat／absorb information。<br>为什么这个换算值得注意：把「克」翻成「棵树一天」，读者才抓得住量级——但也正是这个类比，让 5,308 和 117 都变成了「很多棵」，差距反而被摊平。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>needed to <b>absorb</b> it for a day</div>
+          <div class="wc-tr">吸收它一天所需的（树）。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">weight</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /weɪt/ · 美 /weɪt/</div>
+          <div class="wc-pos"><b>n.</b> <b>重量、（选购的）分量</b>：in both weight and money 指「按重量和按金额两条口径都上升」。<br>常见义：<b>n.</b> 体重；<b>n.</b> 分量、重要性（carry weight）；<b>v.</b> 加重量于。<br>搭配：by weight／lose weight／give weight to。<br>为什么这个词在此很要紧：「重量上升」是好事（说明人真的多拿了低碳菜），但它同时也解释了后面的悖论——多拿，就是多排。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>in both <b>weight</b> and money</div>
+          <div class="wc-tr">在重量和金额两方面（都上升）。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">bends past a glass case</span><span class="zh">绕过一个玻璃柜</span></li>
+          <li><span class="en">every dish carries a small card</span><span class="zh">每道菜都插着一张小牌</span></li>
+          <li><span class="en">grams of carbon dioxide equivalent per hundred grams</span><span class="zh">每百克多少克二氧化碳当量</span></li>
+          <li><span class="en">a gap of forty-five times</span><span class="zh">四十五倍的差距</span></li>
+          <li><span class="en">printed at eye level</span><span class="zh">印在视线高度上</span></li>
+          <li><span class="en">eight seconds before a diner decides</span><span class="zh">在就餐者做决定之前的八秒钟</span></li>
+          <li><span class="en">generate roughly a third of global emissions</span><span class="zh">排放了全球约三分之一的（温室气体）</span></li>
+          <li><span class="en">an unusually clean place to test an idea</span><span class="zh">一个异常干净的实验场</span></li>
+          <li><span class="en">very nearly the same people</span><span class="zh">几乎是同一批人</span></li>
+          <li><span class="en">did exactly that</span><span class="zh">做的正是这件事</span></li>
+          <li><span class="en">life-cycle emissions</span><span class="zh">全生命周期碳排放</span></li>
+          <li><span class="en">set a grade beside each one</span><span class="zh">在每道菜旁标一个等级</span></li>
+          <li><span class="en">translate the figure into the number of trees</span><span class="zh">把数字换算成「多少棵树」</span></li>
+          <li><span class="en">needed to absorb it for a day</span><span class="zh">吸收它一天所需的（树）</span></li>
+          <li><span class="en">otherwise comparable</span><span class="zh">其他条件相当</span></li>
+          <li><span class="en">no price was touched and no dish withdrawn</span><span class="zh">没动价格，也没撤菜</span></li>
+          <li><span class="en">after four weeks and 38,078 orders</span><span class="zh">四周、38,078 份订单之后</span></li>
+          <li><span class="en">as a difference-in-differences design</span><span class="zh">以双重差分的方式</span></li>
+          <li><span class="en">the two that were left alone</span><span class="zh">那两个没被碰过的（食堂）</span></li>
+          <li><span class="en">a clean win</span><span class="zh">一场干净的胜利</span></li>
+          <li><span class="en">in both weight and money</span><span class="zh">重量和金额两方面</span></li>
+          <li><span class="en">discard 23.8 litres less food per meal</span><span class="zh">每餐少倒 23.8 升食物</span></li>
+          <li><span class="en">spending per order rose by 0.373 yuan</span><span class="zh">每笔订单的消费额涨了 0.373 元</span></li>
+          <li><span class="en">disarm the objection</span><span class="zh">拆掉那条反对意见</span></li>
+          <li><span class="en">sustainability must be paid for</span><span class="zh">可持续总要有人买单</span></li>
+          <li><span class="en">counted across the whole canteen</span><span class="zh">按整个食堂来算</span></li>
+          <li><span class="en">did not fall significantly</span><span class="zh">没有显著下降</span></li>
+          <li><span class="en">the explanation hides in the unit</span><span class="zh">答案藏在单位里</span></li>
+          <li><span class="en">rank dishes by emissions per hundred grams</span><span class="zh">按每百克排放给菜排名</span></li>
+          <li><span class="en">a ratio can improve while the quantity grows</span><span class="zh">比率变好，总量同时在变大</span></li>
+          <li><span class="en">swap beef for aubergine</span><span class="zh">把牛肉换成茄子</span></li>
+          <li><span class="en">take a second helping</span><span class="zh">再添一份</span></li>
+          <li><span class="en">the greener choice</span><span class="zh">更绿的选择</span></li>
+          <li><span class="en">leave the larger footprint</span><span class="zh">留下更大的足迹</span></li>
+          <li><span class="en">compares dishes rather than meals</span><span class="zh">比较的是菜，而不是一餐</span></li>
+          <li><span class="en">pose the question</span><span class="zh">提出那个问句</span></li>
+          <li><span class="en">what actually governs the total</span><span class="zh">真正决定总量的是什么</span></li>
+          <li><span class="en">how much went onto the tray</span><span class="zh">往盘子里装了多少</span></li>
+          <li><span class="en">precise about what it may claim</span><span class="zh">对自己能主张什么保持精确</span></li>
+          <li><span class="en">apply a grading to about twenty recipes</span><span class="zh">给约二十道菜贴上分级</span></li>
+          <li><span class="en">not wait for diners at all</span><span class="zh">压根不等就餐者</span></li>
+          <li><span class="en">cut beef by half</span><span class="zh">把牛肉减了一半</span></li>
+          <li><span class="en">avoid 225 tonnes a year</span><span class="zh">一年少排 225 吨</span></li>
+          <li><span class="en">a short window in which to measure anything</span><span class="zh">短到什么都难测准的窗口</span></li>
+          <li><span class="en">novelty fades</span><span class="zh">新鲜感会退</span></li>
+          <li><span class="en">recorded in litres rather than weighed</span><span class="zh">按升记录而不是称重</span></li>
+          <li><span class="en">once a label becomes furniture</span><span class="zh">一旦标签变成家具</span></li>
+          <li><span class="en">the honest reading is narrower</span><span class="zh">诚实的读法更窄</span></li>
+          <li><span class="en">the press release or the sceptic</span><span class="zh">通稿或怀疑者</span></li>
+          <li><span class="en">moves the plate, not the sky</span><span class="zh">挪得动盘子，挪不动天空</span></li>
+          <li><span class="en">the unit you print decides</span><span class="zh">你印的单位决定</span></li>
+          <li><span class="en">what you are entitled to claim</span><span class="zh">你有资格主张什么</span></li>
+          <li><span class="en">flatter a kitchen that is selling more</span><span class="zh">偏袒一个只是在多卖的厨房</span></li>
+          <li><span class="en">count the tray, not the hundred grams</span><span class="zh">数整只餐盘，而不是那一百克</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：场景——一张小牌上的 117 与 5,308，差四十五倍。</li>
+          <li>第 2 段：场域——食物系统占三分之一，食堂是变量最少的实验场。</li>
+          <li>第 3 段：研究——1,005 道菜、四周、38,078 份订单、双重差分。</li>
+          <li>第 4 段：收益——低碳菜多选，厨余 −23.8 升，客单价 +0.373 元。</li>
+          <li>第 5 段：转折——按整个食堂算，总排放没有显著下降。</li>
+          <li>第 6 段：机制——比率可变好而总量变大；比较菜，不问餐。</li>
+          <li>第 7 段：对照——蒙特利尔医院改配方，一年少排 225 吨。</li>
+          <li>第 8 段：边界——四周、教工、按升计、新鲜感会退。</li>
+          <li>第 9 段：落点——信息挪得动盘子，挪不动天空。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">After four weeks and 38,078 orders the comparison was run as a difference-in-differences design, which asks not whether the labelled canteen improved but whether it improved more than the two left alone.</div>
+        <div class="row"><b>主干：</b>the comparison was run as a design（这项比较是以某种设计做的）——被动语态，动作的执行者（研究者）被隐去，焦点落在方法上。</div>
+        <div class="row"><b>难点：</b>① was run 是「被做／被执行」，不是「被跑」；科研写作里常用被动来强调方法本身，而非谁做的；② as a difference-in-differences design 是<b>方式状语</b>，as 在这里是「以……的形式」，不是「作为」；③ which 引导<b>非限制性定语从句</b>，修饰的不是 design 这个词本身，而是这套方法背后的逻辑，所以从句用一般现在时 asks（方法永远这么问）；④ not whether ... but whether ... 是<b>对照否定结构</b>，真正的重点在后半句，前面的 not 只是把错误的问题先排除；⑤ the two left alone 里，left alone 是<b>过去分词短语作后置定语</b>，意为「没被干预」，比 untreated 更口语、也更有画面感；⑥ 全句没有一个生僻词，却是全篇方法论的支点——「比对照组好得更多」这个附加条件，是因果推断与「前后对比」之间唯一的分界线。</div>
+        <div class="row tr"><b>译文：</b>四周、38,078 份订单之后，这项比较是以双重差分的方式做的——它问的不是「贴了标签的食堂有没有变好」，而是「它是不是比那两个没被碰过的食堂好得更多」。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">The explanation hides in the unit: a label ranking dishes by emissions per hundred grams is a ratio, and a ratio can improve while the quantity it describes grows, so a diner who swaps beef for aubergine and then takes a second helping has made the greener choice and left the larger footprint.</div>
+        <div class="row"><b>主干：</b>a label ... is a ratio, and a ratio can improve ..., so a diner ... has made the greener choice and left the larger footprint（标签是比率；比率能变好……所以就餐者做了更绿的选择、留下了更大的足迹）——三个分句用 and 与 so 串成一条因果链。</div>
+        <div class="row"><b>难点：</b>① 冒号前的 The explanation hides in the unit 是<b>总起句</b>，一句话把整段的论点交出来：问题不在标签，在单位；② ranking dishes by ... 是<b>现在分词短语作后置定语</b>，等于 which ranks dishes by ...，修饰 a label；③ while 在这里是<b>对比连词</b>（而），引出「比率变好」与「总量变大」同时发生这一反常识；④ it describes 中的 it 指 the quantity，不是 the ratio——英文代词靠就近与逻辑判断，中文必须补出「它所描述的」；⑤ who swaps ... and then takes ... 是定语从句套<b>并列谓语</b>，两个动作有时间先后（先换、再添），then 是理解「为什么更绿却更大」的关键；⑥ has made ... and left ... 用<b>现在完成时</b>，强调这一餐结束之后仍然成立的结果；⑦ 全句 52 词，包含一处分词定语、一处定语从句、一处对比、一处因果，是本站「极难」档最典型的句法密度。</div>
+        <div class="row tr"><b>译文：</b>答案藏在单位里：一个按「每百克排放」给菜排名的标签，本质是一个比率，而比率可以在它描述的总量变大的同时继续变好看；于是一个把牛肉换成茄子、随后又添了一份的人，做出了更绿的选择，却留下了更大的足迹。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">At a Montreal hospital, where a similar A-to-E grading covered about twenty recipes, the kitchen did not wait for diners at all: it reformulated the menu, halved the beef in its most popular dish, and stopped buying almost 500 kilograms of beef a month — some 225 tonnes of carbon dioxide equivalent a year.</div>
+        <div class="row"><b>主干：</b>the kitchen did not wait for diners（厨房压根没有等就餐者）——主谓结构，极短；冒号后三个并列谓语展开「怎么个不等法」。</div>
+        <div class="row"><b>难点：</b>① where 引导<b>非限制性定语从句</b>，先行词是 a Montreal hospital，插在主语与谓语之间，读时先跳过它找到 the kitchen；② A-to-E grading 是合成形容词，来自成绩分档的写法，A 最好、E 最差；③ not ... at all 是<b>强调否定</b>，比 simply did not 更绝对；④ 冒号后 it reformulated ..., halved ..., and stopped ... 三个动词并列，第三个前不加任何修饰，quietly 的意味由「没跟任何人打招呼」本身承担，暗示这一改动几乎无人察觉——这是「改供给」与「改信息」最重要的差别；⑤ some 225 tonnes 中的 some 不是「一些」，而是<b>副词「大约」</b>，用于数字前，是学术写作的常见用法；⑥ 破折号后的名词短语是<b>补充说明</b>，把「每月 500 公斤牛肉」折算成年排放，让读者自己完成乘法；⑦ 注意时态全是过去时：这是一件已发生的事，与前面「实验四周」的现在完成叙述形成层次。</div>
+        <div class="row tr"><b>译文：</b>在蒙特利尔的一家医院，近二十道菜被贴上类似的 A 到 E 分级，而厨房压根没有等就餐者：它改了配方，把最受欢迎那道菜里的牛肉减了一半，并悄悄停掉了每月近 500 公斤的牛肉采购——一年少排约 225 吨二氧化碳当量。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Print a number beside a choice and people will use it, but the unit you print decides what you are entitled to claim, and a per-gram ratio will always flatter a kitchen selling more.</div>
+        <div class="row"><b>主干：</b>Print a number ... and people will use it, but the unit ... decides ..., and a ratio will flatter ...（印一个数字，人就会用；但你印的单位决定你能主张什么；而每克的比率总会偏袒……）——三个分句，用 but 与 and 层层推进。</div>
+        <div class="row"><b>难点：</b>① 句首 Print ... and ... 是<b>祈使句 + and + 陈述句</b>结构，等于 If you print ..., people will ...，比条件句更有力；② the unit you print 中省略了关系词 that／which，是省略式定语从句；③ be entitled to do 意为「有资格做」，暗示这种资格是被授予的、有边界的，不是「想要就能说」；④ flatter 在此不是「奉承某人」，而是「（条件、角度）使……显得更好看」，如 a photo that flatters；⑤ selling more 是<b>现在分词短语作后置定语</b>，修饰 kitchen；全句不说 cheat 而说 sell more，把责任从「欺骗」降到「结构」，语气因此更冷、也更难反驳；⑥ 全句没有生词，却把全文的论点压缩成一条三段式推论：信息有效 → 单位限定主张 → 单位选择自带偏向。这是英文评论写作最经济的收尾方式。</div>
+        <div class="row tr"><b>译文：</b>在选项旁边印一个数字，人就会用；但你印的是哪个单位，决定了你有资格主张什么；而一个「每百克」的比率，永远会偏袒一个只是在多卖的厨房。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章从一只餐盘开始。</b>十一点四十，北京一所高校的教工食堂，队伍绕过一个玻璃柜；柜里每道菜都插着一张小牌，除了菜名和单价，还有一个以「克二氧化碳当量／每百克」为单位的数字。豆角烧茄子是 117，西红柿牛腩是 5,308——四十五倍的差距，印在视线高度上，出现在一个人做决定之前的八秒钟。作者用这个场景把「碳标签」这个抽象的政策工具，压到了一次真实的犹豫上。</p>
+      <p class="zh-sum"><b>为什么偏偏是食堂？</b>食物系统排放了全球约三分之一的温室气体；而食堂恰好是一个异常干净的实验场：同一个厨房、同一份菜单、几乎是同一批人，每个工作日都在同一个钟点回来。要检验「信息能不能改变行为」，你需要一个变量被控制得很好的地方——食堂就是这样的地方。</p>
+      <p class="zh-sum"><b>研究本身做得比多数宣传更扎实。</b>2026 年 6 月到 7 月，中国石油大学（北京）杨弦带领的团队核算了 1,005 道菜的全生命周期碳排放，在每道菜旁标上红、黄、绿三档，并附一行字把数字换算成「多少棵树吸收一天」。一个食堂贴标签，另外两个条件相当的食堂不贴；没有动价格，也没有撤菜。四周、38,078 份订单之后，比较用双重差分来做——它问的不是「贴了标签的食堂有没有变好」，而是「它是不是比那两个没被碰过的食堂好得更多」。这一步很关键：只比较前后，六月的天气、七月的学期节奏，任何变化都能冒充成标签的功劳。</p>
+      <p class="zh-sum"><b>第一组结果像一场干净的胜利。</b>就餐者更多地选择了带绿色标签的菜，重量与金额同时上升；厨房每餐倒掉的食物少了 23.8 升；每笔订单的消费额涨了 0.373 元。最后这个数字特别值得停一下——它很小，却把「环保总要牺牲体验」这条最常见的反对意见拆掉了：至少在这一所食堂里，低碳与生意没有打架。</p>
+      <p class="zh-sum"><b>第二组结果才是值得讲的那一组。</b>按整个食堂来算，而不是按一道菜、一元钱来算，总排放并没有显著下降。三个漂亮的数字，加起来没有变成一个。</p>
+      <p class="zh-sum"><b>为什么？答案藏在单位里。</b>一个按「每百克排放」给菜排名的标签，本质是一个比率；而比率可以在它描述的总量变大的同时继续变好看。一个把牛肉换成茄子、随后又添了一份的人，做出了更绿的选择，留下了更大的足迹。更麻烦的是第二层：这一档比较的是「菜」，不是「一餐」，于是它始终没有问出那个真正决定总量的问句——你最后到底往盘子里装了多少？标签把注意力引向了「选哪道」，而排放是由「装多少」决定的。</p>
+      <p class="zh-sum"><b>对照案例让这个区别变得清楚。</b>在蒙特利尔的一家医院，近二十道菜被贴上类似的 A 到 E 分级；但厨房压根没有等就餐者，它直接改了配方：把最受欢迎那道菜里的牛肉减了一半，悄悄停掉每月近 500 公斤的牛肉采购，一年少排约 225 吨二氧化碳当量。改信息，需要每个人每次都配合；改供给，只需要一次决定。前者更尊重选择，后者更可靠——这不是道德高下，而是两种工具各自的作用半径。</p>
+      <p class="zh-sum"><b>这项实践也有它自己的边界。</b>四周太短：新鲜感会退，而效应往往随新鲜感一起退；教工不是学生，收入结构与口味偏好都不同；厨余是按「升」记录的，体积好量、重量难称，换算成碳排放会带误差；而且只有一所校园、一个学期、一次上线，「当标签变成家具之后」会发生什么，这份数据回答不了。作者也没有把「总排放未降」解释成失败，这个克制本身值得学习。</p>
+      <p class="zh-sum"><b>于是落点回到一句更窄的判断。</b>诚实的读法比通稿和怀疑者都更窄，也更有用：信息挪得动盘子，挪不动天空。在选项旁边印一个数字，人就会用；但你印的是哪个单位，决定了你有资格主张什么。一个「每百克」的比率，永远会偏袒一个只是在多卖的厨房。</p>
+      <p class="zh-sum"><b>最后一层，是关于「指标」的常识。</b>我们习惯用单位指标来衡量进步：每百克、每份、每人、每万元 GDP。这些指标并非造假，它们只是把「总量」藏进了分母。当一个项目同时报告「单位排放下降」和「总量没降」时，真正需要追问的不是哪个数字更真，而是<b>哪一个才是它想让你看的</b>。下一个标签，也许该数整只餐盘，而不是那一百克——因为人吃的是餐盘，天空收到的是总量。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. Carbon labels on dishes are a failure, because diners ignore printed information when they are hungry.<br>B. A four-week canteen experiment shows that a per-hundred-gram carbon label shifted choices, cut waste and raised spending, yet left total emissions roughly unchanged — because a ratio can improve while the quantity it measures grows, and the label never asked how much went onto the tray.<br>C. Canteens should be required by law to print the carbon footprint of every dish, since the Montreal hospital proves that reformulating menus is unnecessary.<br>D. Difference-in-differences is the only reliable method for evaluating environmental labels, and all earlier studies of carbon labelling should be discarded.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景：一张印着 117 与 5,308 的小牌（第 1 段）→ 为什么食堂适合做实验（第 2 段）→ 研究：1,005 道菜、四周、38,078 份订单、双重差分（第 3 段）→ 三重收益：低碳菜多选、厨余 −23.8 升、客单价 +0.373 元（第 4 段）→ 转折：总排放没有显著下降（第 5 段）→ 机制：比率可以变好而总量变大，标签比较的是菜不是餐（第 6 段）→ 对照：蒙特利尔医院直接改配方（第 7 段）→ 边界：四周、教工、按升计、新鲜感（第 8 段）→ 落点：信息挪得动盘子，挪不动天空（第 9 段）」。B 同时保住「有效」与「有限」两层。A 把「效果有限」读成「完全无效」，与第 4 段的三个数字直接冲突。C 反了：蒙特利尔案例恰恰说明「改供给」比「改信息」更可靠，作者也没主张立法强制。D 把方法抬成教条，原文只说它比「前后对比」更能排除共同趋势，并未否定其他研究。</div>
+
+      <div class="q"><b>2. What does the passage imply by saying that 'a per-gram ratio will always flatter a kitchen that is simply selling more'?<br>A. That canteens deliberately manipulate their carbon labels to hide rising emissions.<br>B. That the choice of denominator decides which claims a label can honestly support: measured per hundred grams, a kitchen can look greener even as it sells — and therefore emits — more, so the metric itself, not the diner's honesty, is what limits the conclusion.<br>C. That grams are a less scientific unit than litres or kilograms, and should be replaced.<br>D. That kitchens which sell more food are always worse for the climate than kitchens which sell less.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>第 6 段给出了机制：标签是「每百克」的比率，比率可以随总量一起变大；第 9 段把它推成一句判断——你印的单位，决定了你有资格主张什么。言下之意不是「食堂在作弊」（原文没有任何欺骗的指控），而是<b>指标的分母自带偏向</b>：以百克为分母，多卖就必然多排，而标签对此无话可说。A 加了原文没有的动机。C 偷换了问题：作者质疑的是分母的选择，不是「克」这个单位科不科学，而且厨余用升、排放用克，本来就是两种物理量。D 走得太远：本文没有比较不同食堂的绝对排放，只讨论同一家食堂在标签前后的变化。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文最有说服力的一步，是把「碳标签有没有用」拆成了两个问题：它有没有改变选择（改变了），它有没有改变总量（没有）。这两件事并不矛盾，因为一个按「单位」结算的指标，本来就管不住总量。请你就身边一个「单位指标在进步、总量却没动」的现象（例如：教室人均用电下降但总用电上升、外卖包装「减塑」但订单量翻倍、图书馆人均借阅回升但到馆人数减少），写一段 150 字以内的拆解：① 这个指标的分母是谁？② 当人们为了这个指标努力时，总量里哪一项被顺手推高了？③ 如果只能换一个分母，你会换成什么（人／餐／天／件）？最后一句请用「它在 ______ 上变好了，在 ______ 上没有」的句式收束。</div>
+      <div class="q"><b>仿写：</b>本文第 5 段只用了两句就把整篇文章翻了个面：先一句 The second block is the one worth teaching 把读者的注意力强行转向，再一句 Counted across the whole canteen, rather than per dish or per yuan, total emissions did not fall significantly 给出判决。骨架是：<i>The ______ block is the one worth ______. Counted across ______, rather than ______ or ______, ______ did not ______.</i> 注意三件事：① 转折段一定要短，长句会把「翻面」的力量稀释掉；② rather than 后面必须列出被放弃的两种口径（此处是 per dish 与 per yuan），读者才知道你不接受哪种算法；③ 判决句用 did not fall significantly 而不是 fell，用词保守反而更难被反驳——学术写作里，克制就是可信度。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">① 场景：一张小牌，117 与 5,308，做决定前的八秒钟</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">② 场域：食物系统约占全球三分之一，食堂变量最少</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">③ 研究：1,005 道菜 LCA，四周，38,078 份订单，双重差分</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eef6ee" stroke="#2f5d3a" stroke-width="2" font-weight="600"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">④ 收益：低碳菜多选、厨余 −23.8 升、客单价 +0.373 元</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑤ 转折：按整个食堂算，总排放没有显著下降</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" font-weight="600"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">⑥ 机制：比率可变好而总量变大；比较菜，不问餐</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑦ 对照：蒙特利尔医院直接改配方，一年少排 225 吨</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑧ 边界：四周、教工、按升计、新鲜感会退</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2" font-weight="600"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">⑨ 落点：信息挪得动盘子，挪不动天空</text>
+
+          <rect x="60" y="564" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="584" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：每一道菜都变绿了，整只餐盘的排放却没有变</text>
+          <text x="360" y="601" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">因为标签给的是「单位」，而天空收的是「总量」</text>
+
+          <text x="360" y="646" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 1、2、3 段蓝色：场景、场域与方法——先把实验的边界说清</text>
+          <text x="360" y="668" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 5–8 段橙红：转折、机制、对照与边界——一个数字的三重解释</text>
+        </svg>
+        <figcaption>结构图解：全文走的是一条「先给胜利、再翻面」的路。第 1 段用一个具体场景把话题压到一张小牌上：117 与 5,308，相差四十五倍，出现在决定前八秒；第 2 段解释为什么食堂是理想的实验场——变量少、人群稳定、时间固定；第 3 段交代研究：1,005 道菜的全生命周期核算、红黄绿三档、四周、38,078 份订单，一个处理组对两个对照组，用双重差分而不是简单的前后对比；第 4 段给出三重收益，低碳菜多选、厨余每餐少 23.8 升、客单价涨 0.373 元；第 5 段只用两句翻面——按整个食堂算，总排放没有显著下降；第 6 段给出机制，比率可以在总量变大时继续变好，而标签比较的是菜、不是一餐；第 7 段用蒙特利尔医院作对照，改供给比改信息更硬；第 8 段列出四条边界；第 9 段收束为一句可迁移的判断：信息挪得动盘子，挪不动天空。全文真正想说的是：<b>一个指标的正直，不在它是否真实，而在它把分母藏在了哪里</b>。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：杨弦团队（中国石油大学（北京）经济管理学院）「碳标签食堂」四周实地实验，2026 年 6–7 月，1,005 道菜品全生命周期核算、38,078 份真实订单、双重差分识别；研究基础发表于 <i>Nature Food</i>；案例 2026-11-09 于 COP31（安塔利亚）《迈向零碳校园》案例集首发｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>
