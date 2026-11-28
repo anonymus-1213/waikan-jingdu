@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外刊精读 · 阳光的有效期，到近视前期为止</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffcf5; --ink:#1c1a17; --muted:#6d685e;
+  --line:#e2ddd2; --accent:#9c2f16; --accent-soft:#f3e4dc;
+  --blue:#1f3a5f; --blue-soft:#eef3f8; --blue-line:#c7d6e8; --green:#2f5d3a;
+  --serif:'Iowan Old Style','Songti SC','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);text-decoration:none;}
+
+nav.top{padding:22px 26px 0;max-width:1120px;margin:0 auto;font-size:13px;}
+nav.top a{color:var(--muted);}
+nav.top a:hover{color:var(--accent);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:8px 26px 90px;}
+
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:20px 0 14px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,42px);letter-spacing:-.015em;line-height:1.2;margin-bottom:10px;}
+.deck{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:18px;}
+.byline{font-size:13px;color:var(--muted);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.byline b{color:var(--ink);font-weight:600;}
+
+figure.hero{margin:0 0 28px;max-width:760px;}
+figure.hero img,figure.hero svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff;}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+.lead{border:1px solid var(--blue-line);border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:16px 20px;margin:0 0 30px;max-width:760px;}
+.lead h3{font-size:13px;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:600;}
+.lead p{font-size:14.5px;line-height:1.85;color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 44px;grid-template-areas:"mtop side" "mbot side";align-items:start;}
+.main-top{grid-area:mtop;min-width:0;}
+.main-bottom{grid-area:mbot;min-width:0;}
+.side{grid-area:side;position:sticky;top:24px;align-self:start;}
+
+h2{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:-.01em;margin:36px 0 14px;padding-top:10px;border-top:1px solid var(--line);}
+.main-top h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+
+.para{margin-bottom:16px;}
+.para .idx{display:inline-block;font-family:var(--sans);color:var(--blue);font-size:13px;font-weight:600;margin-right:8px;vertical-align:top;line-height:1.95;}
+.para .en{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.95;}
+.para-tr{font-size:13.5px;color:var(--muted);line-height:1.9;margin:-8px 0 20px;padding-left:12px;border-left:2px solid var(--line);}
+
+.kw{position:relative;color:var(--blue);font-weight:600;border-bottom:1.5px dashed var(--blue);cursor:help;transition:background .15s;}
+.kw:hover{background:var(--blue-soft);}
+.kw::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 8px);
+  transform:translateX(-50%);
+  background:var(--blue);color:#fff;padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:500;font-family:var(--sans);
+  white-space:nowrap;opacity:0;visibility:hidden;
+  transition:opacity .15s;z-index:50;pointer-events:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+.kw::before{
+  content:"";position:absolute;left:50%;bottom:calc(100% + 2px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--blue);
+  opacity:0;visibility:hidden;transition:opacity .15s;z-index:50;pointer-events:none;
+}
+.kw:hover::after,.kw:hover::before{opacity:1;visibility:visible;}
+
+.side-box{margin-bottom:26px;}
+.side-box > h3{font-size:14px;letter-spacing:.06em;color:var(--blue);font-weight:600;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--blue);line-height:1.4;}
+.wc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;margin-bottom:10px;}
+.wc .wc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.wc .wc-word{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--blue);letter-spacing:-.01em;}
+.wc .lvl{font-size:10.5px;letter-spacing:.04em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:3px;padding:1px 6px;white-space:nowrap;}
+.wc .wc-ph{font-size:12px;color:var(--muted);margin-bottom:3px;font-family:var(--serif);}
+.wc .wc-pos{font-size:13px;color:var(--ink);margin-bottom:6px;}
+.wc .wc-pos b{color:var(--ink);font-weight:600;}
+.wc .wc-ex{font-size:13px;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+.wc .wc-ex .ex-tag{display:inline-block;font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:1px;}
+.wc .wc-ex b{color:var(--blue);font-weight:600;}
+.wc .wc-tr{font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:22px;}
+
+.phrases{margin:0;padding-left:0;list-style:none;}
+.phrases li{font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);display:block;}
+.phrases li:last-child{border-bottom:none;}
+.phrases .en{font-family:var(--serif);color:var(--blue);font-weight:600;display:block;}
+.phrases .zh{color:var(--muted);font-size:12.5px;display:block;}
+
+.gist{margin:0;padding-left:0;list-style:none;counter-reset:g;}
+.gist li{position:relative;font-size:13.5px;line-height:1.6;padding:7px 0 7px 30px;border-bottom:1px dashed var(--line);color:var(--ink);}
+.gist li:last-child{border-bottom:none;}
+.gist li::before{counter-increment:g;content:"[" counter(g) "]";position:absolute;left:0;top:7px;font-family:var(--sans);font-weight:600;color:var(--blue);font-size:12.5px;}
+
+.sent{border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:18px;background:var(--paper);}
+.sent .orig{font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--blue-soft);border-radius:4px;padding:11px 14px;margin-bottom:12px;line-height:1.85;}
+.sent .row{margin:4px 0;font-size:13.5px;}
+.sent b{color:var(--accent);font-weight:600;}
+.sent .tr{color:var(--green);}
+
+.zh-sum{font-size:15px;line-height:1.9;}
+.q{background:var(--accent-soft);border-radius:4px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.q b{color:var(--accent);}
+.muted{color:var(--muted);font-size:12.5px;}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+footer a{color:var(--muted);text-decoration:underline;}
+
+.wc{border-left:4px solid var(--line);}
+.wc.lv-cet4{border-left-color:#2f5d3a;}
+.wc.lv-cet6{border-left-color:#1f3a5f;}
+.wc.lv-chao{border-left-color:#5b2d86;}
+.wc.lv-shuci{border-left-color:#9c2f16;}
+.wc.lv-cet4 .lvl{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.wc.lv-cet6 .lvl{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.wc.lv-chao .lvl{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.wc.lv-shuci .lvl{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+
+.legend{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.legend li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);}
+.legend .blk{width:16px;height:16px;border-radius:3px;flex:none;}
+.blk.b-cet4{background:#2f5d3a;}
+.blk.b-cet6{background:#1f3a5f;}
+.blk.b-chao{background:#5b2d86;}
+.blk.b-shuci{background:#9c2f16;}
+
+.audio-box{border:1px solid var(--line);border-left:4px solid var(--green);background:var(--paper);border-radius:6px;padding:14px 18px;margin:0 0 24px;}
+.audio-box .audio-label{font-size:13px;letter-spacing:.04em;color:var(--green);font-weight:600;margin-bottom:10px;}
+.audio-box audio{width:100%;display:block;}
+.audio-box .audio-hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.6;}
+
+.en .s{border-radius:3px;padding:0 2px;transition:background-color .12s linear,color .12s linear;}
+.en .s.hl{background:#d63a2b;color:#fff;box-shadow:0 0 0 2px rgba(214,58,43,.18);}
+.en .s.hl .kw{color:#fff;border-bottom-color:rgba(255,255,255,.75);}
+.en .s.hl .kw:hover{background:rgba(255,255,255,.18);}
+
+@media (max-width:999px){
+  .layout{grid-template-columns:1fr;grid-template-areas:"mtop" "side" "mbot";gap:0;}
+  .side{position:static;}
+  figure.hero{max-width:none;}
+  .lead{max-width:none;}
+  .side-box > h3{margin-top:22px;}
+  .wc .wc-ex{font-size:13px;}
+}
+
+@media print{body{background:#fff}.kw{border-bottom:none;color:inherit;font-weight:normal}}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;}
+.legend .lg{font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:3px;border:1px solid;}
+.legend .lg.lv-cet4{color:#2f5d3a;background:#eaf3ec;border-color:#c4dcc8;}
+.legend .lg.lv-cet6{color:#1f3a5f;background:var(--blue-soft);border-color:var(--blue-line);}
+.legend .lg.lv-chao{color:#5b2d86;background:#f3ecf9;border-color:#d8c6ea;}
+.legend .lg.lv-shuci{color:#9c2f16;background:var(--accent-soft);border-color:#e6c3b4;}
+</style>
+</head>
+<body>
+
+<article class="wrap">
+  <div class="eyebrow">Light &amp; Reserve · 人与自然 / 健康与身心 / 近视防控 / 公共卫生</div>
+  <h1>阳光的有效期，到近视前期为止</h1>
+  <div class="deck">A Guangzhou trial cut three-year myopia incidence by 9.1 points with forty extra minutes outdoors a day, and left the eyeball's growth untouched. Later analyses suggest the benefit belongs to children who are not short-sighted yet.</div>
+  <div class="byline"><span><b>来源</b> JAMA（2015）/ BJO（2026）</span><span><b>作者</b> 外刊精读专栏</span><span><b>日期</b> 2026-11-28</span><span><b>难度</b> 极难</span><span><b>词数</b> 约 %(wc)d 词 / 9 段</span></div>
+
+  <figure class="hero">
+    <img src="../assets/images/外刊精读_2026-11-28.jpg" alt="写实场景：正午强光下的学校操场，一队小学生排成两列抬头看天，前排一名女孩抬手遮住阳光，旁边男孩眯着眼、头微微后仰，红色塑胶跑道上投下长长的影子">
+    <figcaption>配图：太阳底下的一分钟。孩子们眯起的眼睛，正是这场争论的起点——每周多出两百分之一年的时间待在户外，会不会改变一个人一生戴不戴眼镜（图片来源：写实摄影，仅供教学使用）。</figcaption>
+  </figure>
+
+  <div class="lead">
+    <h3>中文导读</h3>
+    <p>2011 年，广州 12 所小学做了件极小的事：6 所学校每天多一节 <b>40 分钟</b>户外课。三年后，近视累计发病率 <b>30.4%</b> 对 <b>39.5%</b>，差 <b>9.1 个百分点</b>——这是近视防控领域最硬的一组数字。</p>
+    <p>但同一个试验还有另一半：户外组的<b>眼轴并没有显著变慢</b>，屈光度只差 0.17 D。也就是说，阳光让孩子更少「被诊断」，却没有改写眼球的生长。</p>
+    <p>2026 年上海那份事后分析把这件事推得更远：效果几乎全落在<b>仍有远视储备</b>的孩子身上；已经进入「近视前期」的，每天超过两小时也没有显著差别。</p>
+    <p>本期重点熟词僻义：<b>reserve</b>（远视储备，不是预订）、<b>drift</b>（度数慢慢漂移，不是漂流）、<b>settle</b>（了断争议，不是安顿）、<b>admission</b>（承认，不是入场）。</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="main-top">
+      <h2>一、原文精读</h2>
+      <p class="muted" style="margin-bottom:14px">鼠标悬停在带 <span style="color:#1f3a5f;font-weight:600;border-bottom:1.5px dashed #1f3a5f;">蓝色虚线下划线</span> 的生词上，即可查看词性和释义；每段英文下方附中文对照。</p>
+      <div class="audio-box">
+        <div class="audio-label">🔊 英音朗读 · British English</div>
+        <audio id="reader" controls src="../assets/audio/外刊精读_2026-11-28.mp3" preload="none"></audio>
+        <div class="audio-hint">点击播放，朗读到哪一句，哪一句就会高亮；建议先盲听一遍，再对照原文精读。</div>
+      </div>
+
+      <div class="para"><span class="idx">【1】</span><span class="en"><span class="s" data-t="0.0" data-e="9.011">In 2011 six primary schools in Guangzhou sent first-graders outside for one extra forty-minute class each day; six others did nothing.</span> <span class="s" data-t="9.011" data-e="15.632">Three years later the children who had spent that time in the sun were noticeably less likely to be short-sighted.</span></span></div>
+      <p class="para-tr">2011 年，广州六所小学每天给一年级学生多安排一节四十分钟的户外课；另外六所什么都不做。三年之后，那些把这段时间花在太阳底下的孩子，明显更不容易变成近视。</p>
+
+      <div class="para"><span class="idx">【2】</span><span class="en"><span class="s" data-t="15.632" data-e="28.801">Cumulative incidence was 30.4% in the outdoor schools against 39.5% in the control schools — a gap of 9.1 percentage points, with a confidence interval comfortably clear of zero.</span> <span class="s" data-t="28.801" data-e="36.289">Forty minutes a day, five days a week, for three years, and roughly one diagnosis in eleven never happened.</span></span></div>
+      <p class="para-tr">三年累计发病率：户外学校 30.4%，对照学校 39.5%——相差 9.1 个百分点，置信区间稳稳地避开了零。每天四十分钟、每周五天、连做三年，大约每十一个诊断里，就有一个没有发生。</p>
+
+      <div class="para"><span class="idx">【3】</span><span class="en"><span class="s" data-t="36.289" data-e="44.789">The same trial reported a second result that the headlines dropped: the eyes of the outdoor children had not grown significantly more slowly.</span> <span class="s" data-t="44.789" data-e="58.67">Refraction shifted by 0.17 dioptres less, a difference that barely reached significance, while axial length — the measurement that decides how bad a myopia eventually becomes — showed no significant difference at all.</span></span></div>
+      <p class="para-tr">同一个试验还报告了一个被标题漏掉的结果：户外组孩子的眼球，并没有显著地长得更慢。屈光度只少变化了 0.17 D，勉强够到显著；而真正决定一个人最终会近视到多少度的眼轴长度，两组差异完全不显著。</p>
+
+      <div class="para"><span class="idx">【4】</span><span class="en"><span class="s" data-t="58.67" data-e="65.908">That distinction matters, because the world is not running short of diagnoses; it is running short of mild ones.</span> <span class="s" data-t="65.908" data-e="90.788">A pooled analysis of 276 studies covering 5.41 million people across fifty countries put childhood myopia at 24.32% in 1990 and 35.81% in 2023, projects 39.8% by 2050, and finds the heaviest burden in East Asia and among high-school students, where it approaches 46%.</span></span></div>
+      <p class="para-tr">这个区别之所以要紧，是因为世界并不缺「诊断」，缺的是「轻的诊断」。一项汇总 276 项研究、覆盖五十个国家 541 万人的分析显示：儿童青少年近视率从 1990 年的 24.32% 升到 2023 年的 35.81%，并预测 2050 年达 39.8%；负担最重的是东亚和高中生——后者接近 46%。</p>
+
+      <div class="para"><span class="idx">【5】</span><span class="en"><span class="s" data-t="90.788" data-e="101.763">The leading explanation is not exercise but light: bright illumination prompts the retina to release dopamine, which appears to slow <b class="kw" data-tip="n. 拉长、变长：指眼球前后径（眼轴）被一点点拉长，是近视加深的物理根源。常见义 n. 延长、伸长（the elongation of a muscle）；动词为 elongate。">elongation</b> that turns a normal eye myopic.</span> <span class="s" data-t="101.763" data-e="112.671">Even in shade or under cloud, outdoor illumination runs to several thousand lux, while a well-lit classroom rarely exceeds a few hundred — a gap no corridor lamp can close.</span></span></div>
+      <p class="para-tr">主流的解释不是运动，而是光：强光照促使视网膜释放多巴胺，而多巴胺似乎能减缓那个把正常眼拉成近视眼的变长过程。即使是在树荫下或阴天，户外的照度也有几千勒克斯；而一间照明良好的教室很少超过几百——这是走廊里的灯补不上的一道差距。</p>
+
+      <div class="para"><span class="idx">【6】</span><span class="en"><span class="s" data-t="112.671" data-e="126.408">Shanghai's STORM trial, which measured outdoor time with smartwatches instead of asking parents to remember, found the protection dose-dependent with a <b class="kw" data-tip="n. 阈值、临界点：低于它就几乎没有效果，高于它效果才开始出现；本文指每天约 120 分钟。常见义 n. 门槛、起点（on the threshold of）；n. 临界值（pain threshold）。">threshold</b>: below about 120 minutes a day, incidence barely moved.</span> <span class="s" data-t="126.408" data-e="138.224">It also found that brightening rooms indoors changed nothing, and that fifteen minutes at 2,000 lux was the smallest useful dose: the arithmetic behind the two-hour rule on school posters.</span></span></div>
+      <p class="para-tr">上海的 STORM 试验用智能手表测户外时间，而不是让家长凭记忆回答，发现这种保护呈剂量依赖、并且有阈值：每天不足约 120 分钟，发病率几乎不动。它还发现，只把室内调亮没有任何作用；而在 2,000 勒克斯下待十五分钟，是最小的有效剂量——这就是印在学校海报上那条「每天两小时」背后的算术。</p>
+
+      <div class="para"><span class="idx">【7】</span><span class="en"><span class="s" data-t="138.224" data-e="141.842">Then came the analysis that should have travelled further.</span> <span class="s" data-t="141.842" data-e="156.932">In 3,194 Shanghai children aged six to nine, 1,369 of them pre-myopic — not yet short-sighted, but with little <b class="kw" data-tip="n. 储备（量）：这里指「远视储备」，幼儿眼球天生偏短、带一点远视，这点余量用完了就该近视了。常见义 v. 预订、保留（reserve a table）；n. 储备物、后备（oil reserves）；n. 自然保护区。">reserve</b> left — outdoor time behaved very differently across the two groups.</span> <span class="s" data-t="156.932" data-e="172.618">Among children still hyperopic, <b class="kw" data-tip="n. （缓慢的）漂移、渐变：指验光度数一年年往近视那一侧滑，慢到当事人察觉不到。常见义 v. 漂流、漂泊（drift at sea）；n. 趋势、倾向（a drift towards）。">drift</b> fell steadily with time outdoors and flattened near 120 minutes; among the pre-myopic the curve was J-shaped, and no group above the sixty-minute baseline differed significantly, even those past two hours.</span></span></div>
+      <p class="para-tr">接着来的是那份本该传播得更远的分析。上海 3,194 名 6 至 9 岁儿童里，有 1,369 名属于「近视前期」——还没近视，但远视储备已经不多——户外时间在这两组身上的表现完全不同。在仍然远视的孩子里，度数漂移随户外时间稳步下降，到 120 分钟左右趋于平缓；而在近视前期的孩子里，曲线是 J 形的，以每天不足六十分钟为基线，各组都没有显著差异，连超过两小时的也没有。</p>
+
+      <div class="para"><span class="idx">【8】</span><span class="en"><span class="s" data-t="172.618" data-e="184.945">Two readings are possible and the authors decline to choose: either the protective window closes once the reserve is spent, or one year of follow-up in a post-hoc subgroup is too small to detect a real effect.</span> <span class="s" data-t="184.945" data-e="194.671">What the smartwatch did <b class="kw" data-tip="v. 了断、把（争议）定下来：settle a question 指用证据结束争论，而不是「settle down 安顿」。常见义 v. 定居（settle in Beijing）；v. 解决（settle a dispute）；v. 支付、结清（settle a bill）。">settle</b> is measurement: parental recall rounds upward, and studies built on it may have credited sunlight for hours never spent outside.</span></span></div>
+      <p class="para-tr">两种读法都说得通，作者拒绝二选一：要么保护窗口在储备耗尽之后就关上了，要么一年随访、事后分组的样本，本来就小到测不出真实效应。智能手表真正了断的是「测量」这件事：家长的回忆会往上凑整，而建立在回忆之上的研究，可能把从来没在户外待过的时间也算成了阳光的功劳。</p>
+
+      <div class="para"><span class="idx">【9】</span><span class="en"><span class="s" data-t="194.671" data-e="202.724">The implication is less satisfying than the slogan, and more useful: outdoor time is a ticket of admission, not a treatment.</span> <span class="s" data-t="202.724" data-e="218.487">For a child who still has reserve, the cheapest intervention in ophthalmology is a timetable; for one who has crossed the line, it lies elsewhere — low-dose atropine, defocus lenses, and the quiet <b class="kw" data-tip="n. 承认、招认：the admission that ... 指「不得不承认的那句话」，语气比 confession 轻、比 statement 重。常见义 n. 入场、进入许可（admission free）；n. 录取、入院（hospital admission）。">admission</b> that prevention delivered late is not prevention at all.</span></span></div>
+      <p class="para-tr">这个结论没有口号好听，却更有用：户外时间是一张入场券，不是一种治疗。对一个还有储备的孩子，眼科里最便宜的干预是一张课表；对一个已经跨过那条线的孩子，答案在别处——低浓度阿托品、离焦镜片，以及那句不太好说出口的承认：来得太晚的预防，不算预防。</p>
+
+    </section>
+
+<aside class="side">
+      <div class="side-box">
+        <h3>词汇级别色块图例</h3>
+        <p class="legend"><span class="lg lv-cet4">CET4</span><span class="lg lv-cet6">CET6</span><span class="lg lv-chao">超纲</span><span class="lg lv-shuci">熟词僻义</span></p>
+      </div>
+
+      <div class="side-box">
+        <h3>二、重点词汇</h3>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">short-sighted</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˌʃɔːt ˈsaɪtɪd/ · 美 /ˌʃɔːrt ˈsaɪtɪd/</div>
+          <div class="wc-pos"><b>adj.</b> <b>近视的</b>：英式说法，美式多说 near-sighted；医学文本里更常说 myopic。<br>常见义：<b>adj.</b> 目光短浅的、只顾眼前的（a short-sighted policy）——同一个词把「看不清远处」和「想不到以后」并成了一件事，这个双关在英文评论里非常好用。<br>搭配：be short-sighted／a short-sighted decision／be short-sighted about sth。<br>为什么本文从它开始：文章要拆的正是「看得清不清楚」与「想不想得到后果」这两层——把户外时间当成一次性任务，也是另一种 short-sighted。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>less likely to be <b>short-sighted</b></div>
+          <div class="wc-tr">更不容易近视。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">incidence</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈɪnsɪdəns/ · 美 /ˈɪnsɪdəns/</div>
+          <div class="wc-pos"><b>n.</b> <b>发病率</b>：一段时间内<b>新发</b>病例占人群的比例，与 prevalence（患病率）不同——后者算的是「此刻一共有多少人病着」。<br>常见义：<b>n.</b> 发生率、出现率（the incidence of crime）；<b>n.</b> 入射（物理）。<br>搭配：cumulative incidence／the incidence of sth rose／a high incidence rate。<br>为什么这个词是全文的尺子：广州试验报的是「三年里新发多少」，所以 30.4% 与 39.5% 才可比；如果报的是患病率，一个已经近视的孩子会被反复计算，效果就会被稀释。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Cumulative <b>incidence</b> was 30.4% in the outdoor schools</div>
+          <div class="wc-tr">户外学校的三年累计发病率是 30.4%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">cumulative</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈkjuːmjələtɪv/ · 美 /ˈkjuːmjələtɪv/</div>
+          <div class="wc-pos"><b>adj.</b> <b>累计的、累积的</b>：把每个时间点的增量加起来，而不是只看某一个时点。<br>常见义：<b>adj.</b> 渐增的（cumulative effect）；<b>adj.</b> 累积性的（cumulative risk）。<br>搭配：cumulative incidence／cumulative effect／accumulate over time。<br>为什么本文离不开它：近视是慢慢长出来的，只有「累计」三年，9.1 个百分点才有意义；只看第一年，两组的差距还小到测不出来。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Cumulative</b> incidence was 30.4%</div>
+          <div class="wc-tr">累计发病率是 30.4%。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">refraction</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /rɪˈfrækʃn/ · 美 /rɪˈfrækʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>屈光、验光度数</b>：眼睛把光线折到视网膜上的能力，验光单上那个「-2.50 D」就是它。<br>常见义：<b>n.</b> 折射（物理，the refraction of light）；<b>n.</b> 折光率测定。<br>搭配：refraction error（屈光不正）／a refraction test／shift in refraction。<br>为什么它和眼轴要分开说：屈光度是「结果」，眼轴是「原因」——一个孩子的度数会因角膜、晶状体状态而波动，但眼轴一旦变长就回不去，所以后者才是真正的坏消息。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>Refraction</b> shifted by 0.17 dioptres less</div>
+          <div class="wc-tr">屈光度少变化了 0.17 D。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">axial</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˈæksiəl/ · 美 /ˈæksiəl/</div>
+          <div class="wc-pos"><b>adj.</b> <b>轴的、沿轴方向的</b>：axial length 即「眼轴长度」，眼球前后径，单位毫米。<br>常见义：<b>adj.</b> 轴向的（axial load）；<b>adj.</b> 中心的（axial position）。<br>搭配：axial length／axial elongation／axial growth。<br>为什么它是判据：眼轴每长约 1 毫米，近视大约加深 250–300 度；所以「眼轴没慢下来」等于说「这个孩子的近视进程没被改写」，哪怕他今年还没被诊断。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>while <b>axial</b> length — the measurement that decides</div>
+          <div class="wc-tr">而眼轴长度——那个决定……的测量值。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">elongation</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌiːlɒŋˈɡeɪʃn/ · 美 /ˌiːlɔːŋˈɡeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>拉长、伸长</b>：本文指眼球前后径被一点点拉长。<br>常见义：<b>n.</b> 延长、伸长（the elongation of a muscle）；动词为 elongate（拉长、延长）。<br>搭配：axial elongation／cellular elongation。<br>为什么它是机制的核心：近视不是「眼睛坏了」，而是「眼睛长过头了」——光聚焦在视网膜前面，只因为屏幕（视网膜）被推到了后面。所以真正要拦的是生长，不是视力表上的那一行。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>slow <b>elongation</b> that turns a normal eye myopic</div>
+          <div class="wc-tr">减缓那个把正常眼变成近视眼的拉长过程。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">illumination</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ɪˌluːmɪˈneɪʃn/ · 美 /ɪˌluːmɪˈneɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>照度、照明</b>：落到一个面上的光有多少，常用勒克斯（lux）计量。<br>常见义：<b>n.</b> 照亮、光亮；<b>n.</b> （思想的）启发、阐明（a moment of illumination）。<br>搭配：outdoor illumination／poor illumination／illumination level。<br>为什么它比「亮度」准确：亮度是眼睛的感觉，照度是物理量——试验必须报后一个，否则没法说清「多亮才算够」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>outdoor <b>illumination</b> runs to several thousand lux</div>
+          <div class="wc-tr">户外照度可以达到几千勒克斯。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">lux</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /lʌks/ · 美 /lʌks/</div>
+          <div class="wc-pos"><b>n.</b> <b>勒克斯（照度单位）</b>：1 lux ≈ 一支蜡烛在一米外照过来的亮度。<br>常见义：只作单位用，复数为 lux 或 luxes。<br>参照系：阴天户外约 1,000–10,000 lux；明亮教室 300–500 lux；家用客厅夜里约 50–100 lux。<br>为什么这几个数值得背：本文所有「够不够」的判断都落在 1,000 与 2,000 这两条线上，记住参照系，数字才不空。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>several thousand <b>lux</b></div>
+          <div class="wc-tr">几千勒克斯。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">threshold</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈθreʃhəʊld/ · 美 /ˈθreʃhoʊld/</div>
+          <div class="wc-pos"><b>n.</b> <b>阈值、临界点</b>：低于它几乎无效果，高于它效果才出现。<br>常见义：<b>n.</b> 门槛（cross the threshold）；<b>n.</b> 开端（on the threshold of a new era）；<b>n.</b> 痛阈、耐受下限（pain threshold）。<br>搭配：a threshold effect／below the threshold／set a threshold。<br>为什么政策需要它：没有阈值，「多去户外」就是一句劝告；有了阈值，它才变成可以排进课表的数字。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>dose-dependent with a <b>threshold</b></div>
+          <div class="wc-tr">呈剂量依赖，并且有阈值。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">hyperopic</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌhaɪpəˈrɒpɪk/ · 美 /ˌhaɪpəˈroʊpɪk/</div>
+          <div class="wc-pos"><b>adj.</b> <b>远视的</b>：眼轴偏短、光聚焦在视网膜后面；幼儿天生如此，这份「余量」叫远视储备。<br>常见义：<b>adj.</b> 远视的（医学）；名词 hyperopia 远视，反义 myopia 近视。<br>搭配：hyperopic children／be mildly hyperopic。<br>为什么它是本文的分水岭：上海那份分析里，效果几乎全部落在仍然远视的孩子身上——也就是说，最受益的是离近视还远的那批人。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>Among children still <b>hyperopic</b></div>
+          <div class="wc-tr">在仍然远视的孩子当中。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">reserve</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /rɪˈzɜːv/ · 美 /rɪˈzɜːrv/</div>
+          <div class="wc-pos"><b>n.</b> <b>储备（量）、余量</b>：本文指「远视储备」——幼儿眼球偏短，天生带一点远视，这点余量被消耗完，近视就开始了。<br>常见义：<b>v.</b> 预订、保留（reserve a table／reserve the right to）；<b>n.</b> 储备物（oil reserves）；<b>n.</b> 自然保护区（a nature reserve）；<b>n.</b> 寡言、矜持（a man of reserve）。<br>搭配：with little reserve left／in reserve（备用）／without reserve（毫无保留）。<br>为什么这层意思最要紧：reserve 在本文不是「预订」，而是「还剩多少可花」——把近视想成一个账户，预防就是别把余额花完。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>with little <b>reserve</b> left</div>
+          <div class="wc-tr">远视储备已经不多。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">drift</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /drɪft/ · 美 /drɪft/</div>
+          <div class="wc-pos"><b>n.</b> <b>（缓慢的）漂移、渐变</b>：本文指验光度数一年年往近视那一侧滑，慢到当事人自己察觉不到。<br>常见义：<b>v.</b> 漂流、随风飘（drift at sea）；<b>v.</b> 漫无目的地过（drift through life）；<b>n.</b> 趋势、倾向（a drift towards protectionism）。<br>搭配：myopic drift／drift apart（渐行渐远）／drift into。<br>为什么用这个词而不用 change：drift 自带「没人掌舵」的意味——度数不是被谁改的，是它自己慢慢漂过去的，这恰好是近视防控最难的地方。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span><b>drift</b> fell steadily with time outdoors</div>
+          <div class="wc-tr">度数漂移随户外时间稳步下降。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">settle</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ˈsetl/ · 美 /ˈsetl/</div>
+          <div class="wc-pos"><b>v.</b> <b>了断、把（争议）定下来</b>：settle a question 指用证据结束一场争论，而不是「安顿下来」。<br>常见义：<b>v.</b> 定居、安顿（settle in Beijing）；<b>v.</b> 解决（settle a dispute）；<b>v.</b> 结清、支付（settle a bill）；<b>v.</b> （灰尘、情绪）沉降、平息。<br>搭配：settle the matter／settle an argument／that settles it（那就这么定了）。<br>为什么这句要用它：智能手表没有回答「户外有没有用」，它了断的是「我们到底测准了没有」——先解决测量，才谈得上效果。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>What the smartwatch did <b>settle</b> is measurement</div>
+          <div class="wc-tr">智能手表真正了断的，是「测量」这件事。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">admission</span><span class="lvl">熟词僻义</span></div>
+          <div class="wc-ph">英 /ədˈmɪʃn/ · 美 /ədˈmɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>承认、招认</b>：the admission that ... 指「不得不承认的那句话」，语气比 confession 轻、比 statement 重。<br>常见义：<b>n.</b> 入场、进入许可（admission free／no admission）；<b>n.</b> 录取、入院（hospital admission）；<b>n.</b> 入场费。<br>搭配：an admission of failure／by his own admission（据他自己承认）／admission that ...。<br>为什么结尾用它：全文最后不是给方法，而是给一句「承认」——预防来晚了就不是预防，这句话之所以有分量，正因为作者把它写成了一次让步，而不是一次主张。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>the quiet <b>admission</b> that prevention delivered late</div>
+          <div class="wc-tr">那句不太好说出口的承认：来得太晚的预防……</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">post-hoc</span><span class="lvl">超纲</span></div>
+          <div class="wc-ph">英 /ˌpəʊst ˈhɒk/ · 美 /ˌpoʊst ˈhɑːk/</div>
+          <div class="wc-pos"><b>adj.</b> <b>事后的（分析）</b>：数据收完之后再分组、再比较，本质上属于「先有结果、后找问题」，证据等级低于事先设计好的分析。<br>常见义：拉丁语 post hoc，意为「在此之后」；逻辑学里 post hoc fallacy 指「因为先后发生就认定因果」。<br>搭配：a post-hoc analysis／post-hoc subgroup／post-hoc reasoning。<br>为什么这四个字是本文的刹车：它提醒读者，那个「只有远视孩子受益」的结论来自事后拆分，可以提示方向，但不能当成定论。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>one year of follow-up in a <b>post-hoc</b> subgroup</div>
+          <div class="wc-tr">一年随访、事后分组的样本。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">follow-up</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈfɒləʊ ʌp/ · 美 /ˈfɑːloʊ ʌp/</div>
+          <div class="wc-pos"><b>n.</b> <b>随访、追踪观察</b>：研究里对同一批人隔一段时间再测一次，看变化有没有持续。<br>常见义：<b>n.</b> 后续行动、跟进（a follow-up call）；<b>adj.</b> 后续的（a follow-up study）。<br>搭配：one year of follow-up／lost to follow-up（失访）／follow up on sth。<br>为什么时长决定结论：近视是慢变量，一年只能看到趋势；三年才看得到「有没有真的少了一批人」。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>one year of <b>follow-up</b> in a post-hoc subgroup</div>
+          <div class="wc-tr">事后分组里的一年随访。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">implication</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˌɪmplɪˈkeɪʃn/ · 美 /ˌɪmplɪˈkeɪʃn/</div>
+          <div class="wc-pos"><b>n.</b> <b>（研究、决定的）含义、推论</b>：数据说完了，它对我们意味着什么。<br>常见义：<b>n.</b> 暗示、言外之意（by implication）；<b>n.</b> 牵连、涉及（implications for policy）。<br>搭配：the implications of sth／have implications for／practical implications。<br>为什么学术写作爱用它：它把「结果」和「主张」分开——结果是数据给的，含义是作者推的，读者可以只接受前者。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>The <b>implication</b> is less satisfying than the slogan</div>
+          <div class="wc-tr">这个结论没有口号好听。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">flatten</span><span class="lvl">CET6</span></div>
+          <div class="wc-ph">英 /ˈflætn/ · 美 /ˈflætn/</div>
+          <div class="wc-pos"><b>v.</b> <b>（曲线）趋于平缓、不再上升</b>：本文指户外时间超过某一点后，再多也不再带来额外好处。<br>常见义：<b>v.</b> 使变平、压平（flatten the dough）；<b>v.</b> 摧毁、夷平（the storm flattened the town）；<b>v.</b> （比赛）一边倒。<br>搭配：the curve flattens off／flatten out。<br>为什么它比「效果变差」准确：flatten 说的是边际收益递减到零，不是负——多晒不会有害，只是不再加分。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>and <b>flattened</b> near 120 minutes</div>
+          <div class="wc-tr">并在 120 分钟左右趋于平缓。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">barely</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ˈbeəli/ · 美 /ˈberli/</div>
+          <div class="wc-pos"><b>adv.</b> <b>几乎不、勉强</b>：程度上刚够到某条线，通常暗示「再多一点就不成立了」。<br>常见义：<b>adv.</b> 仅仅、只不过（barely enough）；<b>adv.</b> 赤裸地（罕见）。<br>搭配：barely moved／barely reach significance／can barely afford。<br>为什么它在这句里很关键：incidence barely moved 不是「没变」，是「变得小到看不出」——科学写作里，这个词同时保留了「有效」与「没用」两种可能。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>incidence <b>barely</b> moved</div>
+          <div class="wc-tr">发病率几乎不动。</div>
+        </div>
+
+        <div class="wc">
+          <div class="wc-top"><span class="wc-word">gap</span><span class="lvl">CET4</span></div>
+          <div class="wc-ph">英 /ɡæp/ · 美 /ɡæp/</div>
+          <div class="wc-pos"><b>n.</b> <b>差距、落差</b>：两个数之间空出来的那一段，本文指室内外照度差了一个数量级。<br>常见义：<b>n.</b> 缺口、裂缝（a gap in the fence）；<b>n.</b> 空白、间隔（a gap year）；<b>n.</b> 分歧（bridge the gap）。<br>搭配：a gap of 9.1 percentage points／bridge the gap／the gap between A and B。<br>为什么本文反复用它：9.1 个百分点是一道「统计上的差距」，几千与几百勒克斯是一道「物理上的差距」——后者解释了前者为什么存在。</div>
+          <div class="wc-ex"><span class="ex-tag">例</span>a <b>gap</b> no corridor lamp can close</div>
+          <div class="wc-tr">一道走廊里的灯补不上的差距。</div>
+        </div>
+
+      </div>
+
+      <div class="side-box">
+        <h3>三、重点短语</h3>
+        <ul class="phrases">
+          <li><span class="en">sent first-graders outside for one extra forty-minute class</span><span class="zh">每天多给一年级学生安排一节四十分钟的户外课</span></li>
+          <li><span class="en">six others did nothing</span><span class="zh">另外六所什么都不做</span></li>
+          <li><span class="en">noticeably less likely to be short-sighted</span><span class="zh">明显更不容易近视</span></li>
+          <li><span class="en">cumulative incidence over three years</span><span class="zh">三年累计发病率</span></li>
+          <li><span class="en">against 39.5% in the control schools</span><span class="zh">而对照学校是 39.5%</span></li>
+          <li><span class="en">a gap of 9.1 percentage points</span><span class="zh">相差 9.1 个百分点</span></li>
+          <li><span class="en">comfortably clear of zero</span><span class="zh">稳稳地避开了零</span></li>
+          <li><span class="en">roughly one diagnosis in eleven</span><span class="zh">大约每十一个诊断里有一个</span></li>
+          <li><span class="en">a result that the headlines dropped</span><span class="zh">一个被标题漏掉的结果</span></li>
+          <li><span class="en">had not grown significantly more slowly</span><span class="zh">并没有显著地长得更慢</span></li>
+          <li><span class="en">barely reached significance</span><span class="zh">勉强够到显著</span></li>
+          <li><span class="en">show no significant difference at all</span><span class="zh">差异完全不显著</span></li>
+          <li><span class="en">not running short of diagnoses</span><span class="zh">并不缺「诊断」</span></li>
+          <li><span class="en">running short of mild ones</span><span class="zh">缺的是「轻的诊断」</span></li>
+          <li><span class="en">a pooled analysis of 276 studies</span><span class="zh">一项汇总 276 项研究的分析</span></li>
+          <li><span class="en">covering 5.41 million people</span><span class="zh">覆盖 541 万人</span></li>
+          <li><span class="en">put childhood myopia at 24.32% in 1990</span><span class="zh">1990 年儿童近视率为 24.32%</span></li>
+          <li><span class="en">projects 39.8% by 2050</span><span class="zh">预测 2050 年达 39.8%</span></li>
+          <li><span class="en">the heaviest burden</span><span class="zh">最重的负担</span></li>
+          <li><span class="en">where it approaches 46%</span><span class="zh">接近 46%</span></li>
+          <li><span class="en">the leading explanation</span><span class="zh">主流解释</span></li>
+          <li><span class="en">prompts the retina to release dopamine</span><span class="zh">促使视网膜释放多巴胺</span></li>
+          <li><span class="en">slow the elongation</span><span class="zh">减缓眼轴的拉长</span></li>
+          <li><span class="en">even in shade or under cloud</span><span class="zh">即使在树荫下或阴天</span></li>
+          <li><span class="en">rarely exceeds a few hundred</span><span class="zh">很少超过几百（勒克斯）</span></li>
+          <li><span class="en">a gap no corridor lamp can close</span><span class="zh">走廊里的灯补不上的差距</span></li>
+          <li><span class="en">measured outdoor time with smartwatches</span><span class="zh">用智能手表测户外时间</span></li>
+          <li><span class="en">instead of asking parents to remember</span><span class="zh">而不是让家长凭记忆回答</span></li>
+          <li><span class="en">dose-dependent with a threshold</span><span class="zh">呈剂量依赖、并有阈值</span></li>
+          <li><span class="en">incidence barely moved</span><span class="zh">发病率几乎不动</span></li>
+          <li><span class="en">brightening rooms indoors changed nothing</span><span class="zh">只把室内调亮没有任何作用</span></li>
+          <li><span class="en">the smallest useful dose</span><span class="zh">最小的有效剂量</span></li>
+          <li><span class="en">the arithmetic behind the two-hour rule</span><span class="zh">「每天两小时」背后的算术</span></li>
+          <li><span class="en">the analysis that should have travelled further</span><span class="zh">那份本该传播得更远的分析</span></li>
+          <li><span class="en">with little reserve left</span><span class="zh">远视储备已经不多</span></li>
+          <li><span class="en">behaved very differently across the two groups</span><span class="zh">在两组身上的表现完全不同</span></li>
+          <li><span class="en">flattened near 120 minutes</span><span class="zh">在 120 分钟左右趋于平缓</span></li>
+          <li><span class="en">above the sixty-minute baseline</span><span class="zh">以六十分钟为基线之上</span></li>
+          <li><span class="en">the authors decline to choose</span><span class="zh">作者拒绝二选一</span></li>
+          <li><span class="en">the protective window closes</span><span class="zh">保护窗口关上</span></li>
+          <li><span class="en">too small to detect a real effect</span><span class="zh">小到测不出真实效应</span></li>
+          <li><span class="en">what the smartwatch did settle</span><span class="zh">智能手表真正了断的</span></li>
+          <li><span class="en">parental recall rounds upward</span><span class="zh">家长的回忆会往上凑整</span></li>
+          <li><span class="en">credited sunlight for hours never spent outside</span><span class="zh">把没在户外待过的时间算成阳光的功劳</span></li>
+          <li><span class="en">less satisfying than the slogan</span><span class="zh">没有口号好听</span></li>
+          <li><span class="en">a ticket of admission, not a treatment</span><span class="zh">一张入场券，不是一种治疗</span></li>
+          <li><span class="en">the cheapest intervention in ophthalmology</span><span class="zh">眼科里最便宜的干预</span></li>
+          <li><span class="en">for one who has crossed the line</span><span class="zh">对一个已经跨过那条线的孩子</span></li>
+          <li><span class="en">the answer lies elsewhere</span><span class="zh">答案在别处</span></li>
+          <li><span class="en">prevention delivered late</span><span class="zh">来得太晚的预防</span></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3>四、段落主旨一图流</h3>
+        <ol class="gist-list">
+          <li>第 1 段：场景——广州十二所学校，每天多一节四十分钟户外课。</li>
+          <li>第 2 段：头条——30.4% 对 39.5%，差 9.1 个百分点。</li>
+          <li>第 3 段：另一半——眼轴没显著变慢，屈光度只差 0.17 D。</li>
+          <li>第 4 段：背景——276 项研究、541 万人、2050 年 39.8%。</li>
+          <li>第 5 段：机制——强光促多巴胺，减缓眼轴拉长；照度差一个量级。</li>
+          <li>第 6 段：剂量——120 分钟阈值；2,000 勒克斯 × 15 分钟。</li>
+          <li>第 7 段：转折——效果只落在仍有远视储备的孩子身上。</li>
+          <li>第 8 段：边界——两种读法；智能手表修正了「测量」。</li>
+          <li>第 9 段：落点——入场券，不是治疗；晚了就不叫预防。</li>
+        </ol>
+      </div>
+    </aside>
+
+<section class="main-bottom">
+      <h2>五、长难句分析（三步拆解法）</h2>
+
+      <div class="sent">
+        <div class="orig">Cumulative incidence was 30.4% in the outdoor schools against 39.5% in the control schools — a gap of 9.1 percentage points, with a confidence interval comfortably clear of zero.</div>
+        <div class="row"><b>主干：</b>Cumulative incidence was 30.4% ... against 39.5% ...（累计发病率是 30.4%……对照 39.5%……）——一个极简的主系表，两个数字并排，判决就完成了。</div>
+        <div class="row"><b>难点：</b>① <b>against</b> 在这里不是「反对」，而是「与……相比」「对照」，是图表与论文里最省字的比较介词；② 30.4% 与 39.5% 之间的破折号引出<b>同位语式的补充</b>，把差距替读者算好，不让读者自己去减；③ a gap of 9.1 percentage points 中的 <b>percentage point</b>（百分点）与 percent（百分比）不同：从 30% 降到 20% 是降了 10 个百分点、却降了三分之一——中文新闻最常混用这一对；④ with a confidence interval comfortably clear of zero 是<b>独立主格式的 with 复合结构</b>，用来说明这个数字为什么可信；⑤ comfortably 是<b>程度副词</b>，不是「舒服地」——它修饰的是「离零还有多远」，等于说「远远不挨着零」，比 significant 更具体地交代了证据有多硬；⑥ 全句 35 词，没有从句，却把结论、幅度与可信度三件事一次说完，是英文科研写作里最高效的一种句子。</div>
+        <div class="row tr"><b>译文：</b>户外学校的三年累计发病率是 30.4%，对照学校是 39.5%——相差 9.1 个百分点，置信区间稳稳地避开了零。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Refraction shifted by 0.17 dioptres less, a difference that barely reached significance, while axial length — the measurement that decides how bad a myopia eventually becomes — showed no significant difference at all.</div>
+        <div class="row"><b>主干：</b>Refraction shifted ... less, ..., while axial length ... showed no significant difference at all（屈光度少变化了一点……而眼轴……则完全没有显著差异）——while 把两个结果并置，落差本身就是论点。</div>
+        <div class="row"><b>难点：</b>① shifted by 0.17 dioptres less 的语序值得注意：less 修饰的不是 shifted，而是隐含的「比对照组少」，所以不能读成「少移动了 0.17 度」这么简单，它是<b>组间差值</b>；② dioptres（屈光度）是可数名词，0.17 后面用复数；③ a difference that barely reached significance 是<b>同位语 + 定语从句</b>，用来给前一个数字贴标签——「勉强显著」意味着「再小一点就不算数」；④ while 在此是<b>对比连词</b>（而），不表时间；⑤ 两个破折号之间的 the measurement that decides ... 是<b>插入的同位语</b>，作者借它把「眼轴为什么更重要」塞进一句话里，读时可以先跳过；⑥ at all 与否定连用是<b>强调</b>——「一点都没有」，比 no significant difference 更绝对；⑦ 全句 40 词，一处同位语、两处定语从句、一处对比，是本站「极难」档最常见的密度。</div>
+        <div class="row tr"><b>译文：</b>屈光度少变化了 0.17 D，这个差异勉强够到显著；而眼轴长度——那个决定一个人最终会近视到多少度的测量值——两组的差异完全不显著。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">Among children still hyperopic, drift fell steadily with time outdoors and flattened near 120 minutes; among the pre-myopic the curve was J-shaped, and no group above the sixty-minute baseline differed significantly, even those past two hours.</div>
+        <div class="row"><b>主干：</b>drift fell ... and flattened ...; the curve was J-shaped, and no group ... differed significantly（漂移下降并趋平；曲线呈 J 形，且没有任何一组有显著差异）——分号把两组人的命运切成两半，是全篇最重要的一次对照。</div>
+        <div class="row"><b>难点：</b>① 句首 Among children still hyperopic 是<b>状语前置</b>，省略了 being（among children who were still hyperopic），使句子更紧；② fell ... and flattened ... 两个<b>并列谓语</b>共用主语 drift，第二个动作说明第一个的终点在哪；③ near 120 minutes 的 near 是<b>介词「接近」</b>，不是动词；④ 分号后 among the pre-myopic 与前半句结构对称，the pre-myopic 是<b>形容词名词化</b>（= pre-myopic children），医学写作里极常见；⑤ J-shaped 是<b>复合形容词</b>，指「先降后升」的形状——先略有益、再变差，比 not significant 更传神地说明了「这类孩子不适用」；⑥ no group above the sixty-minute baseline 是<b>双重限定</b>：既限定「高于基线」，又用 no 全面否定；⑦ even those past two hours 是<b>补充强调</b>，把最极端的一组也排除掉，堵住了「再多晒点也许就行」的侥幸；⑧ 全句 38 词，一个分号、三层否定，读的时候先找分号，再找 no 与 even。</div>
+        <div class="row tr"><b>译文：</b>在仍然远视的孩子里，度数漂移随户外时间稳步下降，到 120 分钟左右趋于平缓；而在近视前期的孩子里，曲线是 J 形的，以每天六十分钟为基线，没有任何一组出现显著差异——连超过两小时的那组也没有。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">It also found that brightening rooms indoors changed nothing, and that fifteen minutes at 2,000 lux was the smallest useful dose: the arithmetic behind the two-hour rule on school posters.</div>
+        <div class="row"><b>主干：</b>It also found that ..., and that ...（它还得出了两个结论……）——两个 that 从句并列，第二个后面用冒号收尾，把结论换算成政策。</div>
+        <div class="row"><b>难点：</b>① 两个 that 引导<b>并列宾语从句</b>，第二个 that 不能省，否则读者会以为 and 连接的是两个句子；② brightening rooms indoors 是<b>动名词短语作从句主语</b>，changed nothing 是它极短的反差谓语——「只把灯调亮，什么也没改变」，一句就打掉了最省事的替代方案；③ fifteen minutes at 2,000 lux 里 at 表<b>条件</b>（在多少照度下），不是地点；④ the smallest useful dose 是<b>最高级 + 定语</b>，「有用的最小剂量」——注意 smallest 修饰的是 dose，不是 usefulness；⑤ 冒号后的 the arithmetic behind the two-hour rule 是<b>名词性同位语</b>，本身不是完整句，却承担了「所以政策才这么定」的推理；⑥ on school posters 是<b>后置定语</b>，把抽象算术落回学生每天看得见的那张纸；⑦ 全句 30 词，两个从句、一处冒号、一处省略，是把实验结论转成公共政策的典型写法。</div>
+        <div class="row tr"><b>译文：</b>它还发现，只把室内调亮没有任何作用；而在 2,000 勒克斯下待十五分钟，是最小的有效剂量：这就是印在学校海报上那条「每天两小时」背后的算术。</div>
+      </div>
+
+      <div class="sent">
+        <div class="orig">For a child who still has reserve, the cheapest intervention in ophthalmology is a timetable; for one who has crossed the line, it lies elsewhere — low-dose atropine, defocus lenses, and the quiet admission that prevention delivered late is not prevention at all.</div>
+        <div class="row"><b>主干：</b>the cheapest intervention ... is a timetable; it lies elsewhere（最便宜的干预是一张课表；而答案在别处）——两个分句结构完全对称，只把主语从 intervention 换成 it，判决就出来了。</div>
+        <div class="row"><b>难点：</b>① For a child who still has reserve 与 for one who has crossed the line 是<b>两个并列的目的状语</b>，one 代指 a child，避免重复；② has crossed the line 是<b>习语</b>——「越过了那条线」，这里指已经确诊近视，比 has become myopic 更有画面；③ it lies elsewhere 的 it 指 the answer，省略不写，靠前半句的 intervention 支撑；④ 破折号后 low-dose atropine, defocus lenses 是<b>名词短语列举</b>，不作句子成分，只作补充；⑤ the quiet admission that ... 中的 quiet 是<b>移就</b>（hypallage）——quiet 修饰的不是 admission，而是说这句话时的音量；⑥ that prevention delivered late is not prevention at all 是<b>同位语从句</b>，delivered late 是<b>过去分词后置定语</b>修饰 prevention；⑦ not ... at all 的<b>全盘否定</b>把整句的锋芒收在最后四个词上：来得太晚的东西，不配叫那个名字；⑧ 全句 44 词，两处对称、三处省略、一处同位语，是英文评论结尾最典型的做法——先给可执行的，再给一句无法反驳的。</div>
+        <div class="row tr"><b>译文：</b>对一个还有储备的孩子，眼科里最便宜的干预是一张课表；对一个已经跨过那条线的孩子，答案在别处——低浓度阿托品、离焦镜片，以及那句不太好说出口的承认：来得太晚的预防，不算预防。</div>
+      </div>
+
+      <h2>六、全文大意</h2>
+      <p class="zh-sum"><b>这篇文章从一件极小的事开始。</b>2011 年，广州六所小学每天给一年级学生多安排一节四十分钟的户外课；另外六所，什么都不做。没有新药，没有设备，没有筛查，只是把这四十分钟从教室里搬到了太阳底下。三年之后，那六所学校的孩子的近视率明显更低——这就是后来被引用得最多的一组数字：30.4% 对 39.5%。</p>
+      <p class="zh-sum"><b>9.1 个百分点，值不值得？</b>值得，而且很值得。每天四十分钟、每周五天、连做三年，大约每十一个诊断里就有一个没有发生。这个效应量在公共卫生里已经算大：它不靠家长自觉，而靠一张课表；不需要额外花钱，只需要重新安排时间。这也是为什么它成了全世界近视防控政策最硬的一块基石。</p>
+      <p class="zh-sum"><b>但同一个试验还有另一半，被标题漏掉了。</b>研究者同时测了眼轴——眼球的前后径，那个真正决定一个人最终会近视到多少度的数字。结果是：户外组的眼轴，并没有显著地长得更慢。屈光度只少变化了 0.17 D，勉强够到统计显著；眼轴则是完全不显著。换句话说，多晒四十分钟确实让孩子更少「被诊断」，却没有明显改写眼球的生长轨迹。</p>
+      <p class="zh-sum"><b>这两句话为什么不矛盾？</b>因为近视是一个过程，而「被诊断」是一个时点。眼轴每年都在长，跨过某条线的那一年，孩子就被登记为近视。把这条线往后推一点，今年登记的人就少一批——发病率降了；但眼睛本身的长势没变，所以三五年后，这批人还会陆续跨过去。这正是作者说「入场券而非治疗」的意思：阳光改变的是入场时间，不是比赛规则。</p>
+      <p class="zh-sum"><b>把镜头拉远，为什么这 9.1 个百分点值得争？</b>一项汇总 276 项研究、覆盖五十个国家 541 万人的分析显示：儿童青少年近视率从 1990 年的 24.32% 升到 2023 年的 35.81%，预测 2050 年达 39.8%，全球病例超过 7.4 亿。负担最重的是东亚，以及高中生——接近 46%。在这个量级上，任何能压低几个百分点的措施都会被迅速写进政策。中国 2025 年的全国学生近视率是 49.9%，比 2018 年的 53.6% 降了 3.7 个百分点，近五年连续下降——「每天两小时户外」正是这条曲线背后最常被提到的那只手。</p>
+      <p class="zh-sum"><b>机制也支持这件事，而且支持得很干净。</b>主流的解释不是「运动」，而是「光」：强光照促使视网膜释放多巴胺，多巴胺似乎能减缓眼轴的拉长。关键在量级——即使阴天或树荫下，户外照度也有几千勒克斯，而一间照明良好的教室很少超过几百。这就是为什么「把教室灯调亮」几乎没用：那不是同一种光。一份随机试验把「户外光照」与「户外运动」拆开比较，发现光单独就能起作用——坐在公园长椅上晒太阳，也算。</p>
+      <p class="zh-sum"><b>剂量是后来才被算清的。</b>上海的 STORM 试验用智能手表测户外时间，而不是让家长凭记忆回答，发现保护作用呈剂量依赖、并且存在阈值：每天不足约 120 分钟，发病率几乎不动；超过之后，效果才明显。更细的一层是：十五分钟、2,000 勒克斯，是最小的有效剂量。北京、天津、广州把课间从十分钟延长到十五分钟，正是这条算术落到课表上的样子。</p>
+      <p class="zh-sum"><b>真正让这篇文章值得讲的，是 2026 年那份事后分析。</b>上海 3,194 名 6 至 9 岁儿童里，1,369 名属于「近视前期」——还没近视，但远视储备已经不多。结果分成了两半：在仍然远视的孩子里，度数漂移随户外时间稳步下降，到 120 分钟左右趋于平缓；而在近视前期的孩子里，曲线是 J 形的，以每天六十分钟为基线，各组都没有显著差异，连超过两小时的那组也没有。也就是说，最受益的，是离近视还远的那批人；最需要帮助的那批人，靠晒太阳几乎帮不上。</p>
+      <p class="zh-sum"><b>作者没有把这件事说死，这一点值得学。</b>两种读法都说得通：要么保护窗口在储备耗尽之后就关上了，要么一年随访、事后分组的样本，本来就小到测不出真实效应。post-hoc 这四个字就是刹车——事后拆分数据可以提示方向，不能当定论。但有一件事被智能手表了断了：测量。家长的回忆会往上凑整，而建立在回忆之上的研究，可能把从来没在户外待过的时间也算成了阳光的功劳。这不是小修正，它意味着过去一些「户外有效」的结论，效应量可能被高估过。</p>
+      <p class="zh-sum"><b>于是结论落在一个不太讨喜的位置。</b>户外时间是一张入场券，不是一种治疗。对一个还有储备的孩子，眼科里最便宜的干预是一张课表；对一个已经跨过那条线的孩子，答案在别处——低浓度阿托品、离焦镜片，以及那句不太好说出口的承认：来得太晚的预防，不算预防。</p>
+      <p class="zh-sum"><b>最后一层，是关于「干预对象」的常识。</b>我们习惯问「这个办法有没有用」，却很少问「它对谁有用」。同一份数据，按全样本算是 9.1 个百分点，按储备分层算，几乎是两种命运。一项公共卫生措施最容易被误读的地方，就在这里：平均数上的胜利，可能来自最不需要它的那一半人。真正该被追问的，不是「还要不要让孩子出去晒太阳」——当然要——而是「那些已经站在线边上的孩子，我们打算给他们什么」。</p>
+
+      <h2>七、主旨题</h2>
+      <div class="q"><b>1. Which of the following best states the main idea of the passage?<br>A. Time outdoors prevents myopia entirely, and the Guangzhou trial proves that two hours a day will eventually eliminate short-sightedness in children.<br>B. A Guangzhou trial showed that forty extra minutes outdoors a day cut three-year myopia incidence by 9.1 points without significantly slowing the eye's growth, and a later Shanghai analysis suggests the protection is concentrated in children who are still far-sighted — so outdoor time delays entry rather than halting the process, and those already close to myopia need other tools.<br>C. Because the outdoor trial failed to slow axial elongation, schools should stop scheduling outdoor classes and invest in atropine instead.<br>D. Smartwatch measurement has shown that parental recall was accurate all along, which means earlier studies of outdoor time overstated the benefit.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>全文链条是「场景：广州十二所学校，每天多一节四十分钟户外课（第 1 段）→ 头条数字：30.4% 对 39.5%，差 9.1 个百分点（第 2 段）→ 被漏掉的另一半：眼轴没有显著变慢，屈光度只差 0.17 D（第 3 段）→ 全球背景：276 项研究、5.41 亿分之 541 万、2050 年 39.8%（第 4 段）→ 机制：多巴胺与照度差（第 5 段）→ 剂量：STORM 的 120 分钟阈值与 2,000 勒克斯（第 6 段）→ 转折：上海事后分析里，效果只落在仍有远视储备的孩子身上（第 7 段）→ 边界：两种读法、测量方式的修正（第 8 段）→ 落点：入场券而非治疗（第 9 段）」。B 同时保住了「有效」与「有限」两面。A 把「降低发病」读成「消灭近视」，与第 3 段的眼轴结果直接冲突。C 走得太远：作者明确说户外是最便宜的干预，只是作用有限，并未主张取消。D 恰好说反了——第 8 段说的是家长的回忆会往上凑整，建立在回忆上的研究可能高估了阳光的功劳。</div>
+
+      <div class="q"><b>2. What does the passage imply by describing outdoor time as 'a ticket of admission, not a treatment'?<br>A. That children who are already short-sighted should stop going outdoors, since sunlight can no longer help them.<br>B. That extra daylight mainly shifts when myopia begins — it lowers the number of children who cross the diagnostic line during the trial years without rewriting the growth of the eye — so for those who have already crossed it, the useful interventions are pharmaceutical or optical, and prevention must be delivered before the reserve is spent.<br>C. That outdoor time is a formal requirement which schools must check, like a ticket inspected at a door.<br>D. That treatment is more important than prevention, and research funding should move from schools to hospitals.</b><br><br><b>答案：B</b><br>
+        <b>解析：</b>第 3 段给出现象（发病率降了、眼轴没慢），第 7 段给出人群差异（效果集中在仍有远视储备的孩子），第 9 段才把它压成一个比喻：ticket of admission 是「进门用的」，不是「治病用的」。言下之意是作用<b>时点</b>问题，不是作用<b>有无</b>问题。A 把它读成「已近视者晒太阳无用所以不必晒」，原文从未否定户外对已近视者的其他好处，也没有给出停做的建议。C 把比喻读成字面，忽略了 admission 在本文是「入场」而非「检票」。D 制造了原文没有的对立：作者说的是两类工具各有其位，不是谁更重要。</div>
+
+
+      <h2>八、思考与仿写</h2>
+      <div class="q"><b>思考题：</b>本文最容易被误读的一步，是把「发病率下降」当成了「病程被改写」：前者数的是今年有多少人被诊断，后者看的是眼轴长得多快。这两个数字同时成立，恰恰说明干预改变了时间表，而没有改变机制。请你就身边一个「时点指标在进步、过程指标没动」的现象（例如：体检异常率下降但慢病用药量上升、失学率下降但复读率上升、投诉量下降但满意度没变），写一段 150 字以内的拆解：① 这个指标记录的是哪一刻？② 同一批人往后看三年，会发生什么？③ 如果只能再加一个指标，你会加哪一个？最后一句请用「它把 ______ 往后推了，却没有改变 ______」的句式收束。</div>
+      <div class="q"><b>仿写：</b>本文第 3 段只用了两句就把整篇文章劈成两半：先一句 The same trial reported a second result that the headlines dropped 把读者从「好消息」里拽出来，再一句 Refraction shifted by 0.17 dioptres less ... while axial length ... showed no significant difference at all 给出对照。骨架是：<i>The same ______ reported a second result that ______: ______ did ______, while ______ — the ______ that decides ______ — showed no ______ at all.</i> 注意三件事：① 转折句要先承认主句的成立（the same trial 说明不是另一个研究），否则读者会以为你在换话题；② while 两侧必须是同一个量纲的两个指标（屈光度与眼轴），对比才有力；③ 破折号里的同位语是「替读者解释为什么这个指标更重要」的唯一位置，写在这里比另起一句更省、也更狠。</div>
+
+      <h2>九、文章结构图解</h2>
+      <figure class="hero">
+        <svg viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章段落结构图（共 9 段）">
+          <text x="360" y="26" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="600" fill="#1c1a17">文章段落结构（共 9 段）</text>
+
+          <rect x="60" y="42" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="67" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">① 场景：广州 12 所学校，每天多一节四十分钟户外课</text>
+          <rect x="60" y="94" width="600" height="40" rx="8" fill="#eef6ee" stroke="#2f5d3a" stroke-width="2" font-weight="600"/>
+          <text x="360" y="119" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#2f5d3a">② 头条数字：30.4% 对 39.5%，差 9.1 个百分点</text>
+          <rect x="60" y="146" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16" stroke-width="2" font-weight="600"/>
+          <text x="360" y="171" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">③ 另一半：眼轴没显著变慢，屈光度只差 0.17 D</text>
+          <rect x="60" y="198" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="223" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">④ 背景：276 项研究、541 万人，2050 年 39.8%</text>
+          <rect x="60" y="250" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="275" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">⑤ 机制：强光→视网膜多巴胺→减缓眼轴拉长</text>
+          <rect x="60" y="302" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f"/>
+          <text x="360" y="327" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#1f3a5f">⑥ 剂量：120 分钟阈值，2,000 勒克斯 × 15 分钟</text>
+          <rect x="60" y="354" width="600" height="40" rx="8" fill="#fbeeea" stroke="#9c2f16" stroke-width="2" font-weight="600"/>
+          <text x="360" y="379" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#9c2f16">⑦ 转折：效果只落在仍有远视储备的孩子身上</text>
+          <rect x="60" y="406" width="600" height="40" rx="8" fill="#fdf7ec" stroke="#9c2f16"/>
+          <text x="360" y="431" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" fill="#9c2f16">⑧ 边界：两种读法；智能手表修正了「测量」</text>
+          <rect x="60" y="458" width="600" height="40" rx="8" fill="#eef3f8" stroke="#1f3a5f" stroke-width="2" font-weight="600"/>
+          <text x="360" y="483" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="600" fill="#1f3a5f">⑨ 落点：入场券，不是治疗；晚了就不叫预防</text>
+
+          <rect x="60" y="564" width="600" height="46" rx="8" fill="#fbeeea" stroke="#9c2f16"/>
+          <text x="360" y="584" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#9c2f16">全文张力：多晒四十分钟真的少了一批近视，可眼轴并没有变慢</text>
+          <text x="360" y="601" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#9c2f16">因为被挡住的是「入场」，不是「进程」</text>
+
+          <text x="360" y="646" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 1、2 段绿色：场景与头条数字——先把最硬的证据交出来</text>
+          <text x="360" y="668" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" fill="#8a8278">第 3、7、8 段橙红：另一半结果、人群分层与边界——同一批数据的三次改写</text>
+        </svg>
+        <figcaption>结构图解：全文走的是一条「先给胜利、再拆胜利」的路。第 1 段把话题压到一个具体动作上：每天多一节四十分钟户外课；第 2 段给出最硬的数字，30.4% 对 39.5%，差 9.1 个百分点；第 3 段立刻翻面——同一个试验里，眼轴并没有显著变慢，屈光度只差 0.17 D；第 4 段把镜头拉远，276 项研究、541 万人、2050 年 39.8%，说明这几个百分点为什么值得争；第 5 段给机制，强光促多巴胺，室内外照度差一个量级；第 6 段给剂量，120 分钟阈值、2,000 勒克斯十五分钟；第 7 段是全文的第二次翻面，上海 3,194 人的事后分析显示，效果几乎全落在仍有远视储备的孩子身上，近视前期的孩子即便超过两小时也没有显著差别；第 8 段列出两种读法与测量方式的修正；第 9 段收束为一句判断：户外时间是一张入场券，不是一种治疗。全文真正想说的是：<b>一项干预的平均效果，往往由最不需要它的那一半人贡献</b>，所以问「有没有用」之前，得先问「对谁有用」。</figcaption>
+      </figure>
+    </section>
+
+
+  <footer>
+    素材来源：何明光团队广州 12 校整群随机试验，<i>JAMA</i> 2015（1,903 名一年级学生，三年随访）；上海 STORM 试验事后分析，<i>British Journal of Ophthalmology</i> 2026（3,194 名 6–9 岁儿童，智能手表客观测量）；276 项研究汇总分析，<i>British Journal of Ophthalmology</i> 2024｜仅供个人学习使用<br>
+    <a href="../index.html">返回外刊精读首页</a>
+  </footer>
+</article>
+
+
+<script>
+(function(){
+  // 1) 词汇级别色块：根据 .lvl 文本自动为 .wc 卡片着色
+  document.querySelectorAll('.wc').forEach(function(card){
+    var lvl = card.querySelector('.lvl');
+    if(!lvl) return;
+    var t = lvl.textContent.trim();
+    var cls = t === 'CET4' ? 'lv-cet4' : t === 'CET6' ? 'lv-cet6' : t === '超纲' ? 'lv-chao' : 'lv-shuci';
+    card.classList.add(cls);
+  });
+
+  // 2) 播放同步高亮：句子已用 <span class="s" data-t data-e> 包好
+  var audio = document.getElementById('reader');
+  if(!audio) return;
+  var sents = [].slice.call(document.querySelectorAll('.main-top .para .s'));
+  function update(){
+    var t = audio.currentTime;
+    sents.forEach(function(s){ s.classList.remove('hl'); });
+    for(var i=0;i<sents.length;i++){
+      var s = sents[i];
+      var st = parseFloat(s.getAttribute('data-t'));
+      var en = parseFloat(s.getAttribute('data-e'));
+      if(t >= st - 0.05 && t < en){ s.classList.add('hl'); break; }
+    }
+  }
+  audio.addEventListener('timeupdate', update);
+  audio.addEventListener('seeked', update);
+  audio.addEventListener('ended', function(){ sents.forEach(function(s){ s.classList.remove('hl'); }); });
+})();
+</script>
+
+</body>
+</html>

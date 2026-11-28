@@ -2,6 +2,20 @@
   "_note": "外刊精读 · 每日一句数据。按日期轮换展示；date 为建议首展日期，缺省时按 index 顺序循环。",
   "sentences": [
     {
+      "date": "2026-11-28",
+      "en": "The implication is less satisfying than the slogan, and more useful: outdoor time is a ticket of admission, not a treatment.",
+      "zh": "这个结论没有口号好听，却更有用：户外时间是一张入场券，不是一种治疗。",
+      "src": "外刊精读 · 阳光的有效期，到近视前期为止（2026-11-28）",
+      "key": "admission",
+      "keyZh": "入场（许可）：a ticket of admission 就是「入场券」；admission 的另一个常用义是「承认」，如 an admission of failure、by his own admission——同一个词既是「被允许进门」，也是「不得不认账」",
+      "tip": "这句是全篇的收束，妙在把两个抽象名词换成一个比喻。ticket of admission 说的是「时点」：阳光让你晚一点跨过那条线，但没有改变眼球怎么长；treatment 说的是「机制」：它治的不是病，是时间表。注意 not a treatment 前面没有 but：英文里 A, not B 的结构比 A but not B 更干脆，因为它不许读者在中途犹豫。仿写骨架：______ is less ______ than the slogan, and more useful: ______ is a ______, not a ______.",
+      "tags": [
+        "健康与身心",
+        "近视防控",
+        "公共卫生"
+      ]
+    },
+    {
       "date": "2026-11-27",
       "en": "Print a number beside a choice and people will use it, but the unit you print decides what you are entitled to claim, and a per-gram ratio will always flatter a kitchen selling more.",
       "zh": "在选项旁边印一个数字，人就会用；但你印的是哪个单位，决定了你有资格主张什么；而一个「每百克」的比率，永远会偏袒一个只是在多卖的厨房。",
